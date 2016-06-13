@@ -315,8 +315,52 @@ from CMGTools.RootTools.samples.samples_13TeV_RunIIFall15MiniAODv2 import *
 #from CMGTools.RootTools.samples.samples_13TeV_signals import *
 from CMGTools.RootTools.samples.samples_13TeV_DATA2015 import *
 
-selectedComponents = [ TTLep_pow ];
+# Run on a single test sample
+#selectedComponents = [ TTLep_pow ];
+
+# Select all samples
 #selectedComponents = dataSamples + mcSamples;
+
+# Select only relevant samples
+selectedComponents = [ ];
+
+myDataComponents = [ HTMHT_Run2015B_16Dec, SingleElectron_Run2015B_16Dec, SingleMuon_Run2015B_16Dec, Tau_Run2015B_16Dec, JetHT_Run2015C_50ns_16Dec, SingleElectron_Run2015C_50ns_16Dec, SingleMuon_Run2015C_50ns_16Dec, Tau_Run2015C_50ns_16Dec, JetHT_Run2015C_25ns_16Dec, SingleElectron_Run2015C_25ns_16Dec, SingleMuon_Run2015C_25ns_16Dec, Tau_Run2015C_25ns_16Dec, JetHT_Run2015D_16Dec, SingleElectron_Run2015D_16Dec, SingleMuon_Run2015D_16Dec, Tau_Run2015D_16Dec ];
+
+for comp in myDataComponents:
+    comp.splitFactor = 2000
+    comp.isMC = False
+    comp.isData = True
+
+myMCComponents = [ TTJets, TTJets_ext, TT_pow_ext3, TT_pow_ext4, TTLep_pow, TTLep_pow_ext ]
+myMCComponents += TTHnobb_mWCutfix
+myMCComponents += Higgs
+myMCComponents += SingleTop
+myMCComponents += VJets
+myMCComponents += DYNJets
+myMCComponents += WNJets
+myMCComponents += DYJetsM50HT
+myMCComponents += DYJetsM5to50HT
+#myMCComponents += WJetsToLNuHT
+#myMCComponents += ZJetsToNuNuHT
+myMCComponents += QCDPt
+myMCComponents += QCDPtEMEnriched
+myMCComponents += QCDPtbcToE
+myMCComponents += DiBosons
+myMCComponents += TriBosons 
+myMCComponents += TTV
+myMCComponents += Rares 
+
+#Define splitting
+for comp in myMCComponents:
+    comp.isMC = True
+    comp.isData = False
+    comp.splitFactor = 1000 #  if comp.name in [ "WJets", "DY3JetsM50", "DY4JetsM50","W1Jets","W2Jets","W3Jets","W4Jets","TTJetsHad" ] else 100
+    comp.puFileMC=dataDir+"/puProfile_Summer12_53X.root"
+    comp.puFileData=dataDir+"/puProfile_Data12.root"
+    comp.efficiency = eff2012
+
+
+selectedComponents = myDataComponents + myMCComponents
 
 from CMGTools.HToZZ4L.tools.configTools import printSummary, configureSplittingFromTime, cropToLumi
 
@@ -644,6 +688,13 @@ if getHeppyOption("dropLHEweights",False):
     susyCounter.doLHE = False
 
 ## Auto-AAA
+## Initialize proxy
+#proxyOutDir=getHeppyOption("jobDir")
+#print 'Output dir: '+proxyOutDir
+#proxyCommand='export X509_USER_PROXY='+proxyOutDir+'/x509_proxy; voms-proxy-init --voms cms;'
+#print 'Creating the proxy: '+proxyCommand
+#os.system(proxyCommand)
+
 if not getHeppyOption("isCrab"):
     from CMGTools.Production import changeComponentAccessMode
     from CMGTools.Production.localityChecker import LocalityChecker
