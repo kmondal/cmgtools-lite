@@ -1,0 +1,12 @@
+alwaystrue        : 1
+denominator       : 1
+# Find out what "alwaystrue" and "denominator" mean
+
+
+# Baseline selection to check jet->tau fake rate dependence on MET
+dilepton triggers : Triggers_ee || Triggers_mm || Triggers_em
+>=2 tight leptons : nLepGood >=2 && LepGood1_tightId && LepGood2_tightId && LepGood1_pt > 20 && LepGood2_pt > 15
+
+# Check the exact difference between TauGood and TauOthers (most likely, Others are the ones not passing the basic decayModeFinding discriminator?)
+=1 tau : nTauGood >=1 && TauGood1_mcMatchID && TauGood1_pt > 20 && abs(TauGood2_eta)<=2.3
+

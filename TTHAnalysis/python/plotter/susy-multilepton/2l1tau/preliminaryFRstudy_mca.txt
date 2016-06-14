@@ -1,0 +1,27 @@
+# FR study, to match with https://indico.cern.ch/event/493708/contributions/2190281/attachments/1284029/1908822/khvastunov_ra7EWK_2Jun_2016.pdf
+# Need DY, TTbar, Data
+
+TT        : TTJets_DiLepton             : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==0) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==0)) ; FillColor=ROOT.kGray, Label="TT (fakes)", 
+TT        : TTJets_SingleLeptonFromT    : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==0) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==0)) ; FillColor=ROOT.kGray, Label="TT (fakes)"
+TT        : TTJets_SingleLeptonFromTbar : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==0) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==0)) ; FillColor=ROOT.kGray, Label="TT (fakes)"
+
+
+
+DY        : DYJetsToLL_M10to50          : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==0) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==0)) ; FillColor=ROOT.kCyan, Label="DY (fakes)"
+DY        : DYJetsToLL_M50              : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==0) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==0)) ; FillColor=ROOT.kCyan, Label="DY (fakes)"
+
+
+data : DoubleEG_Run2015C_25ns_16Dec2015
+data : DoubleEG_Run2015D_16Dec2015
+data : DoubleMuon_Run2015C_25ns_16Dec2015
+data : DoubleMuon_Run2015D_16Dec2015
+data : MuonEG_Run2015C_25ns_16Dec2015
+data : MuonEG_Run2015D_16Dec2015
+data : SingleElectron_Run2015C_25ns_16Dec2015
+data : SingleElectron_Run2015D_16Dec2015
+data : SingleMuon_Run2015C_25ns_16Dec2015
+data : SingleMuon_Run2015D_16Dec2015
+
+
+
+
