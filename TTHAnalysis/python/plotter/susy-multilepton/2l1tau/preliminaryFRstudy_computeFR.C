@@ -35,7 +35,7 @@ void doRatioInt(TH1* h1, TH1* h2, TString sample)
 }
 
 
-void doRatio()
+void preliminaryFRstudy_computeFR()
 {
 
   TString num("met_");
