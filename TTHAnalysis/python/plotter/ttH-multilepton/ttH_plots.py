@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 import re
+import os
 
 ODIR=sys.argv[1]
 
@@ -11,19 +12,27 @@ dowhat = "plots"
 
 def base(selection):
 
-    CORE="--Fs {P}/2_recleaner_v5_b1E2 --Fs {P}/4_kinMVA_without_MEM_v5 --Fs {P}/8_bTagSF_12fb_v45"
+    CORE="-P /data1/peruzzi/TREES_TTH_250117_Summer16_JECV3_noClean_qgV2_skimOnlyMC_v1 --Fs {P}/1_recleaner_250117_v1 --Fs {P}/2_eventVars_250117_v1 --Fs {P}/3_kinMVA_250117_v2_withBDTv8Hjv2 --Fs {P}/5_triggerDecision_250117_v1 --Fs {P}/4_BDTv8_Hj_250117_v2_bestIfPassHadTop"
+    if 'cmsco01' not in os.environ['HOSTNAME']: CORE = CORE.replace('/data1/peruzzi','/afs/cern.ch/work/p/peruzzi/tthtrees')
 
-    CORE+=" -f -j 8 -l 12.9 --s2v -L ttH-multilepton/functionsTTH.cc --tree treeProducerSusyMultilepton --mcc ttH-multilepton/lepchoice-ttH-FO.txt --mcc ttH-multilepton/ttH_2lss3l_triggerdefs.txt"# --neg"
+    CORE+=" -f -j 8 -l 36.5 --s2v -L ttH-multilepton/functionsTTH.cc --tree treeProducerSusyMultilepton --mcc ttH-multilepton/lepchoice-ttH-FO.txt --mcc ttH-multilepton/ttH_2lss3l_triggerdefs.txt"# --neg"
     if dowhat == "plots": CORE+=" --lspam '#bf{CMS} #it{Preliminary}' --legendWidth 0.20 --legendFontSize 0.035 --showRatio --maxRatioRange 0 2 --fixRatioRange  --showMCError --rebin 4 --xP 'nT_.*' --xP 'debug_.*'"
 
     if selection=='2lss':
-        GO="%s -P /data1/peruzzi/mixture_jecv6prompt_datafull_jul20_skimOnlyMC ttH-multilepton/mca-2lss-mc.txt ttH-multilepton/2lss_tight.txt "%CORE
-        GO="%s -W 'puw2016_nTrueInt_13fb(nTrueInt)*leptonSF_ttH(LepGood_pdgId[iF_Recl[0]],LepGood_pt[iF_Recl[0]],LepGood_eta[iF_Recl[0]],2)*leptonSF_ttH(LepGood_pdgId[iF_Recl[1]],LepGood_pt[iF_Recl[1]],LepGood_eta[iF_Recl[1]],2)*triggerSF_ttH(LepGood_pdgId[iF_Recl[0]],LepGood_pt[iF_Recl[0]],LepGood_pdgId[iF_Recl[1]],LepGood_pt[iF_Recl[1]],2)*eventBTagSF'"%GO
+        GO="%s ttH-multilepton/mca-2lss-mc.txt ttH-multilepton/2lss_tight.txt "%CORE
+#        GO="%s -W 'puw2016_nTrueInt_36fb(nTrueInt)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[0]],LepGood_pt[iLepFO_Recl[0]],LepGood_eta[iLepFO_Recl[0]],2)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[1]],LepGood_pt[iLepFO_Recl[1]],LepGood_eta[iLepFO_Recl[1]],2)*triggerSF_ttH(LepGood_pdgId[iLepFO_Recl[0]],LepGood_pt[iLepFO_Recl[0]],LepGood_pdgId[iLepFO_Recl[1]],LepGood_pt[iLepFO_Recl[1]],2)*eventBTagSF'"%GO
+        GO="%s -W 'puw2016_nTrueInt_36fb(nTrueInt)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[0]],LepGood_pt[iLepFO_Recl[0]],LepGood_eta[iLepFO_Recl[0]],2)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[1]],LepGood_pt[iLepFO_Recl[1]],LepGood_eta[iLepFO_Recl[1]],2)'"%GO
         if dowhat == "plots": GO+=" ttH-multilepton/2lss_3l_plots.txt --xP '^lep(3|4)_.*' --xP '^(3|4)lep_.*' --xP 'kinMVA_3l_.*' "
     elif selection=='3l':
-        GO="%s -P /data1/peruzzi/mixture_jecv6prompt_datafull_jul20_skimOnlyMC ttH-multilepton/mca-3l-mc.txt ttH-multilepton/3l_tight.txt "%CORE
-        GO="%s -W 'puw2016_nTrueInt_13fb(nTrueInt)*leptonSF_ttH(LepGood_pdgId[iF_Recl[0]],LepGood_pt[iF_Recl[0]],LepGood_eta[iF_Recl[0]],3)*leptonSF_ttH(LepGood_pdgId[iF_Recl[1]],LepGood_pt[iF_Recl[1]],LepGood_eta[iF_Recl[1]],3)*leptonSF_ttH(LepGood_pdgId[iF_Recl[2]],LepGood_pt[iF_Recl[2]],LepGood_eta[iF_Recl[2]],3)*triggerSF_ttH(LepGood_pdgId[iF_Recl[0]],LepGood_pt[iF_Recl[0]],LepGood_pdgId[iF_Recl[1]],LepGood_pt[iF_Recl[1]],3)*eventBTagSF'"%GO
+        GO="%s ttH-multilepton/mca-3l-mc.txt ttH-multilepton/3l_tight.txt "%CORE
+#        GO="%s -W 'puw2016_nTrueInt_36fb(nTrueInt)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[0]],LepGood_pt[iLepFO_Recl[0]],LepGood_eta[iLepFO_Recl[0]],3)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[1]],LepGood_pt[iLepFO_Recl[1]],LepGood_eta[iLepFO_Recl[1]],3)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[2]],LepGood_pt[iLepFO_Recl[2]],LepGood_eta[iLepFO_Recl[2]],3)*triggerSF_ttH(LepGood_pdgId[iLepFO_Recl[0]],LepGood_pt[iLepFO_Recl[0]],LepGood_pdgId[iLepFO_Recl[1]],LepGood_pt[iLepFO_Recl[1]],3)*eventBTagSF'"%GO
+        GO="%s -W 'puw2016_nTrueInt_36fb(nTrueInt)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[0]],LepGood_pt[iLepFO_Recl[0]],LepGood_eta[iLepFO_Recl[0]],3)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[1]],LepGood_pt[iLepFO_Recl[1]],LepGood_eta[iLepFO_Recl[1]],3)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[2]],LepGood_pt[iLepFO_Recl[2]],LepGood_eta[iLepFO_Recl[2]],3)'"%GO
         if dowhat == "plots": GO+=" ttH-multilepton/2lss_3l_plots.txt --xP '^(2|4)lep_.*' --xP '^lep4_.*' --xP 'kinMVA_2lss_.*' "
+    elif selection=='4l':
+        GO="%s ttH-multilepton/mca-4l-mc.txt ttH-multilepton/4l_tight.txt "%CORE
+# ADAPT TO 4L!!!        GO="%s -W 'puw2016_nTrueInt_36fb(nTrueInt)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[0]],LepGood_pt[iLepFO_Recl[0]],LepGood_eta[iLepFO_Recl[0]],3)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[1]],LepGood_pt[iLepFO_Recl[1]],LepGood_eta[iLepFO_Recl[1]],3)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[2]],LepGood_pt[iLepFO_Recl[2]],LepGood_eta[iLepFO_Recl[2]],3)*triggerSF_ttH(LepGood_pdgId[iLepFO_Recl[0]],LepGood_pt[iLepFO_Recl[0]],LepGood_pdgId[iLepFO_Recl[1]],LepGood_pt[iLepFO_Recl[1]],3)*eventBTagSF'"%GO
+        GO="%s -W 'puw2016_nTrueInt_36fb(nTrueInt)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[0]],LepGood_pt[iLepFO_Recl[0]],LepGood_eta[iLepFO_Recl[0]],3)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[1]],LepGood_pt[iLepFO_Recl[1]],LepGood_eta[iLepFO_Recl[1]],3)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[2]],LepGood_pt[iLepFO_Recl[2]],LepGood_eta[iLepFO_Recl[2]],3)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[3]],LepGood_pt[iLepFO_Recl[3]],LepGood_eta[iLepFO_Recl[3]],3)'"%GO
+        if dowhat == "plots": GO+=" ttH-multilepton/2lss_3l_plots.txt --xP '^(2|3)lep_.*' --xP 'kinMVA_.*' "
     else:
         raise RuntimeError, 'Unknown selection'
 
@@ -45,14 +54,15 @@ def setwide(x):
     x2 = x2.replace('--legendWidth 0.35','--legendWidth 0.20')
     return x2
 def fulltrees(x):
-    return x.replace("mixture_jecv6prompt_datafull_jul20_skimOnlyMC","mixture_jecv6prompt_datafull_jul20")
+    return x.replace("TREES_TTH_250117_Summer16_JECV3_noClean_qgV2_skimOnlyMC_v1","TREES_TTH_250117_Summer16_JECV3_noClean_qgV2")
 def doprescale3l(x):
+    raise RuntimeError, 'temporary: no prescaled datasets defined'
     x2 = x.replace("mixture_jecv6prompt_datafull_jul20_skimOnlyMC","TREES_80X_180716_jecv6_skim_3ltight_relax")
     x2 = x2.replace("--Fs {P}/4_kinMVA_without_MEM_v5 --Fs {P}/8_bTagSF_12fb_v45","--Fs {P}/4_kinMVA_with_MEM_v5 --Fs {P}/7_MEM_v5 --Fs {P}/8_bTagSF_12fb_v5")
 #    x2 = add(x2,"--sP kinMVA.*")
     return x2
 
-allow_unblinding = True
+allow_unblinding = False
 
 if __name__ == '__main__':
 
@@ -64,10 +74,12 @@ if __name__ == '__main__':
         x = base('2lss')
         if '_appl' in torun: x = add(x,'-I ^TT ')
         if '_1fo' in torun:
-            x = add(x,"-A alwaystrue 1FO 'LepGood1_isTight+LepGood2_isTight==1'")
+            x = add(x,"-A alwaystrue 1FO 'LepGood1_isLepTight+LepGood2_isLepTight==1'")
             x = x.replace("--xP 'nT_.*'","")
-        if '_2fo' in torun: x = add(x,"-A alwaystrue 2FO 'LepGood1_isTight+LepGood2_isTight==0'")
+        if '_2fo' in torun: x = add(x,"-A alwaystrue 2FO 'LepGood1_isLepTight+LepGood2_isLepTight==0'")
         if '_relax' in torun: x = add(x,'-X ^TT ')
+        if '_extr' in torun:
+            x = x.replace('mca-2lss-mc.txt','mca-2lss-mc-sigextr.txt').replace('--showRatio --maxRatioRange 0 2','--showRatio --maxRatioRange 0 1 --ratioYLabel "S/B"')
         if '_data' in torun: x = x.replace('mca-2lss-mc.txt','mca-2lss-mcdata.txt')
         if '_table' in torun:
             x = x.replace('mca-2lss-mc.txt','mca-2lss-mc-table.txt')
@@ -123,9 +135,12 @@ if __name__ == '__main__':
         x = base('3l')
         if '_appl' in torun: x = add(x,'-I ^TTT ')
         if '_1fo' in torun:
-            x = add(x,"-A alwaystrue 1FO 'LepGood1_isTight+LepGood2_isTight+LepGood3_isTight==2'")
+            x = add(x,"-A alwaystrue 1FO 'LepGood1_isLepTight+LepGood2_isLepTight+LepGood3_isLepTight==2'")
             x = x.replace("--xP 'nT_.*'","")
         if '_relax' in torun: x = add(x,'-X ^TTT ')
+        if '_extr' in torun:
+            x = x.replace('mca-3l-mc.txt','mca-3l-mc-sigextr.txt')
+            x = fulltrees(x)
         if '_data' in torun: x = x.replace('mca-3l-mc.txt','mca-3l-mcdata.txt')
         if '_frdata' in torun:
             if '_blinddata' in torun:
@@ -206,7 +221,7 @@ if __name__ == '__main__':
         x = x.replace('mca-2lss-mc.txt','mca-2lss-mcdata-ttbar.txt')
         if '_data' not in torun: x = add(x,'--xp data')
         if '_appl' in torun: x = add(x,'-I ^TT ')
-        if '_1fo' in torun: x = add(x,"-A alwaystrue 1FO 'LepGood1_isTight+LepGood2_isTight==1'")
+        if '_1fo' in torun: x = add(x,"-A alwaystrue 1FO 'LepGood1_isLepTight+LepGood2_isLepTight==1'")
         if '_leadmupt25' in torun: x = add(x,"-A 'entry point' leadmupt25 'abs(LepGood1_pdgId)==13 && LepGood1_pt>25'")
         if '_norm' in torun:
             x = add(x,"--sp '.*' --scaleSigToData")
@@ -225,8 +240,6 @@ if __name__ == '__main__':
         x = add(x,"-I same-sign -X ^2b1B -X ^Zee_veto -A alwaystrue mZ 'mZ1>60 && mZ1<120'")
         for flav in ['mm','ee']:
             runIt(add(x,'-E ^%s -X ^4j'%flav),'%s/%s'%(torun,flav))
-            runIt(add(x,'-E ^%s -X ^4j -E ^2j '%flav),'%s_2j/%s'%(torun,flav))
-            runIt(add(x,'-E ^%s '%flav),'%s_4j/%s'%(torun,flav))
 
     if 'cr_wz' in torun:
         x = base('3l')

@@ -4,7 +4,11 @@
 triggers_mumu_iso    = [ "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_v*", 
                          "HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_v*",
                          "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v*",
-                         "HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v*" ]
+                         "HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v*",
+                         "HLT_Mu23_TrkIsoVVL_Mu8_TrkIsoVVL_v*", 
+                         "HLT_Mu23_TrkIsoVVL_TkMu8_TrkIsoVVL_v*",
+                         "HLT_Mu23_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v*",
+                         "HLT_Mu23_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v*" ]
 triggers_mumu_noniso = [ "HLT_Mu30_TkMu11_v*" ]
 triggers_mumu_ss = [ "HLT_Mu17_Mu8_SameSign_v*",
                      "HLT_Mu17_Mu8_SameSign_DZ_v*", 
@@ -28,6 +32,7 @@ triggers_mue   = [ "HLT_Mu17_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v*", # warni
                    "HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v*", 
                    "HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*", 
                    "HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_v*",
+                   "HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ_v*",
                    "HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_v*",
                    "HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v*" ]
 
@@ -52,8 +57,10 @@ triggers_1mu_iso = [ 'HLT_IsoMu20_v*',
                      'HLT_IsoTkMu20_v*', 
                      'HLT_IsoMu22_v*', 
                      'HLT_IsoTkMu22_v*',
-                     'HLT_IsoMu24_v*', 
-                     'HLT_IsoTkMu24_v*']  # Mu20's prescaled in column 0
+                     'HLT_IsoMu24_v*', # Mu20's prescaled in column 0
+                     'HLT_IsoTkMu24_v*',
+                     'HLT_IsoMu22_eta2p1_v',
+                     'HLT_IsoTkMu22_eta2p1_v']
 triggers_1mu_noniso = [ 'HLT_Mu45_eta2p1_v*', 
                         'HLT_Mu50_v*', 
                         'HLT_TkMu50_v*' ]

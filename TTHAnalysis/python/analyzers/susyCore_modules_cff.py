@@ -100,6 +100,26 @@ badMuonAna = cfg.Analyzer(
     packedCandidates = 'packedPFCandidates',
 )
 
+from CMGTools.TTHAnalysis.analyzers.badMuonAnalyzerMoriond2017 import badMuonAnalyzerMoriond2017
+badCloneMuonAnaMoriond2017 = cfg.Analyzer(
+    badMuonAnalyzerMoriond2017, name = 'badCloneMuonMoriond2017',
+    muons = 'slimmedMuons',
+    vertices         = 'offlineSlimmedPrimaryVertices',
+    minMuPt = 20,
+    selectClones = True,
+    postFix = '',
+)
+
+badMuonAnaMoriond2017 = cfg.Analyzer(
+    badMuonAnalyzerMoriond2017, name = 'badMuonMoriond2017',
+    muons = 'slimmedMuons',
+    vertices         = 'offlineSlimmedPrimaryVertices',
+    minMuPt = 20,
+    selectClones = False,
+    postFix = '',
+)
+
+
 # Select a list of good primary vertices (generic)
 vertexAna = cfg.Analyzer(
     VertexAnalyzer, name="VertexAnalyzer",
@@ -344,8 +364,8 @@ jetAna = cfg.Analyzer(
     recalibrateJets = True, #'MC', # True, False, 'MC', 'Data'
     applyL2L3Residual = True, # Switch to 'Data' when they will become available for Data
     recalibrationType = "AK4PFchs",
-    mcGT     = "Spring16_23Sep2016V2_MC",
-    dataGT   = [(1,"Spring16_23Sep2016BCDV2_DATA"),(276831,"Spring16_23Sep2016EFV2_DATA"),(278802,"Spring16_23Sep2016GV2_DATA"),(280919,"Spring16_23Sep2016HV2_DATA")],
+    mcGT     = "Summer16_23Sep2016V3_MC",
+    dataGT   = [(1,"Summer16_23Sep2016BCDV3_DATA"),(276831,"Summer16_23Sep2016EFV3_DATA"),(278802,"Summer16_23Sep2016GV3_DATA"),(280919,"Summer16_23Sep2016HV3_DATA")],
     jecPath = "${CMSSW_BASE}/src/CMGTools/RootTools/data/jec/",
     shiftJEC = 0, # set to +1 or -1 to apply +/-1 sigma shift to the nominal jet energies
     addJECShifts = False, # if true, add  "corr", "corrJECUp", and "corrJECDown" for each jet (requires uncertainties to be available!)
@@ -565,5 +585,7 @@ susyCoreSequence = [
     triggerFlagsAna,
     eventFlagsAna,
     badMuonAna,
+    badMuonAnaMoriond2017,
+    badCloneMuonAnaMoriond2017,
     badChargedHadronAna,
 ]

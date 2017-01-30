@@ -54,31 +54,29 @@ float ttH_MVAto1D_6_flex (float kinMVA_2lss_ttbar, float kinMVA_2lss_ttV, int pd
 }
 
 
-int ttH_catIndex_2lss(int nTauTight, int LepGood1_pdgId, int LepGood2_pdgId, int LepGood1_charge, int nBJetMedium25){
+int ttH_catIndex_2lss(int LepGood1_pdgId, int LepGood2_pdgId, int LepGood1_charge, int nBJetMedium25){
 
-//2lss_1tau
-//2lss_ee_0tau_neg
-//2lss_ee_0tau_pos
-//2lss_em_0tau_bl_neg
-//2lss_em_0tau_bl_pos
-//2lss_em_0tau_bt_neg
-//2lss_em_0tau_bt_pos
-//2lss_mm_0tau_bl_neg
-//2lss_mm_0tau_bl_pos
-//2lss_mm_0tau_bt_neg
-//2lss_mm_0tau_bt_pos
+//2lss_ee_neg
+//2lss_ee_pos
+//2lss_em_bl_neg
+//2lss_em_bl_pos
+//2lss_em_bt_neg
+//2lss_em_bt_pos
+//2lss_mm_bl_neg
+//2lss_mm_bl_pos
+//2lss_mm_bt_neg
+//2lss_mm_bt_pos
    
-  if (nTauTight>=1) return 1;
-  if (nTauTight==0 && abs(LepGood1_pdgId)==11 && abs(LepGood2_pdgId)==11 && LepGood1_charge<0) return 2;
-  if (nTauTight==0 && abs(LepGood1_pdgId)==11 && abs(LepGood2_pdgId)==11 && LepGood1_charge>0) return 3;
-  if (nTauTight==0 && (abs(LepGood1_pdgId) != abs(LepGood2_pdgId)) && LepGood1_charge<0 && nBJetMedium25 < 2) return 4;
-  if (nTauTight==0 && (abs(LepGood1_pdgId) != abs(LepGood2_pdgId)) && LepGood1_charge>0 && nBJetMedium25 < 2) return 5;
-  if (nTauTight==0 && (abs(LepGood1_pdgId) != abs(LepGood2_pdgId)) && LepGood1_charge<0 && nBJetMedium25 >= 2) return 6;
-  if (nTauTight==0 && (abs(LepGood1_pdgId) != abs(LepGood2_pdgId)) && LepGood1_charge>0 && nBJetMedium25 >= 2) return 7;
-  if (nTauTight==0 && abs(LepGood1_pdgId)==13 && abs(LepGood2_pdgId)==13 && LepGood1_charge<0 && nBJetMedium25 < 2) return 8;
-  if (nTauTight==0 && abs(LepGood1_pdgId)==13 && abs(LepGood2_pdgId)==13 && LepGood1_charge>0 && nBJetMedium25 < 2) return 9;
-  if (nTauTight==0 && abs(LepGood1_pdgId)==13 && abs(LepGood2_pdgId)==13 && LepGood1_charge<0 && nBJetMedium25 >= 2) return 10;
-  if (nTauTight==0 && abs(LepGood1_pdgId)==13 && abs(LepGood2_pdgId)==13 && LepGood1_charge>0 && nBJetMedium25 >= 2) return 11;
+  if (abs(LepGood1_pdgId)==11 && abs(LepGood2_pdgId)==11 && LepGood1_charge<0) return 2-1;
+  if (abs(LepGood1_pdgId)==11 && abs(LepGood2_pdgId)==11 && LepGood1_charge>0) return 3-1;
+  if ((abs(LepGood1_pdgId) != abs(LepGood2_pdgId)) && LepGood1_charge<0 && nBJetMedium25 < 2) return 4-1;
+  if ((abs(LepGood1_pdgId) != abs(LepGood2_pdgId)) && LepGood1_charge>0 && nBJetMedium25 < 2) return 5-1;
+  if ((abs(LepGood1_pdgId) != abs(LepGood2_pdgId)) && LepGood1_charge<0 && nBJetMedium25 >= 2) return 6-1;
+  if ((abs(LepGood1_pdgId) != abs(LepGood2_pdgId)) && LepGood1_charge>0 && nBJetMedium25 >= 2) return 7-1;
+  if (abs(LepGood1_pdgId)==13 && abs(LepGood2_pdgId)==13 && LepGood1_charge<0 && nBJetMedium25 < 2) return 8-1;
+  if (abs(LepGood1_pdgId)==13 && abs(LepGood2_pdgId)==13 && LepGood1_charge>0 && nBJetMedium25 < 2) return 9-1;
+  if (abs(LepGood1_pdgId)==13 && abs(LepGood2_pdgId)==13 && LepGood1_charge<0 && nBJetMedium25 >= 2) return 10-1;
+  if (abs(LepGood1_pdgId)==13 && abs(LepGood2_pdgId)==13 && LepGood1_charge>0 && nBJetMedium25 >= 2) return 11-1;
 
  return -1;
 
@@ -199,19 +197,19 @@ float _get_looseToTight_leptonSF_ttH(int pdgid, float pt, float eta, int nlep, f
   if (var!=0) assert(0); // NOT IMPLEMENTED
 
   if (!_histo_looseToTight_leptonSF_mu_2lss) {
-    _file_looseToTight_leptonSF_mu_2lss = new TFile("../../data/lepMVAEffSF_m_2lss.root","read");
+    _file_looseToTight_leptonSF_mu_2lss = new TFile("../../data/leptonSF/lepMVAEffSF_m_2lss.root","read");
     _histo_looseToTight_leptonSF_mu_2lss = (TH2F*)(_file_looseToTight_leptonSF_mu_2lss->Get("sf"));
   }
   if (!_histo_looseToTight_leptonSF_el_2lss) {
-    _file_looseToTight_leptonSF_el_2lss = new TFile("../../data/lepMVAEffSF_e_2lss.root","read");
+    _file_looseToTight_leptonSF_el_2lss = new TFile("../../data/leptonSF/lepMVAEffSF_e_2lss.root","read");
     _histo_looseToTight_leptonSF_el_2lss = (TH2F*)(_file_looseToTight_leptonSF_el_2lss->Get("sf"));
   }
   if (!_histo_looseToTight_leptonSF_mu_3l) {
-    _file_looseToTight_leptonSF_mu_3l = new TFile("../../data/lepMVAEffSF_m_3l.root","read");
+    _file_looseToTight_leptonSF_mu_3l = new TFile("../../data/leptonSF/lepMVAEffSF_m_3l.root","read");
     _histo_looseToTight_leptonSF_mu_3l = (TH2F*)(_file_looseToTight_leptonSF_mu_3l->Get("sf"));
   }
   if (!_histo_looseToTight_leptonSF_el_3l) {
-    _file_looseToTight_leptonSF_el_3l = new TFile("../../data/lepMVAEffSF_e_3l.root","read");
+    _file_looseToTight_leptonSF_el_3l = new TFile("../../data/leptonSF/lepMVAEffSF_e_3l.root","read");
     _histo_looseToTight_leptonSF_el_3l = (TH2F*)(_file_looseToTight_leptonSF_el_3l->Get("sf"));
   }
 
