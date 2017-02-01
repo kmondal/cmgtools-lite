@@ -38,7 +38,7 @@ FUNCTION_2L="kinMVA_2lss_ttV_withHj:kinMVA_2lss_ttbar_withBDTv8 40,-1,1,40,-1,1"
 FUNCTION_3L="kinMVA_3l_ttV:kinMVA_3l_ttbar 40,-1,1,40,-1,1"
 #BINFUNCTION_2L="7:ttH_MVAto1D_7_2lss_Marco"
 #BINFUNCTION_3L="5:ttH_MVAto1D_5_3l_Marco"
-BINFUNCTION_2L="7:OurBin2l"
+BINFUNCTION_2L="9:OurBin2l"
 BINFUNCTION_3L="4:OurBin3l"
 
 if [[ "$2" == "save" ]]; then
