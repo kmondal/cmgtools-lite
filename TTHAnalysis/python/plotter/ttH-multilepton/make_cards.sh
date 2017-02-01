@@ -5,9 +5,9 @@ if [[ "$HOSTNAME" == "cmsco01.cern.ch" ]]; then
     T3L=" -P /data1/peruzzi/TREES_80X_180716_jecv6_skim_3ltight_relax --Fs {P}/2_recleaner_v5_b1E2 --Fs {P}/4_kinMVA_with_MEM_v5 --Fs {P}/7_MEM_v5 --Fs {P}/8_bTagSF_12fb_v5"
     J=8;
 else
-#    T2L=" -P /afs/cern.ch/work/p/peruzzi/ra5trees/809_June9_ttH_skimOnlyMC_2lsstight_relax "
-#    T3L=" -P /afs/cern.ch/work/p/peruzzi/ra5trees/809_June9_ttH_skimOnlyMC_3ltight_relax_prescale "
-    J=4;
+    T2L=" -P /afs/cern.ch/work/p/peruzzi/tthtrees/TREES_TTH_250117_Summer16_JECV3_noClean_qgV2_skimOnlyMC_v1 "
+    T3L=" -P /afs/cern.ch/work/p/peruzzi/tthtrees/TREES_TTH_250117_Summer16_JECV3_noClean_qgV2_skimOnlyMC_v1 "
+    J=8;
 fi
 
 if [[ "X$1" == "X" ]]; then echo "Provide output directory name!"; exit; fi
@@ -32,10 +32,10 @@ SPLITDECAYS=""
 OPTIONS="${OPTIONS} --mcc ttH-multilepton/lepchoice-ttH-FO.txt --mcc ttH-multilepton/ttH_2lss3l_triggerdefs.txt --neg" # neg necessary for subsequent rebin
 CATPOSTFIX=""
 
-FUNCTION_2L="kinMVA_2lss_ttV:kinMVA_2lss_ttbar 40,-1,1,40,-1,1"
+FUNCTION_2L="kinMVA_2lss_ttV_withHj:kinMVA_2lss_ttbar_withBDTv8 40,-1,1,40,-1,1"
 FUNCTION_3L="kinMVA_3l_ttV_withMEM:kinMVA_3l_ttbar 40,-1,1,40,-1,1"
-BINFUNCTION_2L="7:ttH_MVAto1D_7_2lss_Marco"
-BINFUNCTION_3L="5:ttH_MVAto1D_5_3l_Marco"
+BINFUNCTION_2L="9:OurBin2l"
+BINFUNCTION_3L="9:OurBin3l"
 
 if [[ "$2" == "save" ]]; then
 DOFILE="--savefile activate"
