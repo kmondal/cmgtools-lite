@@ -2,7 +2,7 @@
 #include "TH2.h"
 #include "TH2Poly.h"
 #include "TGraphAsymmErrors.h"
-
+#include "ttH-multilepton/GetBinning.C"
 #include <iostream>
 
 float ttH_MVAto1D_6_2lss_Marco (float kinMVA_2lss_ttbar, float kinMVA_2lss_ttV){
