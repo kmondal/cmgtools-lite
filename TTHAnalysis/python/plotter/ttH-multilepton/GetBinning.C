@@ -47,12 +47,11 @@ GetBinning ClusteringSuite;
 
 Int_t OurBin2l(Double_t x, Double_t y)
 {
-  return ClusteringSuite.GetCluster2l(y,x) +1;
+  return ClusteringSuite.GetCluster2l(y,x)+1;
 }
 Int_t OurBin3l(Double_t x, Double_t y)
 {
-  return ClusteringSuite.GetCluster3l(x,y);
-
+  return ClusteringSuite.GetCluster3l(y,x)+1;
 }
 
 
