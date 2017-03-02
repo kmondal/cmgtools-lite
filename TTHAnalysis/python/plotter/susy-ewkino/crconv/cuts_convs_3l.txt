@@ -1,7 +1,7 @@
 alwaystrue: 1
 #blinding  : !isData || (run <= 276811 || (run>=278820 && run<=279931))
 trigger: Triggers_ee || Triggers_mm || Triggers_em
-metfilters: $DATA{METfilters} $MC{1}
+metfilters: $DATA{METfilters} $MC{METfilters}
 cleanup: minMllAFAS > 12
 trilep: nLepFO==3 && abs(LepGood1_charge+LepGood2_charge+LepGood3_charge) < 2
 pt251510_el252015: LepGood1_conePt>25 && if3(abs(LepGood2_pdgId)==13, LepGood2_conePt>15, LepGood2_conePt>20) && if3(abs(LepGood3_pdgId)==13, LepGood3_conePt>10, LepGood3_conePt>15) ; Disable=True
