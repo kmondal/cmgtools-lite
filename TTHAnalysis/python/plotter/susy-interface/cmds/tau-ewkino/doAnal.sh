@@ -85,6 +85,7 @@ elif [ "$1" == "plot" ]; then
         #WEBDIR="/nfs/fanae/user/vischia/www/conversions_prodjan23_medium/preFit/"
         #WEBDIR="/nfs/fanae/user/vischia/www/conversions_prodjan23_medium/postFit/"
         WEBDIR="/nfs/fanae/user/vischia/www/conversions_prodjan23/preFit/"
+        WEBDIR="/nfs/fanae/user/vischia/www/conversions_prodjan23/postFit/"
     fi
     PRETEND=" --pretend  "
     PRETEND=""
