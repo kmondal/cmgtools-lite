@@ -199,7 +199,8 @@ elif(action=='crconv'):
         # https://hypernews.cern.ch/HyperNews/CMS/get/physics-announcements/4495.html
         lumi='35.867'
         enablecuts=' '
-        pgroup=' --pgroup internal:=ttZ,Gstar,ZGi --pgroup external:=TTG,WG,ZG,TG,Gstare --pgroup incl_fakes_appldata+=incl_promptsub '
+        #pgroup=' --pgroup internal:=ttZ,Gstar,ZGi --pgroup external:=TTG,WG,ZG,TG,Gstare --pgroup incl_fakes_appldata+=incl_promptsub '
+        pgroup=' --pgroup incl_fakes_appldata+=incl_promptsub '
         #
         header=''
 
@@ -223,6 +224,20 @@ elif(action=='crconv'):
         toplot='--sP \'m3l\''
         if(subaction=='all'):
                 toplot=' '
+
+        # ossf_e
+        out=outputDir+'3l_mcdata_conv/ossf_e/'
+        enablecuts=' --enable-cut=ossf_e '
+        header='#it{OSSF+e}'
+        runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights3l, functions, enablecuts, header)
+
+        # ossf_m
+        out=outputDir+'3l_mcdata_conv/ossf_m/'
+        enablecuts=' --enable-cut=ossf_m '
+        header='#it{OSSF+#mu}'
+        runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights3l, functions, enablecuts, header)
+
+
         # eee
         out=outputDir+'3l_mcdata_conv/eee/'
         enablecuts=' --enable-cut=eee '
@@ -293,8 +308,9 @@ elif(action=='crconvcards'):
         jei='60'
         # https://hypernews.cern.ch/HyperNews/CMS/get/physics-announcements/4495.html
         lumi='35.867'
-        pgroup=' --pgroup internal:=ttZ,Gstar,ZGi --pgroup external:=TTG,WG,ZG,TG,Gstare --pgroup incl_fakes_appldata+=incl_promptsub '
-        signals=' --sp internal --sp external '
+        #pgroup=' --pgroup internal:=ttZ,Gstar,ZGi --pgroup external:=TTG,WG,ZG,TG,Gstare --pgroup incl_fakes_appldata+=incl_promptsub '
+        pgroup='  --pgroup incl_fakes_appldata+=incl_promptsub '
+        signals=' --sp ZG --sp ZZ '
         enablecuts=' '
 
         # Overwrite var, for now

@@ -7,7 +7,7 @@ trilep: nLepFO==3 && abs(LepGood1_charge+LepGood2_charge+LepGood3_charge) < 2
 pt251510_el252015: LepGood1_conePt>25 && if3(abs(LepGood2_pdgId)==13, LepGood2_conePt>15, LepGood2_conePt>20) && if3(abs(LepGood3_pdgId)==13, LepGood3_conePt>10, LepGood3_conePt>15) ; Disable=True
 pt201010: LepGood1_conePt>20 && LepGood2_conePt>10 && LepGood3_conePt>10
 muee: !(abs(LepGood1_pdgId)==13 && abs(LepGood2_pdgId)==11 && abs(LepGood3_pdgId)==11 ) || LepGood1_conePt>25
-#tightCharge : LepGood1_tightCharge > 1 && LepGood2_tightCharge > 1 && LepGood3_tightCharge > 1
+# tightCharge : LepGood1_tightCharge > 1 && LepGood2_tightCharge > 1 && LepGood3_tightCharge > 1
 #tauveto : nLepTight_Recl == 3 && nTightTauSel==0
 tauveto :  abs(LepGood1_pdgId)<14 && abs(LepGood2_pdgId)<14 && abs(LepGood3_pdgId)<14
 # && nTightTauSel_Recl==0 
@@ -22,6 +22,9 @@ eee : pdgid3l == 1331 ; Disable=True
 mmm : pdgid3l == 2197 ; Disable=True
 eem : pdgid3l == 1573 ; Disable=True
 mme : pdgid3l == 1859 ; Disable=True
+
+ossf_e : sumpdg3l==11 ; Disable=True
+ossf_m : sumpdg3l==13 ; Disable=True
 
 # some cuts that are off by default but can be turned on with -E
 
