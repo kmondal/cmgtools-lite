@@ -1,36 +1,25 @@
-######### ZZH
-################################################
-promptsub : WZTo3LNu : -1.02*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub   : TTZToLLNuNu+TTZToLLNuNu_ext2              : -1*xsec : (LepGood1_mcUCSXMatchId == 0 || LepGood1_mcUCSXMatchId == 1) && (LepGood2_mcUCSXMatchId == 0 || LepGood2_mcUCSXMatchId == 1) && (LepGood3_mcUCSXMatchId == 0 || LepGood3_mcUCSXMatchId == 1) ; FillColor=ROOT.kGreen-6, Label="Internal convs"
+promptsub   : TTLLJets_m1to10             : -1*0.0493 : (LepGood1_mcUCSXMatchId == 0 || LepGood1_mcUCSXMatchId == 1) && (LepGood2_mcUCSXMatchId == 0 || LepGood2_mcUCSXMatchId == 1) && (LepGood3_mcUCSXMatchId == 0 || LepGood3_mcUCSXMatchId == 1) ; FillColor=ROOT.kGreen-6, Label="ttZ/G* (internal)"
+promptsub   : TTJets_DiLepton             : -1*xsec : (LepGood1_mcUCSXMatchId == 0 || LepGood1_mcUCSXMatchId == 1) && (LepGood2_mcUCSXMatchId == 0 || LepGood2_mcUCSXMatchId == 1) && (LepGood3_mcUCSXMatchId == 0 || LepGood3_mcUCSXMatchId == 1) ; FillColor=ROOT.kGreen-6, Label="ttZ/G* (internal)"
+promptsub   : TTJets_SingleLeptonFromT+TTJets_SingleLeptonFromT_ext    : -1*xsec : (LepGood1_mcUCSXMatchId == 0 || LepGood1_mcUCSXMatchId == 1) && (LepGood2_mcUCSXMatchId == 0 || LepGood2_mcUCSXMatchId == 1) && (LepGood3_mcUCSXMatchId == 0 || LepGood3_mcUCSXMatchId == 1) ; FillColor=ROOT.kGreen-6, Label="ttZ/G* (internal)" 
+promptsub   : TTJets_SingleLeptonFromTbar+TTJets_SingleLeptonFromTbar_ext : -1*xsec : (LepGood1_mcUCSXMatchId == 0 || LepGood1_mcUCSXMatchId == 1) && (LepGood2_mcUCSXMatchId == 0 || LepGood2_mcUCSXMatchId == 1) && (LepGood3_mcUCSXMatchId == 0 || LepGood3_mcUCSXMatchId == 1) ; FillColor=ROOT.kGreen-6, Label="ttZ/G* (internal)"
 
-######### ZZH
-################################################
-promptsub : ZZTo4L_part1 + ZZTo4L_part2   : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
-promptsub : VHToNonbb  : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
-promptsub : GGHZZ4L  : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub :  ZGTo2LG  : -1*xsec : (LepGood1_mcUCSXMatchId == 0 || LepGood1_mcUCSXMatchId == 1) && (LepGood2_mcUCSXMatchId == 0 || LepGood2_mcUCSXMatchId == 1) && (LepGood3_mcUCSXMatchId == 0 || LepGood3_mcUCSXMatchId == 1) ; FillColor=ROOT.kOrange-3, Label="Internal"
+promptsub : ZZTo4L   : -1*xsec : (LepGood1_mcUCSXMatchId == 0 || LepGood1_mcUCSXMatchId == 1) && (LepGood2_mcUCSXMatchId == 0 || LepGood2_mcUCSXMatchId == 1) && (LepGood3_mcUCSXMatchId == 0 || LepGood3_mcUCSXMatchId == 1) ;  FillColor=ROOT.kCyan+1,  Label="ZG* (internal)"
 
-######### ttX
-################################################
-promptsub : TTWToLNu_ext1 + TTWToLNu_ext2_part1 + TTWToLNu_ext2_part2 : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
-promptsub : TTZToLLNuNu                 : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
-promptsub : TTLLJets_m1to10             : -0.0493 : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
-promptsub : TTJets_DiLepton_part1 + TTJets_DiLepton_part2 : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
-promptsub : TTJets_SingleLeptonFromT_part1 +  TTJets_SingleLeptonFromT_part2 + TTJets_SingleLeptonFromT_part3 : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
-promptsub : TTJets_SingleLeptonFromTbar : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
-promptsub : TTTT        : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
-promptsub : tZq_ll      : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
-promptsub : TTWToQQ : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
-promptsub : TTZToQQ : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : WZTo3LNu_ext : -1*0.672*58.59 : (LepGood1_mcUCSXMatchId == 0 || LepGood1_mcUCSXMatchId == 1) && (LepGood2_mcUCSXMatchId == 0 || LepGood2_mcUCSXMatchId == 1) && (LepGood3_mcUCSXMatchId == 0 || LepGood3_mcUCSXMatchId == 1) ; FillColor=ROOT.kOrange
 
-promptsub : TTHnobb_pow        : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
-promptsub : tZW_ll      : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+prompsub :   TTGJets  : -1*xsec :LepGood1_mcUCSXMatchId == 4 || LepGood2_mcUCSXMatchId == 4 || LepGood3_mcUCSXMatchId == 4 ; FillColor=ROOT.kOrange-1, Label="External convs"
+promptsub :  WGToLNuG : -1*xsec :LepGood1_mcUCSXMatchId == 4 || LepGood2_mcUCSXMatchId == 4 || LepGood3_mcUCSXMatchId == 4 ; FillColor=ROOT.kOrange-2, Label="WG (external)"
+promptsub :  ZGTo2LG  : -1*xsec :LepGood1_mcUCSXMatchId == 4 || LepGood2_mcUCSXMatchId == 4 || LepGood3_mcUCSXMatchId == 4 ; FillColor=ROOT.kOrange-3, Label="ZG (external)"
+promptsub :  ZZTo4L   : -1*xsec :LepGood1_mcUCSXMatchId == 4 || LepGood2_mcUCSXMatchId == 4 || LepGood3_mcUCSXMatchId == 4 ;  FillColor=ROOT.kCyan+1,  Label="ZG* (external)"
+promptsub :  TGJets   : -1*xsec :LepGood1_mcUCSXMatchId == 4 || LepGood2_mcUCSXMatchId == 4 || LepGood3_mcUCSXMatchId == 4 ; FillColor=ROOT.kOrange-4, Label="TG (external)"
 
-######### VVV
-################################################
-promptsub : WpWpJJ          : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
-promptsub : WW2L2NuDouble   : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
-promptsub : WWW             : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
-promptsub : WWZ             : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
-promptsub : WZZ             : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
-promptsub : ZZZ             : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : WpWpJJ : -1*xsec : (LepGood1_mcUCSXMatchId == 0 || LepGood1_mcUCSXMatchId == 1) && (LepGood2_mcUCSXMatchId == 0 || LepGood2_mcUCSXMatchId == 1) && (LepGood3_mcUCSXMatchId == 0 || LepGood3_mcUCSXMatchId == 1) ; FillColor=ROOT.kGreen+2
+promptsub : WW2L2NuDouble : -1*xsec : (LepGood1_mcUCSXMatchId == 0 || LepGood1_mcUCSXMatchId == 1) && (LepGood2_mcUCSXMatchId == 0 || LepGood2_mcUCSXMatchId == 1) && (LepGood3_mcUCSXMatchId == 0 || LepGood3_mcUCSXMatchId == 1) ; FillColor=ROOT.kViolet+1
+promptsub: WWZ       : -1*xsec : (LepGood1_mcUCSXMatchId == 0 || LepGood1_mcUCSXMatchId == 1) && (LepGood2_mcUCSXMatchId == 0 || LepGood2_mcUCSXMatchId == 1) && (LepGood3_mcUCSXMatchId == 0 || LepGood3_mcUCSXMatchId == 1) ; FillColor=ROOT.kViolet+1
+promptsub : WZZ      : -1*xsec : (LepGood1_mcUCSXMatchId == 0 || LepGood1_mcUCSXMatchId == 1) && (LepGood2_mcUCSXMatchId == 0 || LepGood2_mcUCSXMatchId == 1) && (LepGood3_mcUCSXMatchId == 0 || LepGood3_mcUCSXMatchId == 1) ; FillColor=ROOT.kViolet+1
+promptsub: ZZZ       : -1*xsec : (LepGood1_mcUCSXMatchId == 0 || LepGood1_mcUCSXMatchId == 1) && (LepGood2_mcUCSXMatchId == 0 || LepGood2_mcUCSXMatchId == 1) && (LepGood3_mcUCSXMatchId == 0 || LepGood3_mcUCSXMatchId == 1) ; FillColor=ROOT.kViolet+1
+promptsub : TTTT     : -1*xsec : (LepGood1_mcUCSXMatchId == 0 || LepGood1_mcUCSXMatchId == 1) && (LepGood2_mcUCSXMatchId == 0 || LepGood2_mcUCSXMatchId == 1) && (LepGood3_mcUCSXMatchId == 0 || LepGood3_mcUCSXMatchId == 1) ; FillColor=ROOT.kViolet+1
+promptsub : tZq_ll   : -1*xsec : (LepGood1_mcUCSXMatchId == 0 || LepGood1_mcUCSXMatchId == 1) && (LepGood2_mcUCSXMatchId == 0 || LepGood2_mcUCSXMatchId == 1) && (LepGood3_mcUCSXMatchId == 0 || LepGood3_mcUCSXMatchId == 1) ; FillColor=ROOT.kViolet+1
 
-promptsub : WWTo2L2Nu       : -1*xsec : LepGood1_mcUCSXMatchId == 0 && LepGood2_mcUCSXMatchId == 0 && LepGood3_mcUCSXMatchId == 0 ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 

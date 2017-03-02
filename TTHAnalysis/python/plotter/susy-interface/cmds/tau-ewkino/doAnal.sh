@@ -1,7 +1,8 @@
 #INPUTDIR="/nfs/fanae/user/vischia/TREES_80X_011216_Spring16MVA_skim_2lep_OR_1lep_2tau/"
 INPUTDIR="/pool/ciencias/HeppyTrees/RA7/estructura/Prod23Jan/"
 TREESDIR=${INPUTDIR}
-INPUTDIR="/pool/cienciasrw/userstorage/pietro/conversions_skim_v2/"
+#INPUTDIR="/pool/cienciasrw/userstorage/pietro/conversions_skim_v2/"
+INPUTDIR="/pool/ciencias/userstorage/pietro/conversions_skim_rereco/fullset/"
 OUTPUTDIR="/OBSOLETE"
 WEBDIR="/nfs/fanae/user/vischia/www/somewhereovertherainbow/"
 
