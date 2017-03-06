@@ -8,33 +8,37 @@ ODIR=sys.argv[1]
 dowhat = "plots" 
 #dowhat = "dumps" 
 #dowhat = "yields" 
+#dowhat = "ntuple" # syntax: python ttH-multilepton/ttH_plots.py no 2lss_SR_extr outfile_{cname}.root --sP var1,var2,...
 
-TREES = "--Fs {P}/1_recleaner_250117_v2 --Fs {P}/5_triggerDecision_250117_v1 --Fs {P}/6_bTagSF_v2 --Fs {P}/2_eventVars_250117_v2"
-TREESONLYSKIM = "-P /data1/peruzzi/TREES_TTH_250117_Summer16_JECV3_noClean_qgV2_skimOnlyMC_v1 --Fs {P}/3_kinMVA_250117_v4 --Fs {P}/4_BDTv8_Hj_250117_v4"
-TREESONLYFULL = "-P /data1/peruzzi/TREES_TTH_250117_Summer16_JECV3_noClean_qgV2 --Fs {P}/3_kinMVA_noBDTv8_250117_v3"
+TREES = "--Fs {P}/1_recleaner_230217_v6 --Fs {P}/5_triggerDecision_230217_v6 --Fs {P}/6_bTagSF_v6 --Fs {P}/7_tauTightSel_v6"
+TREESONLYSKIM = "-P /data1/peruzzi/TREES_TTH_250117_Summer16_JECV3_noClean_qgV2_skimOnlyMC_v6 --Fs {P}/4_BDTv8_Hj_230217_v6 --Fs {P}/3_kinMVA_BDTv8_230217_v6  --Fs {P}/2_eventVars_230217_v6"
+TREESONLYFULL = "-P /data1/peruzzi/TREES_TTH_250117_Summer16_JECV3_noClean_qgV2"
 
 def base(selection):
 
     CORE=' '.join([TREES,TREESONLYSKIM])
     if 'cmsco01' not in os.environ['HOSTNAME']: CORE = CORE.replace('/data1/peruzzi','/afs/cern.ch/work/p/peruzzi/tthtrees')
 
-    CORE+=" -f -j 8 -l 36.5 --s2v -L ttH-multilepton/functionsTTH.cc --tree treeProducerSusyMultilepton --mcc ttH-multilepton/lepchoice-ttH-FO.txt --mcc ttH-multilepton/ttH_2lss3l_triggerdefs.txt"# --neg"
+    CORE+=" -f -j 8 -l 35.9 --s2v -L ttH-multilepton/functionsTTH.cc --tree treeProducerSusyMultilepton --mcc ttH-multilepton/lepchoice-ttH-FO.txt --mcc ttH-multilepton/ttH_2lss3l_triggerdefs.txt"# --neg"
     if dowhat == "plots": CORE+=" --lspam '#bf{CMS} #it{Preliminary}' --legendWidth 0.20 --legendFontSize 0.035 --showRatio --maxRatioRange 0 2 --fixRatioRange  --showMCError --rebin 4 --xP 'nT_.*' --xP 'debug_.*'"
 
     if selection=='2lss':
         GO="%s ttH-multilepton/mca-2lss-mc.txt ttH-multilepton/2lss_tight.txt "%CORE
         GO="%s -W 'puw2016_nTrueInt_36fb(nTrueInt)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[0]],LepGood_pt[iLepFO_Recl[0]],LepGood_eta[iLepFO_Recl[0]],2)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[1]],LepGood_pt[iLepFO_Recl[1]],LepGood_eta[iLepFO_Recl[1]],2)*triggerSF_ttH(LepGood_pdgId[iLepFO_Recl[0]],LepGood_pdgId[iLepFO_Recl[1]],2)*eventBTagSF'"%GO
-        if dowhat == "plots": GO+=" ttH-multilepton/2lss_3l_plots.txt --xP '^lep(3|4)_.*' --xP '^(3|4)lep_.*' --xP 'kinMVA_3l_.*' "
+        if dowhat in ["plots","ntuple"]: GO+=" ttH-multilepton/2lss_3l_plots.txt --xP '^lep(3|4)_.*' --xP '^(3|4)lep_.*' --xP 'kinMVA_3l_.*' "
     elif selection=='3l':
         GO="%s ttH-multilepton/mca-3l-mc.txt ttH-multilepton/3l_tight.txt "%CORE
         GO="%s -W 'puw2016_nTrueInt_36fb(nTrueInt)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[0]],LepGood_pt[iLepFO_Recl[0]],LepGood_eta[iLepFO_Recl[0]],3)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[1]],LepGood_pt[iLepFO_Recl[1]],LepGood_eta[iLepFO_Recl[1]],3)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[2]],LepGood_pt[iLepFO_Recl[2]],LepGood_eta[iLepFO_Recl[2]],3)*triggerSF_ttH(LepGood_pdgId[iLepFO_Recl[0]],LepGood_pdgId[iLepFO_Recl[1]],3)*eventBTagSF'"%GO
-        if dowhat == "plots": GO+=" ttH-multilepton/2lss_3l_plots.txt --xP '^(2|4)lep_.*' --xP '^lep4_.*' --xP 'kinMVA_2lss_.*' "
+        if dowhat in ["plots","ntuple"]: GO+=" ttH-multilepton/2lss_3l_plots.txt --xP '^(2|4)lep_.*' --xP '^lep4_.*' --xP 'kinMVA_2lss_.*' "
     elif selection=='4l':
         GO="%s ttH-multilepton/mca-4l-mc.txt ttH-multilepton/4l_tight.txt "%CORE
         GO="%s -W 'puw2016_nTrueInt_36fb(nTrueInt)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[0]],LepGood_pt[iLepFO_Recl[0]],LepGood_eta[iLepFO_Recl[0]],3)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[1]],LepGood_pt[iLepFO_Recl[1]],LepGood_eta[iLepFO_Recl[1]],3)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[2]],LepGood_pt[iLepFO_Recl[2]],LepGood_eta[iLepFO_Recl[2]],3)*leptonSF_ttH(LepGood_pdgId[iLepFO_Recl[3]],LepGood_pt[iLepFO_Recl[3]],LepGood_eta[iLepFO_Recl[3]],3)*triggerSF_ttH(LepGood_pdgId[iLepFO_Recl[0]],LepGood_pdgId[iLepFO_Recl[1]],3)*eventBTagSF'"%GO
-        if dowhat == "plots": GO+=" ttH-multilepton/2lss_3l_plots.txt --xP '^(2|3)lep_.*' --xP '^lep(1|2|3|4)_.*' --xP 'kinMVA_.*' "
+        if dowhat in ["plots","ntuple"]: GO+=" ttH-multilepton/2lss_3l_plots.txt --xP '^(2|3)lep_.*' --xP '^lep(1|2|3|4)_.*' --xP 'kinMVA_.*' "
     else:
         raise RuntimeError, 'Unknown selection'
+
+    if '_prescale' in torun:
+        GO = doprescale3l(GO)
 
     return GO
 
@@ -47,6 +51,7 @@ def runIt(GO,name,plots=[],noplots=[]):
     if   dowhat == "plots":  print 'python mcPlots.py',"--pdir %s/%s"%(ODIR,name),GO,' '.join(['--sP %s'%p for p in plots]),' '.join(['--xP %s'%p for p in noplots]),' '.join(sys.argv[3:])
     elif dowhat == "yields": print 'echo %s; python mcAnalysis.py'%name,GO,' '.join(sys.argv[3:])
     elif dowhat == "dumps":  print 'echo %s; python mcDump.py'%name,GO,' '.join(sys.argv[3:])
+    elif dowhat == "ntuple": print 'echo %s; python mcNtuple.py'%name,GO,' '.join(sys.argv[3:])
 def add(GO,opt):
     return '%s %s'%(GO,opt)
 def setwide(x):
@@ -56,13 +61,12 @@ def setwide(x):
 def fulltrees(x):
     return x.replace(TREESONLYSKIM,TREESONLYFULL)
 def doprescale3l(x):
-    raise RuntimeError, 'temporary: no prescaled datasets defined'
-    x2 = x.replace("mixture_jecv6prompt_datafull_jul20_skimOnlyMC","TREES_80X_180716_jecv6_skim_3ltight_relax")
-    x2 = x2.replace("--Fs {P}/4_kinMVA_without_MEM_v5 --Fs {P}/8_bTagSF_12fb_v45","--Fs {P}/4_kinMVA_with_MEM_v5 --Fs {P}/7_MEM_v5 --Fs {P}/8_bTagSF_12fb_v5")
-#    x2 = add(x2,"--sP kinMVA.*")
+    x2 = x.replace("TREES_TTH_250117_Summer16_JECV3_noClean_qgV2_skimOnlyMC_v6","TREES_TTH_250117_Summer16_JECV3_noClean_qgV2_skim3l2j2b1B_v6")
+    x2 = x2.replace("3_kinMVA_BDTv8_230217_v6","3_kinMVA_BDTv8_withMEM_230217_v6")
+    x2 = add(x2,"--Fs {P}/8_MEM_v6")
     return x2
 
-allow_unblinding = False
+allow_unblinding = True
 
 if __name__ == '__main__':
 
@@ -100,25 +104,29 @@ if __name__ == '__main__':
             
         if '_closuretest' in torun:
             x = x.replace('mca-2lss-mc.txt','mca-2lss-mc-closuretest.txt')
-            x = x.replace("--maxRatioRange 0 2","--maxRatioRange 0.5 1.5")
-            x = add(x,"--AP --plotmode nostack --sP 'kinMVA.*2lss.*' --sP 2lep_catIndex")
-            x = add(x,"-p TT_FR_QCD -p TT_FR_TT -p TT_all --ratioDen TT_FR_QCD --ratioNums TT_FR_TT --errors ")
+            #x = x.replace("--maxRatioRange 0 2","--maxRatioRange 0.5 1.5")
+            x = add(x,"--AP --plotmode nostack --sP 2lep_catIndex_nosign --sP kinMVA_2lss_ttbar_withBDTv8 --sP kinMVA_2lss_ttV_withHj")
+            x = add(x,"-p incl_FR_QCD_elonly -p incl_FR_QCD_muonly -p TT_FR_QCD -p TT_FR_TT -p TT_fake --ratioDen TT_FR_QCD --ratioNums TT_fake --errors ")
             if '_closuretest_norm' in torun:
                 x = x.replace("--plotmode nostack","--plotmode norm")
                 x = add(x,"--fitRatio 1")
+            if '_mufake' in torun: x = add(x,"-A alwaystrue mufake '(abs(LepGood1_pdgId)==13 && LepGood1_mcMatchId==0) || (abs(LepGood2_pdgId)==13 && LepGood2_mcMatchId==0)'")
+            if '_elfake' in torun: x = add(x,"-A alwaystrue elfake '(abs(LepGood1_pdgId)==11 && LepGood1_mcMatchId==0) || (abs(LepGood2_pdgId)==11 && LepGood2_mcMatchId==0)'")
             if '_bloose' in torun: x = add(x,'-E ^BLoose ')
             if '_btight' in torun: x = add(x,'-E ^BTight ')
             if '_nobcut' in torun: x = add(x,'-X ^2b1B ')
             if '_notrigger' in torun: x = add(x,'-X ^trigger ')
 
         if '_varsFR' in torun:
-            torun += "_"+sys.argv[-1]
             x = x.replace('mca-2lss-mc.txt','mca-2lss-data-frdata-vars.txt')
-            x = add(x,"--plotmode nostack --sP 'kinMVA_.*' --sP 2lep_catIndex")
-            x = add(x,"--ratioDen data_fakes --ratioNums data_fakes_%s --errors -p data_fakes -p data_fakes_%s"%(sys.argv[-1],sys.argv[-1]))
-            if '_varsFR_norm' in torun:
+            x = add(x,"--plotmode nostack --xP '.*Binning' --sP 'kinMVA_.*' --sP 2lep_catIndex")
+            x = add(x,"--ratioDen data_fakes --ratioNums 'data_fakes_.*'")
+            if '_norm' in torun:
                 x = x.replace("--plotmode nostack","--plotmode norm")
+            if '_fit' in torun:
                 x = add(x,"--fitRatio 1")
+            if '_varsFR_e' in torun: x = add(x,"--xp 'data_fakes_m_.*'")
+            if '_varsFR_m' in torun: x = add(x,"--xp 'data_fakes_e_.*'")
 
         runIt(x,'%s'%torun)
         if '_flav' in torun:
@@ -146,31 +154,26 @@ if __name__ == '__main__':
                 x = add(x,'--xp data')
             elif not '_data' in torun: raise RuntimeError
             x = x.replace('mca-3l-mcdata.txt','mca-3l-mcdata-frdata.txt')
-            if '_prescale' in torun:
-                x = doprescale3l(x)
-                x = x.replace('mca-3l-mcdata-frdata.txt','mca-3l-mcdata-frdata-prescale.txt')
             if '_table' in torun:
                 x = x.replace('mca-3l-mcdata-frdata.txt','mca-3l-mcdata-frdata-table.txt')
-        else:
-            if 'data' in torun and '_prescale' in torun:
-                raise RuntimeError # trees not ready
-                x = doprescale3l(x)
-                x = x.replace('mca-3l-mcdata.txt','mca-3l-mcdata-prescale.txt')
-            elif '_prescale' in torun:
-                raise RuntimeError # trees not ready
-                x = doprescale3l(x)
-                x = x.replace('mca-3l-mc.txt','mca-3l-mc-prescale.txt')
         if '_table' in torun:
             x = x.replace('mca-3l-mc.txt','mca-3l-mc-table.txt')
+
         if '_closuretest' in torun:
             x = x.replace('mca-3l-mc.txt','mca-3l-mc-closuretest.txt')
-            x = x.replace("--maxRatioRange 0 3","--maxRatioRange 0.5 1.5")
-            x = add(x,"--AP --plotmode nostack --sP 'kinMVA_.*3l.*' --sP 3lep_catIndex")
-            x = add(x,"-p FR_QCD -p FR_TT -p TT_all --ratioDen FR_QCD --ratioNums FR_TT --errors --xf '^TTJets.*_ext'")
+            #x = x.replace("--maxRatioRange 0 3","--maxRatioRange 0.5 1.5")
+            x = add(x,"--AP --plotmode nostack --sP kinMVA_3l_ttbar --sP kinMVA_3l_ttV --sP 3lep_catIndex --sP nLepTight")
+            x = add(x,"-p TT_FR_QCD -p TT_FR_TT -p TT_fake --ratioDen TT_FR_QCD --ratioNums TT_fake --errors ")
             if '_closuretest_norm' in torun:
                 x = x.replace("--plotmode nostack","--plotmode norm")
                 x = add(x,"--fitRatio 1")
+            if '_mufake' in torun: x = add(x,"-A alwaystrue mufake '(abs(LepGood1_pdgId)==13 && LepGood1_mcMatchId==0) || (abs(LepGood2_pdgId)==13 && LepGood2_mcMatchId==0) || (abs(LepGood3_pdgId)==13 && LepGood3_mcMatchId==0)'")
+            if '_elfake' in torun: x = add(x,"-A alwaystrue elfake '(abs(LepGood1_pdgId)==11 && LepGood1_mcMatchId==0) || (abs(LepGood2_pdgId)==11 && LepGood2_mcMatchId==0) || (abs(LepGood3_pdgId)==11 && LepGood3_mcMatchId==0)'")
+            if '_bloose' in torun: x = add(x,'-E ^BLoose ')
+            if '_btight' in torun: x = add(x,'-E ^BTight ')
+            if '_nobcut' in torun: x = add(x,'-X ^2b1B ')
             if '_notrigger' in torun: x = add(x,'-X ^trigger ')
+
         if '_varsFR' in torun:
             torun += "_"+sys.argv[-1]
             x = x.replace('mca-3l-mc.txt','mca-3l-data-frdata-%s.txt'%sys.argv[-1])
@@ -222,7 +225,7 @@ if __name__ == '__main__':
         x = add(x,"-I same-sign -X ^4j -X ^2b1B -E ^2j -E ^em ")
         if '_highMetNoBCut' in torun: x = add(x,"-A 'entry point' highMET 'met_pt>60'")
         else: x = add(x,"-E ^1B ")
-        plots = ['2lep_.*','met','metLD','nVert','nJet25','nBJetMedium25','nBJetLoose25','nBJetLoose40','nBJetMedium40',"'kinMVA_input.*'"]
+        plots = ['2lep_.*','met','metLD','nVert','nJet25','nBJetMedium25','nBJetLoose25','nBJetLoose40','nBJetMedium40']
         runIt(x,'%s'%torun,plots)
 
     if 'cr_zjets' in torun:

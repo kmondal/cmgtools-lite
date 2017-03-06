@@ -18,19 +18,19 @@ class KinMVA_2D_2lss_3l:
 
         self._vars_ttbar_2lss = [ 
             MVAVar("max_Lep_eta:=max(abs(LepGood_eta[iLepFO_Recl[0]]),abs(LepGood_eta[iLepFO_Recl[1]]))", func = lambda ev : max(abs(ev.LepGood_eta[int(ev.iLepFO_Recl[0])]),abs(ev.LepGood_eta[int(ev.iLepFO_Recl[1])]))),
-            MVAVar("numJets_float:=nJetSel_Recl", func = lambda ev : ev.nJet25_Recl),
+            MVAVar("numJets_float:=nJet25_Recl", func = lambda ev : ev.nJet25_Recl),
             MVAVar("mindr_lep1_jet:=mindr_lep1_jet", func = lambda ev: ev.mindr_lep1_jet),
             MVAVar("mindr_lep2_jet:=mindr_lep2_jet", func = lambda ev: ev.mindr_lep2_jet),
             MVAVar("MT_met_lep1:=MT_met_lep1", func = lambda ev : ev.MT_met_lep1),
-            MVAVar("met:=min(met_pt, 400)", func = lambda ev : min(ev.met_pt, 400)),
-            MVAVar("avg_dr_jet:=avg_dr_jet", func = lambda ev : ev.avg_dr_jet),
+#            MVAVar("met:=min(met_pt, 400)", func = lambda ev : min(ev.met_pt, 400)),
+#            MVAVar("avg_dr_jet:=avg_dr_jet", func = lambda ev : ev.avg_dr_jet),
             ]
         self._vars_ttbar_2lss_withBDTv8 = self._vars_ttbar_2lss + [
             MVAVar("BDTv8_eventReco_mvaValue := max(-1.1,BDTv8_eventReco_mvaValue)", func = lambda ev : max(-1.1,ev.BDTv8_eventReco_mvaValue)),
             ]
         self._vars_ttV_2lss = [ 
             MVAVar("max_Lep_eta:=max(abs(LepGood_eta[iLepFO_Recl[0]]),abs(LepGood_eta[iLepFO_Recl[1]]))", func = lambda ev : max(abs(ev.LepGood_eta[int(ev.iLepFO_Recl[0])]),abs(ev.LepGood_eta[int(ev.iLepFO_Recl[1])]))),
-            MVAVar("numJets_float:=nJetSel_Recl", func = lambda ev : ev.nJet25_Recl),
+            MVAVar("numJets_float:=nJet25_Recl", func = lambda ev : ev.nJet25_Recl),
             MVAVar("mindr_lep1_jet:=mindr_lep1_jet", func = lambda ev: ev.mindr_lep1_jet),
             MVAVar("mindr_lep2_jet:=mindr_lep2_jet", func = lambda ev: ev.mindr_lep2_jet),
             MVAVar("MT_met_lep1:=MT_met_lep1", func = lambda ev : ev.MT_met_lep1),
@@ -39,20 +39,20 @@ class KinMVA_2D_2lss_3l:
             ]
         self._vars_ttV_2lss_withHj = self._vars_ttV_2lss + [
             MVAVar("BDTv8_eventReco_Hj_score := max(-1.1,BDTv8_eventReco_Hj_score)", func = lambda ev : max(-1.1,ev.BDTv8_eventReco_Hj_score)),
-            MVAVar("BDTv8_eventReco_Hjj_score := max(-1.1,BDTv8_eventReco_Hjj_score)", func = lambda ev : max(-1.1,ev.BDTv8_eventReco_Hjj_score)),
+#            MVAVar("BDTv8_eventReco_Hjj_score := max(-1.1,BDTv8_eventReco_Hjj_score)", func = lambda ev : max(-1.1,ev.BDTv8_eventReco_Hjj_score)),
             ]
         self._vars_ttbar_3l = [ 
             MVAVar("max_Lep_eta:=max(abs(LepGood_eta[iLepFO_Recl[0]]),abs(LepGood_eta[iLepFO_Recl[1]]))", func = lambda ev : max(abs(ev.LepGood_eta[int(ev.iLepFO_Recl[0])]),abs(ev.LepGood_eta[int(ev.iLepFO_Recl[1])]))),
-            MVAVar("numJets_float:=nJetSel_Recl", func = lambda ev : ev.nJet25_Recl),
+            MVAVar("numJets_float:=nJet25_Recl", func = lambda ev : ev.nJet25_Recl),
             MVAVar("mindr_lep1_jet:=mindr_lep1_jet", func = lambda ev: ev.mindr_lep1_jet),
             MVAVar("mindr_lep2_jet:=mindr_lep2_jet", func = lambda ev: ev.mindr_lep2_jet),
             MVAVar("MT_met_lep1:=MT_met_lep1", func = lambda ev : ev.MT_met_lep1),
-            MVAVar("mhtJet25:=mhtJet25_Recl", func = lambda ev : ev.mhtJet25_Recl),
-            MVAVar("avg_dr_jet:=avg_dr_jet", func = lambda ev : ev.avg_dr_jet),
+#            MVAVar("mhtJet25:=mhtJet25_Recl", func = lambda ev : ev.mhtJet25_Recl),
+#            MVAVar("avg_dr_jet:=avg_dr_jet", func = lambda ev : ev.avg_dr_jet),
             ]
         self._vars_ttV_3l = [ 
             MVAVar("max_Lep_eta:=max(abs(LepGood_eta[iLepFO_Recl[0]]),abs(LepGood_eta[iLepFO_Recl[1]]))", func = lambda ev : max(abs(ev.LepGood_eta[int(ev.iLepFO_Recl[0])]),abs(ev.LepGood_eta[int(ev.iLepFO_Recl[1])]))),
-            MVAVar("numJets_float:=nJetSel_Recl", func = lambda ev : ev.nJet25_Recl),
+            MVAVar("numJets_float:=nJet25_Recl", func = lambda ev : ev.nJet25_Recl),
             MVAVar("mindr_lep1_jet:=mindr_lep1_jet", func = lambda ev: ev.mindr_lep1_jet),
             MVAVar("mindr_lep2_jet:=mindr_lep2_jet", func = lambda ev: ev.mindr_lep2_jet),
             MVAVar("MT_met_lep1:=MT_met_lep1", func = lambda ev : ev.MT_met_lep1),
@@ -62,19 +62,19 @@ class KinMVA_2D_2lss_3l:
 
         self._vars_ttbar_2lss_jecUp = [ 
             MVAVar("max_Lep_eta:=max(abs(LepGood_eta[iLepFO_Recl[0]]),abs(LepGood_eta[iLepFO_Recl[1]]))", func = lambda ev : max(abs(ev.LepGood_eta[int(ev.iLepFO_Recl[0])]),abs(ev.LepGood_eta[int(ev.iLepFO_Recl[1])]))),
-            MVAVar("numJets_float:=nJetSel_Recl", func = lambda ev : ev.nJet25_jecUp_Recl),
+            MVAVar("numJets_float:=nJet25_Recl", func = lambda ev : ev.nJet25_jecUp_Recl),
             MVAVar("mindr_lep1_jet:=mindr_lep1_jet", func = lambda ev: ev.mindr_lep1_jet_jecUp),
             MVAVar("mindr_lep2_jet:=mindr_lep2_jet", func = lambda ev: ev.mindr_lep2_jet_jecUp),
             MVAVar("MT_met_lep1:=MT_met_lep1", func = lambda ev : ev.MT_met_lep1_jecUp),
-            MVAVar("met:=min(met_pt, 400)", func = lambda ev : min(ev.met_jecUp_pt, 400)),
-            MVAVar("avg_dr_jet:=avg_dr_jet", func = lambda ev : ev.avg_dr_jet_jecUp),
+#            MVAVar("met:=min(met_pt, 400)", func = lambda ev : min(ev.met_jecUp_pt, 400)),
+#            MVAVar("avg_dr_jet:=avg_dr_jet", func = lambda ev : ev.avg_dr_jet_jecUp),
             ]
         self._vars_ttbar_2lss_withBDTv8_jecUp = self._vars_ttbar_2lss_jecUp + [
             MVAVar("BDTv8_eventReco_mvaValue := max(-1.1,BDTv8_eventReco_mvaValue)", func = lambda ev : max(-1.1,ev.BDTv8_eventReco_mvaValue_jecUp)),
             ]
         self._vars_ttV_2lss_jecUp = [ 
             MVAVar("max_Lep_eta:=max(abs(LepGood_eta[iLepFO_Recl[0]]),abs(LepGood_eta[iLepFO_Recl[1]]))", func = lambda ev : max(abs(ev.LepGood_eta[int(ev.iLepFO_Recl[0])]),abs(ev.LepGood_eta[int(ev.iLepFO_Recl[1])]))),
-            MVAVar("numJets_float:=nJetSel_Recl", func = lambda ev : ev.nJet25_jecUp_Recl),
+            MVAVar("numJets_float:=nJet25_Recl", func = lambda ev : ev.nJet25_jecUp_Recl),
             MVAVar("mindr_lep1_jet:=mindr_lep1_jet", func = lambda ev: ev.mindr_lep1_jet_jecUp),
             MVAVar("mindr_lep2_jet:=mindr_lep2_jet", func = lambda ev: ev.mindr_lep2_jet_jecUp),
             MVAVar("MT_met_lep1:=MT_met_lep1", func = lambda ev : ev.MT_met_lep1_jecUp),
@@ -83,20 +83,20 @@ class KinMVA_2D_2lss_3l:
             ]
         self._vars_ttV_2lss_withHj_jecUp = self._vars_ttV_2lss_jecUp + [
             MVAVar("BDTv8_eventReco_Hj_score := max(-1.1,BDTv8_eventReco_Hj_score)", func = lambda ev : max(-1.1,ev.BDTv8_eventReco_Hj_score_jecUp)),
-            MVAVar("BDTv8_eventReco_Hjj_score := max(-1.1,BDTv8_eventReco_Hjj_score)", func = lambda ev : max(-1.1,ev.BDTv8_eventReco_Hjj_score_jecUp)),
+#            MVAVar("BDTv8_eventReco_Hjj_score := max(-1.1,BDTv8_eventReco_Hjj_score)", func = lambda ev : max(-1.1,ev.BDTv8_eventReco_Hjj_score_jecUp)),
             ]
         self._vars_ttbar_3l_jecUp = [ 
             MVAVar("max_Lep_eta:=max(abs(LepGood_eta[iLepFO_Recl[0]]),abs(LepGood_eta[iLepFO_Recl[1]]))", func = lambda ev : max(abs(ev.LepGood_eta[int(ev.iLepFO_Recl[0])]),abs(ev.LepGood_eta[int(ev.iLepFO_Recl[1])]))),
-            MVAVar("numJets_float:=nJetSel_Recl", func = lambda ev : ev.nJet25_jecUp_Recl),
+            MVAVar("numJets_float:=nJet25_Recl", func = lambda ev : ev.nJet25_jecUp_Recl),
             MVAVar("mindr_lep1_jet:=mindr_lep1_jet", func = lambda ev: ev.mindr_lep1_jet_jecUp),
             MVAVar("mindr_lep2_jet:=mindr_lep2_jet", func = lambda ev: ev.mindr_lep2_jet_jecUp),
             MVAVar("MT_met_lep1:=MT_met_lep1", func = lambda ev : ev.MT_met_lep1_jecUp),
-            MVAVar("mhtJet25:=mhtJet25_Recl", func = lambda ev : ev.mhtJet25_jecUp_Recl),
-            MVAVar("avg_dr_jet:=avg_dr_jet", func = lambda ev : ev.avg_dr_jet_jecUp),
+#            MVAVar("mhtJet25:=mhtJet25_Recl", func = lambda ev : ev.mhtJet25_jecUp_Recl),
+#            MVAVar("avg_dr_jet:=avg_dr_jet", func = lambda ev : ev.avg_dr_jet_jecUp),
             ]
         self._vars_ttV_3l_jecUp = [ 
             MVAVar("max_Lep_eta:=max(abs(LepGood_eta[iLepFO_Recl[0]]),abs(LepGood_eta[iLepFO_Recl[1]]))", func = lambda ev : max(abs(ev.LepGood_eta[int(ev.iLepFO_Recl[0])]),abs(ev.LepGood_eta[int(ev.iLepFO_Recl[1])]))),
-            MVAVar("numJets_float:=nJetSel_Recl", func = lambda ev : ev.nJet25_jecUp_Recl),
+            MVAVar("numJets_float:=nJet25_Recl", func = lambda ev : ev.nJet25_jecUp_Recl),
             MVAVar("mindr_lep1_jet:=mindr_lep1_jet", func = lambda ev: ev.mindr_lep1_jet_jecUp),
             MVAVar("mindr_lep2_jet:=mindr_lep2_jet", func = lambda ev: ev.mindr_lep2_jet_jecUp),
             MVAVar("MT_met_lep1:=MT_met_lep1", func = lambda ev : ev.MT_met_lep1_jecUp),
@@ -106,19 +106,19 @@ class KinMVA_2D_2lss_3l:
 
         self._vars_ttbar_2lss_jecDown = [ 
             MVAVar("max_Lep_eta:=max(abs(LepGood_eta[iLepFO_Recl[0]]),abs(LepGood_eta[iLepFO_Recl[1]]))", func = lambda ev : max(abs(ev.LepGood_eta[int(ev.iLepFO_Recl[0])]),abs(ev.LepGood_eta[int(ev.iLepFO_Recl[1])]))),
-            MVAVar("numJets_float:=nJetSel_Recl", func = lambda ev : ev.nJet25_jecDown_Recl),
+            MVAVar("numJets_float:=nJet25_Recl", func = lambda ev : ev.nJet25_jecDown_Recl),
             MVAVar("mindr_lep1_jet:=mindr_lep1_jet", func = lambda ev: ev.mindr_lep1_jet_jecDown),
             MVAVar("mindr_lep2_jet:=mindr_lep2_jet", func = lambda ev: ev.mindr_lep2_jet_jecDown),
             MVAVar("MT_met_lep1:=MT_met_lep1", func = lambda ev : ev.MT_met_lep1_jecDown),
-            MVAVar("met:=min(met_pt, 400)", func = lambda ev : min(ev.met_jecDown_pt, 400)),
-            MVAVar("avg_dr_jet:=avg_dr_jet", func = lambda ev : ev.avg_dr_jet_jecDown),
+#            MVAVar("met:=min(met_pt, 400)", func = lambda ev : min(ev.met_jecDown_pt, 400)),
+#            MVAVar("avg_dr_jet:=avg_dr_jet", func = lambda ev : ev.avg_dr_jet_jecDown),
             ]
         self._vars_ttbar_2lss_withBDTv8_jecDown = self._vars_ttbar_2lss_jecDown + [
             MVAVar("BDTv8_eventReco_mvaValue := max(-1.1,BDTv8_eventReco_mvaValue)", func = lambda ev : max(-1.1,ev.BDTv8_eventReco_mvaValue_jecDown)),
             ]
         self._vars_ttV_2lss_jecDown = [ 
             MVAVar("max_Lep_eta:=max(abs(LepGood_eta[iLepFO_Recl[0]]),abs(LepGood_eta[iLepFO_Recl[1]]))", func = lambda ev : max(abs(ev.LepGood_eta[int(ev.iLepFO_Recl[0])]),abs(ev.LepGood_eta[int(ev.iLepFO_Recl[1])]))),
-            MVAVar("numJets_float:=nJetSel_Recl", func = lambda ev : ev.nJet25_jecDown_Recl),
+            MVAVar("numJets_float:=nJet25_Recl", func = lambda ev : ev.nJet25_jecDown_Recl),
             MVAVar("mindr_lep1_jet:=mindr_lep1_jet", func = lambda ev: ev.mindr_lep1_jet_jecDown),
             MVAVar("mindr_lep2_jet:=mindr_lep2_jet", func = lambda ev: ev.mindr_lep2_jet_jecDown),
             MVAVar("MT_met_lep1:=MT_met_lep1", func = lambda ev : ev.MT_met_lep1_jecDown),
@@ -127,20 +127,20 @@ class KinMVA_2D_2lss_3l:
             ]
         self._vars_ttV_2lss_withHj_jecDown = self._vars_ttV_2lss_jecDown + [
             MVAVar("BDTv8_eventReco_Hj_score := max(-1.1,BDTv8_eventReco_Hj_score)", func = lambda ev : max(-1.1,ev.BDTv8_eventReco_Hj_score_jecDown)),
-            MVAVar("BDTv8_eventReco_Hjj_score := max(-1.1,BDTv8_eventReco_Hjj_score)", func = lambda ev : max(-1.1,ev.BDTv8_eventReco_Hjj_score_jecDown)),
+#            MVAVar("BDTv8_eventReco_Hjj_score := max(-1.1,BDTv8_eventReco_Hjj_score)", func = lambda ev : max(-1.1,ev.BDTv8_eventReco_Hjj_score_jecDown)),
             ]
         self._vars_ttbar_3l_jecDown = [ 
             MVAVar("max_Lep_eta:=max(abs(LepGood_eta[iLepFO_Recl[0]]),abs(LepGood_eta[iLepFO_Recl[1]]))", func = lambda ev : max(abs(ev.LepGood_eta[int(ev.iLepFO_Recl[0])]),abs(ev.LepGood_eta[int(ev.iLepFO_Recl[1])]))),
-            MVAVar("numJets_float:=nJetSel_Recl", func = lambda ev : ev.nJet25_jecDown_Recl),
+            MVAVar("numJets_float:=nJet25_Recl", func = lambda ev : ev.nJet25_jecDown_Recl),
             MVAVar("mindr_lep1_jet:=mindr_lep1_jet", func = lambda ev: ev.mindr_lep1_jet_jecDown),
             MVAVar("mindr_lep2_jet:=mindr_lep2_jet", func = lambda ev: ev.mindr_lep2_jet_jecDown),
             MVAVar("MT_met_lep1:=MT_met_lep1", func = lambda ev : ev.MT_met_lep1_jecDown),
-            MVAVar("mhtJet25:=mhtJet25_Recl", func = lambda ev : ev.mhtJet25_jecDown_Recl),
-            MVAVar("avg_dr_jet:=avg_dr_jet", func = lambda ev : ev.avg_dr_jet_jecDown),
+#            MVAVar("mhtJet25:=mhtJet25_Recl", func = lambda ev : ev.mhtJet25_jecDown_Recl),
+#            MVAVar("avg_dr_jet:=avg_dr_jet", func = lambda ev : ev.avg_dr_jet_jecDown),
             ]
         self._vars_ttV_3l_jecDown = [ 
             MVAVar("max_Lep_eta:=max(abs(LepGood_eta[iLepFO_Recl[0]]),abs(LepGood_eta[iLepFO_Recl[1]]))", func = lambda ev : max(abs(ev.LepGood_eta[int(ev.iLepFO_Recl[0])]),abs(ev.LepGood_eta[int(ev.iLepFO_Recl[1])]))),
-            MVAVar("numJets_float:=nJetSel_Recl", func = lambda ev : ev.nJet25_jecDown_Recl),
+            MVAVar("numJets_float:=nJet25_Recl", func = lambda ev : ev.nJet25_jecDown_Recl),
             MVAVar("mindr_lep1_jet:=mindr_lep1_jet", func = lambda ev: ev.mindr_lep1_jet_jecDown),
             MVAVar("mindr_lep2_jet:=mindr_lep2_jet", func = lambda ev: ev.mindr_lep2_jet_jecDown),
             MVAVar("MT_met_lep1:=MT_met_lep1", func = lambda ev : ev.MT_met_lep1_jecDown),
@@ -149,9 +149,7 @@ class KinMVA_2D_2lss_3l:
             ]
 
         memvars = [
-            MVAVar("MEM_TTH := min(0,log(max(3.72e-44,MEM_TTH)))", func = lambda ev : min(0,log(max(3.72e-44,ev.MEM_TTH)))),
-            MVAVar("MEM_TTW := min(0,log(max(3.72e-44,MEM_TTW)))", func = lambda ev : min(0,log(max(3.72e-44,ev.MEM_TTW)))),
-            MVAVar("MEM_TTZ := min(0,log(max(3.72e-44,MEM_TTLL)))", func = lambda ev : min(0,log(max(3.72e-44,ev.MEM_TTLL)))),
+            MVAVar("MEM_LR := -log((0.00389464*MEM_TTLL*(MEM_TTLL<1) + 3.12221e-14*MEM_TTW*(MEM_TTW<1)) / (0.00389464*MEM_TTLL*(MEM_TTLL<1) + 3.12221e-14*MEM_TTW*(MEM_TTW<1)+9.99571e-05*(MEM_TTHfl*(MEM_TTHfl<1)+MEM_TTHsl*(MEM_TTHsl<1))/2))", func = lambda ev : -log((0.00389464*ev.MEM_TTLL + 3.12221e-14*ev.MEM_TTW) / (0.00389464*ev.MEM_TTLL + 3.12221e-14*ev.MEM_TTW+9.99571e-05*(ev.MEM_TTHfl+ev.MEM_TTHsl)/2)) if (ev.MEM_TTLL>=0 and ev.MEM_TTLL<1 and ev.MEM_TTW>=0 and ev.MEM_TTW<1 and ev.MEM_TTHfl>=0 and ev.MEM_TTHfl<1 and ev.MEM_TTHsl>=0 and ev.MEM_TTHsl<1 and not (ev.MEM_TTLL==0 and ev.MEM_TTW==0)) else 0)
             ]
         self._vars_ttV_3l_withMEM = self._vars_ttV_3l + memvars
         self._vars_ttV_3l_withMEM_jecUp = self._vars_ttV_3l_jecUp + memvars
