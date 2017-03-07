@@ -1,10 +1,11 @@
-Double_t fitRatio(TH1* h1, TH1*h2)
+Double_t fitRatio(TH1* h1, TH1*h2, double& err)
 {
   TH1* h = (TH1*) h1->Clone("forRatio");
   TF1*  fun = new TF1("retta","[0]+[1]*x",-1.,1.);
   h->Divide(h2);
   h->Fit(fun,"Q");
   Double_t r = fun->GetParameter(1);
+  err = fun->GetParError(1);
   delete h;
   delete fun;
   return r;
@@ -59,7 +60,8 @@ void makeBdtScalePDFVariations(TString dir, TString region, bool savePdfReplicas
           for(int ivar=1; ivar<101; ++ivar)
             {
               TH1* var = (TH1*) f->Get(Form("%s_%s_pdf%d",variable[iVariable].Data(),proc[iproc].Data(),ivar));
-              double r(fitRatio(var, nominal));
+              double rerr(0.);
+              double r(fitRatio(var, nominal,rerr));
               h->Fill(r);
               //kinMVA_2lss_ttbar_withBDTv8_TTZ_pdf1
               
@@ -74,21 +76,30 @@ void makeBdtScalePDFVariations(TString dir, TString region, bool savePdfReplicas
 
           // SCALE
           cout << "=========== SCALE: " << endl;
-          TGraph* gr = new TGraph(8);
-          gr->SetName(Form("%s_%s",variable[iVariable].Data(),proc[iproc].Data()));
+          TH1D* gr = new TH1D(Form("%s_%s",variable[iVariable].Data(),proc[iproc].Data()), Form("%s_%s",variable[iVariable].Data(),proc[iproc].Data()), 8, 0.5, 8.5);
           double max(0.);
           for(int ivar=1; ivar<9; ++ivar)
             {
               TH1* var = (TH1*) f->Get(Form("%s_%s_scale%d",variable[iVariable].Data(),proc[iproc].Data(),ivar));
-              double r(fitRatio(var, nominal));
+              double rerr(0.);
+              double r(fitRatio(var, nominal, rerr));
               //cout << r << endl;
               if(r>max) max=r;
-              gr->SetPoint(ivar-1,ivar,r);
+              gr->SetBinContent(ivar,r);
+              gr->SetBinError(ivar,rerr);
             }
           cout << max << endl;
           if(doScaleStudy)
             {
               outScale->cd();
+              gr->GetXaxis()->SetBinLabel(1, "muR = 1, muF = 2");
+              gr->GetXaxis()->SetBinLabel(2, "muR = 1, muF = 0.5"); 
+              gr->GetXaxis()->SetBinLabel(3, "muR = 2, muF = 1"); 
+              gr->GetXaxis()->SetBinLabel(4, "muR = 2, muF = 2"); 
+              gr->GetXaxis()->SetBinLabel(5, "muR = 2, muF = 0.5"); 
+              gr->GetXaxis()->SetBinLabel(6, "muR = 0.5, muF = 1");   
+              gr->GetXaxis()->SetBinLabel(7, "muR = 0.5, muF = 2");   
+              gr->GetXaxis()->SetBinLabel(8, "muR = 0.5, muF = 0.5"); 
               gr->Write();
             }
 
