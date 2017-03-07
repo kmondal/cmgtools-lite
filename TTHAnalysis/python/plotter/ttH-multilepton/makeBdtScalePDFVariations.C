@@ -39,6 +39,7 @@ void makeBdtScalePDFVariations(TString dir, TString region, bool savePdfReplicas
       if(savePdfReplicas)
         {
           out = TFile::Open(Form("%s_pdfVars.root",f->GetName()), "RECREATE");
+          cout << "Distribution of replicas will be saved in: " << out->GetName() << endl;
         }
       
       for(int iproc=0; iproc<3; ++iproc)
@@ -48,8 +49,8 @@ void makeBdtScalePDFVariations(TString dir, TString region, bool savePdfReplicas
           TH1* nominal = (TH1*) f->Get(Form("%s_%s",variable[iVariable].Data(),proc[iproc].Data()));
 
           cout << "=========== PDF: ";
-          TH1D* h = new TH1D(Form("%s_%s",variable[iVariable].Data(),proc[iproc].Data()), Form("%s_%s",variable[iVariable].Data(),proc[iproc].Data()), 200, 0.,1.);
-          for(int ivar=1; ivar<100; ++ivar)
+          TH1D* h = new TH1D(Form("%s_%s",variable[iVariable].Data(),proc[iproc].Data()), Form("%s_%s",variable[iVariable].Data(),proc[iproc].Data()), 400, -1.,1.);
+          for(int ivar=1; ivar<101; ++ivar)
             {
               TH1* var = (TH1*) f->Get(Form("%s_%s_pdf%d",variable[iVariable].Data(),proc[iproc].Data(),ivar));
               double r(1-fitRatio(var, nominal));
@@ -77,4 +78,5 @@ void makeBdtScalePDFVariations(TString dir, TString region, bool savePdfReplicas
           cout << max << endl;
         }
     }
+  gApplication->Terminate();
 }
