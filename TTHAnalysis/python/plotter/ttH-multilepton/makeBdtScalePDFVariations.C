@@ -1,10 +1,10 @@
 Double_t fitRatio(TH1* h1, TH1*h2)
 {
   TH1* h = (TH1*) h1->Clone("forRatio");
-  TF1*  fun = new TF1("const","[0]",-1.,1.);
+  TF1*  fun = new TF1("retta","[0]+[1]*x",-1.,1.);
   h->Divide(h2);
   h->Fit(fun,"Q");
-  Double_t r = fun->GetParameter(0);
+  Double_t r = fun->GetParameter(1);
   delete h;
   delete fun;
   return r;
