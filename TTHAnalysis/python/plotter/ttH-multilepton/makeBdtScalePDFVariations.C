@@ -47,13 +47,13 @@ void makeBdtScalePDFVariations(TString dir, TString region, bool savePdfReplicas
           cout << "=== PROC " << proc[iproc] << " ====" << endl;
           // PDF
           TH1* nominal = (TH1*) f->Get(Form("%s_%s",variable[iVariable].Data(),proc[iproc].Data()));
-
+          
           cout << "=========== PDF: ";
           TH1D* h = new TH1D(Form("%s_%s",variable[iVariable].Data(),proc[iproc].Data()), Form("%s_%s",variable[iVariable].Data(),proc[iproc].Data()), 400, -1.,1.);
           for(int ivar=1; ivar<101; ++ivar)
             {
               TH1* var = (TH1*) f->Get(Form("%s_%s_pdf%d",variable[iVariable].Data(),proc[iproc].Data(),ivar));
-              double r(1-fitRatio(var, nominal));
+              double r(fitRatio(var, nominal));
               h->Fill(r);
               //kinMVA_2lss_ttbar_withBDTv8_TTZ_pdf1
               
@@ -65,6 +65,7 @@ void makeBdtScalePDFVariations(TString dir, TString region, bool savePdfReplicas
               h->Write();
             }
           delete h;
+
           // SCALE
           cout << "=========== SCALE: " << endl;
           double max(0.);
