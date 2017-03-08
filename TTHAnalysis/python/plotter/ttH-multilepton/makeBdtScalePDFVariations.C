@@ -24,6 +24,7 @@ Double_t fitRatio(TH1* h1, TH1*h2, double& err, bool doFigures=false, TString di
 }
 
 void makeBdtScalePDFVariations(TString dir, TString region, bool savePdfReplicas=false, bool doScaleStudy=false, bool doFigures=false){
+  gErrorIgnoreLevel = kWarning;
 
   TFile* f = TFile::Open(Form("%s/%s/2lss_3l_plots.root",dir.Data(),region.Data()), "READ");
   
@@ -100,7 +101,8 @@ void makeBdtScalePDFVariations(TString dir, TString region, bool savePdfReplicas
           cout << "=========== SCALE: " << endl;
           TH1D* gr = new TH1D(Form("%s_%s",variable[iVariable].Data(),proc[iproc].Data()), Form("%s_%s",variable[iVariable].Data(),proc[iproc].Data()), 8, 0.5, 8.5);
           TH1D* dummy = new TH1D(Form("dummy%s_%s",variable[iVariable].Data(),proc[iproc].Data()), Form("%s_%s",variable[iVariable].Data(),proc[iproc].Data()), 8, 0.5, 8.5);
-          double max(0.), min(0.);
+          TH1D* dummyunphys = new TH1D(Form("dummy2%s_%s",variable[iVariable].Data(),proc[iproc].Data()), Form("%s_%s",variable[iVariable].Data(),proc[iproc].Data()), 8, 0.5, 8.5);
+          double max(0.), min(0.), absmax(0.), absmaxunphys(0.);
           int maxbin(-1),minbin(-1);
           for(int ivar=1; ivar<9; ++ivar)
             {
@@ -110,12 +112,17 @@ void makeBdtScalePDFVariations(TString dir, TString region, bool savePdfReplicas
               //cout << r << endl;
               if(r>max){ max=r; maxbin=ivar;}
               if(r<min){ min=r; minbin=ivar;}
+              if(abs(r)>absmaxunphys) absmaxunphys=abs(r);
+              if(abs(r)>absmax && ivar!=5 && ivar!=7) absmax=abs(r);
               gr->SetBinContent(ivar,r);
               gr->SetBinError(ivar,rerr);
             }
           dummy->SetBinContent(maxbin,10*gr->GetMaximum());
           dummy->SetBinContent(minbin,10*gr->GetMinimum());
-          cout << max << endl;
+          dummyunphys->SetBinContent(5,10*gr->GetMinimum());
+          dummyunphys->SetBinContent(7,10*gr->GetMinimum());
+
+          cout << absmax << " (unphys: " << absmaxunphys << ")" << endl;
           if(doScaleStudy)
             {
               outScale->cd();
@@ -135,7 +142,10 @@ void makeBdtScalePDFVariations(TString dir, TString region, bool savePdfReplicas
                   gr->Draw("axis");
                   dummy->SetFillColor(kRed);
                   dummy->SetFillStyle(3);
+                  dummyunphys->SetFillColor(kBlue-9);
+                  dummyunphys->SetFillStyle(3004);
                   dummy->Draw("same");
+                  dummyunphys->Draw("same");
                   gr->Draw("pesame");
                   c->Print(Form("%s/%s/%s_scaleVar.png",dir.Data(),region.Data(),gr->GetName()));
                   c->Print(Form("%s/%s/%s_scaleVar.pdf",dir.Data(),region.Data(),gr->GetName()));
