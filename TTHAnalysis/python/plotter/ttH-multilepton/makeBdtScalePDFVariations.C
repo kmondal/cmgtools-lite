@@ -1,11 +1,23 @@
-Double_t fitRatio(TH1* h1, TH1*h2, double& err)
+Double_t fitRatio(TH1* h1, TH1*h2, double& err, bool doFigures=false, TString dir="", TString region="")
 {
-  TH1* h = (TH1*) h1->Clone("forRatio");
+  TH1* h = (TH1*) h1->Clone(Form("ratio_%s",h1->GetName()));
   TF1*  fun = new TF1("retta","[0]+[1]*x",-1.,1.);
   h->Divide(h2);
   h->Fit(fun,"Q");
   Double_t r = fun->GetParameter(1);
   err = fun->GetParError(1);
+  if(doFigures)
+    {
+      gStyle->SetOptStat(0);
+      gStyle->SetOptFit(111);
+      TCanvas* d = new TCanvas("d", h->GetName(), 800, 800);
+      d->cd();
+      h->Draw("pe"); // Fit should be drawn by default. Use "FUNC" if you want to draw the fit results only.
+      d->Print();
+      d->Print(Form("%s/%s/%s_fit.png",dir.Data(),region.Data(),h->GetName()));
+      d->Print(Form("%s/%s/%s_fit.pdf",dir.Data(),region.Data(),h->GetName()));
+      delete d;
+    }
   delete h;
   delete fun;
   return r;
@@ -94,7 +106,7 @@ void makeBdtScalePDFVariations(TString dir, TString region, bool savePdfReplicas
             {
               TH1* var = (TH1*) f->Get(Form("%s_%s_scale%d",variable[iVariable].Data(),proc[iproc].Data(),ivar));
               double rerr(0.);
-              double r(fitRatio(var, nominal, rerr));
+              double r(fitRatio(var, nominal, rerr, doFigures, dir, region));
               //cout << r << endl;
               if(r>max){ max=r; maxbin=ivar;}
               if(r<min){ min=r; minbin=ivar;}
