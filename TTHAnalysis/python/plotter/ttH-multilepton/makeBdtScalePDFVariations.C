@@ -3,7 +3,7 @@ Double_t fitRatio(TH1* h1, TH1*h2, double& err, bool doFigures=false, TString di
   TH1* h = (TH1*) h1->Clone(Form("ratio_%s",h1->GetName()));
   TF1*  fun = new TF1("retta","[0]+[1]*x",-1.,1.);
   h->Divide(h2);
-  h->Fit(fun,"Q");
+  h->Fit(fun,"QEM"); // Quiet, MINOS error estimation, search for additional minima
   Double_t r = fun->GetParameter(1);
   err = fun->GetParError(1);
   if(doFigures)
