@@ -23,7 +23,7 @@ Double_t fitRatio(TH1* h1, TH1*h2, double& err, bool doFigures=false, TString di
   return r;
 }
 
-void makeBdtScalePDFVariations(TString dir, TString region, bool savePdfReplicas=false, bool doScaleStudy=false, bool doFigures=false){
+void makeBdtScalePDFVariations(TString dir, TString region, bool savePdfReplicas=false, bool doScaleStudy=false, bool doFigures=false, bool forceScale=false){
   gErrorIgnoreLevel = kWarning;
 
   TFile* f = TFile::Open(Form("%s/%s/2lss_3l_plots.root",dir.Data(),region.Data()), "READ");
@@ -107,7 +107,9 @@ void makeBdtScalePDFVariations(TString dir, TString region, bool savePdfReplicas
           for(int ivar=1; ivar<9; ++ivar)
             {
               TH1* var = (TH1*) f->Get(Form("%s_%s_scale%d",variable[iVariable].Data(),proc[iproc].Data(),ivar));
+              if(forceScale) var->Scale(nominal->Integral()/var->Integral());
               double rerr(0.);
+              //cout << "Integrals: scale_" << ivar << ": " << var->Integral() << ", nominal " << nominal->Integral() << endl;
               double r(fitRatio(var, nominal, rerr, doFigures, dir, region));
               //cout << r << endl;
               if(r>max){ max=r; maxbin=ivar;}
