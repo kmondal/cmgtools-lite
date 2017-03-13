@@ -83,6 +83,14 @@ mZ2_noRecl:	mZ2					: 80,50,130; XTitle="Best second Z candidate mass (no Recl) 
 nVert:		nVert					: 40,-0.5,41.5; XTitle="N_{vtx}"
 
 
+
+kinMVA_bins1_2lss_ttV_withHj: kinMVA_2lss_ttV_withHj : 1,-1,1 ; XTitle="BDT with Hj tagger (ttH\,ttV)", MoreY=2.0, Legend='TR'
+kinMVA_bins1_2lss_ttbar_withBDTv8: kinMVA_2lss_ttbar_withBDTv8 : 1,-1,1 ; XTitle="BDT with hadr. top tagger (ttH\,tt)", MoreY=2.0, Legend='TL'
+kinMVA_bins1_3l_ttbar: kinMVA_3l_ttbar : 1,-1,1 ; XTitle="BDT (ttH\,tt)", MoreY=2.0, Legend='TR'
+kinMVA_bins1_3l_ttV: kinMVA_3l_ttV : 1,-1,1 ; XTitle="BDT (ttH\,ttV)", MoreY=2.0, Legend='TL'
+kinMVA_bins1_3l_ttV_withMEM: kinMVA_3l_ttV_withMEM : 1,-1,1 ; XTitle="BDT (ttH\,ttV) with MEM", MoreY=2.0, Legend='TR'
+
+
 #kinMVA_opt_2lss_2Dplot : kinMVA_2lss_ttV\:kinMVA_2lss_ttbar : 40,-1,1,40,-1,1; XTitle="BDT (ttH\,tt)", YTitle="BDT (ttH\,ttV)"
 #kinMVA_opt_3l_2Dplot : kinMVA_3l_ttV\:kinMVA_3l_ttbar : 40,-1,1,40,-1,1; XTitle="BDT (ttH\,tt)", YTitle="BDT (ttH\,ttV)"
 
