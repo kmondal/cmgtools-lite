@@ -1,5 +1,6 @@
 import os
 import subprocess
+from math import sqrt,fabs
 
 """
 """
@@ -31,3 +32,29 @@ def clean(outDir):
         os.system('rm {outDir}/*pdf'.format(outDir=outDir))
         os.system('rm {outDir}/*txt'.format(outDir=outDir))
         print 'Old plots in {outDir} cleaned.'.format(outDir=outDir)
+
+
+  
+def getErrorFraction(a, b):
+        ret=0
+        if (b!=0):  
+                temp = fabs(a)/(b*b)+ fabs( (a*a)/(b*b*b))
+                ret = sqrt(temp);
+        return ret
+
+def getErrorFractionWithErr(a, b, err_a, err_b):
+        ret=0
+        if (b!=0):
+                temp = (err_a*err_a)/(b*b)+( (a*a)/(b*b*b*b) )*( err_b*err_b )
+                ret = sqrt(temp);
+        return ret
+
+
+def readYieldsFromTable(fname):
+        for line in open(fname):
+                fields = line.split('|')
+                if len(fields) < 4: continue
+                if fields[3].trim() != 'FUNC': continue
+                dowhateveryouwishwith(line, fields)
+                
+        return yields
