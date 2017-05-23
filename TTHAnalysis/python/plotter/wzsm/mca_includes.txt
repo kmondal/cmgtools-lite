@@ -1,6 +1,6 @@
 ## Data
 ## -----------------------------------------------------------
-incl_data : + ; IncludeMca="WZSM/includes/mca_data.txt"
+incl_data : + ; IncludeMca="wzsm/includes/mca_data.txt"
 
 
 
@@ -8,19 +8,19 @@ incl_data : + ; IncludeMca="WZSM/includes/mca_data.txt"
 ## -----------------------------------------------------------
 prompt_WZ               : WZTo3LNu                        : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))            ; FillColor=ROOT.kOrange  , Label="WZ", NormSystematic=0.1
 
-incl_fakes_appldata     : + ; IncludeMca="WZSM/includes/mca_fakesappl.txt"
-incl_promptsub          : + ; IncludeMca="WZSM/includes/mca_promptsub.txt"
+incl_fakes_appldata     : + ; IncludeMca="wzsm/includes/mca_fakesappl.txt"
+incl_promptsub          : + ; IncludeMca="wzsm/includes/mca_promptsub.txt"
 
-incl_prompts            : + ; IncludeMca="WZSM/includes/mca_prompts.txt"
+incl_prompts            : + ; IncludeMca="wzsm/includes/mca_prompts.txt"
 
 
 
 
 ## Systematics
 ## -----------------------------------------------------------
-incl_sys_puw            : + ; IncludeMca="WZSM/includes/mca_sys_puw.txt"
-incl_sys_ewk            : + ; IncludeMca="WZSM/includes/mca_sys_ewk.txt"
-incl_sys_jec            : + ; IncludeMca="WZSM/includes/mca_sys_jec.txt"
-incl_sys_lepSF          : + ; IncludeMca="WZSM/includes/mca_sys_lepSF.txt"
-incl_sys_bTagHF         : + ; IncludeMca="WZSM/includes/mca_sys_bTagHF.txt"
-incl_sys_bTagLF         : + ; IncludeMca="WZSM/includes/mca_sys_bTagLF.txt"
+incl_sys_puw            : + ; IncludeMca="wzsm/includes/mca_sys_puw.txt"
+incl_sys_ewk            : + ; IncludeMca="wzsm/includes/mca_sys_ewk.txt"
+incl_sys_jec            : + ; IncludeMca="wzsm/includes/mca_sys_jec.txt"
+incl_sys_lepSF          : + ; IncludeMca="wzsm/includes/mca_sys_lepSF.txt"
+incl_sys_bTagHF         : + ; IncludeMca="wzsm/includes/mca_sys_bTagHF.txt"
+incl_sys_bTagLF         : + ; IncludeMca="wzsm/includes/mca_sys_bTagLF.txt"
