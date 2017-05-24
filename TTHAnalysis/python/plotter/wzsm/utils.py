@@ -50,11 +50,20 @@ def getErrorFractionWithErr(a, b, err_a, err_b):
         return ret
 
 
+import re
+
 def readYieldsFromTable(fname):
+        yields={}
         for line in open(fname):
-                fields = line.split('|')
-                if len(fields) < 4: continue
-                if fields[3].trim() != 'FUNC': continue
-                dowhateveryouwishwith(line, fields)
-                
+                # Strip whitespaces
+                line=re.sub( '\s+', ' ', line ).strip()
+                fields = line.split(' ')
+                if len(fields) < 2: continue
+                #if fields[3].strip() != 'FUNC': continue
+                if len(fields) < 3:
+                        yields[fields[0]] = [float(fields[1])]
+                elif len(fields) <6:
+                        yields[fields[0]] = [float(fields[1]), float(fields[3])]
+                else:
+                        yields[fields[0]] = [float(fields[1]), float(fields[3]), float(fields[6])]
         return yields
