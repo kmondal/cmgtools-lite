@@ -2,6 +2,8 @@ import os
 import subprocess
 from math import sqrt,fabs
 
+# Author: Pietro Vischia, pietro.vischia@cern.ch
+
 """
 """
 def command(cmd, pretend):
