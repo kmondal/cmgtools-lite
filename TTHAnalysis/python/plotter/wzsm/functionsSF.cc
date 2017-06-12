@@ -142,8 +142,8 @@ float getMuonUnc(float pt, int var = 0) {
     return TMath::Sqrt(0.02*0.02+0.01*0.01);  
 }
 
-float getLepSF(float pt, float eta, int pdgId, int isTight, int wp = 0, int var = 0){
-    if(!isTight) return 1.0;
+float getLepSF(float pt, float eta, int pdgId, int applySF, int wp = 0, int var = 0){
+    if(!applySF) return 1.0;
     float sf  = 1.0; 
     float err = 0.0;
     if(abs(pdgId) == 11) { sf = getElectronSF(pt, eta, wp); err = getElectronUnc(pt, eta, wp, var); }
@@ -208,8 +208,8 @@ float getTauUncFS(float pt, float eta, int var = 0) {
 	return var*getUnc(h_tauSF_FS_id, pt, abs(eta));
 }
 
-float getLepSFFS(float pt, float eta, int pdgId, int isTight, int wp = 0, int var = 0){
-    if(!isTight) return 1.0;
+float getLepSFFS(float pt, float eta, int pdgId, int applySF, int wp = 0, int var = 0){
+    if(!applySF) return 1.0;
     if(abs(pdgId) == 13) return (var==0)?getMuonSFFS    (pt, eta, wp):(1+getMuonUncFS(var));
     if(abs(pdgId) == 11) return (var==0)?getElectronSFFS(pt, eta, wp):(1+getElectronUncFS(var));
     if(abs(pdgId) == 15) return (var==0)?getTauSFFS     (pt, eta    ):(1+getTauUncFS(pt, eta, var));
