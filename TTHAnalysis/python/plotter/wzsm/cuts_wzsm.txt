@@ -9,7 +9,7 @@ mme: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==37; Disable=True
 mmm: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==39; Disable=True
 eel: (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==33) || (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==35); Disable=True
 mml: (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==37) || (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==39); Disable=True
-#cutPOGT: LepSel1_iscutPOGT && LepSel2_iscutPOGT && LepSel3_iscutPOGT
+cutPOGT: LepSel1_iscutPOGT && LepSel2_iscutPOGT && LepSel3_iscutPOGT; Disable=True
 cutPOGM: LepSel1_iscutPOGM && LepSel2_iscutPOGM && LepSel3_iscutPOGM; Disable=True
 mvaPOGRA7: LepSel1_ismvaPOGRA7 && LepSel2_ismvaPOGRA7 && LepSel3_ismvaPOGRA7; Disable=True
 mvaPOG80: LepSel1_ismvaPOG80 && LepSel2_ismvaPOG80 && LepSel3_ismvaPOG80; Disable=True
