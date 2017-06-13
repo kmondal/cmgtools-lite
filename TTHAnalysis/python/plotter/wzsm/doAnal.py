@@ -33,20 +33,23 @@ parser.add_option('-i', '--input',          dest='inputDir',       help='input d
 parser.add_option('-o', '--output',         dest='outputDir',      help='output directory',       default='~/www/susyRA7/',           type='string')
 parser.add_option('-a', '--action',         dest='action',         help='which action to perform', default='crtau', type='string')
 parser.add_option('-s', '--subaction',      dest='subaction',      help='which subAction to perform', default='', type='string')
+parser.add_option('-w', '--workingpoint',   dest='workingpoint',   help='which working point to apply', default='', type='string')
 parser.add_option('-p', '--pretend',        dest='pretend',        help='only print commands out', action='store_true')
 
 (opt, args) = parser.parse_args()
 
-inputDir  = opt.inputDir
-outputDir = opt.outputDir
-action    = opt.action
-subaction = opt.subaction
-pretend   = opt.pretend
+inputDir     = opt.inputDir
+outputDir    = opt.outputDir
+action       = opt.action
+subaction    = opt.subaction
+workingpoint = opt.workingpoint
+pretend      = opt.pretend
 blind = '--flags "-X blinding"'
 
 index="/nfs/fanae/user/vischia/www/index.php"
 
 def runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions, enablecuts, header):
+
         clean(out)
         os.system('mkdir -p {out}'.format(out=out))
         os.system('cp {index} {outputDir}'.format(index=index,outputDir=out))
@@ -84,9 +87,9 @@ if(action=='srwz'):
         trigdef='wzsm/mcc_triggerdefs.txt'
         wp='1'
         enablecuts=' '
-        if(subaction=='VT'):
+        if(workingpoint=='VT'):
                 wp='1'
-        elif(subaction=='M'):
+        elif(workingpoint=='M'):
                 wp='0'
         else:
                 print("Defaulting to wp=1 (VTight)")
@@ -125,7 +128,7 @@ if(action=='srwz'):
         out=''
         if(wp=='1'):
                 out=outputDir+'wz/lepmvaVT/srwz/'
-        elif(wp=='1'):
+        elif(wp=='0'):
                 out=outputDir+'wz/lepmvaM/srwz/'
         else:
                 out=outputDir+'wz/lepmvaVT/srwz/'
@@ -138,9 +141,9 @@ elif(action=='crwz'):
         #mccother='--mcc wzsm/lepchoice-crwz-FO.txt'
         mccother=' '
         enablecuts=' -E TTCR -X bveto'
-        if(subaction=='VT'):
+        if(workingpoint=='VT'):
                 wp='1'
-        elif(subaction=='M'):
+        elif(workingpoint=='M'):
                 wp='0'
         else:
                 print("Defaulting to wp=1 (VTight)")
@@ -179,7 +182,7 @@ elif(action=='crwz'):
         out=''
         if(wp=='1'):
                 out=outputDir+'wz/lepmvaVT/crwz/'
-        elif(wp=='1'):
+        elif(wp=='0'):
                 out=outputDir+'wz/lepmvaM/crwz/'
         else:
                 out=outputDir+'wz/lepmvaVT/crwz/'
