@@ -16,7 +16,7 @@ if [ "$1" == "plot" ]; then
     # ACTION can be general
     
     if [ "$2" == "" ]; then
-        echo "ACTION is empty. It can be generic"
+        echo "ACTION is empty. It can be 'srwz' or 'crwz' or 'www'"
         exit -1
     else
         ACTION=" -a ${2}"
@@ -29,5 +29,10 @@ if [ "$1" == "plot" ]; then
     PRETEND=""
     python wzsm/doAnal.py -i ${INPUTDIR} -o ${WEBDIR} ${ACTION} ${SUBACTION} ${PRETEND}
 
+elif [ "$1" == "fr" ]; then
+    
+    frstring="sMiX4mrE2"
+
+    sh ttH-multilepton/make_fake_rates_MC.sh susy $frstring
 fi
 exit 0
