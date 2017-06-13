@@ -92,11 +92,11 @@ if(action=='srwz'):
                 print("Defaulting to wp=1 (VTight)")
         if(wp=='1'):
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
-                os.system('ln -s wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
+                os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
                 # enablecuts=' -E MVAVT ' # it is already enabled by default
         else:
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
-                os.system('ln -s wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
+                os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E MVAM -X MVAVT '
 
         # 0 = medium, 1 = vtight
@@ -146,11 +146,11 @@ elif(action=='crwz'):
                 print("Defaulting to wp=1 (VTight)")
         if(wp=='1'):
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
-                os.system('ln -s wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
+                os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
                 # enablecuts=' -E TTCR -X bveto -E MVAVT ' # it is already enabled by default
         else:
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
-                os.system('ln -s wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
+                os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E TTCR -X bveto -E MVAM -X MVAVT '
 
         trigdef='wzsm/mcc_triggerdefs.txt'
