@@ -12,10 +12,22 @@ WEBDIR="/nfs/fanae/user/vischia/www/wz/"
 
 if [ "$1" == "all" ]; then
     sh wzsm/doAnal.sh plot srwz VT
-    sh wzsm/doAnal.sh plot crwz VT
+    sh wzsm/doAnal.sh plot ttcr VT
+    sh wzsm/doAnal.sh plot dycr VT
     sh wzsm/doAnal.sh plot srwz M
-    sh wzsm/doAnal.sh plot crwz M
+    sh wzsm/doAnal.sh plot ttcr M
+    sh wzsm/doAnal.sh plot dycr M
+
+elif [ "$1" == "VT" ]; then
+    sh wzsm/doAnal.sh plot srwz VT
+    sh wzsm/doAnal.sh plot ttcr VT
+    sh wzsm/doAnal.sh plot dycr VT
     
+elif [ "$1" == "M" ]; then
+    sh wzsm/doAnal.sh plot srwz M
+    sh wzsm/doAnal.sh plot ttcr M
+    sh wzsm/doAnal.sh plot dycr M
+
 elif [ "$1" == "plot" ]; then
     
     ACTION=""

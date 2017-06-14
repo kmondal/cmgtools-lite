@@ -134,7 +134,7 @@ if(action=='srwz'):
                 out=outputDir+'wz/lepmvaVT/srwz/'
         runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,enablecuts, header)
 
-elif(action=='crwz'):
+elif(action=='ttcr'):
         print 'Now plotting WZ CR plots'
         plots='wzsm/plots_wzsm.txt'
         mcc='wzsm/mcc_varsub_wzsm.txt'
@@ -181,11 +181,65 @@ elif(action=='crwz'):
         mca='wzsm/mca_includes.txt'
         out=''
         if(wp=='1'):
-                out=outputDir+'wz/lepmvaVT/crwz/'
+                out=outputDir+'wz/lepmvaVT/ttcr/'
         elif(wp=='0'):
-                out=outputDir+'wz/lepmvaM/crwz/'
+                out=outputDir+'wz/lepmvaM/ttcr/'
         else:
-                out=outputDir+'wz/lepmvaVT/crwz/'
+                out=outputDir+'wz/lepmvaVT/ttcr/'
+        runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,enablecuts, header)
+
+elif(action=='dycr'):
+        print 'Now plotting WZ CR plots'
+        plots='wzsm/plots_wzsm.txt'
+        mcc='wzsm/mcc_varsub_wzsm.txt'
+        #mccother='--mcc wzsm/lepchoice-crwz-FO.txt'
+        mccother=' '
+        enablecuts=' -E DYCR -X met30 '
+        if(workingpoint=='VT'):
+                wp='1'
+        elif(workingpoint=='M'):
+                wp='0'
+        else:
+                print("Defaulting to wp=1 (VTight)")
+        if(wp=='1'):
+                os.system('rm wzsm/fakeRate-2lss-frdata.txt')
+                os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
+                # enablecuts=' -E TTCR -X bveto -E MVAVT ' # it is already enabled by default
+        else:
+                os.system('rm wzsm/fakeRate-2lss-frdata.txt')
+                os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
+                enablecuts=' -E TTCR -X bveto -E MVAM -X MVAVT '
+
+        trigdef='wzsm/mcc_triggerdefs.txt'
+        weights=' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1)*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1)*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1)*bTagWeight '
+        functions=' --load-macro wzsm/functionsPUW.cc --load-macro wzsm/functionsSF.cc --load-macro wzsm/functionsWZ.cc '
+        toplot='--sP m3l,m3lmet,m3l_l,m3lmet_l '
+        if(subaction!=''):
+                toplot='--sP \'{toplot}\''.format(toplot=subaction)
+        if(subaction=='all'):
+                toplot=''
+        batch=' -q batch '
+        batch=''
+        direct=' --pretend '
+        direct=' '
+        jei='6'
+        jei='40'
+        # https://hypernews.cern.ch/HyperNews/CMS/get/physics-announcements/4495.html
+        lumi='35.867'
+        pgroup=' --pgroup internal:=ttZ,Gstar,ZGi --pgroup external:=TTG,WG,ZG,TG,Gstare --pgroup incl_fakes_appldata+=incl_promptsub '
+        pgroup=' -p data -p prompt.* -p rares.* -p fakes_appldata --plotgroup fakes_appldata+=promptsub --neglist promptsub '
+        #
+        header='All'
+        #cuts='wzsm/cuts_crwz.txt'
+        cuts='wzsm/cuts_wzsm.txt'
+        mca='wzsm/mca_includes.txt'
+        out=''
+        if(wp=='1'):
+                out=outputDir+'wz/lepmvaVT/dycr/'
+        elif(wp=='0'):
+                out=outputDir+'wz/lepmvaM/dycr/'
+        else:
+                out=outputDir+'wz/lepmvaVT/dycr/'
         runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,enablecuts, header)
 
 
