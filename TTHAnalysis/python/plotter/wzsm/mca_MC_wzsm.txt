@@ -1,3 +1,7 @@
+## Data
+## -----------------------------------------------------------
+incl_data : + ; IncludeMca="wzsm/includes/mca_data.txt"
+
 ## WZ
 ## -----------------------------------------------------------
 sig_WZ+               : WZTo3LNu                        : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kOrange  , Label="WZ", NormSystematic=0.01
