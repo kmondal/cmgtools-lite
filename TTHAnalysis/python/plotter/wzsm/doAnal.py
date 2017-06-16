@@ -35,7 +35,7 @@ parser.add_option('-a', '--action',         dest='action',         help='which a
 parser.add_option('-s', '--subaction',      dest='subaction',      help='which subAction to perform', default='', type='string')
 parser.add_option('-w', '--workingpoint',   dest='workingpoint',   help='which working point to apply', default='', type='string')
 parser.add_option('-p', '--pretend',        dest='pretend',        help='only print commands out', action='store_true')
-parser.add_option('-m', '--mconly',         dest='mconly', type=bool, action='store_true', help='use mc-only mca file')
+parser.add_option('-m', '--mconly',         dest='mconly', action='store_true', help='use mc-only mca file')
 
 (opt, args) = parser.parse_args()
 
@@ -47,9 +47,9 @@ workingpoint = opt.workingpoint
 pretend      = opt.pretend
 mconly       = opt.mconly
 
-if action.contains('mc'):
+if 'mc' in action:
         mconly=True
-        action.replace('mc','')
+        action=action.replace('mc','')
 
 blind = '--flags "-X blinding"'
 
