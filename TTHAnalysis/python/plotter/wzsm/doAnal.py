@@ -106,7 +106,7 @@ if(action=='srwz'):
         # The first parameter, which getLepSF calls "isTight", is a way of deactivating the SF (it returns 1 if it is false). It is hence wrong to pass "isTight" as this parameter, because this implies that the SF is set to 1 for any non-VTight lepton. And by the way the default value of wp is zero, which means that passing only 1 as isTight implies applying the Medium SFs to the VTight WP. LoL
         weights=' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1,{wp})*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1,{wp})*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1,{wp})*bTagWeight '.format(wp=wp)
         functions=' --load-macro wzsm/functionsPUW.cc --load-macro wzsm/functionsSF.cc --load-macro wzsm/functionsWZ.cc '
-        toplot='--sP m3l,m3lmet,m3l_l,m3lmet_l,flavor,nBJet30,ptZ1,ptZ2,ptW '
+        toplot='--sP m3l,m3lmet,m3l_l,m3lmet_l,flavor,nBJet30,ptZ1,ptZ2,ptW,MET_log '
         if(subaction!=''):
                 toplot='--sP \'{toplot}\''.format(toplot=subaction)
         if(subaction=='all'):
@@ -159,7 +159,7 @@ elif(action=='ttcr'):
         trigdef='wzsm/mcc_triggerdefs.txt'
         weights=' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1)*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1)*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1)*bTagWeight '
         functions=' --load-macro wzsm/functionsPUW.cc --load-macro wzsm/functionsSF.cc --load-macro wzsm/functionsWZ.cc '
-        toplot='--sP m3l,m3lmet,m3l_l,m3lmet_l,flavor,nBJet30,ptZ1,ptZ2,ptW '
+        toplot='--sP m3l,m3lmet,m3l_l,m3lmet_l,flavor,nBJet30,ptZ1,ptZ2,ptW,MET_log '
         if(subaction!=''):
                 toplot='--sP \'{toplot}\''.format(toplot=subaction)
         if(subaction=='all'):
@@ -194,7 +194,7 @@ elif(action=='dycr'):
         mcc='wzsm/mcc_varsub_wzsm.txt'
         #mccother='--mcc wzsm/lepchoice-crwz-FO.txt'
         mccother=' '
-        enablecuts=' -E DYCR -X met30 '
+        enablecuts=' -E DYCR -E ptBalance -X met30 '
         if(workingpoint=='VT'):
                 wp='1'
         elif(workingpoint=='M'):
@@ -204,16 +204,16 @@ elif(action=='dycr'):
         if(wp=='1'):
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
-                # enablecuts=' -E TTCR -X bveto -E MVAVT ' # it is already enabled by default
+                # enablecuts=' -E DYCR -X met30 -E MVAVT ' # it is already enabled by default
         else:
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
-                enablecuts=' -E TTCR -X bveto -E MVAM -X MVAVT '
+                enablecuts=' -E DYCR -E ptBalance -X met30 -E MVAM -X MVAVT '
 
         trigdef='wzsm/mcc_triggerdefs.txt'
         weights=' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1)*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1)*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1)*bTagWeight '
         functions=' --load-macro wzsm/functionsPUW.cc --load-macro wzsm/functionsSF.cc --load-macro wzsm/functionsWZ.cc '
-        toplot='--sP m3l,m3lmet,m3l_l,m3lmet_l,flavor,nBJet30,ptZ1,ptZ2,ptW '
+        toplot='--sP m3l,m3lmet,m3l_l,m3lmet_l,flavor,nBJet30,ptZ1,ptZ2,ptW,MET_log '
         if(subaction!=''):
                 toplot='--sP \'{toplot}\''.format(toplot=subaction)
         if(subaction=='all'):
