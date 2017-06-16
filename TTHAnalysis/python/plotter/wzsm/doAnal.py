@@ -35,6 +35,7 @@ parser.add_option('-a', '--action',         dest='action',         help='which a
 parser.add_option('-s', '--subaction',      dest='subaction',      help='which subAction to perform', default='', type='string')
 parser.add_option('-w', '--workingpoint',   dest='workingpoint',   help='which working point to apply', default='', type='string')
 parser.add_option('-p', '--pretend',        dest='pretend',        help='only print commands out', action='store_true')
+parser.add_option('-m', '--mconly',         dest='mconly', type=bool, action='store_true', help='use mc-only mca file')
 
 (opt, args) = parser.parse_args()
 
@@ -44,6 +45,12 @@ action       = opt.action
 subaction    = opt.subaction
 workingpoint = opt.workingpoint
 pretend      = opt.pretend
+mconly       = opt.mconly
+
+if action.contains('mc'):
+        mconly=True
+        action.replace('mc','')
+
 blind = '--flags "-X blinding"'
 
 index="/nfs/fanae/user/vischia/www/index.php"
@@ -124,14 +131,14 @@ if(action=='srwz'):
         #
         header='All'
         cuts='wzsm/cuts_wzsm.txt'
-        mca='wzsm/mca_includes.txt'
+        mca= 'wzsm/mca_includes.txt' if not mconly else 'wzsm/mca_MC_wzsm.txt'
         out=''
         if(wp=='1'):
-                out=outputDir+'wz/lepmvaVT/srwz/'
+                out=outputDir+'wz{mc}/lepmvaVT/srwz/'.format(mc='' if not mconly else 'MC')
         elif(wp=='0'):
-                out=outputDir+'wz/lepmvaM/srwz/'
+                out=outputDir+'wz{mc}/lepmvaM/srwz/'.format(mc='' if not mconly else 'MC')
         else:
-                out=outputDir+'wz/lepmvaVT/srwz/'
+                out=outputDir+'wz{mc}/lepmvaVT/srwz/'.format(mc='' if not mconly else 'MC')
         runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,enablecuts, header)
 
 elif(action=='ttcr'):
@@ -178,14 +185,14 @@ elif(action=='ttcr'):
         header='All'
         #cuts='wzsm/cuts_crwz.txt'
         cuts='wzsm/cuts_wzsm.txt'
-        mca='wzsm/mca_includes.txt'
+        mca= 'wzsm/mca_includes.txt' if not mconly else 'wzsm/mca_MC_wzsm.txt'
         out=''
         if(wp=='1'):
-                out=outputDir+'wz/lepmvaVT/ttcr/'
+                out=outputDir+'wz{mc}/lepmvaVT/ttcr/'.format(mc='' if not mconly else 'MC')
         elif(wp=='0'):
-                out=outputDir+'wz/lepmvaM/ttcr/'
+                out=outputDir+'wz{mc}/lepmvaM/ttcr/'.format(mc='' if not mconly else 'MC')
         else:
-                out=outputDir+'wz/lepmvaVT/ttcr/'
+                out=outputDir+'wz{mc}/lepmvaVT/ttcr/'.format(mc='' if not mconly else 'MC')
         runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,enablecuts, header)
 
 elif(action=='dycr'):
@@ -232,14 +239,14 @@ elif(action=='dycr'):
         header='All'
         #cuts='wzsm/cuts_crwz.txt'
         cuts='wzsm/cuts_wzsm.txt'
-        mca='wzsm/mca_includes.txt'
+        mca= 'wzsm/mca_includes.txt' if not mconly else 'wzsm/mca_MC_wzsm.txt'
         out=''
         if(wp=='1'):
-                out=outputDir+'wz/lepmvaVT/dycr/'
+                out=outputDir+'wz{mc}/lepmvaVT/dycr/'.format(mc='' if not mconly else 'MC')
         elif(wp=='0'):
-                out=outputDir+'wz/lepmvaM/dycr/'
+                out=outputDir+'wz{mc}/lepmvaM/dycr/'.format(mc='' if not mconly else 'MC')
         else:
-                out=outputDir+'wz/lepmvaVT/dycr/'
+                out=outputDir+'wz{mc}/lepmvaVT/dycr/'.format(mc='' if not mconly else 'MC')
         runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,enablecuts, header)
 
 
@@ -270,7 +277,7 @@ elif(action=='www'):
         #
         header='All'
         cuts='wzsm/cuts_wwwsm.txt'
-        mca='wzsm/mca_includes.txt'
+        mca= 'wzsm/mca_includes.txt' if not mconly else 'wzsm/mca_MC_wzsm.txt'
         out=outputDir+'www/'
         runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,enablecuts, header)
         

@@ -28,6 +28,15 @@ elif [ "$1" == "M" ]; then
     sh wzsm/doAnal.sh plot ttcr M
     sh wzsm/doAnal.sh plot dycr M
 
+elif [ "$1" == "mc" ]; then
+    sh wzsm/doAnal.sh plot mcsrwz VT
+    sh wzsm/doAnal.sh plot mcttcr VT
+    sh wzsm/doAnal.sh plot mcdycr VT
+    sh wzsm/doAnal.sh plot mcsrwz M
+    sh wzsm/doAnal.sh plot mcttcr M
+    sh wzsm/doAnal.sh plot mcdycr M
+    
+
 elif [ "$1" == "plot" ]; then
     
     ACTION=""
