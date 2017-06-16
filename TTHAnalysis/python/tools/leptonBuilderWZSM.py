@@ -245,7 +245,7 @@ class LeptonBuilderWZSM:
 
             used = [self.bestOSPair.l1, self.bestOSPair.l2] if self.bestOSPair else []
             
-            for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva"]:
+            for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva", "jetDR"]:
                 self.ret["LepZ1_" + var] = getattr(self.bestOSPair.l1, var, 0)
                 self.ret["LepZ2_" + var] = getattr(self.bestOSPair.l2, var, 0)
             for var in ["pdgId", "isTight", "mcMatchId", "mcMatchAny", "mcPromptGamma", "mcUCSX", "trIdx"]:
@@ -257,7 +257,7 @@ class LeptonBuilderWZSM:
 
             for i in range(min(max,len(self.lepSelFO))):
                 if self.lepSelFO[i] in used: continue
-                for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva"]:
+                for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva", "jetDR"]:
                     self.ret["LepW_" + var] = getattr(self.lepSelFO[i], var, 0)
                 for var in ["pdgId", "isTight", "mcMatchId", "mcMatchAny", "mcPromptGamma", "mcUCSX", "trIdx"]:
                     self.ret["LepW_" + var] = int(getattr(self.lepSelFO[i], var, 0))
