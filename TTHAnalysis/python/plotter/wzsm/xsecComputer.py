@@ -119,14 +119,16 @@ parser.add_option('-o', '--output',         dest='outputDir',      help='output 
 parser.add_option('-a', '--action',         dest='action',         help='which action to perform', default='crtau', type='string')
 parser.add_option('-p', '--pretend',        dest='pretend',        help='only print commands out', action='store_true')
 parser.add_option('-s', '--signal',         dest='sigLabel',       help='label of signal in tables', default='WZ', type='string')
+parser.add_option('-w', '--workingPoint',   dest='wp', default='VT', help='working point for lepton ID (default is: VT)')
 
 (opt, args) = parser.parse_args()
 
 sigLabel=opt.sigLabel
+wp=opt.wp
 
 print("WARNING, prototype. Initial number of events and signal cross section are the proper one for WZ signal, and 0 otherwise")
 
-table_yields=readYieldsFromTable("/nfs/fanae/user/vischia/www/wz/test/m3l.txt")
+table_yields=readYieldsFromTable("/nfs/fanae/user/vischia/www/wz/wz/lepmva{wp}/srwz/m3lmet.txt".format(wp=wp))
 
 
 cncXsecComputer(table_yields, sigLabel)
