@@ -66,5 +66,10 @@ elif [ "$1" == "fr" ]; then
     frstring="sMiX4mrE2"
 
     sh ttH-multilepton/make_fake_rates_MC.sh susy $frstring
+
+
+#sh ../python/plotter/susy-interface/cmds/tau-ewkino/chunkDealer.sh  /nfs/fanae/user/vischia/workarea/cmssw/wz/fts/leptonJetReCleanerSusyEWK2L/ merge evVarFriend
+
+
 fi
 exit 0
