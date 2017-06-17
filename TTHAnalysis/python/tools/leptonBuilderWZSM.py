@@ -258,14 +258,22 @@ class LeptonBuilderWZSM:
 
             for i in range(min(max,len(self.lepSelFO))):
                 if self.lepSelFO[i] in used: continue
-                for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva", "jetDR"]:
+                for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva","jetDR"]:
                     self.ret["LepW_" + var] = getattr(self.lepSelFO[i], var, 0)
                 for var in ["pdgId", "isTight", "mcMatchId", "mcMatchAny", "mcPromptGamma", "mcUCSX", "trIdx"]:
                     self.ret["LepW_" + var] = int(getattr(self.lepSelFO[i], var, 0))
                 for var in ["iscutPOGM", "iscutPOGT", "ismvaPOGRA7", "ismvaPOG80", "ismvaPOG90", "isMVAVL", "isMVAL", "isMVAM", "isMVAT", "isMVAVT", "isMVAET", "isStopSel"]:
                     self.ret["LepW_" + var] = int(getattr(self.lepSelFO[i], var, 0))
-                for var in ["pt", "conePt"]:
-                    self.ret["wzBalance_" + var] = getattr(self.bestOSPair.l1+self.bestOSPair.l2-self.lepSelFO[i], var, 0)
+                #for var in ["pt", "conePt"]:
+                #    self.ret["wzBalance_" + var] = getattr(self.bestOSPair.l1.p4()+self.bestOSPair.l2.p4()-self.lepSelFO[i].p4(), var, 0)
+                balance = self.bestOSPair.l1.p4()
+                balance += self.bestOSPair.l2.p4()
+                balance -= self.lepSelFO[i].p4()
+                self.ret["wzBalance_pt"] = balance.Pt()
+                balance = self.bestOSPair.l1.p4(self.bestOSPair.l1.conePt)
+                balance += self.bestOSPair.l2.p4(self.bestOSPair.l2.conePt)
+                balance -= self.lepSelFO[i].p4(self.lepSelFO[i].conePt)
+                self.ret["wzBalance_conePt"] = balance.Pt()
             return
 
         self.ret["mll_" + str(max) + "l"] = -1
@@ -357,7 +365,7 @@ class LeptonBuilderWZSM:
         biglist.append(("mll_i2", "I", 20, "nOS"))
 
         biglist.append(("nLepSel"   , "I"))
-        for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva"]:
+        for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva", "jetDR"]:
             biglist.append(("LepSel_" + var, "F", 4))
             biglist.append(("LepZ1_"  + var, "F"))
             biglist.append(("LepZ2_"  + var, "F"))
@@ -373,7 +381,7 @@ class LeptonBuilderWZSM:
             biglist.append(("LepZ2_"  + var, "I"))
             biglist.append(("LepW_"   + var, "I"))
         for var in ["pt", "conePt"]:
-            biglist.append(("wzBalance_" + var, "I"))
+            biglist.append(("wzBalance_" + var, "F"))
   
         for var in self.systsJEC:
             biglist.append(("mT_3l"       + self.systsJEC[var], "F"))
@@ -553,7 +561,7 @@ class LeptonBuilderWZSM:
         self.ret["mll_i2"] = [-1]*20
 
         self.ret["nLepSel"] = 0
-        for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva"]:
+        for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva", "jetDR"]:
             self.ret["LepSel_" + var] = [0.]*20
             self.ret["LepZ1_"  + var] = 0.
             self.ret["LepZ2_"  + var] = 0.
