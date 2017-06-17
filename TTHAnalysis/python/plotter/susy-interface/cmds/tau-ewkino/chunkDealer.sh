@@ -17,11 +17,12 @@ fi
 CMD="$CMSSW_BASE/src/CMGTools/TTHAnalysis/macros/leptons/friendChunkAdd.sh ${PREFIX}"
 
 if [ "${ACTION}" == "check" ]; then
-    CMD="$CMSSW_BASE/src/CMGTools/TTHAnalysis/macros/leptons/friendChunkCheck.sh -z ${INPUT}"
+    CMD="$CMSSW_BASE/src/CMGTools/TTHAnalysis/macros/leptons/friendChunkCheck.sh -z ${PREFIX} "
 fi
 
 cd ${INPUT}
 
+echo "Running: ${CMD}"
 sh ${CMD}
 
 #if [ "${ACTION}" == "merge" ]; then
