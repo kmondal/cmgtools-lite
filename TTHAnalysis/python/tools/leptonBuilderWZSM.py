@@ -269,10 +269,15 @@ class LeptonBuilderWZSM:
                 balance = self.bestOSPair.l1.p4()
                 balance += self.bestOSPair.l2.p4()
                 balance -= self.lepSelFO[i].p4()
+                metmom = ROOT.TLorentzVector()
+                metmom.SetPtEtaPhiM(self.met[0],0,self.metphi[0],0)
+                balance -= metmom
+                # Later do it with standalone function like makeMassMET
                 self.ret["wzBalance_pt"] = balance.Pt()
                 balance = self.bestOSPair.l1.p4(self.bestOSPair.l1.conePt)
                 balance += self.bestOSPair.l2.p4(self.bestOSPair.l2.conePt)
                 balance -= self.lepSelFO[i].p4(self.lepSelFO[i].conePt)
+                balance -= metmom
                 self.ret["wzBalance_conePt"] = balance.Pt()
             return
 
