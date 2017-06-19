@@ -38,6 +38,10 @@ isTightW_log      : LepW_isTight           : 2,-0.5,1.5     ; XTitle="isTight(W 
 
 lepJetDR_Z1 : LepZ1_jetDR   : 21,0.0,2.0   ; XTitle="jetDR(leading Z lepton)",    LegendCutoff=1e-5, Legend='TL', XNDiv=002, YMin=1.0, YMax=4000. 
 lepJetDR_Z2 : LepZ2_jetDR   : 21,0.0,2.0   ; XTitle="jetDR(subleading Z lepton)", LegendCutoff=1e-5, Legend='TL', XNDiv=002, YMin=1.0, YMax=4000.
+lepJetDR_W : LepW_jetDR   : 21,0.0,2.0   ; XTitle="jetDR(W lepton)", LegendCutoff=1e-5, Legend='TL', XNDiv=002, YMin=1.0, YMax=4000.
+
+wzBalance_pt : wzBalance_pt   : 100,0.0,1000   ; XTitle="wzBalance(pt)",    LegendCutoff=1e-5, Legend='TL', XNDiv=002, YMin=1.0, YMax=500. 
+wzBalance_conePt : wzBalance_conePt   :  100,0.0,1000   ; XTitle="wzBalance(conePt)",    LegendCutoff=1e-5, Legend='TL', XNDiv=002, YMin=1.0, YMax=500. 
 
 #mZ1     : mZ1: 30,75,105; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5
 #bestmZ  : bestmzTL : 30,75,105; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5 #with old WZCRvars FT
