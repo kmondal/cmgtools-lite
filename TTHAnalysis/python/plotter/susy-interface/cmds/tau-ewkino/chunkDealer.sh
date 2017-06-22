@@ -23,7 +23,10 @@ fi
 cd ${INPUT}
 
 echo "Running: ${CMD}"
-sh ${CMD}
+sh ${CMD} > /tmp/datemp.temp
+
+# Too lazy to find the awk parameter that keeps the part before the delimiter, so just used reverse
+cat /tmp/datemp.temp | rev | awk -F'knuhc.' '{print $NF}' | rev | uniq | sed s/evVarFriend_// 
 
 #if [ "${ACTION}" == "merge" ]; then
 #    mkdir chunks
