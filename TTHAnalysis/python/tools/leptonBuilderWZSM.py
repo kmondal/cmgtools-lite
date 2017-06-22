@@ -268,6 +268,7 @@ class LeptonBuilderWZSM:
                 #    self.ret["wzBalance_" + var] = getattr(self.bestOSPair.l1.p4()+self.bestOSPair.l2.p4()-self.lepSelFO[i].p4(), var, 0)
                 balance = self.bestOSPair.l1.p4()
                 balance += self.bestOSPair.l2.p4()
+                self.ret["deltaR_WZ"] = deltaR(balance.Eta(), balance.Phi(), self.lepSelFO[i].p4().Eta(), self.lepSelFO[i].p4().Phi())
                 balance -= self.lepSelFO[i].p4()
                 metmom = ROOT.TLorentzVector()
                 metmom.SetPtEtaPhiM(self.met[0],0,self.metphi[0],0)
@@ -368,6 +369,7 @@ class LeptonBuilderWZSM:
         biglist.append(("mll"   , "F", 20, "nOS"))
         biglist.append(("mll_i1", "I", 20, "nOS"))
         biglist.append(("mll_i2", "I", 20, "nOS"))
+        biglist.append(("deltaR_WZ", "F"))
 
         biglist.append(("nLepSel"   , "I"))
         for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva", "jetDR"]:
@@ -559,6 +561,7 @@ class LeptonBuilderWZSM:
         self.ret["minDeltaR_4l"         ] = -1
         self.ret["minDeltaR_3l_mumu"    ] = -1
         self.ret["minDeltaR_4l_mumu"    ] = -1
+        self.ret["deltaR_WZ"            ] = 0
 
         self.ret["nOS"   ] = 0
         self.ret["mll"   ] = [0.]*20
@@ -692,6 +695,24 @@ class LeptonBuilderWZSM:
                 self.ret["mll_i1"][i] = self.lepSelFO.index(os[3].l1)
                 self.ret["mll_i2"][i] = self.lepSelFO.index(os[3].l2)
 
+
+
+
+
+## deltaPhi
+## _______________________________________________________________
+def deltaPhi(phi1, phi2):
+    res = phi1 - phi2
+    while res >   math.pi: res -= 2*math.pi
+    while res <= -math.pi: res += 2*math.pi
+    return res
+
+## deltaR
+## _______________________________________________________________
+def deltaR(eta1, phi1, eta2, phi2):
+    dEta = abs(eta1-eta2)
+    dPhi = deltaPhi(phi1, phi2)
+    return math.sqrt(dEta*dEta + dPhi*dPhi)
 
 
 ## _susyEWK_tauId_CBloose
