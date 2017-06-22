@@ -29,6 +29,9 @@ TTCR: nBJetMedium30 > 0 && if3(nOSSF>0, abs(91.1876-mll_3l)>5, 1); Disable=True
 onZ: nOSSF>0 && abs(91.1876-mll_3l)<15
 met30: met_pt > 30
 bveto: nBJetMedium30 == 0
+ptleptons: LepZ1_pt<100 && LepZ2_pt<100 && LepW_pt<100 && LepZ1_conePt<100 && LepZ2_conePt<100 && LepW_conePt<100 ; Disable=True
+jetdr: LepZ1_jetDR < 0.1 ; Disable=True
+wzbalance: LepZ1_pt+LepZ2_pt-LepW_pt-met_pt >100. ; Disable=True
 m3l: m3L > 100
 
 
