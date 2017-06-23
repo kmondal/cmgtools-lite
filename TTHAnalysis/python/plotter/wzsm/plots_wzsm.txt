@@ -40,6 +40,9 @@ lepJetDR_Z1 : LepZ1_jetDR   : 21,0.0,1.0   ; XTitle="jetDR(leading Z lepton)",  
 lepJetDR_Z2 : LepZ2_jetDR   : 21,0.0,1.0   ; XTitle="jetDR(subleading Z lepton)", LegendCutoff=1e-5, Legend='TL', XNDiv=002, YMin=1.0, YMax=500.
 lepJetDR_W : LepW_jetDR   : 21,0.0,1.0   ; XTitle="jetDR(W lepton)", LegendCutoff=1e-5, Legend='TL', XNDiv=002, YMin=1.0, YMax=500.
 
+deltaR_wz     : deltaR_WZ  : 50,0.0,5.0   ; XTitle="DR(W Z)", LegendCutoff=1e-5, Legend='TL', YMin=1.0, YMax=500. 
+deltaR_wz_log : deltaR_WZ  : 50,0.0,5.0   ; XTitle="DR(W Z)", LegendCutoff=1e-5, Legend='TL', YMin=1.0, YMax=500., Logy
+
 wzBalance_pt : wzBalance_pt   : [0,100,200,300,400,600,800,1000]   ; XTitle="wzBalance(pt)",    LegendCutoff=1e-5, Legend='TL', XNDiv=002, YMin=1.0, YMax=2000., Logy
 wzBalance_conePt : wzBalance_conePt   :  [0,100,200,300,400,600,800,1000]   ; XTitle="wzBalance(conePt)",    LegendCutoff=1e-5, Legend='TL', XNDiv=002, YMin=1.0, YMax=2000., Logy
 
