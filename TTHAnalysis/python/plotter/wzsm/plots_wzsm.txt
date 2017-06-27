@@ -22,6 +22,9 @@ m3e:  mass_3_cheap(LepSel1_pt,LepSel1_eta,LepSel2_pt,LepSel2_eta,deltaPhi(LepSel
 m3mu: mass_3_cheap(LepSel1_pt,LepSel1_eta,LepSel2_pt,LepSel2_eta,deltaPhi(LepSel1_phi,LepSel2_phi),LepSel3_pt,LepSel3_eta,deltaPhi(LepSel1_phi,LepSel3_phi)): 20, 60, 120; XTitle="m(#mu #mu #mu) [GeV]"
 m3l    : m3L    : 21, 80, 500; XTitle="M_{3L} [GeV]", LegendCutoff=1e-5
 m3lmet : m3Lmet : 27, 75, 750; XTitle="M_{WZ} [GeV]", LegendCutoff=1e-5
+m3lblind    : m3L    : 21, 80, 300; XTitle="M_{3L} [GeV]", LegendCutoff=1e-5
+m3lmetblind : m3Lmet : 27, 75, 400; XTitle="M_{WZ} [GeV]", LegendCutoff=1e-5
+
 m3l_l    : m3L    : [0,100,200,300,400,500,600,700,800,900,1000,1200,1500,2000,2500]; XTitle="M_{3L} [GeV]", LegendCutoff=1e-5, Logy, YMin=0.1, YMax=5000.
 m3lmet_l : m3Lmet : [0,100,200,300,400,500,600,700,800,900,1000,1200,1500,2000,2500]; XTitle="M_{WZ} [GeV]", LegendCutoff=1e-5, Logy, YMin=0.1, YMax=5000.
 
@@ -124,6 +127,8 @@ nJB30_log :  nJB30  : 15,-0.5,14.5; XTitle="( N_{jet}  N_{b jet} )", LegendCutof
 METscan    : met_pt               : 30,0,300     ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5
 MET        : met_pt               : 23,20,250    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5
 MET_log    : met_pt               : 20,0,200    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5, Logy
+MET_logblind : met_pt               : 20,0,140    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5, Logy
+
 MET_JetRatio:      met_pt/Jet1_pt : 20,0,10; XTitle="E_{T}^{miss} / jet p_{T}  [GeV]"
 MET_JetRatio_log:  met_pt/Jet1_pt : 20,0,10; XTitle="E_{T}^{miss} / jet p_{T}  [GeV]", Logy
 METlow        : met_pt            : 20,0,100    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5
