@@ -18,6 +18,14 @@ if [ "$1" == "all" ]; then
     sh wzsm/doAnal.sh plot ttcr M  ${2}
     sh wzsm/doAnal.sh plot dycr M  ${2}
 
+elif [ "$1" == "SR" ]; then
+    sh wzsm/doAnal.sh plot dycr VT ${2}
+    sh wzsm/doAnal.sh plot dycr M  ${2}
+
+elif [ "$1" == "TT" ]; then
+    sh wzsm/doAnal.sh plot dycr VT ${2}
+    sh wzsm/doAnal.sh plot dycr M  ${2}
+
 elif [ "$1" == "DY" ]; then
     sh wzsm/doAnal.sh plot dycr VT ${2}
     sh wzsm/doAnal.sh plot dycr M  ${2}
