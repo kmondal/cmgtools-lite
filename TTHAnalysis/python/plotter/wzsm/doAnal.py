@@ -103,11 +103,13 @@ if(action=='srwz'):
         if(wp=='1'):
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
-                # enablecuts=' -E MVAVT ' # it is already enabled by default
+                # enablecuts=' -E MVAVT ' # it is already enabled by default. Re-enabling would result in re-putting the isTight cut for fakes
+                #enablecuts=' -X MVAVT -E cutPOGT '
         else:
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E MVAM -X MVAVT '
+                #enablecuts=' -X MVAVT -E cutPOGM '
 
         # 0 = medium, 1 = vtight
         # The first parameter, which getLepSF calls "isTight", is a way of deactivating the SF (it returns 1 if it is false). It is hence wrong to pass "isTight" as this parameter, because this implies that the SF is set to 1 for any non-VTight lepton. And by the way the default value of wp is zero, which means that passing only 1 as isTight implies applying the Medium SFs to the VTight WP. LoL
@@ -127,7 +129,7 @@ if(action=='srwz'):
         # https://hypernews.cern.ch/HyperNews/CMS/get/physics-announcements/4495.html
         lumi='35.867'
         pgroup=' --pgroup internal:=ttZ,Gstar,ZGi --pgroup external:=TTG,WG,ZG,TG,Gstare --pgroup incl_fakes_appldata+=incl_promptsub '
-        pgroup=' -p data -p prompt.* -p rares.* -p fakes_appldata --plotgroup fakes_appldata+=promptsub --neglist promptsub '
+        pgroup=' -p data -p prompt.* -p convs.* -p rares.* -p fakes_appldata --plotgroup fakes_appldata+=promptsub --neglist promptsub '
         #
         header='All'
         cuts='wzsm/cuts_wzsm.txt'
@@ -157,11 +159,13 @@ elif(action=='ttcr'):
         if(wp=='1'):
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
-                # enablecuts=' -E TTCR -X bveto -E MVAVT ' # it is already enabled by default
+                enablecuts=' -E TTCR -X bveto -E MVAVT ' # it is already enabled by default
+                #enablecuts=' -E TTCR -X bveto -X MVAVT -E cutPOGT '
         else:
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E TTCR -X bveto -E MVAM -X MVAVT '
+                #enablecuts=' -E TTCR -X bveto -X MVAVT -E cutPOGM '
 
         trigdef='wzsm/mcc_triggerdefs.txt'
         weights=' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1)*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1)*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1)*bTagWeight '
@@ -180,7 +184,7 @@ elif(action=='ttcr'):
         # https://hypernews.cern.ch/HyperNews/CMS/get/physics-announcements/4495.html
         lumi='35.867'
         pgroup=' --pgroup internal:=ttZ,Gstar,ZGi --pgroup external:=TTG,WG,ZG,TG,Gstare --pgroup incl_fakes_appldata+=incl_promptsub '
-        pgroup=' -p data -p prompt.* -p rares.* -p fakes_appldata --plotgroup fakes_appldata+=promptsub --neglist promptsub '
+        pgroup=' -p data -p prompt.* -p convs.* -p rares.* -p fakes_appldata --plotgroup fakes_appldata+=promptsub --neglist promptsub '
         #
         header='All'
         #cuts='wzsm/cuts_crwz.txt'
@@ -201,7 +205,7 @@ elif(action=='dycr'):
         mcc='wzsm/mcc_varsub_wzsm.txt'
         #mccother='--mcc wzsm/lepchoice-crwz-FO.txt'
         mccother=' '
-        enablecuts=' -E DYCR -E ptBalance -X met30 '
+        enablecuts=' -E DYCR -X met30 '
         if(workingpoint=='VT'):
                 wp='1'
         elif(workingpoint=='M'):
@@ -211,14 +215,17 @@ elif(action=='dycr'):
         if(wp=='1'):
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
-                # enablecuts=' -E DYCR -X met30 -E MVAVT ' # it is already enabled by default
+                enablecuts=' -E DYCR -X met30 ' # it is already enabled by default
+                #enablecuts=' -E DYCR -X met30 -X MVAVT -E cutPOGT '
         else:
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
-                enablecuts=' -E DYCR -E ptBalance -X met30 -E MVAM -X MVAVT '
+                enablecuts=' -E DYCR -X met30 -E MVAM -X MVAVT '
+                #enablecuts=' -E DYCR -X met30 -X MVAVT -E cutPOGM '
 
         trigdef='wzsm/mcc_triggerdefs.txt'
         weights=' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1)*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1)*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1)*bTagWeight '
+        #weights=' puw_nInt_Moriond(nTrueInt)*bTagWeight '
         functions=' --load-macro wzsm/functionsPUW.cc --load-macro wzsm/functionsSF.cc --load-macro wzsm/functionsWZ.cc '
         toplot='--sP m3l,m3lmet,m3l_l,m3lmet_l,flavor,nBJet30,ptZ1,ptZ2,ptW,MET_log,lepJetDR_Z1,lepJetDR_Z2,lepJetDR_W,wzBalance_pt,wzBalance_conePt,wzBalance_pt2,wzBalance_conePt2,deltaR_wz,deltaR_wz_log '
         if(subaction!=''):
@@ -233,8 +240,9 @@ elif(action=='dycr'):
         jei='40'
         # https://hypernews.cern.ch/HyperNews/CMS/get/physics-announcements/4495.html
         lumi='35.867'
-        pgroup=' --pgroup internal:=ttZ,Gstar,ZGi --pgroup external:=TTG,WG,ZG,TG,Gstare --pgroup incl_fakes_appldata+=incl_promptsub '
-        pgroup=' -p data -p prompt.* -p rares.* -p fakes_appldata --plotgroup fakes_appldata+=promptsub --neglist promptsub '
+        #pgroup=' --pgroup internal:=ttZ,Gstar,ZGi --pgroup external:=TTG,WG,ZG,TG,Gstare --pgroup incl_fakes_appldata+=incl_promptsub '
+        pgroup=' -p data -p prompt.* -p convs.* -p rares.* -p fakes_appldata --plotgroup fakes_appldata+=promptsub --neglist promptsub ' if not mconly else " -p data -p prompt.* -p rares.*"
+        #pgroup=' -p data -p prompt.* -p convs.* -p rares.* -p fakes_appldata --plotgroup fakes_appldata+=promptsub --neglist promptsub ' if not mconly else " "
         #
         header='All'
         #cuts='wzsm/cuts_crwz.txt'
