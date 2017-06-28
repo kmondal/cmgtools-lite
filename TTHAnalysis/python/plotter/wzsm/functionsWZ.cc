@@ -37,33 +37,27 @@ Float_t baseDeltaR(Float_t eta1, Float_t phi1, Float_t eta2, Float_t phi2)
   return res;
 }
 
-TLorentzVector Zp4(Float_t z1pt, Float_t z1eta, Float_t z1phi, Float_t z1m, Float_t z2pt, Float_t z2eta, Float_t z2phi, Float_t z2m)
-{
-  TLorentzVector z1; z1.SetPtEtaPhiM(z1pt, z1eta, z1phi, z1m);
-  TLorentzVector z2; z2.SetPtEtaPhiM(z2pt, z2eta, z2phi, z2m);
-  TLorentzVector z; z = z1 + z2;
-  return z;
-}
-
 // Shitty heppy, lots of helpers just because functions called in plots.txt cannot return complex types
-Float_t Zp4(Int_t component, Float_t z1pt, Float_t z1eta, Float_t z1phi, Float_t z1m, Float_t z2pt, Float_t z2eta, Float_t z2phi, Float_t z2m)
+Float_t sump4(Int_t component, Float_t v1pt, Float_t v1eta, Float_t v1phi, Float_t v1m, Float_t v2pt, Float_t v2eta, Float_t v2phi, Float_t v2m)
 {
-  TLorentzVector z = Zp4(z1pt, z1eta, z1phi, z1m, z2pt, z2eta, z2phi, z2m);
+  TLorentzVector v1; v1.SetPtEtaPhiM(v1pt, v1eta, v1phi, v1m);
+  TLorentzVector v2; v2.SetPtEtaPhiM(v2pt, v2eta, v2phi, v2m);
+  TLorentzVector v; v = v1 + v2;
   Float_t ret;
   
   switch(component)
     {
     case 0:
-      ret = z.Pt();
+      ret = v.Pt();
       break;
     case 1: 
-      ret = z.Eta();
+      ret = v.Eta();
       break;
     case 2:
-      ret = z.Phi();
+      ret = v.Phi();
       break;
     case 3:
-      ret = z.M();
+      ret = v.M();
       break;
     default:
       ret = -99999.;
@@ -71,17 +65,6 @@ Float_t Zp4(Int_t component, Float_t z1pt, Float_t z1eta, Float_t z1phi, Float_t
   return ret;
 }
 
-Float_t Zeta(Float_t z1pt, Float_t z1eta, Float_t z1phi, Float_t z1m, Float_t z2pt, Float_t z2eta, Float_t z2phi, Float_t z2m)
-{
-  TLorentzVector z = Zp4(z1pt, z1eta, z1phi, z1m, z2pt, z2eta, z2phi, z2m);
-  return z.Eta();
-}
-
-Float_t Zphi(Float_t z1pt, Float_t z1eta, Float_t z1phi, Float_t z1m, Float_t z2pt, Float_t z2eta, Float_t z2phi, Float_t z2m)
-{
-  TLorentzVector z = Zp4(z1pt, z1eta, z1phi, z1m, z2pt, z2eta, z2phi, z2m);
-  return z.Phi();
-}
 
 //                balance = self.bestOSPair.l1.p4()
 //                balance += self.bestOSPair.l2.p4()
@@ -98,6 +81,17 @@ Float_t Zphi(Float_t z1pt, Float_t z1eta, Float_t z1phi, Float_t z1m, Float_t z2
 //                balance -= metmom
 //                self.ret["wzBalance_conePt"] = balance.Pt()
 //
+
+
+// TBD: implement the same but with conePt
+Float_t WZbalance(Float_t zpt, Float_t zeta, Float_t zphi, Float_t zm, Float_t wpt, Float_t weta, Float_t wphi, Float_t wm)
+{
+  TLorentzVector z; z.SetPtEtaPhiM(zpt, zeta, zphi, zm);
+  TLorentzVector w; w.SetPtEtaPhiM(wpt, weta, wphi, wm);
+  TLorentzVector balance = z + w;
+  
+  return balance.Pt();
+}
 
 Float_t WZdeltaR(Float_t zeta, Float_t zphi, Float_t weta, Float_t wphi)
 {
