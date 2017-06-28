@@ -102,19 +102,20 @@ class LeptonBuilderWZSM:
         if len(self.lepSelFO)>=4: self.ret["is_4l"] = 1
         if len(self.lepSelFO)>=5: self.ret["is_5l"] = 1
 
-        self.collectOSpairs(3)
+        self.collectOSpairs(3, True)
         self.makeMass(3)
         self.makeMt2(3)
         self.findBestOSpair(3)
         self.findMtMin(3)
         self.makeMassMET(3)
 
-        self.collectOSpairs(4, True)
-        self.makeMass(4)
-        self.makeMt2(4)
-        self.findBestOSpair(4)
-        self.findMtMin(4)
-        self.makeMassMET(4)
+        # This in principle is not needed anymore
+        #self.collectOSpairs(4, True)
+        #self.makeMass(4)
+        #self.makeMt2(4)
+        #self.findBestOSpair(4)
+        #self.findMtMin(4)
+        #self.makeMassMET(4)
 
 
     ## collectObjects
