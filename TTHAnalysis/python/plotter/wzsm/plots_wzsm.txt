@@ -54,6 +54,19 @@ fromtreeswzBalance_conePt : wzBalance_conePt   :  [0,100,200,300,400,600,800,100
 
 wzBalance_pt : WZbalance( sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(1, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(2, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(3, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(0, LepW_pt, LepW_eta, LepW_phi, LepW_mass, met_pt, 0, met_phi, 0), sump4(1, LepW_pt, LepW_eta, LepW_phi, LepW_mass, met_pt, 0, met_phi, 0), sump4(2, LepW_pt, LepW_eta, LepW_phi, LepW_mass, met_pt, 0, met_phi, 0), sump4(3, LepW_pt, LepW_eta, LepW_phi, LepW_mass, met_pt, 0, met_phi, 0)) : 15,0.0,300.   ; XTitle="wzBalance(pt)",    LegendCutoff=1e-5, Legend='TR', XNDiv=002, YMin=1.0, YMax=1000., Logy
 
+wzAbsAltBalance_pt : abs(sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass) - sump4(0, LepW_pt, LepW_eta, LepW_phi, LepW_mass, met_pt, 0, met_phi, 0) ) : 15,0.0,300.   ; XTitle="abs(Zpt-Wpt)",    LegendCutoff=1e-5, Legend='TR', YMin=1.0, YMax=1000., Logy
+
+wzAltBalance_pt : sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass) - sump4(0, LepW_pt, LepW_eta, LepW_phi, LepW_mass, met_pt, 0, met_phi, 0) : 2,-150.,150.   ; XTitle="Zpt-Wpt",    LegendCutoff=1e-5, Legend='TR', YMin=1.0, YMax=1000., Logy
+
+dphiZmet    : abs(deltaPhi(sump4(2, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass),met_phi)):  16, 0, 3.2;  XTitle="#Delta #phi(Z MET) [rad]", Legend='TL', LegendCutoff=1e-5
+dphiLepWmet    : abs(deltaPhi(LepW_phi,met_phi)):  16, 0, 3.2;  XTitle="#Delta #phi(Wlep MET) [rad]", Legend='TL', LegendCutoff=1e-5
+dphiZ1Z2    : abs(deltaPhi(LepZ1_phi,LepZ2_phi)):  16, 0, 3.2;  XTitle="#Delta #phi(Z1 Z2) [rad]", Legend='TL', LegendCutoff=1e-5
+
+detaZ1Z2    : abs(LepZ1_eta-LepZ2_eta):  16, 0, 3.2;  XTitle="#Delta #eta(Z1 Z2) [rad]", Legend='TL', LegendCutoff=1e-5
+
+deltaR_z1z2 : WZdeltaR( LepZ1_eta,LepZ1_phi,LepZ2_eta,LepZ2_phi)  : 50,0.0,5.0   ; XTitle="DR(W Z)", LegendCutoff=1e-5, Legend='TL', YMin=1.0, YMax=500.
+deltaR_z1z2_log : WZdeltaR( LepZ1_eta,LepZ1_phi,LepZ2_eta,LepZ2_phi)  : 50,0.0,5.0   ; XTitle="DR(W Z)", LegendCutoff=1e-5, Legend='TL', YMin=1.0, YMax=500., Logy
+
 
 #mZ1     : mZ1: 30,75,105; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5
 #bestmZ  : bestmzTL : 30,75,105; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5 #with old WZCRvars FT
