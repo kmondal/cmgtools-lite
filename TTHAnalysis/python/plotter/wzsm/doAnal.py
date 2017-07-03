@@ -110,7 +110,7 @@ if(action=='srwz'):
         else:
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
-                enablecuts=' -E MVAM -X MVAVT ' if not pog else enablecuts=' -X MVAVT -E cutPOGM '
+                enablecuts=' -E MVAM -X MVAVT ' if not pog else ' -X MVAVT -E cutPOGM '
 
         # 0 = medium, 1 = vtight
         # The first parameter, which getLepSF calls "isTight", is a way of deactivating the SF (it returns 1 if it is false). It is hence wrong to pass "isTight" as this parameter, because this implies that the SF is set to 1 for any non-VTight lepton. And by the way the default value of wp is zero, which means that passing only 1 as isTight implies applying the Medium SFs to the VTight WP. LoL
@@ -167,7 +167,7 @@ elif(action=='ttcr'):
         else:
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
-                enablecuts=' -E TTCR -X bveto -E MVAM -X MVAVT ' if not pog else enablecuts=' -E TTCR -X bveto -X MVAVT -E cutPOGM '
+                enablecuts=' -E TTCR -X bveto -E MVAM -X MVAVT ' if not pog else ' -E TTCR -X bveto -X MVAVT -E cutPOGM '
 
         trigdef='wzsm/mcc_triggerdefs.txt'
         weights=' puw_nInt_Moriond(nTrueInt)*bTagWeight ' if (mconly or pog) else ' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1,{wp})*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1,{wp})*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1,{wp})*bTagWeight '.format(wp=wp)
@@ -224,7 +224,7 @@ elif(action=='dycr'):
         else:
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
-                enablecuts=' -E DYCR -X met30 -E MVAM -X MVAVT ' if not pog else enablecuts=' -E DYCR -X met30 -X MVAVT -E cutPOGM '
+                enablecuts=' -E DYCR -X met30 -E MVAM -X MVAVT ' if not pog else ' -E DYCR -X met30 -X MVAVT -E cutPOGM '
 
         trigdef='wzsm/mcc_triggerdefs.txt'
         weights=' puw_nInt_Moriond(nTrueInt)*bTagWeight ' if (mconly or pog) else ' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1,{wp})*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1,{wp})*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1,{wp})*bTagWeight '.format(wp=wp)
