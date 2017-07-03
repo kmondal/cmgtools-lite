@@ -36,7 +36,8 @@ parser.add_option('-s', '--subaction',      dest='subaction',      help='which s
 parser.add_option('-w', '--workingpoint',   dest='workingpoint',   help='which working point to apply', default='', type='string')
 parser.add_option('-p', '--pretend',        dest='pretend',        help='only print commands out', action='store_true')
 parser.add_option('-m', '--mconly',         dest='mconly', action='store_true', help='use mc-only mca file')
-
+parser.add_option('-p', '--pog',            dest='pog',    action='store_true', help='use POG IDs instead of leptonMVA ones')
+ 
 (opt, args) = parser.parse_args()
 
 inputDir     = opt.inputDir
@@ -46,6 +47,7 @@ subaction    = opt.subaction
 workingpoint = opt.workingpoint
 pretend      = opt.pretend
 mconly       = opt.mconly
+pog          = opt.pog
 
 if 'mc' in action:
         mconly=True
@@ -104,16 +106,16 @@ if(action=='srwz'):
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
                 # enablecuts=' -E MVAVT ' # it is already enabled by default. Re-enabling would result in re-putting the isTight cut for fakes
-                #enablecuts=' -X MVAVT -E cutPOGT '
+                if pog: enablecuts=' -X MVAVT -E cutPOGT '
         else:
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
-                enablecuts=' -E MVAM -X MVAVT '
-                #enablecuts=' -X MVAVT -E cutPOGM '
+                enablecuts=' -E MVAM -X MVAVT ' if not pog else enablecuts=' -X MVAVT -E cutPOGM '
 
         # 0 = medium, 1 = vtight
         # The first parameter, which getLepSF calls "isTight", is a way of deactivating the SF (it returns 1 if it is false). It is hence wrong to pass "isTight" as this parameter, because this implies that the SF is set to 1 for any non-VTight lepton. And by the way the default value of wp is zero, which means that passing only 1 as isTight implies applying the Medium SFs to the VTight WP. LoL
-        weights=' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1,{wp})*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1,{wp})*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1,{wp})*bTagWeight '.format(wp=wp) if not mconly else ' puw_nInt_Moriond(nTrueInt)*bTagWeight ' 
+        weights=' puw_nInt_Moriond(nTrueInt)*bTagWeight ' if (mconly or pog) else ' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1,{wp})*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1,{wp})*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1,{wp})*bTagWeight '.format(wp=wp)
+        #weights=' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1,{wp})*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1,{wp})*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1,{wp})*bTagWeight '.format(wp=wp) if not mconly else ' puw_nInt_Moriond(nTrueInt)*bTagWeight ' 
         functions=' --load-macro wzsm/functionsPUW.cc --load-macro wzsm/functionsSF.cc --load-macro wzsm/functionsWZ.cc '
         toplot='--sP m3l,m3lmet,m3l_l,m3lmet_l,flavor,nBJet30,ptZ1,ptZ2,ptW,MET_log,lepJetDR_Z1,lepJetDR_Z2,lepJetDR_W,wzBalance_pt,wzBalance_conePt,wzBalance_pt2,wzBalance_conePt2,deltaR_wz,deltaR_wz_log ' 
         if(subaction!=''):
@@ -137,11 +139,11 @@ if(action=='srwz'):
         mca= 'wzsm/mca_includes.txt' if not mconly else 'wzsm/mca_MC_includes.txt'
         out=''
         if(wp=='1'):
-                out=outputDir+'wz{mc}/lepmvaVT/srwz/'.format(mc='' if not mconly else 'MC')
+                out=outputDir+'wz{mc}{pog}/lepmvaVT/srwz/'.format(mc='' if not mconly else 'MC', pog='' if not pog else 'pog')
         elif(wp=='0'):
-                out=outputDir+'wz{mc}/lepmvaM/srwz/'.format(mc='' if not mconly else 'MC')
+                out=outputDir+'wz{mc}{pog}/lepmvaM/srwz/'.format(mc='' if not mconly else 'MC', pog='' if not pog else 'pog' )
         else:
-                out=outputDir+'wz{mc}/lepmvaVT/srwz/'.format(mc='' if not mconly else 'MC')
+                out=outputDir+'wz{mc}{pog}/lepmvaVT/srwz/'.format(mc='' if not mconly else 'MC', pog='' if not pog else 'pog')
         runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,enablecuts, header)
 
 elif(action=='ttcr'):
@@ -160,16 +162,16 @@ elif(action=='ttcr'):
         if(wp=='1'):
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
-                enablecuts=' -E TTCR -X bveto -E MVAVT ' # it is already enabled by default
-                #enablecuts=' -E TTCR -X bveto -X MVAVT -E cutPOGT '
+                enablecuts=' -E TTCR -X bveto ' # it is already enabled by default
+                if pog: enablecuts=' -E TTCR -X bveto -X MVAVT -E cutPOGT '
         else:
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
-                enablecuts=' -E TTCR -X bveto -E MVAM -X MVAVT '
-                #enablecuts=' -E TTCR -X bveto -X MVAVT -E cutPOGM '
+                enablecuts=' -E TTCR -X bveto -E MVAM -X MVAVT ' if not pog else enablecuts=' -E TTCR -X bveto -X MVAVT -E cutPOGM '
 
         trigdef='wzsm/mcc_triggerdefs.txt'
-        weights=' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1)*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1)*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1)*bTagWeight ' if not mconly else ' puw_nInt_Moriond(nTrueInt)*bTagWeight ' 
+        weights=' puw_nInt_Moriond(nTrueInt)*bTagWeight ' if (mconly or pog) else ' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1,{wp})*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1,{wp})*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1,{wp})*bTagWeight '.format(wp=wp)
+        #weights=' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1)*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1)*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1)*bTagWeight ' if not mconly else ' puw_nInt_Moriond(nTrueInt)*bTagWeight ' 
         functions=' --load-macro wzsm/functionsPUW.cc --load-macro wzsm/functionsSF.cc --load-macro wzsm/functionsWZ.cc '
         toplot='--sP m3l,m3lmet,m3l_l,m3lmet_l,flavor,nBJet30,ptZ1,ptZ2,ptW,MET_log,lepJetDR_Z1,lepJetDR_Z2,lepJetDR_W,wzBalance_pt,wzBalance_conePt,wzBalance_pt2,wzBalance_conePt2,deltaR_wz,deltaR_wz_log '
         if(subaction!=''):
@@ -194,11 +196,11 @@ elif(action=='ttcr'):
         mca= 'wzsm/mca_includes.txt' if not mconly else 'wzsm/mca_MC_includes.txt'
         out=''
         if(wp=='1'):
-                out=outputDir+'wz{mc}/lepmvaVT/ttcr/'.format(mc='' if not mconly else 'MC')
+                out=outputDir+'wz{mc}{pog}/lepmvaVT/ttcr/'.format(mc='' if not mconly else 'MC', pog='' if not pog else 'pog')
         elif(wp=='0'):
-                out=outputDir+'wz{mc}/lepmvaM/ttcr/'.format(mc='' if not mconly else 'MC')
+                out=outputDir+'wz{mc}{pog}/lepmvaM/ttcr/'.format(mc='' if not mconly else 'MC', pog='' if not pog else 'pog')
         else:
-                out=outputDir+'wz{mc}/lepmvaVT/ttcr/'.format(mc='' if not mconly else 'MC')
+                out=outputDir+'wz{mc}{pog}/lepmvaVT/ttcr/'.format(mc='' if not mconly else 'MC', pog='' if not pog else 'pog')
         runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,enablecuts, header)
 
 elif(action=='dycr'):
@@ -218,15 +220,15 @@ elif(action=='dycr'):
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E DYCR -X met30 ' # it is already enabled by default
-                #enablecuts=' -E DYCR -X met30 -X MVAVT -E cutPOGT '
+                if pog: enablecuts=' -E DYCR -X met30 -X MVAVT -E cutPOGT '
         else:
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
-                enablecuts=' -E DYCR -X met30 -E MVAM -X MVAVT '
-                #enablecuts=' -E DYCR -X met30 -X MVAVT -E cutPOGM '
+                enablecuts=' -E DYCR -X met30 -E MVAM -X MVAVT ' if not pog else enablecuts=' -E DYCR -X met30 -X MVAVT -E cutPOGM '
 
         trigdef='wzsm/mcc_triggerdefs.txt'
-        weights=' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1)*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1)*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1)*bTagWeight ' if not mconly else ' puw_nInt_Moriond(nTrueInt)*bTagWeight ' 
+        weights=' puw_nInt_Moriond(nTrueInt)*bTagWeight ' if (mconly or pog) else ' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1,{wp})*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1,{wp})*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1,{wp})*bTagWeight '.format(wp=wp)
+        #weights=' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1)*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1)*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1)*bTagWeight ' if not mconly else ' puw_nInt_Moriond(nTrueInt)*bTagWeight ' 
         #weights=' puw_nInt_Moriond(nTrueInt)*bTagWeight '
         functions=' --load-macro wzsm/functionsPUW.cc --load-macro wzsm/functionsSF.cc --load-macro wzsm/functionsWZ.cc '
         toplot='--sP m3l,m3lmet,m3l_l,m3lmet_l,flavor,nBJet30,ptZ1,ptZ2,ptW,MET_log,lepJetDR_Z1,lepJetDR_Z2,lepJetDR_W,wzBalance_pt,wzBalance_conePt,wzBalance_pt2,wzBalance_conePt2,deltaR_wz,deltaR_wz_log '
@@ -252,11 +254,11 @@ elif(action=='dycr'):
         mca= 'wzsm/mca_includes.txt' if not mconly else 'wzsm/mca_MC_includes.txt'
         out=''
         if(wp=='1'):
-                out=outputDir+'wz{mc}/lepmvaVT/dycr/'.format(mc='' if not mconly else 'MC')
+                out=outputDir+'wz{mc}{pog}/lepmvaVT/dycr/'.format(mc='' if not mconly else 'MC', pog='' if not pog else 'pog')
         elif(wp=='0'):
-                out=outputDir+'wz{mc}/lepmvaM/dycr/'.format(mc='' if not mconly else 'MC')
+                out=outputDir+'wz{mc}{pog}/lepmvaM/dycr/'.format(mc='' if not mconly else 'MC', pog='' if not pog else 'pog')
         else:
-                out=outputDir+'wz{mc}/lepmvaVT/dycr/'.format(mc='' if not mconly else 'MC')
+                out=outputDir+'wz{mc}{pog}/lepmvaVT/dycr/'.format(mc='' if not mconly else 'MC', pog='' if not pog else 'pog')
         runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,enablecuts, header)
 
 

@@ -18,6 +18,27 @@ if [ "$1" == "all" ]; then
     sh wzsm/doAnal.sh plot ttcr M  ${2}
     sh wzsm/doAnal.sh plot dycr M  ${2}
 
+    sh wzsm/doAnal.sh plot srwz VT ${2}  mc
+    sh wzsm/doAnal.sh plot ttcr VT ${2}  mc
+    sh wzsm/doAnal.sh plot dycr VT ${2}  mc
+    sh wzsm/doAnal.sh plot srwz M  ${2} mc
+    sh wzsm/doAnal.sh plot ttcr M  ${2} mc
+    sh wzsm/doAnal.sh plot dycr M  ${2} mc
+
+    sh wzsm/doAnal.sh plot srwz T ${2}  pog
+    sh wzsm/doAnal.sh plot ttcr T ${2}  pog
+    sh wzsm/doAnal.sh plot dycr T ${2}  pog
+    sh wzsm/doAnal.sh plot srwz M  ${2} pog
+    sh wzsm/doAnal.sh plot ttcr M  ${2} pog
+    sh wzsm/doAnal.sh plot dycr M  ${2} pog
+
+    sh wzsm/doAnal.sh plot srwz T ${2}  pogmc
+    sh wzsm/doAnal.sh plot ttcr T ${2}  pogmc
+    sh wzsm/doAnal.sh plot dycr T ${2}  pogmc
+    sh wzsm/doAnal.sh plot srwz M  ${2} pogmc
+    sh wzsm/doAnal.sh plot ttcr M  ${2} pogmc
+    sh wzsm/doAnal.sh plot dycr M  ${2} pogmc
+    
 elif [ "$1" == "SR" ]; then
     sh wzsm/doAnal.sh plot dycr VT ${2}
     sh wzsm/doAnal.sh plot dycr M  ${2}
@@ -54,6 +75,7 @@ elif [ "$1" == "plot" ]; then
     ACTION=""
     WP=""
     SUBACTION=""
+    STUFF=""
     # ACTION can be general
     
     if [ "$2" == "" ]; then
@@ -65,13 +87,19 @@ elif [ "$1" == "plot" ]; then
             WP=" -w ${3} "
             if [ "$4" != "" ]; then
                 SUBACTION=" -s ${4} "
+                if [ "$5" == "pog" ]; then
+                    STUFF=" --pog "
+                elif [ "$5" == "mc" ]; then
+                    STUFF=" --mconly "
+                elif [ "$5" != !! ]; then
+                    STUFF=" --pog --mconly "
             fi
         fi
     fi
     
     PRETEND=" --pretend  "
     PRETEND=""
-    python wzsm/doAnal.py -i ${INPUTDIR} -o ${WEBDIR} ${WP} ${ACTION} ${SUBACTION} ${PRETEND}
+    python wzsm/doAnal.py -i ${INPUTDIR} -o ${WEBDIR} $STUFF --mconly ${WP} ${ACTION} ${SUBACTION} ${PRETEND}
 
 elif [ "$1" == "fr" ]; then
     
