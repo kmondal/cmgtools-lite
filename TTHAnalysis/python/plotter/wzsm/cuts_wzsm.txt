@@ -32,6 +32,7 @@ bveto: nBJetMedium30 == 0
 ptleptons: LepZ1_pt<100 && LepZ2_pt<100 && LepW_pt<100 && LepZ1_conePt<100 && LepZ2_conePt<100 && LepW_conePt<100 ; Disable=True
 jetdr: LepZ1_jetDR < 0.1 ; Disable=True
 wzbalance: LepZ1_pt+LepZ2_pt-LepW_pt-met_pt >100. ; Disable=True
+wzbalance_pt : sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass) - sump4(0, LepW_pt, LepW_eta, LepW_phi, LepW_mass, met_pt, 0, met_phi, 0) < 0 ; Disable=True
 m3l: m3L > 100
 
 
