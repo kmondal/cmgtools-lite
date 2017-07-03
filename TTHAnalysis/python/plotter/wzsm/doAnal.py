@@ -36,7 +36,7 @@ parser.add_option('-s', '--subaction',      dest='subaction',      help='which s
 parser.add_option('-w', '--workingpoint',   dest='workingpoint',   help='which working point to apply', default='', type='string')
 parser.add_option('-p', '--pretend',        dest='pretend',        help='only print commands out', action='store_true')
 parser.add_option('-m', '--mconly',         dest='mconly', action='store_true', help='use mc-only mca file')
-parser.add_option('-p', '--pog',            dest='pog',    action='store_true', help='use POG IDs instead of leptonMVA ones')
+parser.add_option('--pog',            dest='pog',    action='store_true', help='use POG IDs instead of leptonMVA ones')
  
 (opt, args) = parser.parse_args()
 

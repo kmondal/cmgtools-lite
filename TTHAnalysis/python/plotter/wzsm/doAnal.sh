@@ -100,7 +100,7 @@ elif [ "$1" == "plot" ]; then
     
     PRETEND=" --pretend  "
     PRETEND=""
-    python wzsm/doAnal.py -i ${INPUTDIR} -o ${WEBDIR} $STUFF --mconly ${WP} ${ACTION} ${SUBACTION} ${PRETEND}
+    python wzsm/doAnal.py -i ${INPUTDIR} -o ${WEBDIR} $STUFF ${WP} ${ACTION} ${SUBACTION} ${PRETEND}
 
 elif [ "$1" == "fr" ]; then
     
