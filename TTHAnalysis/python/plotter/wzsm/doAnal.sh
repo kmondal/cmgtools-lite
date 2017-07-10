@@ -62,13 +62,20 @@ elif [ "$1" == "M" ]; then
     sh wzsm/doAnal.sh plot dycr M
 
 elif [ "$1" == "mc" ]; then
-    sh wzsm/doAnal.sh plot mcsrwz VT
-    sh wzsm/doAnal.sh plot mcttcr VT
-    sh wzsm/doAnal.sh plot mcdycr VT
-    sh wzsm/doAnal.sh plot mcsrwz M
-    sh wzsm/doAnal.sh plot mcttcr M
-    sh wzsm/doAnal.sh plot mcdycr M
+    sh wzsm/doAnal.sh plot mcsrwz VT ${2} mc
+    sh wzsm/doAnal.sh plot mcttcr VT ${2} mc
+    sh wzsm/doAnal.sh plot mcdycr VT ${2} mc
+    sh wzsm/doAnal.sh plot mcsrwz M  ${2} mc
+    sh wzsm/doAnal.sh plot mcttcr M  ${2} mc
+    sh wzsm/doAnal.sh plot mcdycr M  ${2} mc
     
+    sh wzsm/doAnal.sh plot srwz T ${2}  pogmc
+    sh wzsm/doAnal.sh plot ttcr T ${2}  pogmc
+    sh wzsm/doAnal.sh plot dycr T ${2}  pogmc
+    sh wzsm/doAnal.sh plot srwz M  ${2} pogmc
+    sh wzsm/doAnal.sh plot ttcr M  ${2} pogmc
+    sh wzsm/doAnal.sh plot dycr M  ${2} pogmc
+
 
 elif [ "$1" == "plot" ]; then
     
