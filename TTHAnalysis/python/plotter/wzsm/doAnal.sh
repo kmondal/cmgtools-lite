@@ -98,7 +98,7 @@ elif [ "$1" == "plot" ]; then
                     STUFF=" --pog "
                 elif [ "$5" == "mc" ]; then
                     STUFF=" --mconly "
-                elif [ "$5" != !! ]; then
+                elif [ "$5" != "" ]; then
                     STUFF=" --pog --mconly "
                 fi
             fi

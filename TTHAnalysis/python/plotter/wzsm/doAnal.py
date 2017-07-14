@@ -219,7 +219,7 @@ elif(action=='dycr'):
         if(wp=='1'):
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
-                enablecuts=' -E DYCR -X met30 ' # it is already enabled by default
+                #enablecuts=' -E DYCR -X met30 ' # it is already enabled by default
                 if pog: enablecuts=' -E DYCR -X met30 -X MVAVT -E cutPOGT '
         else:
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
