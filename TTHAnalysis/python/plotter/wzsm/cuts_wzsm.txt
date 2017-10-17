@@ -23,7 +23,8 @@ met30: met_pt > 30
 bveto: nBJetMedium30 == 0
 m3l: m3L > 100
 
-DYCR: met_pt < 30; Disable=True
+DYCR: met_pt <= 30 && LepZ1_isTight && LepZ2_isTight && LepW_isMVAL && LepW_isNotTight; Disable=True
+DYCRM: met_pt <= 30 && LepZ1_isMVAM && LepZ2_isMVAM && LepW_isMVAL && LepW_isNotMVAM; Disable=True
 TTCR: nBJetMedium30 > 0 && if3(nOSSF>0, abs(91.1876-mll_3l)>5, 1); Disable=True
 
 # some cuts that are off by default but can be turned on with -E
