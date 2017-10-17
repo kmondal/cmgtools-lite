@@ -1,6 +1,11 @@
 cut-change: LepSel_isMVAM\[0\]: 1
 cut-change: LepSel_isMVAM\[1\]: 1
 cut-change: LepSel_isMVAM\[2\]: 1
+cut-change: LepZ1_isTight: 1
+cut-change: LepZ2_isTight: 1
+#cut-change: LepW_isTight: 1
+cut-change: LepW_isNotMVAM: 1
+cut-change: LepW_isMVAL: 1
 weight: fakeRateWeight_3l(fetchFR_i(LepSel_conePt[0],LepSel_eta[0],LepSel_pdgId[0],2), LepSel_isMVAM[0], \
                           fetchFR_i(LepSel_conePt[1],LepSel_eta[1],LepSel_pdgId[1],2), LepSel_isMVAM[1], \
                           fetchFR_i(LepSel_conePt[2],LepSel_eta[2],LepSel_pdgId[2],2), LepSel_isMVAM[2] )
