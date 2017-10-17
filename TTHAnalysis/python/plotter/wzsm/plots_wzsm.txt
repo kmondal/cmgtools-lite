@@ -25,6 +25,17 @@ m3lmet : m3Lmet : 27, 75, 750; XTitle="M_{WZ} [GeV]", LegendCutoff=1e-5
 m3lblind    : m3L    : 21, 80, 300; XTitle="M_{3L} [GeV]", LegendCutoff=1e-5
 m3lmetblind : m3Lmet : 27, 75, 400; XTitle="M_{WZ} [GeV]", LegendCutoff=1e-5
 
+mZ1W   : mass_2(LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass, LepW_pt,LepW_eta,LepW_phi,LepW_mass): 50,0,200; XTitle="m(Z1\,W) [GeV]"
+mZ2W   : mass_2(LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass, LepW_pt,LepW_eta,LepW_phi,LepW_mass): 50,0,200; XTitle="m(Z2\,W) [GeV]"
+mZ1Z2  : mass_2(LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass, LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass): 50,0,200; XTitle="m(Z1\,Z2) [GeV]"
+
+mtMetW : mt_2(met_pt, met_phi, LepW_pt, LepW_phi) : 50, 0, 500; XTitle="m_T(MET\,W) [GeV]"
+mtMetW_log : mt_2(met_pt, met_phi, LepW_pt, LepW_phi) : 50, 0, 500; XTitle="m_T(MET\,W) [GeV]", YMin=0.01, YMax=1000, Logy 
+
+Delta_Z1W_Z2W   : mass_2(LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass, LepW_pt,LepW_eta,LepW_phi,LepW_mass)-mass_2(LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass, LepW_pt,LepW_eta,LepW_phi,LepW_mass): 50,0,200; XTitle="#Delta m(Z1\,W)(Z2\,W) [GeV]"
+Delta_Z1W_Z1Z2  : mass_2(LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass, LepW_pt,LepW_eta,LepW_phi,LepW_mass)-mass_2(LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass, LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass): 50,0,200; XTitle="#Delta m(Z1\,W)(Z1\,Z2) [GeV]"
+Delta_Z2W_Z1Z2  : mass_2(LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass, LepW_pt,LepW_eta,LepW_phi,LepW_mass)-mass_2(LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass, LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass): 50,0,200; XTitle="#Delta m(Z2\,W)(Z1\,Z2) [GeV]"
+
 #m3l_l    : m3L    : [0,100,200,300,400,500,600,700,800,900,1000,1200,1500,2000,2500]; XTitle="M_{3L} [GeV]", LegendCutoff=1e-5, Logy, YMin=0.1, YMax=5000.
 #m3lmet_l : m3Lmet : [0,100,200,300,400,500,600,700,800,900,1000,1200,1500,2000,2500]; XTitle="M_{WZ} [GeV]", LegendCutoff=1e-5, Logy, YMin=0.1, YMax=5000.
 
@@ -145,7 +156,7 @@ nJB30_log :  nJB30  : 15,-0.5,14.5; XTitle="( N_{jet}  N_{b jet} )", LegendCutof
 
 METscan    : met_pt               : 30,0,300     ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5
 MET        : met_pt               : 23,20,250    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5
-MET_log    : met_pt               : 20,0,200    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5, Logy
+#MET_log    : met_pt               : 20,0,200    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5, Logy
 MET_logblind : met_pt               : 20,0,140    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5, Logy
 
 MET_JetRatio:      met_pt/Jet1_pt : 20,0,10; XTitle="E_{T}^{miss} / jet p_{T}  [GeV]"
