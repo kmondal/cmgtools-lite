@@ -207,8 +207,8 @@ elif(action=='dycr'):
         print 'Now plotting WZ CR plots'
         plots='wzsm/plots_wzsm.txt'
         mcc='wzsm/mcc_varsub_wzsm.txt'
-        #mccother='--mcc wzsm/lepchoice-crwz-FO.txt'
-        mccother=' '
+        mccother='--mcc wzsm/lepchoice-crwz-FO.txt'
+        #mccother=' '
         enablecuts=' -E DYCR -X met30 '
         if(workingpoint=='VT'):
                 wp='1'
@@ -219,12 +219,12 @@ elif(action=='dycr'):
         if(wp=='1'):
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
-                #enablecuts=' -E DYCR -X met30 ' # it is already enabled by default
+                enablecuts=' -E DYCR -X MVAVT -X met30 ' # it is already enabled by default
                 if pog: enablecuts=' -E DYCR -X met30 -X MVAVT -E cutPOGT '
         else:
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
-                enablecuts=' -E DYCR -X met30 -E MVAM -X MVAVT ' if not pog else ' -E DYCR -X met30 -X MVAVT -E cutPOGM '
+                enablecuts=' -E DYCRM -X met30 -E MVAM -X MVAVT ' if not pog else ' -E DYCR -X met30 -X MVAVT -E cutPOGM '
 
         trigdef='wzsm/mcc_triggerdefs.txt'
         weights=' puw_nInt_Moriond(nTrueInt)*bTagWeight ' if (mconly or pog) else ' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1,{wp})*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1,{wp})*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1,{wp})*bTagWeight '.format(wp=wp)
