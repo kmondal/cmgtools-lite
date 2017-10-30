@@ -50,7 +50,7 @@ def file2map(x):
             ret[fields[0]] = dict(zip(headers,fields[1:]))
     return ret
 #YRpath = os.environ['CMSSW_RELEASE_BASE']+"/src/HiggsAnalysis/CombinedLimit/data/lhc-hxswg/sm/";
-YRpath = '/afs/cern.ch/user/p/peruzzi/work/cmgtools/combine/CMSSW_7_4_14/src/HiggsAnalysis/CombinedLimit/data/lhc-hxswg/sm/'
+YRpath = '/afs/cern.ch/user/c/cericeci/private/CMSSW_7_4_7/src/HiggsAnalysis/CombinedLimit/data/lhc-hxswg/sm/'
 #XStth = file2map(YRpath+"xs/8TeV/8TeV-ttH.txt")
 BRhvv = file2map(YRpath+"br/BR2bosons.txt")
 BRhff = file2map(YRpath+"br/BR2fermions.txt")
