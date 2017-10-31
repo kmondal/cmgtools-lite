@@ -1,0 +1,20 @@
+## Base (data, fakes, prompt)
+## -----------------------------------------------------------
+incl_data      : + ; IncludeMca="susy-ewkino/crwz/includes/mca_data.txt"
+
+prompt_WZ      : WZTo3LNu : xsec : ((LepGood1_mcUCSXMatchId==0 || LepGood1_mcUCSXMatchId==1) && (LepGood2_mcUCSXMatchId==0 || LepGood2_mcUCSXMatchId==1) && (LepGood3_mcUCSXMatchId==0 || LepGood3_mcUCSXMatchId==1)); FakeRate="susy-ewkino/crwz/fakerate_standard_central.txt", FillColor=ROOT.kOrange, Label="WZ", NormSystematic=0.1
+
+incl_MC        : + ; IncludeMca="susy-ewkino/crwz/includes/mca_MC.txt"
+incl_fakesdata : + ; IncludeMca="susy-ewkino/crwz/includes/mca_fakesdata.txt"
+incl_promptsub : + ; IncludeMca="susy-ewkino/crwz/includes/mca_promptsub.txt"
+#incl_fakesMC : + ; IncludeMca="susy-ewkino/crwz/includes/mca_fakesMC.txt"
+
+## Systematics
+## -----------------------------------------------------------
+incl_sys_puw            : + ; IncludeMca="susy-ewkino/crwz/includes/mca_sys_puw.txt"
+incl_sys_ewk_fakesdata  : + ; IncludeMca="susy-ewkino/crwz/includes/mca_sys_ewk_fakesdata.txt"
+incl_sys_ewk_promptsub  : + ; IncludeMca="susy-ewkino/crwz/includes/mca_sys_ewk_promptsub.txt"
+incl_sys_jec            : + ; IncludeMca="susy-ewkino/crwz/includes/mca_sys_jec.txt"
+incl_sys_lepSF          : + ; IncludeMca="susy-ewkino/crwz/includes/mca_sys_lepSF.txt"
+incl_sys_bTagHF         : + ; IncludeMca="susy-ewkino/crwz/includes/mca_sys_bTagHF.txt"
+incl_sys_bTagLF         : + ; IncludeMca="susy-ewkino/crwz/includes/mca_sys_bTagLF.txt"

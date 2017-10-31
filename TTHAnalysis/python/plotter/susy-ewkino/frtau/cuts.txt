@@ -1,0 +1,11 @@
+alwaystrue: 1
+filters   : $DATA{METfilters                           } $MC{1} $FASTSIM{1}
+trigger   : $DATA{Triggers_ee||Triggers_em||Triggers_mm} $MC{Triggers_ee||Triggers_em||Triggers_mm} $FASTSIM{1}
+3l        : nLepSel == 3
+lowmass   : minMllSFOS_Mini > 12 || minMllSFOS_Mini == -1
+sanity    : passPtMll && is_3l
+flavor    : (abs(LepSel1_pdgId)==15)+(abs(LepSel2_pdgId)==15)+(abs(LepSel3_pdgId)==15)==1
+tightlight: allTightLight(3, LepSel1_pdgId, LepSel1_isTight, LepSel2_pdgId, LepSel2_isTight, LepSel3_pdgId, LepSel3_isTight)
+ossf      : nOSSFL_3l==1
+ossf      : abs(mllL_3l-91)<15
+met       : met_pt < 50

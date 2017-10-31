@@ -6,12 +6,16 @@ from PhysicsTools.HeppyCore.statistics.counter import Counter
 if __name__ == "__main__":
     from optparse import OptionParser
     parser = OptionParser(usage="%prog [options] outputDir inputDirs")
+    parser.add_option("--hist", dest="useHist", action="store_true", default='False', help="Use histograms CountSMS and CountSMSWeight to do renomalization (necessary if tree is skimmed)");
+    parser.add_option("--keepM2", dest="keepM2", type="float", default=0.0, help="Keep only mass points where the second mass is a multiple of this mass");
     parser.add_option("-t", "--tree",  dest="tree", default='treeProducerSusyMultilepton', help="Pattern for tree name");
     parser.add_option("-u", "--url",  dest="url", default=None, help="Url to remotely save the produced trees")
     parser.add_option("-q", dest="queue", default=None, help="Queue to send jobs (one per dataset/chunk)")
     parser.add_option("-D", "--drop",  dest="drop", type="string", default=[], action="append",  help="Branches to drop, as per TTree::SetBranchStatus") 
     parser.add_option("-K", "--keep",  dest="keep", type="string", default=[], action="append",  help="Branches to keep, as per TTree::SetBranchStatus") 
     parser.add_option("--tmpdir", dest="tmpdir", type="string", default="splitoutput", help="Temporary output directory.")
+    parser.add_option("--branch1",  dest="branch1", type="string", default="GenSusyMScan1", help="Branch name of the first mass") 
+    parser.add_option("--branch2",  dest="branch2", type="string", default="GenSusyMScan2", help="Branch name of the second mass") 
     parser.add_option("--gen" , dest="gen" , action="store_true", default=False, help="Use GenPart collection to do the splitting.")
     parser.add_option("--pdgId1",  dest="pdgId1", type="int", default=1000023, help="PdgId of the first particle in the scan (if --gen option enabled).") 
     parser.add_option("--pdgId2",  dest="pdgId2", type="int", default=1000022, help="PdgId of the second particle in the scan (if --gen option enabled).") 
@@ -46,6 +50,7 @@ if __name__ == "__main__":
 
         indir = _in.strip()
         dset = indir.strip().split('/')[-1]
+
         remdir = args[0].strip()
         outdir = options.tmpdir
         treename = options.tree
@@ -90,8 +95,9 @@ if __name__ == "__main__":
                     if abs(t.GenPart_pdgId[i]) == options.pdgId2: 
                         mass2 = t.GenPart_mass[i]
                         continue
-                if options.mass > 0 and mass1 != options.mass: continue
-                if options.lsp  > 0 and mass2 <  options.lsp : continue
+                if options.mass   > 0 and mass1 != options.mass    : continue
+                if options.lsp    > 0 and mass2 <  options.lsp     : continue
+                if options.keepM2 > 0 and mass2%options.keepM2 != 0: continue
                 m = (mass1,mass2)
                 if m not in allmasses:
                     mname = '%s_%s'%(m[0],m[1])
@@ -99,13 +105,14 @@ if __name__ == "__main__":
                 allmasses[m].Enter(nev)
         ## split using LHE info
         else:
-            t.SetBranchStatus('GenSusyMScan1',1)
-            t.SetBranchStatus('GenSusyMScan2',1)
+            t.SetBranchStatus(options.branch1,1)
+            t.SetBranchStatus(options.branch2,1)
             for nev in xrange(t.GetEntries()):
                 if nev%1000==0: print 'Scanning event %d'%nev
                 t.GetEntry(nev)
-                if options.mass > 0 and t.GenSusyMScan1 != options.mass: continue
-                m = (t.GenSusyMScan1,t.GenSusyMScan2)
+                m = (getattr(t, options.branch1),getattr(t, options.branch2))
+                if options.mass   > 0 and m[0] != options.mass     : continue
+                if options.keepM2 > 0 and m[1] %options.keepM2 != 0: continue
                 if m not in allmasses:
                     mname = '%s_%s'%(m[0],m[1])
                     allmasses[m] = ROOT.TEventList(mname,mname)
@@ -122,6 +129,10 @@ if __name__ == "__main__":
             os.system("mkdir -p "+splitdir)
             os.system("mkdir -p %s/%s"%(splitdir,treename))
             if os.path.exists('%s/%s/%s/tree.root'%(remdir,splitdir.split('/')[-1],treename)): raise RuntimeError, 'Output file already exists'
+            f2 = ROOT.TFile("%s/selection_eventlist.root"%splitdir,"recreate")
+            f2.cd()
+            elist.Write()
+            f2.Close()
             fout = ROOT.TFile('%s/%s/tree.root'%(splitdir,treename),'recreate')
             fout.cd()
             t.SetEventList(elist)
@@ -131,8 +142,8 @@ if __name__ == "__main__":
             cx = Counter('SkimReport')
             cx.register('All Events')
             cx.register('Sum Weights')
-            cx.inc('All Events' , elist.GetN() if options.gen else h.GetBinContent(h.GetXaxis().FindBin(m[0]),h.GetYaxis().FindBin(m[1]),1))
-            cx.inc('Sum Weights', elist.GetN() if options.gen else hw.GetBinContent(hw.GetXaxis().FindBin(m[0]),hw.GetYaxis().FindBin(m[1]),1))
+            cx.inc('All Events' , elist.GetN() if options.gen or not options.useHist else h.GetBinContent(h.GetXaxis().FindBin(m[0]),h.GetYaxis().FindBin(m[1]),1))
+            cx.inc('Sum Weights', elist.GetN() if options.gen or not options.useHist else hw.GetBinContent(hw.GetXaxis().FindBin(m[0]),hw.GetYaxis().FindBin(m[1]),1))
             os.system("mkdir -p %s/skimAnalyzerCount"%splitdir)
             cx.write('%s/skimAnalyzerCount'%splitdir)
             if options.url:
@@ -142,10 +153,10 @@ if __name__ == "__main__":
             os.system('rm %s/%s/tree.root.url'%(splitdir,treename))
             os.system('rm %s/skimAnalyzerCount/SkimReport.pck'%splitdir)
             os.system('rm %s/skimAnalyzerCount/SkimReport.txt'%splitdir)
-            os.system('rmdir %s/%s'%(splitdir,treename))
-            os.system('rmdir %s/skimAnalyzerCount'%splitdir)
-            os.system('rmdir %s'%splitdir)
-            os.system('rmdir %s'%outdir)
+            os.system('rm -r %s/%s'%(splitdir,treename))
+            os.system('rm -r %s/skimAnalyzerCount'%splitdir)
+            os.system('rm -r %s'%splitdir)
+            #os.system('rmdir %s'%outdir)
 
     
 

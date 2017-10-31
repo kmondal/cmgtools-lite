@@ -1,0 +1,40 @@
+LepSel1_(\w+)  : LepSel_\1[0]; AlsoData
+LepSel2_(\w+)  : LepSel_\1[1]; AlsoData
+LepSel3_(\w+)  : LepSel_\1[2]; AlsoData
+LepSel4_(\w+)  : LepSel_\1[3]; AlsoData
+nJet25\b: nJet25_Recl; AlsoData
+htJet25j\b: htJet25j_Recl; AlsoData
+mhtJet25\b: mhtJet25_Recl; AlsoData
+nJet30\b: nJet30_Recl; AlsoData
+htJet30j\b: htJet30j_Recl; AlsoData
+mhtJet30\b: mhtJet30_Recl; AlsoData
+nJet40\b: nJet40_Recl; AlsoData
+htJet40j\b: htJet40j_Recl; AlsoData
+mhtJet40\b: mhtJet40_Recl; AlsoData
+nLepLoose\b : nLepLoose_Recl; AlsoData
+nLepCleaning\b : nLepCleaning_Recl; AlsoData
+nLepFO\b : nLepFO_Recl; AlsoData
+nLepTight\b : nLepTight_Recl; AlsoData
+nBJetLoose25\b: nBJetLoose25_Recl; AlsoData
+nBJetMedium25\b: nBJetMedium25_Recl; AlsoData
+nBJetTight25\b: nBJetTight25_Recl; AlsoData
+nBJetLoose30\b: nBJetLoose30_Recl; AlsoData
+nBJetMedium30\b: nBJetMedium30_Recl; AlsoData
+nBJetTight30\b: nBJetTight30_Recl; AlsoData
+nBJetLoose40\b: nBJetLoose40_Recl; AlsoData
+nBJetMedium40\b: nBJetMedium40_Recl; AlsoData
+nBJetTight40\b: nBJetTight40_Recl; AlsoData
+mll\b: mll_3l; AlsoData
+minMllAFAS\b: minMllAFAS_Recl; AlsoData
+minMllAFOS\b: minMllAFOS_Recl; AlsoData
+minMllAFSS\b: minMllAFSS_Recl; AlsoData
+minMllSFOS\b: minMllSFOS_Recl; AlsoData
+nOSSF\b: nOSSF_3l; AlsoData
+nOSLF\b: nOSLF_3l; AlsoData
+nOSTF\b: nOSTF_3l; AlsoData
+flavorcount\b: (abs(LepSel_pdgId[0])==13)+(abs(LepSel_pdgId[1])==13)+(abs(LepSel_pdgId[2])==13); AlsoData
+mass12\b: mass_2(LepSel_conePt[0], LepSel_eta[0], LepSel_phi[0], lepMass(LepSel_pdgId[0]), LepSel_conePt[1], LepSel_eta[1], LepSel_phi[1], lepMass(LepSel_pdgId[1])); AlsoData
+mass13\b: mass_2(LepSel_conePt[0], LepSel_eta[0], LepSel_phi[0], lepMass(LepSel_pdgId[0]), LepSel_conePt[2], LepSel_eta[2], LepSel_phi[2], lepMass(LepSel_pdgId[2])); AlsoData
+mass23\b: mass_2(LepSel_conePt[1], LepSel_eta[1], LepSel_phi[1], lepMass(LepSel_pdgId[1]), LepSel_conePt[2], LepSel_eta[2], LepSel_phi[2], lepMass(LepSel_pdgId[2])); AlsoData
+nJB25\b: nJB(nJet25_Recl, nBJetMedium25_Recl); AlsoData
+nJB30\b: nJB(nJet30_Recl, nBJetMedium30_Recl); AlsoData

@@ -1,0 +1,36 @@
+######### ZZH
+################################################
+promptsub : WZTo3LNu : -1.02*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+
+######### ZZH
+################################################
+promptsub : ZZTo4L_part1 + ZZTo4L_part2   : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : VHToNonbb  : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : GGHZZ4L  : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+
+######### ttX
+################################################
+promptsub : TTWToLNu_ext1 + TTWToLNu_ext2_part1 + TTWToLNu_ext2_part2 : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : TTZToLLNuNu                 : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : TTLLJets_m1to10             : 0.0493 : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : TTJets_DiLepton_part1 + TTJets_DiLepton_part2 : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : TTJets_SingleLeptonFromT_part1 +  TTJets_SingleLeptonFromT_part2 + TTJets_SingleLeptonFromT_part3 : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : TTJets_SingleLeptonFromTbar : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : TTTT        : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : tZq_ll      : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : TTWToQQ : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : TTZToQQ : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+
+promptsub : TTHnobb_pow        : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : tZW_ll      : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+
+######### VVV
+################################################
+promptsub : WpWpJJ          : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : WW2L2NuDouble   : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : WWW             : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : WWZ             : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : WZZ             : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+promptsub : ZZZ             : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 
+
+promptsub : WWTo2L2Nu       : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FakeRate="susy-ewkino/crconv/fakeRate-3l-frdata.txt" 

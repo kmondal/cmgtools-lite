@@ -1,1 +1,3 @@
+#atleastonefake: 1.0
+#atleastonefake:  isFakeHeppy(3, LepSel_mcMatchId[0]+LepSel_mcPromptGamma[0], LepSel_mcMatchId[1]+LepSel_mcPromptGamma[1], LepSel_mcMatchId[2]+LepSel_mcPromptGamma[2])
 atleastonefake:  isFake(3, LepSel_mcUCSX[0], LepSel_mcUCSX[1], LepSel_mcUCSX[2])

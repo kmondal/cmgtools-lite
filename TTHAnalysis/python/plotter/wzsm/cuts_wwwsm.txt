@@ -1,0 +1,36 @@
+alwaystrue: 1
+filters: $DATA{(Flag_EcalDeadCellTriggerPrimitiveFilter && Flag_HBHENoiseIsoFilter && Flag_HBHENoiseFilter && Flag_eeBadScFilter && Flag_goodVertices && Flag_globalTightHalo2016Filter && Flag_badChargedHadronFilter)} $MC{1}
+triggers: $DATA{(Triggers_ee || Triggers_mm || Triggers_em)} $MC{(Triggers_ee || Triggers_mm || Triggers_em)}
+threelightlep: nLepSel==3 && abs(LepSel1_pdgId)<14 && abs(LepSel2_pdgId)<14 && abs(LepSel3_pdgId)<14
+pt101010: LepSel1_conePt>10 && LepSel2_conePt>10 && LepSel3_conePt>10 && LepSel1_pt>10 && LepSel2_pt>10 && LepSel3_pt>10
+eee: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==33; Disable=True
+eem: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==35; Disable=True
+mme: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==37; Disable=True
+mmm: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==39; Disable=True
+eel: (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==33) || (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==35); Disable=True
+mml: (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==37) || (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==39); Disable=True
+#cutPOGT: LepSel1_iscutPOGT && LepSel2_iscutPOGT && LepSel3_iscutPOGT
+cutPOGM: LepSel1_iscutPOGM && LepSel2_iscutPOGM && LepSel3_iscutPOGM; Disable=True
+mvaPOGRA7: LepSel1_ismvaPOGRA7 && LepSel2_ismvaPOGRA7 && LepSel3_ismvaPOGRA7; Disable=True
+mvaPOG80: LepSel1_ismvaPOG80 && LepSel2_ismvaPOG80 && LepSel3_ismvaPOG80; Disable=True
+mvaPOG90: LepSel1_ismvaPOG90 && LepSel2_ismvaPOG90 && LepSel3_ismvaPOG90; Disable=True
+MVAET: LepSel1_isMVAET && LepSel2_isMVAET && LepSel3_isMVAET; Disable=True
+MVAVT: LepSel1_isMVAVT && LepSel2_isMVAVT && LepSel3_isMVAVT; Disable=True
+MVAT : LepSel1_isMVAT  && LepSel2_isMVAT  && LepSel3_isMVAT ; Disable=True
+MVAM : LepSel1_isMVAM  && LepSel2_isMVAM  && LepSel3_isMVAM ; Disable=True
+MVAL : LepSel1_isMVAL  && LepSel2_isMVAL  && LepSel3_isMVAL ; Disable=True
+MVAVL: LepSel1_isMVAVL && LepSel2_isMVAVL && LepSel3_isMVAVL; Disable=True
+MVAVT: LepSel1_isTight && LepSel2_isTight && LepSel3_isTight
+pt252020: LepSel1_pt>25 && LepSel2_pt>20 && LepSel3_pt>20; Disable=True
+ptWZ: LepZ1_conePt>25 && LepZ2_conePt>10 && LepW_conePt>25
+lowMll: minMllAFAS > 4
+DYCR: met_pt < 30; Disable=True
+TTCR: nBJetMedium30 > 0 && if3(nOSSF>0, abs(91.1876-mll_3l)>5, 1); Disable=True
+outZ: nOSSF>0 && abs(91.1876-mll_3l)>15
+met30: met_pt > 30
+bveto: nBJetMedium30 == 0
+m3l: m3L > 100; Disable=True
+
+
+# some cuts that are off by default but can be turned on with -E
+

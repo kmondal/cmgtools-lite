@@ -1,0 +1,31 @@
+matched_fakes_DY : DYJetsToLL_M10to50_LO       : xsec :  isFake(3, LepSel_mcUCSX[0], LepSel_mcUCSX[1], LepSel_mcUCSX[2])  ; FillColor=ROOT.kAzure, Label="DY (direct MC)" 
+matched_fakes_DY : DYJetsToLL_M50_LO_part1+DYJetsToLL_M50_LO_part2+DYJetsToLL_M50_LO_part3+DYJetsToLL_M50_LO_part4+DYJetsToLL_M50_LO_part5     : xsec :  isFake(3, LepSel_mcUCSX[0], LepSel_mcUCSX[1], LepSel_mcUCSX[2])  ; FillColor=ROOT.kAzure, Label="DY (direct MC)" 
+
+matched_fakes_TT : TTJets_DiLepton_part1+TTJets_DiLepton_part2+TTJets_DiLepton_part3    : xsec :  isFake(3, LepSel_mcUCSX[0], LepSel_mcUCSX[1], LepSel_mcUCSX[2])  ; FillColor=ROOT.kRed+4, Label="tt (direct MC)" 
+matched_fakes_TT : TTJets_SingleLeptonFromTbar_part1+TTJets_SingleLeptonFromTbar_part2+TTJets_SingleLeptonFromTbar_part3+TTJets_SingleLeptonFromTbar_part4    : xsec :  isFake(3, LepSel_mcUCSX[0], LepSel_mcUCSX[1], LepSel_mcUCSX[2])  ; FillColor=ROOT.kRed+4, Label="tt (direct MC)" 
+matched_fakes_TT : TTJets_SingleLeptonFromT_part1+TTJets_SingleLeptonFromT_part2+TTJets_SingleLeptonFromT_part3       : xsec :  isFake(3, LepSel_mcUCSX[0], LepSel_mcUCSX[1], LepSel_mcUCSX[2])  ; FillColor=ROOT.kRed+4, Label="tt (direct MC)" 
+
+matched_fakes_WJ : WJetsToLNu_LO                : xsec :  isFake(3, LepSel_mcUCSX[0], LepSel_mcUCSX[1], LepSel_mcUCSX[2])  ; FillColor=ROOT.kSpring, Label="W+Jets" 
+
+matched_fakes_sT : TToLeptons_sch               : xsec :  isFake(3, LepSel_mcUCSX[0], LepSel_mcUCSX[1], LepSel_mcUCSX[2])  ; FillColor=ROOT.kRed-2, Label="single top" 
+matched_fakes_sT : TToLeptons_tch_powheg        : xsec :  isFake(3, LepSel_mcUCSX[0], LepSel_mcUCSX[1], LepSel_mcUCSX[2])  ; FillColor=ROOT.kRed-2, Label="single top" 
+matched_fakes_sT : TBar_tWch                    : xsec :  isFake(3, LepSel_mcUCSX[0], LepSel_mcUCSX[1], LepSel_mcUCSX[2])  ; FillColor=ROOT.kRed-2, Label="single top"
+matched_fakes_sT : T_tWch                       : xsec :  isFake(3, LepSel_mcUCSX[0], LepSel_mcUCSX[1], LepSel_mcUCSX[2])  ; FillColor=ROOT.kRed-2, Label="single top"
+
+
+
+appl_fakes_DY : DYJetsToLL_M10to50_LO       : xsec : 1  ; FillColor=ROOT.kAzure+3, Label="DY (FR)" , FakeRate="susy-ra7/fakerate_fakeappl_tt.txt"
+appl_fakes_DY : DYJetsToLL_M50_LO_part1+DYJetsToLL_M50_LO_part2+DYJetsToLL_M50_LO_part3+DYJetsToLL_M50_LO_part4+DYJetsToLL_M50_LO_part5     : xsec : 1  ; FillColor=ROOT.kAzure+3, Label="DY (FR)" , FakeRate="susy-ra7/fakerate_fakeappl_tt.txt"
+
+appl_fakes_TT : TTJets_DiLepton_part1+TTJets_DiLepton_part2+TTJets_DiLepton_part3    : xsec : 1  ; FillColor=ROOT.kRed, Label="tt (FR)" , FakeRate="susy-ra7/fakerate_fakeappl_qcd.txt"
+appl_fakes_TT : TTJets_SingleLeptonFromTbar_part1+TTJets_SingleLeptonFromTbar_part2+TTJets_SingleLeptonFromTbar_part3+TTJets_SingleLeptonFromTbar_part4    : xsec : 1  ; FillColor=ROOT.kRed, Label="tt (FR)" , FakeRate="susy-ra7/fakerate_fakeappl_qcd.txt"
+appl_fakes_TT : TTJets_SingleLeptonFromT_part1+TTJets_SingleLeptonFromT_part2+TTJets_SingleLeptonFromT_part3       : xsec : 1  ; FillColor=ROOT.kRed, Label="tt (FR)" , FakeRate="susy-ra7/fakerate_fakeappl_qcd.txt"
+
+appl_fakes_WJ : WJetsToLNu_LO                : xsec : 1  ; FillColor=ROOT.kSpring, Label="W+Jets" , FakeRate="susy-ra7/fakerate_fakeappl_tt.txt"
+
+appl_fakes_sT : TToLeptons_sch               : xsec : 1  ; FillColor=ROOT.kRed-2, Label="single top" , FakeRate="susy-ra7/fakerate_fakeappl_tt.txt"
+appl_fakes_sT : TToLeptons_tch_powheg        : xsec : 1  ; FillColor=ROOT.kRed-2, Label="single top" , FakeRate="susy-ra7/fakerate_fakeappl_tt.txt"
+appl_fakes_sT : TBar_tWch                    : xsec : 1  ; FillColor=ROOT.kRed-2, Label="single top", FakeRate="susy-ra7/fakerate_fakeappl_tt.txt"
+appl_fakes_sT : T_tWch                       : xsec : 1  ; FillColor=ROOT.kRed-2, Label="single top", FakeRate="susy-ra7/fakerate_fakeappl_tt.txt"
+
+dummy : T_tWch                      : 0.00000001   ; FillColor=ROOT.kWhite, Label="dummy"

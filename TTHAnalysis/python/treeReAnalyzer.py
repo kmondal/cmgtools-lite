@@ -103,8 +103,7 @@ class Object:
         if self.pdgId == -11: return "e+";
     def p4(self, pt = 0):
         ret = ROOT.TLorentzVector()
-        if pt > 0: ret.SetPtEtaPhiM(pt     ,self.eta,self.phi,self.mass)
-        else     : ret.SetPtEtaPhiM(self.pt,self.eta,self.phi,self.mass)
+        ret.SetPtEtaPhiM(pt if pt > 0 else self.pt,self.eta,self.phi,self.mass)
         return ret
     def subObj(self,prefix):
         return Object(self._event,self._prefix+prefix)

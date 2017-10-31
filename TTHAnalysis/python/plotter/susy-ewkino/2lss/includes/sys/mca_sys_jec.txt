@@ -1,0 +1,67 @@
+######### JES for WZ, ZZH, ttW, ttZ, ttX, VVV, convs
+######### Uses: susy-ewkino/2lss/fakeRate_standatd_jecUp.txt
+#########       susy-ewkino/2lss/fakeRate_standard_jecDown.txt
+################################################
+prompt_WZ_jec_Up : WZTo3LNu : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+prompt_ZZH_jec_Up         : ZZTo4L_part1 + ZZTo4L_part2   : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+prompt_ZZH_jec_Up         : VHToNonbb  : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+prompt_ZZH_jec_Up         : GGHZZ4L  : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_ttW_jec_Up   : TTWToLNu_ext1 + TTWToLNu_ext2_part1 + TTWToLNu_ext2_part2 : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_ttZ_jec_Up   : TTZToLLNuNu                 : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_ttZ_jec_Up   : TTHnobb_pow        : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_ttX_jec_Up   : TTLLJets_m1to10             : 0.0493 : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_ttX_jec_Up   : TTJets_DiLepton_part1 + TTJets_DiLepton_part2 : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_ttX_jec_Up   : TTJets_SingleLeptonFromT_part1 +  TTJets_SingleLeptonFromT_part2 + TTJets_SingleLeptonFromT_part3 : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_ttX_jec_Up   : TTJets_SingleLeptonFromTbar : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_ttX_jec_Up   : TTTT        : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_ttX_jec_Up   : tZq_ll      : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_ttX_jec_Up   : tZW_ll      : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_ttX_jec_Up   : TTWToQQ : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_ttX_jec_Up   : TTZToQQ : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_VVV_jec_Up   : WpWpJJ          : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_VVV_jec_Up   : WW2L2NuDouble   : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_VVV_jec_Up   : WWW             : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_VVV_jec_Up   : WWZ             : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_VVV_jec_Up   : WZZ             : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_VVV_jec_Up   : ZZZ             : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+rares_VVV_jec_Up   : WWTo2L2Nu       : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+convs_jec_Up  : ZGTo2LG  : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==1) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==1)) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+convs_jec_Up  : TGJets   : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==1) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==1)) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+convs_jec_Up  : WGToLNuG : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+convs_jec_Up  : WGToLNuG : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==1) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==1)) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+convs_jec_Up  : TTGJets  : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+convs_jec_Up  : TTGJets  : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==1) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==1)) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecUp.txt", SkipMe=True
+
+
+prompt_WZ_jec_Dn: WZTo3LNu : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+prompt_ZZH_jec_Dn: ZZTo4L_part1 + ZZTo4L_part2   : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+prompt_ZZH_jec_Dn: VHToNonbb  : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+prompt_ZZH_jec_Dn: GGHZZ4L  : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_ttW_jec_Dn: TTWToLNu_ext1 + TTWToLNu_ext2_part1 + TTWToLNu_ext2_part2 : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_ttZ_jec_Dn   : TTZToLLNuNu                 : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_ttZ_jec_Dn   : TTHnobb_pow        : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_ttX_jec_Dn   : TTLLJets_m1to10             : 0.0493 : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_ttX_jec_Dn   : TTJets_DiLepton_part1 + TTJets_DiLepton_part2 : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_ttX_jec_Dn   : TTJets_SingleLeptonFromT_part1 +  TTJets_SingleLeptonFromT_part2 + TTJets_SingleLeptonFromT_part3 : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_ttX_jec_Dn   : TTJets_SingleLeptonFromTbar : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_ttX_jec_Dn   : TTTT        : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_ttX_jec_Dn   : tZq_ll      : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_ttX_jec_Dn   : tZW_ll      : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_ttX_jec_Dn   : TTWToQQ : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_ttX_jec_Dn   : TTZToQQ : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_VVV_jec_Dn   : WpWpJJ          : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_VVV_jec_Dn   : WW2L2NuDouble   : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_VVV_jec_Dn   : WWW             : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_VVV_jec_Dn   : WWZ             : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_VVV_jec_Dn   : WZZ             : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_VVV_jec_Dn   : ZZZ             : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+rares_VVV_jec_Dn   : WWTo2L2Nu       : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+convs_jec_Dn  : ZGTo2LG  : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==1) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==1)) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+convs_jec_Dn  : TGJets   : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==1) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==1)) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+convs_jec_Dn  : WGToLNuG : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+convs_jec_Dn  : WGToLNuG : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==1) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==1)) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+convs_jec_Dn  : TTGJets  : xsec : (LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+convs_jec_Dn  : TTGJets  : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==1) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==1)) ; FakeRate="susy-ewkino/2lss/fakerate_standard_jecDown.txt", SkipMe=True
+
+
+

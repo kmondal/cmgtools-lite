@@ -1,6 +1,7 @@
 *.pyc
 *_cc.d
 *_cc.so
+*_cc.d.bak
 *_ACLiC_dict_rdict.pcm
 cards/cards_*
 susy-interface/tmp/

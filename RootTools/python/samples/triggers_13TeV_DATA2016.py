@@ -29,6 +29,7 @@ triggers_mue   = [ "HLT_Mu17_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v*", # warni
                    "HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*", 
                    "HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_v*",
                    "HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_v*",
+                   "HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ_v*",
                    "HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v*" ]
 
 triggers_mumu_ht =  [ "HLT_DoubleMu8_Mass8_PFHT300_v*" ]
@@ -61,7 +62,7 @@ triggers_1mu_noniso = [ 'HLT_Mu45_eta2p1_v*',
 # note: here the WP75 is th name in MC, WPLoose and WPTight should be in data
 triggers_1e      = [ 
         #"HLT_Ele23_WPLoose_Gsf_v*", # only up to 5E33
-        #"HLT_Ele27_WPLoose_Gsf_v*", # only up to 5E33
+        #"HLT_Ele27_WPLoose_Gsf_v*", # only up to 5E33, used in ICHEP EWKino
         "HLT_Ele25_WPTight_Gsf_v*",        # not in column 0
         "HLT_Ele25_eta2p1_WPLoose_Gsf_v*", # not in column 0 
         "HLT_Ele25_eta2p1_WPTight_Gsf_v*", 

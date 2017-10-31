@@ -2,7 +2,7 @@ import os
 from functions import *
 
 class Job():
-	def __init__(self, master, name, commands, options, forceLocal = False):
+	def __init__(self, master, name, commands, options, forceLocal = False, work = None, src = None):
 		self.master     = master
 		self.id         = "job"+timestamp(False)
 		self.name       = name
@@ -21,7 +21,7 @@ class Job():
 		if self.options.queue and not any([t in self.options.queue for t in testqueue]):
 		#if self.options.queue and not self.options.queue in testqueue:
 			self.master.error("Cannot find queue '"+self.options.queue+"' on this system.")
-		self.prepare()
+		self.prepare(work, src)
 	def addCommands(self, commands):
 		self.commands += commands
 	def batchRuns(self):
@@ -47,22 +47,23 @@ class Job():
 		if stillRunning: return False
 		if not os.path.exists(self.master.jobpath+"/"+self.id): return True
 		return os.path.exists(self.master.jobpath+"/err_"+self.id)
-	def prepare(self):
+	def prepare(self, work = None, src = None):
 		## PLACEHOLDER is replaced later
 		template = [l.strip("\n") for l in open("susy-interface/scripts/"+self.template).readlines()]
 		f = open(self.script, "w")
 		for line in template:
-			line = line.replace("[WORK]"       , self.master.workdir                  )
-			line = line.replace("[SRC]"        , self.master.cmssw+"/src"             )
-			line = line.replace("[INST]"       , self.master.instance                 )
-			line = line.replace("[JOBDIR]"     , self.master.jobpath                  )
-			line = line.replace("[JOBID]"      , self.id                              )
+			line = line.replace("[WORK]"       , work if work else self.master.workdir     )
+			line = line.replace("[SRC]"        , src  if src  else self.master.cmssw+"/src")
+			line = line.replace("[INST]"       , self.master.instance                      )
+			line = line.replace("[JOBDIR]"     , self.master.jobpath                       )
+			line = line.replace("[JOBID]"      , self.id                                   )
+			line = line.replace("[EMAIL]"      , self.master.options.email                 )
 			f.write(line+"\n")
 		f.close()
-		cmd("chmod 755 "+self.script)
-		cmd("chmod 755 "+self.master.jobpath)
 	def prepareCommands(self):
 		replaceInFile(self.script, "[PLACEHOLDER]", "\n".join([b for b in self.commands]))
+		cmd("chmod 755 "+self.script)
+		cmd("chmod 755 "+self.master.jobpath)
 	def run(self):
 		self.prepareCommands() # here, because of the add commands method
 		if self.options.queue and not self.forceLocal:

@@ -1,0 +1,3 @@
+##allprompt: isPrompt(3, LepSel_mcUCSX[0], LepSel_mcUCSX[1], LepSel_mcUCSX[2])
+allprompt: hasPromptTau(3, LepSel_pdgId[0], LepSel_mcUCSX[0], LepSel_pdgId[1], LepSel_mcUCSX[1], LepSel_pdgId[2], LepSel_mcUCSX[2])
+

@@ -1,0 +1,16 @@
+change: mT_3l\b: mT_fo_3l
+change: mT_4l\b: mT_fo_4l
+change: SR\b:    SR_fo
+change: BR\b:    BR_fo
+change: isOnZ\b: isOnZ_fo
+cut-change: LepSel_isTight\[0\]: 1
+cut-change: LepSel_isTight\[1\]: 1
+cut-change: LepSel_isTight\[2\]: 1
+weight: fakeRateWeight_3l(fetchFR_i(LepSel_conePt[0],LepSel_eta[0],LepGood_pdgId[0],3), LepSel_isTight[0], \
+                          fetchFR_i(LepSel_conePt[1],LepSel_eta[1],LepGood_pdgId[1],3), LepSel_isTight[1], \
+                          fetchFR_i(LepSel_conePt[2],LepSel_eta[2],LepGood_pdgId[2],3), LepSel_isTight[2] )
+
+#FOR 80X
+load-histo: FR3_mu : $CMSSW_BASE/src/CMGTools/TTHAnalysis/data/fakerate/fakerate_light_RA7EWKino_Moriond2017_36p5fb.root : FR_susy_RA7_mu_data_comb_up
+load-histo: FR3_el : $CMSSW_BASE/src/CMGTools/TTHAnalysis/data/fakerate/fakerate_light_RA7EWKino_Moriond2017_36p5fb.root : FR_susy_RA7_el_data_comb_up
+

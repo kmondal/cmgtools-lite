@@ -118,18 +118,18 @@ def makeHistFromBinsAndSpec(name,expr,bins,plotspec):
         return histo
 
 def cropNegativeBins(histo):
-            if "TH1" in histo.ClassName():
-                for b in xrange(0,histo.GetNbinsX()+2):
-                    if histo.GetBinContent(b) < 0: histo.SetBinContent(b, 0.0)
-            elif "TH2" in histo.ClassName():
-                for bx in xrange(0,histo.GetNbinsX()+2):
-                    for by in xrange(0,histo.GetNbinsY()+2):
-                        if histo.GetBinContent(bx,by) < 0: histo.SetBinContent(bx,by, 0.0)
-            elif "TH3" in histo.ClassName():
-                for bx in xrange(0,histo.GetNbinsX()+2):
-                    for by in xrange(0,histo.GetNbinsY()+2):
-                        for bz in xrange(0,histo.GetNbinsZ()+2):
-                            if histo.GetBinContent(bx,by,bz) < 0: histo.SetBinContent(bx,by,bz, 0.0)
+    if "TH1" in histo.ClassName():
+        for b in xrange(0,histo.GetNbinsX()+2):
+            if histo.GetBinContent(b) < 0: histo.SetBinContent(b, 0.0)
+    elif "TH2" in histo.ClassName():
+        for bx in xrange(0,histo.GetNbinsX()+2):
+            for by in xrange(0,histo.GetNbinsY()+2):
+                if histo.GetBinContent(bx,by) < 0: histo.SetBinContent(bx,by, 0.0)
+    elif "TH3" in histo.ClassName():
+        for bx in xrange(0,histo.GetNbinsX()+2):
+            for by in xrange(0,histo.GetNbinsY()+2):
+                for bz in xrange(0,histo.GetNbinsZ()+2):
+                    if histo.GetBinContent(bx,by,bz) < 0: histo.SetBinContent(bx,by,bz, 0.0)
 
 
 class TreeToYield:
@@ -142,6 +142,7 @@ class TreeToYield:
         self._objname = objname if objname else options.obj
         self._weight  = (options.weight and 'data' not in self._name and '2012' not in self._name and '2011' not in self._name )
         self._isdata = 'data' in self._name
+        self._isfastsim = "isFastSim" in settings.keys()
         self._weightString  = options.weightString if not self._isdata else "1"
         self._scaleFactor = scaleFactor
         self._fullYield = 0 # yield of the full sample, as if it passed the full skim and all cuts
@@ -215,9 +216,11 @@ class TreeToYield:
     def adaptDataMCExpr(self,expr):
         ret = expr
         if self._isdata:
-            ret = re.sub(r'\$MC\{.*?\}', '', re.sub(r'\$DATA\{(.*?)\}', r'\1', expr));
+            ret = re.sub(r'\$MC\{.*?\}', '', re.sub(r'\$FASTSIM\{.*?\}', '', re.sub(r'\$DATA\{(.*?)\}', r'\1', expr)));
+        elif self._isfastsim:
+            ret = re.sub(r'\$DATA\{.*?\}', '', re.sub(r'\$MC\{.*?\}', '', re.sub(r'\$FASTSIM\{(.*?)\}', r'\1', expr)));
         else:
-            ret = re.sub(r'\$DATA\{.*?\}', '', re.sub(r'\$MC\{(.*?)\}', r'\1', expr));
+            ret = re.sub(r'\$DATA\{.*?\}', '', re.sub(r'\$FASTSIM\{.*?\}', '', re.sub(r'\$MC\{(.*?)\}', r'\1', expr)));
         return ret
     def adaptExpr(self,expr,cut=False):
         ret = self.adaptDataMCExpr(expr)
@@ -240,6 +243,8 @@ class TreeToYield:
         self._tree  = t
         #self._tree.SetCacheSize(10*1000*1000)
         if "root://" in self._fname: self._tree.SetCacheSize()
+        for ali in self._options.aliasses:
+            self._tree.SetAlias(ali[0],ali[1])
         self._friends = []
         friendOpts = self._options.friendTrees[:]
         friendOpts += [ ('sf/t', d+"/evVarFriend_{cname}.root") for d in self._options.friendTreesSimple]
@@ -257,7 +262,7 @@ class TreeToYield:
             if not basepath:
                 raise RuntimeError("%s -- ERROR: %s process not found in paths (%s)" % (__name__, cname, repr(options.path)))
 
-            tf_filename = tf_file.format(name=self._name, cname=self._cname, P=basepath)
+            tf_filename = tf_file.format(name=self._name, cname=self._cname, P=basepath, RP=self._fname[0:self._fname.rfind("/")])
             tf = self._tree.AddFriend(tf_tree, tf_filename),
             self._friends.append(tf)
         self._isInit = True
@@ -560,6 +565,7 @@ def addTreeToYieldOptions(parser):
     parser.add_option("--neglist", dest="negAllowed", action="append", default=[], help="Give process names where negative values are allowed")
     parser.add_option("--max-entries",     dest="maxEntries", default=1000000000, type="int", help="Max entries to process in each tree") 
     parser.add_option("-L", "--load-macro",  dest="loadMacro",   type="string", action="append", default=[], help="Load the following macro, with .L <file>+");
+    parser.add_option("--alias", dest="aliasses", action="append", nargs=2, default=[], help="Define tree aliasses")
 
 def mergeReports(reports):
     import copy

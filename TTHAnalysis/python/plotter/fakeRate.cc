@@ -21,6 +21,36 @@ TH2 * FR_tau = 0;
 TH2 * FR2_tau = 0;
 TH2 * FR3_tau = 0;
 
+TH2 * FRW_mu = 0;
+TH2 * FRW2_mu = 0;
+TH2 * FRW3_mu = 0;
+TH2 * FRW4_mu = 0;
+TH2 * FRW5_mu = 0;
+TH2 * FRW_el = 0;
+TH2 * FRW2_el = 0;
+TH2 * FRW3_el = 0;
+TH2 * FRW4_el = 0;
+TH2 * FRW5_el = 0;
+TH2 * FRWi_mu[6], *FRWi_el[6], *FRWi_tau[6];
+TH2 * FRW_tau = 0;
+TH2 * FRW2_tau = 0;
+TH2 * FRW3_tau = 0;
+
+TH2 * FRZ_mu = 0;
+TH2 * FRZ2_mu = 0;
+TH2 * FRZ3_mu = 0;
+TH2 * FRZ4_mu = 0;
+TH2 * FRZ5_mu = 0;
+TH2 * FRZ_el = 0;
+TH2 * FRZ2_el = 0;
+TH2 * FRZ3_el = 0;
+TH2 * FRZ4_el = 0;
+TH2 * FRZ5_el = 0;
+TH2 * FRZi_mu[6], *FRZi_el[6], *FRZi_tau[6];
+TH2 * FRZ_tau = 0;
+TH2 * FRZ2_tau = 0;
+TH2 * FRZ3_tau = 0;
+
 TH2 * FR_mu_FO1_QCD    = 0;
 TH2 * FR_mu_FO1_insitu = 0;
 TH2 * FR_mu_FO2_QCD    = 0;
@@ -70,6 +100,32 @@ bool loadFRHisto(const std::string &histoName, const char *file, const char *nam
     else if (histoName == "FR4_el") { histo = & FR4_el; hptr2 = & FRi_el[4]; }
     else if (histoName == "FR5_mu") { histo = & FR5_mu; hptr2 = & FRi_mu[5]; }
     else if (histoName == "FR5_el") { histo = & FR5_el; hptr2 = & FRi_el[5]; }
+    else if (histoName == "FRW_tau") { histo = & FRW_tau; hptr2 = & FRWi_tau[0]; }
+    else if (histoName == "FRW_mu")  { histo = & FRW_mu;  hptr2 = & FRWi_mu[0]; }
+    else if (histoName == "FRW_el")  { histo = & FRW_el;  hptr2 = & FRWi_el[0]; }
+    else if (histoName == "FRW2_mu") { histo = & FRW2_mu; hptr2 = & FRWi_mu[2]; }
+    else if (histoName == "FRW2_el") { histo = & FRW2_el; hptr2 = & FRWi_el[2]; }
+    else if (histoName == "FRW2_tau"){ histo = & FRW2_tau; hptr2 = & FRWi_tau[2]; }
+    else if (histoName == "FRW3_mu") { histo = & FRW3_mu; hptr2 = & FRWi_mu[3]; }
+    else if (histoName == "FRW3_el") { histo = & FRW3_el; hptr2 = & FRWi_el[3]; }
+    else if (histoName == "FRW3_tau"){ histo = & FRW3_tau; hptr2 = & FRWi_tau[3]; }
+    else if (histoName == "FRW4_mu") { histo = & FRW4_mu; hptr2 = & FRWi_mu[4]; }
+    else if (histoName == "FRW4_el") { histo = & FRW4_el; hptr2 = & FRWi_el[4]; }
+    else if (histoName == "FRW5_mu") { histo = & FRW5_mu; hptr2 = & FRWi_mu[5]; }
+    else if (histoName == "FRW5_el") { histo = & FRW5_el; hptr2 = & FRWi_el[5]; }
+    else if (histoName == "FRZ_tau") { histo = & FRZ_tau; hptr2 = & FRZi_tau[0]; }
+    else if (histoName == "FRZ_mu")  { histo = & FRZ_mu;  hptr2 = & FRZi_mu[0]; }
+    else if (histoName == "FRZ_el")  { histo = & FRZ_el;  hptr2 = & FRZi_el[0]; }
+    else if (histoName == "FRZ2_mu") { histo = & FRZ2_mu; hptr2 = & FRZi_mu[2]; }
+    else if (histoName == "FRZ2_el") { histo = & FRZ2_el; hptr2 = & FRZi_el[2]; }
+    else if (histoName == "FRZ2_tau"){ histo = & FRZ2_tau; hptr2 = & FRZi_tau[2]; }
+    else if (histoName == "FRZ3_mu") { histo = & FRZ3_mu; hptr2 = & FRZi_mu[3]; }
+    else if (histoName == "FRZ3_el") { histo = & FRZ3_el; hptr2 = & FRZi_el[3]; }
+    else if (histoName == "FRZ3_tau"){ histo = & FRZ3_tau; hptr2 = & FRZi_tau[3]; }
+    else if (histoName == "FRZ4_mu") { histo = & FRZ4_mu; hptr2 = & FRZi_mu[4]; }
+    else if (histoName == "FRZ4_el") { histo = & FRZ4_el; hptr2 = & FRZi_el[4]; }
+    else if (histoName == "FRZ5_mu") { histo = & FRZ5_mu; hptr2 = & FRZi_mu[5]; }
+    else if (histoName == "FRZ5_el") { histo = & FRZ5_el; hptr2 = & FRZi_el[5]; }
     else if (histoName == "QF_el") histo = & QF_el;
     else if (histoName == "FR_mu_FO1_QCD")  { histo = &FR_mu_FO1_QCD ;  hptr2 = & FRi_FO_mu[0]; }
     else if (histoName == "FR_mu_FO1_insitu")  { histo = &FR_mu_FO1_insitu ;  hptr2 = & FRi_FO_mu[1]; }
@@ -693,13 +749,26 @@ float fetchFR_i(float l1pt, float l1eta, int l1pdgId, int iFR)
     if (fr1 <= 0)  { std::cerr << "WARNING, FR is " << fr1 << " for " << hist1->GetName() << ", pt " << l1pt << " eta " << l1eta << std::endl; if (fr1<0) std::abort(); }
     return fr1;
 }
+
+float fetchFRWZ_i(float l1pt, float l1eta, int l1pdgId, int iFR, int wp) 
+{
+    TH2 *hist1 = 0;
+    if (wp==1) {hist1 = (abs(l1pdgId) == 11 ? FRWi_el[iFR] : FRWi_mu[iFR]);}
+    else if (wp==0) {hist1 = (abs(l1pdgId) == 11 ? FRZi_el[iFR] : FRZi_mu[iFR]);}
+    if (hist1 == 0) { std::cerr << "ERROR, missing FR for pdgId " << l1pdgId << ", iFR " << iFR << std::endl; std::abort(); }
+    int ptbin1  = std::max(1, std::min(hist1->GetNbinsX(), hist1->GetXaxis()->FindBin(l1pt)));
+    int etabin1 = std::max(1, std::min(hist1->GetNbinsY(), hist1->GetYaxis()->FindBin(std::abs(l1eta))));
+    double fr1 = hist1->GetBinContent(ptbin1,etabin1);
+    if (fr1 <= 0)  { std::cerr << "WARNING, FR is " << fr1 << " for " << hist1->GetName() << ", pt " << l1pt << " eta " << l1eta << std::endl; if (fr1<0) std::abort(); }
+    return fr1;
+}
    
 float fakeRateWeight_3l(float l1fr, int l1pass, float l2fr, int l2pass, float l3fr, int l3pass) 
 {
     float ret = -1.0f;
     if (!l1pass) ret *=  -l1fr/(1.0f-l1fr);
     if (!l2pass) ret *=  -l2fr/(1.0f-l2fr);
-    if (!l3pass) ret *=  -l2fr/(1.0f-l2fr);
+    if (!l3pass) ret *=  -l3fr/(1.0f-l3fr);
     if (ret == -1.0f) ret = 0.0f;
     return ret;
 }
@@ -1056,21 +1125,36 @@ float EWK3L_fakeRate(float pt, float eta, int pdgId, int var = 1) {
 
 float EWK3L_fakeTransfer(unsigned int nLep, float l1fr    , int l1isFake,
                                             float l2fr    , int l2isFake,
-                                            float l3fr    , int l3isFake,
+                                            float l3fr = 0, int l3isFake = 0,
                                             float l4fr = 0, int l4isFake = 0) {
 
     int nfail = l1isFake + l2isFake + l3isFake + l4isFake;
     if(nLep == 3) nfail = l1isFake + l2isFake + l3isFake;
+    if(nLep == 2) nfail = l1isFake + l2isFake;
 
     if(nfail == 0) return 0;
 
     float weight = 1;
     if(l1isFake           ) weight *= -1*l1fr;
     if(l2isFake           ) weight *= -1*l2fr;
-    if(l3isFake           ) weight *= -1*l3fr;
+    if(l3isFake && nLep>=3) weight *= -1*l3fr;
     if(l4isFake && nLep==4) weight *= -1*l4fr;
 
     return -1*weight;
+}
+
+float EWK3L_flipRate(float pt1, float eta1, int pdgId1, float pt2, float eta2, int pdgId2, float pt3, float eta3, int pdgId3) {
+    std::vector<int> lights;
+    int isTau = 0;
+    if(((abs(pdgId1)==15)+(abs(pdgId2)==15)+(abs(pdgId3)==15))>1) 
+        return 0;
+    if(abs(pdgId1)==15) 
+        return chargeFlipWeight_2lss(pt2, eta2, pdgId2, pt3, eta3, pdgId3);
+    if(abs(pdgId2)==15) 
+        return chargeFlipWeight_2lss(pt1, eta1, pdgId1, pt3, eta3, pdgId3);
+    if(abs(pdgId3)==15) 
+        return chargeFlipWeight_2lss(pt1, eta1, pdgId1, pt2, eta2, pdgId2);
+    return 0;
 }
 
 

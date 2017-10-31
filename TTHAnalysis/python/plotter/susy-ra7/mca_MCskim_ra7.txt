@@ -1,0 +1,43 @@
+promptsub : TTJets_DiLepton_part1    : (-1)*xsec : 1 ;  Label="Nonprompt", NormSystematic=0.3
+promptsub : TTJets_DiLepton_part2    : (-1)*xsec : 1 ;  Label="Nonprompt", NormSystematic=0.3
+promptsub : TTJets_SingleLeptonFromTbar    : (-1)*xsec : 1 ;  FillColor=ROOT.kAzure+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : TTJets_SingleLeptonFromT_part1       : (-1)*xsec : 1 ;   FillColor=ROOT.kAzure+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : TTJets_SingleLeptonFromT_part2       : (-1)*xsec : 1 ;   FillColor=ROOT.kAzure+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : TTJets_SingleLeptonFromT_part3       : (-1)*xsec : 1 ;   FillColor=ROOT.kAzure+1, Label="Nonprompt", NormSystematic=0.3
+
+## WZ
+## -----------------------------------------------------------
+prompt_WZ               : WZTo3LNu                        : xsec*1.02 : 1            ; FillColor=ROOT.kOrange  , Label="WZ", NormSystematic=0.1
+
+
+prompt_ttZ    : TTZToLLNuNu                 : 1.21*xsec : 1 ; FillColor=ROOT.kSpring+7, Label="ttZ", NormSystematic=0.40
+prompt_ttZ    : TTLLJets_m1to10             : 1.21*0.0493 : 1 ; FillColor=ROOT.kSpring+7, Label="ttZ", NormSystematic=0.40
+
+
+prompt_ttX    : TTWToLNu_ext1                    : xsec : 1 ; FillColor=ROOT.kViolet-7, Label="ttX", NormSystematic=0.2
+prompt_ttX    : TTWToLNu_ext2_part1                    : xsec : 1 ; FillColor=ROOT.kViolet-7, Label="ttX", NormSystematic=0.2
+prompt_ttX    : TTWToLNu_ext2_part2                    : xsec : 1 ; FillColor=ROOT.kViolet-7, Label="ttX", NormSystematic=0.2
+prompt_ttX    : TTHnobb_pow                 : xsec : 1 ; FillColor=ROOT.kViolet-7, Label="ttX", NormSystematic=0.2
+
+prompt_Rares    : tZq_ll                      : xsec : 1 ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5
+prompt_Rares    : tZW_ll                      : xsec : 1 ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5
+
+prompt_Rares  : TTGJets  : xsec : 1 ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5
+prompt_Rares  : ZGTo2LG  : xsec : 1 ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5
+prompt_Rares  : WGToLNuG : xsec : 1 ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5
+prompt_Rares  : TGJets   : xsec : 1 ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5
+
+
+prompt_Rares : GGHZZ4L   : xsec : 1 ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5
+prompt_Rares : ZZTo4L_part1    : xsec : 1 ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5
+prompt_Rares : ZZTo4L_part2    : xsec : 1 ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5
+prompt_Rares : VHToNonbb : xsec : 1 ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5
+
+prompt_Rares : WWW       : xsec : 1 ; FillColor=ROOT.kMagenta-7 , Label="Rares", NormSystematic=0.5
+prompt_Rares : WWZ       : xsec : 1 ; FillColor=ROOT.kMagenta-7 , Label="Rares", NormSystematic=0.5
+prompt_Rares : WZZ       : xsec : 1 ; FillColor=ROOT.kMagenta-7 , Label="Rares", NormSystematic=0.5
+prompt_Rares : ZZZ       : xsec : 1 ; FillColor=ROOT.kMagenta-7 , Label="Rares", NormSystematic=0.5
+prompt_Rares : WpWpJJ    : xsec : 1 ; FillColor=ROOT.kMagenta-7 , Label="Rares", NormSystematic=0.5
+prompt_Rares : WZG       : xsec : 1 ; FillColor=ROOT.kMagenta-7 , Label="Rares", NormSystematic=0.5
+prompt_Rares : TTTT      : xsec : 1 ; FillColor=ROOT.kMagenta-7 , Label="Rares", NormSystematic=0.5
+prompt_Rares : VHToNonbb      : xsec : 1 ; FillColor=ROOT.kMagenta-7 , Label="Rares", NormSystematic=0.5

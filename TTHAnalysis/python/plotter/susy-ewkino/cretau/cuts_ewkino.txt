@@ -1,0 +1,15 @@
+alwaystrue: 1
+#blinding  : !isData || (run <= 276811 || (run>=278820 && run<=279931))
+filters   : !isData || METfilters
+trigger   : !isData || Triggers_leptau
+3l        : nLepSel >= 2
+lowmass   : minMllSFOS_Mini > 12 || minMllSFOS_Mini == -1
+bJetVeto  : nBJetMedium25 == 0
+twoTight  : allTight(2, LepSel_isTight[0], LepSel_isTight[1])
+veto      : LepSel_isTight[2]==0
+eAndTau   : abs(LepSel_pdgId[0])+abs(LepSel_pdgId[1])==26
+ptCut1    : (abs(LepSel_pdgId[0])==11 && LepSel_conePt[0]>25) || (abs(LepSel_pdgId[0])==15 && LepSel_conePt[0]>30)
+ptCut2    : (abs(LepSel_pdgId[1])==11 && LepSel_conePt[1]>25) || (abs(LepSel_pdgId[1])==15 && LepSel_conePt[1]>30)
+ospair    : LepSel_pdgId[0]*LepSel_pdgId[1]<0
+mll       : theMll > 75 && theMll < 105
+met       : met_pt < 50

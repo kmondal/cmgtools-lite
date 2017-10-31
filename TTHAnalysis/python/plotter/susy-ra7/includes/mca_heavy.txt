@@ -1,0 +1,97 @@
+
+sig_heavyH_mH350+ : HeavyBoson_THq_mH350  : 15.8/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed, Label="H_mH350" 
+sig_heavyH_mH370+ : HeavyBoson_THq_mH370  : 13.5/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="H_THq_mH370" 
+sig_heavyH_mH390+ : HeavyBoson_THq_mH390  : 11.7/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="H_THq_mH390" 
+sig_heavyH_mH410+ : HeavyBoson_THq_mH410  : 10.2/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="H_THq_mH410" 
+sig_heavyH_mH430+ : HeavyBoson_THq_mH430  : 8.82/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="H_THq_mH430" 
+sig_heavyH_mH450+ : HeavyBoson_THq_mH450  : 7.73/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="H_THq_mH450" 
+sig_heavyH_mH470+ : HeavyBoson_THq_mH470  : 6.78/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="H_THq_mH470" 
+sig_heavyH_mH490+ : HeavyBoson_THq_mH490  : 5.93/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="H_THq_mH490" 
+sig_heavyH_mH510+ : HeavyBoson_THq_mH510  : 5.23/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="H_THq_mH510" 
+sig_heavyH_mH530+ : HeavyBoson_THq_mH530  : 4.59/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="H_THq_mH530" 
+sig_heavyH_mH550+ : HeavyBoson_THq_mH550  : 4.11/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="H_mH550" 
+
+sig_heavyH_mH350+ : HeavyBoson_THW_mH350  : 8.37/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed, Label="H_THW_mH350" 
+sig_heavyH_mH370+ : HeavyBoson_THW_mH370  : 7.61/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="H_THW_mH370" 
+sig_heavyH_mH390+ : HeavyBoson_THW_mH390  : 7.07/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="H_THW_mH390" 
+sig_heavyH_mH410+ : HeavyBoson_THW_mH410  : 6.58/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="H_THW_mH410" 
+sig_heavyH_mH430+ : HeavyBoson_THW_mH430  : 5.72/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="H_THW_mH430" 
+sig_heavyH_mH450+ : HeavyBoson_THW_mH450  : 5.16/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="H_THW_mH450" 
+sig_heavyH_mH470+ : HeavyBoson_THW_mH470  : 4.81/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="H_THW_mH470" 
+sig_heavyH_mH490+ : HeavyBoson_THW_mH490  : 4.34/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="H_THW_mH490" 
+sig_heavyH_mH510+ : HeavyBoson_THW_mH510  : 4.19/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="H_THW_mH510" 
+sig_heavyH_mH530+ : HeavyBoson_THW_mH530  : 3.86/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="H_THW_mH530" 
+sig_heavyH_mH550+ : HeavyBoson_THW_mH550  : 3.41/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="H_THW_mH550" 
+
+sig_heavyH_mH350+ : HeavyBoson_TTH_mH350  : 24.2/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed, Label="H_TTH_mH350" 
+sig_heavyH_mH370+ : HeavyBoson_TTH_mH370  : 20.1/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="H_TTH_mH370" 
+sig_heavyH_mH390+ : HeavyBoson_TTH_mH390  : 17.8/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="H_TTH_mH390" 
+sig_heavyH_mH410+ : HeavyBoson_TTH_mH410  : 15.8/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="H_TTH_mH410" 
+sig_heavyH_mH430+ : HeavyBoson_TTH_mH430  : 14.9/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="H_TTH_mH430" 
+sig_heavyH_mH450+ : HeavyBoson_TTH_mH450  : 11.9/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="H_TTH_mH450" 
+sig_heavyH_mH470+ : HeavyBoson_TTH_mH470  : 11.2/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="H_TTH_mH470" 
+sig_heavyH_mH490+ : HeavyBoson_TTH_mH490  : 9.87/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="H_TTH_mH490" 
+sig_heavyH_mH510+ : HeavyBoson_TTH_mH510  : 9.75/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="H_TTH_mH510" 
+sig_heavyH_mH530+ : HeavyBoson_TTH_mH530  : 7.78/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="H_TTH_mH530" 
+sig_heavyH_mH550+ : HeavyBoson_TTH_mH550  : 7.49/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="H_TTH_mH550" 
+
+
+
+sig_heavyA_mH350+ : HeavyBoson_THq_mH350  : 9.28/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kCyan, Label="A_mA350" 
+sig_heavyA_mH370+ : HeavyBoson_THq_mH370  : 8.14/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="A_THq_mH370" 
+sig_heavyA_mH390+ : HeavyBoson_THq_mH390  : 7.19/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="A_THq_mH390" 
+sig_heavyA_mH410+ : HeavyBoson_THq_mH410  : 6.43/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="A_THq_mH410" 
+sig_heavyA_mH430+ : HeavyBoson_THq_mH430  : 5.72/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="A_THq_mH430" 
+sig_heavyA_mH450+ : HeavyBoson_THq_mH450  : 5.07/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="A_THq_mH450" 
+sig_heavyA_mH470+ : HeavyBoson_THq_mH470  : 4.55/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="A_THq_mH470" 
+sig_heavyA_mH490+ : HeavyBoson_THq_mH490  : 4.09/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="A_THq_mH490" 
+sig_heavyA_mH510+ : HeavyBoson_THq_mH510  : 3.67/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="A_THq_mH510" 
+sig_heavyA_mH530+ : HeavyBoson_THq_mH530  : 3.27/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlack, Label="A_THq_mH530" 
+sig_heavyA_mH550+ : HeavyBoson_THq_mH550  : 2.94/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kAzure+3, Label="A_mA550" 
+
+sig_heavyA_mH350+ : HeavyBoson_THW_mH350  : 7.97/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kCyan, Label="A_THW_mH350" 
+sig_heavyA_mH370+ : HeavyBoson_THW_mH370  : 7.09/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="A_THW_mH370" 
+sig_heavyA_mH390+ : HeavyBoson_THW_mH390  : 6.88/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="A_THW_mH390" 
+sig_heavyA_mH410+ : HeavyBoson_THW_mH410  : 5.92/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="A_THW_mH410" 
+sig_heavyA_mH430+ : HeavyBoson_THW_mH430  : 5.39/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="A_THW_mH430" 
+sig_heavyA_mH450+ : HeavyBoson_THW_mH450  : 4.97/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="A_THW_mH450" 
+sig_heavyA_mH470+ : HeavyBoson_THW_mH470  : 4.59/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="A_THW_mH470" 
+sig_heavyA_mH490+ : HeavyBoson_THW_mH490  : 4.27/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="A_THW_mH490" 
+sig_heavyA_mH510+ : HeavyBoson_THW_mH510  : 3.87/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="A_THW_mH510" 
+sig_heavyA_mH530+ : HeavyBoson_THW_mH530  : 3.82/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kRed+3, Label="A_THW_mH530" 
+sig_heavyA_mH550+ : HeavyBoson_THW_mH550  : 3.26/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kAzure+3, Label="A_THW_mH550" 
+
+sig_heavyA_mH350+ : HeavyBoson_TTH_mH350  : 33.7/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kCyan, Label="A_TTH_mH350" 
+sig_heavyA_mH370+ : HeavyBoson_TTH_mH370  : 28.6/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="A_TTH_mH370" 
+sig_heavyA_mH390+ : HeavyBoson_TTH_mH390  : 25.3/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="A_TTH_mH390" 
+sig_heavyA_mH410+ : HeavyBoson_TTH_mH410  : 22.0/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="A_TTH_mH410" 
+sig_heavyA_mH430+ : HeavyBoson_TTH_mH430  : 19.9/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="A_TTH_mH430" 
+sig_heavyA_mH450+ : HeavyBoson_TTH_mH450  : 17.7/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="A_TTH_mH450" 
+sig_heavyA_mH470+ : HeavyBoson_TTH_mH470  : 15.1/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="A_TTH_mH470" 
+sig_heavyA_mH490+ : HeavyBoson_TTH_mH490  : 14.9/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="A_TTH_mH490" 
+sig_heavyA_mH510+ : HeavyBoson_TTH_mH510  : 12.6/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="A_TTH_mH510" 
+sig_heavyA_mH530+ : HeavyBoson_TTH_mH530  : 11.5/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kBlue+1, Label="A_TTH_mH530" 
+sig_heavyA_mH550+ : HeavyBoson_TTH_mH550  : 10.0/1000  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kAzure+3, Label="A_TTH_mH550" 
+
+
+
+
+#sig_heavyH_mH400+ : HeavyBoson_TTH_mH400  : 
+#sig_heavyH_mH500+ : HeavyBoson_TTH_mH500  : 
+#sig_heavyH_mH600+ : HeavyBoson_TTH_mH600  : 
+#sig_heavyH_mH650+ : HeavyBoson_TTH_mH650  : 
+#sig_heavyH_mH700+ : HeavyBoson_TTH_mH700  : 
+#sig_heavyH_mH750+ : HeavyBoson_TTH_mH750  : 
+#sig_heavyH_mH800+ : HeavyBoson_TTH_mH800  : 
+#sig_heavyH_mH850+ : HeavyBoson_TTH_mH850  : 
+#sig_heavyH_mH900+ : HeavyBoson_TTH_mH900  : 
+
+#sig_heavyA_mH400+ : HeavyBoson_TTH_mH400  :
+#sig_heavyA_mH500+ : HeavyBoson_TTH_mH500  :
+#sig_heavyA_mH600+ : HeavyBoson_TTH_mH600  : 
+#sig_heavyA_mH650+ : HeavyBoson_TTH_mH650  : 
+#sig_heavyA_mH700+ : HeavyBoson_TTH_mH700  : 
+#sig_heavyA_mH750+ : HeavyBoson_TTH_mH750  : 
+#sig_heavyA_mH800+ : HeavyBoson_TTH_mH800  : 
+#sig_heavyA_mH850+ : HeavyBoson_TTH_mH850  : 
+#sig_heavyA_mH900+ : HeavyBoson_TTH_mH900  : 

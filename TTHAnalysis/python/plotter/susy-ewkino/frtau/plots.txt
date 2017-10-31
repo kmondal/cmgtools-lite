@@ -1,0 +1,4 @@
+map : abs(getTau(LepSel1_pdgId, LepSel1_eta, LepSel2_pdgId, LepSel2_eta, LepSel3_pdgId, LepSel3_eta))\:getTau(LepSel1_pdgId, LepSel1_pt, LepSel2_pdgId, LepSel2_pt, LepSel3_pdgId, LepSel3_pt, 20, 100) : [20,25,35,50,70,100]*[0,0.5,1,1.5,2,2.5] ; XTitle="p_{T}(#tau) [GeV]", YTitle="|#eta|(#tau)", UnbinnedData2D=True, PlotMode='COLZ TEXT E'
+met        : met_pt         : 11,0,300   ; XTitle="E_{T}^{miss}  [GeV]"         , LegendCutoff=1e-4, YMin=0.7, YMax=100000, Legend="TR"
+#met        : met_pt         : 11,0,300   ; XTitle="E_{T}^{miss}  [GeV]"         , LegendCutoff=1e-4, YMin=0.7, YMax=100000, Legend="TR"
+

@@ -1,0 +1,11 @@
+alwaystrue: 1
+
+step1: nLepSel>=3 && LepSel1_conePt>10 && LepSel2_conePt>10 && LepSel3_conePt>10 && nLepTight_Mini==3 && abs(LepSel1_pdgId)<14 && abs(LepSel2_pdgId)<14 && abs(LepSel3_pdgId)<14
+
+step2: nBJetMedium25>0 && nJet30>1 && !isOnZ && met_pt>50
+
+step3: (minMllSFOS == -1 || minMllSFOS > 12) && LepSel1_conePt>10 && (abs(LepSel1_pdgId)!=11 || LepSel1_conePt>15) && (htJet30j > 400 || LepSel1_conePt>25) && LepSel2_conePt>10 && (abs(LepSel2_pdgId)!=11 || LepSel2_conePt>15) && LepSel3_conePt>10
+
+step4: ((LepSel_isTight[0] && (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1)) + (LepSel_isTight[1] && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1)) + (LepSel_isTight[2] && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) + (LepSel_isTight[3] && (LepSel_mcUCSX[3]==0 || LepSel_mcUCSX[3]==1)) ) == 3
+#step4: ((LepSel_isTight[0] && (LepSel_mcMatchAny[0]>0)) + (LepSel_isTight[1] && (LepSel_mcMatchAny[1]>0)) + (LepSel_isTight[2] && (LepSel_mcMatchAny[2]>0)) + (LepSel_isTight[3] && (LepSel_mcMatchAny[3]>0)) ) == 3
+#step4: ((LepSel_isTight[0] && abs(LepSel_mcMatchId[0])>0) + (LepSel_isTight[1] && abs(LepSel_mcMatchId[1])>0) + (LepSel_isTight[2] && abs(LepSel_mcMatchId[2])>0) + (LepSel_isTight[3] && abs(LepSel_mcMatchId[3])>0) ) == 3

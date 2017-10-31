@@ -1,0 +1,100 @@
+sig_T1tttt_1200_100+      : T1tttt_mG_1200_mN_100           : 0.0856418 : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kRed+1, Label="T1tttt(1200\,100)", NormSystematic=0.25
+sig_T1tttt_1200_700+      : T1tttt_mG_1200_mN_700           : 0.0856418 : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kOrange+3, Label="T1tttt(1200\,700)", NormSystematic=0.25
+
+sig_T1tttt_1100_800+      : T1tttt_mG_1100_mN_800           : 0.163491 : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kOrange+1, Label="T1tttt(1100\,800)", NormSystematic=0.25
+sig_T1tttt_1200_900+      : T1tttt_mG_1200_mN_900           : 0.0856418 : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kAzure+2, Label="T1tttt(1200\,900)", NormSystematic=0.25
+sig_T1tttt_1250_950+      : T1tttt_mG_1250_mN_950           : 0.0627027 : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kOrange+10, Label="T1tttt(1250\,950)", NormSystematic=0.25
+sig_T1tttt_1300_1000+      : T1tttt_mG_1300_mN_1000           : 0.0460525 : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kAzure+5, Label="T1tttt(1300\,1000)", NormSystematic=0.25
+sig_T1tttt_1400_1100+      : T1tttt_mG_1400_mN_1100           : 0.0252977 : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kGreen+4, Label="T1tttt(1400\,1100)", NormSystematic=0.25
+sig_T1tttt_1500_1200+      : T1tttt_mG_1500_mN_1200           : 0.0141903 : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kBlue+4, Label="T1tttt(1500\,1200)", NormSystematic=0.25
+sig_T1tttt_1600_1300+      : T1tttt_mG_1600_mN_1300           : 0.00810078 : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kOrange+9, Label="T1tttt(1600\,1300)", NormSystematic=0.25
+
+sig_T5qqqqWZ_1000_100+    : T5qqqqVV_noDM_mG_1000_mN_100    : 4/9*0.325388  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(GenSusyMNeutralino2>0 && GenSusyMChargino>0)             ; FillColor=ROOT.kViolet-6, Label="T5qqqqWZ(1000\,100)", NormSystematic=0.25
+sig_T5qqqqWZ_800_500+     : T5qqqqVV_noDM_mG_800_mN_500     : 4/9*1.4891    : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(GenSusyMNeutralino2>0 && GenSusyMChargino>0)             ; FillColor=ROOT.kPink+7, Label="T5qqqqWZ(800\,500)", NormSystematic=0.25
+
+#sig_T6ttWW_950_150+      : T6ttWW_mG_950_mN_150           : 0.00883465 : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kTeal+3, Label="T6ttWW(950\,150)", NormSystematic=0.25
+sig_T6ttWW_800_100+      : T6ttWW_mG_800_mN_100           : 0.0283338 : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kGreen+4, Label="T6ttWW(800\,100)", NormSystematic=0.25
+sig_T6ttWW_800_500+      : T6ttWW_mG_800_mN_500           : 0.0283338 : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kBlue+3, Label="T6ttWW(800\,500)", NormSystematic=0.25
+sig_T6ttWW_600_100+      : T6ttWW_mG_600_mN_100           : 0.174599  : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kCyan+3, Label="T6ttWW(600\,100)", NormSystematic=0.25
+sig_T6ttWW_500_100+      : T6ttWW_mG_500_mN_100           : 0.518480  : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kYellow+4, Label="T6ttWW(500\,100)", NormSystematic=0.25
+sig_T6ttWW_600_300+      : T6ttWW_mG_600_mN_300           : 0.174599  : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kCyan+3, Label="T6ttWW(600\,300)", NormSystematic=0.25
+sig_T6ttWW_500_300+      : T6ttWW_mG_500_mN_300           : 0.518480  : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kYellow+4, Label="T6ttWW(500\,300)", NormSystematic=0.25
+sig_T6ttWW_400_300+      : T6ttWW_mG_400_mN_300           : 1.83537   : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kYellow+4, Label="T6ttWW(500\,300)", NormSystematic=0.25
+sig_T6ttWW_800_700+      : T6ttWW_mG_800_mN_700           : 0.0283338 : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kGreen+4, Label="T6ttWW(800\,100)", NormSystematic=0.25
+sig_T6ttWW_1000_100+      : T6ttWW_mG_1000_mN_100           : 0.00615134 : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kGreen, Label="T6ttWW(1000\,100)", NormSystematic=0.25
+sig_T6ttWW_1200_100+      : T6ttWW_mG_1200_mN_100           : 0.00159844 : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kPink, Label="T6ttWW(1200\,100)", NormSystematic=0.25
+
+## DATA
+## -----------------------------------------------------------
+data   :   DoubleEG_Run2016B_PromptReco_v2_runs_273150_275125; Label="Data"
+data   :   DoubleEG_Run2016B_PromptReco_v2_runs_275126_275783; Label="Data"
+data   :   DoubleEG_Run2016C_PromptReco_v2_runs_271350_275783; Label="Data"
+data   :   DoubleEG_Run2016C_PromptReco_v2_runs_275784_276283; Label="Data"
+data   :   DoubleEG_Run2016DPromptReco_v2_runs_276283_276384; Label="Data"
+data   :   DoubleEG_Run2016D_PromptReco_v2_runs_276284_276811; Label="Data"
+data   :   DoubleMuon_Run2016B_PromptReco_v2_runs_273150_275125; Label="Data"
+data   :   DoubleMuon_Run2016B_PromptReco_v2_runs_275126_275783; Label="Data"
+data   :   DoubleMuon_Run2016C_PromptReco_v2_runs_271350_275783; Label="Data"
+data   :   DoubleMuon_Run2016C_PromptReco_v2_runs_275784_276283; Label="Data"
+data   :   DoubleMuon_Run2016DPromptReco_v2_runs_276283_276384; Label="Data"
+data   :   DoubleMuon_Run2016D_PromptReco_v2_runs_276284_276811; Label="Data"
+data   :   MuonEG_Run2016B_PromptReco_v2_runs_273150_275125; Label="Data"
+data   :   MuonEG_Run2016B_PromptReco_v2_runs_275126_275783; Label="Data"
+data   :   MuonEG_Run2016C_PromptReco_v2_runs_271350_275783; Label="Data"
+data   :   MuonEG_Run2016C_PromptReco_v2_runs_275784_276283; Label="Data"
+data   :   MuonEG_Run2016DPromptReco_v2_runs_276283_276384; Label="Data"
+data   :   MuonEG_Run2016D_PromptReco_v2_runs_276284_276811; Label="Data"
+data   :   SingleElectron_Run2016B_PromptReco_v2_runs_273150_275125; Label="Data"
+data   :   SingleElectron_Run2016B_PromptReco_v2_runs_275126_275783; Label="Data"
+data   :   SingleElectron_Run2016C_PromptReco_v2_runs_271350_275783; Label="Data"
+data   :   SingleElectron_Run2016C_PromptReco_v2_runs_275784_276283; Label="Data"
+data   :   SingleElectron_Run2016DPromptReco_v2_runs_276283_276384; Label="Data"
+data   :   SingleElectron_Run2016D_PromptReco_v2_runs_276284_276811; Label="Data"
+data   :   SingleMuon_Run2016B_PromptReco_v2_runs_271350_275783; Label="Data"
+data   :   SingleMuon_Run2016C_PromptReco_v2_runs_271350_275783; Label="Data"
+data   :   SingleMuon_Run2016C_PromptReco_v2_runs_275784_276283; Label="Data"
+data   :   SingleMuon_Run2016DPromptReco_v2_runs_276283_276384; Label="Data"
+data   :   SingleMuon_Run2016D_PromptReco_v2_runs_276284_276811; Label="Data"
+
+
+
+
+
+## WZ
+## -----------------------------------------------------------
+prompt_WZ               : WZTo3LNu                        : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)            ; FillColor=ROOT.kOrange  , Label="WZ", NormSystematic=0.25
+
+
+
+#fakes_MC : DYJetsToLL_M10to50_LO : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+#fakes_MC : DYJetsToLL_M50_LO     : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+fakes_MC : DYJetsToLL_M10to50 : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+fakes_MC : DYJetsToLL_M50     : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+fakes_MC : TTJets_DiLepton    : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+fakes_MC : TTJets_SingleLeptonFromTbar    : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+fakes_MC : TTJets_SingleLeptonFromT       : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+fakes_MC : WWTo2L2Nu          : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+fakes_MC : T_tWch             : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+
+
+
+
+prompt_ttW    : TTWToLNu                    : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kAzure-7, Label="ttW", NormSystematic=0.5
+prompt_ttZH   : TTHnobb_mWCutfix_ch1        : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kTeal+6, Label="ttZ/H", NormSystematic=0.5
+prompt_ttZH   : TTZToLLNuNu                 : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kTeal+6, Label="ttZ/H", NormSystematic=0.5
+prompt_ttZH   : TTLLJets_m1to10             : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kTeal+6, Label="ttZ/H", NormSystematic=0.5
+prompt_ttZH   : tZq_ll                      : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kTeal+6, Label="ttZ/H", NormSystematic=0.5
+
+
+convs  : TTGJets  : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==1) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==1) || (LepGood3_mcMatchId==0 && LepGood3_mcPromptGamma==1)) ; FillColor=ROOT.kOrange+7, Label="X+G", NormSystematic=0.25
+convs  : ZGTo2LG  : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==1) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==1) || (LepGood3_mcMatchId==0 && LepGood3_mcPromptGamma==1)) ; FillColor=ROOT.kOrange+7, Label="X+G", NormSystematic=0.25
+convs  : WGToLNuG : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==1) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==1) || (LepGood3_mcMatchId==0 && LepGood3_mcPromptGamma==1)) ; FillColor=ROOT.kOrange+7, Label="X+G", NormSystematic=0.25
+
+prompt_VVV : WWW       : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kRed-6, Label="VVV", NormSystematic=0.5
+prompt_VVV : WWZ       : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kRed-6, Label="VVV", NormSystematic=0.5
+prompt_VVV : WZZ       : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kRed-6, Label="VVV", NormSystematic=0.5
+prompt_VVV : ZZZ       : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kRed-6, Label="VVV", NormSystematic=0.5
+prompt_ZZH : GGHZZ4L   : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kYellow-2, Label="ZZ/H", NormSystematic=0.25
+prompt_ZZH : ZZTo4L    : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kYellow-2, Label="ZZ/H", NormSystematic=0.25
+prompt_ZZH : VHToNonbb : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kYellow-2, Label="ZZ/H", NormSystematic=0.25
+

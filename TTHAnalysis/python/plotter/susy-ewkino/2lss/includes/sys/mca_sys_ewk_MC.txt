@@ -1,0 +1,54 @@
+######### EWK in prompt sub
+######### Uses: susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt
+#########       susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt
+################################################
+promptsub_ewk_Up : WZTo3LNu : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : ZZTo4L_part1 + ZZTo4L_part2   : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : VHToNonbb  : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : GGHZZ4L  : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : TTWToLNu_ext1 + TTWToLNu_ext2_part1 + TTWToLNu_ext2_part2 : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : TTZToLLNuNu                 : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : TTLLJets_m1to10             : 0.0493 : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : TTJets_DiLepton_part1 + TTJets_DiLepton_part2 : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : TTJets_SingleLeptonFromT_part1 +  TTJets_SingleLeptonFromT_part2 + TTJets_SingleLeptonFromT_part3 : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : TTJets_SingleLeptonFromTbar : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : TTTT        : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : tZq_ll      : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up :  TTWToQQ : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : TTZToQQ : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : TTHnobb_pow        : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : tZW_ll      : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : WpWpJJ          : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : WW2L2NuDouble   : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : WWW             : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : WWZ             : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : WZZ             : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : ZZZ             : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+promptsub_ewk_Up : WWTo2L2Nu       : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Up.txt" ; SkipMe=True
+
+
+promptsub_ewk_Dn : WZTo3LNu : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : ZZTo4L_part1 + ZZTo4L_part2   : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : VHToNonbb  : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : GGHZZ4L  : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : TTWToLNu_ext1 + TTWToLNu_ext2_part1 + TTWToLNu_ext2_part2 : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : TTZToLLNuNu                 : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : TTLLJets_m1to10             : 0.0493 : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : TTJets_DiLepton_part1 + TTJets_DiLepton_part2 : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : TTJets_SingleLeptonFromT_part1 +  TTJets_SingleLeptonFromT_part2 + TTJets_SingleLeptonFromT_part3 : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : TTJets_SingleLeptonFromTbar : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : TTTT        : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : tZq_ll      : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn :  TTWToQQ : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : TTZToQQ : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : TTHnobb_pow        : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : tZW_ll      : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : WpWpJJ          : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : WW2L2NuDouble   : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : WWW             : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : WWZ             : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : WZZ             : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : ZZZ             : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+promptsub_ewk_Dn : WWTo2L2Nu       : -1*xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FakeRate="susy-ewkino/2lss/fakeRate-2lss-frdata_ewk_Dn.txt" ; SkipMe=True
+
+

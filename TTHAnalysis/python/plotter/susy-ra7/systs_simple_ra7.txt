@@ -1,0 +1,59 @@
+
+## flat uncertainties
+
+lumi       : sig_.*|prompt_.*   : .*                : 1.03
+trigeff    : sig_.*|prompt_.*   : .*                : 1.04
+
+fakes      : fakes_.*                          : .*                : 1.3
+
+
+#normWZ     : prompt_WZ                         : .*                 : 1.1   
+#SFWZ       : prompt_WZ                         : .*crwz.*          : 1.09
+#floatWZ    : prompt_WZ                         : .*crwz.*          : 100   : lnU
+#floatWZ    : prompt_WZ                         : .*3lA.*           : 100   : lnU
+#normWZ     : prompt_WZ                         : .*crwz.*          : 1.12
+#normWZ     : prompt_WZ                         : .*3lA.*           : 1.13
+#normZZH    : prompt_ZZH                        : .*                : 1.25
+normRares    : prompt_Rares                        : .*                : 1.5
+normTTX    : prompt_ttX                        : .*                : 1.15
+#normTTZ    : prompt_ttZ                        : .*                : 1.15    
+#theoTTV    : prompt_ttW|prompt_ttZ             : .*                : 1.15
+
+signorm     : sig_.*                            : .*                : 1.25
+#sigISR     : sig_.*                            : .*                : 1.1
+#signalcont : sig_TChiNeuWZ                     : .*crwz.*          : 1.06
+#signalcont : sig_TChiNeuWH|sig_TChiNeuSlep.*   : .*crwz.*          : 1.01
+
+
+
+## shape uncertainties
+
+
+## statistical uncertainties
+
+statsig   : sig_.*          : .* : 1.0 : stat_foreach_shape_bins : .*
+statWZ    : prompt_WZ       : .* : 1.0 : stat_foreach_shape_bins : .*
+statttZ   : prompt_ttZ       : .* : 1.0 : stat_foreach_shape_bins : .*
+statttX   : prompt_ttX       : .* : 1.0 : stat_foreach_shape_bins : .*
+statRares   : prompt_Rares       : .* : 1.0 : stat_foreach_shape_bins : .*
+statfakes : fakes_.*        : .* : 1.0 : stat_foreach_shape_bins : .*
+
+
+
+## theoretical stuff
+
+#pdfTTX     : prompt_ttW             : .* : 1.04
+#pdfTTX     : prompt_ttZ             : .* : 1.08
+#
+#q2xsecTTX  : prompt_ttW             : .* : 1.13
+#q2xsecTTX  : prompt_ttZ             : .* : 1.11
+#
+#q2accTTX   : prompt_ttW             : .* : 1.02
+#q2accTTX   : prompt_ttZ             : .* : 1.11
+
+
+
+
+
+
+

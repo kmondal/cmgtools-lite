@@ -1,0 +1,7 @@
+alwaystrue : 1
+3loose : nLepFO == 3 && abs(LepGood1_charge+LepGood2_charge+LepGood3_charge) < 2
+3light : abs(LepGood1_pdgId)<14 && abs(LepGood2_pdgId)<14 && abs(LepGood3_pdgId)<14
+pt101010 : LepGood1_conePt>10 && LepGood2_conePt>10  && LepGood3_conePt>10 && LepGood1_pt>10 && LepGood2_pt>10  && LepGood3_pt>10
+met_WZCR : met_pt > 25
+
+# Recleaner 2L needed, as well as --mcc susy-ewkino/crwz/lepchoice-crwz-FO.txt

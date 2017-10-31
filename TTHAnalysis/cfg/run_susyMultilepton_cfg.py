@@ -350,7 +350,7 @@ else:
     susyScanAna.useLumiInfo=True
     susyScanAna.doLHE=True
     susyCounter.bypass_trackMass_check = False
-    susyCounter.SMS_varying_masses=['genSusyMGluino','genSusyMNeutralino','genSusyMChargino','genSusyMNeutralino2', 'genSusyMStau', 'genSusyMSnuTau', 'genSusyMStop']
+    susyCounter.SMS_varying_masses=['genSusyMGluino','genSusyMNeutralino','genSusyMChargino','genSusyMNeutralino2', 'genSusyMNeutralino3','genSusyMStau', 'genSusyMSnuTau', 'genSusyMStop']
     susyCoreSequence.insert(susyCoreSequence.index(susyScanAna)+1,susyCounter)
 
 # HBHE new filter
@@ -902,6 +902,17 @@ elif test == '5':
         comp.fineSplitFactor = 5
 elif test == "ewkinosync":
     comp = cfg.MCComponent( files = ["root://eoscms.cern.ch//store/mc/RunIIFall15MiniAODv2/TTWJetsToLNu_TuneCUETP8M1_13TeV-amcatnloFXFX-madspin-pythia8/MINIAODSIM/PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/60000/14C51DB0-D6B8-E511-8D9B-8CDCD4A9A484.root"], name="TTW_EWK_sync" )
+    comp.triggers = []
+    comp.splitFactor = 1
+    comp.fineSplitFactor = 1
+    selectedComponents = [comp]
+    sequence.remove(jsonAna)
+elif test == "ewkino80Xsync":
+    #comp = cfg.MCComponent( files = ["/afs/cern.ch/user/c/cheidegg/d/CMSSW_8_0_19/src/WZevent.root"], name="WZ_EWK_test")
+    #comp = cfg.MCComponent( files = ["root://eoscms.cern.ch//store/backfill/1/RunIISpring16MiniAODv2/ZZTo2L2Nu_13TeV_powheg_pythia8/MINIAODSIM/PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/70000/0408B23E-4A21-E611-86A7-0025905AC824.root"], name="ZZ_EWK_sync")
+    comp = cfg.MCComponent( files = ["root://eoscms.cern.ch//store/mc/RunIISpring16MiniAODv2/ZZTo4L_13TeV_powheg_pythia8/MINIAODSIM/PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/00000/024C8A3E-7D1A-E611-A094-002590494C82.root"], name="ZZ_EWK_sync")
+    #comp = cfg.MCComponent( files = ["root://eoscms.cern.ch//store/mc/RunIISpring16MiniAODv2/WZTo3LNu_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/MINIAODSIM/PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/00000/0CD58AA0-D12A-E611-850E-00266CFCCD94.root"], name="WZ_EWK_sync" )
+    ##comp = cfg.MCComponent( files = ["root://eoscms.cern.ch//store/mc/RunIISpring16MiniAODv2/TTWJetsToLNu_TuneCUETP8M1_13TeV-amcatnloFXFX-madspin-pythia8/MINIAODSIM/PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/50000/5AF9DA75-2E1D-E611-AD17-D4AE527EE013.root"], name="TTW_EWK_sync" )
     comp.triggers = []
     comp.splitFactor = 1
     comp.fineSplitFactor = 1

@@ -1,0 +1,1 @@
+ZZsync  : ZZ_EWK_sync  : 1 ; Label="ZZ", FakeRate="susy-ewkino/3l/fakerate_standard_central.txt\,susy-ewkino/3l/fakerate_load_isprompt.txt"

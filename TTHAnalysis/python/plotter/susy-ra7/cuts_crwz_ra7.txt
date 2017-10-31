@@ -1,0 +1,22 @@
+alwaystrue: 1
+blinding: !isData || run <= 276811 || (run>=278820 && run<=279931); Disable=True
+ICHEP: !isData || run <= 276811; Disable=True
+filters: $DATA{(Flag_EcalDeadCellTriggerPrimitiveFilter && Flag_HBHENoiseIsoFilter && Flag_HBHENoiseFilter && Flag_eeBadScFilter && Flag_goodVertices && Flag_globalTightHalo2016Filter && Flag_badChargedHadronFilter && Flag_badCloneMuonMoriond2017)} $MC{1}
+trigger: $DATA{(Triggers_iso || Triggers_noniso)} $MC{(Triggers_iso || Triggers_noniso)} 
+cleanup: minMllSFOS == -1 || minMllSFOS > 12
+3light:  nLepSel==3 && abs(LepSel1_pdgId)<14 && abs(LepSel2_pdgId)<14 && abs(LepSel3_pdgId)<14
+pt101010: LepSel1_conePt>10 && LepSel2_conePt>10 && LepSel3_conePt>10 && LepSel1_pt>10 && LepSel2_pt>10 && LepSel3_pt>10
+tight:  LepSel1_isTight && LepSel2_isTight && LepSel3_isTight
+lepmvaM: LepSel1_isMVAM && LepSel2_isMVAM  && LepSel3_isMVAM; Disable=True
+lepmvaVT: LepSel1_isMVAVT && LepSel2_isMVAVT  && LepSel3_isMVAVT; Disable=True
+pt2x1x10: LepSel1_conePt>20 && (abs(LepSel1_pdgId)!=11 || LepSel1_conePt>25) && (htJet30j > 400 || LepSel1_conePt>25) && LepSel2_conePt>10 && (abs(LepSel2_pdgId)!=11 || LepSel2_conePt>15) && LepSel3_conePt>10
+muee: !(abs(LepSel1_pdgId)==13 && abs(LepSel2_pdgId)==11 && abs(LepSel3_pdgId)==11) || (LepSel1_conePt>25 || htJet30j > 400)
+idIsoEmu: htJet30j > 400 || (LepSel1_idIsoEmu && LepSel2_idIsoEmu && LepSel3_idIsoEmu); Disable=True
+lownjet: nJet30 < 2
+bveto: nBJetMedium25==0
+met: 30 <= met_pt && met_pt <= 100
+onZ: nOSSF_3l>0 && abs(mll_3l-91)<15
+mtw: 50 <= mT_3l && mT_3l <= 100
+#ht60: htJet30j>60
+#inBR: BR == 1
+#inSR: SR > 0

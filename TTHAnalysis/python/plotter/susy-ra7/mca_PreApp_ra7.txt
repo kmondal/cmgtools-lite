@@ -1,0 +1,209 @@
+sig_ICHEP_T1tttt_1200_100+      : T1tttt_1200_100      : 3*0.0856418 : 1/(puw_nInt_Moriond(nTrueInt))*((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))             ; FillColor=ROOT.kOrange+10, Label="T1tttt(1200\,100)x3"
+sig_ICHEP_T1tttt_1200_700+      : T1tttt_1200_700      : 3*0.0856418 : 1/(puw_nInt_Moriond(nTrueInt))*((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))             ; FillColor=ROOT.kCyan+1, Label="T1tttt(1200\,700)x3"
+sig_ICHEP_T5qqqqWZ_1000_100+    : T5qqqqVV_1000_100    : 3*4/9*0.325388  : 1/(puw_nInt_Moriond(nTrueInt))*(((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)))*(GenSusyMNeutralino2>0 && GenSusyMChargino>0)             ; FillColor=ROOT.kGreen+4, Label="T5qqqqWZ(1000\,100)x3"
+sig_ICHEP_T5qqqqWZ_800_500+     : T5qqqqVV_800_500     : 3*4/9*1.4891    : 1/(puw_nInt_Moriond(nTrueInt))*(((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)))*(GenSusyMNeutralino2>0 && GenSusyMChargino>0)             ; FillColor=ROOT.kRed+3, Label="T5qqqqWZ(800\,500)x3"
+
+sig_M17_T1tttt_1350_900+      : T1tttt_1350_900      : 10*0.0340187 : 1/(puw_nInt_Moriond(nTrueInt))*((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))             ; FillColor=ROOT.kOrange+10, Label="T1tttt(1350\,900)x10"
+sig_M17_T1tttt_1650_400+      : T1tttt_1650_400      : 10*0.00616072 : 1/(puw_nInt_Moriond(nTrueInt))*((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))             ; FillColor=ROOT.kCyan+1, Label="T1tttt(1650\,400)x10"
+sig_M17_T5qqqqWZ_1000_750+    : T5qqqqVV_1000_750    : 10*4/9*0.325388  : 1/(puw_nInt_Moriond(nTrueInt))*(((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)))*(GenSusyMNeutralino2>0 && GenSusyMChargino>0)             ; FillColor=ROOT.kGreen+4, Label="T5qqqqWZ(1000\,750)x10"
+sig_M17_T5qqqqWZ_1200_400+     : T5qqqqVV_1200_400     : 10*4/9*0.0856418    : 1/(puw_nInt_Moriond(nTrueInt))*(((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)))*(GenSusyMNeutralino2>0 && GenSusyMChargino>0)             ; FillColor=ROOT.kRed+3, Label="T5qqqqWZ(1200\,400)x10"
+
+sig_T6ttWW_1000_400+      : T6ttWW_1000_400      : 3*0.00615134 : 1/(puw_nInt_Moriond(nTrueInt))*((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))             ; FillColor=ROOT.kOrange+10, Label="T6ttWW(1000\,400)x3"
+sig_T6ttWW_800_600+      : T6ttWW_800_600      : 3*0.0283338 : 1/(puw_nInt_Moriond(nTrueInt))*((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))             ; FillColor=ROOT.kCyan+1, Label="T6ttWW(800\,600)x3"
+sig_T6ttWW_1000_700+    : T6ttWW_1000_700    : 3*0.00615134   : 1/(puw_nInt_Moriond(nTrueInt))*(((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)))             ; FillColor=ROOT.kGreen+4, Label="T6ttWW(1000\,700)x3"
+sig_T6ttWW_800_100+     : T6ttWW_800_100     : 3*0.0283338    : 1/(puw_nInt_Moriond(nTrueInt))*(((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)))             ; FillColor=ROOT.kRed+3, Label="T6ttWW(800\,100)x3"
+
+
+## DATA
+## -----------------------------------------------------------
+
+data : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_part1
+data : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_part2
+data : DoubleEG_Run2016C_23Sep2016_v1_runs_271036_284044
+data : DoubleEG_Run2016D_23Sep2016_v1_runs_271036_284044
+data : DoubleEG_Run2016E_23Sep2016_v1_runs_271036_284044
+data : DoubleEG_Run2016F_23Sep2016_v1_runs_271036_284044
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleEG_Run2016H-PromptReco-v2_runs_281207_284035_part1
+data : DoubleEG_Run2016H-PromptReco-v2_runs_281207_284035_part2
+data : DoubleEG_Run2016H-PromptReco-v3_runs_284036_284044
+
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part1
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part2
+data : DoubleMuon_Run2016C_23Sep2016_v1_runs_271036_284044
+data : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleMuon_Run2016F_23Sep2016_v1_runs_271036_284044
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281207_284035_part1
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281207_284035_part2
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281207_284035_part3
+data : DoubleMuon_Run2016H-PromptReco-v3_runs_284036_284044
+
+data : MuonEG_Run2016B_23Sep2016_v3_runs_273150_275376
+data : MuonEG_Run2016C_23Sep2016_v1_runs_271036_284044
+data : MuonEG_Run2016D_23Sep2016_v1_runs_271036_284044
+data : MuonEG_Run2016E_23Sep2016_v1_runs_271036_284044
+data : MuonEG_Run2016F_23Sep2016_v1_runs_271036_284044
+data : MuonEG_Run2016G_23Sep2016_v1_runs_271036_284044
+data : MuonEG_Run2016H-PromptReco-v2_runs_281207_284035
+data : MuonEG_Run2016H-PromptReco-v3_runs_284036_284044
+
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376
+data : SingleElectron_Run2016C_23Sep2016_v1_runs_271036_284044
+data : SingleElectron_Run2016D_23Sep2016_v1_runs_271036_284044
+data : SingleElectron_Run2016E_23Sep2016_v1_runs_271036_284044
+data : SingleElectron_Run2016F_23Sep2016_v1_runs_271036_284044
+data : SingleElectron_Run2016G_23Sep2016_v1_runs_271036_284044
+data : SingleElectron_Run2016H-PromptReco-v2_runs_281207_284035
+data : SingleElectron_Run2016H-PromptReco-v3_runs_284036_284044
+
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376
+data : SingleMuon_Run2016C_23Sep2016_v1_runs_271036_284044
+data : SingleMuon_Run2016D_23Sep2016_v1_runs_271036_284044
+data : SingleMuon_Run2016E_23Sep2016_v1_runs_271036_284044
+data : SingleMuon_Run2016F_23Sep2016_v1_runs_271036_284044
+data : SingleMuon_Run2016G_23Sep2016_v1_runs_271036_284044
+data : SingleMuon_Run2016H-PromptReco-v2_runs_281207_284035
+data : SingleMuon_Run2016H-PromptReco-v3_runs_284036_284044
+
+#fakes_dy : DYJetsToLL_M10to50_LO : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kCyan, Label="Nonprompt (DY LO)" , NormSystematic=0.3
+#fakes_dy : DYJetsToLL_M50_LO     : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kCyan, Label="Nonprompt (DY LO)" , NormSystematic=0.3
+#fakes_dy : DYJetsToLL_M10to50 : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kCyan, Label="Nonprompt (DY)" , NormSystematic=0.3
+#fakes_dy : DYJetsToLL_M50     : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kCyan, Label="Nonprompt (DY)" , NormSystematic=0.3
+#fakes_tt : TTJets_DiLepton    : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kRed-4, Label="Nonprompt (tt)" , NormSystematic=0.3
+#fakes_tt : TTJets_SingleLeptonFromTbar    : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kRed-4, Label="Nonprompt (tt)" , NormSystematic=0.3
+#fakes_tt : TTJets_SingleLeptonFromT       : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kRed-4, Label="Nonprompt (tt)" , NormSystematic=0.3
+
+#fakes_MC : DYJetsToLL_M10to50 : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+#fakes_MC : DYJetsToLL_M50     : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+#fakes_MC : DYJetsToLL_M10to50_LO : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+#fakes_MC : DYJetsToLL_M50_LO_part1+DYJetsToLL_M50_LO_part2+DYJetsToLL_M50_LO_part3+DYJetsToLL_M50_LO_part4+DYJetsToLL_M50_LO_part5     : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+
+#fakes_MC : TTJets_DiLepton_part1+TTJets_DiLepton_part2    : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+#fakes_MC : TTJets_SingleLeptonFromTbar    : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+#fakes_MC : TTJets_SingleLeptonFromT_part1+TTJets_SingleLeptonFromT_part2+TTJets_SingleLeptonFromT_part3       : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+#fakes_MC : WJetsToLNu_LO                        : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+
+
+fakes_MC : DYJetsToLL_M10to50_LO : xsec : ((LepSel_mcUCSX[0]==2 || LepSel_mcUCSX[0]==3) || (LepSel_mcUCSX[1]==2 || LepSel_mcUCSX[1]==3) || (LepSel_mcUCSX[2]==2 || LepSel_mcUCSX[2]==3)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+fakes_MC : DYJetsToLL_M50_LO     : xsec : ((LepSel_mcUCSX[0]==2 || LepSel_mcUCSX[0]==3) || (LepSel_mcUCSX[1]==2 || LepSel_mcUCSX[1]==3) || (LepSel_mcUCSX[2]==2 || LepSel_mcUCSX[2]==3)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+
+fakes_MC : TTJets_DiLepton_part1+TTJets_DiLepton_part2    : xsec : ((LepSel_mcUCSX[0]==2 || LepSel_mcUCSX[0]==3) || (LepSel_mcUCSX[1]==2 || LepSel_mcUCSX[1]==3) || (LepSel_mcUCSX[2]==2 || LepSel_mcUCSX[2]==3)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+fakes_MC : TTJets_SingleLeptonFromTbar    : xsec : ((LepSel_mcUCSX[0]==2 || LepSel_mcUCSX[0]==3) || (LepSel_mcUCSX[1]==2 || LepSel_mcUCSX[1]==3) || (LepSel_mcUCSX[2]==2 || LepSel_mcUCSX[2]==3)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+fakes_MC : TTJets_SingleLeptonFromT_part1+TTJets_SingleLeptonFromT_part2+TTJets_SingleLeptonFromT_part3       : xsec : ((LepSel_mcUCSX[0]==2 || LepSel_mcUCSX[0]==3) || (LepSel_mcUCSX[1]==2 || LepSel_mcUCSX[1]==3) || (LepSel_mcUCSX[2]==2 || LepSel_mcUCSX[2]==3)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+fakes_MC : WJetsToLNu_LO                        : xsec : ((LepSel_mcUCSX[0]==2 || LepSel_mcUCSX[0]==3) || (LepSel_mcUCSX[1]==2 || LepSel_mcUCSX[1]==3) || (LepSel_mcUCSX[2]==2 || LepSel_mcUCSX[2]==3)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+
+
+
+
+fakes_appldata : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_part1; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_part2; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016C_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016D_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016E_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016F_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part1; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part2; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016H-PromptReco-v2_runs_281207_284035_part1; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016H-PromptReco-v2_runs_281207_284035_part2; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016H-PromptReco-v3_runs_284036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+
+fakes_appldata : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part1; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part2; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016C_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part1; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part2; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part1; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part2; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016F_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part1; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part2; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part3; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016H-PromptReco-v2_runs_281207_284035_part1; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016H-PromptReco-v2_runs_281207_284035_part2; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016H-PromptReco-v2_runs_281207_284035_part3; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016H-PromptReco-v3_runs_284036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+
+fakes_appldata : MuonEG_Run2016B_23Sep2016_v3_runs_273150_275376; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016C_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016D_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016E_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016F_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016G_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016H-PromptReco-v2_runs_281207_284035; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016H-PromptReco-v3_runs_284036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016C_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016D_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016E_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016F_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016G_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016H-PromptReco-v2_runs_281207_284035; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016H-PromptReco-v3_runs_284036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016C_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016D_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016E_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016F_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016G_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016H-PromptReco-v2_runs_281207_284035; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016H-PromptReco-v3_runs_284036_284044; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+
+
+promptsub               : WZTo3LNu                        : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))            ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub    : TTWToLNu_ext1+TTWToLNu_ext2_part1+TTWToLNu_ext2_part2                    : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub     : TTHnobb_pow                 : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub     : TTZToLLNuNu                 : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub     : TTLLJets_m1to10             : (-1)*0.0493 : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub     : tZq_ll                      : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub     : tZW_ll                      : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : TTJets_DiLepton_part1+TTJets_DiLepton_part2    : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : TTJets_SingleLeptonFromTbar    : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : TTJets_SingleLeptonFromT_part1+TTJets_SingleLeptonFromT_part2+TTJets_SingleLeptonFromT_part3       : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : TTTT       : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub  : TTGJets  : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1 || LepSel_mcUCSX[0]==4) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1 || LepSel_mcUCSX[1]==4) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1 || LepSel_mcUCSX[2]==4)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub  : ZGTo2LG  : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1 || LepSel_mcUCSX[0]==4) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1 || LepSel_mcUCSX[1]==4) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1 || LepSel_mcUCSX[2]==4)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub  : TGJets   : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1 || LepSel_mcUCSX[0]==4) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1 || LepSel_mcUCSX[1]==4) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1 || LepSel_mcUCSX[2]==4)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : GGHZZ4L   : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : ZZTo4L_part1+ZZTo4L_part2    : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : VHToNonbb : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : WWW       : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : WWZ       : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+#promptsub : WZZ       : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : ZZZ       : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : WZG       : (-1)*xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_data.txt" , FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+
+
+
+
+prompt_ttZ    : TTZToLLNuNu                 : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kSpring+7, Label="ttZ", NormSystematic=0.40
+prompt_ttZ    : TTLLJets_m1to10             : 0.0493 : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kSpring+7, Label="ttZ", NormSystematic=0.40
+
+prompt_ttX    : TTWToLNu_ext1+TTWToLNu_ext2_part1+TTWToLNu_ext2_part2                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kViolet-7, Label="ttX", NormSystematic=0.2
+prompt_ttX    : TTHnobb_pow                 : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kViolet-7, Label="ttX", NormSystematic=0.2
+
+prompt_WZ               : WZTo3LNu                        : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))            ; FillColor=ROOT.kOrange  , Label="WZ", NormSystematic=0.1
+
+prompt_Rares    : tZq_ll                      : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5
+prompt_Rares    : tZW_ll                      : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5
+prompt_Rares : GGHZZ4L   : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5
+prompt_Rares : ZZTo4L_part1+ZZTo4L_part2    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5
+prompt_Rares : VHToNonbb : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5
+prompt_Rares : WWW       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kMagenta-7 , Label="Rares", NormSystematic=0.5
+prompt_Rares : WWZ       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kMagenta-7 , Label="Rares", NormSystematic=0.5
+prompt_Rares : WZZ       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kMagenta-7 , Label="Rares", NormSystematic=0.5
+prompt_Rares : ZZZ       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kMagenta-7 , Label="Rares", NormSystematic=0.5
+prompt_Rares : WpWpJJ    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kMagenta-7 , Label="Rares", NormSystematic=0.5
+prompt_Rares : WZG       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kMagenta-7 , Label="Rares", NormSystematic=0.5
+prompt_Rares : TTTT       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ; FillColor=ROOT.kMagenta-7 , Label="Rares", NormSystematic=0.5
+prompt_Rares  : TTGJets  : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1 || LepSel_mcUCSX[0]==4) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1 || LepSel_mcUCSX[1]==4) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1 || LepSel_mcUCSX[2]==4)) ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5
+prompt_Rares  : ZGTo2LG  : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1 || LepSel_mcUCSX[0]==4) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1 || LepSel_mcUCSX[1]==4) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1 || LepSel_mcUCSX[2]==4)) ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5
+prompt_Rares  : TGJets   : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1 || LepSel_mcUCSX[0]==4) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1 || LepSel_mcUCSX[1]==4) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1 || LepSel_mcUCSX[2]==4)) ; FillColor=ROOT.kMagenta-7, Label="Rares", NormSystematic=0.5

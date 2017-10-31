@@ -6,6 +6,12 @@ def bash(cmd):
 	back = pipe.stdout.read().rstrip("\n").strip()
 	return back
 
+def bashML(cmd):
+	#print cmd
+	pipe = subprocess.Popen(cmd, shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+	back = pipe.stdout.readlines()
+	return [l.rstrip("\n").strip() for l in back]
+
 def cleandir(path, cpIdx = True):
 	if not os.path.isdir(path): return
 	path = path.rstrip("/")

@@ -58,10 +58,10 @@ baseOpt="python mcPlots.py susy-ewkino/3l/mca_ewkino.txt susy-ewkino/3l/cuts_ewk
 ## 3l taus
 ## ------------------------------------------
 #O="/afs/cern.ch/user/c/cheidegg/www/heppy/2016-11-07_ewk80X_sr3lopt_expectedYields"
-eval "$baseOpt --pdir $O/SR/3lC/35fb/mix --sP SR_C -A alwaystrue underflow 'BR==3' -p TChiNeuSlepSneuTD_500_1 -p TChiNeuSlepSneuTD_200_150"
-eval "$baseOpt --pdir $O/plots/3lOpt/1taus/mix --sP SR_D -A alwaystrue underflow 'BR==4' -p TChiNeuSlepSneuTD_500_1 -p TChiNeuSlepSneuTD_200_150"
-eval "$baseOpt --pdir $O/plots/3lOpt/2taus/mix --sP SR_F -A alwaystrue underflow 'BR==6' -p TChiNeuSlepSneuTD_500_1 -p TChiNeuSlepSneuTD_200_150"
-eval "$baseOpt --pdir $O/plots/3lOpt/2taus/mix --sP SR_F -A alwaystrue underflow 'BR==6' -p TChiNeuSlepSneuTD_500_1 -p TChiNeuSlepSneuTD_200_150"
+#eval "$baseOpt --pdir $O/SR/3lC/35fb/mix --sP SR_C -A alwaystrue underflow 'BR==3' -p TChiNeuSlepSneuTD_500_1 -p TChiNeuSlepSneuTD_200_150"
+#eval "$baseOpt --pdir $O/plots/3lOpt/1taus/mix --sP SR_D -A alwaystrue underflow 'BR==4' -p TChiNeuSlepSneuTD_500_1 -p TChiNeuSlepSneuTD_200_150"
+#eval "$baseOpt --pdir $O/plots/3lOpt/2taus/mix --sP SR_F -A alwaystrue underflow 'BR==6' -p TChiNeuSlepSneuTD_500_1 -p TChiNeuSlepSneuTD_200_150"
+#eval "$baseOpt --pdir $O/plots/3lOpt/2taus/mix --sP SR_F -A alwaystrue underflow 'BR==6' -p TChiNeuSlepSneuTD_500_1 -p TChiNeuSlepSneuTD_200_150"
 #O="/afs/cern.ch/user/c/cheidegg/www/heppy/2016-11-07_ewk80X_sr3lopt_mergedMET"
 #python susy-interface/limitmaker.py 3l 3lC $T $O -l 35 -o SR --flags '-X blinding --asimov' --sigs "TChiNeuSlepSneuTD_.*;TChiNeuWH_.*" --bkgs "fakes_matched_.*;prompt_.*;rares_.*;convs" --sys susy-ewkino/systs_dummy.txt --finalize --macros susy-ewkino/3l/functionsEWKopt.cc --expr "SR-49" --bins "18,0.5,18.5"
 #python susy-interface/limitmaker.py 3l 3lD $T $O -l 35 -o SR --flags '-X blinding --asimov' --sigs "TChiNeuSlepSneuTD_.*;TChiNeuWH_.*" --bkgs "fakes_matched_.*;prompt_.*;rares_.*;convs" --sys susy-ewkino/systs_dummy.txt --finalize --macros susy-ewkino/3l/functionsEWKopt.cc --expr "SR-67" --bins "16,0.5,16.5"
@@ -72,6 +72,9 @@ eval "$baseOpt --pdir $O/plots/3lOpt/2taus/mix --sP SR_F -A alwaystrue underflow
 #python susy-interface/limitmaker.py 3l "3lC;3lD;3lE;3lF" $T $O -l 35 -o SR --flags '-X blinding --asimov' --sigs "TChiNeuSlepSneuTD_.*;TChiNeuWH_.*" --bkgs "fakes_matched_.*;prompt_.*;rares_.*;convs" --sys susy-ewkino/systs_dummy.txt --finalize
 #O="/mnt/t3nfs01/data01/shome/cheidegg/o/2016-10-25_ewk80X_sr3lopt_tauMETsplit"
 #python susy-interface/limitmaker.py 3l "3lC;3lD;3lE;3lF" $T $O -l 35 -o SR --flags '-X blinding --asimov' --sigs "TChiNeuSlepSneuTD_.*;TChiNeuWH_.*" --bkgs "fakes_matched_.*;prompt_.*;rares_.*;convs" --sys susy-ewkino/systs_dummy.txt --macros susy-ewkino/3l/functionsEWKopt.cc --finalize
+
+O="/mnt/t3nfs01/data01/shome/cheidegg/o/2016-10-25_ewk80X_sr3lopt_finalGo"
+python susy-interface/limitmaker.py 3l "3lB;3lC;3lD;3lE;3lF" $T $O -l 35 -o SR --flags '-X blinding --asimov' --sigs "sig_TChiNeuSlepSneuTD_.*;sig_TChiNeuWH_.*" --bkgs "fakes_matched_.*;prompt_.*;rares_.*;convs" --sys susy-ewkino/systs_dummy.txt --finalize
 
 
 
@@ -97,6 +100,9 @@ eval "$baseOpt --pdir $O/plots/3lOpt/2taus/mix --sP SR_F -A alwaystrue underflow
 #O="/afs/cern.ch/user/c/cheidegg/www/heppy/2016-11-08_ewk80X_sr3lopt_SSR4light"
 #python susy-interface/limitmaker.py 3l 4lG $T $O -l 35 -o SR --flags '-X blinding --hardZero --asimov -A alwaystrue inSR "SuperSig>=0.5 && SuperSig<=1.5"' --sigs "TChiNeuZZ4L_.*;TChiNeuHZ_.*;TChiNeuHH_.*" --bkgs "fakes_matched_.*;prompt_.*;rares_.*;convs" --sys susy-ewkino/systs_dummy.txt --finalize --macros susy-ewkino/3l/functionsEWKopt.cc --mccs susy-ewkino/4l/mcc_ewkino.txt --expr "SuperSig" --bins "1,0.5,1.5"
 
+#O="/afs/cern.ch/user/c/cheidegg/www/heppy/2016-11-08_ewk80X_sr3lopt_SSR1light2tau3"
+#python susy-interface/limitmaker.py 3l 3lF $T $O -l 35 -o SR --flags '-X blinding --hardZero --asimov' --sigs "sig_TChiNeuSlepSneuTD_.*;sig_TChiNeuWH_.*" --bkgs "fakes_matched_.*;prompt_.*;rares_.*;convs" --sys susy-ewkino/systs_dummy.txt --finalize --expr "SuperSig" --bins "1,0.5,1.5"
 
-
+#O="/afs/cern.ch/user/c/cheidegg/www/heppy/2016-11-08_ewk80X_sr3lopt_SSR3light_finalTry"
+#python susy-interface/limitmaker.py 3l 3lA $T $O -l 35 -o SR --flags '-X blinding --hardZero --asimov' --sigs "sig_TChiNeuSlepSneuFD_.*;sig_TChiNeuWZ_.*" --bkgs "fakes_matched_.*;prompt_.*;rares_.*;convs" --sys susy-ewkino/systs_dummy.txt --finalize --expr "SuperSig" --bins "1,0.5,1.5"
 

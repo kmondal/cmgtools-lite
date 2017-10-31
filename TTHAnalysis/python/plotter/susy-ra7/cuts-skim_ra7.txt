@@ -1,0 +1,8 @@
+alwaystrue: 1
+#trigger: (Triggers_iso || Triggers_noniso)
+3fo:  nLepSel>=3
+pt101010: LepSel1_conePt>10 && LepSel2_conePt>10 && LepSel3_conePt>10 && LepSel1_pt>10 && LepSel2_pt>10 && LepSel3_pt>10
+cleanup: minMllSFOS == -1 || minMllSFOS > 12
+light:  abs(LepSel1_pdgId)<14 && abs(LepSel2_pdgId)<14 && abs(LepSel3_pdgId)<14
+metbase: met_pt > 25
+

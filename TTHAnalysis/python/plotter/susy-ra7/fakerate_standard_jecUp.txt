@@ -1,0 +1,26 @@
+weight: 1.0
+
+change: mT_3l\b: mT_3l_jecUp
+change: mT_4l\b: mT_4l_jecUp
+change: mT_fo_3l\b: mT_fo_3l_jecUp
+change: mT_fo_4l\b: mT_fo_4l_jecUp
+change: met_pt\b: met_jecUp_pt
+change: met_phi\b: met_jecUp_phi
+change: nJet25_Mini\b: nJet25_Mini_jecUp
+change: htJet25j_Mini\b: htJet25j_Mini_jecUp
+change: mhtJet25_Mini\b: mhtJet25_Mini_jecUp
+change: nJet30_Mini\b: nJet30_Mini_jecUp
+change: htJet30j_Mini\b: htJet30j_Mini_jecUp
+change: mhtJet30_Mini\b: mhtJet30_Mini_jecUp
+change: nBJetLoose25_Mini\b: nBJetLoose25_Mini_jecUp
+change: nBJetMedium25_Mini\b: nBJetMedium25_Mini_jecUp
+change: nBJetTight25_Mini\b: nBJetTight25_Mini_jecUp
+change: nBJetLoose30_Mini\b: nBJetLoose30_Mini_jecUp
+change: nBJetMedium30_Mini\b: nBJetMedium30_Mini_jecUp
+change: nBJetTight30_Mini\b: nBJetTight30_Mini_jecUp
+change: BR\b: BR_jecUp
+change: SR\b: SR_jecUp
+change: SSR\b: SSR_jecUp
+change: BR_fo\b: BR_fo_jecUp
+change: SR_fo\b: SR_fo_jecUp
+change: SSR_fo\b: SSR_fo_jecUp

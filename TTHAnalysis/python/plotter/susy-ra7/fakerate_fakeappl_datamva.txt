@@ -1,0 +1,10 @@
+cut-change: LepSel_isMVAVT\[0\]: 1
+cut-change: LepSel_isMVAVT\[1\]: 1
+cut-change: LepSel_isMVAVT\[2\]: 1
+weight: fakeRateWeight_3l(fetchFR_i(LepSel_conePt[0],LepSel_eta[0],LepGood_pdgId[0],2), LepSel_isMVAVT[0], \
+                          fetchFR_i(LepSel_conePt[1],LepSel_eta[1],LepGood_pdgId[1],2), LepSel_isMVAVT[1], \
+                          fetchFR_i(LepSel_conePt[2],LepSel_eta[2],LepGood_pdgId[2],2), LepSel_isMVAVT[2] )
+#FOR 80X
+load-histo: FR2_mu : $CMSSW_BASE/src/CMGTools/TTHAnalysis/data/fakerate/fakerate_light_EWKino_Moriond2017_36p5fb.root : FR_susy_wpV_mu_data_comb
+load-histo: FR2_el : $CMSSW_BASE/src/CMGTools/TTHAnalysis/data/fakerate/fakerate_light_EWKino_Moriond2017_36p5fb.root : FR_susy_wpV_el_data_comb
+

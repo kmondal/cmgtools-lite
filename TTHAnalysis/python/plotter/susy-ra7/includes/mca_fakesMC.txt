@@ -1,0 +1,9 @@
+fakes_MC : DYJetsToLL_M10to50_LO : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[2]==0) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+fakes_MC : DYJetsToLL_M50_LO     : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[2]==0) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+
+fakes_MC : TTJets_DiLepton_part1+TTJets_DiLepton_part2    : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[2]==0) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+fakes_MC : TTJets_SingleLeptonFromTbar    : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[2]==0) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+fakes_MC : TTJets_SingleLeptonFromT_part1+TTJets_SingleLeptonFromT_part2+TTJets_SingleLeptonFromT_part3       : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[2]==0) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+fakes_MC : WJetsToLNu_LO                        : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[2]==0) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+
+

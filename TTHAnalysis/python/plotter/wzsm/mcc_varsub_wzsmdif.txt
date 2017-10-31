@@ -1,0 +1,32 @@
+LepSel1_(\w+)  : LepSel_\1[0]; AlsoData
+LepSel2_(\w+)  : LepSel_\1[1]; AlsoData
+LepSel3_(\w+)  : LepSel_\1[2]; AlsoData
+LepSel4_(\w+)  : LepSel_\1[3]; AlsoData
+nJet25\b: nJet25_Recl; AlsoData
+htJet25j\b: htJet25j_Recl; AlsoData
+mhtJet25\b: mhtJet25_Recl; AlsoData
+nJet30\b: nJet30_Recl; AlsoData
+htJet30j\b: htJet30j_Recl; AlsoData
+mhtJet30\b: mhtJet30_Recl; AlsoData
+nJet40\b: nJet40_Recl; AlsoData
+htJet40j\b: htJet40j_Recl; AlsoData
+mhtJet40\b: mhtJet40_Recl; AlsoData
+nBJetLoose25\b: nBJetLoose25_Recl; AlsoData
+nBJetMedium25\b: nBJetMedium25_Recl; AlsoData
+nBJetTight25\b: nBJetTight25_Recl; AlsoData
+nBJetLoose30\b: nBJetLoose30_Recl; AlsoData
+nBJetMedium30\b: nBJetMedium30_Recl; AlsoData
+nBJetTight30\b: nBJetTight30_Recl; AlsoData
+nBJetLoose40\b: nBJetLoose40_Recl; AlsoData
+nBJetMedium40\b: nBJetMedium40_Recl; AlsoData
+nBJetTight40\b: nBJetTight40_Recl; AlsoData
+mll\b: mll_3l; AlsoData
+minMllAFAS\b: minMllAFAS_Recl; AlsoData
+minMllAFOS\b: minMllAFOS_Recl; AlsoData
+minMllAFSS\b: minMllAFSS_Recl; AlsoData
+minMllSFOS\b: minMllSFOS_Recl; AlsoData
+nOSSF\b: nOSSF_3l; AlsoData
+nOSLF\b: nOSLF_3l; AlsoData
+nOSTF\b: nOSTF_3l; AlsoData
+LepZ1_conePt\b: if3(LepZ1_isMVAM,LepZ1_conePt,if3(abs(LepZ1_pdgId)==13,LepZ1_conePt/0.80*0.75,LepZ1_conePt/0.90*0.85)); AlsoData
+LepZ2_conePt\b: if3(LepZ2_isMVAM,LepZ2_conePt,if3(abs(LepZ1_pdgId)==13,LepZ2_conePt/0.80*0.75,LepZ2_conePt/0.90*0.85)); AlsoData

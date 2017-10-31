@@ -1,0 +1,20 @@
+alwaystrue: 1
+filters: $DATA{ Flag_EcalDeadCellTriggerPrimitiveFilter && Flag_HBHENoiseIsoFilter && Flag_HBHENoiseFilter && Flag_eeBadScFilter && Flag_goodVertices && Flag_globalTightHalo2016Filter && Flag_badChargedHadronFilter && Flag_badMuonFilter } $MC{1}
+trigger: $DATA{(Triggers_ee || Triggers_mm || Triggers_em)} $MC{1}
+cleanup: minMllAFAS > 12
+blinding: !isData || run <= 274240 ; Disable=True
+1loose:  nLepFO == 1 
+1light:  abs(LepGood1_pdgId)<14 
+tight: LepGood1_isTight
+jets: nJet40 == 1
+vetobjets: nBJetMedium25 == 0 ; Disable=True
+final: nTauGood == 1 
+
+zzalwaystrue: 1                         ;  Disable=True
+zzblinding  : !isData || run <= 274240  ;  Disable=True
+zzfilters   : !isData || METfilters     ;  Disable=True
+zztrigger   : !isData || Triggers_leplep;  Disable=True
+zz1l        : SR == 144 || SR == 145    ;  Disable=True
+zzbJetVeto  : nBJetMedium25 == 0        ;  Disable=True
+zzmet       : met_pt > 50               ;  Disable=True
+zzfinal     : 1                         ;  Disable=True  

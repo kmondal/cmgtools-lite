@@ -1,0 +1,11 @@
+alwaystrue: 1
+3lep10:  nLepSel>=3 && LepSel_isTight[0] && LepSel_isTight[1] && LepSel_isTight[2] && abs(LepSel1_pdgId)<14 && abs(LepSel2_pdgId)<14 && abs(LepSel3_pdgId)<14
+cleanlowmll: minMllSFOS == -1 || minMllSFOS > 12
+pt2x1x10: LepSel1_conePt>10 && (abs(LepSel1_pdgId)!=11 || LepSel1_conePt>15) && (htJet30j > 400 || LepSel1_conePt>25) && LepSel2_conePt>10 && (abs(LepSel2_pdgId)!=11 || LepSel2_conePt>15) && LepSel3_conePt>10
+onZ:   isOnZalt; Disable=True
+offZ: !isOnZalt; Disable=True
+twoormorejet: nJet30>=2
+metbase: met_pt > 50
+
+
+SSR: (((htJet30j>200 && met_pt >250) || nBJetMedium25>=3 ) && mTW>120); Disable=True

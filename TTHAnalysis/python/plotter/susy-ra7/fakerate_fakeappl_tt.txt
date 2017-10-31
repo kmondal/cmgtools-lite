@@ -1,0 +1,10 @@
+cut-change: LepSel_isTight\[0\]: 1
+cut-change: LepSel_isTight\[1\]: 1
+cut-change: LepSel_isTight\[2\]: 1
+weight: fakeRateWeight_3l(fetchFR_i(LepSel_conePt[0],LepSel_eta[0],LepGood_pdgId[0],2), LepSel_isTight[0], \
+                          fetchFR_i(LepSel_conePt[1],LepSel_eta[1],LepGood_pdgId[1],2), LepSel_isTight[1], \
+                          fetchFR_i(LepSel_conePt[2],LepSel_eta[2],LepGood_pdgId[2],2), LepSel_isTight[2] )
+
+load-histo     : FR2_el           : /nfs/fanae/user/nachos/ForECO/fr_susy_mc_v2.0_041216.root : FR_wpRA7E2_el_TT_conePt_RA7
+load-histo     : FR2_mu           : /nfs/fanae/user/nachos/ForECO/fr_susy_mc_v2.0_041216.root : FR_wpRA7E2_mu_TT_conePt_RA7
+

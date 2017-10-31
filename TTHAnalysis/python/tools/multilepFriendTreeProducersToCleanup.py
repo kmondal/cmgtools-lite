@@ -9,18 +9,55 @@ isFastSim = False
 
 # btag event weights in 80X
 from CMGTools.TTHAnalysis.tools.bTagEventWeights import BTagEventWeightFriend
-btagsf_payload = os.path.join(utility_files_dir, "btag", "CSVv2_ichep.csv")
-btagsf_payload_fastsim = os.path.join(utility_files_dir, "btag", "CSV_13TEV_TTJets_11_7_2016.csv")
+btagsf_payload = os.path.join(utility_files_dir, "btag", "CSVv2_Moriond17_B_H.csv")
+btagsf_payload_fastsim = os.path.join(utility_files_dir, "btag", "fastsim_csvv2_ttbar_26_1_2017.csv")
 bTagEventWeight = lambda : BTagEventWeightFriend(csvfile=btagsf_payload, algo='csv', recllabel='Recl')
 btag_efficiency_file = os.path.join(utility_files_dir, "btag", "bTagEffs.root")
 bTagEventWeightFastSIM = lambda : BTagEventWeightFriend(csvfile=btagsf_payload, csvfastsim=btagsf_payload_fastsim, eff_rootfile=btag_efficiency_file, algo='csv', recllabel='Recl')
 MODULES.append( ('eventBTagWeight', bTagEventWeight ))
 MODULES.append( ('bTagEventWeightFastSIM', bTagEventWeightFastSIM ))
 
+from CMGTools.TTHAnalysis.tools.bTagWeightAnalyzer import bTagWeightAnalyzer
+btagsf_payload_fullsim  = os.path.join(utility_files_dir, "btag", "CSVv2_Moriond17_B_H.csv"                          )
+btagsf_payload_fastsim  = os.path.join(utility_files_dir, "btag", "fastsim_csvv2_ttbar_26_1_2017_fixed.csv"          )
+btag_efficiency_fullsim = os.path.join(utility_files_dir, "btag", "btageff__ttbar_powheg_pythia8_25ns_Moriond17.root")
+btag_efficiency_fastsim = os.path.join(utility_files_dir, "btag", "btageff__SMS-T1bbbb-T1qqqq_25ns_Moriond17.root"   )
+bTagEventWeightFullSim   = lambda : bTagWeightAnalyzer(btagsf_payload_fullsim, btag_efficiency_fullsim, recllabel='Mini')
+bTagEventWeightFastSim   = lambda : bTagWeightAnalyzer(btagsf_payload_fastsim, btag_efficiency_fastsim, recllabel='Mini', isFastSim=True)
+MODULES.append( ('bTagEventWeightFullSim3L'  , bTagEventWeightFullSim ))
+MODULES.append( ('bTagEventWeightFastSim3L'  , bTagEventWeightFastSim ))
+bTagEventWeightFullSim2L = lambda : bTagWeightAnalyzer(btagsf_payload_fullsim, btag_efficiency_fullsim, recllabel='Recl')
+bTagEventWeightFastSim2L = lambda : bTagWeightAnalyzer(btagsf_payload_fastsim, btag_efficiency_fastsim, recllabel='Recl', isFastSim=True)
+MODULES.append( ('bTagEventWeightFullSim2L', bTagEventWeightFullSim2L ))
+MODULES.append( ('bTagEventWeightFastSim2L', bTagEventWeightFastSim2L ))
+bTagEventWeightFullSimWZ = lambda : bTagWeightAnalyzer(btagsf_payload_fullsim, btag_efficiency_fullsim, recllabel='Recl')
+bTagEventWeightFastSimWZ = lambda : bTagWeightAnalyzer(btagsf_payload_fastsim, btag_efficiency_fastsim, recllabel='Recl', isFastSim=True)
+MODULES.append( ('bTagEventWeightFullSimWZ', bTagEventWeightFullSimWZ ))
+MODULES.append( ('bTagEventWeightFastSimWZ', bTagEventWeightFastSimWZ ))
+
+## PU uncertainty instances
+from CMGTools.TTHAnalysis.tools.fastSimPUW import FastSimPUWProducer
+puwProfile = os.path.join(utility_files_dir, "pileup", "dataProfile_EWKino_M17.root")
+histogram  = "pileup"
+cutsFile2L = os.path.join(utility_files_dir, "pileup", "cutsFile_EWKino_2L.txt")
+cutsFile3L = os.path.join(utility_files_dir, "pileup", "cutsFile_EWKino_3L.txt")
+cutsFile4L = os.path.join(utility_files_dir, "pileup", "cutsFile_EWKino_4L.txt")
+PUWProducer2L = lambda : FastSimPUWProducer(puwProfile, histogram, cutsFile2L)
+PUWProducer3L = lambda : FastSimPUWProducer(puwProfile, histogram, cutsFile3L)
+PUWProducer4L = lambda : FastSimPUWProducer(puwProfile, histogram, cutsFile4L)
+MODULES.append( ('PUWProducer2L', PUWProducer2L) )
+MODULES.append( ('PUWProducer3L', PUWProducer3L) )
+MODULES.append( ('PUWProducer4L', PUWProducer4L) )
+
+
+
+
+
+
 
 #--- Recleaner instances
 from CMGTools.TTHAnalysis.tools.leptonChoiceRA5 import _susy2lss_lepId_CBloose,_susy2lss_lepId_loosestFO,_susy2lss_lepId_IPcuts,_susy2lss_lepConePt1015,_susy2lss_lepId_tighterFO,_susy2lss_multiIso,_susy2lss_lepId_CB,_susy2lss_idIsoEmu_cuts
-from CMGTools.TTHAnalysis.tools.leptonChoiceRA7 import _susy3l_lepId_CBloose, _susy3l_lepId_loosestFO,_susy3l_lepId_loosestFO,_susy3l_multiIso,_susy3l_lepId_CB
+from CMGTools.TTHAnalysis.tools.leptonBuilderRA7 import _susy3l_lepId_CBloose, _susy3l_lepId_loosestFO,_susy3l_lepId_loosestFO,_susy3l_multiIso,_susy3l_lepId_CB
 from CMGTools.TTHAnalysis.tools.leptonBuilderEWK import _susyEWK_lepId_CBloose, _susyEWK_lepId_IPcuts, _susyEWK_lepId_MVAFO, _susyEWK_lepId_MVAmedium, _susyEWK_tauId_CBloose, _susyEWK_tauId_CBtight
 from CMGTools.TTHAnalysis.tools.functionsTTH import _ttH_idEmu_cuts_E2
 from CMGTools.TTHAnalysis.tools.functionsEWKino import _ewkino_idEmu_cuts_E2, _ewkino_2lss_lepId_CBloose, _ewkino_2lss_lepId_FO, _ewkino_2lss_lepId_num,_ewkino_3l_lepId_FO, _ewkino_3l_lepId_num, _ewkino_2lss_lepId_IPcuts, _ewkino_leptonMVA_VT, _ewkino_leptonMVA_M
@@ -45,16 +82,17 @@ MODULES.append( ('leptonJetReCleanerSusyRA5', lambda : LeptonJetReCleaner("Mini"
 
 # updated cut-based RA7
 MODULES.append( ('leptonJetReCleanerSusyRA7', lambda : LeptonJetReCleaner("Mini", 
-                   lambda lep : lep.miniRelIso < 0.4 and _susy3l_lepId_CBloose(lep), #and (ht>300 or _susy2lss_idIsoEmu_cuts(lep)), 
-                   lambda lep : lep.pt>10 and _susy3l_lepId_loosestFO(lep) and _susy2lss_lepId_IPcuts(lep), # cuts applied on top of loose
-                   lambda lep,ht : lep.pt>10 and _susy2lss_lepId_IPcuts(lep) and _susy3l_lepId_loosestFO(lep), # cuts applied on top of loose
-                   lambda lep,ht : lep.pt>10 and _susy3l_multiIso(lep) and _susy3l_lepId_CB(lep), # cuts applied on top of loose
+                   lambda lep : lep.miniRelIso < 0.4 and _susy3l_lepId_CBloose(lep), 
+                   lambda lep : lep.pt>10 and lep.conept>10 and _susy3l_lepId_loosestFO(lep), # cuts applied on top of loose
+                   lambda lep,ht : lep.pt>10 and lep.conept>10 and _susy3l_lepId_loosestFO(lep), # cuts applied on top of loose
+                   lambda lep,ht : lep.pt>10 and lep.conept>10 and _susy3l_multiIso(lep) and _susy3l_lepId_CB(lep), # cuts applied on top of loose
                    cleanJet = lambda lep,jet,dr : dr<0.4,
                    selectJet = lambda jet: abs(jet.eta)<2.4,
                    cleanTau = lambda lep,tau,dr: dr<0.4,
-                   looseTau = lambda tau: tau.pt > 20 and abs(tau.eta)<2.3 and abs(tau.dxy) < 1000 and abs(tau.dz) < 0.2 and tau.idMVAOldDMRun2 >= 1 and tau.idDecayMode, # used in cleaning
-                   tightTau = lambda tau: tau.idMVAOldDMRun2 == 3, # on top of loose
-                   cleanJetsWithTaus = True,
+                   looseTau = lambda tau: _susyEWK_tauId_CBloose(tau), # used in cleaning
+                   tightTau = lambda tau: _susyEWK_tauId_CBtight(tau), # on top of loose
+                   cleanJetsWithTaus = False,
+                   cleanTausWithLoose = True,
                    doVetoZ = False,
                    doVetoLMf = False,
                    doVetoLMt = True,
@@ -117,6 +155,7 @@ MODULES.append( ('leptonJetReCleanerSusyEWK2L', lambda : LeptonJetReCleaner("Rec
                    looseTau = lambda tau: _susyEWK_tauId_CBloose(tau), # used in cleaning
                    tightTau = lambda tau: _susyEWK_tauId_CBtight(tau), # on top of loose
                    cleanJetsWithTaus = True,
+                   cleanTausWithLoose = True,
                    doVetoZ = True,
                    doVetoLMf = True,
                    doVetoLMt = True,
@@ -152,11 +191,40 @@ MODULES.append( ('leptonJetReCleanerTTH', lambda : LeptonJetReCleaner("Recl", # 
                    coneptdef = lambda lep: conept_TTH(lep) ) ))
 
 
+
+
+MODULES.append( ('leptonJetReCleanerWZSM', lambda : LeptonJetReCleaner("Recl", 
+                   looseLeptonSel = lambda lep : lep.miniRelIso < 0.4 and _ewkino_2lss_lepId_IPcuts(lep) and _ewkino_2lss_lepId_CBloose(lep),
+                   cleaningLeptonSel = lambda lep : lep.pt>10 and lep.conept>10 and (_ewkino_2lss_lepId_num(lep) or _ewkino_2lss_lepId_FO(lep)), # cuts on top of loose
+                   FOLeptonSel = lambda lep,ht : lep.pt>10 and lep.conept>10 and (_ewkino_2lss_lepId_num(lep) or _ewkino_2lss_lepId_FO(lep)), # cuts on top of loose
+                   tightLeptonSel = lambda lep,ht : lep.pt>10 and lep.conept>10 and _ewkino_2lss_lepId_num(lep), # on top of loose 
+                   cleanJet = lambda lep,jet,dr : dr<0.4,
+                   selectJet = lambda jet: abs(jet.eta)<2.4,
+                   cleanTau = lambda lep,tau,dr: dr<0.4,
+                   looseTau = lambda tau: _susyEWK_tauId_CBloose(tau), # used in cleaning
+                   tightTau = lambda tau: _susyEWK_tauId_CBtight(tau), # on top of loose
+                   cleanJetsWithTaus = False,
+                   cleanTausWithLoose = False,
+                   doVetoZ = False,
+                   doVetoLMf = False,
+                   doVetoLMt = True,
+                   jetPt = 30,
+                   bJetPt = 25,
+                   coneptdef = lambda lep: conept_SSDL(lep)
+                 ) ))
+
+
 #--- Lepton builder instances
 from CMGTools.TTHAnalysis.tools.leptonBuilderEWK import LeptonBuilderEWK
 
 MODULES.append( ('leptonBuilderEWK', lambda : LeptonBuilderEWK("Mini")))
 MODULES.append( ('leptonBuilderWZCR_EWK', lambda : LeptonBuilderEWK("Recl")))
+
+from CMGTools.TTHAnalysis.tools.leptonBuilderRA7 import LeptonBuilderRA7
+MODULES.append( ('leptonBuilderRA7', lambda : LeptonBuilderRA7("Mini")))
+
+from CMGTools.TTHAnalysis.tools.leptonBuilderWZSM import LeptonBuilderWZSM
+MODULES.append( ('leptonBuilderWZSM', lambda : LeptonBuilderWZSM("Recl")))
 
 #--- Tau builder instances
 from CMGTools.TTHAnalysis.tools.TauFakesBuilder import TauFakesBuilder

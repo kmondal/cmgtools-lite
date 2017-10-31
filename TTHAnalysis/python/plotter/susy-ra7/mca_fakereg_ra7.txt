@@ -1,0 +1,18 @@
+alwaystrue: 1
+blinding: !isData || run <= 276811 || (run>=278820 && run<=279931); Disable=True
+filters: $DATA{(Flag_EcalDeadCellTriggerPrimitiveFilter && Flag_HBHENoiseIsoFilter && Flag_HBHENoiseFilter && Flag_eeBadScFilter)} $MC{1}
+#trigger: !isData || (Triggers_ee || Triggers_mm || Triggers_em)
+trigger: $DATA{Triggers_iso || Triggers_noniso} $MC{1}
+cleanup: minMllSFOS == -1 || minMllSFOS > 12
+tight: nLepSel==3 && allTight(3, LepSel_isTight[0], LepSel_isTight[1], LepSel_isTight[2])
+3light:  abs(LepSel1_pdgId)<14 && abs(LepSel2_pdgId)<14 && abs(LepSel3_pdgId)<14
+pt2x1x10: LepSel1_conePt>10 && (abs(LepSel1_pdgId)!=11 || LepSel1_conePt>15) && (htJet30j > 400 || LepSel1_conePt>25) && LepSel2_conePt>10 && (abs(LepSel2_pdgId)!=11 || LepSel2_conePt>15) && LepSel3_conePt>10
+njets: nJet30==1 || nJet30==2
+metfakes: met_pt > 30 && met_pt < 50
+nbtags: nBJetMedium25 >= 1
+noZs: nOSSF_3l==0
+#ht60: htJet30j>60
+#inBR: BR == 1
+#inSR: SR > 0
+
+

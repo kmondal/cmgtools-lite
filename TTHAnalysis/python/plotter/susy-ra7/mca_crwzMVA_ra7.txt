@@ -1,0 +1,393 @@
+#sig_T1tttt_1200_100+      : T1tttt_mG_1200_mN_100           : 0.0856418 : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kOrange+10, Label="T1tttt(1200\,100)"
+#sig_T1tttt_1200_700+      : T1tttt_mG_1200_mN_700           : 0.0856418 : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)             ; FillColor=ROOT.kOrange+4, Label="T1tttt(1200\,700)"
+#sig_T5qqqqWZ_1000_100+    : T5qqqqVV_noDM_mG_1000_mN_100    : 0.325388  : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(GenSusyMNeutralino2>0 && GenSusyMChargino>0)             ; FillColor=ROOT.kPink-7, Label="T5qqqqWZ(1000\,100)"
+#sig_T5qqqqWZ_800_500+     : T5qqqqVV_noDM_mG_800_mN_500     : 1.4891    : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(GenSusyMNeutralino2>0 && GenSusyMChargino>0)             ; FillColor=ROOT.kPink-5, Label="T5qqqqWZ(800\,500)"
+
+
+## DATA
+## -----------------------------------------------------------
+
+data : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part1
+data : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part2
+data : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part3
+data : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part4
+data : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part5
+data : DoubleEG_Run2016C_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleEG_Run2016C_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleEG_Run2016C_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleEG_Run2016D_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleEG_Run2016D_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleEG_Run2016D_23Sep2016_v1_runs_271036_284044_part3
+#data : DoubleEG_Run2016D_23Sep2016_v1_runs_271036_284044_part4
+data : DoubleEG_Run2016E_23Sep2016_v1_runs_271036_284044_part1
+#data : DoubleEG_Run2016E_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleEG_Run2016E_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleEG_Run2016E_23Sep2016_v1_runs_271036_284044_part4
+data : DoubleEG_Run2016F_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleEG_Run2016F_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleEG_Run2016F_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part4
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part5
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part6
+data : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part1; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part2; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part3; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part4; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part5; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part6; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : DoubleEG_Run2016H-PromptReco-v3_runs_284036_284044; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part1
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part10
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part11
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part2
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part3
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part4
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part5
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part6
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part7
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part8
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part9
+data : DoubleMuon_Run2016C_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleMuon_Run2016C_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part4
+data : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part5
+data : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part6
+data : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part7
+data : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part4
+data : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part5
+data : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part6
+data : DoubleMuon_Run2016F_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleMuon_Run2016F_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleMuon_Run2016F_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleMuon_Run2016F_23Sep2016_v1_runs_271036_284044_part4
+data : DoubleMuon_Run2016F_23Sep2016_v1_runs_271036_284044_part5
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part2
+#data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part4
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part5
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part6
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part7
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part8
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part9
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part1; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part10; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part2; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part3; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part4; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part5; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part6; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part7; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part8; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part9; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : DoubleMuon_Run2016H-PromptReco-v3_runs_284036_284044; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+
+data : MuonEG_Run2016B_23Sep2016_v3_runs_273150_275376_part1
+data : MuonEG_Run2016B_23Sep2016_v3_runs_273150_275376_part2
+data : MuonEG_Run2016B_23Sep2016_v3_runs_273150_275376_part3
+data : MuonEG_Run2016B_23Sep2016_v3_runs_273150_275376_part4
+data : MuonEG_Run2016C_23Sep2016_v1_runs_271036_284044
+data : MuonEG_Run2016D_23Sep2016_v1_runs_271036_284044
+data : MuonEG_Run2016E_23Sep2016_v1_runs_271036_284044
+data : MuonEG_Run2016F_23Sep2016_v1_runs_271036_284044
+data : MuonEG_Run2016G_23Sep2016_v1_runs_271036_284044_part1
+data : MuonEG_Run2016G_23Sep2016_v1_runs_271036_284044_part2
+data : MuonEG_Run2016H-PromptReco-v2_runs_281613_284035; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : MuonEG_Run2016H-PromptReco-v3_runs_284036_284044; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part1
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part10
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part11
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part12
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part13
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part14
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part15
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part16
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part17
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part18
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part2
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part3
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part4
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part5
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part6
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part7
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part8
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part9
+data : SingleElectron_Run2016C_23Sep2016_v1_runs_271036_284044
+data : SingleElectron_Run2016D_23Sep2016_v1_runs_271036_284044
+data : SingleElectron_Run2016E_23Sep2016_v1_runs_271036_284044
+data : SingleElectron_Run2016F_23Sep2016_v1_runs_271036_284044
+data : SingleElectron_Run2016G_23Sep2016_v1_runs_271036_284044
+data : SingleElectron_Run2016H-PromptReco-v2_runs_281613_284035; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : SingleElectron_Run2016H-PromptReco-v3_runs_284036_284044; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part1
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part10
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part11
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part12
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part13
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part14
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part15
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part16
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part17
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part18
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part2
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part3
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part4
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part5
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part6
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part7
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part8
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part9
+data : SingleMuon_Run2016C_23Sep2016_v1_runs_271036_284044
+data : SingleMuon_Run2016D_23Sep2016_v1_runs_271036_284044
+data : SingleMuon_Run2016E_23Sep2016_v1_runs_271036_284044
+data : SingleMuon_Run2016F_23Sep2016_v1_runs_271036_284044
+data : SingleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part1
+data : SingleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part2
+data : SingleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part1; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : SingleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part2; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+data : SingleMuon_Run2016H-PromptReco-v3_runs_284036_284044; FakeRate="susy-ra7/fakerate_triggersHdata.txt"
+
+
+
+
+
+
+
+
+
+
+
+## WZ
+## -----------------------------------------------------------
+prompt_WZ               : WZTo3LNu                        : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)            ; FillColor=ROOT.kOrange  , Label="WZ", NormSystematic=0.1
+
+
+
+#fakes_dy : DYJetsToLL_M10to50_LO : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kCyan, Label="Nonprompt (DY LO)" , NormSystematic=0.3
+#fakes_dy : DYJetsToLL_M50_LO     : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kCyan, Label="Nonprompt (DY LO)" , NormSystematic=0.3
+#fakes_dy : DYJetsToLL_M10to50 : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kCyan, Label="Nonprompt (DY)" , NormSystematic=0.3
+#fakes_dy : DYJetsToLL_M50     : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kCyan, Label="Nonprompt (DY)" , NormSystematic=0.3
+#fakes_tt : TTJets_DiLepton    : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kRed-4, Label="Nonprompt (tt)" , NormSystematic=0.3
+#fakes_tt : TTJets_SingleLeptonFromTbar    : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kRed-4, Label="Nonprompt (tt)" , NormSystematic=0.3
+#fakes_tt : TTJets_SingleLeptonFromT       : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kRed-4, Label="Nonprompt (tt)" , NormSystematic=0.3
+
+
+#fakes_MC : DYJetsToLL_M10to50 : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+#fakes_MC : DYJetsToLL_M50     : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+#fakes_MC : DYJetsToLL_M10to50_LO : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+#fakes_MC : DYJetsToLL_M50_LO_part1+DYJetsToLL_M50_LO_part2+DYJetsToLL_M50_LO_part3+DYJetsToLL_M50_LO_part4+DYJetsToLL_M50_LO_part5     : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+
+#fakes_MC : TTJets_DiLepton_part1+TTJets_DiLepton_part2+TTJets_DiLepton_part3    : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+#fakes_MC : TTJets_SingleLeptonFromTbar_part1+TTJets_SingleLeptonFromTbar_part2+TTJets_SingleLeptonFromTbar_part3+TTJets_SingleLeptonFromTbar_part4    : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+#fakes_MC : TTJets_SingleLeptonFromT_part1+TTJets_SingleLeptonFromT_part2+TTJets_SingleLeptonFromT_part3       : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+#fakes_MC : WJetsToLNu_LO                        : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==0) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==0) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==0)) ; FillColor=ROOT.kGray+1, Label="Nonprompt" , NormSystematic=0.3
+
+
+
+fakes_appldata : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part1; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part2; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part3; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part4; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part5; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016C_23Sep2016_v1_runs_271036_284044_part1; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016C_23Sep2016_v1_runs_271036_284044_part2; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016C_23Sep2016_v1_runs_271036_284044_part3; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016D_23Sep2016_v1_runs_271036_284044_part1; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016D_23Sep2016_v1_runs_271036_284044_part2; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016D_23Sep2016_v1_runs_271036_284044_part3; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+#fakes_appldata : DoubleEG_Run2016D_23Sep2016_v1_runs_271036_284044_part4; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016E_23Sep2016_v1_runs_271036_284044_part1; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+#fakes_appldata : DoubleEG_Run2016E_23Sep2016_v1_runs_271036_284044_part2; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016E_23Sep2016_v1_runs_271036_284044_part3; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016E_23Sep2016_v1_runs_271036_284044_part4; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016F_23Sep2016_v1_runs_271036_284044_part1; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016F_23Sep2016_v1_runs_271036_284044_part2; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016F_23Sep2016_v1_runs_271036_284044_part3; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part1; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part2; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part3; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part4; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part5; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part6; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part1; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part2; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part3; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part4; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part5; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part6; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleEG_Run2016H-PromptReco-v3_runs_284036_284044; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part1; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part10; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part11; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part2; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part3; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part4; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part5; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part6; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part7; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part8; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_skimmed_part9; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016C_23Sep2016_v1_runs_271036_284044_part1; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016C_23Sep2016_v1_runs_271036_284044_part2; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part1; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part2; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part3; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part4; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part5; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part6; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part7; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part1; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part2; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part3; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part4; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part5; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part6; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016F_23Sep2016_v1_runs_271036_284044_part1; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016F_23Sep2016_v1_runs_271036_284044_part2; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016F_23Sep2016_v1_runs_271036_284044_part3; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016F_23Sep2016_v1_runs_271036_284044_part4; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016F_23Sep2016_v1_runs_271036_284044_part5; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part1; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part2; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+#fakes_appldata : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part3; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part4; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part5; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part6; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part7; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part8; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part9; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part1; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part10; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part2; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part3; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part4; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part5; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part6; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part7; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part8; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part9; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : DoubleMuon_Run2016H-PromptReco-v3_runs_284036_284044; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016B_23Sep2016_v3_runs_273150_275376_part1; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016B_23Sep2016_v3_runs_273150_275376_part2; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016B_23Sep2016_v3_runs_273150_275376_part3; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016B_23Sep2016_v3_runs_273150_275376_part4; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016C_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016D_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016E_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016F_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016G_23Sep2016_v1_runs_271036_284044_part1; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016G_23Sep2016_v1_runs_271036_284044_part2; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016H-PromptReco-v2_runs_281613_284035; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : MuonEG_Run2016H-PromptReco-v3_runs_284036_284044; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part1; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part10; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part11; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part12; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part13; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part14; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part15; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part16; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part17; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part18; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part2; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part3; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part4; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part5; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part6; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part7; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part8; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part9; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016C_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016D_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016E_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016F_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016G_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016H-PromptReco-v2_runs_281613_284035; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleElectron_Run2016H-PromptReco-v3_runs_284036_284044; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part1; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part10; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part11; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part12; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part13; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part14; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part15; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part16; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part17; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part18; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part2; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part3; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part4; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part5; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part6; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part7; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part8; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part9; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016C_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016D_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016E_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016F_23Sep2016_v1_runs_271036_284044; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part1; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part2; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part1; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part2; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+fakes_appldata : SingleMuon_Run2016H-PromptReco-v3_runs_284036_284044; FakeRate="susy-ra7/fakerate_triggersHfakemva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+
+
+promptsub               : WZTo3LNu                        : (-1)*xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)            ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub    : TTWToLNu                    : (-1)*xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub     : TTHnobb_pow                 : (-1)*xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub     : TTZToLLNuNu                 : (-1)*xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub     : TTLLJets_m1to10             : (-1)*xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub     : tZq_ll                      : (-1)*xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : TTJets_DiLepton_part1+TTJets_DiLepton_part2+TTJets_DiLepton_part3    : (-1)*xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : TTJets_SingleLeptonFromTbar_part1+TTJets_SingleLeptonFromTbar_part2+TTJets_SingleLeptonFromTbar_part3+TTJets_SingleLeptonFromTbar_part4    : (-1)*xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : TTJets_SingleLeptonFromT_part1+TTJets_SingleLeptonFromT_part2+TTJets_SingleLeptonFromT_part3       : (-1)*xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : TTTT       : (-1)*xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub  : TTGJets_part1+TTGJets_part2  : (-1)*xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==1) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==1) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub  : ZGTo2LG  : (-1)*xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==1) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==1) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub  : WGToLNuG : (-1)*xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==1) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==1) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub  : TGJets   : (-1)*xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==1) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==1) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==1)) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : GGHZZ4L   : (-1)*xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : ZZTo4L    : (-1)*xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : VHToNonbb : (-1)*xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : WWW       : (-1)*xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : WWZ       : (-1)*xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : WZZ       : (-1)*xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+promptsub : ZZZ       : (-1)*xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FakeRate="susy-ra7/fakerate_fakeappl_datamva.txt", FillColor=ROOT.kGray+1, Label="Nonprompt", NormSystematic=0.3
+
+
+
+
+prompt_ttW    : TTWToLNu                    : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kAzure-7, Label="ttW", NormSystematic=0.2
+prompt_ttZH    : TTHnobb_pow                 : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kTeal+6, Label="ttZ/H", NormSystematic=0.2
+prompt_ttZH    : TTZToLLNuNu                 : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kTeal+6, Label="ttZ/H", NormSystematic=0.2
+prompt_ttZH    : TTLLJets_m1to10             : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kTeal+6, Label="ttZ/H", NormSystematic=0.2
+prompt_ttZH    : tZq_ll                      : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kTeal+6, Label="ttZ/H", NormSystematic=0.2
+
+prompt_XG  : TTGJets_part1+TTGJets_part2  : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==1) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==1) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==1)) ; FillColor=ROOT.kOrange+7, Label="X+G", NormSystematic=0.5
+prompt_XG  : ZGTo2LG  : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==1) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==1) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==1)) ; FillColor=ROOT.kOrange+7, Label="X+G", NormSystematic=0.5
+prompt_XG  : WGToLNuG : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==1) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==1) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==1)) ; FillColor=ROOT.kOrange+7, Label="X+G", NormSystematic=0.5
+prompt_XG  : TGJets   : xsec : ((LepSel1_mcMatchId==0 && LepSel1_mcPromptGamma==1) || (LepSel2_mcMatchId==0 && LepSel2_mcPromptGamma==1) || (LepSel3_mcMatchId==0 && LepSel3_mcPromptGamma==1)) ; FillColor=ROOT.kOrange+7, Label="X+G", NormSystematic=0.5
+
+
+prompt_ZZH : GGHZZ4L   : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kYellow-2, Label="ZZ/H", NormSystematic=0.25
+prompt_ZZH : ZZTo4L    : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kYellow-2, Label="ZZ/H", NormSystematic=0.25
+prompt_ZZH : VHToNonbb : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kYellow-2, Label="ZZ/H", NormSystematic=0.25
+
+prompt_Rares : WWW       : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kRed-6 , Label="Rares", NormSystematic=0.5
+prompt_Rares : WWZ       : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kRed-6 , Label="Rares", NormSystematic=0.5
+prompt_Rares : WZZ       : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kRed-6 , Label="Rares", NormSystematic=0.5
+prompt_Rares : ZZZ       : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kRed-6 , Label="Rares", NormSystematic=0.5
+prompt_Rares : WpWpJJ    : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kRed-6 , Label="Rares", NormSystematic=0.5
+prompt_Rares : WWDouble  : xsec : (LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1) ; FillColor=ROOT.kRed-6 , Label="Rares", NormSystematic=0.5
+

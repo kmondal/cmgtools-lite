@@ -1,0 +1,142 @@
+##### SEARCH STRATEGY
+
+
+
+
+onZstatus          : BR : 2,-0.5,1.5; XTitle="off/on-Z region", xBinLabels="off-Z\,on-Z", LegendCutoff=1e-5
+onZstatus_log      : BR : 2,-0.5,1.5; XTitle="off/on-Z region", xBinLabels="off-Z\,on-Z", LegendCutoff=1e-5, Logy
+
+
+
+
+
+SR_offZ             : SR    : 23,0.5,23.5; XTitle="SR (off-Z)", LegendCutoff=1e-5, IncludeOverflows=False, xBinLabels="1a\,2a\,3a\,4a\,1b\,2b\,3b\,4b\,5\,6\,7\,8\,9\,10\,11\,12\,13\,14a\,15a\,14b\,15b\,16a\,16b", Wide=True, YMin=0., YMax=350.
+SR_onZ              : SR-23 : 23,0.5,23.5; XTitle="SR (on-Z)",  LegendCutoff=1e-5, IncludeOverflows=False, xBinLabels="1a\,2a\,3a\,4a\,1b\,2b\,3b\,4b\,5\,6\,7\,8\,9\,10\,11\,12\,13\,14a\,15a\,14b\,15b\,16a\,16b", Wide=True, YMin=0., YMax=350.
+SR_offZ_log         : SR    : 23,0.5,23.5; XTitle="SR (off-Z)", LegendCutoff=1e-5, IncludeOverflows=False, xBinLabels="1a\,2a\,3a\,4a\,1b\,2b\,3b\,4b\,5\,6\,7\,8\,9\,10\,11\,12\,13\,14a\,15a\,14b\,15b\,16a\,16b", Wide=True, Logy, YMin=0.1, YMax=8000.
+SR_onZ_log          : SR-23 : 23,0.5,23.5; XTitle="SR (on-Z)",  LegendCutoff=1e-5, IncludeOverflows=False, xBinLabels="1a\,2a\,3a\,4a\,1b\,2b\,3b\,4b\,5\,6\,7\,8\,9\,10\,11\,12\,13\,14a\,15a\,14b\,15b\,16a\,16b", Wide=True, Logy, YMin=0.1, YMax=8000.
+SR         : SR    : 46,0.5,46.5; XTitle="SR", LegendCutoff=1e-5, IncludeOverflows=False, xBinLabels="1a\,2a\,3a\,4a\,1b\,2b\,3b\,4b\,5\,6\,7\,8\,9\,10\,11\,12\,13\,14a\,15a\,14b\,15b\,16a\,16b\,1a\,2a\,3a\,4a\,1b\,2b\,3b\,4b\,5\,6\,7\,8\,9\,10\,11\,12\,13\,14a\,15a\,14b\,15b\,16a\,16b", Wide=True, YMin=0., YMax=350.
+SR_log         : SR    : 46,0.5,46.5; XTitle="SR", LegendCutoff=1e-5, IncludeOverflows=False, xBinLabels="1a\,2a\,3a\,4a\,1b\,2b\,3b\,4b\,5\,6\,7\,8\,9\,10\,11\,12\,13\,14a\,15a\,14b\,15b\,16a\,16b\,1a\,2a\,3a\,4a\,1b\,2b\,3b\,4b\,5\,6\,7\,8\,9\,10\,11\,12\,13\,14a\,15a\,14b\,15b\,16a\,16b", Wide=True, Logy, YMin=0.1, YMax=8000.
+SSR            : SSR   : 4,0.5,4.5; XTitle="SSR", LegendCutoff=1e-5, IncludeOverflows=False, xBinLabels="SSR1\,SSR2\,SSR3\,SSR4", Legend='TL'
+SSR_log        : SSR   : 4,0.5,4.5; XTitle="SSR", LegendCutoff=1e-5, IncludeOverflows=False, xBinLabels="SSR1\,SSR2\,SSR3\,SSR4", Legend='TL', YMin=0.1, YMax=90., Logy
+
+SR1b2b_offZ_log         : SR1b2b(SR,mTW)    : 31,0.5,31.5; XTitle="SR (off-Z)", LegendCutoff=1e-5, IncludeOverflows=False, xBinLabels="1a\,2a\,3a\,4a\,1b\,2b\,3b\,4b\,5a\,6a\,7a\,8a\,5b\,6b\,7b\,8b\,9a\,10a\,11a\,12a\,9b\,10b\,11b\,12b\,13\,14a\,15a\,14b\,15b\,16a\,16b", Wide=True, Logy, YMin=0.1, YMax=8000.
+SR1b2b_onZ_log          : SR1b2b(SR,mTW)-31 : 31,0.5,31.5; XTitle="SR (on-Z)",  LegendCutoff=1e-5, IncludeOverflows=False, xBinLabels="1a\,2a\,3a\,4a\,1b\,2b\,3b\,4b\,5a\,6a\,7a\,8a\,5b\,6b\,7b\,8b\,9a\,10a\,11a\,12a\,9b\,10b\,11b\,12b\,13\,14a\,15a\,14b\,15b\,16a\,16b", Wide=True, Logy, YMin=0.1, YMax=8000.
+
+
+
+#### Lepton--RELATED VARIABLES
+pt1     : LepSel1_conePt          : 25,0,500     ; XTitle="p_{T}(leading reco lep) [GeV]", LegendCutoff=1e-5
+pt2     : LepSel2_conePt          : 25,0,250     ; XTitle="p_{T}(subleading reco lep) [GeV]", LegendCutoff=1e-5
+pt3     : LepSel3_conePt          : 20,0,200     ; XTitle="p_{T}(third reco lep) [GeV]", LegendCutoff=1e-5
+ptdil   : pt_2(LepSel1_pt, LepSel1_phi, LepSel2_pt, LepSel2_phi): 15, 0., 300. ;  XTitle="p_{T}(dilepton) [GeV]", LegendCutoff=1e-5
+#ptdilZ  : ptdilZ_WZCR : 15, 0., 300. ;  XTitle="p_{T}^{Z} [GeV]", LegendCutoff=1e-5
+ptll    : LepSel1_pt+LepSel2_pt : 20, 0., 300. ;  XTitle="p_{T}(dilepton) [GeV]", LegendCutoff=1e-5
+dphi    : abs(deltaPhi(LepSel1_phi,LepSel2_phi)):  16, 0, 3.2;  XTitle="#Delta #phi(ll) [rad]", Legend='TL', LegendCutoff=1e-5
+PtRel1:  LepSel1_ptrel: 50,0,100; XTitle="Lep1 Jet p_{T} Relv2  [GeV]", Legend='TR', Logy
+PtRatio1: LepSel1_ptratio: 30,0,1.5; XTitle="Lep1 Jet p_{T} Ratiov2 ", Legend='TL', Logy
+PtRel2:  LepSel2_ptrel: 50,0,100; XTitle="Lep2 Jet p_{T} Relv2  [GeV]", Legend='TR', Logy
+PtRatio2: LepSel2_ptratio: 30,0,1.5; XTitle="Lep2 Jet p_{T} Ratiov2 ", Legend='TL', Logy
+PtRel3:  LepSel3_ptrel: 50,0,100; XTitle="Lep3 Jet p_{T} Relv2  [GeV]", Legend='TR', Logy
+PtRatio3: LepSel3_ptratio: 30,0,1.5; XTitle="Lep3 Jet p_{T} Ratiov2 ", Legend='TL', Logy
+mll   : mass_2(LepSel1_pt,LepSel1_eta,LepSel1_phi,LepSel1_mass, LepSel2_pt,LepSel2_eta,LepSel2_phi,LepSel2_mass): 50,0,200; XTitle="m(ll) [GeV]"
+m3e:  mass_3_cheap(LepSel1_pt,LepSel1_eta,LepSel2_pt,LepSel2_eta,deltaPhi(LepSel1_phi,LepSel2_phi),LepSel3_pt,LepSel3_eta,deltaPhi(LepSel1_phi,LepSel3_phi)): 20, 60, 120; XTitle="m(eee) [GeV]"
+m3mu: mass_3_cheap(LepSel1_pt,LepSel1_eta,LepSel2_pt,LepSel2_eta,deltaPhi(LepSel1_phi,LepSel2_phi),LepSel3_pt,LepSel3_eta,deltaPhi(LepSel1_phi,LepSel3_phi)): 20, 60, 120; XTitle="m(#mu #mu #mu) [GeV]"
+m3l : mass_3_cheap(LepSel1_pt,LepSel1_eta,LepSel2_pt,LepSel2_eta,deltaPhi(LepSel1_phi,LepSel2_phi),LepSel3_pt,LepSel3_eta,deltaPhi(LepSel1_phi,LepSel3_phi)): 20, 60, 120; XTitle="m(lll) [GeV]"
+
+nLepTight    : nLepTight : 8,-0.5,7.5; XTitle="Number of tight leptons", LegendCutoff=1e-5
+nLepLoose    : nLepLoose : 7,-0.5,6.5; XTitle="Number of loose leptons", LegendCutoff=1e-5
+
+
+
+#mZ1     : mZ1: 30,75,105; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5
+#bestmZ  : bestmzTL : 30,75,105; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5 #with old WZCRvars FT
+mZ     : ((nLepTight_Mini>3)*mll_4l+(nLepTight_Mini==3)*mll_3l): 50,0,200; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5, Legend='TR'
+mass12  : mass12 : 120,76,106; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5, Legend='TL'
+
+eta1     : LepSel1_eta          : 10,-2.5,2.5     ; XTitle="#eta (leading reco lep)", LegendCutoff=1e-5
+eta2     : LepSel2_eta          : 10,-2.5,2.5     ; XTitle="#eta (subleading reco lep)", LegendCutoff=1e-5
+eta3     : LepSel3_eta          : 10,-2.5,2.5     ; XTitle="#eta (third reco lep)", LegendCutoff=1e-5
+
+flavor:	 (abs(LepSel1_pdgId)==13)+(abs(LepSel2_pdgId)==13)+(abs(LepSel3_pdgId)==13) : [-0.5,0.5,1.5,2.5,3.5]; XTitle="Lepton flavour composition 3L", XNDiv=004, xBinLabels="eee\,ee#mu\,e#mu#mu\,#mu#mu#mu", Legend='TL', LegendCutoff=1e-5 
+
+pdgId1:	 LepSel1_pdgId : 29,-14.5,14.5; XTitle="Lep1 pdgId", LegendCutoff=1e-5 
+pdgId2:	 LepSel2_pdgId : 29,-14.5,14.5; XTitle="Lep2 pdgId", LegendCutoff=1e-5 
+pdgId3:	 LepSel3_pdgId : 29,-14.5,14.5; XTitle="Lep3 pdgId", LegendCutoff=1e-5 
+
+flav1:	 abs(LepSel1_pdgId)==13 : 2,-0.5,2.5; XTitle="Lep1 flavor", LegendCutoff=1e-5 , XNDiv=002, xBinLabels="e\,#mu", Legend='TL'
+flav2:	 abs(LepSel2_pdgId)==13 : 2,-0.5,2.5; XTitle="Lep2 flavor", LegendCutoff=1e-5 , XNDiv=002, xBinLabels="e\,#mu", Legend='TL'
+flav3:	 abs(LepSel3_pdgId)==13 : 2,-0.5,2.5; XTitle="Lep3 flavor", LegendCutoff=1e-5 , XNDiv=002, xBinLabels="e\,#mu", Legend='TL'
+
+sip3d1:  LepSel1_sip3d : 25, 0.0, 5.0; XTitle="Lep1 SIP3D", LegendCutoff=1e-5 
+sip3d2:  LepSel2_sip3d : 25, 0.0, 5.0; XTitle="Lep2 SIP3D", LegendCutoff=1e-5 
+sip3d3:  LepSel3_sip3d : 25, 0.0, 5.0; XTitle="Lep3 SIP3D", LegendCutoff=1e-5 
+
+
+dxy1:  abs(LepSel1_dxy) : 30, 0.0, 0.06; XTitle="Lep1 dxy", LegendCutoff=1e-5 , Logy
+dxy2:  abs(LepSel2_dxy) : 30, 0.0, 0.06; XTitle="Lep2 dxy", LegendCutoff=1e-5 , Logy
+dxy3:  abs(LepSel3_dxy) : 30, 0.0, 0.06; XTitle="Lep3 dxy", LegendCutoff=1e-5 , Logy
+
+dz1:  abs(LepSel1_dz) : 30, 0.0, 0.12; XTitle="Lep1 dz", LegendCutoff=1e-5 , Logy
+dz2:  abs(LepSel2_dz) : 30, 0.0, 0.12; XTitle="Lep2 dz", LegendCutoff=1e-5 , Logy
+dz3:  abs(LepSel3_dz) : 30, 0.0, 0.12; XTitle="Lep3 dz", LegendCutoff=1e-5 , Logy
+
+relIso1:  LepSel1_relIso : 30, 0.0, 1.5; XTitle="Lep1 relIso", LegendCutoff=1e-5 , Logy
+relIso2:  LepSel1_relIso : 30, 0.0, 1.5; XTitle="Lep2 relIso", LegendCutoff=1e-5 , Logy
+relIso3:  LepSel1_relIso : 30, 0.0, 1.5; XTitle="Lep3 relIso", LegendCutoff=1e-5 , Logy
+
+miniRelIso1:  LepSel1_miniRelIso : 40, 0.0, 0.4; XTitle="Lep1 miniRelIso", LegendCutoff=1e-5  , Logy
+miniRelIso2:  LepSel2_miniRelIso : 40, 0.0, 0.4; XTitle="Lep2 miniRelIso", LegendCutoff=1e-5  , Logy
+miniRelIso3:  LepSel3_miniRelIso : 40, 0.0, 0.4; XTitle="Lep3 miniRelIso", LegendCutoff=1e-5 , Logy
+
+#### JET-RELATED VARIABLES 
+nJet40 	   : nJet40               : 3,-0.5,2.5  ; XTitle='N(jet\, p_{T} > 40)', LegendCutoff=1e-5
+nJet40_log : nJet40 : 10,-0.5,9.5 ; XTitle='N(jet\, p_{T} > 40)', Logy
+
+nJet30 	   : nJet30               : 9,-0.5,8.5  ; XTitle='N_{jet}', LegendCutoff=1e-5, XNDiv=011
+nJet30_log 	   : nJet30               : 11,-0.5,10.5  ; XTitle='N_{jet}', LegendCutoff=1e-5, XNDiv=111, Logy
+
+nBJet25    : nBJetMedium25        : 6,-0.5,5.5   ; XTitle='N(b-jet\, p_{T} > 25\, CSVM)', LegendCutoff=1e-5, XNDiv=006
+nBJet25_log    : nBJetMedium25        : 6,-0.5,5.5   ; XTitle='N(b-jet\, p_{T} > 25\, CSVM)', LegendCutoff=1e-5, Logy, XNDiv=006
+
+htJet40j:   htJet40j: 40,0,400    ; XTitle="H_{T}(jet p_{T} > 40)  [GeV]"
+htJet40j_log:   htJet40j: 40,0,400    ; XTitle="H_{T}(jet p_{T} > 40)  [GeV]", Logy
+
+htJet30j:   htJet30j: [0., 60.,100.,200.,300.,400.,500.,600.,700.,800.,900.,1000.]    ; XTitle="H_{T}(jet p_{T} > 30)  [GeV]", LegendCutoff=1e-5, XNDiv=806
+htJet30j_log:   htJet30j: [0., 60.,100.,200.,300.,400.,500.,600.,700.,800.,900.,1000.]    ; XTitle="H_{T}(jet p_{T} > 30)  [GeV]", LegendCutoff=1e-5, Logy, XNDiv=806, YMin=1., YMax=500.
+
+jet1Pt:  Jet_pt[iJSel_Mini[0]]: 16,0,160; XTitle="Leading jet p_{T}  [GeV]", Legend='TR', LegendCutoff=1e-5
+jet2Pt:  Jet_pt[iJSel_Mini[1]]: 16,0,160; XTitle="Subleading jet p_{T}  [GeV]", Legend='TR', LegendCutoff=1e-5
+
+#### MET-RELATED VARIABLES
+
+METscan    : met_pt               : 30,0,300     ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5
+MET        : met_pt               : 11,50,600    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5
+MET_log    : met_pt               : 11,50,600    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5, Logy
+MET_SR     : met_pt               : [60.,100.,150.,500]; XTitle="E_{T}^{miss} [GeV]"
+MET_SR_log : met_pt               : [60.,100.,150.,500]; XTitle="E_{T}^{miss} [GeV]", Logoy
+MET_JetRatio:      met_pt/Jet1_pt : 20,0,10; XTitle="E_{T}^{miss} / jet p_{T}  [GeV]"
+MET_JetRatio_log:  met_pt/Jet1_pt : 20,0,10; XTitle="E_{T}^{miss} / jet p_{T}  [GeV]", Logy
+
+mT         : mTW  : 20,0,200; XTitle="M_{T}^{min} [GeV]", LegendCutoff=1e-5, Legend='TR', XNDiv=806
+mT_log     : mTW  : 20,0,200; XTitle="M_{T}^{min} [GeV]", LegendCutoff=1e-5, Legend='TR', Logy, XNDiv=806, Logy, YMin=1., YMax=300.
+mTW	       : mTW  : 12,0,120; XTitle="M_{T}^{W} [GeV]", LegendCutoff=1e-5, Legend='TL'
+
+
+
+
+##### WZ control region
+htJet30_WZ:   htJet30j: 4,0,200    ; XTitle="H_{T}(jet p_{T} > 30) [GeV]", LegendCutoff=1e-5, XNDiv=505
+MET_WZ     : met_pt               : 7,30,100    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5, Legend='TR'
+mll_3l     : mll_3l: 30,76,106; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5, Legend='TL'
+mT_3l      : mT_3l: 10,50,100; XTitle="M_{T}^{W} [GeV]", LegendCutoff=1e-5, Legend='TR', XNDiv=510, MoreY=1.8
+nJet30_WZ 	   : nJet30               : 4,-0.5,3.5  ; XTitle='N_{jet}', LegendCutoff=1e-5, XNDiv=004, Legend='TR'
+nBJet25_WZ    : nBJetMedium25        : 3,-0.5,2.5   ; XTitle='N(b-jet\, p_{T} > 25\, CSVM)', LegendCutoff=1e-5, XNDiv=003, Legend='TR', xBinLabels="0\,1\,#geq2"
+
+LongMET_WZ     : met_pt               : 20,0,200    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5, XNDiv=805
+LongmT_3l      : mT_3l: 20,0,200; XTitle="M_{T}^{W} [GeV]", LegendCutoff=1e-5, Legend='TR', XNDiv=805
+
+
+
+
+
+

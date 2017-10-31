@@ -1,0 +1,232 @@
+## STANDARD SELECTION (CENTRAL VALUE) 36.5 fb⁻¹
+## ===========================================================
+
+## DATA
+## -----------------------------------------------------------
+data : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_part1
+data : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_part2
+data : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_part3
+data : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_part4
+data : DoubleEG_Run2016B_23Sep2016_v3_runs_273150_275376_part5
+data : DoubleEG_Run2016C_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleEG_Run2016C_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleEG_Run2016C_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleEG_Run2016D_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleEG_Run2016D_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleEG_Run2016D_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleEG_Run2016D_23Sep2016_v1_runs_271036_284044_part4
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part10
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part11
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part1
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part2
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part3
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part4
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part5
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part6
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part7
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part8
+data : DoubleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part9
+data : DoubleMuon_Run2016C_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleMuon_Run2016C_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part4
+data : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part5
+data : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part6
+data : DoubleMuon_Run2016D_23Sep2016_v1_runs_271036_284044_part7
+data : MuonEG_Run2016B_23Sep2016_v3_runs_273150_275376_part1
+data : MuonEG_Run2016B_23Sep2016_v3_runs_273150_275376_part2
+data : MuonEG_Run2016B_23Sep2016_v3_runs_273150_275376_part3
+data : MuonEG_Run2016B_23Sep2016_v3_runs_273150_275376_part4
+data : MuonEG_Run2016C_23Sep2016_v1_runs_271036_284044
+data : MuonEG_Run2016D_23Sep2016_v1_runs_271036_284044
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part10
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part11
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part12
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part13
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part14
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part15
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part16
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part17
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part18
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part1
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part2
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part3
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part4
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part5
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part6
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part7
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part8
+data : SingleElectron_Run2016B_23Sep2016_v3_runs_273150_275376_part9
+data : SingleElectron_Run2016C_23Sep2016_v1_runs_271036_284044
+data : SingleElectron_Run2016D_23Sep2016_v1_runs_271036_284044
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part10
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part11
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part12
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part13
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part14
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part15
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part16
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part17
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part18
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part1
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part2
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part3
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part4
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part5
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part6
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part7
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part8
+data : SingleMuon_Run2016B_23Sep2016_v3_runs_273150_275376_part9
+data : SingleMuon_Run2016C_23Sep2016_v1_runs_271036_284044
+data : SingleMuon_Run2016D_23Sep2016_v1_runs_271036_284044
+
+data : DoubleEG_Run2016E_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleEG_Run2016E_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleEG_Run2016E_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleEG_Run2016E_23Sep2016_v1_runs_271036_284044_part4
+data : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part1
+data : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part2
+data : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part3
+data : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part4
+data : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part5
+data : DoubleEG_Run2016H-PromptReco-v2_runs_281613_284035_part6
+data : DoubleEG_Run2016H-PromptReco-v3_runs_284036_284044
+data : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part4
+data : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part5
+data : DoubleMuon_Run2016E_23Sep2016_v1_runs_271036_284044_part6
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part10
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part1
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part2
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part3
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part4
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part5
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part6
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part7
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part8
+data : DoubleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part9
+data : DoubleMuon_Run2016H-PromptReco-v3_runs_284036_284044
+data : SingleElectron_Run2016E_23Sep2016_v1_runs_271036_284044
+data : SingleElectron_Run2016H-PromptReco-v2_runs_281613_284035
+data : SingleElectron_Run2016H-PromptReco-v3_runs_284036_284044
+data : SingleMuon_Run2016E_23Sep2016_v1_runs_271036_284044
+data : SingleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part1
+data : SingleMuon_Run2016H-PromptReco-v2_runs_281613_284035_part2
+data : SingleMuon_Run2016H-PromptReco-v3_runs_284036_284044
+
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part4
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part5
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part6
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part4
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part5
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part6
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part7
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part8
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part9
+data : MuonEG_Run2016G_23Sep2016_v1_runs_271036_284044_part1
+data : MuonEG_Run2016G_23Sep2016_v1_runs_271036_284044_part2
+data : SingleElectron_Run2016G_23Sep2016_v1_runs_271036_284044
+data : SingleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part1
+data : SingleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleEG_Run2016F_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleEG_Run2016F_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleEG_Run2016F_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part4
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part5
+data : DoubleEG_Run2016G_23Sep2016_v1_runs_271036_284044_part6
+data : DoubleMuon_Run2016F_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleMuon_Run2016F_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleMuon_Run2016F_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleMuon_Run2016F_23Sep2016_v1_runs_271036_284044_part4
+data : DoubleMuon_Run2016F_23Sep2016_v1_runs_271036_284044_part5
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part1
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part2
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part3
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part4
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part5
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part6
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part7
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part8
+data : DoubleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part9
+data : MuonEG_Run2016F_23Sep2016_v1_runs_271036_284044
+data : MuonEG_Run2016G_23Sep2016_v1_runs_271036_284044_part1
+data : MuonEG_Run2016G_23Sep2016_v1_runs_271036_284044_part2
+data : SingleElectron_Run2016F_23Sep2016_v1_runs_271036_284044
+data : SingleElectron_Run2016G_23Sep2016_v1_runs_271036_284044
+data : SingleMuon_Run2016F_23Sep2016_v1_runs_271036_284044
+data : SingleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part1
+data : SingleMuon_Run2016G_23Sep2016_v1_runs_271036_284044_part2
+
+## WZ
+## -----------------------------------------------------------
+prompt_WZ    : WZTo3LNu : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kOrange, Label="WZ", NormSystematic=0.25
+
+## OTHER PROMPT BACKGROUNDS
+## -----------------------------------------------------------
+prompt_ZZH  : ZZTo4L		          : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kGreen+1,  Label="ZZH",   NormSystematic=0.25
+rares_ttX   : TTWToLNu                    : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kViolet-3, Label="ttX",   NormSystematic=0.20
+rares_ttX   : TTHnobb_pow        : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kViolet-3, Label="ttX",   NormSystematic=0.20
+rares_ttX   : TTZToLLNuNu                 : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kViolet-3, Label="ttX",   NormSystematic=0.20
+rares_ttX   : TTLLJets_m1to10             : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kViolet-3, Label="ttX",   NormSystematic=0.20s
+rares_ttX   : TTJets_DiLepton_part1 + TTJets_DiLepton_part2   + TTJets_DiLepton_part3      : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kViolet-3, Label="ttX",   NormSystematic=0.20
+
+rares_ttX   : TTJets_SingleLeptonFromT_part1 +  TTJets_SingleLeptonFromT_part2  + TTJets_SingleLeptonFromT_part3 : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kViolet-3, Label="ttX",   NormSystematic=0.20
+
+rares_ttX   : TTJets_SingleLeptonFromTbar_part1 + TTJets_SingleLeptonFromTbar_part2 + TTJets_SingleLeptonFromTbar_part3 + TTJets_SingleLeptonFromTbar_part4 : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kViolet-3, Label="ttX",   NormSystematic=0.20
+
+rares_ttX   : TTTT     			  : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kViolet-3, Label="ttX",   NormSystematic=0.20
+rares_ttX   : tZq_ll   			  : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kViolet-3, Label="ttX",   NormSystematic=0.20
+rares_VVV   : WpWpJJ 			  : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kRed+1, Label="VVV/WWss",   NormSystematic=0.50
+rares_VVV   : WWDouble 			  : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kRed+1, Label="VVV/WWss",   NormSystematic=0.50
+rares_VVV   : WWW      			  : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kRed+1, Label="VVV/WWss",   NormSystematic=0.50
+rares_VVV   : WWZ      			  : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kRed+1, Label="VVV/WWss",   NormSystematic=0.50
+rares_VVV   : WZZ      			  : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kRed+1, Label="VVV/WWss",   NormSystematic=0.50
+rares_VVV   : ZZZ      			  : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kRed+1, Label="VVV/WWss",   NormSystematic=0.50
+
+convs  : TTGJets_part1 + TTGJets_part2 : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==1) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==1)) ; FillColor=ROOT.kOrange-3, NormSystematic=0.50
+
+convs  : WGToLNuG : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==1) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==1)) ; FillColor=ROOT.kOrange-3, NormSystematic=0.50
+convs  : ZGTo2LG  : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==1) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==1)) ; FillColor=ROOT.kOrange-3, NormSystematic=0.50
+convs  : TGJets   : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==1) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==1)) ; FillColor=ROOT.kOrange-3, NormSystematic=0.50
+
+
+## FLIPS
+## -----------------------------------------------------------
+flips_data : TTJets_DiLepton    : xsec : (LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && !(LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge)) ; Label="Flips", Label="Flips", FillColor=ROOT.kBlack, FillStyle=3006, NormSystematic=0.30
+flips_data : DYJetsToLL_M10to50_LO : xsec : (LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && !(LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge)) ; Label="Flips", Label="Flips", FillColor=ROOT.kBlack, FillStyle=3006, NormSystematic=0.30
+flips_data : DYJetsToLL_M50_LO_part1+  DYJetsToLL_M50_LO_part2 +DYJetsToLL_M50_LO_part3 + DYJetsToLL_M50_LO_part4 + DYJetsToLL_M50_LO_part5     : xsec : (LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && !(LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge)) ; Label="Flips", Label="Flips", FillColor=ROOT.kBlack, FillStyle=3006, NormSystematic=0.30
+flips_data : T_tWch             : xsec : (LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && !(LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge)) ; Label="Flips", Label="Flips", FillColor=ROOT.kBlack, FillStyle=3006, NormSystematic=0.30
+flips_data : TBar_tWch          : xsec : (LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && !(LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge)) ; Label="Flips", Label="Flips", FillColor=ROOT.kBlack, FillStyle=3006, NormSystematic=0.30
+flips_data : WWTo2L2Nu : xsec : (LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && !(LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge)) ; Label="Flips", Label="Flips", FillColor=ROOT.kBlack, FillStyle=3006, NormSystematic=0.30
+
+
+
+## FAKES 
+## -----------------------------------------------------------
+
+fakes        : TTJets_DiLepton_part1 + TTJets_DiLepton_part2 + TTJets_DiLepton_part3             : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==0) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==0)) ; Label="Fakes",  FillColor=ROOT.kBlack, FillStyle=3005, NormSystematic=0.30
+fakes        : TTJets_SingleLeptonFromT_part1 + TTJets_SingleLeptonFromT_part2 + TTJets_SingleLeptonFromT_part3    : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==0) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==0)) ; Label="Fakes",  FillColor=ROOT.kBlack, FillStyle=3005, NormSystematic=0.30
+fakes        : TTJets_SingleLeptonFromTbar_part1 + TTJets_SingleLeptonFromTbar_part2 + TTJets_SingleLeptonFromTbar_part3 + TTJets_SingleLeptonFromTbar_part4 : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==0) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==0)) ; Label="Fakes",  FillColor=ROOT.kBlack, FillStyle=3005, NormSystematic=0.30
+fakes        : DYJetsToLL_M10to50_LO          : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==0) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==0)) ; Label="Fakes",  FillColor=ROOT.kBlack, FillStyle=3005, NormSystematic=0.30
+fakes        : DYJetsToLL_M50_LO_part1+  DYJetsToLL_M50_LO_part2 +DYJetsToLL_M50_LO_part3 + DYJetsToLL_M50_LO_part4 + DYJetsToLL_M50_LO_part5            : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==0) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==0)) ; Label="Fakes",  FillColor=ROOT.kBlack, FillStyle=3005, NormSystematic=0.30
+fakes     : WJetsToLNu_LO               : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==0) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==0)) ; Label="Fakes",  FillColor=ROOT.kBlack, FillStyle=3005, NormSystematic=0.30
+fakes : TToLeptons_sch              : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==0) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==0)) ; Label="Fakes",  FillColor=ROOT.kBlack, FillStyle=3005, NormSystematic=0.30
+fakes : T_tWch                      : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==0) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==0)) ; Label="Fakes",  FillColor=ROOT.kBlack, FillStyle=3005, NormSystematic=0.30
+fakes : TBar_tWch                   : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==0) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==0)) ; Label="Fakes",  FillColor=ROOT.kBlack, FillStyle=3005, NormSystematic=0.30
+fakes : WWDouble : xsec : ((LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==0) || (LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==0)) ; Label="Fakes",  FillColor=ROOT.kBlack, FillStyle=3005, NormSystematic=0.30
+
+
+

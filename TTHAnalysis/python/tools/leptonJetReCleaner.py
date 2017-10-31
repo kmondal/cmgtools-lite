@@ -179,13 +179,13 @@ class LeptonJetReCleaner:
             cleanjets.append(j)
             if j.pt > float(self.bJetPt):
                 ret["nJet"+self.strBJetPt+postfix] += 1; ret["htJet"+self.strBJetPt+"j"+postfix] += j.pt; 
-                if j.btagCSV>0.460: ret["nBJetLoose"+self.strBJetPt+postfix] += 1
-                if j.btagCSV>0.800: ret["nBJetMedium"+self.strBJetPt+postfix] += 1
+                if j.btagCSV>0.5426: ret["nBJetLoose"+self.strBJetPt+postfix] += 1
+                if j.btagCSV>0.8484: ret["nBJetMedium"+self.strBJetPt+postfix] += 1
                 mhtBJetPtvec = mhtBJetPtvec - j.p4()
             if j.pt > float(self.jetPt):
                 ret["nJet"+self.strJetPt+postfix] += 1; ret["htJet"+self.strJetPt+"j"+postfix] += j.pt; 
-                if j.btagCSV>0.460: ret["nBJetLoose"+self.strJetPt+postfix] += 1
-                if j.btagCSV>0.800: ret["nBJetMedium"+self.strJetPt+postfix] += 1
+                if j.btagCSV>0.5426: ret["nBJetLoose"+self.strJetPt+postfix] += 1
+                if j.btagCSV>0.8484: ret["nBJetMedium"+self.strJetPt+postfix] += 1
                 mhtJetPtvec = mhtJetPtvec - j.p4()
         ret["mhtJet"+self.strBJetPt+postfix] = mhtBJetPtvec.Pt()
         ret["mhtJet"+self.strJetPt+postfix] = mhtJetPtvec.Pt()
@@ -230,8 +230,17 @@ class LeptonJetReCleaner:
                 for g in goodtaus:
                     tauret[tfloat].append( getattr(g, tfloat) if hasattr(event,"TauGood_"+tfloat) else -99 )
         return goodtaus
+    def applyJEC(self, event, name, corrected, var):
+        if len(corrected) < 1: return corrected
+        if not var in [-1, 1]: return corrected
+        if not hasattr(event, name+"_corr_JECUp") or not hasattr(event, name+"_corr_JECDown") or not hasattr(event, name+"_CorrFactor_L1L2L3Res"): return corrected
+        for jet in corrected:
+            corr = getattr(jet, "corr_JECUp") if var == 1 else getattr(jet, "corr_JECDown")
+            quot = getattr(jet, "CorrFactor_L1L2L3Res") if getattr(jet, "CorrFactor_L1L2L3Res") > 0 else getattr(jet, "CorrFactor_L1L2L3")
+            jet.pt = jet.pt * corr / quot
+        return corrected
 
-    def __call__(self,event):
+    def __call__(self, event):
         self.ev = event
         fullret = {}
         leps = [l for l in Collection(event,"LepGood","nLepGood")]
@@ -239,18 +248,35 @@ class LeptonJetReCleaner:
         for lep in leps: lep.conept = self.coneptdef(lep)
         tausc = [t for t in Collection(event,"TauGood","nTauGood")]
         tausd = [t for t in Collection(event,"TauOther","nTauOther")] 
+        ## below: new way of dealing with JEC
         jetsc={}
-        jetsd={}
-        for var in self.systsJEC:
-            _var = var
-            if not hasattr(event,"nJet"+self.systsJEC[var]):
-                _var = 0
-                if not self.debugprinted:
-                    print '-'*15
-                    print 'WARNING: jet energy scale variation %s not found, will set it to central value'%self.systsJEC[var]
-                    print '-'*15
-            jetsc[var] = [j for j in Collection(event,"Jet"+self.systsJEC[_var],"nJet"+self.systsJEC[_var])]
-            jetsd[var] = [j for j in Collection(event,"DiscJet"+self.systsJEC[_var],"nDiscJet"+self.systsJEC[_var])]
+        jetsd={} 
+        jetsc[0] = [j for j in Collection(event,"Jet"    ,"nJet"    )]
+        jetsd[0] = [j for j in Collection(event,"DiscJet","nDiscJet")]
+        for var in [-1,1]:
+            if hasattr(event,"nJet"+self.systsJEC[var]):
+                jetsc[var] = [j for j in Collection(event,"Jet"+self.systsJEC[var],"nJet"+self.systsJEC[var])]
+            else:
+                jetsc[var] = [j for j in Collection(event,"Jet","nJet")]
+                jetsc[var] = self.applyJEC(event, "Jet", jetsc[var], var)
+            if hasattr(event,"nDiscJet"+self.systsJEC[var]):
+                jetsd[var] = [j for j in Collection(event,"DiscJet"+self.systsJEC[var],"nDiscJet"+self.systsJEC[var])]
+            else:
+                jetsd[var] = [j for j in Collection(event,"DiscJet","nDiscJet")]
+                jetsd[var] = self.applyJEC(event, "DiscJet", jetsd[var], var)
+        ## below: old way of dealing with JEC
+        #jetsc={}
+        #jetsd={}
+        #for var in self.systsJEC:
+        #    _var = var
+        #    if not hasattr(event,"nJet"+self.systsJEC[var]):
+        #        _var = 0
+        #        if not self.debugprinted:
+        #            print '-'*15
+        #            print 'WARNING: jet energy scale variation %s not found, will set it to central value'%self.systsJEC[var]
+        #            print '-'*15
+        #    jetsc[var] = [j for j in Collection(event,"Jet"+self.systsJEC[_var],"nJet"+self.systsJEC[_var])]
+        #    jetsd[var] = [j for j in Collection(event,"DiscJet"+self.systsJEC[_var],"nDiscJet"+self.systsJEC[_var])
         self.debugprinted = True
         ret = {}; retwlabel = {}; jetret = {}; discjetret = {};
         lepsl = []; lepslv = [];

@@ -1,0 +1,39 @@
+LepSel1_(\w+)  : LepSel_\1[0]; AlsoData
+LepSel2_(\w+)  : LepSel_\1[1]; AlsoData
+LepSel3_(\w+)  : LepSel_\1[2]; AlsoData
+LepSel4_(\w+)  : LepSel_\1[3]; AlsoData
+nJet25\b: nJet25_Mini; AlsoData
+htJet25j\b: htJet25j_Mini; AlsoData
+mhtJet25\b: mhtJet25_Mini; AlsoData
+nJet30\b: nJet30_Mini; AlsoData
+htJet30j\b: htJet30j_Mini; AlsoData
+mhtJet30\b: mhtJet30_Mini; AlsoData
+nJet40\b: nJet40_Mini; AlsoData
+htJet40j\b: htJet40j_Mini; AlsoData
+mhtJet40\b: mhtJet40_Mini; AlsoData
+nLepLoose\b : nLepLoose_Mini; AlsoData
+nLepCleaning\b : nLepCleaning_Mini; AlsoData
+nLepFO\b : nLepFO_Mini; AlsoData
+nLepTight\b : nLepTight_Mini; AlsoData
+nBJetLoose25\b: nBJetLoose25_Mini; AlsoData
+nBJetMedium25\b: nBJetMedium25_Mini; AlsoData
+nBJetTight25\b: nBJetTight25_Mini; AlsoData
+nBJetLoose30\b: nBJetLoose30_Mini; AlsoData
+nBJetMedium30\b: nBJetMedium30_Mini; AlsoData
+nBJetTight30\b: nBJetTight30_Mini; AlsoData
+nBJetLoose40\b: nBJetLoose40_Mini; AlsoData
+nBJetMedium40\b: nBJetMedium40_Mini; AlsoData
+nBJetTight40\b: nBJetTight40_Mini; AlsoData
+mll\b: mll_3l; AlsoData
+minMllAFAS\b: minMllAFAS_Mini; AlsoData
+minMllAFOS\b: minMllAFOS_Mini; AlsoData
+minMllAFSS\b: minMllAFSS_Mini; AlsoData
+minMllSFOS\b: minMllSFOS_Mini; AlsoData
+nOSSF\b: nOSSF_3l; AlsoData
+nOSLF\b: nOSLF_3l; AlsoData
+nOSTF\b: nOSTF_3l; AlsoData
+flavorcount\b: (abs(LepSel_pdgId[0])==13)+(abs(LepSel_pdgId[1])==13)+(abs(LepSel_pdgId[2])==13); AlsoData
+mass12\b: mass_2(LepSel_conePt[0], LepSel_eta[0], LepSel_phi[0], lepMass(LepSel_pdgId[0]), LepSel_conePt[1], LepSel_eta[1], LepSel_phi[1], lepMass(LepSel_pdgId[1])); AlsoData
+mass13\b: mass_2(LepSel_conePt[0], LepSel_eta[0], LepSel_phi[0], lepMass(LepSel_pdgId[0]), LepSel_conePt[2], LepSel_eta[2], LepSel_phi[2], lepMass(LepSel_pdgId[2])); AlsoData
+mass23\b: mass_2(LepSel_conePt[1], LepSel_eta[1], LepSel_phi[1], lepMass(LepSel_pdgId[1]), LepSel_conePt[2], LepSel_eta[2], LepSel_phi[2], lepMass(LepSel_pdgId[2])); AlsoData
+nJB\b: nJB(nJet25_Mini, nBJetMedium25_Mini); AlsoData

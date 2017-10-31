@@ -1,0 +1,3 @@
+### THIS FILE IS TO BE DELETED EACH TIME
+
+### AND REPLACED WITH A SYMLINK TO the fakeRate-2lss-frdata-wpXXX.txt 

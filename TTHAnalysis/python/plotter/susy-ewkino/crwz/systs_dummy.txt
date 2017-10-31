@@ -1,0 +1,29 @@
+
+## flat uncertainties
+
+fakes   : fakes_.*                                     : .* : 1.3
+convs   : convs                                        : .* : 1.25
+#WZ      : prompt_WZ                                    : .* : 1.25
+normZZH : prompt_ZZH                                   : .* : 1.25
+normRare : prompt_VVV|prompt_ttX    : .* : 1.5
+normWZ     : prompt_WZ                         : .* : 1.05
+
+lumi       : sig_.*|prompt_.*|rares_.*|convs   : .* : 1.027
+lepeff     : sig_.*|prompt_.*|rares_.*|convs   : .* : 1.02
+trigeff    : sig_.*|prompt_.*|rares_.*|convs   : .* : 1.01
+
+
+## statistical uncertainties
+
+#stat2lsssig   : sig_.*          : .* : 1.0 : stat_foreach_shape_bins : .*
+stat2lssWZ    : prompt_WZ       : .* : 1.0 : stat_foreach_shape_bins : .*
+stat2lssZZH   : prompt_ZZH      : .* : 1.0 : stat_foreach_shape_bins : .*
+stat2lssttX   : prompt_ttX      : .* : 1.0 : stat_foreach_shape_bins : .*
+stat2lssVVV   : prompt_VVV      : .* : 1.0 : stat_foreach_shape_bins : .*
+stat2lssconvs : convs           : .* : 1.0 : stat_foreach_shape_bins : .*
+stat2lssfakes : fakes_.*        : .* : 1.0 : stat_foreach_shape_bins : .*
+
+
+
+
+

@@ -1,0 +1,25 @@
+alwaystrue: 1
+filters: $DATA{(Flag_EcalDeadCellTriggerPrimitiveFilter && Flag_HBHENoiseIsoFilter && Flag_HBHENoiseFilter && Flag_eeBadScFilter && Flag_goodVertices && Flag_globalTightHalo2016Filter && Flag_badChargedHadronFilter)} $MC{1}
+trigger: $DATA{(Triggers_iso || Triggers_noniso)} $MC{(Triggers_iso || Triggers_noniso)} 
+onlydatatrig: $DATA{(Triggers_iso || Triggers_noniso)} $MC{1} ; Disable=True
+cleanup: minMllSFOS == -1 || minMllSFOS > 12
+3light:  nLepSel==3 && abs(LepSel1_pdgId)<14 && abs(LepSel2_pdgId)<14 && abs(LepSel3_pdgId)<14
+pt101010: LepSel1_conePt>10 && LepSel2_conePt>10 && LepSel3_conePt>10
+tight:  LepSel1_isTight && LepSel2_isTight && LepSel3_isTight
+#RA5multiIso:  LepSel1_multiRA5 && LepSel2_multiRA5 && LepSel3_multiRA5
+#idIsoEmu: LepSel1_idIsoEmu && LepSel2_idIsoEmu && LepSel3_idIsoEmu
+eee: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==33; Disable=True
+eem: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==35; Disable=True
+emm: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==37; Disable=True
+mmm: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==39; Disable=True
+pt252020: LepSel1_conePt>25 && LepSel2_conePt>20 && LepSel3_conePt>20
+#muee: !(abs(LepSel1_pdgId)==13 && abs(LepSel2_pdgId)==11 && abs(LepSel3_pdgId)==11) || (LepSel1_conePt>25 || htJet30j > 400)
+lownjet: nJet30 < 2
+bveto: nBJetMedium25==0
+met: met_pt > 30
+OSSF: nOSSF_3l>0
+firstSSpair: LepSel1_pdgId*LepSel2_pdgId > 0 && (LepSel1_pdgId==-LepSel3_pdgId || LepSel2_pdgId==-LepSel3_pdgId); Disable=True
+thirdmakesOSSF: (LepSel1_pdgId==-LepSel3_pdgId || LepSel2_pdgId==-LepSel3_pdgId); Disable=True
+thirdIsZ: (LepSel1_pdgId==-LepSel3_pdgId && abs(mass13-91.2)<15) || (LepSel2_pdgId==-LepSel3_pdgId && abs(mass23-91.2)<15); Disable=True
+onZ: nOSSF_3l>0 && abs(mll_3l-91.2)<15
+

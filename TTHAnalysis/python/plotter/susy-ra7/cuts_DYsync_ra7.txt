@@ -1,0 +1,12 @@
+alwaystrue: 1
+filters: $DATA{(Flag_EcalDeadCellTriggerPrimitiveFilter && Flag_HBHENoiseIsoFilter && Flag_HBHENoiseFilter && Flag_eeBadScFilter && Flag_goodVertices && Flag_globalTightHalo2016Filter && Flag_badChargedHadronFilter)} $MC{1}
+trigger: $DATA{(Triggers_iso || Triggers_noniso)} $MC{(Triggers_iso || Triggers_noniso)} 
+onlydatatrig: $DATA{(Triggers_iso || Triggers_noniso)} $MC{1} ; Disable=True
+2lightSF:  nLepSel==2 && abs(LepSel1_pdgId)<14 && LepSel1_pdgId==-LepSel2_pdgId
+ee: abs(LepSel1_pdgId)==11 && abs(LepSel2_pdgId)==11; Disable=True
+mm: abs(LepSel1_pdgId)==13 && abs(LepSel2_pdgId)==13; Disable=True
+tight:  LepSel1_isTight && LepSel2_isTight
+idIsoEmu: LepSel1_idIsoEmu && LepSel2_idIsoEmu; Disable=True
+RA5multiIso:  LepSel1_multiRA5 && LepSel2_multiRA5; Disable=True
+pt2520: LepSel1_conePt>25 && LepSel2_conePt>20
+DYonZ: abs(mass12-91.2)<15

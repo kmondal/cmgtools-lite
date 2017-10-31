@@ -1,0 +1,3 @@
+cut-change: HLT_BIT_HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ_v\b   : HLT_BIT_HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_v
+weight: 1
+#a DZ trigger is missing in some RunB old ntuples, only used in RunH but crashes anyway
