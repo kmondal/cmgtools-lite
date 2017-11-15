@@ -115,6 +115,18 @@ elif [ "$1" == "fr" ]; then
 
     sh ttH-multilepton/make_fake_rates_MC.sh susy $frstring
 
+elif [ "$1" == "xsec" ]; then
+
+    echo "INCLUSIVE"
+    python wzsm/xsecComputer.py -f excl_wz/SR.txt -s WZ
+    echo "EEE"
+    python wzsm/xsecComputer.py -f excl_wz/SR_eee.txt -s WZ
+    echo "MEE"
+    python wzsm/xsecComputer.py -f excl_wz/SR_mee.txt -s WZ
+    echo "MME"
+    python wzsm/xsecComputer.py -f excl_wz/SR_mme.txt -s WZ
+    echo "MMM"
+    python wzsm/xsecComputer.py -f excl_wz/SR_mmm.txt -s WZ
 
 #sh ../python/plotter/susy-interface/cmds/tau-ewkino/chunkDealer.sh  /nfs/fanae/user/vischia/workarea/cmssw/wz/fts/leptonJetReCleanerSusyEWK2L/ merge evVarFriend
 
