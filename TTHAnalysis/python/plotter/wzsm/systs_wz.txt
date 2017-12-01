@@ -3,16 +3,18 @@
 lumi_ML       : prompt_.*|rares_.*|convs   : .*                : 1.026
 trigeff_ML    : prompt_.*|rares_.*|convs   : .*                : 1.03
 
-fakes_ML      : fakes_.*                          : .*                : 1.3
-convs_ML      : convs                             : .*                : 1.15
+fakes_ML      : fakes_.*                          : .*                : 1.3 #FIX ME
+convs_ML      : convs                             : .*                : 1.25
 
 normZZH_ML    : prompt_ZZH                        : .*                : 1.25
 normVVV_ML    : rares_VVV                         : .*                : 1.5
+normtZq_ML    : rares_tZq                         : .*                : 1.5
 normTTX_ML    : rares_ttX                         : .*                : 1.5
 theoTTV_ML    : rares_ttW|rares_ttZ               : .*                : 1.15
 
 #Templates#
-ewksub_ML        : fakes_.*|promptsub_.*             : .* : ewk        : templates
+ewkfakes_ML      : fakes_.*                          : .* : ewk        : templates
+ewksub_ML        : promptsub_.*                      : .* : ewk        : templates
 JES_ML           : prompt_.*|rares_.*|convs          : .* : jec        : templates
 PUW_ML           : prompt_.*|rares_.*|convs          : .* : puw        : templates
 LepSF_ML         : prompt_.*|rares_.*|convs          : .* : lepSF      : templates
