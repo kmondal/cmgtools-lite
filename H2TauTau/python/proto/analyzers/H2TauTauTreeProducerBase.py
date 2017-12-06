@@ -26,11 +26,21 @@ class H2TauTauTreeProducerBase(TreeAnalyzerNumpy):
         if hasattr(self.cfg_ana, 'skimFunction'):
             self.skimFunction = self.cfg_ana.skimFunction
 
-    def var(self, tree, varName, type=float):
-        tree.var(self.varName(varName), type)
+    def var(self, tree, varName, type=float, storageType="default"):
+        tree.var(self.varName(varName), type, storageType=storageType)
+
+    def vars(self, tree, varNames, type=float, storageType="default"):
+        for varName in varNames:
+            self.var(tree, varName, type, storageType=storageType)
 
     def fill(self, tree, varName, value):
         tree.fill(self.varName(varName), value)
+
+    def fillVars(self, tree, varNames, obj):
+        '''Fills vars that are attributes of the passed object.
+        Fills -999. if object doesn't have attribute'''
+        for varName in varNames:
+            tree.fill(self.varName(varName), getattr(obj, varName, -999.))
 
     def varName(self, name):
         try:
@@ -48,7 +58,7 @@ class H2TauTauTreeProducerBase(TreeAnalyzerNumpy):
     def bookGeneric(self, tree, var_list, obj_name=None):
         for var in var_list:
             names = [obj_name, var.name] if obj_name else [var.name]
-            self.var(tree, '_'.join(names), var.type)
+            self.var(tree, '_'.join(names), var.type, var.storageType)
 
     def fillGeneric(self, tree, var_list, obj, obj_name=None):
         for var in var_list:
@@ -219,32 +229,15 @@ class H2TauTauTreeProducerBase(TreeAnalyzerNumpy):
 
     # TauSpinner information
     def bookTauSpinner(self, tree):
-        self.var(tree, 'TauSpinnerWTisValid')
-        self.var(tree, 'TauSpinnerWT')
-        self.var(tree, 'TauSpinnerWThminus')
-        self.var(tree, 'TauSpinnerWThplus')
-        self.var(tree, 'TauSpinnerTauPolFromZ')
-        self.var(tree, 'TauSpinnerWRight')
-        self.var(tree, 'TauSpinnerWLeft')
-        self.var(tree, 'TauSpinnerIsRightLeft')
-
+        self.vars(tree, ['TauSpinnerWTisValid', 'TauSpinnerWT', 'TauSpinnerWThminus', 'TauSpinnerWThplus', 'TauSpinnerTauPolFromZ', 'TauSpinnerWRight', 'TauSpinnerWLeft', 'TauSpinnerIsRightLeft'])
+        
     def fillTauSpinner(self, tree, event):
-        self.fill(tree, 'TauSpinnerWTisValid', event.TauSpinnerWTisValid)
-        self.fill(tree, 'TauSpinnerWT', float(event.TauSpinnerWT))
-        self.fill(tree, 'TauSpinnerWThminus', float(event.TauSpinnerWThminus))
-        self.fill(tree, 'TauSpinnerWThplus', float(event.TauSpinnerWThplus))
-        self.fill(tree, 'TauSpinnerTauPolFromZ', float(event.TauSpinnerTauPolFromZ))
-        self.fill(tree, 'TauSpinnerWRight', float(event.TauSpinnerWRight))
-        self.fill(tree, 'TauSpinnerWLeft', float(event.TauSpinnerWLeft))
-        self.fill(tree, 'TauSpinnerIsRightLeft', float(event.TauSpinnerIsRightLeft))
-
+        self.fillVars(tree, ['TauSpinnerWTisValid', 'TauSpinnerWT', 'TauSpinnerWThminus', 'TauSpinnerWThplus', 'TauSpinnerTauPolFromZ', 'TauSpinnerWRight', 'TauSpinnerWLeft', 'TauSpinnerIsRightLeft'], event)
+        
     def bookTopPtReweighting(self, tree):
-        self.var(tree, 'gen_top_1_pt')
-        self.var(tree, 'gen_top_2_pt')
-        self.var(tree, 'gen_top_weight')
+        self.vars(tree, ['gen_top_1_pt', 'gen_top_2_pt', 'gen_top_weight'])
 
     def fillTopPtReweighting(self, tree, event):
-        '''FIXME: Move this to extra class - only do inline calculations here'''
         if not self.cfg_comp.isMC:
             self.fill(tree, 'gen_top_weight', 1.)
             return
@@ -252,3 +245,13 @@ class H2TauTauTreeProducerBase(TreeAnalyzerNumpy):
         self.fill(tree, 'gen_top_1_pt', getattr(event, 'top_1_pt', -999.))
         self.fill(tree, 'gen_top_2_pt', getattr(event, 'top_2_pt', -999.))
         self.fill(tree, 'gen_top_weight', getattr(event, 'topweight', 1.))
+
+    def bookLHEWeights(self, tree, n_max=10):
+    	for n_lhe in xrange(1, n_max+1):
+    		self.var(tree, 'LHE_weight_{}'.format(n_lhe))
+
+    def fillLHEWeights(self, tree, event, n_max=10):
+    	for n_lhe in xrange(n_max):
+    		if hasattr(event, 'LHE_weights') and len(event.LHE_weights) > n_lhe:
+    			self.fill(tree, 'LHE_weight_{}'.format(n_lhe+1), event.LHE_weights[n_lhe].wgt)
+

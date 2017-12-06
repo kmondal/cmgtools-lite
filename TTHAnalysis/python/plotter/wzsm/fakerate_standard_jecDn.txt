@@ -12,6 +12,9 @@ change: mhtJet40_Recl\b: mhtJet40_Recl_jecDown
 change: nBJetLoose25_Recl\b: nBJetLoose25_Recl_jecDown
 change: nBJetMedium25_Recl\b: nBJetMedium25_Recl_jecDown
 change: nBJetTight25_Recl\b: nBJetTight25_Recl_jecDown
+change: nBJetLoose30_Recl\b: nBJetLoose30_Recl_jecDown
+change: nBJetMedium30_Recl\b: nBJetMedium30_Recl_jecDown
+change: nBJetTight30_Recl\b: nBJetTight30_Recl_jecDown
 change: nBJetLoose40_Recl\b: nBJetLoose40_Recl_jecDown
 change: nBJetMedium40_Recl\b: nBJetMedium40_Recl_jecDown
 change: nBJetTight40_Recl\b: nBJetTight40_Recl_jecDown
