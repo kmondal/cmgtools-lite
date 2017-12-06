@@ -6,12 +6,13 @@ incl_data : + ; IncludeMca="wzsm/includes/mca_data.txt"
 
 ## MC WZ and backgrounds
 ## -----------------------------------------------------------
-prompt_WZ               : WZTo3LNu                        : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))            ; FillColor=ROOT.kOrange  , Label="WZ", NormSystematic=0.1
+prompt_WZ+               : WZTo3LNu                        : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))            ; FillColor=ROOT.kOrange  , Label="WZ", NormSystematic=0.1
 
 incl_fakes_appldata     : + ; IncludeMca="wzsm/includes/mca_fakesappl.txt"
+incl_prompts            : + ; IncludeMca="wzsm/includes/mca_prompts.txt"
 incl_promptsub          : + ; IncludeMca="wzsm/includes/mca_promptsub.txt"
 
-incl_prompts            : + ; IncludeMca="wzsm/includes/mca_prompts.txt"
+
 
 
 
@@ -20,6 +21,7 @@ incl_prompts            : + ; IncludeMca="wzsm/includes/mca_prompts.txt"
 ## -----------------------------------------------------------
 incl_sys_puw            : + ; IncludeMca="wzsm/includes/mca_sys_puw.txt"
 incl_sys_ewk            : + ; IncludeMca="wzsm/includes/mca_sys_ewk.txt"
+incl_sys_ewk_mc         : + ; IncludeMca="wzsm/includes/mca_sys_ewk_mc.txt"
 incl_sys_jec            : + ; IncludeMca="wzsm/includes/mca_sys_jec.txt"
 incl_sys_lepSF          : + ; IncludeMca="wzsm/includes/mca_sys_lepSF.txt"
 incl_sys_bTagHF         : + ; IncludeMca="wzsm/includes/mca_sys_bTagHF.txt"

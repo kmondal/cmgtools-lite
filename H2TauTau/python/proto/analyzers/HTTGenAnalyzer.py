@@ -8,6 +8,7 @@ from PhysicsTools.HeppyCore.utils.deltar import bestMatch
 
 from PhysicsTools.Heppy.physicsobjects.PhysicsObject import PhysicsObject
 from PhysicsTools.Heppy.physicsobjects.GenParticle import GenParticle
+from PhysicsTools.Heppy.physicsutils.TauDecayModes import tauDecayModes
 
 from CMGTools.H2TauTau.proto.analyzers.TauGenTreeProducer import TauGenTreeProducer
 
@@ -29,6 +30,15 @@ class HTTGenAnalyzer(Analyzer):
 
         self.handles['jets'] = AutoHandle(self.cfg_ana.jetCol, 'std::vector<pat::Jet>')
 
+    def beginLoop(self, setup):
+        super(HTTGenAnalyzer, self).beginLoop(setup)
+        self.counters.addCounter('LHEWeights')
+        self.count = self.counters.counter('LHEWeights')
+
+        for n_lhe in xrange(1, 11):
+            self.count.register('Sum LHEWeight {}'.format(n_lhe))
+
+
     def process(self, event):
         event.genmet_pt = -99.
         event.genmet_eta = -99.
@@ -41,6 +51,10 @@ class HTTGenAnalyzer(Analyzer):
         if self.cfg_comp.isData:
             return True
 
+        for n_lhe in xrange(1, 11):
+            if hasattr(event, 'LHE_weights') and len(event.LHE_weights) > n_lhe:
+                self.count.inc('Sum LHEWeight {}'.format(n_lhe), event.LHE_weights[n_lhe].wgt)
+
         self.readCollections(event.input)
         event.genJets = self.mchandles['genJets'].product()
         event.jets = self.handles['jets'].product()
@@ -52,7 +66,7 @@ class HTTGenAnalyzer(Analyzer):
         self.getGenTauJets(event)
 
         event.weight_gen = self.mchandles['genInfo'].product().weight()
-        event.eventWeight *= event.weight_gen
+        event.eventWeight *= math.copysign(1., event.weight_gen)
 
         # gen MET as sum of the neutrino 4-momenta
         neutrinos = [
@@ -69,39 +83,22 @@ class HTTGenAnalyzer(Analyzer):
         event.genmet_py = genmet.py()
         event.genmet_phi = genmet.phi()
 
+        if self.cfg_comp.name.find('TT') != -1 or self.cfg_comp.name.find('TTH') == -1:
+            self.getTopPtWeight(event)
+
+        if self.cfg_comp.name.find('DY') != -1:
+            self.getDYMassPtWeight(event)
+
+
         ptcut = 0.
         # you can apply a pt cut on the gen leptons, electrons and muons
         # in HIG-13-004 it was 8 GeV
         if hasattr(self.cfg_ana, 'genPtCut'):
             ptcut = self.cfg_ana.genPtCut
 
-
-
-        self.ptSelGentauleps = [lep for lep in event.gentauleps if lep.pt() > ptcut]
-        self.ptSelGenleps = [lep for lep in event.genleps if lep.pt() > ptcut]
-        self.ptSelGenSummary = []
-        # self.ptSelGenSummary = [p for p in event.generatorSummary if p.pt() > ptcut and abs(p.pdgId()) not in [6, 11, 13, 15, 23, 24, 25, 35, 36, 37]]
-        # self.ptSelGentaus    = [ lep for lep in event.gentaus    if lep.pt()
-        # > ptcut ] # not needed
-
-        self.l1 = event.diLepton.leg1()
-        self.l2 = event.diLepton.leg2()
-
-        self.genMatch(event, self.l1, self.ptSelGentauleps, self.ptSelGenleps, self.ptSelGenSummary)
-        self.genMatch(event, self.l2, self.ptSelGentauleps, self.ptSelGenleps, self.ptSelGenSummary)
-
-        self.attachGenStatusFlag(self.l1)
-        self.attachGenStatusFlag(self.l2)
-
-        if hasattr(event, 'selectedTaus'):
-            for tau in event.selectedTaus:
-                self.genMatch(event, tau, self.ptSelGentauleps, self.ptSelGenleps, self.ptSelGenSummary)
-
-        if self.cfg_comp.name.find('TT') != -1 or self.cfg_comp.name.find('TTH') == -1:
-            self.getTopPtWeight(event)
-
-        if self.cfg_comp.name.find('DY') != -1:
-            self.getDYMassPtWeight(event)
+        event.ptSelGentauleps = [lep for lep in event.gentauleps if lep.pt() > ptcut]
+        event.ptSelGenleps = [lep for lep in event.genleps if lep.pt() > ptcut]
+        event.ptSelGenSummary = []
 
         return True
 
@@ -153,6 +150,8 @@ class HTTGenAnalyzer(Analyzer):
 
             genjet = GenParticle(gentau)
             genjet.setP4(p4_genjet)
+            genjet.daughters = c_genjet
+            genjet.decayMode = tauDecayModes.genDecayModeInt(c_genjet)
 
             if p4_genjet.pt() > 15.:
                 event.genTauJets.append(genjet)
@@ -193,7 +192,8 @@ class HTTGenAnalyzer(Analyzer):
         l1match, dR2best = bestMatch(leg, event.genTauJets)
         if dR2best < best_dr2:
             best_dr2 = dR2best
-            leg.genp = GenParticle(l1match)
+            # leg.genp = GenParticle(l1match)
+            leg.genp = l1match
             leg.genp.setPdgId(-15 * leg.genp.charge())
             leg.isTauHad = True
             # if not leg.genJet():
@@ -249,7 +249,7 @@ class HTTGenAnalyzer(Analyzer):
             # Now this may be a pileup lepton, or one whose ancestor doesn't
             # appear in the gen summary because it's an unclear case in Pythia 8
             # To check the latter, match against jets as well...
-            l1match, dR2best = bestMatch(leg, event.genJets)
+            l1match, dR2best = bestMatch(leg, getattr(event, 'genJets', []))
             # Check if there's a gen jet with pT > 10 GeV (otherwise it's PU)
             if dR2best < dR2 and l1match.pt() > 10.:
                 leg.genp = PhysicsObject(l1match)
@@ -306,4 +306,11 @@ class HTTGenAnalyzer(Analyzer):
         if not hasattr(event, 'parentBoson'):
             event.parentBoson = HTTGenAnalyzer.getParentBoson(event)
         event.dy_weight = getDYWeight(event.parentBoson.mass(), event.parentBoson.pt())
+
+    @staticmethod
+    def getSusySystem(event):
+        initialSusyParticles = [p for p in event.genParticles if abs(p.pdgId()) in (1000024, 1000023) and p.daughter(0).pdgId() != p.pdgId()]
+        if len(initialSusyParticles) != 2:
+            import pdb; pdb.set_trace()
+        return initialSusyParticles[0].p4() + initialSusyParticles[1].p4()
 

@@ -60,7 +60,7 @@ lepAna.miniIsolationVetoLeptons = None # use 'inclusive' to veto inclusive lepto
 lepAna.doIsolationScan = False
 
 # Lepton Preselection
-lepAna.loose_electron_id = "POG_MVA_ID_Spring15_NonTrig_VLooseIdEmu"
+lepAna.loose_electron_id = "MVA_ID_NonTrig_Spring16_VLooseIdEmu"
 isolation = "miniIso"
 
 jetAna.copyJetsByValue = True # do not remove this
@@ -121,13 +121,16 @@ if analysis in ['SOS']:
     lepAna.loose_muon_pt  = 3
     lepAna.inclusive_electron_pt  = 5
     lepAna.loose_electron_pt  = 5
-    isolation = "absIso04"
+    #isolation = "absIso04"
+    #isolation = None
+    isolation = "Iperbolic"
     lepAna.loose_electron_id = "POG_MVA_ID_Spring15_NonTrig_VLooseIdEmu"
 
     # Lepton-Jet Cleaning
-    jetAna.minLepPt = 20 
-    jetAnaScaleUp.minLepPt = 20 
-    jetAnaScaleDown.minLepPt = 20 
+    jetAna.cleanSelectedLeptons = False
+    #jetAna.minLepPt = 20 
+    #jetAnaScaleUp.minLepPt = 20 
+    #jetAnaScaleDown.minLepPt = 20 
     # otherwise with only absIso cut at 10 GeV and no relIso we risk cleaning away good jets
 
 if isolation == "miniIso": 
@@ -144,6 +147,9 @@ elif isolation == None:
 elif isolation == "absIso04":
     lepAna.loose_muon_isoCut     = lambda muon : muon.RelIsoMIV04*muon.pt() < 10 and muon.sip3D() < 8
     lepAna.loose_electron_isoCut = lambda elec : elec.RelIsoMIV04*elec.pt() < 10 and elec.sip3D() < 8
+elif isolation == "Iperbolic":
+    lepAna.loose_muon_isoCut     = lambda muon : muon.relIso03*muon.pt() < (20+300/muon.pt()) and  abs(muon.ip3D()) < 0.0175 and muon.sip3D() < 2.5
+    lepAna.loose_electron_isoCut = lambda elec : elec.relIso03*elec.pt() < (20+300/elec.pt()) and  abs(elec.ip3D()) < 0.0175 and elec.sip3D() < 2.5
 else:
     # nothing to do, will use normal relIso03
     pass
@@ -263,7 +269,8 @@ elif analysis=='SOS':
 
 # Spring16 electron MVA - follow instructions on pull request for correct area setup
 leptonTypeSusy.addVariables([
-        NTupleVariable("mvaIdSpring16",   lambda lepton : lepton.mvaRun2("Spring16") if abs(lepton.pdgId()) == 11 else 1, help="EGamma POG MVA ID, Spring16; 1 for muons"),
+        NTupleVariable("mvaIdSpring16HZZ",   lambda lepton : lepton.mvaRun2("Spring16HZZ") if abs(lepton.pdgId()) == 11 else 1, help="EGamma POG MVA ID, Spring16, HZZ; 1 for muons"),
+        NTupleVariable("mvaIdSpring16GP",   lambda lepton : lepton.mvaRun2("Spring16GP") if abs(lepton.pdgId()) == 11 else 1, help="EGamma POG MVA ID, Spring16, GeneralPurpose; 1 for muons"),
         ])
 
 if lepAna.doIsolationScan:
@@ -331,6 +338,8 @@ treeProducer = cfg.Analyzer(
      collections = susyMultilepton_collections,
 )
 
+if analysis in ['SOS']:
+    del treeProducer.collections["discardedLeptons"]
 
 ## histo counter
 if not runSMS:
@@ -374,6 +383,16 @@ if not skipT1METCorr:
     metAnaScaleDown.recalibrate = "type1"
 
 
+#ISR jet collection
+if analysis=='SOS':
+    from CMGTools.TTHAnalysis.analyzers.nIsrAnalyzer import NIsrAnalyzer
+    nIsrAnalyzer = cfg.Analyzer(
+        NIsrAnalyzer, name='nIsrAnalyzer',
+    )
+    susyCoreSequence.insert(susyCoreSequence.index(jetAna)+1,nIsrAnalyzer)
+    treeProducer.globalVariables.append(NTupleVariable("nISR", lambda ev: ev.nIsr, int, help="number of ISR jets according to SUSY recommendations"))
+
+
 #-------- SAMPLES AND TRIGGERS -----------
 
 
@@ -409,6 +428,7 @@ triggerFlagsAna.unrollbits = True
 triggerFlagsAna.saveIsUnprescaled = True
 triggerFlagsAna.checkL1Prescale = True
 
+
 if runSMS:
     #if ttHLepSkim in susyCoreSequence: susyCoreSequence.remove(ttHLepSkim)
     #if ttHJetMETSkim in susyCoreSequence: susyCoreSequence.remove(ttHJetMETSkim)
@@ -418,13 +438,14 @@ if runSMS:
     #ttHLepSkim.requireSameSignPair = False
 
 #from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv1 import *
-from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
+#from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
+from CMGTools.RootTools.samples.samples_13TeV_RunIISummer16MiniAODv2 import *
 from CMGTools.RootTools.samples.samples_13TeV_signals import *
-from CMGTools.RootTools.samples.samples_13TeV_76X_susySignalsPriv import *
+from CMGTools.RootTools.samples.samples_13TeV_80X_susySignalsPriv import *
 from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
 from CMGTools.HToZZ4L.tools.configTools import printSummary, configureSplittingFromTime, cropToLumi, prescaleComponents, insertEventSelector
 
-selectedComponents = [TTLep_pow_ext]
+selectedComponents = [TTLep_pow]
 
 if analysis=='susy':
     samples = [DYJetsToLL_M10to50, DYJetsToLL_M50, DYJetsToLL_M10to50_LO, DYJetsToLL_M50_LO, GGHZZ4L, TBarToLeptons_tch_powheg, TBar_tWch, TGJets, TTGJets, TTJets, TTJets_DiLepton, TTJets_SingleLeptonFromT, 
@@ -451,18 +472,19 @@ if analysis=='susy':
             c.splitFactor = len(c.files)
 
 elif analysis=='SOS':
-    #TChiSlepSnux0p5=kreator.makeMCComponent("TChiSlepSnux0p5","/SMS-TChiSlepSnu_x0p5_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM","CMS",".*root",1)
-    #TChiSlepSnux0p05=kreator.makeMCComponent("TChiSlepSnux0p05","/SMS-TChiSlepSnu_x0p05_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v2/MINIAODSIM","CMS",".*root",1)
-    #TChiWZ=kreator.makeMCComponent("TChiWZ","/SMS-TChiWZ_ZToLL_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v2/MINIAODSIM","CMS",".*root",1)
-    #T2ttDiLep=kreator.makeMCComponent("T2ttDiLep","/SMS-T2tt_dM-10to80_2Lfilter_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM","CMS",".*root",1)
+
     selectedComponents = selectedComponents
-    #selectedComponents = [ZZTo2L2NuM4to40_notau, ZZTo2L2NuM4to40_tauonly, WWTo2L2Nu, WZTo3LNu, ZZTo2L2Nu, TBar_tWch, T_tWch, TTJets_SingleLeptonFromTbar, TTJets_SingleLeptonFromT, TTJets_DiLepton] + DYJetsM50HT + DYJetsM5to50HT + WJetsToLNuHT + [DYJetsToLL_M5to50_LO, DYJetsToLL_M50]
-    #selectedComponents = [WWToLNuQQ, WZTo2L2Q, WZTo1L3Nu, WZTo1L1Nu2Q, ZZTo2L2Q, ZZTo4L, WWW, WZZ, WWZ, ZZZ, TToLeptons_tch_powheg, TBarToLeptons_tch_powheg, TToLeptons_sch_amcatnlo] #minor
-    #selectedComponents = [WJetsToLNu_LO] #missing in 80Xv2 had to take 80Xv1 
-    #selectedComponents = [T2ttDeg_mStop350_mChi315_4bodydec_lepOnly, T2ttDeg_mStop350_mChi300_4bodydec_lepOnly, T2ttDeg_mStop350_mChi330_4bodydec_lepOnly, TChiNeuWZ_mCh100_mChi80, TChiNeuWZ_mCh100_mChi90, TChiNeuWZ_mCh150_mChi120_OS, TChiNeuWZ_mCh100_mChi95] #only 76X
-    #selectedComponents = [SMS_TChiSlepSnux0p5, SMS_TChiSlepSnux0p05, SMS_TChiWZ, SMS_T2ttDiLep_mStop_10to80]
-    #selectedComponents = [SMS_TChiWZ, SMS_T2ttDiLep_mStop_10to80]
- 
+    #samples_scans = [SMS_TChiWZ, SMS_T2ttDiLep_mStop_10to80] 
+    #samples_privateSig = Higgsino 
+    #samples_mainBkg = [TTJets_DiLepton, TBar_tWch_ext, T_tWch_ext] + DYJetsM5to50HT + DYJetsM50HT
+    #samples_mainBkgVV = [VVTo2L2Nu, VVTo2L2Nu_ext]
+    #samples_fakesBkg = [TTJets_SingleLeptonFromTbar, TTJets_SingleLeptonFromT, WJetsToLNuHT] 
+    #samples_rareBkg = [WZTo3LNu, WWToLNuQQ, WZTo1L3Nu, WZTo1L1Nu2Q, ZZTo2L2Q, ZZTo4L, WWW, WZZ, WWZ, ZZZ, T_tch_powheg, TBar_tch_powheg, TToLeptons_sch_amcatnlo, TTHnobb_pow, WWDouble, WpWpJJ, TTWToLNu_ext, TTZToLLNuNu_ext, TTZToLLNuNu_m1to10, TTGJets, WGToLNuG_amcatnlo_ext, ZGTo2LG_ext, TGJets] #WZTo2L2Q,WGToLNuG, #still missing
+    #selectedComponents = samples_mainBkg + samples_mainBkgVV
+    #configureSplittingFromTime(samples_mainBkg,150,3)
+
+    
+
 elif analysis=="ttH":
     selectedComponents = selectedComponents
 #    samples_2l = [ TTWToLNu, TTZToLLNuNu, TTLLJets_m1to10, TTTT_ext, tZq_ll ] + TTHnobb_mWCutfix
@@ -493,7 +515,9 @@ if runData and not isTest: # For running on data
     is50ns = False
     dataChunks = []
 
-    json = os.environ['CMSSW_BASE']+'/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_PromptReco_Collisions16_JSON_NoL1T.txt' # 36.15/fb
+
+    #json = os.environ['CMSSW_BASE']+'/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_PromptReco_Collisions16_JSON_NoL1T.txt' # 36.15/fb
+    json = os.environ['CMSSW_BASE']+ '/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt' # 36.46 /fb
 
     #processing = "Run2016B-23Sep2016-v1"; short = "Run2016B_23Sep2016_v1"; run_ranges = [(272760,273017)]; useAAA=True; # -v2 starts from 272760 to 273017
     #dataChunks.append((json,processing,short,run_ranges,useAAA))
@@ -525,6 +549,7 @@ if runData and not isTest: # For running on data
  
     if analysis in ['SOS']:
         DatasetsAndTriggers.append( ("MET", triggers_SOS_highMET + triggers_SOS_doublemulowMET) )
+        DatasetsAndTriggers.append( ("DoubleMuon", triggers_SOS_tripleMu) )
         #DatasetsAndTriggers.append( ("MET", triggers_Jet80MET90 + triggers_Jet80MET120 + triggers_MET120Mu5 ) )
         #DatasetsAndTriggers.append( ("SingleMuon", triggers_1mu_iso + triggers_1mu_noniso) )
         #DatasetsAndTriggers.append( ("SingleElectron", triggers_1e ) )
@@ -923,22 +948,31 @@ elif test == '80X-MC':
         if not getHeppyOption("single"): comp.fineSplitFactor = 4
     else: raise RuntimeError, "Unknown MC sample: %s" % what
 elif test == '80X-Data':
-    #DoubleMuon = kreator.makeDataComponent("DoubleMuon_Run2016B_run274315", "/DoubleMuon/Run2016B-PromptReco-v2/MINIAOD", "CMS", ".*root", run_range = (274315,274315), triggers = triggers_mumu + triggers_mumu_ht + triggers_ee + triggers_ee_ht )
-    #DoubleEG = kreator.makeDataComponent("DoubleEG_Run2016B_run274315", "/DoubleEG/Run2016B-PromptReco-v2/MINIAOD", "CMS", ".*root", run_range = (274315,274315), triggers = triggers_ee)
-    SingleMuon = kreator.makeDataComponent("SingleMuon_Run2016H_run281693","/SingleMuon/Run2016H-PromptReco-v2/MINIAOD","CMS",".*root", run_range=(281680, 281700), triggers = triggers_1mu_iso)
-    #DoubleMuon.files = [ 'root://eoscms//eos/cms/store/data/Run2016B/DoubleMuon/MINIAOD/PromptReco-v2/000/274/315/00000/A287989F-E129-E611-B5FB-02163E0142C2.root' ]
-    #DoubleEG.files = [ 'root://eoscms//eos/cms/store/data/Run2016B/DoubleEG/MINIAOD/PromptReco-v2/000/274/315/00000/FEF59D1D-EE29-E611-8793-02163E0143AE.root' ]
-    #SingleMuon.files = [ 'root://eoscms//eos/cms/store/data/Run2016H/SingleMuon/MINIAOD/PromptReco-v2/000/281/693/00000/4E8924DC-3B86-E611-BB28-FA163E72F1B8.root' ]
-    #SingleMuon.files = [ 'root://eoscms//eos/cms/store/data/Run2016H/SingleMuon/MINIAOD/PromptReco-v2/000/281/693/00000/4E8924DC-3B86-E611-BB28-FA163E72F1B8.root' ]
-    SingleMuon.files = [ 'root://eoscms//eos/cms/store/data/Run2016B/DoubleMuon/MINIAOD/23Sep2016-v3/00000/5ADA8008-EE98-E611-A57D-848F69FD852B.root' ]
-    selectedComponents = [ SingleMuon ] #DoubleMuon, DoubleEG ]
+    what = getHeppyOption("sample","ZLL")
+    if what == "ZLL":
+        json = '/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/Final/Cert_271036-284044_13TeV_PromptReco_Collisions16_JSON.txt'
+        DoubleMuon = kreator.makeDataComponent("DoubleMuon_Run2016H_run283885", "/DoubleMuon/Run2016H-PromptReco-v2/MINIAOD", "CMS", ".*root", run_range = (283885,283885), triggers = triggers_mumu)
+        DoubleEG = kreator.makeDataComponent("DoubleEG_Run2016H_run283885", "/DoubleEG/Run2016H-PromptReco-v2/MINIAOD", "CMS", ".*root", run_range = (283885,283885), triggers = triggers_ee)
+        DoubleMuon.files = [ 'root://eoscms//eos/cms/store/data/Run2016H/DoubleMuon/MINIAOD/PromptReco-v2/000/283/885/00000/5A21CC75-D09D-E611-BFDC-FA163E163D77.root' ]
+        DoubleEG.files = [ 'root://eoscms//eos/cms/store/data/Run2016H/DoubleEG/MINIAOD/PromptReco-v2/000/283/885/00000/743981FC-949D-E611-836E-FA163EC09DF2.root' ]
+        selectedComponents = [ DoubleMuon, DoubleEG ]
+    elif what == "MET":
+        json = '/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/Final/Cert_271036-284044_13TeV_PromptReco_Collisions16_JSON.txt'
+        MET = kreator.makeDataComponent("MET_Run2016H_run283885", "/MET/Run2016H-PromptReco-v2/MINIAOD", "CMS", ".*root", run_range = (283885,283885), triggers = triggers_SOS_highMET)
+        MET.files = [ 'root://eoscms//eos/cms/store/data/Run2016H/MET/MINIAOD/PromptReco-v2/000/283/885/00000/92E8E127-A59D-E611-83F2-02163E01187D.root' ]
+        selectedComponents = [ MET ]
+    elif what == "SingleMuon":
+        SingleMuon = kreator.makeDataComponent("SingleMuon_Run2016H_run281693","/SingleMuon/Run2016H-PromptReco-v2/MINIAOD","CMS",".*root", run_range=(281680, 281700), triggers = triggers_1mu_iso)
+        DoubleMuon.files = [ 'root://eoscms//eos/cms/store/data/Run2016B/DoubleMuon/MINIAOD/PromptReco-v2/000/274/315/00000/A287989F-E129-E611-B5FB-02163E0142C2.root' ]
+        selectedComponents = [ SingleMuon ]
     for comp in selectedComponents:
-        comp.json = '/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/Cert_271036-283685_13TeV_PromptReco_Collisions16_JSON_NoL1T.txt'
+        comp.json = json
         tmpfil = os.path.expandvars("/tmp/$USER/%s" % os.path.basename(comp.files[0]))
         if not os.path.exists(tmpfil): os.system("xrdcp %s %s" % (comp.files[0],tmpfil)) 
+        if not os.path.exists(tmpfil): os.system("xrdcp %s %s" % (comp.files[0],tmpfil))
         comp.files = [tmpfil]
         comp.splitFactor = 1
-        comp.fineSplitFactor = 1
+        comp.fineSplitFactor = 4
 elif test == 'ttH-sync':
     ttHLepSkim.minLeptons = 0
     selectedComponents = selectedComponents[:1]

@@ -11,7 +11,7 @@ parser = OptionParser()
 parser.add_option("--outputFile", dest="outputFile", default="MetType1_dump.py", type="string", action="store", help="output file")
 parser.add_option("--GT", dest="GT", default='MCRUN2_74_V9A', type="string", action="store", help="Global Tag")
 parser.add_option("--jecDBFile", dest="jecDBFile", default="", type="string", action="store", help="jec DB File")
-parser.add_option("--uncFile", dest="uncFile", default="", type="string", action="store", help="jec Uncer File")
+###parser.add_option("--uncFile", dest="uncFile", default="", type="string", action="store", help="jec Uncer File")
 parser.add_option("--jecEra", dest="jecEra", default='', type="string", action="store", help="jecEra")
 parser.add_option("--jerDBFile", dest="jerDBFile", default="", type="string", action="store", help="jer DB File")
 parser.add_option("--jerEra", dest="jerEra", default='', type="string", action="store", help="jerEra")
@@ -93,57 +93,59 @@ from CondCore.DBCommon.CondDBSetup_cfi import *
 
 ##___________________________External JER file________________________________||
 ##https://github.com/cms-jet/JRDatabase/tree/master/SQLiteFiles
-process.jer = cms.ESSource("PoolDBESSource",CondDBSetup,
-##                           connect = cms.string("sqlite:PhysicsTools/PatUtils/data/Fall15_25nsV2_MC.db"),
-                           connect = cms.string('sqlite_file:'+os.path.expandvars(options.jerDBFile)),
-                           toGet =  cms.VPSet(
-    #######
-    ### read the PFchs JER
 
-    cms.PSet(
-      record = cms.string('JetResolutionRcd'),
-      #tag    = cms.string('JR_MC_PtResolution_Summer15_25nsV6_AK4PF'),
-      tag    = cms.string('JR_'+options.jerEra+'_MC_PtResolution_AK4PFchs'),
-      label  = cms.untracked.string('AK4PFchs_pt')
-      ),
-    cms.PSet(
-      record = cms.string("JetResolutionRcd"),
-      #tag = cms.string("JR_MC_PhiResolution_Summer15_25nsV6_AK4PF"),
-      tag = cms.string('JR_'+options.jerEra+'_MC_PhiResolution_AK4PFchs'),
-      label= cms.untracked.string("AK4PFchs_phi")
-      ),
-    cms.PSet(
-      record = cms.string('JetResolutionScaleFactorRcd'),
-      #tag    = cms.string('JR_DATAMCSF_Summer15_25nsV6_AK4PFchs'),
-      tag    = cms.string('JR_'+options.jerEra+'_MC_SF_AK4PFchs'),
-      label  = cms.untracked.string('AK4PFchs')
-      ),
+usePrivateSQliteJER = options.jerDBFile!=''
+if usePrivateSQliteJER:
+    process.jer = cms.ESSource("PoolDBESSource",CondDBSetup,
+                               connect = cms.string('sqlite_file:'+os.path.expandvars(options.jerDBFile)),
+                               toGet =  cms.VPSet(
+            #######
+            ### read the PFchs JER
 
-    #######
-    ### read the Puppi JER
+            cms.PSet(
+                record = cms.string('JetResolutionRcd'),
+                #tag    = cms.string('JR_MC_PtResolution_Summer15_25nsV6_AK4PF'),
+                tag    = cms.string('JR_'+options.jerEra+'_MC_PtResolution_AK4PFchs'),
+                label  = cms.untracked.string('AK4PFchs_pt')
+                ),
+            cms.PSet(
+                record = cms.string("JetResolutionRcd"),
+                #tag = cms.string("JR_MC_PhiResolution_Summer15_25nsV6_AK4PF"),
+                tag = cms.string('JR_'+options.jerEra+'_MC_PhiResolution_AK4PFchs'),
+                label= cms.untracked.string("AK4PFchs_phi")
+                ),
+            cms.PSet(
+                record = cms.string('JetResolutionScaleFactorRcd'),
+                #tag    = cms.string('JR_DATAMCSF_Summer15_25nsV6_AK4PFchs'),
+                tag    = cms.string('JR_'+options.jerEra+'_MC_SF_AK4PFchs'),
+                label  = cms.untracked.string('AK4PFchs')
+                ),
 
-    cms.PSet(
-      record = cms.string('JetResolutionRcd'),
-      #tag    = cms.string('JR_MC_PtResolution_Summer15_25nsV6_AK4PF'),
-      tag    = cms.string('JR_'+options.jerEra+'_MC_PtResolution_AK4PFPuppi'),
-      label  = cms.untracked.string('AK4PFPuppi_pt')
-      ),
-    cms.PSet(
-      record = cms.string("JetResolutionRcd"),
-      #tag = cms.string("JR_MC_PhiResolution_Summer15_25nsV6_AK4PF"),
-      tag = cms.string('JR_'+options.jerEra+'_MC_PhiResolution_AK4PFPuppi'),
-      label= cms.untracked.string("AK4PFPuppi_phi")
-      ),
-    cms.PSet(
-      record = cms.string('JetResolutionScaleFactorRcd'),
-      #tag    = cms.string('JR_DATAMCSF_Summer15_25nsV6_AK4PFchs'),
-      tag    = cms.string('JR_'+options.jerEra+'_MC_SF_AK4PFPuppi'),
-      label  = cms.untracked.string('AK4PFPuppi')
-      ),
+            #######
+            ### read the Puppi JER
+
+            cms.PSet(
+                record = cms.string('JetResolutionRcd'),
+                #tag    = cms.string('JR_MC_PtResolution_Summer15_25nsV6_AK4PF'),
+                tag    = cms.string('JR_'+options.jerEra+'_MC_PtResolution_AK4PFPuppi'),
+                label  = cms.untracked.string('AK4PFPuppi_pt')
+                ),
+            cms.PSet(
+                record = cms.string("JetResolutionRcd"),
+                #tag = cms.string("JR_MC_PhiResolution_Summer15_25nsV6_AK4PF"),
+                tag = cms.string('JR_'+options.jerEra+'_MC_PhiResolution_AK4PFPuppi'),
+                label= cms.untracked.string("AK4PFPuppi_phi")
+                ),
+            cms.PSet(
+                record = cms.string('JetResolutionScaleFactorRcd'),
+                #tag    = cms.string('JR_DATAMCSF_Summer15_25nsV6_AK4PFchs'),
+                tag    = cms.string('JR_'+options.jerEra+'_MC_SF_AK4PFPuppi'),
+                label  = cms.untracked.string('AK4PFPuppi')
+                ),
 
 
-    ) )
-process.es_prefer_jer = cms.ESPrefer("PoolDBESSource",'jer')
+            ) )
+    process.es_prefer_jer = cms.ESPrefer("PoolDBESSource",'jer')
 
 
 
@@ -173,6 +175,29 @@ runMetCorAndUncFromMiniAOD(process,
                            isData=options.isData,
                            )
 
+
+##https://twiki.cern.ch/twiki/bin/view/CMSPublic/ReMiniAOD03Feb2017Notes#MET_Recipes
+if options.isData:
+    from PhysicsTools.PatUtils.tools.corMETFromMuonAndEG import corMETFromMuonAndEG
+    corMETFromMuonAndEG(process,
+                        pfCandCollection="", #not needed
+                        electronCollection="slimmedElectronsBeforeGSFix",
+                        photonCollection="slimmedPhotonsBeforeGSFix",
+                        corElectronCollection="slimmedElectrons",
+                        corPhotonCollection="slimmedPhotons",
+                        allMETEGCorrected=True,
+                        muCorrection=False,
+                        eGCorrection=True,
+                        runOnMiniAOD=True,
+                        postfix="MuEGClean"
+                        )
+    process.slimmedMETsMuEGClean = process.slimmedMETs.clone()
+    process.slimmedMETsMuEGClean.src = cms.InputTag("patPFMetT1MuEGClean")
+    process.slimmedMETsMuEGClean.rawVariation =  cms.InputTag("patPFMetRawMuEGClean")
+    process.slimmedMETsMuEGClean.t1Uncertainties = cms.InputTag("patPFMetT1%sMuEGClean")
+    del process.slimmedMETsMuEGClean.caloMET
+
+
 if not useHFCandidates:
     runMetCorAndUncFromMiniAOD(process,
                                isData=options.isData,
@@ -186,50 +211,21 @@ if options.redoPuppi:
     from PhysicsTools.PatAlgos.slimming.puppiForMET_cff import makePuppiesFromMiniAOD
     makePuppiesFromMiniAOD( process );
 
+# recorrect only
+#    runMetCorAndUncFromMiniAOD(process,
+#                               isData=options.isData,
+#                               metType="Puppi",
+#                               postfix="Puppi"
+#                               )
+
     runMetCorAndUncFromMiniAOD(process,
                                isData=options.isData,
+                               metType="Puppi",
                                pfCandColl=cms.InputTag("puppiForMET"),
                                recoMetFromPFCs=True,
-                               reclusterJets=True,
                                jetFlavor="AK4PFPuppi",
                                postfix="Puppi"
                                )
-
-#### THOSE ARE MANUAL REPLACEMENT - SOME BUG THERE AND NEED TO BE CORRECTED IN THE  PhysicsTools/PatAlgos/python/slimming/miniAOD_tools.py
-
-    process.pfMetT1Puppi.src = cms.InputTag("pfMetPuppi")
-
-######
-
-    process.corrPfMetType1Puppi.jetCorrLabel = cms.InputTag("ak4PFPuppiL1FastL2L3Corrector")
-    process.corrPfMetType1Puppi.jetCorrLabelRes = cms.InputTag("ak4PFPuppiL1FastL2L3ResidualCorrector")
-    process.corrPfMetType1Puppi.offsetCorrLabel = cms.InputTag("ak4PFPuppiL1FastjetCorrector")
-
-    process.basicJetsForMetPuppi.offsetCorrLabel = cms.InputTag("L1FastJet")
-    process.patJetCorrFactorsPuppi.payload = cms.string("AK4PFPuppi")
-
-    process.patPFMetPuppi.srcJetResPhi = cms.string('AK4PFPuppi_phi')
-    process.patPFMetPuppi.srcJetResPt = cms.string('AK4PFPuppi_pt')
-    process.patPFMetPuppi.srcJetSF = cms.string('AK4PFPuppi')
-
-#######
-
-    process.shiftedPatJetEnDownPuppi.jetCorrLabelUpToL3 = cms.InputTag("ak4PFPuppiL1FastL2L3Corrector")
-    process.shiftedPatJetEnDownPuppi.jetCorrLabelUpToL3Res = cms.InputTag("ak4PFPuppiL1FastL2L3ResidualCorrector")
-
-    process.shiftedPatJetEnUpPuppi.jetCorrLabelUpToL3 = cms.InputTag("ak4PFPuppiL1FastL2L3Corrector")
-    process.shiftedPatJetEnUpPuppi.jetCorrLabelUpToL3Res = cms.InputTag("ak4PFPuppiL1FastL2L3ResidualCorrector")
-
-    process.shiftedPatJetResDownPuppi.algo = cms.string('AK4PFPuppi')
-    process.shiftedPatJetResDownPuppi.algopt = cms.string('AK4PFPuppi_pt')
-
-    process.shiftedPatJetResUpPuppi.algo = cms.string('AK4PFPuppi')
-    process.shiftedPatJetResUpPuppi.algopt = cms.string('AK4PFPuppi_pt')
-
-#######
-
-#uncertainty file
-###jecUncertaintyFile="$CMSSW_BASE/src/CMGTools/RootTools/data/jec/Summer15_50nsV4_DATA_UncertaintySources_AK4PFchs.txt"
 
 ### -------------------------------------------------------------------
 ### the lines below remove the L2L3 residual corrections when processing data
@@ -256,12 +252,14 @@ process.MINIAODSIMoutput = cms.OutputModule("PoolOutputModule",
     compressionLevel = cms.untracked.int32(4),
     compressionAlgorithm = cms.untracked.string('LZMA'),
     eventAutoFlushCompressedSize = cms.untracked.int32(15728640),
-    outputCommands = cms.untracked.vstring( "keep *_slimmedMETs_*_*",
+    outputCommands = cms.untracked.vstring( "keep *_slimmedMETs*_*_*",
                                             "keep *_patPFMetT1Txy_*_*",
 #                                            "keep patJets_*_*_RERUN", #for debugging only
                                             "keep *_slimmedMETsNoHF_*_*",
                                             "keep *_slimmedMETsPuppi_*_*",
                                             "keep *_patPFMetT1TxyNoHF_*_*",
+                                            "keep *_puppiMETEGCor_*_*",
+##                                            "keep *_*_*_RERUN",
                                             ),
     fileName = cms.untracked.string('corMETMiniAOD.root'),
     dataset = cms.untracked.PSet(
