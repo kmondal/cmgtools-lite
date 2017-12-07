@@ -89,7 +89,6 @@ Float_t WZbalance(Float_t zpt, Float_t zeta, Float_t zphi, Float_t zm, Float_t w
   TLorentzVector z; z.SetPtEtaPhiM(zpt, zeta, zphi, zm);
   TLorentzVector w; w.SetPtEtaPhiM(wpt, weta, wphi, wm);
   TLorentzVector balance = z + w;
-  
   return balance.Pt();
 }
 
@@ -104,6 +103,13 @@ Float_t WZdeltaR(Float_t zeta, Float_t zphi, Float_t weta, Float_t wphi)
   return res;
 }
 
-
+Int_t getWZRegion(Float_t met, Float_t mZ1, Int_t nBJets, Int_t nFOLep, Int_t l4_tight, Float_t l4_pt){
+  //Region index in the WZ analysis: SR->0; CRDY->1; CRTT->2; CRZZ->3;
+  if (met > 30 && TMath::Abs(91.1876-mZ1) < 15 && nBJets == 0 && nFOLep == 3)                        return 0;
+  else if (met <= 30 && TMath::Abs(91.1876-mZ1) < 15 && nBJets == 0 && nFOLep == 3)                  return 1;
+  else if (met > 30 && TMath::Abs(91.1876-mZ1) > 5 && nBJets > 0 && nFOLep == 3)                     return 2;
+  else if (met > 30 && TMath::Abs(91.1876-mZ1) < 15 && nBJets == 0 && nFOLep == 4 && l4_pt > 10)     return 3;
+  else return -1;
+}
 
 void functionsWZ() {}
