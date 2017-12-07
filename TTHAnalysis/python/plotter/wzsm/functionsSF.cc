@@ -150,7 +150,6 @@ float getLepSF(float pt, float eta, int pdgId, int applySF, int wp = 0, int var 
     if(abs(pdgId) == 13) { sf = getMuonSF    (pt, eta, wp); err = sf*getMuonUnc (pt, var);          } // only relative error
     if(abs(pdgId) == 15) { sf = 0.95                      ; err = 0.05;                             }
     return (var==0)?sf:(sf+var*err)/sf;
-
 }
 
 float leptonSF(float lepSF1, float lepSF2, float lepSF3 = 1, float lepSF4 = 1){
