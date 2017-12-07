@@ -3,6 +3,9 @@ from utils import getErrorFraction,getErrorFractionWithErr,readYieldsFromTable
 from math import sqrt
 # Author: Pietro Vischia, pietro.vischia@cern.ch
 
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 def cncXsecComputer(table_yields, sigLabel):
 
@@ -114,25 +117,35 @@ import optparse
 # Command line options
 usage = 'usage: %prog [--newData]'
 parser = optparse.OptionParser(usage)
-parser.add_option('-i', '--input',          dest='inputDir',       help='input directory',        default='/pool/ciencias/HeppyTrees/RA7/estructura/trees_8011_July5_allscans/',           type='string')
-parser.add_option('-o', '--output',         dest='outputDir',      help='output directory',       default='~/www/susyRA7/',           type='string')
+parser.add_option('-f', '--fileIn',         dest='fileIn',         help='Input file',                                  default=None,             type='string')
+parser.add_option('-i', '--input',          dest='inputDir',       help='input directory (if not input file)',         default=None,             type='string')
+parser.add_option('-o', '--output',         dest='outputDir',      help='output directory',        default='~/www/susyRA7/', type='string')
 parser.add_option('-a', '--action',         dest='action',         help='which action to perform', default='crtau', type='string')
 parser.add_option('-p', '--pretend',        dest='pretend',        help='only print commands out', action='store_true')
 parser.add_option('-s', '--signal',         dest='sigLabel',       help='label of signal in tables', default='WZ', type='string')
 parser.add_option('-w', '--workingPoint',   dest='wp', default='VT', help='working point for lepton ID (default is: VT)')
 
 (opt, args) = parser.parse_args()
-
+fileIn=opt.fileIn
 sigLabel=opt.sigLabel
 wp=opt.wp
 
 print("WARNING, prototype. Initial number of events and signal cross section are the proper one for WZ signal, and 0 otherwise")
 
-table_yields=readYieldsFromTable("/nfs/fanae/user/vischia/www/wz/wz/lepmva{wp}/srwz/m3lmet.txt".format(wp=wp))
+if not fileIn and not inputDir:
+    logging.error('You must define either inputDir or filename with full path')
+
+
+table_yields=None
+
+if fileIn:
+    table_yields=readYieldsFromTable(fileIn)
+else:
+    inputDir=opt.inputDir if opt.inputDir is not None else "/nfs/fanae/user/vischia/www/wz/wz/lepmva{wp}/srwz/".format(wp=wp)
+    table_yields=readYieldsFromTable("%s/m3lmet.txt" % inputDir)
 
 
 cncXsecComputer(table_yields, sigLabel)
-
 plrXsecComputer(table_yields, sigLabel)
 
 
