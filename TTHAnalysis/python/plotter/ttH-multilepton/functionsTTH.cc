@@ -321,16 +321,16 @@ float triggerSF_ttH(int pdgid1, int pdgid2, int nlep){
 
 
 Int_t _2lss_sel(Double_t x, Double_t y){
-	if (x < 0.8) return 1;
-	else if (x > 0.8 && x < 1.2) return 2;
-	else if (x > 1.2 && x < 1.6) return 3;
-	else if (x > 1.6 && x < 2.0) return 4;
+	if (x <= 0.8) return 1;
+	else if (x > 0.8 && x <= 1.2) return 2;
+	else if (x > 1.2 && x <= 1.6) return 3;
+	else if (x > 1.6 && x <= 2.0) return 4;
 	else if (x > 2.0) return 5;
 }
 
 Int_t _3l_sel(Double_t x, Double_t y){
-	if (x < 0.8) return 1;
-	else if (x > 0.8 && x < 1.8) return 2;
+	if (x <= 0.8) return 1;
+	else if (x > 0.8 && x <= 1.8) return 2;
 	else if (x > 1.8) return 3;
 }
 
