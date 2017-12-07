@@ -1,5 +1,5 @@
 # wrapper around trainLeptonID.cxx cause I cannot remember all the commands
-import ROOT, os, socket
+import ROOT, os, socket, time
 from optparse import OptionParser
 
 def getTreePath(treedir, samplename):
@@ -74,4 +74,4 @@ for flavor in ["el_eleGP", "mu"]:
                                            NS2  =getTreeNEvt(treedir, options.sig2), \
                                            NB1  =getTreeNEvt(treedir, options.bkg1), \
                                            NB2  =getTreeNEvt(treedir, options.bkg2)), name, options.queue)
-                
+                time.sleep(1)
