@@ -18,6 +18,8 @@ void trainLeptonID(TString name, TString sig1file, TString sig2file, TString bkg
     TMVA::Factory *factory = new TMVA::Factory(name, fOut, factory_conf.Data());
 
     TCut lepton = "1";
+    TCut leptonBkg = "";
+
     
     if (name.Contains("forMoriond")) {
         factory->AddVariable("LepGood_pt", 'D');
@@ -130,7 +132,6 @@ void trainLeptonID(TString name, TString sig1file, TString sig2file, TString bkg
     }
 
     else if (name.Contains("SoftJetLess")){
-      factory->AddSpectator("LepGood_mcMatchAny", 'D');
       factory->AddVariable("LepGood_pt", 'D');
       factory->AddVariable("LepGood_eta", 'D');
       factory->AddVariable("LepGood_miniRelIsoCharged := min(LepGood_miniRelIsoCharged,4)", 'D');
@@ -186,7 +187,6 @@ void trainLeptonID(TString name, TString sig1file, TString sig2file, TString bkg
 
     }
     else if (name.Contains("SoftALaMoriond16")) {
-      factory->AddSpectator("LepGood_mcMatchAny", 'D');
         factory->AddVariable("LepGood_pt", 'D');
         factory->AddVariable("LepGood_eta", 'D');
 	factory->AddVariable("LepGood_jetNDauChargedMVASel", 'D');
@@ -249,13 +249,17 @@ void trainLeptonID(TString name, TString sig1file, TString sig2file, TString bkg
 	factory->AddTree(dBg2, "light", wBkg/int2b/2., "LepGood_mcMatchId==0 && (abs(LepGood_mcMatchAny)<4 || abs(LepGood_mcMatchAny)>5)");
       }
     }
+    if (name.Contains("_bfake")) leptonBkg = "LepGood_mcMatchId==0 && (abs(LepGood_mcMatchAny)==4 || abs(LepGood_mcMatchAny)==5)";
+    if (name.Contains("_light")) leptonBkg = "LepGood_mcMatchId==0 && (abs(LepGood_mcMatchAny)<4 || abs(LepGood_mcMatchAny)>5)";
+	
+    factory->AddSpectator("LepGood_mcMatchAny", 'D');
 
     if (file_for_sigW_1!="" || file_for_sigW_2!="") factory->SetSignalWeightExpression("addW*xsec*genWeight");
     else factory->SetSignalWeightExpression("xsec*genWeight");
     if (file_for_bkgW_1!="" || file_for_bkgW_2!="") factory->SetBackgroundWeightExpression("addW*xsec*genWeight");
     else factory->SetBackgroundWeightExpression("xsec*genWeight");
 
-    if (!doMultiClass) factory->PrepareTrainingAndTestTree( lepton+" LepGood_mcMatchId != 0", lepton+" LepGood_mcMatchId == 0", "" );
+    if (!doMultiClass) factory->PrepareTrainingAndTestTree( lepton+" LepGood_mcMatchId != 0", lepton+" LepGood_mcMatchId == 0" + leptonBkg, "" );
     else factory->PrepareTrainingAndTestTree(lepton,"SplitMode=Random:NormMode=NumEvents:!V");
 
     //    if (!doMultiClass) factory->BookMethod( TMVA::Types::kLD, "LD", "!H:!V:VarTransform=None" );
