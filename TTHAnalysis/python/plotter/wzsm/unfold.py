@@ -1,18 +1,26 @@
 import os
 import argparse
 
+class AcceptanceComputer:
+
+    def __init__(self, inputFiles):
+        print('Initialization')
+        print('Input files are: %s' % inputFiles)
+
+### End class AcceptanceCounter
 
 class Unfolder:
     tunfolder=None
     matrix=None
     
     def __init__(self, args):
+        print('Initialization')
 
     def buildMatrix(self):
-        print("Here we build the matrix")
+        print('Here we build the matrix')
 
     def init(self):
-        print("Initialize the tunfolder")
+        print('Initialize the tunfolder')
 
 ### End class Unfolder
 
@@ -23,7 +31,7 @@ def main(args):
 ### End main
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-l', '--lepCat',     help='Lepton multiplicity (1 or 2)', default=1, type=int)
     parser.add_argument('-m', '--multiclass', help='Multiclass (ttbar-LF and ttbar-HF are in different classes)', action='store_true')
