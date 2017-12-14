@@ -6,6 +6,16 @@ from math import sqrt,fabs
 
 """
 """
+def get_file_from_glob(f):                                                    
+        files = glob.glob(f)                                                      
+        if len(files) != 1:                                                       
+                raise Exception('Only one input file is supported per glob pattern: %\
+s -> %s' % (f, files))                                                        
+        
+        return files[0]                                                           
+
+"""
+"""
 def command(cmd, pretend):
 
         if pretend:
