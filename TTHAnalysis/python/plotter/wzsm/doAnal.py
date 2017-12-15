@@ -412,4 +412,46 @@ elif(action=='www'):
         runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,enablecuts, header)
         
 
+elif(action=="trigTests"):
+        print "Now getting 2D histograms for the trigger efficiency tests... Please be patient"
+        if subaction=='':
+          doWhat = ["1El", "1Mu", "MuMu", "ElEl", "ElMu"]
+        else:
+          doWhat = [subaction]
+        
+        plots = 'wzsm/plots_eff.txt'
+        mca = 'wzsm/includes/mca_trigTestData.txt' #Run over prompt DY leptons + JetHT + MET datasets
+        cuts = 'wzsm/cuts_triggerStudies.txt'
+        pgroup = ' -p data -p dy '
+        out = outputDir+'wz{mc}{pog}/triggers/'
+        mcc='wzsm/mcc_varsub_wzsm.txt'
+        mccother=''
+        trigdef='wzsm/mcc_triggerdefs.txt'
+        toplot = ''
+        weights=' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1)*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1)*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1) '
+        functions=' --load-macro wzsm/functionsPUW.cc --load-macro wzsm/functionsSF.cc --load-macro wzsm/functionsWZ.cc '       
+        jei='64'
+
+        lumi='35.867'
+        for channel in doWhat:
+          tmpout = out + channel
+          enablecuts = ' '
+          if "1" in channel:
+            enablecuts += "-E oneTight "
+            if "El" in channel:
+              enablecuts += "-E firstEl "
+            elif "Mu" in channeL:
+              enablecuts += "-E firstMu "
+
+          else:
+            enablecuts += "-E twoTight "
+            if "El" in channel and "Mu" in channel:
+              enablecuts += "-E ElMu "
+            elif "El" in channel:
+              enablecuts += "-E firstEl -E secondEl "
+            elif "Mu" in channeL:
+              enablecuts += "-E firstMu -E secondMu "
+          print "Channel: " + channel
+          runPlots(cuts, mca, tmpout, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,enablecuts, '')
+
 print 'Everything is done now'
