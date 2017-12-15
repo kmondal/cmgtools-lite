@@ -34,10 +34,11 @@ gm3L100 : m3L  > 100; Disable=True
 lm3L100 : m3L <= 100; Disable=True
 
 #Regions
-SR    : met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel<4  && m3L > 100; Disable=True
-DYCR  : met_pt <= 30   && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel<4  && m3L > 100; Disable=True
-TTCR  : met_pt > 30    && nBJetMedium30 > 0  && abs(91.1876-mll_3l)>5   &&  nLepSel<4  && m3L > 100; Disable=True
-ZZCR  : met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L > 100  && LepSel4_isTight && LepSel4_pt > 10   ; Disable=True
+SR        : met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel<4  && m3L > 100; Disable=True
+DYCR      : met_pt <= 30   && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel<4  && m3L > 100; Disable=True
+TTCR      : met_pt > 30    && nBJetMedium30 > 0  && abs(91.1876-mll_3l)>5   &&  nLepSel<4  && m3L > 100; Disable=True
+ZZCR      : met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L > 100  && LepSel4_isTight && LepSel4_pt > 10   ; Disable=True
+ttXCR     : met_pt > 30    && nBJetMedium30 > 0  && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L > 100  && LepSel4_isTight && LepSel4_pt > 10   ; Disable=True
 convCR: met_pt <= 30   && nBJetMedium30 == 0 && abs(91.1876-mll_3l)>15  && m3L <= 100  &&  nLepSel<4 ; Disable=True
 
 
@@ -78,6 +79,10 @@ mme: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==37; Disable=True
 mmm: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==39; Disable=True
 eel: (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==33) || (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==35); Disable=True
 mml: (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==37) || (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==39); Disable=True
+
+flaveeeORmme : abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==33 || abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==37; Disable=True
+
+
 
 pt252020: LepSel1_pt>25 && LepSel2_pt>20 && LepSel3_pt>20; Disable=True
 ptleptons: LepZ1_pt<100 && LepZ2_pt<100 && LepW_pt<100 && LepZ1_conePt<100 && LepZ2_conePt<100 && LepW_conePt<100 ; Disable=True
