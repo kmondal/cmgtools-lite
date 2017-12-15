@@ -18,11 +18,22 @@ class Unfolder(object):
 
     def __init__(self, args):
         print('Initialization')
-        self.tunfolder=None
+        self.unfold=None
+        self.response=None
         self.data=None
         self.mc=None
         self.response=None
         self.proofOfConcept=True
+        self.verbose=args.verbose
+        self.nScan=30
+        # Automatic L-curve scan: start with taumin=taumax=0.0
+        self.tauMin=0.0
+        self.tauMax=0.0
+        self.iBest=None # Best value
+        self.logTauX=None # TSpline*
+        self.logTauY=None # TSpline*
+        self.lCurve=None # TGraph*
+
         self.load_data(args.inputDir, args.data, args.mc, args.gen)
 
     def load_data(self, folder, dataFName, mcFName, genFName, treeName=['tree']):
@@ -67,15 +78,65 @@ class Unfolder(object):
         self.response.Draw('COLZ')
         utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrix'))
 
-    def init(self):
-        print('Initialize the tunfolder')
+    def set_unfolding(self):
+        self.unfold = TUnfoldDensity(self.response,TUnfold.kHistMapOutputVert)
+        # Check if the input data points are enough to constrain the unfolding process
+        check = self.response.SetInput(self.data)
+        if check>=10000:
+            print('TUnfoldDensity error %d! Unfolding result may be wrong (not enough data to constrain the unfolding process)' % check)
+
+    def do_scan(self):
+        # Scan the L-curve and find the best point
+        
+        # Set verbosity
+        oldinfo=gErrorIgnoreLevel
+        if self.verbose:
+            gErrorIgnoreLevel=kInfo
+
+        # Scan the parameter tau, finding the kink in the L-curve. Finally, do the unfolding for the best choice of tau
+        iBest=self.unfold.ScanLcurve(self.nScan, self.tauMin, self.tauMax, self.lCurve, self.logTauX, self.logTauY)
+
+        # Reset verbosity
+        if self.verbose:
+            gErrorIgnoreLevel=oldInfo
+
+        # Here do something for the error
+        ### 
+
+    def print_unfolding_results(self):
+        # Print results
+        print('Tau: %d' % self.unfold.GetTau())
+        print('chi^2: %d+%d/%d' %(self.unfold.GetChi2A(), self.unfold.GetChi2L(), self.unfold.GetNdf() ) )
+        print('chi^2(syst): %d' % self.unfold.GetChi2Sys())
+            
+        # Visualize best choice of tau
+        t=[]
+        x=[]
+        y=[]
+        self.logTauX.GetKnot(self.iBest, t, x)
+        self.logTauY.GetKnot(self.iBest, t, y)
+        bestLcurve = TGraph(1, x, y)
+        bestLogTauLogChi2 = TGraph(1, t, x);
+        
+        # Retrieve results as histograms
+
+        histMunfold=TH1(self.unfold.GetOutput('Unfolded')) # Unfolded result
+        histMdetFuld=TH1(self.unfold.GetFoldedOutput('FoldedBack')) # Unfolding result, folded back
+        # histEmatData=TH1(self.unfold.GetEmatrix('EmatData0')) # Error matrix (stat errors only)
+        histEmatTotal=TH2(self.unfold.GetEmatrixTotal('EmatTotal')) # Total error matrix. Migration matrix uncorrelated and correlated syst errors added in quadrature to the data statistical errors
+
+        histTotalError = TH1D('TotalError',';mass(gen)', nGen, xminGen, xmaxGen)# Data histogram with total errors
+
 
 ### End class Unfolder
 def main(args): 
     u = Unfolder(args)
-    u.build_response()
+    u.build_response() # Not really needed at the moment (assuming it's already built outside)
     u.print_response()
-    u.init()
+    u.set_unfolding()
+    u.do_scan()
+    u.print_unfolding_results()
+
 ### End main
     
 
@@ -90,7 +151,7 @@ if __name__ == '__main__':
     #parser.add_argument('-m', '--multiclass', help='Multiclass (ttbar-LF and ttbar-HF are in different classes)', action='store_true')
     parser.add_argument('-e', '--epochs',     help='Number of epochs', default=100, type=int)
     parser.add_argument('-s', '--splitMode',  help='Split mode (input or random)', default='input')
-    
+    parser.add_argument('-v', '--verbose',    help='Verbose printing of the L-curve scan', action='store_true')
 
 #parser.add_argument('-n', '--nevts',      help='Number of events to be loaded from tree', default=-1, type=int)
     args = parser.parse_args()
