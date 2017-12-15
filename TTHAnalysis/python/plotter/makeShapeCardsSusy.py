@@ -23,6 +23,7 @@ parser.add_option("--frFile"  ,dest="frFile"  , type="string", action="append", 
 parser.add_option("--frMap"   ,dest="frMap"   , type="string", action="append", default=[], help="Format of the name of the FR map in the FR file, put FL for el/mu")
 parser.add_option("--mpfr"    ,dest="mpfr"    , type="string", default=None, help="Region in the mpfr file to extract most probable FR bin")
 parser.add_option("--poisson" ,dest="poisson" , action="store_true", default=False, help="Put poisson errors in the histogram (not recommended)")
+parser.add_option("--extraText" ,dest="extraText" , type="string", default=[], action="append", help="Add extra text lines at the end of the datacard") #A quick and dirty workaround for the rateParameters
 
 (options, args) = parser.parse_args()
 options.weight = True
@@ -453,6 +454,9 @@ for signal in mca.listSignals():
         if mode in ["envelop", "shapeOnly"]:
             datacard.write(('%-10s shape' % (name+"1")) + " ".join([kpatt % effmap12[p] for p in myprocs]) +"\n")
             datacard.write(('%-10s shape' % (name+"2")) + " ".join([kpatt % effmap12[p] for p in myprocs]) +"\n")
+    if len(options.extraText) > 0:
+      for line in options.extraText:
+        datacard.write(line + "\n")
     if options.verbose > -1:
         print "Wrote to ",myout+filename+".card.txt"
     if options.verbose > 0:
