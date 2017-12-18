@@ -33,7 +33,7 @@ class Unfolder(object):
         self.iBest=None # Best value
         self.logTauX=None # TSpline*
         self.logTauY=None # TSpline*
-        self.lCurve=None # TGraph*
+        self.lCurve=TGraph(0) # TGraph*
 
         self.load_data(args.inputDir, args.data, args.mc, args.gen)
 
