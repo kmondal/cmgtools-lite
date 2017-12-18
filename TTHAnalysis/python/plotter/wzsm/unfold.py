@@ -81,7 +81,7 @@ class Unfolder(object):
     def set_unfolding(self):
         self.unfold = TUnfoldDensity(self.response,TUnfold.kHistMapOutputVert)
         # Check if the input data points are enough to constrain the unfolding process
-        check = self.response.SetInput(self.data)
+        check = self.unfold.SetInput(self.data)
         if check>=10000:
             print('TUnfoldDensity error %d! Unfolding result may be wrong (not enough data to constrain the unfolding process)' % check)
 
