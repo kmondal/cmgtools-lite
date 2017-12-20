@@ -22,9 +22,10 @@ btag_HF_ML       : prompt_.*|rares_.*|convs          : .* : bTagHF     : templat
 btag_LF_ML       : prompt_.*|rares_.*|convs          : .* : bTagLF     : templates
 
 #Statistical uncertainties#
-stats_WZ   : prompt_WZ    : .* : 1.0 : stat_foreach_shape_bins : .*
-stats_ZZH  : prompt_ZZH   : .* : 1.0 : stat_foreach_shape_bins : .*
-stats_convs: convs        : .* : 1.0 : stat_foreach_shape_bins : .*
-stats_ttX  : rares_ttX    : .* : 1.0 : stat_foreach_shape_bins : .*
-stats_VVV  : rares_VVV    : .* : 1.0 : stat_foreach_shape_bins : .*
-stats_tZq  : rares_tZq    : .* : 1.0 : stat_foreach_shape_bins : .*
+# switch to autoMCStats (native Barlow-Beeston)
+#stats_WZ   : prompt_WZ    : .* : 1.0 : stat_foreach_shape_bins : .*
+#stats_ZZH  : prompt_ZZH   : .* : 1.0 : stat_foreach_shape_bins : .*
+#stats_convs: convs        : .* : 1.0 : stat_foreach_shape_bins : .*
+#stats_ttX  : rares_ttX    : .* : 1.0 : stat_foreach_shape_bins : .*
+#stats_VVV  : rares_VVV    : .* : 1.0 : stat_foreach_shape_bins : .*
+#stats_tZq  : rares_tZq    : .* : 1.0 : stat_foreach_shape_bins : .*

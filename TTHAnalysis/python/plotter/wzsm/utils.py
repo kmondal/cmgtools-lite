@@ -4,6 +4,22 @@ from math import sqrt,fabs
 
 # Author: Pietro Vischia, pietro.vischia@cern.ch
 
+def saveCanva(c, fname):
+        c.Print(fname+'.png')
+        c.Print(fname+'.pdf')
+        c.Print(fname+'.C')
+        #c.Print(fname+'.root')
+                
+"""
+"""
+def get_file_from_glob(f):                                                    
+        files = glob.glob(f)                                                      
+        if len(files) != 1:                                                       
+                raise Exception('Only one input file is supported per glob pattern: %\
+s -> %s' % (f, files))                                                        
+        
+        return files[0]                                                           
+
 """
 """
 def command(cmd, pretend):

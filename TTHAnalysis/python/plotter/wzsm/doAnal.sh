@@ -142,7 +142,7 @@ elif [ "$1" == "plot" ]; then
     fi
     
     PRETEND=" --pretend  "
-#    PRETEND=""
+    PRETEND=""
     python wzsm/doAnal.py -i ${INPUTDIR} -o ${WEBDIR} $STUFF ${WP} ${ACTION} ${SUBACTION} ${PRETEND}
 
 elif [ "$1" == "fr" ]; then

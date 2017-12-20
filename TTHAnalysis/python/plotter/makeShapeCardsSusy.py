@@ -23,7 +23,9 @@ parser.add_option("--frFile"  ,dest="frFile"  , type="string", action="append", 
 parser.add_option("--frMap"   ,dest="frMap"   , type="string", action="append", default=[], help="Format of the name of the FR map in the FR file, put FL for el/mu")
 parser.add_option("--mpfr"    ,dest="mpfr"    , type="string", default=None, help="Region in the mpfr file to extract most probable FR bin")
 parser.add_option("--poisson" ,dest="poisson" , action="store_true", default=False, help="Put poisson errors in the histogram (not recommended)")
-parser.add_option("--extraText" ,dest="extraText" , type="string", default=[], action="append", help="Add extra text lines at the end of the datacard") #The true pythonic way for a quick and dirty job
+parser.add_option("--extraText" ,dest="extraText" , type="string", default=[], action="append", help="Add extra text lines at the end of the datacard") #A quick and dirty workaround for the rateParameters
+parser.add_option('--bb', '--autoMCStats', dest='autoMCStats', action='store_true', help='Use automatic MC stats with Barlow-Beeston approximation')
+
 
 (options, args) = parser.parse_args()
 options.weight = True
@@ -457,6 +459,8 @@ for signal in mca.listSignals():
     if len(options.extraText) > 0:
       for line in options.extraText:
         datacard.write(line + "\n")
+    if options.autoMCStats:
+            datacard.write('* autoMCStats 0 \n')
     if options.verbose > -1:
         print "Wrote to ",myout+filename+".card.txt"
     if options.verbose > 0:
