@@ -1,6 +1,6 @@
 alwaystrue: 1
 filters: $DATA{(Flag_EcalDeadCellTriggerPrimitiveFilter && Flag_HBHENoiseIsoFilter && Flag_HBHENoiseFilter && Flag_eeBadScFilter && Flag_goodVertices && Flag_globalTightHalo2016Filter && Flag_badChargedHadronFilter)} $MC{1}
-triggers: $DATA{(Triggers_ee || Triggers_mm || Triggers_em)} $MC{(Triggers_ee || Triggers_mm || Triggers_em)}
+
 threelightlep: nLepSel>=3 && abs(LepSel1_pdgId)<14 && abs(LepSel2_pdgId)<14 && abs(LepSel3_pdgId)<14
 #pt101010: LepSel1_conePt>10 && LepSel2_conePt>10 && LepSel3_conePt>10 && LepSel1_pt>10 && LepSel2_pt>10 && LepSel3_pt>10 #Why?
 
@@ -41,8 +41,9 @@ ZZCR      : met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  
 ttXCR     : met_pt > 30    && nBJetMedium30 > 0  && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L > 100  && LepSel4_isTight && LepSel4_pt > 10   ; Disable=True
 convCR: met_pt <= 30   && nBJetMedium30 == 0 && abs(91.1876-mll_3l)>15  && m3L <= 100  &&  nLepSel<4 ; Disable=True
 
-
-isSomeCRSR: getWZRegion(met_pt, mll_3l, nBJetMedium30, nLepSel,LepSel_isTight[3],LepSel_pt[3]) >= 0; Disable=True
+#auxHLTHT : HLT_HT ; Disable=True
+triggers: $DATA{(Triggers_ee || Triggers_mm || Triggers_em)} $MC{(Triggers_ee || Triggers_mm || Triggers_em)}
+#isSomeCRSR: getWZRegion(met_pt, mll_3l, nBJetMedium30, nLepSel,LepSel_isTight[3],LepSel_pt[3]) >= 0; Disable=True
 
 
 
