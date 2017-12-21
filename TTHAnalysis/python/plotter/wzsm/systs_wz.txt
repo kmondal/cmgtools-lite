@@ -17,7 +17,8 @@ ewkfakes_ML      : fakes_.*                          : .* : ewk        : templat
 ewksub_ML        : promptsub_.*                      : .* : ewk        : templates
 JES_ML           : prompt_.*|rares_.*|convs          : .* : jec        : templates
 PUW_ML           : prompt_.*|rares_.*|convs          : .* : puw        : templates
-LepSF_ML         : prompt_.*|rares_.*|convs          : .* : lepSF      : templates
+LepSFMu_ML         : prompt_.*|rares_.*|convs          : .* : lepSFMu      : templates
+LepSFEl_ML         : prompt_.*|rares_.*|convs          : .* : lepSFEl      : templates
 btag_HF_ML       : prompt_.*|rares_.*|convs          : .* : bTagHF     : templates
 btag_LF_ML       : prompt_.*|rares_.*|convs          : .* : bTagLF     : templates
 
