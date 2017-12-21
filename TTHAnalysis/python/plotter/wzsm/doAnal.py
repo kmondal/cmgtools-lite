@@ -454,4 +454,28 @@ elif(action=="trigTests"):
           print "Channel: " + channel
           runPlots(cuts, mca, tmpout, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,enablecuts, '')
 
+elif(action=="AC"):
+        print "Now getting 1D histograms for the anomalous couplings tests... Please be patient"
+        
+        plots = 'wzsm/plots_wzsm.txt'
+        mca = 'wzsm/includes/includes/mca_AC.txt' #Run over prompt DY leptons + JetHT + MET datasets
+        cuts = 'wzsm/cuts_wzsm.txt'
+        pgroup = ' '
+        out = outputDir+'wz{mc}{pog}/AC/'
+        mcc='wzsm/mcc_varsub_wzsm.txt'
+        mccother=''
+        trigdef='wzsm/mcc_triggerdefs.txt'
+        toplot = ''
+        weights=' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1)*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1)*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1) '
+        functions=' --load-macro wzsm/functionsPUW.cc --load-macro wzsm/functionsSF.cc --load-macro wzsm/functionsWZ.cc '       
+        jei='64'
+
+        lumi='35.867'
+        #SR
+        enablecuts = " -E SR "
+        runPlots(cuts, mca, tmpout, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,enablecuts, '')
+        #theEnablers = [" -E TTCR ", " -E DYCR ", " -E ttXCR ",  " -E ZZCR ",  " -E convCR "]
+        #for E in theEnablers:
+        #         runPlots(cuts, mca, tmpout, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,E, '')
+
 print 'Everything is done now'
