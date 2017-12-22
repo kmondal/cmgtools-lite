@@ -154,6 +154,18 @@ float getLepSF(float pt, float eta, int pdgId, int applySF, int wp = 0, int var 
     return (var==0)?sf:(sf+var*err)/sf;
 }
 
+float getLepSFSplit(float pt, float eta, int pdgId, int applySF, int wp = 0, int var = 0, int splitId = 0){
+    if(!applySF) return 1.0;
+    float sf  = 1.0; 
+    float err = 0.0;
+    if(abs(pdgId) == 11) { sf = getElectronSF(pt, eta, wp); err = getElectronUnc(pt, eta, wp, var); }
+    if(abs(pdgId) == 13) { sf = getMuonSF    (pt, eta, wp); err = sf*getMuonUnc (pt, var);          } // only relative error
+    if(abs(pdgId) == 15) { sf = 0.95                      ; err = 0.05;                             }
+    if (splitId != 0 && splitId !=abs(pdgId)) err = 0.;
+    return (var==0)?sf:(sf+var*err)/sf;
+}
+
+
 float leptonSF(float lepSF1, float lepSF2, float lepSF3 = 1, float lepSF4 = 1){
     return lepSF1*lepSF2*lepSF3*lepSF4;
 }
