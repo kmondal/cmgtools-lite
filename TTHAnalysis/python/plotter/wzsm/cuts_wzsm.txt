@@ -41,9 +41,11 @@ ZZCR      : met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  
 ttXCR     : met_pt > 30    && nBJetMedium30 > 0  && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L > 100  && LepSel4_isTight && LepSel4_pt > 10   ; Disable=True
 convCR: met_pt <= 30   && nBJetMedium30 == 0 && abs(91.1876-mll_3l)>15  && m3L <= 100  &&  nLepSel<4 ; Disable=True
 
+#auxHLTHT : HLT_HT ; Disable=True
 
-isSomeCRSR: getWZRegion(met_pt, mll_3l, nBJetMedium30, nLepSel,LepSel_isTight[3],LepSel_pt[3]) >= 0; Disable=True
+#isSomeCRSR: getWZRegion(met_pt, mll_3l, nBJetMedium30, nLepSel,LepSel_isTight[3],LepSel_pt[3]) >= 0; Disable=True
 
+allAreGoodMatched: abs(LepW_mcMatchId)== 24 && abs(LepZ1_mcMatchId) == 23 && abs(LepZ2_mcMatchId) == 23 ; Disable=True
 
 
 

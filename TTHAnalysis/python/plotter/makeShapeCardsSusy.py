@@ -26,6 +26,7 @@ parser.add_option("--poisson" ,dest="poisson" , action="store_true", default=Fal
 parser.add_option("--extraText" ,dest="extraText" , type="string", default=[], action="append", help="Add extra text lines at the end of the datacard") #A quick and dirty workaround for the rateParameters
 parser.add_option('--bb', '--autoMCStats', dest='autoMCStats', action='store_true', help='Use automatic MC stats with Barlow-Beeston approximation')
 
+
 (options, args) = parser.parse_args()
 options.weight = True
 options.final  = True

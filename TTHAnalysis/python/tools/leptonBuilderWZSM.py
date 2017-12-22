@@ -102,12 +102,14 @@ class LeptonBuilderWZSM:
         if len(self.lepSelFO)>=4: self.ret["is_4l"] = 1
         if len(self.lepSelFO)>=5: self.ret["is_5l"] = 1
 
+        self.getGenInfo()
         self.collectOSpairs(3, True)
         self.makeMass(3)
         self.makeMt2(3)
         self.findBestOSpair(3)
         self.findMtMin(3)
         self.makeMassMET(3)
+
 
         # This in principle is not needed anymore
         #self.collectOSpairs(4, True)
@@ -127,6 +129,9 @@ class LeptonBuilderWZSM:
         self.lepsFO     = [self.leps[il] for il in list(getattr   (event, "iF" + self.inputlabel))[0:int(getattr(event,"nLepFO"+self.inputlabel))]]
         self.lepsT      = [self.leps[il] for il in list(getattr   (event, "iT" + self.inputlabel))[0:int(getattr(event,"nLepTight"+self.inputlabel))]]
 
+        ## gen leptons
+        self.genleps    = [l             for l  in Collection(event, "genLep", "ngenLep")  ]
+
         ## taus
         self.goodtaus   = [t             for t  in Collection(event, "TauGood" , "nTauGood" )]
         self.disctaus   = [t             for t  in Collection(event, "TauOther", "nTauOther")]
@@ -138,6 +143,10 @@ class LeptonBuilderWZSM:
         self.lepSelFO   = self.lepsFO  #+ self.tausFO
         self.setAttributes(event, self.lepSelFO, event.isData)
         self.lepSelFO.sort(key = lambda x: x.pt, reverse=True)
+
+        ## Get Gen leptons
+        self.setAttributes(event, self.genLeps, event.isData)
+        self.genLeps.sort(key = lambda x: x.pt, reverse=True)
 
         ## tight leptons, both flavors
         self.lepsTT = []
@@ -247,23 +256,23 @@ class LeptonBuilderWZSM:
             used = [self.bestOSPair.l1, self.bestOSPair.l2] if self.bestOSPair else []
             
             
-            for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva", "jetDR"]:
+            for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva", "jetDR","genpt", "geneta", "genphi", "genmass"]:
                 self.ret["LepZ1_" + var] = getattr(self.bestOSPair.l1, var, 0)
                 self.ret["LepZ2_" + var] = getattr(self.bestOSPair.l2, var, 0)
             for var in ["pdgId", "isTight", "mcMatchId", "mcMatchAny", "mcPromptGamma", "mcUCSX", "trIdx"]:
                 self.ret["LepZ1_" + var] = int(getattr(self.bestOSPair.l1, var, 0))
                 self.ret["LepZ2_" + var] = int(getattr(self.bestOSPair.l2, var, 0))
-            for var in ["iscutPOGM", "iscutPOGT", "ismvaPOGRA7", "ismvaPOG80", "ismvaPOG90", "isMVAVL", "isMVAL", "isMVAM", "isMVAT", "isMVAVT", "isMVAET", "isStopSel"]:
+            for var in ["iscutPOGM", "iscutPOGT", "ismvaPOGRA7", "ismvaPOG80", "ismvaPOG90", "isMVAVL", "isMVAL", "isMVAM", "isMVAT", "isMVAVT", "isMVAET", "isStopSel","isMatched", "isMatchingWZ"]:
                 self.ret["LepZ1_" + var] = int(getattr(self.bestOSPair.l1, var, 0))
                 self.ret["LepZ2_" + var] = int(getattr(self.bestOSPair.l2, var, 0))
 
             for i in range(min(max,len(self.lepSelFO))):
                 if self.lepSelFO[i] in used: continue
-                for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva","jetDR"]:
+                for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva","jetDR","genpt", "geneta", "genphi", "genmass"]:
                     self.ret["LepW_" + var] = getattr(self.lepSelFO[i], var, 0)
                 for var in ["pdgId", "isTight", "mcMatchId", "mcMatchAny", "mcPromptGamma", "mcUCSX", "trIdx"]:
                     self.ret["LepW_" + var] = int(getattr(self.lepSelFO[i], var, 0))
-                for var in ["iscutPOGM", "iscutPOGT", "ismvaPOGRA7", "ismvaPOG80", "ismvaPOG90", "isMVAVL", "isMVAL", "isMVAM", "isMVAT", "isMVAVT", "isMVAET", "isStopSel"]:
+                for var in ["iscutPOGM", "iscutPOGT", "ismvaPOGRA7", "ismvaPOG80", "ismvaPOG90", "isMVAVL", "isMVAL", "isMVAM", "isMVAT", "isMVAVT", "isMVAET", "isStopSel","isMatched", "isMatchingWZ"]:
                     self.ret["LepW_" + var] = int(getattr(self.lepSelFO[i], var, 0))
                 #for var in ["pt", "conePt"]:
                 #    self.ret["wzBalance_" + var] = getattr(self.bestOSPair.l1.p4()+self.bestOSPair.l2.p4()-self.lepSelFO[i].p4(), var, 0)
@@ -373,7 +382,7 @@ class LeptonBuilderWZSM:
         biglist.append(("deltaR_WZ", "F"))
 
         biglist.append(("nLepSel"   , "I"))
-        for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva", "jetDR"]:
+        for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva", "jetDR","genpt", "geneta", "genphi", "genmass"]:
             biglist.append(("LepSel_" + var, "F", 4))
             biglist.append(("LepZ1_"  + var, "F"))
             biglist.append(("LepZ2_"  + var, "F"))
@@ -383,7 +392,7 @@ class LeptonBuilderWZSM:
             biglist.append(("LepZ1_"  + var, "I"))
             biglist.append(("LepZ2_"  + var, "I"))
             biglist.append(("LepW_"   + var, "I"))
-        for var in ["iscutPOGM", "iscutPOGT", "ismvaPOGRA7", "ismvaPOG80", "ismvaPOG90", "isMVAVL", "isMVAL", "isMVAM", "isMVAT", "isMVAVT", "isMVAET", "isStopSel"]:
+        for var in ["iscutPOGM", "iscutPOGT", "ismvaPOGRA7", "ismvaPOG80", "ismvaPOG90", "isMVAVL", "isMVAL", "isMVAM", "isMVAT", "isMVAVT", "isMVAET", "isStopSel", "isMatched", "isMatchingWZ"]:
             biglist.append(("LepSel_" + var, "I", 4))
             biglist.append(("LepZ1_"  + var, "I"))
             biglist.append(("LepZ2_"  + var, "I"))
@@ -433,7 +442,21 @@ class LeptonBuilderWZSM:
             metp4.SetPtEtaPhiM(self.met[var],0,self.metphi[var],0)
             sumtot = sumlep + metp4
             self.ret["m" + str(max) + "Lmet" + self.systsJEC[var]] = sumtot.M()
-
+    ## Make gen to reco matching using dR < 0.4
+    ## _______________________________________________________________ 
+    def getGen(self, dR = 0.4):
+      for i in range(len(self.lepSelFO)):
+        for j in range(len(self.genleps)):
+          deltaRTemp = deltaR(self.genleps[j].p4().Eta(), self.genleps[j].p4().Phi(), self.lepSelFO[i].p4().Eta(), self.lepSelFO[i].p4().Phi())
+          if (deltaRTemp < dR and self.genleps[j].pdgId == self.lepSelFO[i].pdgId):
+            self.lepSelFO[i].isMatched      = True
+            self.lepSelFO[i].genpt          = self.genleps[j].p4().Pt()
+            self.lepSelFO[i].geneta         = self.genleps[j].p4().Eta()
+            self.lepSelFO[i].genphi         = self.genleps[j].p4().Phi()
+            self.lepSelFO[i].genmass        = self.genleps[j].p4().Phi()
+            self.lepSelFO[i].isMatchingWZ   = (self.genleps[j].motherId() in [23,24]) or (abs(self.genleps[j].motherId())==15 and (self.genleps[j].grandmotherId() in [23,24])) #Either from W/Z directly or through taus
+          
+      
     ## makeMt2
     ## _______________________________________________________________
     def makeMt2(self, max):
@@ -570,7 +593,7 @@ class LeptonBuilderWZSM:
         self.ret["mll_i2"] = [-1]*20
 
         self.ret["nLepSel"] = 0
-        for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva", "jetDR"]:
+        for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva", "jetDR","genpt", "geneta", "genphi", "genmass"]:
             self.ret["LepSel_" + var] = [0.]*20
             self.ret["LepZ1_"  + var] = 0.
             self.ret["LepZ2_"  + var] = 0.
@@ -580,7 +603,7 @@ class LeptonBuilderWZSM:
             self.ret["LepZ1_"  + var] = 0
             self.ret["LepZ2_"  + var] = 0
             self.ret["LepW_"   + var] = 0
-        for var in ["iscutPOGM", "iscutPOGT", "ismvaPOGRA7", "ismvaPOG80", "ismvaPOG90", "isMVAVL", "isMVAL", "isMVAM", "isMVAT", "isMVAVT", "isMVAET", "isStopSel"]:
+        for var in ["iscutPOGM", "iscutPOGT", "ismvaPOGRA7", "ismvaPOG80", "ismvaPOG90", "isMVAVL", "isMVAL", "isMVAM", "isMVAT", "isMVAVT", "isMVAET", "isStopSel", "isMatched", "isMatchingWZ"]:
             self.ret["LepSel_" + var] = [0]*20
             self.ret["LepZ1_"  + var] = 0
             self.ret["LepZ2_"  + var] = 0
@@ -607,7 +630,7 @@ class LeptonBuilderWZSM:
 
     ## setAttributes 
     ## _______________________________________________________________
-    def setAttributes(self, event, lepSel, isData = False):
+    def setAttributes(self, event, lepSel, isData = False,  isGen = False):
 
         for i, l in enumerate(lepSel): 
             if l in self.tausFO:
@@ -638,6 +661,10 @@ class LeptonBuilderWZSM:
                 setattr(l, "isMVAVT"      , 0                                   )
                 setattr(l, "isMVAET"      , 0                                   )
                 setattr(l, "isStopSel"    , 0                                   )
+            elif  isGen:
+                setattr(l, "motherId"     , l.motherId                          )
+                setattr(l, "motherId"     , l.grandmotherId                     )
+
             else:
                 setattr(l, "isTight"      , (l in self.lepsT  )                 )
                 setattr(l, "mcMatchId"    , l.mcMatchId     if not isData else 1)
