@@ -149,6 +149,8 @@ float getLepSF(float pt, float eta, int pdgId, int applySF, int wp = 0, int var 
     if(abs(pdgId) == 11) { sf = getElectronSF(pt, eta, wp); err = getElectronUnc(pt, eta, wp, var); }
     if(abs(pdgId) == 13) { sf = getMuonSF    (pt, eta, wp); err = sf*getMuonUnc (pt, var);          } // only relative error
     if(abs(pdgId) == 15) { sf = 0.95                      ; err = 0.05;                             }
+
+    //err=0.012;
     return (var==0)?sf:(sf+var*err)/sf;
 }
 

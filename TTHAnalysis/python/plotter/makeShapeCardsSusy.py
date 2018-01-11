@@ -227,6 +227,7 @@ for sysfile in args[4:]:
             systsEnv[name].append((re.compile(procmap+"$"),amount,field[4]))
         elif field[4] in ["lnN_in_shape_bins","stat_foreach_shape_bins"]:
             (name, procmap, binmap, amount) = field[:4]
+            if options.autoMCStats: continue
             if re.match(binmap+"$",binname) == None: continue
             if name not in systsEnv: systsEnv[name] = []
             systsEnv[name].append((re.compile(procmap+"$"),amount,field[4],field[5].split(',')))
@@ -350,6 +351,7 @@ for name in systsEnv.keys():
                     mca._projection.scaleSystTemplate(name,nominal,p0Up)
                     mca._projection.scaleSystTemplate(name,nominal,p0Dn)
             elif mode in ["stat_foreach_shape_bins"]:
+                if options.autoMCStats: break
                 nominal = report[p]
                 for bin in xrange(1,nominal.GetNbinsX()+1):
                     for binmatch in morefields[0]:

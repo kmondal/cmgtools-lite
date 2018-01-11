@@ -4,6 +4,7 @@ import copy
 import argparse
 
 import utils
+import ROOT
 from ROOT import * # Lazy bastard
 
 class AcceptanceComputer:
@@ -32,7 +33,7 @@ class Unfolder(object):
         self.iBest=None # Best value
         self.logTauX=None # TSpline*
         self.logTauY=None # TSpline*
-        self.lCurve=None # TGraph*
+        self.lCurve=TGraph(0) # TGraph*
 
         self.load_data(args.inputDir, args.data, args.mc, args.gen)
 
@@ -81,7 +82,7 @@ class Unfolder(object):
     def set_unfolding(self):
         self.unfold = TUnfoldDensity(self.response,TUnfold.kHistMapOutputVert)
         # Check if the input data points are enough to constrain the unfolding process
-        check = self.response.SetInput(self.data)
+        check = self.unfold.SetInput(self.data)
         if check>=10000:
             print('TUnfoldDensity error %d! Unfolding result may be wrong (not enough data to constrain the unfolding process)' % check)
 
@@ -89,16 +90,16 @@ class Unfolder(object):
         # Scan the L-curve and find the best point
         
         # Set verbosity
-        oldinfo=gErrorIgnoreLevel
+        oldinfo=ROOT.gErrorIgnoreLevel
         if self.verbose:
-            gErrorIgnoreLevel=kInfo
+            ROOT.gErrorIgnoreLevel=kInfo
 
         # Scan the parameter tau, finding the kink in the L-curve. Finally, do the unfolding for the best choice of tau
         iBest=self.unfold.ScanLcurve(self.nScan, self.tauMin, self.tauMax, self.lCurve, self.logTauX, self.logTauY)
 
         # Reset verbosity
         if self.verbose:
-            gErrorIgnoreLevel=oldInfo
+            ROOT.gErrorIgnoreLevel=oldInfo
 
         # Here do something for the error
         ### 
@@ -156,4 +157,5 @@ if __name__ == '__main__':
 #parser.add_argument('-n', '--nevts',      help='Number of events to be loaded from tree', default=-1, type=int)
     args = parser.parse_args()
     # execute only if run as a script
+    gROOT.SetBatch()
     main(args)
