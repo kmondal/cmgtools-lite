@@ -56,7 +56,7 @@ if 'mc' in action:
 
 blind = '--flags "-X blinding"'
 
-index="/nfs/fanae/user/%s/www/index.php"%options.user
+index="/nfs/fanae/user/%s/www/index.php"%opt.user
 
 def runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions, enablecuts, header):
 

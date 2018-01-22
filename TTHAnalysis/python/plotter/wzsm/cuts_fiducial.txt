@@ -1,12 +1,14 @@
 alwaystrue : 1
+3GenLep : (ngenLep ) >= 3 &&  abs(genLepZ1_motherId*genLepZ2_motherId*genLepW_motherId) == 23*23*24
 
-#SR        : (Triggers_ee || Triggers_mm || Triggers_em) && abs(LepSel1_pdgId)<14 && abs(LepSel2_pdgId)<14 && abs(LepSel3_pdgId)<14 && nLepSel == 3 && LepSel1_isTight && LepSel2_isTight && LepSel3_isTight && LepZ1_pt>25 && LepZ2_pt>10 && LepW_pt>25 && nOSSF>0 && minMllAFAS > 4 && met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15   && m3L > 100; Disable=True
+eee: abs(genLep_pdgId[0])+abs(genLep_pdgId[1])+abs(genLep_pdgId[2])==33; Disable=True
+eem: abs(genLep_pdgId[0])+abs(genLep_pdgId[1])+abs(genLep_pdgId[2])==35; Disable=True
+mme: abs(genLep_pdgId[0])+abs(genLep_pdgId[1])+abs(genLep_pdgId[2])==37; Disable=True
+mmm: abs(genLep_pdgId[0])+abs(genLep_pdgId[1])+abs(genLep_pdgId[2])==39; Disable=True
 
-3GenLep : (ngenLep ) >= 3 
-fromWZGen : abs(genLepZ1_motherId*genLepZ2_motherId*genLepW_motherId) == 23*23*24
-pt101010Gen : genLepZ1_pt > 20 && genLepZ2_pt > 10 && genLepW_pt > 10
+onZ15Gen : mll_3l_gen > 76.1876 && mll_3l_gen < 106.1876
+pt251520Gen : genLepZ1_pt > 25 && genLepZ2_pt > 10 && genLepW_pt > 25
 3eta25Gen : abs(genLepZ1_eta) < 2.5 && abs(genLepZ2_eta) < 2.5 && abs(genLepW_eta) < 2.5
 minMllGen : minmllSFOS_gen > 4
-onZ30Gen : mll_3l_gen > 60 && mll_3l_gen < 120
 
 SR        : (Triggers_ee || Triggers_mm || Triggers_em) && abs(LepSel1_pdgId)<14 && abs(LepSel2_pdgId)<14 && abs(LepSel3_pdgId)<14 && nLepSel == 3 && LepSel1_isTight && LepSel2_isTight && LepSel3_isTight && LepZ1_pt>25 && LepZ2_pt>10 && LepW_pt>25 && nOSSF>0 && minMllAFAS > 4 && met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15   && m3L > 100; Disable=True
