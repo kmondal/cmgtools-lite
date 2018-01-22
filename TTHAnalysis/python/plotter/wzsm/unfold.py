@@ -6,6 +6,16 @@ import argparse
 import utils
 import ROOT
 from ROOT import * # Lazy bastard
+from array import array
+
+#from abc import ABCMeta, abstractmethod
+# 
+#class AbstractTSpline(object):
+#    __metaclass__ = ABCMeta
+#     
+#    @abstractmethod
+#    def run(self):
+#        pass
 
 class AcceptanceComputer:
 
@@ -31,10 +41,11 @@ class Unfolder(object):
         self.tauMin=0.0
         self.tauMax=0.0
         self.iBest=None # Best value
-        self.logTauX=None # TSpline*
-        self.logTauY=None # TSpline*
+        self.logTauX=TSpline3() # TSpline*
+        self.logTauY=TSpline3() # TSpline*
         self.lCurve=TGraph(0) # TGraph*
-
+        self.gHistInvEMatrix=TH2D() # store the inverse of error matrix
+        self.gHistInvJEMatrix=None
         self.load_data(args.inputDir, args.data, args.mc, args.gen)
 
     def load_data(self, folder, dataFName, mcFName, genFName, treeName=['tree']):
@@ -78,6 +89,12 @@ class Unfolder(object):
         c.cd()
         self.response.Draw('COLZ')
         utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrix'))
+    
+    def print_histo(self,h,opt=''):
+        c = TCanvas(h.GetName(), h.GetTitle(), 2000, 2000)
+        c.cd()
+        h.Draw(opt)
+        utils.saveCanva(c, os.path.join(args.outputDir, h.GetName()))
 
     def set_unfolding(self):
         self.unfold = TUnfoldDensity(self.response,TUnfold.kHistMapOutputVert)
@@ -95,7 +112,7 @@ class Unfolder(object):
             ROOT.gErrorIgnoreLevel=kInfo
 
         # Scan the parameter tau, finding the kink in the L-curve. Finally, do the unfolding for the best choice of tau
-        iBest=self.unfold.ScanLcurve(self.nScan, self.tauMin, self.tauMax, self.lCurve, self.logTauX, self.logTauY)
+        self.iBest=self.unfold.ScanLcurve(self.nScan, self.tauMin, self.tauMax, self.lCurve, self.logTauX, self.logTauY)
 
         # Reset verbosity
         if self.verbose:
@@ -109,24 +126,147 @@ class Unfolder(object):
         print('Tau: %d' % self.unfold.GetTau())
         print('chi^2: %d+%d/%d' %(self.unfold.GetChi2A(), self.unfold.GetChi2L(), self.unfold.GetNdf() ) )
         print('chi^2(syst): %d' % self.unfold.GetChi2Sys())
-            
+        
+        print('ibest: %d, type %s' % ( self.iBest, type(self.iBest)))
         # Visualize best choice of tau
-        t=[]
-        x=[]
-        y=[]
-        self.logTauX.GetKnot(self.iBest, t, x)
-        self.logTauY.GetKnot(self.iBest, t, y)
-        bestLcurve = TGraph(1, x, y)
-        bestLogTauLogChi2 = TGraph(1, t, x);
+        t=0.0
+        x=0.0
+        y=0.0
+        self.logTauX.GetKnot(self.iBest, Double(t), Double(x))
+        self.logTauY.GetKnot(self.iBest, Double(t), Double(y))
+        vt =array('d')
+        vx =array('d')
+        vy =array('d')
+        vt.append(t)
+        vx.append(x)
+        vy.append(y)
+        bestLcurve = TGraph(1, vx, vy)
+        bestLogTauLogChi2 = TGraph(1, vt, vx);
         
         # Retrieve results as histograms
 
-        histMunfold=TH1(self.unfold.GetOutput('Unfolded')) # Unfolded result
-        histMdetFuld=TH1(self.unfold.GetFoldedOutput('FoldedBack')) # Unfolding result, folded back
+        histMunfold=self.unfold.GetOutput('Unfolded') # Unfolded result
+        histMdetFold=self.unfold.GetFoldedOutput('FoldedBack') # Unfolding result, folded back
         # histEmatData=TH1(self.unfold.GetEmatrix('EmatData0')) # Error matrix (stat errors only)
-        histEmatTotal=TH2(self.unfold.GetEmatrixTotal('EmatTotal')) # Total error matrix. Migration matrix uncorrelated and correlated syst errors added in quadrature to the data statistical errors
+        histEmatTotal=self.unfold.GetEmatrixTotal('EmatTotal') # Total error matrix. Migration matrix uncorrelated and correlated syst errors added in quadrature to the data statistical errors
 
+        nDet=250
+        nGen=100
+        xminDet=0.0
+        xmaxDet=10.0
+        xminGen=0.0
+        xmaxGen=10.0
         histTotalError = TH1D('TotalError',';mass(gen)', nGen, xminGen, xmaxGen)# Data histogram with total errors
+        for bin in range(1,nGen):
+            histTotalError.SetBinContent(bin, histMunfold.GetBinContent(bin))
+            histTotalError.SetBinError(bin, TMath.Sqrt(histEmatTotal.GetBinContent(bin,bin)))
+
+
+        print('Now get global correlation coefficients')
+        # get global correlation coefficients
+        # for this calculation one has to specify whether the
+        # underflow/overflow bins are included or not
+        # default: include all bins
+        # here: exclude underflow and overflow bins
+
+        #self.gHistInvEMatrix=copy.deepcopy(self.response)
+        #self.gHistInvEMatrix.SetName('gHistInvEMatrix')
+        #self.gHistInvEMatrix.Print()
+        #histRhoi=self.unfold.GetRhoItotal('rho_I',
+        #                                  '', # use default title
+        #                                  '', # all distributions
+        #                                  "*[UO]", # discard underflow and overflow bins on all axes
+        #                                  ROOT.kTRUE, # use original binning
+        #                                  self.gHistInvEMatrix # store inverse of error matrix
+        #                                  )
+
+        self.gHistInvJEMatrix=self.unfold.GetRhoIJtotal('rho_I',
+                                            '', # use default title
+                                            '', # all distributions
+                                            "*[UO]", # discard underflow and overflow bins on all axes
+                                            ROOT.kTRUE, # use original binning
+                                            )
+        #  
+        #  #======================================================================
+        #  # fit Breit-Wigner shape to unfolded data, using the full error matrix
+        #  # here we use a "user" chi**2 function to take into account
+        #  # the full covariance matrix
+        #  
+        #  #gFitter=TVirtualFitter::Fitter(histMunfold)
+        #  #gFitter.SetFCN(chisquare_corr)
+        #  
+        #  bw=TF1("bw",bw_func,xminGen,xmaxGen,3)
+        #  bw.SetParameter(0,1000.)
+        #  bw.SetParameter(1,3.8)
+        #  bw.SetParameter(2,0.2)
+        #  
+        #  # for (wrong!) fitting without correlations, drop the option "U"
+        #  # here.
+        #  histMunfold.Fit(bw,"UE")
+
+        # =====================================================================
+        #  plot some histograms
+        output=TCanvas('out', 'out', 2000, 2000)
+        output.Divide(3,2)
+
+        # Show the matrix which connects input and output
+        # There are overflow bins at the bottom, not shown in the plot
+        # These contain the background shape.
+        # The overflow bins to the left and right contain
+        # events which are not reconstructed. These are necessary for proper MC
+        # normalisation
+        output.cd(1)
+        ##histMdetGenMC.Draw("BOX")
+
+        # draw generator-level distribution:
+        #   data (red) [for real data this is not available]
+        #   MC input (black) [with completely wrong peak position and shape]
+        #   unfolded data (blue)
+        output.cd(2)
+        histTotalError.SetLineColor(kBlue)
+        histTotalError.Draw("E")
+        histMunfold.SetLineColor(kGreen)
+        histMunfold.Draw("SAME E1")
+        ###histDensityGenData.SetLineColor(kRed)
+        ##histDensityGenData.Draw("SAME")
+        ##histDensityGenMC.Draw("SAME HIST")
+
+        # show detector level distributions
+        #    data (red)
+        #    MC (black) [with completely wrong peak position and shape]
+        #    unfolded data (blue)
+        output.cd(3)
+        histMdetFold.SetLineColor(kBlue)
+        histMdetFold.Draw()
+        #histMdetMC.Draw("SAME HIST")
+
+        histInput=self.unfold.GetInput("Minput",";mass(det)")
+
+        histInput.SetLineColor(kRed)
+        histInput.Draw("SAME")
+
+        # show correlation coefficients
+        output.cd(4)
+        ##histRhoi.Draw()
+
+        # show tau as a function of chi**2
+        output.cd(5)
+        self.logTauX.Draw()
+        bestLogTauLogChi2.SetMarkerColor(kRed)
+        bestLogTauLogChi2.Draw("*")
+
+        # show the L curve
+        output.cd(6)
+        self.lCurve.Draw("AL")
+        bestLcurve.SetMarkerColor(kRed)
+        bestLcurve.Draw("*")
+
+        output.SaveAs("testUnfold1.png")
+
+        self.print_histo(histMunfold)
+        self.print_histo(histMdetFold)
+        self.print_histo(histEmatTotal,'colz')
+        self.print_histo(histTotalError)
 
 
 ### End class Unfolder

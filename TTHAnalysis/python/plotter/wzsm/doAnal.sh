@@ -57,30 +57,30 @@ if [ "$1" == "all" ]; then
     
 elif [ "$1" == "SR" ]; then
     sh wzsm/doAnal.sh plot srwz VT ${2}
-    sh wzsm/doAnal.sh plot srwz M  ${2}
+    #sh wzsm/doAnal.sh plot srwz M  ${2}
 
 
 elif [ "$1" == "TT" ]; then
     sh wzsm/doAnal.sh plot ttcr VT ${2}
-    sh wzsm/doAnal.sh plot ttcr M  ${2}
+    #sh wzsm/doAnal.sh plot ttcr M  ${2}
 
 elif [ "$1" == "DY" ]; then
     sh wzsm/doAnal.sh plot dycr VT ${2}
-    sh wzsm/doAnal.sh plot dycr M  ${2}
+    #sh wzsm/doAnal.sh plot dycr M  ${2}
 
 
 elif [ "$1" == "ZZ" ]; then
     sh wzsm/doAnal.sh plot zzcr VT ${2}
-    sh wzsm/doAnal.sh plot zzcr M  ${2}
+    #sh wzsm/doAnal.sh plot zzcr M  ${2}
 
 elif [ "$1" == "Conv" ]; then
     sh wzsm/doAnal.sh plot convcr VT ${2}
-    sh wzsm/doAnal.sh plot convcr M  ${2}
+    #sh wzsm/doAnal.sh plot convcr M  ${2}
 
 elif [ "$1" == "VT" ]; then
     sh wzsm/doAnal.sh plot srwz VT
     sh wzsm/doAnal.sh plot ttcr VT
-    sh wzsm/doAnal.sh plot dycr VT
+    #sh wzsm/doAnal.sh plot dycr VT
 
 
 elif [ "$1" == "M" ]; then
