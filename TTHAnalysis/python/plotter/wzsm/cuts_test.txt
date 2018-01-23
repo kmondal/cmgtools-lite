@@ -1,0 +1,111 @@
+alwaystrue: 1
+filters: $DATA{(Flag_EcalDeadCellTriggerPrimitiveFilter && Flag_HBHENoiseIsoFilter && Flag_HBHENoiseFilter && Flag_eeBadScFilter && Flag_goodVertices && Flag_globalTightHalo2016Filter && Flag_badChargedHadronFilter)} $MC{1}
+triggers: $DATA{(Triggers_ee || Triggers_mm || Triggers_em)} $MC{(Triggers_ee || Triggers_mm || Triggers_em)}
+threelightlep: nLepSel>=3 && abs(LepSel1_pdgId)<14 && abs(LepSel2_pdgId)<14 && abs(LepSel3_pdgId)<14
+#pt101010: LepSel1_conePt>10 && LepSel2_conePt>10 && LepSel3_conePt>10 && LepSel1_pt>10 && LepSel2_pt>10 && LepSel3_pt>10 #Why?
+
+#vetoLooseLeptons: 
+MVAVT: LepSel1_isTight && LepSel2_isTight && LepSel3_isTight
+ptWZ: LepZ1_pt>25 && LepZ2_pt>10 && LepW_pt>25
+lowMll: minMllAFAS > 4
+hasOSSF: nOSSF>0   
+
+#MET OPTIONS
+
+gMet30 : met_pt > 30 ; Disable=True
+lMet30 : met_pt <= 30; Disable=True
+
+#BJET OPTIONS
+
+bjetsveto : nBJetMedium30 == 0; Disable=True
+bjetsany  : nBJetMedium30 > 0 ; Disable=True
+
+#MLL OPTIONS
+
+mllOnZ15  : abs(91.1876-mll_3l)<15 ; Disable=True
+mllOffZ5  : abs(91.1876-mll_3l)>5  ; Disable=True 
+
+#NLEP OPTIONS
+fourleps         : nLepSel == 4; Disable=True
+lessthanfourleps : nLepSel <= 4; Disable=True
+
+#M3L OPTIONS
+gm3L100 : m3L  > 100; Disable=True
+lm3L100 : m3L <= 100; Disable=True
+
+#Regions
+
+#Theregion
+test : LepSel1_isTight && abs(LepSel1_pdgId)<14 && abs(LepSel2_pdgId)<14 && LepSel2_isTight && nOSSF==1 && nLepSel==2 && nBJetMedium30 > 0 && LepSel1_pt>25 && LepSel2_pt>20 && abs(91-mll)>15; Disable=True
+
+SR        : met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel<4  && m3L > 100; Disable=True
+DYCR      : met_pt <= 30   && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel<4  && m3L > 100; Disable=True
+TTCR      : met_pt > 30    && nBJetMedium30 > 0  && abs(91.1876-mll_3l)>5   &&  nLepSel<4  && m3L > 100; Disable=True
+ZZCR      : met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L > 100  && LepSel4_isTight && LepSel4_pt > 10   ; Disable=True
+ttXCR     : met_pt > 30    && nBJetMedium30 > 0  && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L > 100  && LepSel4_isTight && LepSel4_pt > 10   ; Disable=True
+convCR: met_pt <= 30   && nBJetMedium30 == 0 && abs(91.1876-mll_3l)>15  && m3L <= 100  &&  nLepSel<4 ; Disable=True
+
+#auxHLTHT : HLT_HT ; Disable=True
+
+#isSomeCRSR: getWZRegion(met_pt, mll_3l, nBJetMedium30, nLepSel,LepSel_isTight[3],LepSel_pt[3]) >= 0; Disable=True
+
+allAreGoodMatched: abs(LepW_mcMatchId)== 24 && abs(LepZ1_mcMatchId) == 23 && abs(LepZ2_mcMatchId) == 23 ; Disable=True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Flavor
+eee: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==33; Disable=True
+eem: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==35; Disable=True
+mme: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==37; Disable=True
+mmm: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==39; Disable=True
+eel: (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==33) || (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==35); Disable=True
+mml: (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==37) || (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==39); Disable=True
+
+flaveeeORmme : abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==33 || abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==37; Disable=True
+
+
+
+pt252020: LepSel1_pt>25 && LepSel2_pt>20 && LepSel3_pt>20; Disable=True
+ptleptons: LepZ1_pt<100 && LepZ2_pt<100 && LepW_pt<100 && LepZ1_conePt<100 && LepZ2_conePt<100 && LepW_conePt<100 ; Disable=True
+mass12: mass12 < 180; Disable=True
+mll180   : mass_2(LepSel1_pt,LepSel1_eta,LepSel1_phi,LepSel1_mass, LepSel2_pt,LepSel2_eta,LepSel2_phi,LepSel2_mass) < 180; Disable=True
+jetdr: LepZ1_jetDR < 0.1 ; Disable=True
+wzbalance: LepZ1_pt+LepZ2_pt-LepW_pt-met_pt >100. ; Disable=True
+wzbalance_pt : sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass) - sump4(0, LepW_pt, LepW_eta, LepW_phi, LepW_mass, met_pt, 0, met_phi, 0) < 0 ; Disable=True
+cutPOGT: LepSel1_iscutPOGT && LepSel2_iscutPOGT && LepSel3_iscutPOGT; Disable=True
+cutPOGM: LepSel1_iscutPOGM && LepSel2_iscutPOGM && LepSel3_iscutPOGM; Disable=True
+mvaPOGRA7: LepSel1_ismvaPOGRA7 && LepSel2_ismvaPOGRA7 && LepSel3_ismvaPOGRA7; Disable=True
+mvaPOG80: LepSel1_ismvaPOG80 && LepSel2_ismvaPOG80 && LepSel3_ismvaPOG80; Disable=True
+mvaPOG90: LepSel1_ismvaPOG90 && LepSel2_ismvaPOG90 && LepSel3_ismvaPOG90; Disable=True
+MVAET: LepSel1_isMVAET && LepSel2_isMVAET && LepSel3_isMVAET; Disable=True
+MVAVT: LepSel1_isMVAVT && LepSel2_isMVAVT && LepSel3_isMVAVT; Disable=True
+MVAT : LepSel1_isMVAT  && LepSel2_isMVAT  && LepSel3_isMVAT ; Disable=True
+MVAM : LepSel1_isMVAM  && LepSel2_isMVAM  && LepSel3_isMVAM ; Disable=True
+MVAL : LepSel1_isMVAL  && LepSel2_isMVAL  && LepSel3_isMVAL ; Disable=True
+MVAVL: LepSel1_isMVAVL && LepSel2_isMVAVL && LepSel3_isMVAVL; Disable=True
+llnoTVT: (LepSel1_isMVAVT + LepSel2_isMVAVT + LepSel3_isMVAVT) <= 2; Disable=True

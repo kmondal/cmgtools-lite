@@ -67,7 +67,7 @@ def runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc,
         daweights=''
         if weights != '':
                 daweights=" -W '{weights}' ".format(weights=weights)
-        cmd = "python mcPlots.py {mca} {cuts} {plots} -P {inputDir} --Fs {inputDir}/leptonJetReCleanerWZSM --Fs {inputDir}/leptonBuilderWZSM --FMCs {inputDir}/bTagEventWeightFullSimWZ30 --pdir {outputDir}  -j {jei} -l {lumi} --s2v --tree treeProducerSusyMultilepton --mcc {mcc} {mccother} --mcc {trigdef} -f {daweights} {pgroup} --legendWidth 0.18 --legendFontSize 0.026 --showMCError -f {toplot} --showRatio --perBin --legendHeader \'{header}\' --maxRatioRange 0.5 2.0 --fixRatioRange --print C,pdf,png,txt --ratioOffset 0.03 {functions} {enablecuts} --env oviedo ".format(mca=mca,cuts=cuts,plots=plots,inputDir=inputDir,outputDir=out,pgroup=pgroup,jei=jei,lumi=lumi,mcc=mcc,mccother=mccother,trigdef=trigdef,daweights=daweights,toplot=toplot,functions=functions,enablecuts=enablecuts,header=header)
+        cmd = "python mcPlots.py {mca} {cuts} {plots} -P {inputDir} --Fs {inputDir}/leptonJetReCleanerWZSM --Fs {inputDir}/leptonBuilderWZSM --FMCs {inputDir}/bTagEventWeightFullSimWZ30 --pdir {outputDir}  -j {jei} -l {lumi} --s2v --tree treeProducerSusyMultilepton --mcc {mcc} {mccother} --mcc {trigdef} -f {daweights} {pgroup} --legendWidth 0.18 --legendFontSize 0.026 --showMCError -f {toplot} --showRatio --perBin --legendHeader \'{header}\' --maxRatioRange 0.5 5.0 --fixRatioRange --print C,pdf,png,txt --ratioOffset 0.03 {functions} {enablecuts} --env oviedo ".format(mca=mca,cuts=cuts,plots=plots,inputDir=inputDir,outputDir=out,pgroup=pgroup,jei=jei,lumi=lumi,mcc=mcc,mccother=mccother,trigdef=trigdef,daweights=daweights,toplot=toplot,functions=functions,enablecuts=enablecuts,header=header)
         command(cmd, pretend)
         os.system('cp {index} {outputDir}'.format(index=index,outputDir=out))
 
@@ -203,6 +203,67 @@ elif(action=='ttcr'):
         else:
                 out=outputDir+'wz{mc}{pog}/lepmvaVT/ttcr/'.format(mc='' if not mconly else 'MC', pog='' if not pog else 'pog')
         runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,enablecuts, header)
+
+elif(action=='test'):
+        print 'Now plotting generic DY plots'
+        plots='wzsm/plots_wzsm.txt'
+        mcc='wzsm/mcc_varsub_wzsm.txt'
+        mccother=''
+        trigdef='wzsm/mcc_triggerdefs.txt'
+        wp='1'
+        enablecuts=' '
+        if(workingpoint=='VT'):
+                wp='1'
+        elif(workingpoint=='M'):
+                wp='0'
+        else:
+                print("Defaulting to wp=1 (VTight)")
+        if(wp=='1'):
+                os.system('rm wzsm/fakeRate-2lss-frdata.txt')
+                os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
+                enablecuts=' -E SR ' 
+                enablecuts=' -E test -X MVAVT -X ptWZ -X lowMll -X hasOSSF -X threelightlep'
+                if pog: enablecuts=' -X MVAVT -E cutPOGT '
+        else:
+                os.system('rm wzsm/fakeRate-2lss-frdata.txt')
+                os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
+                enablecuts=' -E test -X MVAVT -X ptWZ -X lowMll -X hasOSSF '
+
+        # 0 = medium, 1 = vtight
+        # The first parameter, which getLepSF calls "isTight", is a way of deactivating the SF (it returns 1 if it is false). It is hence wrong to pass "isTight" as this parameter, because this implies that the SF is set to 1 for any non-VTight lepton. And by the way the default value of wp is zero, which means that passing only 1 as isTight implies applying the Medium SFs to the VTight WP. LoL
+        weights=' puw_nInt_Moriond(nTrueInt)*bTagWeight ' if (mconly or pog) else ' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1,{wp})*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1,{wp})*bTagWeight '.format(wp=wp)
+        #weights=' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1,{wp})*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1,{wp})*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1,{wp})*bTagWeight '.format(wp=wp) if not mconly else ' puw_nInt_Moriond(nTrueInt)*bTagWeight ' 
+        functions=' --load-macro wzsm/functionsPUW.cc --load-macro wzsm/functionsSF.cc --load-macro wzsm/functionsWZ.cc '
+        toplot='--sP m3l,m3lmet,m3l_l,m3lmet_l,flavor,nBJet30,ptZ1,ptZ2,ptW,METflavour_logblind,MET_logblind,MET_logblind_20,lepJetDR_Z1,lepJetDR_Z2,lepJetDR_W,wzBalance_pt,wzBalance_conePt,wzBalance_pt2,wzBalance_conePt2,deltaR_wz,deltaR_wz_log ' 
+        if(subaction!=''):
+                toplot='--sP \'{toplot}\''.format(toplot=subaction)
+        if(subaction=='all'):
+                toplot=''
+        toplot='--sP \'MET_logblind\''
+        batch=' -q batch '
+        batch=''
+        direct=' --pretend '
+        direct=' '
+        jei='6'
+        jei='40'
+        # https://hypernews.cern.ch/HyperNews/CMS/get/physics-announcements/4495.html
+        lumi='35.867'
+        pgroup=' --pgroup internal:=ttZ,Gstar,ZGi --pgroup external:=TTG,WG,ZG,TG,Gstare --pgroup incl_fakes_appldata+=incl_promptsub '
+        pgroup=' -p data -p prompt.* -p convs.* -p rares.* -p fakes_appldata --plotgroup fakes_appldata+=promptsub --neglist promptsub '
+        pgroup=' -p data -p prompt.* -p convs.* -p rares.* -p fakes_appldata --plotgroup fakes_appldata+=promptsub --neglist promptsub ' if not mconly else " -p data -p prompt.* -p fakes_tt.* -p fakes_dy.* -p rares.*"
+        #
+        header='All'
+        cuts='wzsm/cuts_test.txt'
+        mca= 'wzsm/mca_test.txt' if not mconly else 'wzsm/mca_MC_includes.txt'
+        out=''
+        if(wp=='1'):
+                out=outputDir+'wz{mc}{pog}/lepmvaVT/srwz/'.format(mc='' if not mconly else 'MC', pog='' if not pog else 'pog')
+        elif(wp=='0'):
+                out=outputDir+'wz{mc}{pog}/lepmvaM/srwz/'.format(mc='' if not mconly else 'MC', pog='' if not pog else 'pog' )
+        else:
+                out=outputDir+'wz{mc}{pog}/lepmvaVT/srwz/'.format(mc='' if not mconly else 'MC', pog='' if not pog else 'pog')
+        runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,enablecuts, header)
+
 
 elif(action=='dycr'):
         print 'Now plotting DY CR plots'

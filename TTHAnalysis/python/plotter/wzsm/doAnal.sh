@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
  
@@ -54,6 +55,9 @@ if [ "$1" == "all" ]; then
 #    sh wzsm/doAnal.sh plot zzcr M  ${2} pogmc
 #    sh wzsm/doAnal.sh plot convcr M  ${2} pogmc
 
+
+elif [ "$1" == "test" ]; then
+    sh wzsm/doAnal.sh plot test VT
     
 elif [ "$1" == "SR" ]; then
     sh wzsm/doAnal.sh plot srwz VT ${2}
