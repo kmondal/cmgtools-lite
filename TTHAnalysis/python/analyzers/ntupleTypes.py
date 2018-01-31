@@ -24,8 +24,19 @@ leptonTypeSusy = NTupleObjectType("leptonSusy", baseObjectTypes = [ leptonType ]
     NTupleVariable("jetPtRelv2", lambda lepton : ptRelv2(lepton) if hasattr(lepton,'jet') else -1, help="pt of the lepton transverse to the jet axis (subtracting the lepton) - v2"),
     NTupleVariable("jetBTagCSV", lambda lepton : lepton.jet.btag('pfCombinedInclusiveSecondaryVertexV2BJetTags') if hasattr(lepton,'jet') and hasattr(lepton.jet, 'btag') else -99, help="CSV btag of nearest jet"),
     NTupleVariable("jetBTagCMVA", lambda lepton : lepton.jet.btag('pfCombinedMVABJetTags') if hasattr(lepton,'jet') and hasattr(lepton.jet, 'btag') else -99, help="CMA btag of nearest jet"),
+    NTupleVariable("jetBTagDeepCSVprobudsg", lambda lepton : lepton.jet.btag('pfDeepCSVJetTags:probudsg') if hasattr(lepton,'jet') and hasattr(lepton.jet, 'btag') else -99, help="DeepCSV discriminator of nearest jet"),
+    NTupleVariable("jetBTagDeepCSVprobb", lambda lepton : lepton.jet.btag('pfDeepCSVJetTags:probb') if hasattr(lepton,'jet') and hasattr(lepton.jet, 'btag') else -99, help="DeepCSV discriminator of nearest jet"),
+    NTupleVariable("jetBTagDeepCSVprobc", lambda lepton : lepton.jet.btag('pfDeepCSVJetTags:probc') if hasattr(lepton,'jet') and hasattr(lepton.jet, 'btag') else -99, help="DeepCSV discriminator of nearest jet"),
+    NTupleVariable("jetBTagDeepCSVprobbb", lambda lepton : lepton.jet.btag('pfDeepCSVJetTags:probbb') if hasattr(lepton,'jet') and hasattr(lepton.jet, 'btag') else -99, help="DeepCSV discriminator of nearest jet"),
+    NTupleVariable("jetBTagDeepCSVprobcc", lambda lepton : lepton.jet.btag('pfDeepCSVJetTags:probcc') if hasattr(lepton,'jet') and hasattr(lepton.jet, 'btag') else -99, help="DeepCSV discriminator of nearest jet"),
+    NTupleVariable("jetBTagDeepFlavourprobudsg", lambda lepton: lepton.jet.btag('pfDeepCMVAJetTags:probudsg') if hasattr(lepton,'jet') and hasattr(lepton.jet, 'btag') else -99, help="DeepFlavour discriminator of nearest jet"),
+    NTupleVariable("jetBTagDeepFlavourprobb", lambda lepton: lepton.jet.btag('pfDeepCMVAJetTags:probb') if hasattr(lepton,'jet') and hasattr(lepton.jet, 'btag') else -99, help="DeepFlavour discriminator of nearest jet"),
+    NTupleVariable("jetBTagDeepFlavourprobc", lambda lepton: lepton.jet.btag('pfDeepCMVAJetTags:probc') if hasattr(lepton,'jet') and hasattr(lepton.jet, 'btag') else -99, help="DeepFlavour discriminator of nearest jet"),
+    NTupleVariable("jetBTagDeepFlavourprobbb", lambda lepton: lepton.jet.btag('pfDeepCMVAJetTags:probbb') if hasattr(lepton,'jet') and hasattr(lepton.jet, 'btag') else -99, help="DeepFlavour discriminator of nearest jet"),
+    NTupleVariable("jetBTagDeepFlavourprobcc", lambda lepton: lepton.jet.btag('pfDeepCMVAJetTags:probcc') if hasattr(lepton,'jet') and hasattr(lepton.jet, 'btag') else -99, help="DeepFlavour discriminator of nearest jet"),
     NTupleVariable("jetDR",      lambda lepton : deltaR(lepton.eta(),lepton.phi(),lepton.jet.eta(),lepton.jet.phi()) if hasattr(lepton,'jet') else -1, help="deltaR(lepton, nearest jet)"),
     NTupleVariable("r9",      lambda lepton : lepton.full5x5_r9() if abs(lepton.pdgId()) == 11 else -99, help="SuperCluster 5x5 r9 variable, only for electrons; -99 for muons"),
+
     #2016 muon Id
     NTupleVariable("softMuonId2016", lambda lepton: _soft_MuonId_2016ICHEP(lepton), help="Soft muon ID retuned for ICHEP 2016"),
     NTupleVariable("mediumMuonID2016", lambda lepton: _medium_MuonId_2016ICHEP(lepton), help="Medium muon ID retuned for ICHEP 2016"),
@@ -177,6 +188,18 @@ jetTypeSusySuperLight = NTupleObjectType("jet",  baseObjectTypes = [ fourVectorT
         NTupleVariable("etaetaMoment", lambda x : x.etaetaMoment() if hasattr(x,'etaetaMoment') else -1, mcOnly=True, help="eta eta moment"),
         NTupleVariable("phiphiMoment", lambda x : x.phiphiMoment() if hasattr(x,'phiphiMoment') else -1, mcOnly=True, help="phi phi moment"),
         NTupleVariable("btagCSV",   lambda x : x.btag('pfCombinedInclusiveSecondaryVertexV2BJetTags'), help="CSV-IVF v2 discriminator"),
+        NTupleVariable("btagDeepCSVprobudsg", lambda x : x.btag('pfDeepCSVJetTags:probudsg') , help="DeepCSV discriminator"),
+        NTupleVariable("btagDeepCSVprobb", lambda x : x.btag('pfDeepCSVJetTags:probb') , help="DeepCSV discriminator"),
+        NTupleVariable("btagDeepCSVprobc", lambda x : x.btag('pfDeepCSVJetTags:probc') , help="DeepCSV discriminator"),
+        NTupleVariable("btagDeepCSVprobbb", lambda x : x.btag('pfDeepCSVJetTags:probbb') , help="DeepCSV discriminator"),
+        NTupleVariable("btagDeepCSVprobcc", lambda x : x.btag('pfDeepCSVJetTags:probcc') , help="DeepCSV discriminator"),
+
+        NTupleVariable("btagDeepFlavourprobudsg", lambda x: x.btag('pfDeepCMVAJetTags:probudsg'), help="DeepFlavour discriminator of nearest jet"),
+        NTupleVariable("btagDeepFlavourprobb", lambda x: x.btag('pfDeepCMVAJetTags:probb'), help="DeepFlavour discriminator of nearest jet"),
+        NTupleVariable("btagDeepFlavourprobc", lambda x: x.btag('pfDeepCMVAJetTags:probc'), help="DeepFlavour discriminator of nearest jet"),
+        NTupleVariable("btagDeepFlavourprobbb", lambda x: x.btag('pfDeepCMVAJetTags:probbb'), help="DeepFlavour discriminator of nearest jet"),
+        NTupleVariable("btagDeepFlavourprobcc", lambda x: x.btag('pfDeepCMVAJetTags:probcc'), help="DeepFlavour discriminator of nearest jet"),
+
         NTupleVariable("mcFlavour", lambda x : x.partonFlavour(), int,     mcOnly=True, help="parton flavour (physics definition, i.e. including b's from shower)"),
         NTupleVariable("partonFlavour", lambda x : x.partonFlavour(), int,     mcOnly=True, help="purely parton-based flavour"),
 ])
@@ -250,6 +273,8 @@ svType = NTupleObjectType("sv", baseObjectTypes = [ fourVectorType ], variables 
     NTupleVariable("jetDR",  lambda x : deltaR(x.jet.eta(),x.jet.phi(),x.eta(),x.phi()) if x.jet != None else 0, help="deltaR to associated jet"),
     NTupleVariable("jetBTagCSV",   lambda x : x.jet.btag('pfCombinedInclusiveSecondaryVertexV2BJetTags') if x.jet != None else -99, help="CSV b-tag of associated jet"),
     NTupleVariable("jetBTagCMVA",  lambda x : x.jet.btag('pfCombinedMVABJetTags') if x.jet != None else -99, help="CMVA b-tag of associated jet"),
+    NTupleVariable("jetBTagDeepCSV", lambda x : x.jet.btag('pfDeepCSVJetTags') if x.jet != None else -99, help="DeepCSV discriminator of associated jet"),
+    NTupleVariable("jetBTagDeepFlavour", lambda x: x.jet.btag('pfDeepCMVAJetTags') if x.jet != None else -99, help="DeepFlavour discriminator of associated jet"),
     NTupleVariable("mcMatchNTracks", lambda x : getattr(x, 'mcMatchNTracks', -1), int, mcOnly=True, help="Number of mc-matched tracks in SV"),
     NTupleVariable("mcMatchNTracksHF", lambda x : getattr(x, 'mcMatchNTracksHF', -1), int, mcOnly=True, help="Number of mc-matched tracks from b/c in SV"),
     NTupleVariable("mcMatchFraction", lambda x : getattr(x, 'mcMatchFraction', -1), mcOnly=True, help="Fraction of mc-matched tracks from b/c matched to a single hadron (or -1 if mcMatchNTracksHF < 2)"),
@@ -298,6 +323,8 @@ heavyFlavourHadronType = NTupleObjectType("heavyFlavourHadron", baseObjectTypes 
     NTupleVariable("jetPt",  lambda x : x.jet.pt() if x.jet != None else 0, help="Jet: pT"),
     NTupleVariable("jetBTagCSV",  lambda x : x.jet.btag('pfCombinedInclusiveSecondaryVertexV2BJetTags') if x.jet != None else -99, help="CSV b-tag of associated jet"),
     NTupleVariable("jetBTagCMVA",  lambda x : x.jet.btag('pfCombinedMVABJetTags') if x.jet != None else -99, help="CMVA b-tag of associated jet"),
+    NTupleVariable("jetBTagDeepCSV", lambda x : x.jet.btag('pfDeepCSVJetTags') if x.jet != None else -99, help="DeepCSV discriminator of associated jet"),
+    NTupleVariable("jetBTagDeepFlavour", lambda x: x.jet.btag('pfDeepCMVAJetTags') if x.jet != None else -99, help="DeepFlavour discriminator of associated jet"),
     
 ])
 
