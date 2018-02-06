@@ -67,7 +67,7 @@ def runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc,
         daweights=''
         if weights != '':
                 daweights=" -W '{weights}' ".format(weights=weights)
-        cmd = "python mcPlots.py {mca} {cuts} {plots} -P {inputDir} --Fs {inputDir}/leptonJetReCleanerWZSM --Fs {inputDir}/leptonBuilderWZSM --FMCs {inputDir}/bTagEventWeightFullSimWZ30 --pdir {outputDir}  -j {jei} -l {lumi} --s2v --tree treeProducerSusyMultilepton --mcc {mcc} {mccother} --mcc {trigdef} -f {daweights} {pgroup} --legendWidth 0.18 --legendFontSize 0.026 --showMCError -f {toplot} --showRatio --perBin --legendHeader \'{header}\' --maxRatioRange 0.5 5.0 --fixRatioRange --print C,pdf,png,txt --ratioOffset 0.03 {functions} {enablecuts} --env oviedo ".format(mca=mca,cuts=cuts,plots=plots,inputDir=inputDir,outputDir=out,pgroup=pgroup,jei=jei,lumi=lumi,mcc=mcc,mccother=mccother,trigdef=trigdef,daweights=daweights,toplot=toplot,functions=functions,enablecuts=enablecuts,header=header)
+        cmd = "python mcPlots.py {mca} {cuts} {plots} -P {inputDir} --Fs {inputDir}/leptonJetReCleanerWZSM --Fs {inputDir}/leptonBuilderWZSM --FMCs {inputDir}/bTagEventWeightFullSimWZ30 --pdir {outputDir}  -j {jei} -l {lumi} --s2v --tree treeProducerSusyMultilepton --mcc {mcc} {mccother} --mcc {trigdef} -f {daweights} {pgroup} --legendWidth 0.18 --legendFontSize 0.026 --showMCError -f {toplot} --showRatio --perBin --legendHeader \'{header}\' --maxRatioRange 0.5 5.0 --fixRatioRange --print root,C,pdf,png,txt --ratioOffset 0.03 {functions} {enablecuts} --env oviedo ".format(mca=mca,cuts=cuts,plots=plots,inputDir=inputDir,outputDir=out,pgroup=pgroup,jei=jei,lumi=lumi,mcc=mcc,mccother=mccother,trigdef=trigdef,daweights=daweights,toplot=toplot,functions=functions,enablecuts=enablecuts,header=header)
         command(cmd, pretend)
         os.system('cp {index} {outputDir}'.format(index=index,outputDir=out))
 
@@ -221,13 +221,13 @@ elif(action=='test'):
         if(wp=='1'):
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
-                enablecuts=' -E SR ' 
                 enablecuts=' -E test -X MVAVT -X ptWZ -X lowMll -X hasOSSF -X threelightlep'
-                if pog: enablecuts=' -X MVAVT -E cutPOGT '
+                enablecuts=' '
         else:
                 os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E test -X MVAVT -X ptWZ -X lowMll -X hasOSSF '
+                enablecuts=' '
 
         # 0 = medium, 1 = vtight
         # The first parameter, which getLepSF calls "isTight", is a way of deactivating the SF (it returns 1 if it is false). It is hence wrong to pass "isTight" as this parameter, because this implies that the SF is set to 1 for any non-VTight lepton. And by the way the default value of wp is zero, which means that passing only 1 as isTight implies applying the Medium SFs to the VTight WP. LoL

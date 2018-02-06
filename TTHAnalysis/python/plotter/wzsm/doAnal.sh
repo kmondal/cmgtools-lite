@@ -1,8 +1,7 @@
-
 #!/bin/bash
 
- 
-#INPUTDIR="/pool/ciencias/HeppyTrees/RA7/estructura/treesM17" #Use skimmed (3LepGood, minMllAFAS > 4) instead
+#Use skimmed (3LepGood, minMllAFAS > 4) instead
+#INPUTDIR="/pool/ciencias/HeppyTrees/RA7/estructura/treesM17"
 INPUTDIR="/pool/ciencias/userstorage/carlosec/wzSkimmed/"
 TREESDIR=${INPUTDIR}                                                                                     
 OUTPUTDIR="/OBSOLETE"                                                                       
