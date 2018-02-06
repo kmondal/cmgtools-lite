@@ -104,13 +104,13 @@ if(action=='srwz'):
         else:
                 print("Defaulting to wp=1 (VTight)")
         if(wp=='1'):
-                os.system('rm wzsm/fakeRate-2lss-frdata.txt')
-                os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('rm wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E SR ' 
                 if pog: enablecuts=' -X MVAVT -E cutPOGT '
         else:
-                os.system('rm wzsm/fakeRate-2lss-frdata.txt')
-                os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('rm wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E SR ' if not pog else ' -X MVAVT -E cutPOGM -E SR '
 
         # 0 = medium, 1 = vtight
@@ -161,13 +161,12 @@ elif(action=='ttcr'):
         else:
                 print("Defaulting to wp=1 (VTight)")
         if(wp=='1'):
-                os.system('rm wzsm/fakeRate-2lss-frdata.txt')
-                os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('rm wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E TTCR ' # it is already enabled by default
                 if pog: enablecuts=' -E TTCR -X MVAVT -E cutPOGT '
         else:
-                os.system('rm wzsm/fakeRate-2lss-frdata.txt')
-                os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E TTCR -E MVAM -X MVAVT ' if not pog else ' -E TTCR -X MVAVT -E cutPOGM '
 
         trigdef='wzsm/mcc_triggerdefs.txt'
@@ -219,13 +218,13 @@ elif(action=='test'):
         else:
                 print("Defaulting to wp=1 (VTight)")
         if(wp=='1'):
-                os.system('rm wzsm/fakeRate-2lss-frdata.txt')
-                os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('rm wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E test -X MVAVT -X ptWZ -X lowMll -X hasOSSF -X threelightlep'
                 enablecuts=' '
         else:
-                os.system('rm wzsm/fakeRate-2lss-frdata.txt')
-                os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('rm wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E test -X MVAVT -X ptWZ -X lowMll -X hasOSSF '
                 enablecuts=' '
 
@@ -279,13 +278,13 @@ elif(action=='dycr'):
         else:
                 print("Defaulting to wp=1 (VTight)")
         if(wp=='1'):
-                os.system('rm wzsm/fakeRate-2lss-frdata.txt')
-                os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('rm wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E DYCR -X met30 ' # it is already enabled by default
                 if pog: enablecuts=' -E DYCR -X met30 -X MVAVT -E cutPOGT '
         else:
-                os.system('rm wzsm/fakeRate-2lss-frdata.txt')
-                os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('rm wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E DYCRM -E MVAM -X MVAVT ' if not pog else ' -E DYCR -X MVAVT -E cutPOGM '
 
         trigdef='wzsm/mcc_triggerdefs.txt'
@@ -337,13 +336,13 @@ elif(action=='zzcr'):
         else:
                 print("Defaulting to wp=1 (VTight)")
         if(wp=='1'):
-                os.system('rm wzsm/fakeRate-2lss-frdata.txt')
-                os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('rm wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E ZZCR ' # it is already enabled by default
                 if pog: enablecuts=' -E ZZCR -X MVAVT -E cutPOGT '
         else:
-                os.system('rm wzsm/fakeRate-2lss-frdata.txt')
-                os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('rm wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E ZZCR -E MVAM -X MVAVT ' if not pog else ' -E ZZCR -X MVAVT -E cutPOGM '
 
         trigdef='wzsm/mcc_triggerdefs.txt'
@@ -396,13 +395,13 @@ elif(action=='convcr'):
         else:
                 print("Defaulting to wp=1 (VTight)")
         if(wp=='1'):
-                os.system('rm wzsm/fakeRate-2lss-frdata.txt')
-                os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('rm wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E convCR ' # it is already enabled by default
                 if pog: enablecuts=' -E convCR -X MVAVT -E cutPOGT '
         else:
-                os.system('rm wzsm/fakeRate-2lss-frdata.txt')
-                os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('rm wzsm/fakeRate-2lss-frdata.txt')
+                #os.system('cp wzsm/fakeRate-2lss-frdata-wpM.txt wzsm/fakeRate-2lss-frdata.txt')
                 enablecuts=' -E convCR -E MVAM -X MVAVT ' if not pog else ' -E convCR -X MVAVT -E cutPOGM '
 
         trigdef='wzsm/mcc_triggerdefs.txt'
