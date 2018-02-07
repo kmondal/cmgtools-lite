@@ -102,8 +102,8 @@ class LeptonBuilderWZSM:
         if len(self.lepSelFO)>=4: self.ret["is_4l"] = 1
         if len(self.lepSelFO)>=5: self.ret["is_5l"] = 1
 
-        self.getGenInfo()
-        self.collectOSpairs(3, True)
+        self.getGenMatch()
+        self.collectOSpairs(3, False)
         self.makeMass(3)
         self.makeMt2(3)
         self.findBestOSpair(3)
@@ -145,8 +145,8 @@ class LeptonBuilderWZSM:
         self.lepSelFO.sort(key = lambda x: x.pt, reverse=True)
 
         ## Get Gen leptons
-        self.setAttributes(event, self.genLeps, event.isData)
-        self.genLeps.sort(key = lambda x: x.pt, reverse=True)
+        self.setAttributes(event, self.genleps, event.isData, True)
+        self.genleps.sort(key = lambda x: x.pt, reverse=True)
 
         ## tight leptons, both flavors
         self.lepsTT = []
@@ -249,10 +249,11 @@ class LeptonBuilderWZSM:
             #all.append((0 if os.isSF else 1, 1 if os.wTau else 0, os.diff, os)) # priority to SF, then light, then difference to target
 
         if all:
+            #if len(all)>1: print all, "pre"
             all.sort()
+            #if len(all)>1: print all, "post"
             self.bestOSPair = all[0][2]
             self.ret["mll_" + str(max) + "l"] = self.bestOSPair.mll
-
             used = [self.bestOSPair.l1, self.bestOSPair.l2] if self.bestOSPair else []
             
             
@@ -444,8 +445,14 @@ class LeptonBuilderWZSM:
             self.ret["m" + str(max) + "Lmet" + self.systsJEC[var]] = sumtot.M()
     ## Make gen to reco matching using dR < 0.4
     ## _______________________________________________________________ 
-    def getGen(self, dR = 0.4):
+    def getGenMatch(self, dR = 0.4):
       for i in range(len(self.lepSelFO)):
+        self.lepSelFO[i].isMatched      = False
+        self.lepSelFO[i].genpt          = 0
+        self.lepSelFO[i].geneta         = 0
+        self.lepSelFO[i].genphi         = 0
+        self.lepSelFO[i].genmass        = 0
+        self.lepSelFO[i].isMatchingWZ   = False
         for j in range(len(self.genleps)):
           deltaRTemp = deltaR(self.genleps[j].p4().Eta(), self.genleps[j].p4().Phi(), self.lepSelFO[i].p4().Eta(), self.lepSelFO[i].p4().Phi())
           if (deltaRTemp < dR and self.genleps[j].pdgId == self.lepSelFO[i].pdgId):
@@ -453,9 +460,8 @@ class LeptonBuilderWZSM:
             self.lepSelFO[i].genpt          = self.genleps[j].p4().Pt()
             self.lepSelFO[i].geneta         = self.genleps[j].p4().Eta()
             self.lepSelFO[i].genphi         = self.genleps[j].p4().Phi()
-            self.lepSelFO[i].genmass        = self.genleps[j].p4().Phi()
-            self.lepSelFO[i].isMatchingWZ   = (self.genleps[j].motherId() in [23,24]) or (abs(self.genleps[j].motherId())==15 and (self.genleps[j].grandmotherId() in [23,24])) #Either from W/Z directly or through taus
-          
+            self.lepSelFO[i].genmass        = self.genleps[j].p4().M()
+            self.lepSelFO[i].isMatchingWZ   = (abs(self.genleps[j].motherId) in [23,24]) or (abs(self.genleps[j].motherId)==15 and (abs(self.genleps[j].grandmotherId) in [23,24])) #Either from W/Z directly or through taus
       
     ## makeMt2
     ## _______________________________________________________________
@@ -663,8 +669,7 @@ class LeptonBuilderWZSM:
                 setattr(l, "isStopSel"    , 0                                   )
             elif  isGen:
                 setattr(l, "motherId"     , l.motherId                          )
-                setattr(l, "motherId"     , l.grandmotherId                     )
-
+                setattr(l, "grandmotherId"     , l.grandmotherId                     )
             else:
                 setattr(l, "isTight"      , (l in self.lepsT  )                 )
                 setattr(l, "mcMatchId"    , l.mcMatchId     if not isData else 1)
