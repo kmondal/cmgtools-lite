@@ -161,6 +161,7 @@ MET        : met_pt               : 23,20,250    ; XTitle="E_{T}^{miss} [GeV]", 
 #MET_log    : met_pt               : 20,0,200    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5, Logy
 MET_logblind_20 : met_pt               : 20,0,140    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5, Logy
 MET_logblind : met_pt               : [0,10,20,30,40,50,60,70,80,90,100,110,120,130,140]    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5, Logy
+MET_blind : met_pt               : [0,10,20,30,40,50,60,70,80,90,100,110,120,130,140]    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5
 METflavour_logblind : met_pt\:(abs(LepSel1_pdgId)==13)+(abs(LepSel2_pdgId)==13)+(abs(LepSel3_pdgId)==13) : [-0.5,0.5,1.5,2.5,3.5]*[0,10,20,30,40,50,60,70,80,90,100,110,120,130,140] ; YTitle="Lepton flavour composition 3L", YNDiv =004, yBinLabels="eee\,ee#mu\,#mu#mue\,#mu#mu#mu", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ'
 
 #, YNDiv=004, yBinLabels="eee\,ee#mu\,#mu#mue\,#mu#mu#mu", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ'
@@ -176,6 +177,7 @@ METlowinv        : met_pt         : 10,0,30    ; XTitle="E_{T}^{miss} [GeV]", Le
 
 ##### WZ control region
 htJet40_WZ:   htJet40j: 4,0,200    ; XTitle="H_{T}(jet p_{T} > 30) [GeV]", LegendCutoff=1e-5, XNDiv=505
+mll_3long        : mll_3l: 30,26,156; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5
 mll_3l        : mll_3l: 30,76,106; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5
 mll_3linv     : mll_3l: 12,0,76; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5
 mT_3l      : mT_3l: 20,0,200; XTitle="M_{T}^{W} [GeV]", LegendCutoff=1e-5, Legend='TR', XNDiv=510
