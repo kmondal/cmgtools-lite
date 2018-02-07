@@ -113,9 +113,12 @@ TFile* f_muSF_mvaVT = new TFile(DATA_SF+"/leptonSF/muonSF_mvaVT_EWKino_fullsim_M
 TFile* f_muSF_mvaM  = new TFile(DATA_SF+"/leptonSF/muonSF_mvaM_EWKino_fullsim_M17_36p5fb.root" , "read");
 TFile* f_muSF_id    = new TFile(DATA_SF+"/leptonSF/muonSF_id_EWKino_fullsim_M17_36p5fb.root"   , "read");
 TFile* f_muSF_eff   = new TFile(DATA_SF+"/leptonSF/muonSF_trk_EWKino_fullsim_M17_36p5fb.root"  , "read"); 
+TFile* f_muSF_unc   = new TFile(DATA_SF+"/leptonSF/muonUncWZ.root"  , "read"); 
 TH2F* h_muSF_mvaVT = (TH2F*) f_muSF_mvaVT->Get("SF" );
 TH2F* h_muSF_mvaM  = (TH2F*) f_muSF_mvaM ->Get("SF" );
 TH2F* h_muSF_id    = (TH2F*) f_muSF_id   ->Get("SF" );
+TH2F* h_muSF_unc    = (TH2F*) f_muSF_unc ->Get("pt_abseta_ratio" );
+
 TGraphAsymmErrors* h_muSF_trk = (TGraphAsymmErrors*) f_muSF_eff->Get("ratio_eff_eta3_dr030e030_corr");
 
 float getElectronSF(float pt, float eta, int wp = 0){
@@ -136,10 +139,11 @@ float getMuonSF(float pt, float eta, int wp = 0){
     return h_muSF_trk->Eval(eta)*getSF(hist, pt, abs(eta))*getSF(h_muSF_id, pt, abs(eta)); 
 }
 
-float getMuonUnc(float pt, int var = 0) {
-    if (pt<20)  //FIXME: check uncertainty on tracking efficiency once it is available
-         return TMath::Sqrt(0.03*0.03+0.01*0.01+0.01*0.01);
-    return TMath::Sqrt(0.02*0.02+0.01*0.01);  
+float getMuonUnc(float pt, float eta, int var = 0) {
+    //if (pt<20)  //FIXME: check uncertainty on tracking efficiency once it is available
+    //     return TMath::Sqrt(0.03*0.03+0.01*0.01+0.01*0.01);
+    //return TMath::Sqrt(0.02*0.02+0.01*0.01);  
+    return getSF(h_muSF_unc,pt,eta);
 }
 
 float getLepSF(float pt, float eta, int pdgId, int applySF, int wp = 0, int var = 0){
@@ -147,7 +151,7 @@ float getLepSF(float pt, float eta, int pdgId, int applySF, int wp = 0, int var 
     float sf  = 1.0; 
     float err = 0.0;
     if(abs(pdgId) == 11) { sf = getElectronSF(pt, eta, wp); err = getElectronUnc(pt, eta, wp, var); }
-    if(abs(pdgId) == 13) { sf = getMuonSF    (pt, eta, wp); err = sf*getMuonUnc (pt, var);          } // only relative error
+    if(abs(pdgId) == 13) { sf = getMuonSF    (pt, eta, wp); err = sf*getMuonUnc (pt,eta, var);} // only relative error
     if(abs(pdgId) == 15) { sf = 0.95                      ; err = 0.05;                             }
 
     //err=0.012;
