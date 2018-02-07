@@ -1,0 +1,13 @@
+WZ_AC_0_200   : WZTo3LNu_Ptz_0_200_aTGC   : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ;FillColor=ROOT.kBlue
+
+WZ_AC_0_200_s : WZTo3LNu_Ptz_0_200_aTGC_show   : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ;FillColor=ROOT.kBlue+10
+
+WZ_AC_200_300   : WZTo3LNu_Ptz_200_300_aTGC   : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ;FillColor=ROOT.kGreen
+
+WZ_AC_200_300_s : WZTo3LNu_Ptz_200_300_aTGC_show   : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ;FillColor=ROOT.kGreen+10
+
+
+WZ_AC_300   : WZTo3LNu_Ptz_300_aTGC   : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ;FillColor=ROOT.kRed
+
+WZ_AC_300_s : WZTo3LNu_Ptz_300_aTGC_show   : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)) ;FillColor=ROOT.kRed+10
+
