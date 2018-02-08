@@ -1,0 +1,5 @@
+# Main WZ sample
+WZ_Pow : WZTo3LNu : xsec :  1          ; Label="WZ_Powheg"
+WZ_Inc : WZ : xsec :  1                ; Label="WZ_Inclusive"
+WZ_aMC : WZTo3LNu_amcatnlo : xsec :  1 ; Label="WZ_aMCAtNLO"
+

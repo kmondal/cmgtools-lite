@@ -191,9 +191,10 @@ elif(action=='response'):
         jei='60'
         # https://hypernews.cern.ch/HyperNews/CMS/get/physics-announcements/4495.html
         lumi='35.867'
-        pgroup=' --pgroup internal:=ttZ,Gstar,ZGi --pgroup external:=TTG,WG,ZG,TG,Gstare --pgroup incl_fakes_appldata+=incl_promptsub '
-        pgroup=' -p data -p prompt_.* -p convs.* -p rares.* -p fakes_appldata --plotgroup fakes_appldata+=promptsub --neglist promptsub '
-        pgroup=' -p data -p prompt_.* -p convs.* -p rares.* -p fakes_appldata --plotgroup fakes_appldata+=promptsub --neglist promptsub ' if not mconly else " -p data -p prompt_.* -p fakes_tt.* -p fakes_dy.* -p rares.*"
+        pgroup=' '
+        #pgroup=' --pgroup internal:=ttZ,Gstar,ZGi --pgroup external:=TTG,WG,ZG,TG,Gstare --pgroup incl_fakes_appldata+=incl_promptsub '
+        #pgroup=' -p data -p prompt_.* -p convs.* -p rares.* -p fakes_appldata --plotgroup fakes_appldata+=promptsub --neglist promptsub '
+        #pgroup=' -p data -p prompt_.* -p convs.* -p rares.* -p fakes_appldata --plotgroup fakes_appldata+=promptsub --neglist promptsub ' if not mconly else " -p data -p prompt_.* -p fakes_tt.* -p fakes_dy.* -p rares.*"
         #
         header='All'
         cuts='wzsm/cuts_wzsm.txt'
