@@ -226,6 +226,9 @@ MODULES.append( ('leptonBuilderRA7', lambda : LeptonBuilderRA7("Mini")))
 from CMGTools.TTHAnalysis.tools.leptonBuilderWZSM import LeptonBuilderWZSM
 MODULES.append( ('leptonBuilderWZSM', lambda : LeptonBuilderWZSM("Recl")))
 
+from CMGTools.TTHAnalysis.tools.lepgenVarsWZSM import lepgenVarsWZSM
+MODULES.append( ('lepgenVarsWZSM', lambda : lepgenVarsWZSM("Recl")))
+
 #--- Tau builder instances
 from CMGTools.TTHAnalysis.tools.TauFakesBuilder import TauFakesBuilder
 
