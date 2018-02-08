@@ -17,6 +17,16 @@ from array import array
 #    def run(self):
 #        pass
 
+class ResponseComputation:
+
+    def __init__(self, inputFiles):
+        print('Initialization')
+        print('Input for matrix creation: %s' % inputFiles)
+        self.inputFiles=inputFiles
+
+    
+
+
 class AcceptanceComputer:
 
     def __init__(self, inputFiles):
@@ -34,8 +44,9 @@ class Unfolder(object):
         self.data=None
         self.mc=None
         self.response=None
-        self.proofOfConcept=True
+        self.proofOfConcept=False
         self.verbose=args.verbose
+        self.combineInput=args.combineInput
         self.nScan=30
         # Automatic L-curve scan: start with taumin=taumax=0.0
         self.tauMin=0.0
@@ -47,6 +58,7 @@ class Unfolder(object):
         self.gHistInvEMatrix=TH2D() # store the inverse of error matrix
         self.gHistInvJEMatrix=None
         self.load_data(args.inputDir, args.data, args.mc, args.gen)
+
 
     def load_data(self, folder, dataFName, mcFName, genFName, treeName=['tree']):
         # To be extended with the damn friend trees
@@ -64,21 +76,43 @@ class Unfolder(object):
             self.data     = copy.deepcopy(TH1D(file_handle.Get('MdetData') ))
             self.mc       = copy.deepcopy(TH1D(file_handle.Get('MdetMC')   ))
             self.response = copy.deepcopy(TH2D(file_handle.Get('MdetgenMC')))
-
         else:
-            dataFile = get_file_from_glob(os.path.join(folder, dataFName) if folder else dataFName)
-            mcFile   = get_file_from_glob(os.path.join(folder, mcFName)   if folder else mcFName)
-            genFile  = get_file_from_glob(os.path.join(folder, genFName)  if folder else genFName)
-            #data_handle = TFile.Open(dataFile)
-            #mc_handle   = TFile.Open(mcFile)
-            # Pass histograms, not trees?
-            self.data = TChain("data")
-            self.data.Add(dataFile+'/'+treeName)
-            self.mc = TChain("mc")
-            self.mc.Add(mcFile+'/'+treeName)
+            dataFile=None
+            mcFile=None
+            genFile=None
+            if self.combineInput:
+                file_handle = TFile.Open(utils.get_file_from_glob(os.path.join(folder, self.combineInput) if folder else self.combineInput))
+                gdata=file_handle.Get('shapes_fit_s/ch1/data')
+                gdata.Draw('AP')
+                hdata=self.get_graph_as_hist(gdata, ('recodata','recodata',4,0,4))
+                data   = copy.deepcopy(TH1F(hdata))
+                signal = copy.deepcopy(TH1F(file_handle.Get('shapes_fit_s/ch1/total_signal')))
+                bkg    = copy.deepcopy(TH1F(file_handle.Get('shapes_fit_s/ch1/total_background')))
+                
+                # Scheme 1: subtraction
+                data.Add(bkg, -1)
+                self.data=data
+                self.mc=signal
+                # Scheme 2: no subtraction
+                # ...
+
+            else:
+                dataFile = utils.get_file_from_glob(os.path.join(folder, dataFName) if folder else dataFName)
+                mcFile   = utils.get_file_from_glob(os.path.join(folder, mcFName)   if folder else mcFName)
+                #data_handle = TFile.Open(dataFile)
+                #mc_handle   = TFile.Open(mcFile)
+                # Pass histograms, not trees?
+                self.data = TChain("data")
+                self.data.Add(dataFile+'/'+treeName)
+                self.mc = TChain("mc")
+                self.mc.Add(mcFile+'/'+treeName)
+
+            genFile  = utils.get_file_from_glob(os.path.join(folder, genFName)  if folder else genFName)
+
             # Add reading gen file to build response matrix
 
         # Pass through numpy arrays?
+        print('Data correctly loaded.')
         #return data, mc, response
         
     def build_response(self):
@@ -90,6 +124,21 @@ class Unfolder(object):
         self.response.Draw('COLZ')
         utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrix'))
     
+    def get_graph_as_hist(self, g, args):
+        h = TH1F(args[0], args[1], args[2], args[3], args[4])
+
+        for ibin in range(0,args[2]):
+            x=0
+            y=0
+            g.GetPoint(ibin, Double(x), Double(y))
+            h.Fill(x,y)
+        print('h bins: %d; g bin: %d' %(h.GetNbinsX(), g.GetN()))
+        #g.Draw('PAE')
+        #print('h bins: %d; g bin: %d' %(h.GetNbinsX(), g.GetN()))
+        #h=copy.deepcopy(TH1F(g.GetHistogram()))
+        print('h bins: %d; g bin: %d' %(h.GetNbinsX(), g.GetN()))
+        return h
+
     def print_histo(self,h,opt=''):
         c = TCanvas(h.GetName(), h.GetTitle(), 2000, 2000)
         c.cd()
@@ -180,12 +229,12 @@ class Unfolder(object):
         #                                  self.gHistInvEMatrix # store inverse of error matrix
         #                                  )
 
-        self.gHistInvJEMatrix=self.unfold.GetRhoIJtotal('rho_I',
-                                            '', # use default title
-                                            '', # all distributions
-                                            "*[UO]", # discard underflow and overflow bins on all axes
-                                            ROOT.kTRUE, # use original binning
-                                            )
+        # other try self.gHistInvJEMatrix=self.unfold.GetRhoIJtotal('rho_I',
+        # other try                                     '', # use default title
+        # other try                                     '', # all distributions
+        # other try                                     "*[UO]", # discard underflow and overflow bins on all axes
+        # other try                                     ROOT.kTRUE, # use original binning
+        # other try                                     )
         #  
         #  #======================================================================
         #  # fit Breit-Wigner shape to unfolded data, using the full error matrix
@@ -283,18 +332,16 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-i', '--inputDir',   help='Input directory', default=None)
-    parser.add_argument('-o', '--outputDir',  help='Output directory', default='./')
-    parser.add_argument('-d', '--data',       help='File containing data histogram', default=None)
-    parser.add_argument('-m', '--mc',         help='File containing mc reco histogram', default=None)
-    parser.add_argument('-g', '--gen',   help='File containing gen info for matrix', default=None)
-    parser.add_argument('-l', '--lepCat',     help='Lepton multiplicity (1 or 2)', default=1, type=int)
-    #parser.add_argument('-m', '--multiclass', help='Multiclass (ttbar-LF and ttbar-HF are in different classes)', action='store_true')
-    parser.add_argument('-e', '--epochs',     help='Number of epochs', default=100, type=int)
-    parser.add_argument('-s', '--splitMode',  help='Split mode (input or random)', default='input')
-    parser.add_argument('-v', '--verbose',    help='Verbose printing of the L-curve scan', action='store_true')
-
-#parser.add_argument('-n', '--nevts',      help='Number of events to be loaded from tree', default=-1, type=int)
+    parser.add_argument('-i', '--inputDir',     help='Input directory', default=None)
+    parser.add_argument('-o', '--outputDir',    help='Output directory', default='./')
+    parser.add_argument('-c', '--combineInput', help='Data and postfit from combine output', default=None)
+    parser.add_argument('-d', '--data',         help='File containing data histogram', default=None)
+    parser.add_argument('-m', '--mc',           help='File containing mc reco histogram', default=None)
+    parser.add_argument('-g', '--gen',          help='File containing gen info for matrix', default=None)
+    parser.add_argument('-l', '--lepCat',       help='Lepton multiplicity (1 or 2)', default=1, type=int)
+    parser.add_argument('-e', '--epochs',       help='Number of epochs', default=100, type=int)
+    parser.add_argument('-s', '--splitMode',    help='Split mode (input or random)', default='input')
+    parser.add_argument('-v', '--verbose',      help='Verbose printing of the L-curve scan', action='store_true')
     args = parser.parse_args()
     # execute only if run as a script
     gROOT.SetBatch()
