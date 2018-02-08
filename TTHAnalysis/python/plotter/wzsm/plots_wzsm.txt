@@ -168,11 +168,11 @@ METflavour_logblind : met_pt\:(abs(LepSel1_pdgId)==13)+(abs(LepSel2_pdgId)==13)+
 
 
 # Note: fix content
-nJet30_response : met_pt\:(abs(LepSel1_pdgId)==13)+(abs(LepSel2_pdgId)==13)+(abs(LepSel3_pdgId)==13) : [-0.5,0.5,1.5,2.5,3.5]*[0,10,20,30,40,50,60,70,80,90,100,110,120,130,140] ; XTitle="Lepton flavour composition 3L", YTitle="MET", YNDiv =004, yBinLabels="eee\,ee#mu\,#mu#mue\,#mu#mu#mu", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ'
-
+nJet30_response : met_pt\:nJet30 : [-0.5,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5]*[0,10,20,30,40,50,60,70,80,90,100,110,120,130,140] ; XTitle="Number of jets p_{T}> 30", YTitle="Will be leading jet genPt but now dummy met", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ', IncludeOverflows=True, IncludeUnderflows=True
 # Note: fix lower range, and eventually higher range
-Z1pt_response : LepZ1_genpt\:LepZ1_pt : [0,10,20,30,40,50,60,70,80,90,100,110,120,130,140]*[0,10,20,30,40,50,60,70,80,90,100,110,120,130,140] ; XTitle="Leading Z pT", YTitle="GenPT", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ'
-Z1conePt_response : LepZ1_genpt\:LepZ1_conePt : [0,10,20,30,40,50,60,70,80,90,100,110,120,130,140]*[0,10,20,30,40,50,60,70,80,90,100,110,120,130,140] ; XTitle="Leading Z cone pT", YTitle="GenPT", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ'
+Z1pt_response : LepZ1_genpt\:LepZ1_pt : [0,10,20,30,40,50,60,70,80,90,100,110,120,130,140]*[0,10,20,30,40,50,60,70,80,90,100,110,120,130,140] ; XTitle="Leading Z pT", YTitle="GenPT", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ', IncludeOverflows=True, IncludeUnderflows=True
+Z1conePt_response : LepZ1_genpt\:LepZ1_conePt : [0,10,20,30,40,50,60,70,80,90,100,110,120,130,140]*[0,10,20,30,40,50,60,70,80,90,100,110,120,130,140] ; XTitle="Leading Z cone pT", YTitle="GenPT", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ', IncludeOverflows=True, IncludeUnderflows=True
+
 
 mass_2(LepSel1_pt,LepSel1_eta,LepSel1_phi,LepSel1_mass, LepSel2_pt,LepSel2_eta,LepSel2_phi,LepSel2_mass): 50,0,200; XTitle="m(ll) [GeV]"
 
