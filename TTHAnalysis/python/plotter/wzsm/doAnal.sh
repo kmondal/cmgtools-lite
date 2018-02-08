@@ -3,6 +3,9 @@
 #Use skimmed (3LepGood, minMllAFAS > 4) instead
 #INPUTDIR="/pool/ciencias/HeppyTrees/RA7/estructura/treesM17"
 INPUTDIR="/pool/ciencias/userstorage/carlosec/wzSkimmed/"
+if [ "$1" == "response" ] || [ "$2" == "response" ]; then
+    INPUTDIR="/pool/ciencias/HeppyTrees/RA7/wz/wzUnskimmed/"
+fi
 TREESDIR=${INPUTDIR}                                                                                     
 OUTPUTDIR="/OBSOLETE"                                                                       
 
@@ -62,6 +65,8 @@ elif [ "$1" == "SR" ]; then
     sh wzsm/doAnal.sh plot srwz VT ${2}
     #sh wzsm/doAnal.sh plot srwz M  ${2}
 
+elif [ "$1" == "response" ]; then
+    sh wzsm/doAnal.sh plot response VT ${2}
 
 elif [ "$1" == "TT" ]; then
     sh wzsm/doAnal.sh plot ttcr VT ${2}
