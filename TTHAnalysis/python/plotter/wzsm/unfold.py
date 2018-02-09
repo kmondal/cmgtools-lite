@@ -168,8 +168,21 @@ class Unfolder(object):
         h.Draw(opt)
         utils.saveCanva(c, os.path.join(args.outputDir, h.GetName()))
 
-    def set_unfolding(self):
-        self.unfold = TUnfoldDensity(self.response_nom,TUnfold.kHistMapOutputVert)
+    def do_unfolding(self, key):
+        self.set_unfolding(key)
+        self.do_scan()
+        self.print_unfolding_results()
+
+    def set_unfolding(self, key):
+
+        if   key == 'nom':
+            self.unfold = ROOT.TUnfoldDensity(self.response_nom,ROOT.TUnfold.kHistMapOutputVert)
+        elif key == 'alt':
+            self.unfold = ROOT.TUnfoldDensity(self.response_alt,ROOT.TUnfold.kHistMapOutputVert)
+        elif key == 'inc':
+            self.unfold = ROOT.TUnfoldDensity(self.response_inc,ROOT.TUnfold.kHistMapOutputVert)
+        else:
+            print('ERROR: the response matrix you asked for (%s) does not exist' % key)
         # Check if the input data points are enough to constrain the unfolding process
         check = self.unfold.SetInput(self.data)
         if check>=10000:
@@ -347,10 +360,9 @@ def main(args):
     for var in ['Zpt', 'ZconePt', 'nJet30']:
         u = Unfolder(args,var)
         u.print_responses()
-        continue
-        u.set_unfolding()
-        u.do_scan()
-        u.print_unfolding_results()
+        u.do_unfolding('nom')
+        u.do_unfolding('alt')
+        u.do_unfolding('inc')
 
 ### End main
 
