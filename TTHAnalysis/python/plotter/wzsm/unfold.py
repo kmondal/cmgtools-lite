@@ -138,7 +138,14 @@ class Unfolder(object):
         c = ROOT.TCanvas('matrix', 'Response Matrix', 2000, 2000)
         c.cd()
         self.response_nom.Draw('COLZ')
-        utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrixNom'))
+        utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrix_%s_Nom' % self.var))
+        c.Clear()
+        self.response_alt.Draw('COLZ')
+        utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrix_%s_Alt' % self.var))
+        c.Clear()
+        self.response_inc.Draw('COLZ')
+        utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrix_%s_Inc' % self.var))
+        
     
     def get_graph_as_hist(self, g, args):
         h = ROOT.TH1F(args[0], args[1], args[2], args[3], args[4])
