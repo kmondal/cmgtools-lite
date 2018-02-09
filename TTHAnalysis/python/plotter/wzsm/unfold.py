@@ -1,3 +1,9 @@
+'''
+Script for doing the full unfolding analysis.
+
+Created by Pietro Vischia -- pietro.vischia@cern.ch
+'''
+
 import os
 import copy
 
