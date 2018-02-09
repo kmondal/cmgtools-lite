@@ -29,10 +29,10 @@ class ResponseComputation:
         print('Initialization')
         print('Input for matrix creation: %s' % inputFiles)
         self.inputFiles=inputFiles
-
-    
-
-
+        
+        
+        
+        
 class AcceptanceComputer:
 
     def __init__(self, inputFiles):
@@ -46,10 +46,11 @@ class Unfolder(object):
     def __init__(self, args):
         print('Initialization')
         self.unfold=None
-        self.response=None
+        self.response_nominal=None
+        self.response_alt=None
+        self.response_incl=None
         self.data=None
         self.mc=None
-        self.response=None
         self.proofOfConcept=False
         self.verbose=args.verbose
         self.combineInput=args.combineInput
@@ -81,7 +82,7 @@ class Unfolder(object):
             file_handle = TFile.Open('wzsm/testUnfold.root')
             self.data     = copy.deepcopy(TH1D(file_handle.Get('MdetData') ))
             self.mc       = copy.deepcopy(TH1D(file_handle.Get('MdetMC')   ))
-            self.response = copy.deepcopy(TH2D(file_handle.Get('MdetgenMC')))
+            self.response_nominal = copy.deepcopy(TH2D(file_handle.Get('MdetgenMC')))
         else:
             dataFile=None
             mcFile=None
@@ -127,8 +128,8 @@ class Unfolder(object):
     def print_response(self):
         c = TCanvas('matrix', 'Response Matrix', 2000, 2000)
         c.cd()
-        self.response.Draw('COLZ')
-        utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrix'))
+        self.response_nominal.Draw('COLZ')
+        utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrixNominal'))
     
     def get_graph_as_hist(self, g, args):
         h = TH1F(args[0], args[1], args[2], args[3], args[4])
@@ -152,7 +153,7 @@ class Unfolder(object):
         utils.saveCanva(c, os.path.join(args.outputDir, h.GetName()))
 
     def set_unfolding(self):
-        self.unfold = TUnfoldDensity(self.response,TUnfold.kHistMapOutputVert)
+        self.unfold = TUnfoldDensity(self.response_nominal,TUnfold.kHistMapOutputVert)
         # Check if the input data points are enough to constrain the unfolding process
         check = self.unfold.SetInput(self.data)
         if check>=10000:
@@ -224,7 +225,7 @@ class Unfolder(object):
         # default: include all bins
         # here: exclude underflow and overflow bins
 
-        #self.gHistInvEMatrix=copy.deepcopy(self.response)
+        #self.gHistInvEMatrix=copy.deepcopy(self.response_nominal)
         #self.gHistInvEMatrix.SetName('gHistInvEMatrix')
         #self.gHistInvEMatrix.Print()
         #histRhoi=self.unfold.GetRhoItotal('rho_I',
