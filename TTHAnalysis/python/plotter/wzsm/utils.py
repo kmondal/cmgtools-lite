@@ -27,7 +27,7 @@ s -> %s' % (f, files))
 def command(cmd, pretend):
 
         if pretend:
-                print 'Command is: ', cmd
+                print('Command is: %s ' % cmd )
         else:
                 os.system(cmd)
 
@@ -38,11 +38,11 @@ def command(cmd, pretend):
         
         newCmd = 'python {cmd}'.format(cmd=p.split('python')[1])
         if pretend:
-                print newCmd
+                print(newCmd)
         else:
                 os.system(newCmd)
                 
-        print "Done."
+        print('Done.')
 """
 """
 
@@ -51,7 +51,7 @@ def clean(outDir):
         os.system('rm {outDir}/*png'.format(outDir=outDir))
         os.system('rm {outDir}/*pdf'.format(outDir=outDir))
         os.system('rm {outDir}/*txt'.format(outDir=outDir))
-        print 'Old plots in {outDir} cleaned.'.format(outDir=outDir)
+        print('Old plots in {outDir} cleaned.'.format(outDir=outDir))
 
 
   
