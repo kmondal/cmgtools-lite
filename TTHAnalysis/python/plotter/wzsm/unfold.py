@@ -149,6 +149,34 @@ class Unfolder(object):
             self.response_nom.Scale(1./self.response_nom.Integral())
             self.response_alt.Scale(1./self.response_alt.Integral())
             self.response_inc.Scale(1./self.response_inc.Integral())
+            # Compute stability
+            diagonalSum_nom=0
+            diagonalSum_alt=0
+            diagonalSum_inc=0
+            odbN_nom=0
+            odbN_alt=0
+            odbN_inc=0
+            for ibin in range(0, self.response_nom.GetNbinsX()):
+                # Am I taking the overflow diagonal one as well? Must check
+                diagonalSum_nom+= self.response_nom.GetBinContent(ibin, ibin)
+                diagonalSum_alt+= self.response_alt.GetBinContent(ibin, ibin)
+                diagonalSum_inc+= self.response_inc.GetBinContent(ibin, ibin)
+                for jbin in range(0, self.response_nom.GetNbinsY()):
+                    if ibin != jbin:
+                        if self.response_nom.GetBinContent(ibin, jbin) != 0: odbN_nom+=1
+                        if self.response_alt.GetBinContent(ibin, jbin) != 0: odbN_alt+=1
+                        if self.response_inc.GetBinContent(ibin, jbin) != 0: odbN_inc+=1
+            oodFraction_nom=(1-diagonalSum_nom)
+            oodFraction_alt=(1-diagonalSum_alt)
+            oodFraction_inc=(1-diagonalSum_inc)
+            odbFraction_nom = odbN_nom/(self.response_nom.GetNbinsX()*self.response_nom.GetNbinsY())
+            odbFraction_alt = odbN_alt/(self.response_alt.GetNbinsX()*self.response_alt.GetNbinsY())
+            odbFraction_inc = odbN_inc/(self.response_inc.GetNbinsX()*self.response_inc.GetNbinsY())
+            print('Overall fraction of out-of-diagonal events | Fraction of out-of-diagonal filled bins:')
+            print('\t nom: %0.3f | %0.3f' % (oodFraction_nom, odbFraction_nom))
+            print('\t alt: %0.3f | %0.3f' % (oodFraction_alt, odbFraction_alt))
+            print('\t inc: %0.3f | %0.3f' % (oodFraction_inc, odbFraction_inc))
+            
 
         self.response_nom.Draw('COLZ')
         utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrix_%s_Nom' % self.var))
