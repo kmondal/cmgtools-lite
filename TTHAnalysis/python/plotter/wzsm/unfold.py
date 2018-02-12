@@ -436,6 +436,7 @@ class Unfolder(object):
         histInput=self.unfold.GetInput("Minput",";mass(det)")
 
         histInput.SetLineColor(ROOT.kRed)
+        histInput.SetLineWidth(3)
         histInput.Draw("SAME")
 
         # show correlation coefficients
@@ -448,12 +449,13 @@ class Unfolder(object):
             output.cd(5)
             self.logTauX.Draw()
             bestLogTauLogChi2.SetMarkerColor(ROOT.kRed)
-            bestLogTauLogChi2.Draw("*")
-            
+            bestLogTauLogChi2.SetLineWidth(3)
+            bestLogTauLogChi2.Draw("*")            
             # show the L curve
             output.cd(6)
             self.lCurve.Draw("AL")
             bestLcurve.SetMarkerColor(ROOT.kRed)
+            bestLcurve.SetLineWidth(3)
             bestLcurve.Draw("*")
 
         output.SaveAs(os.path.join(self.outputDir, '2_unfold_%s_%s_%s.png' % (label, key, self.var)))
