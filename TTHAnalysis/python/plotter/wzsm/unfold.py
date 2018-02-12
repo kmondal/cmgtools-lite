@@ -50,7 +50,6 @@ class Unfolder(object):
         self.data=None
         self.mc=None
         self.bkg=None
-        self.proofOfConcept=False
         self.verbose=args.verbose
         self.combineInput=args.combineInput
         self.nScan=30
@@ -69,7 +68,7 @@ class Unfolder(object):
         self.histmap=ROOT.TUnfold.kHistMapOutputVert
         self.regmode=ROOT.TUnfold.kRegModeNone
         self.constraint=ROOT.TUnfold.kEConstraintArea
-        self.densitymode=ROOT.TUnfoldDensity.kDensityModeBinWidth
+        self.densitymode=ROOT.TUnfoldDensity.kDensityModeeNone
         self.load_data(args.data, args.mc, args.gen)
 
         # Make sure histogram errors are ON
@@ -78,58 +77,40 @@ class Unfolder(object):
 
     def load_data(self, dataFName, mcFName, genFName, treeName=['tree']):
         folder=self.inputDir
-        if self.proofOfConcept:
-            # TH1D MgenMC;1
-            # TH1D MdetMC;1
-            # TH2D MdetgenMC;1
-            # TH2D MdetgenSysMC;1
-            # TH1D MgenData;1
-            # TH1D MdetData;1
-            # TH1D DensityGenData;1
-            # TH1D DensityGenMC;1
-            file_handle = ROOT.TFile.Open('wzsm/testUnfold.root')
-            self.data     = copy.deepcopy(ROOT.TH1D(file_handle.Get('MdetData') ))
-            self.mc       = copy.deepcopy(ROOT.TH1D(file_handle.Get('MdetMC')   ))
-            self.response_nom = copy.deepcopy(ROOT.TH2D(file_handle.Get('MdetgenMC')))
-        else:
-            dataFile=None
-            mcFile=None
-            #genFile=None # Taken from a separate file
-            if self.combineInput:
-                print('Opening file %s.' % utils.get_file_from_glob(os.path.join(folder, self.combineInput) if folder else self.combineInput) )
-                file_handle = ROOT.TFile.Open(utils.get_file_from_glob(os.path.join(folder, self.combineInput) if folder else self.combineInput))
-                #gdata=file_handle.Get('x_data')
-                #gdata.Draw('AP')
-                #hdata=self.get_graph_as_hist(gdata, ('recodata','recodata',4,0,4))
-                #data   = copy.deepcopy(ROOT.TH1F(hdata))
-                data   = copy.deepcopy(file_handle.Get('x_data'))
-                signal = copy.deepcopy(file_handle.Get('x_prompt_WZ'))
-                bkg    = copy.deepcopy(self.get_total_bkg_as_hist(file_handle))
-                # Subtraction is done by the TUnfoldDensityClass
-                # Scheme 1: subtraction
-                #print('Before subtraction. Data: %f, Bkg: %f, Signal: %f' % (data.Integral(), bkg.Integral(), signal.Integral()))  
-                #data.Add(bkg, -1)
-                self.data=data
-                self.mc=signal
-                self.bkg=bkg
-                #print('Subtraction completed. Data-bkg: %f, Signal: %f' % (self.data.Integral(), self.mc.Integral() ))
-                #print('Expected mu=(data-bkg)/NLO: %f' % (self.data.Integral()/self.mc.Integral()) )
-                
-            else:
-                dataFile = utils.get_file_from_glob(os.path.join(folder, dataFName) if folder else dataFName)
-                mcFile   = utils.get_file_from_glob(os.path.join(folder, mcFName)   if folder else mcFName)
-                #data_handle = ROOT.TFile.Open(dataFile)
-                #mc_handle   = ROOT.TFile.Open(mcFile)
-                # Pass histograms, not trees?
-                self.data = TChain("data")
-                self.data.Add(dataFile+'/'+treeName)
-                self.mc = TChain("mc")
-                self.mc.Add(mcFile+'/'+treeName)
+        dataFile=None
+        mcFile=None
+        #genFile=None # Taken from a separate file  
+        print('Opening file %s.' % utils.get_file_from_glob(os.path.join(folder, 'incl_fitWZonly_%s/%s' % (self.var, self.combineInput) ) if folder else self.combineInput) )
+        file_handle = ROOT.TFile.Open(utils.get_file_from_glob(os.path.join(folder,  'incl_fitWZonly_%s/%s' % (self.var, self.combineInput)) if folder else self.combineInput))
+        # gdata=file_handle.Get('x_data')
+        # gdata.Draw('AP')
+        # hdata=self.get_graph_as_hist(gdata, ('recodata','recodata',4,0,4))
+        # data   = copy.deepcopy(ROOT.TH1F(hdata))
+        data   = copy.deepcopy(file_handle.Get('x_data'))
+        signal = copy.deepcopy(file_handle.Get('x_prompt_WZ'))
+        bkg    = copy.deepcopy(self.get_total_bkg_as_hist(file_handle, 'list'))   
+        # bkg    = copy.deepcopy(self.get_total_bkg_as_hist(file_handle, 'sum'))
+        # Subtraction is done by the TUnfoldDensityClass
+        # Scheme 1: subtraction
+        # print('Before subtraction. Data: %f, Bkg: %f, Signal: %f' % (data.Integral(), bkg.Integral(), signal.Integral()))  
+        #data.Add(bkg, -1)
+        self.data=data
+        self.mc=signal
+        self.bkg=bkg
 
-            #genFile  = utils.get_file_from_glob(os.path.join(folder, genFName)  if folder else genFName)
+        print('bins of input data: %d' % self.data.GetNbinsX() ) 
+        print('bins of input signal: %d' % self.mc.GetNbinsX() ) 
+        #print('bins of input bkg: %d' % self.bkg.GetNbinsX()   ) 
+        print('bins of input bkg: %d' % self.bkg[0].GetNbinsX()   ) 
 
-            # Add reading gen file to build response matrix
-            self.get_responses()
+        
+        # print('Subtraction completed. Data-bkg: %f, Signal: %f' % (self.data.Integral(), self.mc.Integral() ))
+        # print('Expected mu=(data-bkg)/NLO: %f' % (self.data.Integral()/self.mc.Integral()) )
+            
+        #genFile  = utils.get_file_from_glob(os.path.join(folder, genFName)  if folder else genFName)
+
+        # Add reading gen file to build response matrix
+        self.get_responses()
 
         # Pass through numpy arrays?
         print('Data correctly loaded.')
@@ -209,7 +190,7 @@ class Unfolder(object):
         self.response_inc.Draw('COLZ')
         utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Inc' % self.var))
     
-    def get_total_bkg_as_hist(self, file_handle):
+    def get_total_bkg_as_hist(self, file_handle, action):
         totbkg = []
         totbkg.append(copy.deepcopy(file_handle.Get('x_prompt_ZZH')))
         totbkg.append(copy.deepcopy(file_handle.Get('x_fakes_appldata')))
@@ -217,6 +198,10 @@ class Unfolder(object):
         totbkg.append(copy.deepcopy(file_handle.Get('x_rares_ttX')))
         totbkg.append(copy.deepcopy(file_handle.Get('x_rares_VVV')))
         totbkg.append(copy.deepcopy(file_handle.Get('x_rares_tZq')))
+        if 'sum' in action:
+            for i in range(1,len(totbkg)):
+                totbkg[0].Add(totbkg[i])
+            return totbkg[0]
         return totbkg
 
     def get_graph_as_hist(self, g, args):
@@ -342,6 +327,13 @@ class Unfolder(object):
         histMdetFold=self.unfold.GetFoldedOutput('FoldedBack') # Unfolding result, folded back
         histEmatData=self.unfold.GetEmatrixInput('EmatData') # Error matrix (stat errors only)
         histEmatTotal=self.unfold.GetEmatrixTotal('EmatTotal') # Total error matrix. Migration matrix uncorrelated and correlated syst errors added in quadrature to the data statistical errors
+        
+        
+        #TH1 *histDetNormBgr1=unfold.GetBackground("bgr1 normalized",
+        #                                          "background1");
+        histDetNormBgrTotal=self.unfold.GetBackground("Total background (normalized)")
+
+
 
         nDet=self.response_nom.GetNbinsX()
         nGen=self.response_nom.GetNbinsY()
@@ -408,30 +400,54 @@ class Unfolder(object):
         # The overflow bins to the left and right contain
         # events which are not reconstructed. These are necessary for proper MC
         # normalisation
-        output.cd(1)
+        #output.cd(1)
         ##histMdetGenMC.Draw("BOX")
 
+        output.cd(1)
+        # Data, MC prediction, background
+        self.data.SetMinimum(0.0)
+        self.data.Draw("E")
+        self.mc.SetMinimum(0.0)
+        self.mc.SetLineColor(ROOT.kBlue)
+        self.mc.SetLineWidth(3)
+        histDetNormBgrTotal.SetLineColor(ROOT.kRed)
+        histDetNormBgrTotal.SetLineWidth(3)
+        #histDetNormBgr1->SetLineColor(kCyan);
+        self.mc.Draw("SAME HIST")
+        #histDetNormBgr1->Draw("SAME HIST");
+        histDetNormBgrTotal.Draw("SAME HIST")
+
+        print(self.data.GetNbinsX())
+        print(self.mc.GetNbinsX())
+        print(histDetNormBgrTotal.GetNbinsX())
+        
         # draw generator-level distribution:
         #   data (red) [for real data this is not available]
         #   MC input (black) [with completely wrong peak position and shape]
         #   unfolded data (blue)
         output.cd(2)
+        # Data with total error
         histTotalError.SetLineColor(ROOT.kBlue)
         histTotalError.Draw("E")
+        # Unfolded data
         histMunfold.SetLineColor(ROOT.kGreen)
         histMunfold.Draw("SAME E1")
+        # MC truth (folded) Must substitute with input truth from response matrix probably
+        self.mc.Draw("SAME HIST")
         ###histDensityGenData.SetLineColor(kRed)
         ##histDensityGenData.Draw("SAME")
         ##histDensityGenMC.Draw("SAME HIST")
-
+        
         # show detector level distributions
         #    data (red)
         #    MC (black) [with completely wrong peak position and shape]
         #    unfolded data (blue)
         output.cd(3)
+        # Folded back
         histMdetFold.SetLineColor(ROOT.kBlue)
         histMdetFold.Draw()
-        #histMdetMC.Draw("SAME HIST")
+        # Original folded MC
+        self.mc.Draw("SAME HIST")
 
         histInput=self.unfold.GetInput("Minput",";mass(det)")
 
