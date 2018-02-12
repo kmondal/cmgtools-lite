@@ -349,7 +349,7 @@ class Unfolder(object):
         xmaxDet=self.response_nom.GetXaxis().GetBinUpEdge(self.response_nom.GetNbinsX())
         xminGen=self.response_nom.GetYaxis().GetBinLowEdge(1)
         xmaxGen=self.response_nom.GetYaxis().GetBinUpEdge(self.response_nom.GetNbinsY())
-        histTotalError = ROOT.TH1D('TotalError',';mass(gen)', nGen, xminGen, xmaxGen)# Data histogram with total errors
+        histTotalError = ROOT.TH1D('TotalError',';%s(gen)' % self.var, nGen, xminGen, xmaxGen)# Data histogram with total errors
         for bin in range(1,nGen):
             histTotalError.SetBinContent(bin, histMunfold.GetBinContent(bin))
             histTotalError.SetBinError(bin, ROOT.TMath.Sqrt(histEmatTotal.GetBinContent(bin,bin)))
