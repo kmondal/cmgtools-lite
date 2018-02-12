@@ -340,7 +340,7 @@ class Unfolder(object):
         # Retrieve results as histograms
         histMunfold=self.unfold.GetOutput('Unfolded') # Unfolded result
         histMdetFold=self.unfold.GetFoldedOutput('FoldedBack') # Unfolding result, folded back
-        # histEmatData=TH1(self.unfold.GetEmatrix('EmatData0')) # Error matrix (stat errors only)
+        histEmatData=self.unfold.GetEmatrixInput('EmatData') # Error matrix (stat errors only)
         histEmatTotal=self.unfold.GetEmatrixTotal('EmatTotal') # Total error matrix. Migration matrix uncorrelated and correlated syst errors added in quadrature to the data statistical errors
 
         nDet=self.response_nom.GetNbinsX()
@@ -461,6 +461,7 @@ class Unfolder(object):
         # Individual saving.
         self.print_histo(histMunfold, key, label)
         self.print_histo(histMdetFold, key, label)
+        self.print_histo(histEmatData, key, label, 'colz')
         self.print_histo(histEmatTotal, key, label, 'colz')
         self.print_histo(histTotalError, key, label)
 
