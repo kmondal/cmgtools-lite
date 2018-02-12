@@ -142,10 +142,10 @@ class Unfolder(object):
         c = ROOT.TCanvas('matrix', 'Response Matrix', 2000, 2000)
         c.cd()
         # Margin not being applied somehow. Must do it via gStyle?
-        c.SetTopMargin(0.1)
-        c.SetBottomMargin(0.1)
-        c.SetLeftMargin(0.1)
-        c.SetRightMargin(0.1)
+        ROOT.gStyle.SetPadTopMargin(0.1)
+        ROOT.gStyle.SetPadBottomMargin(0.1)
+        ROOT.gStyle.SetPadLeftMargin(0.1)
+        ROOT.gStyle.SetPadRightMargin(0.1)
         ROOT.gStyle.SetOptStat(0)
         if self.responseAsPdf:
             resp_nom=copy.deepcopy(ROOT.TH2D(self.response_nom))
