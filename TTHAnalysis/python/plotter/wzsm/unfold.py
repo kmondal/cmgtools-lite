@@ -160,7 +160,7 @@ class Unfolder(object):
             odbN_nom=0
             odbN_alt=0
             odbN_inc=0
-            for ibin in range(0, self.response_nom.GetNbinsX()):
+            for ibin in range(0, resp_nom.GetNbinsX()):
                 # Am I taking the overflow diagonal one as well? Must check
                 diagonalSum_nom+= resp_nom.GetBinContent(ibin, ibin)
                 diagonalSum_alt+= resp_alt.GetBinContent(ibin, ibin)
@@ -170,16 +170,17 @@ class Unfolder(object):
                         if resp_nom.GetBinContent(ibin, jbin) != 0: odbN_nom+=1
                         if resp_alt.GetBinContent(ibin, jbin) != 0: odbN_alt+=1
                         if resp_inc.GetBinContent(ibin, jbin) != 0: odbN_inc+=1
-            oodFraction_nom=(1-diagonalSum_nom)
+
+            oodFraction_nom=(1-diagonalSum_nom) 
             oodFraction_alt=(1-diagonalSum_alt)
             oodFraction_inc=(1-diagonalSum_inc)
             odbFraction_nom = odbN_nom/(resp_nom.GetNbinsX()*resp_nom.GetNbinsY())
             odbFraction_alt = odbN_alt/(resp_alt.GetNbinsX()*resp_alt.GetNbinsY())
             odbFraction_inc = odbN_inc/(resp_inc.GetNbinsX()*resp_inc.GetNbinsY())
             print('Overall fraction of out-of-diagonal events | Fraction of out-of-diagonal filled bins:')
-            print('\t nom: %0.3f | %0.3f' % (oodFraction_nom, odbFraction_nom))
-            print('\t alt: %0.3f | %0.3f' % (oodFraction_alt, odbFraction_alt))
-            print('\t inc: %0.3f | %0.3f' % (oodFraction_inc, odbFraction_inc))
+            print('\t nom: %0.3f | %0.3f = %d/%d' % (oodFraction_nom, odbFraction_nom, odbN_nom, (resp_nom.GetNbinsX()*resp_nom.GetNbinsY())))
+            print('\t alt: %0.3f | %0.3f = %d/%d' % (oodFraction_alt, odbFraction_alt, odbN_alt, (resp_alt.GetNbinsX()*resp_alt.GetNbinsY())))
+            print('\t inc: %0.3f | %0.3f = %d/%d' % (oodFraction_inc, odbFraction_inc, odbN_inc, (resp_inc.GetNbinsX()*resp_inc.GetNbinsY())))
             resp_nom.Draw('COLZ')
             utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrixAsPdf_%s_Nom' % self.var))
             c.Clear()
