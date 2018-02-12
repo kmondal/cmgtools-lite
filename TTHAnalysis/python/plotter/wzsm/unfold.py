@@ -70,38 +70,40 @@ class Unfolder(object):
 
     def load_data(self, dataFName, mcFName, genFName, treeName=['tree']):
         folder=self.inputDir
-        # To be extended with the damn friend trees
-        # Alternatively, take some minitrees as input (with only the few variables we are interested in. This is a better option, actually.
-        # TH1D MgenMC;1
-        # TH1D MdetMC;1
-        # TH2D MdetgenMC;1
-        # TH2D MdetgenSysMC;1
-        # TH1D MgenData;1
-        # TH1D MdetData;1
-        # TH1D DensityGenData;1
-        # TH1D DensityGenMC;1
         if self.proofOfConcept:
+            # TH1D MgenMC;1
+            # TH1D MdetMC;1
+            # TH2D MdetgenMC;1
+            # TH2D MdetgenSysMC;1
+            # TH1D MgenData;1
+            # TH1D MdetData;1
+            # TH1D DensityGenData;1
+            # TH1D DensityGenMC;1
             file_handle = ROOT.TFile.Open('wzsm/testUnfold.root')
-            self.data     = copy.deepcopy(TH1D(file_handle.Get('MdetData') ))
-            self.mc       = copy.deepcopy(TH1D(file_handle.Get('MdetMC')   ))
+            self.data     = copy.deepcopy(ROOT.TH1D(file_handle.Get('MdetData') ))
+            self.mc       = copy.deepcopy(ROOT.TH1D(file_handle.Get('MdetMC')   ))
             self.response_nom = copy.deepcopy(ROOT.TH2D(file_handle.Get('MdetgenMC')))
         else:
             dataFile=None
             mcFile=None
-            #genFile=None
+            #genFile=None # Taken from a separate file
             if self.combineInput:
+                print('Opening file %s.' % utils.get_file_from_glob(os.path.join(folder, self.combineInput) if folder else self.combineInput) )
                 file_handle = ROOT.TFile.Open(utils.get_file_from_glob(os.path.join(folder, self.combineInput) if folder else self.combineInput))
-                gdata=file_handle.Get('shapes_fit_s/ch1/data')
-                gdata.Draw('AP')
-                hdata=self.get_graph_as_hist(gdata, ('recodata','recodata',4,0,4))
-                data   = copy.deepcopy(ROOT.TH1F(hdata))
-                signal = copy.deepcopy(ROOT.TH1F(file_handle.Get('shapes_fit_s/ch1/total_signal')))
-                bkg    = copy.deepcopy(ROOT.TH1F(file_handle.Get('shapes_fit_s/ch1/total_background')))
-                
+                #gdata=file_handle.Get('x_data')
+                #gdata.Draw('AP')
+                #hdata=self.get_graph_as_hist(gdata, ('recodata','recodata',4,0,4))
+                #data   = copy.deepcopy(ROOT.TH1F(hdata))
+                data   = copy.deepcopy(file_handle.Get('x_data'))
+                signal = copy.deepcopy(file_handle.Get('x_prompt_WZ'))
+                bkg    = copy.deepcopy(self.get_total_bkg_as_hist(file_handle))
                 # Scheme 1: subtraction
+                print('Before subtraction. Data: %f, Bkg: %f, Signal: %f' % (data.Integral(), bkg.Integral(), signal.Integral()))  
                 data.Add(bkg, -1)
                 self.data=data
                 self.mc=signal
+                print('Subtraction completed. Data-bkg: %f, Signal: %f' % (self.data.Integral(), self.mc.Integral() ))
+                print('Expected mu=(data-bkg)/NLO: %f' % (self.data.Integral()/self.mc.Integral()) )
                 # Scheme 2: no subtraction
                 # ...
 
@@ -198,8 +200,16 @@ class Unfolder(object):
         c.Clear()
         self.response_inc.Draw('COLZ')
         utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrix_%s_Inc' % self.var))
-        
     
+    def get_total_bkg_as_hist(self, file_handle):
+        totbkg = copy.deepcopy(file_handle.Get('x_prompt_ZZH'))
+        totbkg.Add(file_handle.Get('x_fakes_appldata'))
+        totbkg.Add(file_handle.Get('x_convs'))
+        totbkg.Add(file_handle.Get('x_rares_ttX'))
+        totbkg.Add(file_handle.Get('x_rares_VVV'))
+        totbkg.Add(file_handle.Get('x_rares_tZq'))
+        return totbkg
+
     def get_graph_as_hist(self, g, args):
         h = ROOT.TH1F(args[0], args[1], args[2], args[3], args[4])
 
@@ -434,7 +444,5 @@ if __name__ == '__main__':
     parser.add_argument('-r', '--responseAsPdf', help='Print response matrix as pdf', action='store_true') 
     args = parser.parse_args()
     # execute only if run as a script
-    print('here')
     ROOT.gROOT.SetBatch()
-    print('here')
     main(args)

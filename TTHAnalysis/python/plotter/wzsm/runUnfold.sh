@@ -1,4 +1,4 @@
-python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -o test -c fitDiagnostics.root -r
+python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -o test -c incl_fitWZonly/common/WZSR.input.root -r
 
 #    parser.add_argument('-i', '--inputDir',   help='Input directory', default=None)
 #    parser.add_argument('-o', '--outputDir',  help='Output directory', default='./')
