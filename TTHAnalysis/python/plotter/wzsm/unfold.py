@@ -146,9 +146,13 @@ class Unfolder(object):
         c.SetRightMargin(0.1)
         ROOT.gStyle.SetOptStat(0)
         if self.responseAsPdf:
-            self.response_nom.Scale(1./self.response_nom.Integral())
-            self.response_alt.Scale(1./self.response_alt.Integral())
-            self.response_inc.Scale(1./self.response_inc.Integral())
+            resp_nom=copy.deepcopy(ROOT.TH2D(self.response_nom))
+            resp_alt=copy.deepcopy(ROOT.TH2D(self.response_alt))
+            resp_inc=copy.deepcopy(ROOT.TH2D(self.response_inc))
+            
+            resp_nom.Scale(1./resp_nom.Integral())
+            resp_alt.Scale(1./resp_alt.Integral())
+            resp_inc.Scale(1./resp_inc.Integral())
             # Compute stability
             diagonalSum_nom=0
             diagonalSum_alt=0
@@ -158,25 +162,32 @@ class Unfolder(object):
             odbN_inc=0
             for ibin in range(0, self.response_nom.GetNbinsX()):
                 # Am I taking the overflow diagonal one as well? Must check
-                diagonalSum_nom+= self.response_nom.GetBinContent(ibin, ibin)
-                diagonalSum_alt+= self.response_alt.GetBinContent(ibin, ibin)
-                diagonalSum_inc+= self.response_inc.GetBinContent(ibin, ibin)
-                for jbin in range(0, self.response_nom.GetNbinsY()):
+                diagonalSum_nom+= resp_nom.GetBinContent(ibin, ibin)
+                diagonalSum_alt+= resp_alt.GetBinContent(ibin, ibin)
+                diagonalSum_inc+= resp_inc.GetBinContent(ibin, ibin)
+                for jbin in range(0, resp_nom.GetNbinsY()):
                     if ibin != jbin:
-                        if self.response_nom.GetBinContent(ibin, jbin) != 0: odbN_nom+=1
-                        if self.response_alt.GetBinContent(ibin, jbin) != 0: odbN_alt+=1
-                        if self.response_inc.GetBinContent(ibin, jbin) != 0: odbN_inc+=1
+                        if resp_nom.GetBinContent(ibin, jbin) != 0: odbN_nom+=1
+                        if resp_alt.GetBinContent(ibin, jbin) != 0: odbN_alt+=1
+                        if resp_inc.GetBinContent(ibin, jbin) != 0: odbN_inc+=1
             oodFraction_nom=(1-diagonalSum_nom)
             oodFraction_alt=(1-diagonalSum_alt)
             oodFraction_inc=(1-diagonalSum_inc)
-            odbFraction_nom = odbN_nom/(self.response_nom.GetNbinsX()*self.response_nom.GetNbinsY())
-            odbFraction_alt = odbN_alt/(self.response_alt.GetNbinsX()*self.response_alt.GetNbinsY())
-            odbFraction_inc = odbN_inc/(self.response_inc.GetNbinsX()*self.response_inc.GetNbinsY())
+            odbFraction_nom = odbN_nom/(resp_nom.GetNbinsX()*resp_nom.GetNbinsY())
+            odbFraction_alt = odbN_alt/(resp_alt.GetNbinsX()*resp_alt.GetNbinsY())
+            odbFraction_inc = odbN_inc/(resp_inc.GetNbinsX()*resp_inc.GetNbinsY())
             print('Overall fraction of out-of-diagonal events | Fraction of out-of-diagonal filled bins:')
             print('\t nom: %0.3f | %0.3f' % (oodFraction_nom, odbFraction_nom))
             print('\t alt: %0.3f | %0.3f' % (oodFraction_alt, odbFraction_alt))
             print('\t inc: %0.3f | %0.3f' % (oodFraction_inc, odbFraction_inc))
-            
+            resp_nom.Draw('COLZ')
+            utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrixAsPdf_%s_Nom' % self.var))
+            c.Clear()
+            resp_alt.Draw('COLZ')
+            utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrixAsPdf_%s_Alt' % self.var))
+            c.Clear()
+            resp_inc.Draw('COLZ')
+            utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrixAsPdf_%s_Inc' % self.var))
 
         self.response_nom.Draw('COLZ')
         utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrix_%s_Nom' % self.var))
