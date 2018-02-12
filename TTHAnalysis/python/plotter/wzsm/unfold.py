@@ -49,6 +49,7 @@ class Unfolder(object):
         self.response_inc=None
         self.data=None
         self.mc=None
+        self.bkg=None
         self.proofOfConcept=False
         self.verbose=args.verbose
         self.combineInput=args.combineInput
@@ -68,7 +69,7 @@ class Unfolder(object):
         self.histmap=ROOT.TUnfold.kHistMapOutputVert
         self.regmode=ROOT.TUnfold.kRegModeNone
         self.constraint=ROOT.TUnfold.kEConstraintArea
-        
+        self.densitymode=ROOT.TUnfoldDensity.kDensityModeBinWidth
         self.load_data(args.data, args.mc, args.gen)
 
         # Make sure histogram errors are ON
@@ -104,16 +105,16 @@ class Unfolder(object):
                 data   = copy.deepcopy(file_handle.Get('x_data'))
                 signal = copy.deepcopy(file_handle.Get('x_prompt_WZ'))
                 bkg    = copy.deepcopy(self.get_total_bkg_as_hist(file_handle))
+                # Subtraction is done by the TUnfoldDensityClass
                 # Scheme 1: subtraction
-                print('Before subtraction. Data: %f, Bkg: %f, Signal: %f' % (data.Integral(), bkg.Integral(), signal.Integral()))  
-                data.Add(bkg, -1)
+                #print('Before subtraction. Data: %f, Bkg: %f, Signal: %f' % (data.Integral(), bkg.Integral(), signal.Integral()))  
+                #data.Add(bkg, -1)
                 self.data=data
                 self.mc=signal
-                print('Subtraction completed. Data-bkg: %f, Signal: %f' % (self.data.Integral(), self.mc.Integral() ))
-                print('Expected mu=(data-bkg)/NLO: %f' % (self.data.Integral()/self.mc.Integral()) )
-                # Scheme 2: no subtraction
-                # ...
-
+                self.bkg=bkg
+                #print('Subtraction completed. Data-bkg: %f, Signal: %f' % (self.data.Integral(), self.mc.Integral() ))
+                #print('Expected mu=(data-bkg)/NLO: %f' % (self.data.Integral()/self.mc.Integral()) )
+                
             else:
                 dataFile = utils.get_file_from_glob(os.path.join(folder, dataFName) if folder else dataFName)
                 mcFile   = utils.get_file_from_glob(os.path.join(folder, mcFName)   if folder else mcFName)
@@ -209,12 +210,13 @@ class Unfolder(object):
         utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Inc' % self.var))
     
     def get_total_bkg_as_hist(self, file_handle):
-        totbkg = copy.deepcopy(file_handle.Get('x_prompt_ZZH'))
-        totbkg.Add(file_handle.Get('x_fakes_appldata'))
-        totbkg.Add(file_handle.Get('x_convs'))
-        totbkg.Add(file_handle.Get('x_rares_ttX'))
-        totbkg.Add(file_handle.Get('x_rares_VVV'))
-        totbkg.Add(file_handle.Get('x_rares_tZq'))
+        totbkg = []
+        totbkg.append(copy.deepcopy(file_handle.Get('x_prompt_ZZH')))
+        totbkg.append(copy.deepcopy(file_handle.Get('x_fakes_appldata')))
+        totbkg.append(copy.deepcopy(file_handle.Get('x_convs')))
+        totbkg.append(copy.deepcopy(file_handle.Get('x_rares_ttX')))
+        totbkg.append(copy.deepcopy(file_handle.Get('x_rares_VVV')))
+        totbkg.append(copy.deepcopy(file_handle.Get('x_rares_tZq')))
         return totbkg
 
     def get_graph_as_hist(self, g, args):
@@ -246,6 +248,9 @@ class Unfolder(object):
         # kRegModeNone (no reg), kRegModeSize (reg amplitude of output), kRegModeDerivative (reg 1st derivative of output), kRegModeCurvature (reg 2nd derivative of output),  kRegModeMixed (mixed reg patterns)
         self.constraint=ROOT.TUnfold.kEConstraintArea
         # kEConstraintNone (no extra constraint), kEConstraintArea (enforce preservation of area)
+        self.densitymode= ROOT.TUnfoldDensity.kDensityModeBinWidth
+        # kDensityModeNone (no scale factors, matrix L is similar to unity matrix), kDensityModeBinWidth (scale factors from multidimensional bin width), kDensityModeUser (scale factors from user function in TUnfoldBinning), kDensityModeBinWidthAndUser (scale factors from multidimensional bin width and user function)
+
         label='noreg'
         # First do it with no regularization
         self.set_unfolding(key)
@@ -263,17 +268,26 @@ class Unfolder(object):
     def set_unfolding(self, key):
 
         if   key == 'nom':
-            self.unfold = ROOT.TUnfoldDensity(self.response_nom, self.histmap, self.regmode, self.constraint)
+            self.unfold = ROOT.TUnfoldDensity(self.response_nom, self.histmap, self.regmode, self.constraint, self.densitymode)
         elif key == 'alt':
-            self.unfold = ROOT.TUnfoldDensity(self.response_alt, self.histmap, self.regmode, self.constraint)
+            self.unfold = ROOT.TUnfoldDensity(self.response_alt, self.histmap, self.regmode, self.constraint, self.densitymode)
         elif key == 'inc':
-            self.unfold = ROOT.TUnfoldDensity(self.response_inc, self.histmap, self.regmode, self.constraint)
+            self.unfold = ROOT.TUnfoldDensity(self.response_inc, self.histmap, self.regmode, self.constraint, self.densitymode)
         else:
             print('ERROR: the response matrix you asked for (%s) does not exist' % key)
         # Check if the input data points are enough to constrain the unfolding process
         check = self.unfold.SetInput(self.data)
         if check>=10000:
             print('TUnfoldDensity error %d! Unfolding result may be wrong (not enough data to constrain the unfolding process)' % check)
+        # Now I should do subtraction using the class. I assign a 10% error on each background. This will have to be set automatically
+        scale_bgr=1.0
+        dscale_bgr=0.1
+        for iBkg in self.bkg:
+            self.unfold.SubtractBackground(iBkg,iBkg.GetName(),scale_bgr,dscale_bgr);
+        # Add systematic error
+        # unfold.AddSysError(histUnfoldMatrixSys,"signalshape_SYS", TUnfold::kHistMapOutputHoriz, TUnfoldSys::kSysErrModeMatrix)
+
+            
 
     def do_scan(self):
         # Scan the L-curve and find the best point
