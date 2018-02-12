@@ -63,6 +63,7 @@ class Unfolder(object):
         self.gHistInvEMatrix=ROOT.TH2D() # store the inverse of error matrix
         self.gHistInvJEMatrix=None
         self.inputDir=args.inputDir
+        self.outputDir=args.outputDir
         self.responseAsPdf=args.responseAsPdf
         
         self.load_data(args.data, args.mc, args.gen)
@@ -184,22 +185,22 @@ class Unfolder(object):
             print('\t alt: %0.3f | %0.3f = %d/%d' % (oodFraction_alt, odbFraction_alt, odbN_alt, (resp_alt.GetNbinsX()*resp_alt.GetNbinsY())))
             print('\t inc: %0.3f | %0.3f = %d/%d' % (oodFraction_inc, odbFraction_inc, odbN_inc, (resp_inc.GetNbinsX()*resp_inc.GetNbinsY())))
             resp_nom.Draw('COLZ')
-            utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrixAsPdf_%s_Nom' % self.var))
+            utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrixAsPdf_%s_Nom' % self.var))
             c.Clear()
             resp_alt.Draw('COLZ')
-            utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrixAsPdf_%s_Alt' % self.var))
+            utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrixAsPdf_%s_Alt' % self.var))
             c.Clear()
             resp_inc.Draw('COLZ')
-            utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrixAsPdf_%s_Inc' % self.var))
+            utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrixAsPdf_%s_Inc' % self.var))
 
         self.response_nom.Draw('COLZ')
-        utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrix_%s_Nom' % self.var))
+        utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Nom' % self.var))
         c.Clear()
         self.response_alt.Draw('COLZ')
-        utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrix_%s_Alt' % self.var))
+        utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Alt' % self.var))
         c.Clear()
         self.response_inc.Draw('COLZ')
-        utils.saveCanva(c, os.path.join(args.outputDir, 'responseMatrix_%s_Inc' % self.var))
+        utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Inc' % self.var))
     
     def get_total_bkg_as_hist(self, file_handle):
         totbkg = copy.deepcopy(file_handle.Get('x_prompt_ZZH'))
@@ -226,7 +227,7 @@ class Unfolder(object):
         return h
 
     def print_histo(self,h,opt=''):
-        c = TCanvas(h.GetName(), h.GetTitle(), 2000, 2000)
+        c = ROOT.TCanvas(h.GetName(), h.GetTitle(), 2000, 2000)
         c.cd()
         h.Draw(opt)
         utils.saveCanva(c, os.path.join(args.outputDir, h.GetName()))
@@ -288,8 +289,8 @@ class Unfolder(object):
         vt.append(t)
         vx.append(x)
         vy.append(y)
-        bestLcurve = TGraph(1, vx, vy)
-        bestLogTauLogChi2 = TGraph(1, vt, vx);
+        bestLcurve = ROOT.TGraph(1, vx, vy)
+        bestLogTauLogChi2 = ROOT.TGraph(1, vt, vx);
         
         # Retrieve results as histograms
 
@@ -304,10 +305,10 @@ class Unfolder(object):
         xmaxDet=10.0
         xminGen=0.0
         xmaxGen=10.0
-        histTotalError = TH1D('TotalError',';mass(gen)', nGen, xminGen, xmaxGen)# Data histogram with total errors
+        histTotalError = ROOT.TH1D('TotalError',';mass(gen)', nGen, xminGen, xmaxGen)# Data histogram with total errors
         for bin in range(1,nGen):
             histTotalError.SetBinContent(bin, histMunfold.GetBinContent(bin))
-            histTotalError.SetBinError(bin, TMath.Sqrt(histEmatTotal.GetBinContent(bin,bin)))
+            histTotalError.SetBinError(bin, ROOT.TMath.Sqrt(histEmatTotal.GetBinContent(bin,bin)))
 
 
         print('Now get global correlation coefficients')
@@ -354,7 +355,7 @@ class Unfolder(object):
 
         # =====================================================================
         #  plot some histograms
-        output=TCanvas('out', 'out', 2000, 2000)
+        output=ROOT.TCanvas('out', 'out', 2000, 2000)
         output.Divide(3,2)
 
         # Show the matrix which connects input and output
@@ -371,9 +372,9 @@ class Unfolder(object):
         #   MC input (black) [with completely wrong peak position and shape]
         #   unfolded data (blue)
         output.cd(2)
-        histTotalError.SetLineColor(kBlue)
+        histTotalError.SetLineColor(ROOT.kBlue)
         histTotalError.Draw("E")
-        histMunfold.SetLineColor(kGreen)
+        histMunfold.SetLineColor(ROOT.kGreen)
         histMunfold.Draw("SAME E1")
         ###histDensityGenData.SetLineColor(kRed)
         ##histDensityGenData.Draw("SAME")
@@ -384,13 +385,13 @@ class Unfolder(object):
         #    MC (black) [with completely wrong peak position and shape]
         #    unfolded data (blue)
         output.cd(3)
-        histMdetFold.SetLineColor(kBlue)
+        histMdetFold.SetLineColor(ROOT.kBlue)
         histMdetFold.Draw()
         #histMdetMC.Draw("SAME HIST")
 
         histInput=self.unfold.GetInput("Minput",";mass(det)")
 
-        histInput.SetLineColor(kRed)
+        histInput.SetLineColor(ROOT.kRed)
         histInput.Draw("SAME")
 
         # show correlation coefficients
@@ -400,16 +401,16 @@ class Unfolder(object):
         # show tau as a function of chi**2
         output.cd(5)
         self.logTauX.Draw()
-        bestLogTauLogChi2.SetMarkerColor(kRed)
+        bestLogTauLogChi2.SetMarkerColor(ROOT.kRed)
         bestLogTauLogChi2.Draw("*")
 
         # show the L curve
         output.cd(6)
         self.lCurve.Draw("AL")
-        bestLcurve.SetMarkerColor(kRed)
+        bestLcurve.SetMarkerColor(ROOT.kRed)
         bestLcurve.Draw("*")
 
-        output.SaveAs("testUnfold1.png")
+        output.SaveAs(os.path.join(self.outputDir, '2_testUnfold1_%s.png' % self.var))
 
         self.print_histo(histMunfold)
         self.print_histo(histMdetFold)
@@ -420,7 +421,8 @@ class Unfolder(object):
 ### End class Unfolder
 def main(args): 
     print('start')
-    for var in ['Zpt', 'ZconePt', 'nJet30']:
+    #for var in ['Zpt', 'ZconePt', 'nJet30']: # Must build correct gen matrix for nJet30 (need friend trees)
+    for var in ['Zpt', 'ZconePt']:
         u = Unfolder(args,var)
         u.print_responses()
         u.do_unfolding('nom')
