@@ -147,7 +147,7 @@ class Unfolder(object):
         ROOT.gStyle.SetPadBottomMargin(0.1)
         ROOT.gStyle.SetPadLeftMargin(0.1)
         ROOT.gStyle.SetPadRightMargin(0.1)
-        ROOT.gStyle.SetOptStat(0)
+        ROOT.gStyle.SetOptStat('uo')
         if self.responseAsPdf:
             resp_nom=copy.deepcopy(ROOT.TH2D(self.response_nom))
             resp_alt=copy.deepcopy(ROOT.TH2D(self.response_alt))
@@ -412,6 +412,7 @@ class Unfolder(object):
 
         output.SaveAs(os.path.join(self.outputDir, '2_testUnfold1_%s.png' % self.var))
 
+        # Individual saving.
         self.print_histo(histMunfold)
         self.print_histo(histMdetFold)
         self.print_histo(histEmatTotal,'colz')
