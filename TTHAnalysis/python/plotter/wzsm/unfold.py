@@ -65,6 +65,9 @@ class Unfolder(object):
         self.inputDir=args.inputDir
         self.outputDir=args.outputDir
         self.responseAsPdf=args.responseAsPdf
+        self.histmap=ROOT.TUnfold.kHistMapOutputVert
+        self.regmode=ROOT.TUnfold.kRegModeNone
+        self.constraint=ROOT.TUnfold.kEConstraintArea
         
         self.load_data(args.data, args.mc, args.gen)
 
@@ -229,25 +232,42 @@ class Unfolder(object):
         print('h bins: %d; g bin: %d' %(h.GetNbinsX(), g.GetN()))
         return h
 
-    def print_histo(self,h,key,opt=''):
+    def print_histo(self,h,key,label,opt=''):
         c = ROOT.TCanvas(h.GetName(), h.GetTitle(), 2000, 2000)
         c.cd()
         h.Draw(opt)
-        utils.saveCanva(c, os.path.join(args.outputDir, '2_unfoldResults_%s_%s_%s' % (key, self.var, h.GetName()) ))
+        utils.saveCanva(c, os.path.join(args.outputDir, '2_unfoldResults_%s_%s_%s_%s' % (label, key, self.var, h.GetName()) ))
 
     def do_unfolding(self, key):
+
+        self.histmap=ROOT.TUnfold.kHistMapOutputVert
+        # kHistMapOutputHoriz (truth is in X axis), kHistMapOutputVert (truth is in Y axis)
+        self.regmode=ROOT.TUnfold.kRegModeNone
+        # kRegModeNone (no reg), kRegModeSize (reg amplitude of output), kRegModeDerivative (reg 1st derivative of output), kRegModeCurvature (reg 2nd derivative of output),  kRegModeMixed (mixed reg patterns)
+        self.constraint=ROOT.TUnfold.kEConstraintArea
+        # kEConstraintNone (no extra constraint), kEConstraintArea (enforce preservation of area)
+        label='noreg'
+        # First do it with no regularization
         self.set_unfolding(key)
         self.do_scan()
-        self.print_unfolding_results(key)
+        self.print_unfolding_results(key, label)
+     
+        # Now add simple regularization on the amplitude
+        self.regmode=ROOT.TUnfold.kRegModeSize
+        label='regamp'
+        self.set_unfolding(key)
+        self.do_scan()
+        self.print_unfolding_results(key, label)
+
 
     def set_unfolding(self, key):
 
         if   key == 'nom':
-            self.unfold = ROOT.TUnfoldDensity(self.response_nom,ROOT.TUnfold.kHistMapOutputVert)
+            self.unfold = ROOT.TUnfoldDensity(self.response_nom, self.histmap, self.regmode, self.constraint)
         elif key == 'alt':
-            self.unfold = ROOT.TUnfoldDensity(self.response_alt,ROOT.TUnfold.kHistMapOutputVert)
+            self.unfold = ROOT.TUnfoldDensity(self.response_alt, self.histmap, self.regmode, self.constraint)
         elif key == 'inc':
-            self.unfold = ROOT.TUnfoldDensity(self.response_inc,ROOT.TUnfold.kHistMapOutputVert)
+            self.unfold = ROOT.TUnfoldDensity(self.response_inc, self.histmap, self.regmode, self.constraint)
         else:
             print('ERROR: the response matrix you asked for (%s) does not exist' % key)
         # Check if the input data points are enough to constrain the unfolding process
@@ -264,7 +284,11 @@ class Unfolder(object):
             ROOT.gErrorIgnoreLevel=kInfo
 
         # Scan the parameter tau, finding the kink in the L-curve. Finally, do the unfolding for the best choice of tau
-        self.iBest=self.unfold.ScanLcurve(self.nScan, self.tauMin, self.tauMax, self.lCurve, self.logTauX, self.logTauY)
+        if self.regmode == ROOT.TUnfold.kRegModeNone:
+            self.unfold.DoUnfold(0.0)
+            self.iBest=0.0
+        else:
+            self.iBest=self.unfold.ScanLcurve(self.nScan, self.tauMin, self.tauMax, self.lCurve, self.logTauX, self.logTauY)
 
         # Reset verbosity
         if self.verbose:
@@ -273,7 +297,7 @@ class Unfolder(object):
         # Here do something for the error
         ### 
 
-    def print_unfolding_results(self, key):
+    def print_unfolding_results(self, key, label):
         # Print results
         print('Tau: %d' % self.unfold.GetTau())
         print('chi^2: %d+%d/%d' %(self.unfold.GetChi2A(), self.unfold.GetChi2L(), self.unfold.GetNdf() ) )
@@ -281,19 +305,23 @@ class Unfolder(object):
         
         print('ibest: %d, type %s' % ( self.iBest, type(self.iBest)))
         # Visualize best choice of tau
-        t=0.0
-        x=0.0
-        y=0.0
-        self.logTauX.GetKnot(self.iBest, ROOT.Double(t), ROOT.Double(x))
-        self.logTauY.GetKnot(self.iBest, ROOT.Double(t), ROOT.Double(y))
-        vt =array('d')
-        vx =array('d')
-        vy =array('d')
-        vt.append(t)
-        vx.append(x)
-        vy.append(y)
-        bestLcurve = ROOT.TGraph(1, vx, vy)
-        bestLogTauLogChi2 = ROOT.TGraph(1, vt, vx);
+
+        bestLcurve = None
+        bestLogTauLogChi2 = None
+        if self.regmode is not ROOT.TUnfold.kRegModeNone:
+            t=0.0
+            x=0.0
+            y=0.0
+            self.logTauX.GetKnot(self.iBest, ROOT.Double(t), ROOT.Double(x))
+            self.logTauY.GetKnot(self.iBest, ROOT.Double(t), ROOT.Double(y))
+            vt =array('d')
+            vx =array('d')
+            vy =array('d')
+            vt.append(t)
+            vx.append(x)
+            vy.append(y)
+            bestLcurve = ROOT.TGraph(1, vx, vy)
+            bestLogTauLogChi2 = ROOT.TGraph(1, vt, vx);
         
         # Retrieve results as histograms
 
@@ -401,25 +429,27 @@ class Unfolder(object):
         output.cd(4)
         ##histRhoi.Draw()
 
-        # show tau as a function of chi**2
-        output.cd(5)
-        self.logTauX.Draw()
-        bestLogTauLogChi2.SetMarkerColor(ROOT.kRed)
-        bestLogTauLogChi2.Draw("*")
 
-        # show the L curve
-        output.cd(6)
-        self.lCurve.Draw("AL")
-        bestLcurve.SetMarkerColor(ROOT.kRed)
-        bestLcurve.Draw("*")
+        if self.regmode is not ROOT.TUnfold.kRegModeNone:
+            # show tau as a function of chi**2
+            output.cd(5)
+            self.logTauX.Draw()
+            bestLogTauLogChi2.SetMarkerColor(ROOT.kRed)
+            bestLogTauLogChi2.Draw("*")
+            
+            # show the L curve
+            output.cd(6)
+            self.lCurve.Draw("AL")
+            bestLcurve.SetMarkerColor(ROOT.kRed)
+            bestLcurve.Draw("*")
 
-        output.SaveAs(os.path.join(self.outputDir, '2_testUnfold1_%s_%s.png' % (key, self.var)))
+        output.SaveAs(os.path.join(self.outputDir, '2_unfold_%s_%s_%s.png' % (label, key, self.var)))
 
         # Individual saving.
-        self.print_histo(histMunfold, key)
-        self.print_histo(histMdetFold, key)
-        self.print_histo(histEmatTotal, key, 'colz')
-        self.print_histo(histTotalError, key)
+        self.print_histo(histMunfold, key, label)
+        self.print_histo(histMdetFold, key, label)
+        self.print_histo(histEmatTotal, key, label, 'colz')
+        self.print_histo(histTotalError, key, label)
 
 
 ### End class Unfolder
