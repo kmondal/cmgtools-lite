@@ -338,18 +338,17 @@ class Unfolder(object):
             bestLogTauLogChi2 = ROOT.TGraph(1, vt, vx);
         
         # Retrieve results as histograms
-
         histMunfold=self.unfold.GetOutput('Unfolded') # Unfolded result
         histMdetFold=self.unfold.GetFoldedOutput('FoldedBack') # Unfolding result, folded back
         # histEmatData=TH1(self.unfold.GetEmatrix('EmatData0')) # Error matrix (stat errors only)
         histEmatTotal=self.unfold.GetEmatrixTotal('EmatTotal') # Total error matrix. Migration matrix uncorrelated and correlated syst errors added in quadrature to the data statistical errors
 
-        nDet=250
-        nGen=100
-        xminDet=0.0
-        xmaxDet=10.0
-        xminGen=0.0
-        xmaxGen=10.0
+        nDet=self.response_nom.GetNbinsX()
+        nGen=self.response_nom.GetNbinsY()
+        xminDet=self.response_nom.GetXaxis().GetBinLowEdge(1)
+        xmaxDet=self.response_nom.GetXaxis().GetBinUpEdge(self.response_nom.GetNbinsX())
+        xminGen=self.response_nom.GetYaxis().GetBinLowEdge(1)
+        xmaxGen=self.response_nom.GetYaxis().GetBinUpEdge(self.response_nom.GetNbinsY())
         histTotalError = ROOT.TH1D('TotalError',';mass(gen)', nGen, xminGen, xmaxGen)# Data histogram with total errors
         for bin in range(1,nGen):
             histTotalError.SetBinContent(bin, histMunfold.GetBinContent(bin))
