@@ -68,6 +68,9 @@ class Unfolder(object):
         
         self.load_data(args.data, args.mc, args.gen)
 
+        # Make sure histogram errors are ON
+        ROOT.TH1.SetDefaultSumw2()
+
 
     def load_data(self, dataFName, mcFName, genFName, treeName=['tree']):
         folder=self.inputDir
@@ -226,16 +229,16 @@ class Unfolder(object):
         print('h bins: %d; g bin: %d' %(h.GetNbinsX(), g.GetN()))
         return h
 
-    def print_histo(self,h,opt=''):
+    def print_histo(self,h,key,opt=''):
         c = ROOT.TCanvas(h.GetName(), h.GetTitle(), 2000, 2000)
         c.cd()
         h.Draw(opt)
-        utils.saveCanva(c, os.path.join(args.outputDir, h.GetName()))
+        utils.saveCanva(c, os.path.join(args.outputDir, '2_unfoldResults_%s_%s_%s' % (key, self.var, h.GetName()) ))
 
     def do_unfolding(self, key):
         self.set_unfolding(key)
         self.do_scan()
-        self.print_unfolding_results()
+        self.print_unfolding_results(key)
 
     def set_unfolding(self, key):
 
@@ -270,7 +273,7 @@ class Unfolder(object):
         # Here do something for the error
         ### 
 
-    def print_unfolding_results(self):
+    def print_unfolding_results(self, key):
         # Print results
         print('Tau: %d' % self.unfold.GetTau())
         print('chi^2: %d+%d/%d' %(self.unfold.GetChi2A(), self.unfold.GetChi2L(), self.unfold.GetNdf() ) )
@@ -410,20 +413,20 @@ class Unfolder(object):
         bestLcurve.SetMarkerColor(ROOT.kRed)
         bestLcurve.Draw("*")
 
-        output.SaveAs(os.path.join(self.outputDir, '2_testUnfold1_%s.png' % self.var))
+        output.SaveAs(os.path.join(self.outputDir, '2_testUnfold1_%s_%s.png' % (key, self.var)))
 
         # Individual saving.
-        self.print_histo(histMunfold)
-        self.print_histo(histMdetFold)
-        self.print_histo(histEmatTotal,'colz')
-        self.print_histo(histTotalError)
+        self.print_histo(histMunfold, key)
+        self.print_histo(histMdetFold, key)
+        self.print_histo(histEmatTotal, key, 'colz')
+        self.print_histo(histTotalError, key)
 
 
 ### End class Unfolder
 def main(args): 
     print('start')
-    #for var in ['Zpt', 'ZconePt', 'nJet30']: # Must build correct gen matrix for nJet30 (need friend trees)
-    for var in ['Zpt', 'ZconePt']:
+    #for var in ['Zpt', 'ZconePt', 'nJet30']: # Must build correct gen matrix for nJet30 (need friend trees). Also, don't study conePt for now
+    for var in ['Zpt']:
         u = Unfolder(args,var)
         u.print_responses()
         u.do_unfolding('nom')
