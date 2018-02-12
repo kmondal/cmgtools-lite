@@ -471,9 +471,9 @@ class Unfolder(object):
             output.cd(6)
             self.lCurve.Draw("AL")
             bestLcurve.SetMarkerColor(ROOT.kRed)
-            bestLcurve.SetLineWidth(3)
+            bestLcurve.SetMarkerStyle(21)
             bestLcurve.Draw("*")
-
+            
         output.SaveAs(os.path.join(self.outputDir, '2_unfold_%s_%s_%s.png' % (label, key, self.var)))
 
         # Individual saving.
