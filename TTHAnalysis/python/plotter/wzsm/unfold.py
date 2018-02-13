@@ -52,7 +52,7 @@ class Unfolder(object):
         self.bkg=None
         self.verbose=args.verbose
         self.combineInput=args.combineInput
-        self.nScan=100
+        self.nScan=20
         # Automatic L-curve scan: start with taumin=taumax=0.0
         self.tauMin=0.0
         self.tauMax=0.0
@@ -111,22 +111,22 @@ class Unfolder(object):
 
         # Add reading gen file to build response matrix
         self.get_responses()
-        self.rebin_all()
+        #self.rebin_all(4)
         # Pass through numpy arrays?
         print('Data correctly loaded.')
         #return data, mc, response
         
-    def rebin_all(self):
-        self.data.Rebin(2)
-        self.mc.Rebin(2)
+    def rebin_all(self,n):
+        self.data.Rebin(n/2)
+        self.mc.Rebin(n/2)
         for i in range(1,len(self.bkg)):
-            self.bkg[i].Rebin(2)
-        self.response_nom.RebinX(2)
-        self.response_alt.RebinX(2)
-        self.response_inc.RebinX(2)
-        self.response_nom.RebinY(2)
-        self.response_alt.RebinY(2)
-        self.response_inc.RebinY(2)
+            self.bkg[i].Rebin(n/2)
+        self.response_nom.RebinX(n/2)
+        self.response_alt.RebinX(n/2)
+        self.response_inc.RebinX(n/2)
+        self.response_nom.RebinY(n)
+        self.response_alt.RebinY(n)
+        self.response_inc.RebinY(n)
 
     def get_responses(self):
         print('Acquiring response matrices.')
@@ -532,6 +532,8 @@ class Unfolder(object):
             bestLogTauLogChi2.Draw("P")
             # show the L curve
             output.cd(6)
+            self.lCurve.GetXaxis().SetTitle('log#chi_{A}^{2}')
+            self.lCurve.GetYaxis().SetTitle('log#chi_{L}^{2}')
             self.lCurve.Draw("AL")
             bestLcurve.SetMarkerColor(ROOT.kRed)
             bestLcurve.SetMarkerStyle(ROOT.kFullSquare)
