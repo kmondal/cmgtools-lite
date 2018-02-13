@@ -236,20 +236,26 @@ class Unfolder(object):
         self.densitymode= ROOT.TUnfoldDensity.kDensityModeBinWidth
         # kDensityModeNone (no scale factors, matrix L is similar to unity matrix), kDensityModeBinWidth (scale factors from multidimensional bin width), kDensityModeUser (scale factors from user function in TUnfoldBinning), kDensityModeBinWidthAndUser (scale factors from multidimensional bin width and user function)
 
-        label='noreg'
+
         # First do it with no regularization
+        label='noreg'
         self.set_unfolding(key)
         self.do_scan()
         self.print_unfolding_results(key, label)
      
+
+
         # Now add simple regularization on the amplitude
+        self.logTauX=ROOT.TSpline3() # TSpline*
+        self.logTauY=ROOT.TSpline3() # TSpline*
+        self.lCurve=ROOT.TGraph(0) # TGraph*
         self.regmode=ROOT.TUnfold.kRegModeSize
         label='regamp'
         self.set_unfolding(key)
         self.do_scan()
         self.print_unfolding_results(key, label)
 
-
+     
     def set_unfolding(self, key):
 
         if   key == 'nom':
@@ -287,8 +293,9 @@ class Unfolder(object):
             self.unfold.DoUnfold(0.0)
             self.iBest=0.0
         else:
-            self.iBest=self.unfold.ScanLcurve(self.nScan, self.tauMin, self.tauMax, self.lCurve, self.logTauX, self.logTauY)
-
+            #self.iBest=self.unfold.ScanLcurve(self.nScan, self.tauMin, self.tauMax, self.lCurve, self.logTauX, self.logTauY)
+            self.iBest=self.unfold.ScanLcurve(100, 0.1, 10, self.lCurve, self.logTauX, self.logTauY)
+            
         # Reset verbosity
         if self.verbose:
             ROOT.gErrorIgnoreLevel=oldInfo
@@ -417,6 +424,13 @@ class Unfolder(object):
         #histDetNormBgr1->Draw("SAME HIST");
         histDetNormBgrTotal.Draw("SAME HIST")
 
+        leg_1 = ROOT.TLegend(0.5,0.5,0.9,0.9)
+        leg_1.SetTextSize(0.06)
+        leg_1.AddEntry(self.data, 'Data', 'p')
+        leg_1.AddEntry(self.mc, 'Exp. signal', 'la')
+        leg_1.AddEntry(histDetNormBgrTotal, 'Exp. background', 'l')
+        leg_1.Draw()
+
         print(self.data.GetNbinsX())
         print(self.mc.GetNbinsX())
         print(histDetNormBgrTotal.GetNbinsX())
@@ -437,6 +451,12 @@ class Unfolder(object):
         ###histDensityGenData.SetLineColor(kRed)
         ##histDensityGenData.Draw("SAME")
         ##histDensityGenMC.Draw("SAME HIST")
+        leg_2 = ROOT.TLegend(0.5,0.5,0.9,0.9)
+        leg_2.SetTextSize(0.06)
+        leg_2.AddEntry(histTotalError, 'Data w/ tot.err.', 'pe')
+        leg_2.AddEntry(histMunfold, 'Unfolded data', 'la')
+        leg_2.AddEntry(self.mc, 'Exp. signal', 'l')
+        leg_2.Draw()
         
         # show detector level distributions
         #    data (red)
@@ -454,6 +474,13 @@ class Unfolder(object):
         histInput.SetLineColor(ROOT.kRed)
         histInput.SetLineWidth(3)
         histInput.Draw("SAME")
+        leg_3 = ROOT.TLegend(0.5,0.5,0.9,0.9)
+        leg_3.SetTextSize(0.06)
+        leg_3.AddEntry(self.mc, 'Exp. signal', 'l')
+        leg_3.AddEntry(histMdetFold, 'Data folded back', 'l')
+        leg_3.AddEntry(histInput, 'Input', 'la')
+        leg_3.Draw()
+
 
         # show correlation coefficients
         output.cd(4)
@@ -471,17 +498,17 @@ class Unfolder(object):
             output.cd(6)
             self.lCurve.Draw("AL")
             bestLcurve.SetMarkerColor(ROOT.kRed)
-            bestLcurve.SetMarkerStyle(21)
+            #bestLcurve.SetMarkerStyle(21)
             bestLcurve.Draw("*")
             
         output.SaveAs(os.path.join(self.outputDir, '2_unfold_%s_%s_%s.png' % (label, key, self.var)))
 
-        # Individual saving.
-        self.print_histo(histMunfold, key, label)
-        self.print_histo(histMdetFold, key, label)
-        self.print_histo(histEmatData, key, label, 'colz')
-        self.print_histo(histEmatTotal, key, label, 'colz')
-        self.print_histo(histTotalError, key, label)
+        # # Individual saving.
+        # self.print_histo(histMunfold, key, label)
+        # self.print_histo(histMdetFold, key, label)
+        # self.print_histo(histEmatData, key, label, 'colz')
+        # self.print_histo(histEmatTotal, key, label, 'colz')
+        # self.print_histo(histTotalError, key, label)
 
 
 ### End class Unfolder
