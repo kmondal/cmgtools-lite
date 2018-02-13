@@ -111,11 +111,23 @@ class Unfolder(object):
 
         # Add reading gen file to build response matrix
         self.get_responses()
-
+        self.rebin_all()
         # Pass through numpy arrays?
         print('Data correctly loaded.')
         #return data, mc, response
         
+    def rebin_all(self):
+        self.data.Rebin(2)
+        self.mc.Rebin(2)
+        for i in range(1,len(self.bkg)):
+            self.bkg[i].Rebin(2)
+        self.response_nom.RebinX(2)
+        self.response_alt.RebinX(2)
+        self.response_inc.RebinX(2)
+        self.response_nom.RebinY(2)
+        self.response_alt.RebinY(2)
+        self.response_inc.RebinY(2)
+
     def get_responses(self):
         print('Acquiring response matrices.')
         folder=os.path.join(self.inputDir, 'response/%s_response_WZ_' % self.var)
@@ -249,6 +261,7 @@ class Unfolder(object):
         self.logTauX=ROOT.TSpline3() # TSpline*
         self.logTauY=ROOT.TSpline3() # TSpline*
         self.lCurve=ROOT.TGraph(0) # TGraph*
+        self.logTauCurvature=ROOT.TSpline3() # TSpline*
         self.regmode=ROOT.TUnfold.kRegModeSize
         label='regamp'
         self.set_unfolding(key)
@@ -482,12 +495,16 @@ class Unfolder(object):
         leg_3.Draw()
 
 
+        output.cd(4) 
         # show correlation coefficients
-        output.cd(4)
-        ##histRhoi.Draw()
-
+        # #histRhoi.Draw()
 
         if self.regmode is not ROOT.TUnfold.kRegModeNone:
+
+            # from v610# # Show logTauCurvature (should be peaked similarly to a Gaussian)
+            # from v610# output.cd(4)
+            # from v610# self.logTauCurvature.SetLineWidth(3)
+            # from v610# self.logTauCurvature.Draw()
             # show tau as a function of chi**2
             output.cd(5)
             self.logTauX.Draw()
