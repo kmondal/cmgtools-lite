@@ -3,6 +3,7 @@
 #Use skimmed (3LepGood, minMllAFAS > 4) instead
 #INPUTDIR="/pool/ciencias/HeppyTrees/RA7/estructura/treesM17"
 INPUTDIR="/pool/ciencias/userstorage/carlosec/wzSkimmed/"
+INPUTDIR="/pool/ciencias/HeppyTrees/RA7/estructura/wzSkimmed/"
 if [ "$1" == "response" ] || [ "$2" == "response" ]; then
     INPUTDIR="/pool/ciencias/HeppyTrees/RA7/wz/wzUnskimmed/"
 fi
