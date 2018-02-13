@@ -52,7 +52,7 @@ class Unfolder(object):
         self.bkg=None
         self.verbose=args.verbose
         self.combineInput=args.combineInput
-        self.nScan=30
+        self.nScan=100
         # Automatic L-curve scan: start with taumin=taumax=0.0
         self.tauMin=0.0
         self.tauMax=0.0
@@ -306,8 +306,7 @@ class Unfolder(object):
             self.unfold.DoUnfold(0.0)
             self.iBest=0.0
         else:
-            #self.iBest=self.unfold.ScanLcurve(self.nScan, self.tauMin, self.tauMax, self.lCurve, self.logTauX, self.logTauY)
-            self.iBest=self.unfold.ScanLcurve(100, 0.1, 10, self.lCurve, self.logTauX, self.logTauY)
+            self.iBest=self.unfold.ScanLcurve(self.nScan, self.tauMin, self.tauMax, self.lCurve, self.logTauX, self.logTauY)
             
         # Reset verbosity
         if self.verbose:
@@ -328,11 +327,11 @@ class Unfolder(object):
         bestLcurve = None
         bestLogTauLogChi2 = None
         if self.regmode is not ROOT.TUnfold.kRegModeNone:
-            t=0.0
-            x=0.0
-            y=0.0
-            self.logTauX.GetKnot(self.iBest, ROOT.Double(t), ROOT.Double(x))
-            self.logTauY.GetKnot(self.iBest, ROOT.Double(t), ROOT.Double(y))
+            t=ROOT.Double(0)
+            x=ROOT.Double(0)
+            y=ROOT.Double(0)
+            self.logTauX.GetKnot(self.iBest, t, x)
+            self.logTauY.GetKnot(self.iBest, t, y)
             vt =array('d')
             vx =array('d')
             vy =array('d')
@@ -412,7 +411,7 @@ class Unfolder(object):
         # =====================================================================
         #  plot some histograms
         output=ROOT.TCanvas('out', 'out', 2000, 2000)
-        output.Divide(3,2)
+        output.Divide(4,2)
 
         # Show the matrix which connects input and output
         # There are overflow bins at the bottom, not shown in the plot
@@ -457,8 +456,8 @@ class Unfolder(object):
         histTotalError.SetLineColor(ROOT.kBlue)
         histTotalError.Draw("E")
         # Unfolded data
-        histMunfold.SetLineColor(ROOT.kGreen)
-        histMunfold.Draw("SAME E1")
+        histMunfold.SetLineColor(ROOT.kGreen+3)
+        histMunfold.Draw("SAME E1HIST")
         # MC truth (folded) Must substitute with input truth from response matrix probably
         self.mc.Draw("SAME HIST")
         ###histDensityGenData.SetLineColor(kRed)
@@ -466,7 +465,7 @@ class Unfolder(object):
         ##histDensityGenMC.Draw("SAME HIST")
         leg_2 = ROOT.TLegend(0.5,0.5,0.9,0.9)
         leg_2.SetTextSize(0.06)
-        leg_2.AddEntry(histTotalError, 'Data w/ tot.err.', 'pe')
+        leg_2.AddEntry(histTotalError, 'Data w/ tot.err.', 'l')
         leg_2.AddEntry(histMunfold, 'Unfolded data', 'la')
         leg_2.AddEntry(self.mc, 'Exp. signal', 'l')
         leg_2.Draw()
@@ -483,7 +482,6 @@ class Unfolder(object):
         self.mc.Draw("SAME HIST")
 
         histInput=self.unfold.GetInput("Minput",";mass(det)")
-
         histInput.SetLineColor(ROOT.kRed)
         histInput.SetLineWidth(3)
         histInput.Draw("SAME")
@@ -499,6 +497,26 @@ class Unfolder(object):
         # show correlation coefficients
         # #histRhoi.Draw()
 
+        # Folded back
+        histMdetFold.SetLineColor(ROOT.kBlue)
+        histMdetFold.Draw()
+        # Original data
+        self.data.Draw("E")
+        subdata=self.sub_bkg_by_hand()
+        subdata.SetLineColor(ROOT.kBlack-3)
+        subdata.SetLineWidth(3)
+        subdata.Draw('histsame')
+        histInput=self.unfold.GetInput("Minput",";mass(det)")
+        histInput.SetLineColor(ROOT.kRed)
+        histInput.SetLineWidth(3)
+        histInput.Draw("SAME")
+        leg_4 = ROOT.TLegend(0.5,0.5,0.9,0.9)
+        leg_4.SetTextSize(0.06)
+        leg_4.AddEntry(self.data, 'Original data', 'pe')
+        leg_4.AddEntry(subdata, 'Data-bkg by hand', 'la')
+        leg_4.AddEntry(histInput, 'Input data', 'la')
+        leg_4.Draw()
+
         if self.regmode is not ROOT.TUnfold.kRegModeNone:
 
             # from v610# # Show logTauCurvature (should be peaked similarly to a Gaussian)
@@ -509,14 +527,16 @@ class Unfolder(object):
             output.cd(5)
             self.logTauX.Draw()
             bestLogTauLogChi2.SetMarkerColor(ROOT.kRed)
-            bestLogTauLogChi2.SetLineWidth(3)
-            bestLogTauLogChi2.Draw("*")            
+            bestLogTauLogChi2.SetMarkerStyle(ROOT.kFullSquare)
+            bestLogTauLogChi2.SetMarkerSize(2)
+            bestLogTauLogChi2.Draw("P")
             # show the L curve
             output.cd(6)
             self.lCurve.Draw("AL")
             bestLcurve.SetMarkerColor(ROOT.kRed)
-            #bestLcurve.SetMarkerStyle(21)
-            bestLcurve.Draw("*")
+            bestLcurve.SetMarkerStyle(ROOT.kFullSquare)
+            bestLcurve.SetMarkerSize(2)
+            bestLcurve.Draw("P")
             
         output.SaveAs(os.path.join(self.outputDir, '2_unfold_%s_%s_%s.png' % (label, key, self.var)))
 
@@ -526,6 +546,13 @@ class Unfolder(object):
         # self.print_histo(histEmatData, key, label, 'colz')
         # self.print_histo(histEmatTotal, key, label, 'colz')
         # self.print_histo(histTotalError, key, label)
+
+    def sub_bkg_by_hand(self):
+        subdata=copy.deepcopy(ROOT.TH1D(self.data))
+        for i in range(1,len(self.bkg)):
+            subdata.Add(self.bkg[i], -1)
+        return subdata
+
 
 
 ### End class Unfolder
