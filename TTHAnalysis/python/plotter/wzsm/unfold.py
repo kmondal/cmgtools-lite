@@ -29,6 +29,8 @@ class ResponseComputation:
         
         
         
+
+
         
 class AcceptanceComputer:
 
@@ -127,6 +129,28 @@ class Unfolder(object):
         self.response_nom.RebinY(n)
         self.response_alt.RebinY(n)
         self.response_inc.RebinY(n)
+
+    def study_responses(self):
+        for matrix in [self.response_nom, self.response_alt, self.response_inc]:
+            profX=matrix.ProfileX('%s_profX'%matrix.GetName(), 0, matrix.GetNbinsY())
+            profY=matrix.ProfileY('%s_profY'%matrix.GetName(), 0, matrix.GetNbinsX())
+            print(profX)
+            print(profY)
+            c = ROOT.TCanvas('matrix', 'Response Matrix', 2000, 1000)
+            # Margin not being applied somehow. Must do it via gStyle?
+            ROOT.gStyle.SetPadTopMargin(0.1)
+            ROOT.gStyle.SetPadBottomMargin(0.1)
+            ROOT.gStyle.SetPadLeftMargin(0.1)
+            ROOT.gStyle.SetPadRightMargin(0.1)
+            ROOT.gStyle.SetOptStat('uo')
+            c.Divide(2,1)
+            c.cd(1)
+            profX.Draw("PE")
+            c.cd(2)
+            profY.Draw("PE")
+            ###### HERE ######utils.saveCanva(c, os.path.join(self.outputDir, '2_binningStability_%s_Nom' % self.var))            
+            ###### HERE ######utils.saveCanva(c, os.path.join(self.outputDir, '2_binningStability_%s_Nom' % self.var))            
+            ###### HERE ######utils.saveCanva(c, os.path.join(self.outputDir, '2_binningStability_%s_Nom' % self.var))            
 
     def get_responses(self):
         print('Acquiring response matrices.')
@@ -564,6 +588,7 @@ def main(args):
     for var in ['Zpt']:
         u = Unfolder(args,var)
         u.print_responses()
+        u.study_responses()
         u.do_unfolding('nom')
         u.do_unfolding('alt')
         u.do_unfolding('inc')
