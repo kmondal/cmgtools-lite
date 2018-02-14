@@ -533,6 +533,18 @@ class Unfolder(object):
             histUnfoldTotal.SetBinContent(ibin, histMunfold.GetBinContent(ibin))
             histUnfoldTotal.SetBinError(ibin, ROOT.TMath.Sqrt(histEmatTotal.GetBinContent(ibin,ibin)))
 
+        histCorr=ROOT.TH2D("Corr(total)",";%s bin (gen);%s bin(gen)" % (self.var, self.var), nGen,0,nGen,nGen,0,nGen)
+        for ibin in range(0, nGen+2):
+            ei=0
+            ej=0
+            ei=ROOT.TMath.Sqrt(histEmatTotal.GetBinContent(ibin,ibin))
+            if ei<=0.0:
+                continue
+            for jbin in range(0, nGen+2):
+                ej=ROOT.TMath.Sqrt(histEmatTotal.GetBinContent(jbin,jbin))
+                if ej<=0.0:
+                    continue
+                histCorr.SetBinContent(ibin,jbin,histEmatTotal.GetBinContent(ibin,jbin)/ei/ej)
 
         print('Now get global correlation coefficients')
         # get global correlation coefficients
@@ -655,10 +667,12 @@ class Unfolder(object):
         #    MC (black) [with completely wrong peak position and shape]
         #    unfolded data (blue)
         output.cd(3)
+        # Data
+        self.data.Draw('PE')
         # MC folded back
         histMdetFold.SetLineColor(ROOT.kBlack-3)
         histMdetFold.SetLineWidth(2)
-        histMdetFold.Draw()
+        histMdetFold.Draw('SAME')
         # Original folded MC
         #self.mc.Draw("SAME HIST")
         bkgStacked.Draw("SAME HIST")
@@ -666,8 +680,6 @@ class Unfolder(object):
         #histInput.SetLineColor(ROOT.kRed)
         #histInput.SetLineWidth(3)
         #histInput.Draw("SAME")
-        # Data
-        self.data.Draw('PESAME')
         leg_3 = ROOT.TLegend(0.5,0.7,0.9,0.9)
         leg_3.SetTextSize(0.06)
         leg_3.AddEntry(self.data, 'Data', 'l')
@@ -719,7 +731,17 @@ class Unfolder(object):
             bestLcurve.SetMarkerStyle(ROOT.kFullSquare)
             bestLcurve.SetMarkerSize(2)
             bestLcurve.Draw("P")
-            
+       
+        output.cd(7)
+        if 'nom' in key:
+            self.response_nom.Draw('COLZ')
+        elif 'alt' in key:
+            self.response_nom.Draw('COLZ')
+        elif 'inc' in key:
+            self.response_inc.Draw('COLZ')
+
+        output.cd(8)
+        histCorr.Draw('COLZ')
         output.SaveAs(os.path.join(self.outputDir, '2_unfold_%s_%s_%s.png' % (label, key, self.var)))
 
         # # Individual saving.
