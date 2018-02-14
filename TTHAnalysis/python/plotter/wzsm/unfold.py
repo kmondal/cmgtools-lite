@@ -72,7 +72,7 @@ class Unfolder(object):
         self.responseAsPdf=args.responseAsPdf
         self.histmap=ROOT.TUnfold.kHistMapOutputVert
         self.regmode=ROOT.TUnfold.kRegModeNone
-        self.constraint=ROOT.TUnfold.kEConstraintArea
+        self.constraint=ROOT.TUnfold.kEConstraintNone
         self.densitymode=ROOT.TUnfoldDensity.kDensityModeeNone
         self.load_data(args.data, args.mc, args.gen)
 
@@ -423,7 +423,7 @@ class Unfolder(object):
         self.logTauY=ROOT.TSpline3() # TSpline*
         self.lCurve=ROOT.TGraph(0) # TGraph*
         self.logTauCurvature=ROOT.TSpline3() # TSpline*
-        self.regmode=ROOT.TUnfold.kRegModeSize
+        self.regmode=ROOT.TUnfold.kRegModeCurvature
         label='regamp'
         self.set_unfolding(key)
         self.do_scan()
@@ -624,26 +624,22 @@ class Unfolder(object):
         output.cd(2)
         # Unfolded data with total error
         histUnfoldTotal.SetMarkerColor(ROOT.kBlue)
+        histUnfoldTotal.SetLineColor(ROOT.kBlue)
+        histUnfoldTotal.SetLineWidth(1)
         histUnfoldTotal.SetMarkerStyle(ROOT.kFullCircle)
         # Outer error: total error
         histUnfoldTotal.Draw('PE')
         # Middle error: stat+bgr
+        histMunfold.SetLineColor(ROOT.kBlue+2)
+        histMunfold.SetLineWidth(2)
         histMunfold.Draw('SAME E1')
         # Inner error: stat only
+        histUnfoldStat.SetLineColor(ROOT.kBlue+4)
+        histUnfoldStat.SetLineWidth(3)
         histUnfoldStat.Draw('SAME E1')
-        print('================================')
-        print(histUnfoldTotal.GetNbinsX())
-        print(histMunfold.GetNbinsX())
-        print(histUnfoldStat.GetNbinsX())
-        print(histUnfoldTotal.GetBinContent(1))
-        print(histMunfold.GetBinContent(1))
-        print(histUnfoldStat.GetBinContent(1))
-        print(histUnfoldTotal.GetBinContent(16))
-        print(histMunfold.GetBinContent(16))
-        print(histUnfoldStat.GetBinContent(16))
-        print('================================')
         # Data truth
-        self.dataTruth_nom.SetLineColor(ROOT.kGreen+3)
+        self.dataTruth_nom.SetLineColor(ROOT.kRed+1)
+        self.dataTruth_nom.SetLineWidth(2)
         self.dataTruth_nom.Draw("SAME E HIST")
         ###histDensityGenData.SetLineColor(kRed)
         ##histDensityGenData.Draw("SAME")
@@ -659,46 +655,46 @@ class Unfolder(object):
         #    MC (black) [with completely wrong peak position and shape]
         #    unfolded data (blue)
         output.cd(3)
-        # Folded back
-        histMdetFold.SetLineColor(ROOT.kBlue)
+        # MC folded back
+        histMdetFold.SetLineColor(ROOT.kBlack-3)
+        histMdetFold.SetLineWidth(2)
         histMdetFold.Draw()
         # Original folded MC
-        self.mc.Draw("SAME HIST")
-
-        histInput=self.unfold.GetInput("Minput",";mass(det)")
-        histInput.SetLineColor(ROOT.kRed)
-        histInput.SetLineWidth(3)
-        histInput.Draw("SAME")
+        #self.mc.Draw("SAME HIST")
+        bkgStacked.Draw("SAME HIST")
+        #histInput=self.unfold.GetInput("Minput",";mass(det)")
+        #histInput.SetLineColor(ROOT.kRed)
+        #histInput.SetLineWidth(3)
+        #histInput.Draw("SAME")
+        # Data
+        self.data.Draw('PESAME')
         leg_3 = ROOT.TLegend(0.5,0.7,0.9,0.9)
         leg_3.SetTextSize(0.06)
-        leg_3.AddEntry(self.mc, 'Exp. signal', 'l')
-        leg_3.AddEntry(histMdetFold, 'Data folded back', 'l')
-        leg_3.AddEntry(histInput, 'Input', 'la')
+        leg_3.AddEntry(self.data, 'Data', 'l')
+        leg_3.AddEntry(histMdetFold, 'MC folded back', 'l')
+        leg_3.AddEntry(bkgStacked, 'Exp. signal+background', 'l')
+        #leg_3.AddEntry(histInput, 'Input', 'la')
         leg_3.Draw()
 
 
         output.cd(4) 
         # show correlation coefficients
         # #histRhoi.Draw()
-
-        # Folded back
-        histMdetFold.SetLineColor(ROOT.kBlue)
-        histMdetFold.Draw()
-        # Original data
-        self.data.Draw("E")
+        # Data-bkg by hand
         subdata=self.sub_bkg_by_hand()
         subdata.SetLineColor(ROOT.kBlack-3)
         subdata.SetLineWidth(3)
         subdata.Draw('histsame')
+        self.mc.Draw('SAME HIST')
         histInput=self.unfold.GetInput("Minput",";mass(det)")
         histInput.SetLineColor(ROOT.kRed)
         histInput.SetLineWidth(3)
         histInput.Draw("SAME")
         leg_4 = ROOT.TLegend(0.5,0.7,0.9,0.9)
         leg_4.SetTextSize(0.06)
-        leg_4.AddEntry(self.data, 'Original data', 'pe')
+        leg_4.AddEntry(self.mc, 'Exp. signal', 'pe')
         leg_4.AddEntry(subdata, 'Data-bkg by hand', 'la')
-        leg_4.AddEntry(histInput, 'Input data', 'la')
+        leg_4.AddEntry(histInput, 'Data-bkg by tool', 'la')
         leg_4.Draw()
 
         if self.regmode is not ROOT.TUnfold.kRegModeNone:
