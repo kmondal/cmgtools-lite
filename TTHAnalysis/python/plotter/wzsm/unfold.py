@@ -172,9 +172,9 @@ class Unfolder(object):
         self.response_alt = copy.deepcopy(ROOT.TH2D(file_handle_alt.Get('%s_response_canvas' % self.var).GetPrimitive('%s_response_WZ_%s' %(self.var, 'aMC'))))
         self.response_inc = copy.deepcopy(ROOT.TH2D(file_handle_inc.Get('%s_response_canvas' % self.var).GetPrimitive('%s_response_WZ_%s' %(self.var, 'Inc'))))
 
-        self.dataTruth_nom = copy.deepcopy(ROOT.TH1D(self.response_nom.ProjectionX('dataTruth_nom', 0, self.response_nom.GetNbinsY())))
-        self.dataTruth_alt = copy.deepcopy(ROOT.TH1D(self.response_alt.ProjectionX('dataTruth_alt', 0, self.response_alt.GetNbinsY())))
-        self.dataTruth_inc = copy.deepcopy(ROOT.TH1D(self.response_inc.ProjectionX('dataTruth_inc', 0, self.response_inc.GetNbinsY())))
+        self.dataTruth_nom = copy.deepcopy(ROOT.TH1D(self.response_nom.ProjectionY('dataTruth_nom', 0, self.response_nom.GetNbinsX())))
+        self.dataTruth_alt = copy.deepcopy(ROOT.TH1D(self.response_alt.ProjectionY('dataTruth_alt', 0, self.response_alt.GetNbinsX())))
+        self.dataTruth_inc = copy.deepcopy(ROOT.TH1D(self.response_inc.ProjectionY('dataTruth_inc', 0, self.response_inc.GetNbinsX())))
 
         for ibin in range(0, self.response_nom.GetNbinsX()+2):
             for jbin in range(0, self.response_nom.GetNbinsY()+2):
@@ -516,8 +516,13 @@ class Unfolder(object):
         xmaxDet=self.response_nom.GetXaxis().GetBinUpEdge(self.response_nom.GetNbinsX())
         xminGen=self.response_nom.GetYaxis().GetBinLowEdge(1)
         xmaxGen=self.response_nom.GetYaxis().GetBinUpEdge(self.response_nom.GetNbinsY())
-        histUnfoldTotal = ROOT.TH1D('%s(unfold,toterr)' % self.var,';%s(gen)' % self.var, nGen, xminGen, xmaxGen) # Unfolded data histogram with total errors
-        histUnfoldStat = ROOT.TH1D('%s(unfold,staterr)' % self.var,';%s(gen)' % self.var, nGen, xminGen, xmaxGen) # Unfolded data histogram with statistical errors only
+        #histUnfoldTotal = ROOT.TH1D('%s(unfold,toterr)' % self.var,';%s(gen)' % self.var, nGen, xminGen, xmaxGen) # Unfolded data histogram with total errors
+        histUnfoldTotal = copy.deepcopy(ROOT.TH1D(self.dataTruth_nom)) # Unfolded data histogram with total errors
+        histUnfoldTotal.Reset('ICE')
+        histUnfoldTotal.SetName('%s(unfold,toterr)' % self.var)
+        histUnfoldStat = copy.deepcopy(ROOT.TH1D(self.dataTruth_nom)) # Unfolded data histogram with statistical errors only
+        histUnfoldStat.Reset('ICE')
+        histUnfoldStat.SetName('%s(unfold,staterr)' % self.var)
         for ibin in range(0,nGen+2):
             c=histMunfold.GetBinContent(ibin)
             histUnfoldStat.SetBinContent(ibin, c)
@@ -623,6 +628,17 @@ class Unfolder(object):
         histMunfold.Draw('SAME E1')
         # Inner error: stat only
         histUnfoldStat.Draw('SAME E1')
+        print('================================')
+        print(histUnfoldTotal.GetNbinsX())
+        print(histMunfold.GetNbinsX())
+        print(histUnfoldStat.GetNbinsX())
+        print(histUnfoldTotal.GetBinContent(1))
+        print(histMunfold.GetBinContent(1))
+        print(histUnfoldStat.GetBinContent(1))
+        print(histUnfoldTotal.GetBinContent(16))
+        print(histMunfold.GetBinContent(16))
+        print(histUnfoldStat.GetBinContent(16))
+        print('================================')
         # Data truth
         self.dataTruth_nom.SetLineColor(ROOT.kGreen+3)
         self.dataTruth_nom.Draw("SAME E HIST")
