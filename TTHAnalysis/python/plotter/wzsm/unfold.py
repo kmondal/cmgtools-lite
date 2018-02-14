@@ -132,6 +132,9 @@ class Unfolder(object):
         self.response_nom.RebinY(n/2)
         self.response_alt.RebinY(n/2)
         self.response_inc.RebinY(n/2)
+        self.dataTruth_nom.RebinY(n/2)
+        self.dataTruth_alt.RebinY(n/2)
+        self.dataTruth_inc.RebinY(n/2)
 
     def study_responses(self):
         self.compute_stability_and_purity()
