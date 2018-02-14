@@ -131,9 +131,11 @@ class Unfolder(object):
         self.response_inc.RebinY(n)
 
     def study_responses(self):
+        self.compute_stability_and_purity()
+
         for matrix in [self.response_nom, self.response_alt, self.response_inc]:
-            profX=matrix.ProfileX('%s_profX'%matrix.GetName(), 0, matrix.GetNbinsY())
-            profY=matrix.ProfileY('%s_profY'%matrix.GetName(), 0, matrix.GetNbinsX())
+            profX=matrix.ProfileX('%s_profX'%matrix.GetName(), 0, matrix.GetNbinsY(),'s')
+            profY=matrix.ProfileY('%s_profY'%matrix.GetName(), 0, matrix.GetNbinsX(),'s')
             print(profX)
             print(profY)
             c = ROOT.TCanvas('matrix', 'Response Matrix', 2000, 1000)
@@ -145,13 +147,17 @@ class Unfolder(object):
             ROOT.gStyle.SetOptStat('uo')
             c.Divide(2,1)
             c.cd(1)
+            ROOT.gPad.SetGrid()
+            profX.SetMarkerStyle(ROOT.kFullSquare)
+            profX.SetTitle('Response (gen profiled)')
             profX.Draw("PE")
             c.cd(2)
+            ROOT.gPad.SetGrid()
+            profY.SetMarkerStyle(ROOT.kFullSquare)
+            profY.SetTitle('Response (reco profiled)')
             profY.Draw("PE")
-            ###### HERE ######utils.saveCanva(c, os.path.join(self.outputDir, '2_binningStability_%s_Nom' % self.var))            
-            ###### HERE ######utils.saveCanva(c, os.path.join(self.outputDir, '2_binningStability_%s_Nom' % self.var))            
-            ###### HERE ######utils.saveCanva(c, os.path.join(self.outputDir, '2_binningStability_%s_Nom' % self.var))            
-
+            utils.saveCanva(c, os.path.join(self.outputDir, '1_responseProfiled_%s_%s' % (matrix.GetName(), self.var)))            
+            
     def get_responses(self):
         print('Acquiring response matrices.')
         folder=os.path.join(self.inputDir, 'response/%s_response_WZ_' % self.var)
@@ -176,10 +182,11 @@ class Unfolder(object):
             resp_nom=copy.deepcopy(ROOT.TH2D(self.response_nom))
             resp_alt=copy.deepcopy(ROOT.TH2D(self.response_alt))
             resp_inc=copy.deepcopy(ROOT.TH2D(self.response_inc))
-            
+
             resp_nom.Scale(1./resp_nom.Integral())
             resp_alt.Scale(1./resp_alt.Integral())
             resp_inc.Scale(1./resp_inc.Integral())
+
             # Compute stability
             diagonalSum_nom=0
             diagonalSum_alt=0
@@ -192,6 +199,7 @@ class Unfolder(object):
                 diagonalSum_nom+= resp_nom.GetBinContent(ibin, ibin)
                 diagonalSum_alt+= resp_alt.GetBinContent(ibin, ibin)
                 diagonalSum_inc+= resp_inc.GetBinContent(ibin, ibin)
+                
                 for jbin in range(0, resp_nom.GetNbinsY()):
                     if ibin != jbin:
                         if resp_nom.GetBinContent(ibin, jbin) != 0: odbN_nom+=1
@@ -225,7 +233,113 @@ class Unfolder(object):
         c.Clear()
         self.response_inc.Draw('COLZ')
         utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Inc' % self.var))
-    
+
+    def compute_stability_and_purity(self):
+
+        purity_nom=self.response_nom.ProjectionX('%s_purity'%self.response_nom.GetName(), 0, self.response_nom.GetNbinsY())
+        purity_alt=self.response_alt.ProjectionX('%s_purity'%self.response_alt.GetName(), 0, self.response_alt.GetNbinsY())
+        purity_inc=self.response_inc.ProjectionX('%s_purity'%self.response_inc.GetName(), 0, self.response_inc.GetNbinsY())
+        stability_nom=self.response_nom.ProjectionY('%s_stability'%self.response_nom.GetName(), 0, self.response_nom.GetNbinsX())
+        stability_alt=self.response_alt.ProjectionY('%s_stability'%self.response_alt.GetName(), 0, self.response_alt.GetNbinsX())
+        stability_inc=self.response_inc.ProjectionY('%s_stability'%self.response_inc.GetName(), 0, self.response_inc.GetNbinsX())
+        
+        purity_nom.Reset("ICE")
+        purity_alt.Reset("ICE")
+        purity_inc.Reset("ICE")
+        stability_nom.Reset("ICE")
+        stability_alt.Reset("ICE")
+        stability_inc.Reset("ICE")
+
+        puritydenom_nom=copy.deepcopy(ROOT.TH1D(purity_nom))
+        puritydenom_alt=copy.deepcopy(ROOT.TH1D(purity_alt))
+        puritydenom_inc=copy.deepcopy(ROOT.TH1D(purity_inc))
+        stabilitydenom_nom=copy.deepcopy(ROOT.TH1D(stability_nom))
+        stabilitydenom_alt=copy.deepcopy(ROOT.TH1D(stability_alt))
+        stabilitydenom_inc=copy.deepcopy(ROOT.TH1D(stability_inc))
+
+        # Fill purity
+        for xbin in range(0, self.response_nom.GetNbinsX()):
+            recobinevts_nom=0
+            recobinevts_alt=0
+            recobinevts_inc=0
+            for ybin in range(0, self.response_nom.GetNbinsY()):
+                recobinevts_nom += self.response_nom.GetBinContent(xbin, ybin)
+                recobinevts_alt += self.response_alt.GetBinContent(xbin, ybin)
+                recobinevts_inc += self.response_inc.GetBinContent(xbin, ybin)
+
+
+            purity_nom.SetBinContent(xbin, self.response_nom.GetBinContent(xbin,xbin))
+            purity_alt.SetBinContent(xbin, self.response_alt.GetBinContent(xbin,xbin))
+            purity_inc.SetBinContent(xbin, self.response_inc.GetBinContent(xbin,xbin))
+            puritydenom_nom.SetBinContent(xbin, recobinevts_nom)
+            puritydenom_alt.SetBinContent(xbin, recobinevts_alt)
+            puritydenom_inc.SetBinContent(xbin, recobinevts_inc)
+
+        # Fill stability
+        for ybin in range(0, self.response_nom.GetNbinsY()):
+            recobinevts_nom=0
+            recobinevts_alt=0
+            recobinevts_inc=0
+            for xbin in range(0, self.response_nom.GetNbinsX()):
+                recobinevts_nom += self.response_nom.GetBinContent(xbin, ybin)
+                recobinevts_alt += self.response_alt.GetBinContent(xbin, ybin)
+                recobinevts_inc += self.response_inc.GetBinContent(xbin, ybin)
+
+                    
+            stability_nom.SetBinContent(ybin, self.response_nom.GetBinContent(ybin,ybin))
+            stability_alt.SetBinContent(ybin, self.response_alt.GetBinContent(ybin,ybin))
+            stability_inc.SetBinContent(ybin, self.response_inc.GetBinContent(ybin,ybin))
+            stabilitydenom_nom.SetBinContent(ybin, recobinevts_nom)
+            stabilitydenom_alt.SetBinContent(ybin, recobinevts_alt)
+            stabilitydenom_inc.SetBinContent(ybin, recobinevts_inc)
+
+
+        purity_nom.Divide(puritydenom_nom)
+        purity_alt.Divide(puritydenom_alt)
+        purity_inc.Divide(puritydenom_inc)
+        stability_nom.Divide(stabilitydenom_nom)
+        stability_alt.Divide(stabilitydenom_alt)
+        stability_inc.Divide(stabilitydenom_inc)
+
+        # Paint them
+        c = ROOT.TCanvas('matrix', 'Response Matrix', 3000, 1000)
+        # Margin not being applied somehow. Must do it via gStyle?
+        ROOT.gStyle.SetPadTopMargin(0.1)
+        ROOT.gStyle.SetPadBottomMargin(0.1)
+        ROOT.gStyle.SetPadLeftMargin(0.1)
+        ROOT.gStyle.SetPadRightMargin(0.1)
+        ROOT.gStyle.SetOptStat('uo')
+        c.Divide(3,1)
+        c.cd(1)
+        purity_nom.SetMarkerColor(ROOT.kRed)
+        purity_nom.SetMarkerStyle(ROOT.kFullSquare)
+        stability_nom.SetMarkerColor(ROOT.kBlue)
+        stability_nom.SetMarkerStyle(ROOT.kFullCircle)
+        purity_nom.Draw("PE")
+        stability_nom.Draw("PESAME")
+        leg_1 = ROOT.TLegend(0.5,0.5,0.9,0.9)
+        leg_1.SetTextSize(0.06)
+        leg_1.AddEntry(purity_nom, 'Purity', 'p')
+        leg_1.AddEntry(stability_nom, 'Stability', 'p')
+        leg_1.Draw()
+        c.cd(2)
+        purity_alt.SetMarkerColor(ROOT.kRed)
+        purity_alt.SetMarkerStyle(ROOT.kFullSquare)
+        stability_alt.SetMarkerColor(ROOT.kBlue)
+        stability_alt.SetMarkerStyle(ROOT.kFullCircle)
+        purity_alt.Draw("PE")
+        stability_alt.Draw("PESAME")
+        leg_1.Draw()
+        c.cd(3)
+        purity_inc.SetMarkerColor(ROOT.kRed)
+        purity_inc.SetMarkerStyle(ROOT.kFullSquare)
+        stability_inc.SetMarkerColor(ROOT.kBlue)
+        stability_inc.SetMarkerStyle(ROOT.kFullCircle)
+        purity_inc.Draw("PE")
+        stability_inc.Draw("PESAME")
+        leg_1.Draw()
+        utils.saveCanva(c, os.path.join(self.outputDir, '1_checkBinning_%s' % self.var))
+
     def get_total_bkg_as_hist(self, file_handle, action):
         totbkg = []
         totbkg.append(copy.deepcopy(file_handle.Get('x_prompt_ZZH')))
@@ -477,8 +591,9 @@ class Unfolder(object):
         #   unfolded data (blue)
         output.cd(2)
         # Data with total error
-        histTotalError.SetLineColor(ROOT.kBlue)
-        histTotalError.Draw("E")
+        histTotalError.SetMarkerColor(ROOT.kBlue)
+        histTotalError.SetMarkerStyle(ROOT.kFullCircle)
+        histTotalError.Draw("PE")
         # Unfolded data
         histMunfold.SetLineColor(ROOT.kGreen+3)
         histMunfold.Draw("SAME E1HIST")
