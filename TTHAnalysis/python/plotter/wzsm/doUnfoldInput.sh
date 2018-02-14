@@ -4,7 +4,7 @@
 
 #declare -A pairs=( ['nJet30']='[-0.5,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5]' ['sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass)']='[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,125,130,135,140]' ['sump4(0, LepZ1_conePt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_conePt,LepZ2_eta,LepZ2_phi,LepZ2_mass)']='[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,125,130,135,140]' )
 
-declare -A pairs=( ['nJet30']='[-0.5,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5]' ['sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass)']='[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,125,130,135,140,150,160,170,190,220,250,300]' ['sump4(0, LepZ1_conePt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_conePt,LepZ2_eta,LepZ2_phi,LepZ2_mass)']='[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,125,130,135,140,150,160,170,190,220,250,300]' )
+declare -A pairs=( ['nJet30']='[-0.5,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5]' ['sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass)']='[0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,160,200,250,300]' ['sump4(0, LepZ1_conePt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_conePt,LepZ2_eta,LepZ2_phi,LepZ2_mass)']='[0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,160,200,250,300]' )
 
 count=0
 
