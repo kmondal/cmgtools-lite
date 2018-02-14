@@ -50,6 +50,9 @@ class Unfolder(object):
         self.response_alt=None
         self.response_inc=None
         self.data=None
+        self.dataTruth_nom=None
+        self.dataTruth_alt=None
+        self.dataTruth_inc=None
         self.mc=None
         self.bkg=None
         self.verbose=args.verbose
@@ -126,9 +129,9 @@ class Unfolder(object):
         self.response_nom.RebinX(n/2)
         self.response_alt.RebinX(n/2)
         self.response_inc.RebinX(n/2)
-        self.response_nom.RebinY(n)
-        self.response_alt.RebinY(n)
-        self.response_inc.RebinY(n)
+        self.response_nom.RebinY(n/2)
+        self.response_alt.RebinY(n/2)
+        self.response_inc.RebinY(n/2)
 
     def study_responses(self):
         self.compute_stability_and_purity()
@@ -169,6 +172,10 @@ class Unfolder(object):
         self.response_alt = copy.deepcopy(ROOT.TH2D(file_handle_alt.Get('%s_response_canvas' % self.var).GetPrimitive('%s_response_WZ_%s' %(self.var, 'aMC'))))
         self.response_inc = copy.deepcopy(ROOT.TH2D(file_handle_inc.Get('%s_response_canvas' % self.var).GetPrimitive('%s_response_WZ_%s' %(self.var, 'Inc'))))
 
+        self.dataTruth_nom = copy.deepcopy(ROOT.TH1D(self.response_nom.ProjectionX('dataTruth_nom', 0, self.response_nom.GetNbinsY())))
+        self.dataTruth_alt = copy.deepcopy(ROOT.TH1D(self.response_alt.ProjectionX('dataTruth_alt', 0, self.response_alt.GetNbinsY())))
+        self.dataTruth_inc = copy.deepcopy(ROOT.TH1D(self.response_inc.ProjectionX('dataTruth_inc', 0, self.response_inc.GetNbinsY())))
+
     def print_responses(self):
         c = ROOT.TCanvas('matrix', 'Response Matrix', 2000, 2000)
         c.cd()
@@ -194,13 +201,13 @@ class Unfolder(object):
             odbN_nom=0
             odbN_alt=0
             odbN_inc=0
-            for ibin in range(0, resp_nom.GetNbinsX()):
+            for ibin in range(0, resp_nom.GetNbinsX()+2):
                 # Am I taking the overflow diagonal one as well? Must check
                 diagonalSum_nom+= resp_nom.GetBinContent(ibin, ibin)
                 diagonalSum_alt+= resp_alt.GetBinContent(ibin, ibin)
                 diagonalSum_inc+= resp_inc.GetBinContent(ibin, ibin)
                 
-                for jbin in range(0, resp_nom.GetNbinsY()):
+                for jbin in range(0, resp_nom.GetNbinsY()+2):
                     if ibin != jbin:
                         if resp_nom.GetBinContent(ibin, jbin) != 0: odbN_nom+=1
                         if resp_alt.GetBinContent(ibin, jbin) != 0: odbN_alt+=1
@@ -258,11 +265,11 @@ class Unfolder(object):
         stabilitydenom_inc=copy.deepcopy(ROOT.TH1D(stability_inc))
 
         # Fill purity
-        for xbin in range(0, self.response_nom.GetNbinsX()):
+        for xbin in range(0, self.response_nom.GetNbinsX()+2):
             recobinevts_nom=0
             recobinevts_alt=0
             recobinevts_inc=0
-            for ybin in range(0, self.response_nom.GetNbinsY()):
+            for ybin in range(0, self.response_nom.GetNbinsY()+2):
                 recobinevts_nom += self.response_nom.GetBinContent(xbin, ybin)
                 recobinevts_alt += self.response_alt.GetBinContent(xbin, ybin)
                 recobinevts_inc += self.response_inc.GetBinContent(xbin, ybin)
@@ -276,11 +283,11 @@ class Unfolder(object):
             puritydenom_inc.SetBinContent(xbin, recobinevts_inc)
 
         # Fill stability
-        for ybin in range(0, self.response_nom.GetNbinsY()):
+        for ybin in range(0, self.response_nom.GetNbinsY()+2):
             recobinevts_nom=0
             recobinevts_alt=0
             recobinevts_inc=0
-            for xbin in range(0, self.response_nom.GetNbinsX()):
+            for xbin in range(0, self.response_nom.GetNbinsX()+2):
                 recobinevts_nom += self.response_nom.GetBinContent(xbin, ybin)
                 recobinevts_alt += self.response_alt.GetBinContent(xbin, ybin)
                 recobinevts_inc += self.response_inc.GetBinContent(xbin, ybin)
@@ -455,7 +462,7 @@ class Unfolder(object):
 
     def print_unfolding_results(self, key, label):
         # Print results
-        print('Tau: %d' % self.unfold.GetTau())
+        print('Best tau: %d' % self.unfold.GetTau())
         print('chi^2: %d+%d/%d' %(self.unfold.GetChi2A(), self.unfold.GetChi2L(), self.unfold.GetNdf() ) )
         print('chi^2(syst): %d' % self.unfold.GetChi2Sys())
         
@@ -480,17 +487,15 @@ class Unfolder(object):
             bestLogTauLogChi2 = ROOT.TGraph(1, vt, vx);
         
         # Retrieve results as histograms
-        histMunfold=self.unfold.GetOutput('Unfolded') # Unfolded result
+        histMunfold=self.unfold.GetOutput('%s(unfold,stat+bgrerr)' %self.var) # Unfolded result
         histMdetFold=self.unfold.GetFoldedOutput('FoldedBack') # Unfolding result, folded back
-        histEmatData=self.unfold.GetEmatrixInput('EmatData') # Error matrix (stat errors only)
-        histEmatTotal=self.unfold.GetEmatrixTotal('EmatTotal') # Total error matrix. Migration matrix uncorrelated and correlated syst errors added in quadrature to the data statistical errors
+        histEmatStat=self.unfold.GetEmatrixInput('Error matrix (stat errors only)') # Error matrix (stat errors only)
+        histEmatTotal=self.unfold.GetEmatrixTotal('Error matrix (total errors)') # Total error matrix. Migration matrix uncorrelated and correlated syst errors added in quadrature to the data statistical errors
         
         
         #TH1 *histDetNormBgr1=unfold.GetBackground("bgr1 normalized",
         #                                          "background1");
         histDetNormBgrTotal=self.unfold.GetBackground("Total background (normalized)")
-
-
 
         nDet=self.response_nom.GetNbinsX()
         nGen=self.response_nom.GetNbinsY()
@@ -498,10 +503,14 @@ class Unfolder(object):
         xmaxDet=self.response_nom.GetXaxis().GetBinUpEdge(self.response_nom.GetNbinsX())
         xminGen=self.response_nom.GetYaxis().GetBinLowEdge(1)
         xmaxGen=self.response_nom.GetYaxis().GetBinUpEdge(self.response_nom.GetNbinsY())
-        histTotalError = ROOT.TH1D('TotalError',';%s(gen)' % self.var, nGen, xminGen, xmaxGen)# Data histogram with total errors
-        for bin in range(1,nGen):
-            histTotalError.SetBinContent(bin, histMunfold.GetBinContent(bin))
-            histTotalError.SetBinError(bin, ROOT.TMath.Sqrt(histEmatTotal.GetBinContent(bin,bin)))
+        histUnfoldTotal = ROOT.TH1D('%s(unfold,toterr)' % self.var,';%s(gen)' % self.var, nGen, xminGen, xmaxGen) # Unfolded data histogram with total errors
+        histUnfoldStat = ROOT.TH1D('%s(unfold,staterr)' % self.var,';%s(gen)' % self.var, nGen, xminGen, xmaxGen) # Unfolded data histogram with statistical errors only
+        for ibin in range(0,nGen+2):
+            c=histMunfold.GetBinContent(ibin)
+            histUnfoldStat.SetBinContent(ibin, c)
+            histUnfoldStat.SetBinError(ibin, ROOT.TMath.Sqrt(histEmatStat.GetBinContent(ibin,ibin)))
+            histUnfoldTotal.SetBinContent(ibin, histMunfold.GetBinContent(ibin))
+            histUnfoldTotal.SetBinError(ibin, ROOT.TMath.Sqrt(histEmatTotal.GetBinContent(ibin,ibin)))
 
 
         print('Now get global correlation coefficients')
@@ -567,18 +576,20 @@ class Unfolder(object):
         self.mc.SetMinimum(0.0)
         self.mc.SetLineColor(ROOT.kBlue)
         self.mc.SetLineWidth(3)
-        histDetNormBgrTotal.SetLineColor(ROOT.kRed)
-        histDetNormBgrTotal.SetLineWidth(3)
-        #histDetNormBgr1->SetLineColor(kCyan);
+        bkgStacked=copy.deepcopy(histDetNormBgrTotal)
+        bkgStacked.Add(self.mc)
+        bkgStacked.SetLineColor(ROOT.kRed)
+        bkgStacked.SetLineWidth(3)
+        #histDetNormBgr1.SetLineColor(kCyan);
         self.mc.Draw("SAME HIST")
-        #histDetNormBgr1->Draw("SAME HIST");
-        histDetNormBgrTotal.Draw("SAME HIST")
+        #histDetNormBgr1.Draw("SAME HIST");
+        bkgStacked.Draw("SAME HIST")
 
-        leg_1 = ROOT.TLegend(0.5,0.5,0.9,0.9)
+        leg_1 = ROOT.TLegend(0.5,0.7,0.9,0.9)
         leg_1.SetTextSize(0.06)
         leg_1.AddEntry(self.data, 'Data', 'p')
         leg_1.AddEntry(self.mc, 'Exp. signal', 'la')
-        leg_1.AddEntry(histDetNormBgrTotal, 'Exp. background', 'l')
+        leg_1.AddEntry(bkgStacked, 'Exp. signal+background', 'l')
         leg_1.Draw()
 
         print(self.data.GetNbinsX())
@@ -590,23 +601,25 @@ class Unfolder(object):
         #   MC input (black) [with completely wrong peak position and shape]
         #   unfolded data (blue)
         output.cd(2)
-        # Data with total error
-        histTotalError.SetMarkerColor(ROOT.kBlue)
-        histTotalError.SetMarkerStyle(ROOT.kFullCircle)
-        histTotalError.Draw("PE")
-        # Unfolded data
-        histMunfold.SetLineColor(ROOT.kGreen+3)
-        histMunfold.Draw("SAME E1HIST")
-        # MC truth (folded) Must substitute with input truth from response matrix probably
-        self.mc.Draw("SAME HIST")
+        # Unfolded data with total error
+        histUnfoldTotal.SetMarkerColor(ROOT.kBlue)
+        histUnfoldTotal.SetMarkerStyle(ROOT.kFullCircle)
+        # Outer error: total error
+        histUnfoldTotal.Draw('PE')
+        # Middle error: stat+bgr
+        histMunfold.Draw('SAME E1')
+        # Inner error: stat only
+        histUnfoldStat.Draw('SAME E1')
+        # Data truth
+        self.dataTruth_nom.SetLineColor(ROOT.kGreen+3)
+        self.dataTruth_nom.Draw("SAME E HIST")
         ###histDensityGenData.SetLineColor(kRed)
         ##histDensityGenData.Draw("SAME")
         ##histDensityGenMC.Draw("SAME HIST")
-        leg_2 = ROOT.TLegend(0.5,0.5,0.9,0.9)
+        leg_2 = ROOT.TLegend(0.5,0.7,0.9,0.9)
         leg_2.SetTextSize(0.06)
-        leg_2.AddEntry(histTotalError, 'Data w/ tot.err.', 'l')
-        leg_2.AddEntry(histMunfold, 'Unfolded data', 'la')
-        leg_2.AddEntry(self.mc, 'Exp. signal', 'l')
+        leg_2.AddEntry(histUnfoldTotal, 'Unfolded data', 'pel')
+        leg_2.AddEntry(self.dataTruth_nom, 'Truth', 'la')
         leg_2.Draw()
         
         # show detector level distributions
@@ -624,7 +637,7 @@ class Unfolder(object):
         histInput.SetLineColor(ROOT.kRed)
         histInput.SetLineWidth(3)
         histInput.Draw("SAME")
-        leg_3 = ROOT.TLegend(0.5,0.5,0.9,0.9)
+        leg_3 = ROOT.TLegend(0.5,0.7,0.9,0.9)
         leg_3.SetTextSize(0.06)
         leg_3.AddEntry(self.mc, 'Exp. signal', 'l')
         leg_3.AddEntry(histMdetFold, 'Data folded back', 'l')
@@ -649,7 +662,7 @@ class Unfolder(object):
         histInput.SetLineColor(ROOT.kRed)
         histInput.SetLineWidth(3)
         histInput.Draw("SAME")
-        leg_4 = ROOT.TLegend(0.5,0.5,0.9,0.9)
+        leg_4 = ROOT.TLegend(0.5,0.7,0.9,0.9)
         leg_4.SetTextSize(0.06)
         leg_4.AddEntry(self.data, 'Original data', 'pe')
         leg_4.AddEntry(subdata, 'Data-bkg by hand', 'la')
@@ -684,9 +697,9 @@ class Unfolder(object):
         # # Individual saving.
         # self.print_histo(histMunfold, key, label)
         # self.print_histo(histMdetFold, key, label)
-        # self.print_histo(histEmatData, key, label, 'colz')
+        # self.print_histo(histEmatStat, key, label, 'colz')
         # self.print_histo(histEmatTotal, key, label, 'colz')
-        # self.print_histo(histTotalError, key, label)
+        # self.print_histo(histUnfoldTotal, key, label)
 
     def sub_bkg_by_hand(self):
         subdata=copy.deepcopy(ROOT.TH1D(self.data))
