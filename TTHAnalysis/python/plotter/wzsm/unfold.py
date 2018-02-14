@@ -176,6 +176,19 @@ class Unfolder(object):
         self.dataTruth_alt = copy.deepcopy(ROOT.TH1D(self.response_alt.ProjectionX('dataTruth_alt', 0, self.response_alt.GetNbinsY())))
         self.dataTruth_inc = copy.deepcopy(ROOT.TH1D(self.response_inc.ProjectionX('dataTruth_inc', 0, self.response_inc.GetNbinsY())))
 
+        for ibin in range(0, self.response_nom.GetNbinsX()+2):
+            for jbin in range(0, self.response_nom.GetNbinsY()+2):
+                if ibin==0 or jbin==0 or ibin>self.response_nom.GetNbinsX() or jbin>self.response_nom.GetNbinsY():
+                    self.response_nom.SetBinContent(ibin, jbin, 0)
+                    self.response_alt.SetBinContent(ibin, jbin, 0)
+                    self.response_inc.SetBinContent(ibin, jbin, 0)
+                    self.response_nom.SetBinError(ibin, jbin, 0)
+                    self.response_alt.SetBinError(ibin, jbin, 0)
+                    self.response_inc.SetBinError(ibin, jbin, 0)
+                    
+
+
+
     def print_responses(self):
         c = ROOT.TCanvas('matrix', 'Response Matrix', 2000, 2000)
         c.cd()
