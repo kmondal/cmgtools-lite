@@ -72,8 +72,9 @@ class Unfolder(object):
         self.responseAsPdf=args.responseAsPdf
         self.histmap=ROOT.TUnfold.kHistMapOutputVert
         self.regmode=ROOT.TUnfold.kRegModeNone
-        self.constraint=ROOT.TUnfold.kEConstraintNone
+        self.constraint=ROOT.TUnfold.kEConstraintArea
         self.densitymode=ROOT.TUnfoldDensity.kDensityModeeNone
+        self.closure=args.closure
         self.load_data(args.data, args.mc, args.gen)
 
         # Make sure histogram errors are ON
@@ -99,6 +100,9 @@ class Unfolder(object):
         # Scheme 1: subtraction
         # print('Before subtraction. Data: %f, Bkg: %f, Signal: %f' % (data.Integral(), bkg.Integral(), signal.Integral()))  
         #data.Add(bkg, -1)
+        if self.closure:
+            data=self.getDataFromClosure(signal, bkg)
+            
         self.data=data
         self.mc=signal
         self.bkg=bkg
@@ -120,6 +124,20 @@ class Unfolder(object):
         # Pass through numpy arrays?
         print('Data correctly loaded.')
         #return data, mc, response
+
+    def getDataFromClosure(self, hin, bkg):
+        hout=copy.deepcopy(hin)
+        for ibkg in bkg:
+            hout.Add(ibkg)
+
+        for ibin in range(0, hout.GetNbinsX()+2):
+            g=ROOT.TRandom3(0) # Random seed
+            c=g.Gaus(hout.GetBinContent(ibin), hout.GetBinError(ibin))
+            e=hout.GetBinError(ibin)*c/hout.GetBinContent(ibin) if hout.GetBinContent(ibin)!=0 else 0
+            hout.SetBinContent(ibin, c)
+            hout.SetBinError(ibin, e)
+        return hout
+    
         
     def rebin_all(self,n):
         self.data.Rebin(n/2)
@@ -605,7 +623,8 @@ class Unfolder(object):
         output.cd(1)
         # Data, MC prediction, background
         self.data.SetMinimum(0.0)
-        self.data.Draw("E")
+        self.data.SetTitle('Inputs (folded space)')
+        self.data.DrawCopy("E")
         self.mc.SetMinimum(0.0)
         self.mc.SetLineColor(ROOT.kBlue)
         self.mc.SetLineWidth(3)
@@ -640,7 +659,8 @@ class Unfolder(object):
         histUnfoldTotal.SetLineWidth(1)
         histUnfoldTotal.SetMarkerStyle(ROOT.kFullCircle)
         # Outer error: total error
-        histUnfoldTotal.Draw('PE')
+        histUnfoldTotal.SetTitle('Unfolded space')
+        histUnfoldTotal.DrawCopy('PE')
         # Middle error: stat+bgr
         histMunfold.SetLineColor(ROOT.kBlue+2)
         histMunfold.SetLineWidth(2)
@@ -668,6 +688,7 @@ class Unfolder(object):
         #    unfolded data (blue)
         output.cd(3)
         # Data
+        self.data.SetTitle('Folded space')
         self.data.Draw('PE')
         # MC folded back
         histMdetFold.SetLineColor(ROOT.kBlack-3)
@@ -696,17 +717,18 @@ class Unfolder(object):
         subdata=self.sub_bkg_by_hand()
         subdata.SetLineColor(ROOT.kBlack-3)
         subdata.SetLineWidth(3)
-        subdata.Draw('histsame')
+        subdata.SetTitle('Folded space')
+        subdata.Draw('HIST')
         self.mc.Draw('SAME HIST')
         histInput=self.unfold.GetInput("Minput",";mass(det)")
         histInput.SetLineColor(ROOT.kRed)
         histInput.SetLineWidth(3)
-        histInput.Draw("SAME")
+        #histInput.Draw("SAME")
         leg_4 = ROOT.TLegend(0.5,0.7,0.9,0.9)
         leg_4.SetTextSize(0.06)
         leg_4.AddEntry(self.mc, 'Exp. signal', 'pe')
         leg_4.AddEntry(subdata, 'Data-bkg by hand', 'la')
-        leg_4.AddEntry(histInput, 'Data-bkg by tool', 'la')
+        #leg_4.AddEntry(histInput, 'Data-bkg by tool', 'la')
         leg_4.Draw()
 
         if self.regmode is not ROOT.TUnfold.kRegModeNone:
@@ -734,13 +756,17 @@ class Unfolder(object):
        
         output.cd(7)
         if 'nom' in key:
+            self.response_nom.SetTitle('Response Matrix (powheg)')
             self.response_nom.Draw('COLZ')
         elif 'alt' in key:
-            self.response_nom.Draw('COLZ')
+            self.response_alt.SetTitle('Response Matrix (amcatnlo)')
+            self.response_alt.Draw('COLZ')
         elif 'inc' in key:
+            self.response_inc.SetTitle('Response Matrix (pythia)')
             self.response_inc.Draw('COLZ')
 
         output.cd(8)
+        histCorr.SetTitle('Correlation matrix')
         histCorr.Draw('COLZ')
         output.SaveAs(os.path.join(self.outputDir, '2_unfold_%s_%s_%s.png' % (label, key, self.var)))
 
@@ -778,6 +804,7 @@ if __name__ == '__main__':
     parser.add_argument('-i', '--inputDir',     help='Input directory', default=None)
     parser.add_argument('-o', '--outputDir',    help='Output directory', default='./')
     parser.add_argument('-c', '--combineInput', help='Data and postfit from combine output', default=None)
+    parser.add_argument('--closure',            help='Use MC as data, for closure test', action='store_true')
     parser.add_argument('-d', '--data',         help='File containing data histogram', default=None)
     parser.add_argument('-m', '--mc',           help='File containing mc reco histogram', default=None)
     parser.add_argument('-g', '--gen',          help='File containing gen info for matrix', default=None)
