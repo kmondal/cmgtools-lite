@@ -72,7 +72,7 @@ class Unfolder(object):
         self.responseAsPdf=args.responseAsPdf
         self.histmap=ROOT.TUnfold.kHistMapOutputVert
         self.regmode=ROOT.TUnfold.kRegModeNone
-        self.constraint=ROOT.TUnfold.kEConstraintArea
+        self.constraint=ROOT.TUnfold.kEConstraintNone
         self.densitymode=ROOT.TUnfoldDensity.kDensityModeeNone
         self.closure=args.closure
         self.load_data(args.data, args.mc, args.gen)
@@ -434,14 +434,12 @@ class Unfolder(object):
         self.do_scan()
         self.print_unfolding_results(key, label)
      
-
-
         # Now add simple regularization on the amplitude
         self.logTauX=ROOT.TSpline3() # TSpline*
         self.logTauY=ROOT.TSpline3() # TSpline*
         self.lCurve=ROOT.TGraph(0) # TGraph*
         self.logTauCurvature=ROOT.TSpline3() # TSpline*
-        self.regmode=ROOT.TUnfold.kRegModeCurvature
+        self.regmode=ROOT.TUnfold.kRegModeSize
         label='regamp'
         self.set_unfolding(key)
         self.do_scan()
@@ -640,7 +638,7 @@ class Unfolder(object):
         leg_1 = ROOT.TLegend(0.5,0.7,0.9,0.9)
         leg_1.SetTextSize(0.06)
         leg_1.AddEntry(self.data, 'Data', 'p')
-        leg_1.AddEntry(self.mc, 'Exp. signal', 'la')
+        leg_1.AddEntry(self.mc, 'Exp. signal', 'lf')
         leg_1.AddEntry(bkgStacked, 'Exp. signal+background', 'l')
         leg_1.Draw()
 
@@ -718,7 +716,7 @@ class Unfolder(object):
         subdata.SetLineColor(ROOT.kBlack-3)
         subdata.SetLineWidth(3)
         subdata.SetTitle('Folded space')
-        subdata.Draw('HIST')
+        subdata.Draw('pe')
         self.mc.Draw('SAME HIST')
         histInput=self.unfold.GetInput("Minput",";mass(det)")
         histInput.SetLineColor(ROOT.kRed)
@@ -726,8 +724,8 @@ class Unfolder(object):
         #histInput.Draw("SAME")
         leg_4 = ROOT.TLegend(0.5,0.7,0.9,0.9)
         leg_4.SetTextSize(0.06)
-        leg_4.AddEntry(self.mc, 'Exp. signal', 'pe')
-        leg_4.AddEntry(subdata, 'Data-bkg by hand', 'la')
+        leg_4.AddEntry(self.mc, 'Exp. signal', 'lf')
+        leg_4.AddEntry(subdata, 'Data-bkg by hand', 'pe')
         #leg_4.AddEntry(histInput, 'Data-bkg by tool', 'la')
         leg_4.Draw()
 
