@@ -457,16 +457,21 @@ class Unfolder(object):
         else:
             print('ERROR: the response matrix you asked for (%s) does not exist' % key)
         # Check if the input data points are enough to constrain the unfolding process
-        check = self.unfold.SetInput(self.data)
+        # Set scale bias
+        scaleBias=1.11
+        check = self.unfold.SetInput(self.data, scaleBias)
         if check>=10000:
             print('TUnfoldDensity error %d! Unfolding result may be wrong (not enough data to constrain the unfolding process)' % check)
         # Now I should do subtraction using the class. I assign a 10% error on each background. This will have to be set automatically
         scale_bgr=1.0
-        dscale_bgr=0.1
+        dscale_bgr=0.05
         for iBkg in self.bkg:
             self.unfold.SubtractBackground(iBkg,iBkg.GetName(),scale_bgr,dscale_bgr);
         # Add systematic error
         # unfold.AddSysError(histUnfoldMatrixSys,"signalshape_SYS", TUnfold::kHistMapOutputHoriz, TUnfoldSys::kSysErrModeMatrix)
+
+        # Bias term! It corresponds to the distribution I expect to see after unfolding (e.g. the true Zpt distribution)
+        self.unfold.SetBias(self.dataTruth_nom)
 
             
 
@@ -480,7 +485,10 @@ class Unfolder(object):
 
         # Scan the parameter tau, finding the kink in the L-curve. Finally, do the unfolding for the best choice of tau
         if self.regmode == ROOT.TUnfold.kRegModeNone:
-            self.unfold.DoUnfold(0.0)
+            unfoldingReturn=self.unfold.DoUnfold(0.0)
+            print('UNREGOLARIZED UNFOLDING RETURNS: %f' % unfoldingReturn)
+            if unfoldingReturn >=1:
+                print('================================================ ERROR ERROR ERROR, unregularized unfolding failed (max global correlation coefficient %f >=1) ==========================="' % unfoldingReturn)
             self.iBest=0.0
         else:
             self.iBest=self.unfold.ScanLcurve(self.nScan, self.tauMin, self.tauMax, self.lCurve, self.logTauX, self.logTauY)
@@ -606,7 +614,7 @@ class Unfolder(object):
 
         # =====================================================================
         #  plot some histograms
-        output=ROOT.TCanvas('out', 'out', 2000, 2000)
+        output=ROOT.TCanvas('out', 'out', 4000, 2000)
         output.Divide(4,2)
 
         # Show the matrix which connects input and output
@@ -651,6 +659,10 @@ class Unfolder(object):
         #   MC input (black) [with completely wrong peak position and shape]
         #   unfolded data (blue)
         output.cd(2)
+        # Data truth
+        self.dataTruth_nom.SetLineColor(ROOT.kRed+1)
+        self.dataTruth_nom.SetLineWidth(2)
+        self.dataTruth_nom.DrawNormalized("E HIST")
         # Unfolded data with total error
         histUnfoldTotal.SetMarkerColor(ROOT.kBlue)
         histUnfoldTotal.SetLineColor(ROOT.kBlue)
@@ -658,19 +670,15 @@ class Unfolder(object):
         histUnfoldTotal.SetMarkerStyle(ROOT.kFullCircle)
         # Outer error: total error
         histUnfoldTotal.SetTitle('Unfolded space')
-        histUnfoldTotal.DrawCopy('PE')
+        histUnfoldTotal.DrawNormalized('PESAME')
         # Middle error: stat+bgr
         histMunfold.SetLineColor(ROOT.kBlue+2)
         histMunfold.SetLineWidth(2)
-        histMunfold.Draw('SAME E1')
+        histMunfold.DrawNormalized('SAME E1')
         # Inner error: stat only
         histUnfoldStat.SetLineColor(ROOT.kBlue+4)
         histUnfoldStat.SetLineWidth(3)
-        histUnfoldStat.Draw('SAME E1')
-        # Data truth
-        self.dataTruth_nom.SetLineColor(ROOT.kRed+1)
-        self.dataTruth_nom.SetLineWidth(2)
-        self.dataTruth_nom.Draw("SAME E HIST")
+        histUnfoldStat.DrawNormalized('SAME E1')
         ###histDensityGenData.SetLineColor(kRed)
         ##histDensityGenData.Draw("SAME")
         ##histDensityGenMC.Draw("SAME HIST")
@@ -686,24 +694,31 @@ class Unfolder(object):
         #    unfolded data (blue)
         output.cd(3)
         # Data
-        self.data.SetTitle('Folded space')
-        self.data.Draw('PE')
+        subdata=self.sub_bkg_by_hand()
+        subdata.SetLineColor(ROOT.kBlack-3)
+        subdata.SetLineWidth(3)
+        subdata.SetTitle('Folded space')
+        #self.data.SetTitle('Folded space')
+        #self.data.Draw('PE')
+        subdata.Draw('PE')
         # MC folded back
-        histMdetFold.SetLineColor(ROOT.kBlack-3)
-        histMdetFold.SetLineWidth(2)
+        histMdetFold.SetLineColor(ROOT.kRed+1)
+        histMdetFold.SetLineWidth(3)
         histMdetFold.Draw('SAME')
         # Original folded MC
-        #self.mc.Draw("SAME HIST")
-        bkgStacked.Draw("SAME HIST")
+        self.mc.Draw("SAME HIST")
+        #bkgStacked.Draw("SAME HIST")
         #histInput=self.unfold.GetInput("Minput",";mass(det)")
         #histInput.SetLineColor(ROOT.kRed)
         #histInput.SetLineWidth(3)
         #histInput.Draw("SAME")
         leg_3 = ROOT.TLegend(0.5,0.7,0.9,0.9)
         leg_3.SetTextSize(0.06)
-        leg_3.AddEntry(self.data, 'Data', 'l')
+        #leg_3.AddEntry(self.data, 'Data', 'pe')
+        leg_3.AddEntry(subdata, 'Data-bkg', 'pe')
         leg_3.AddEntry(histMdetFold, 'MC folded back', 'l')
-        leg_3.AddEntry(bkgStacked, 'Exp. signal+background', 'l')
+        #leg_3.AddEntry(bkgStacked, 'Exp. signal+background', 'l')
+        leg_3.AddEntry(self.mc, 'Exp. signal', 'l')
         #leg_3.AddEntry(histInput, 'Input', 'la')
         leg_3.Draw()
 
@@ -712,10 +727,6 @@ class Unfolder(object):
         # show correlation coefficients
         # #histRhoi.Draw()
         # Data-bkg by hand
-        subdata=self.sub_bkg_by_hand()
-        subdata.SetLineColor(ROOT.kBlack-3)
-        subdata.SetLineWidth(3)
-        subdata.SetTitle('Folded space')
         subdata.Draw('pe')
         self.mc.Draw('SAME HIST')
         histInput=self.unfold.GetInput("Minput",";mass(det)")
@@ -767,6 +778,59 @@ class Unfolder(object):
         histCorr.SetTitle('Correlation matrix')
         histCorr.Draw('COLZ')
         output.SaveAs(os.path.join(self.outputDir, '2_unfold_%s_%s_%s.png' % (label, key, self.var)))
+ 
+        # =====================================================================
+        #  money plot
+        ROOT.TH1.SetDefaultSumw2()
+        
+        moneyplot=ROOT.TCanvas('out', 'out', 2000, 2000)
+        moneyplot.cd()
+        # Normalize properly for differential xsec
+        # Data truth
+        dt=copy.deepcopy(self.dataTruth_nom)
+        for ibin in range(1, dt.GetNbinsX()+1):
+            dt.SetBinContent(ibin,dt.GetBinContent(ibin)/dt.GetBinWidth(ibin))
+            dt.SetBinError(ibin,dt.GetBinError(ibin)/dt.GetBinWidth(ibin))
+        dt.Scale(1/dt.Integral())
+        dt.GetYaxis().SetTitle('d#sigma/dP_{T}^{Z}(pb/GeV)')
+        dt.Draw("E HIST")
+        # Unfolded data with total error
+        hut=copy.deepcopy(histUnfoldTotal)
+        for ibin in range(1, hut.GetNbinsX()+1):
+            print('bin %d has content %f and width %f for a final content of %f. Bin error is %f' %(ibin, hut.GetBinContent(ibin), hut.GetBinWidth(ibin), hut.GetBinContent(ibin)/hut.GetBinWidth(ibin), hut.GetBinError(ibin)))
+            hut.SetBinContent(ibin,hut.GetBinContent(ibin)/hut.GetBinWidth(ibin))
+            hut.SetBinError(ibin,hut.GetBinError(ibin)/hut.GetBinWidth(ibin))
+            print('after: bin content %f, bin error %f' % (hut.GetBinContent(ibin), hut.GetBinError(ibin)))
+        print('hut integral before: %f' % hut.Integral())
+        hut.Scale(1/hut.Integral())
+        print('hut integral after: %f' % hut.Integral())
+        # Outer error: total error
+        hut.Draw('PESAME')
+        # Middle error: stat+bgr
+        hmu=copy.deepcopy(histMunfold)
+        for ibin in range(1, hmu.GetNbinsX()+1):
+            hmu.SetBinContent(ibin,hmu.GetBinContent(ibin)/hmu.GetBinWidth(ibin))
+            hmu.SetBinError(ibin,hmu.GetBinError(ibin)/hmu.GetBinWidth(ibin))
+        hmu.Scale(1/hmu.Integral())
+        hmu.Draw('SAME E1')
+        # Inner error: stat only
+        hus=copy.deepcopy(histUnfoldStat)
+        for ibin in range(1, hus.GetNbinsX()+1):
+            hus.SetBinContent(ibin,hus.GetBinContent(ibin)/hus.GetBinWidth(ibin))
+            hus.SetBinError(ibin,hus.GetBinError(ibin)/hus.GetBinWidth(ibin))
+        hus.Scale(1/hus.Integral())
+        hus.Draw('SAME E1')
+        ###histDensityGenData.SetLineColor(kRed)
+        ##histDensityGenData.Draw("SAME")
+        ##histDensityGenMC.Draw("SAME HIST")
+        leg_money = ROOT.TLegend(0.5,0.7,0.9,0.9)
+        leg_money.SetTextSize(0.06)
+        leg_money.AddEntry(histUnfoldTotal, 'Unfolded data', 'pel')
+        leg_money.AddEntry(self.dataTruth_nom, 'Truth', 'la')
+        leg_money.Draw()
+        moneyplot.SaveAs(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.png' % (label, key, self.var)))
+        
+
 
         # # Individual saving.
         # self.print_histo(histMunfold, key, label)
