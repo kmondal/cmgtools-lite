@@ -239,6 +239,7 @@ class Unfolder(object):
             odbN_inc=0
             for ibin in range(0, resp_nom.GetNbinsX()+2):
                 # Am I taking the overflow diagonal one as well? Must check
+                # must use FindBin, but I need the maximum first
                 diagonalSum_nom+= resp_nom.GetBinContent(ibin, ibin)
                 diagonalSum_alt+= resp_alt.GetBinContent(ibin, ibin)
                 diagonalSum_inc+= resp_inc.GetBinContent(ibin, ibin)
