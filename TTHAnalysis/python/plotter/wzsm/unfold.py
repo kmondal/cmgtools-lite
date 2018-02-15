@@ -77,6 +77,7 @@ class Unfolder(object):
         self.closure=args.closure
         self.load_data(args.data, args.mc, args.gen)
 
+        ROOT.gStyle.SetOptStat(0)
         # Make sure histogram errors are ON
         ROOT.TH1.SetDefaultSumw2()
 
@@ -158,6 +159,7 @@ class Unfolder(object):
         self.compute_stability_and_purity()
 
         for matrix in [self.response_nom, self.response_alt, self.response_inc]:
+            # Errors are the standard deviation of the Y values
             profX=matrix.ProfileX('%s_profX'%matrix.GetName(), 0, matrix.GetNbinsY(),'s')
             profY=matrix.ProfileY('%s_profY'%matrix.GetName(), 0, matrix.GetNbinsX(),'s')
             print(profX)
@@ -168,7 +170,7 @@ class Unfolder(object):
             ROOT.gStyle.SetPadBottomMargin(0.1)
             ROOT.gStyle.SetPadLeftMargin(0.1)
             ROOT.gStyle.SetPadRightMargin(0.1)
-            ROOT.gStyle.SetOptStat('uo')
+            #ROOT.gStyle.SetOptStat('uo')
             c.Divide(2,1)
             c.cd(1)
             ROOT.gPad.SetGrid()
@@ -218,7 +220,7 @@ class Unfolder(object):
         ROOT.gStyle.SetPadBottomMargin(0.1)
         ROOT.gStyle.SetPadLeftMargin(0.1)
         ROOT.gStyle.SetPadRightMargin(0.1)
-        ROOT.gStyle.SetOptStat('uo')
+        #ROOT.gStyle.SetOptStat('uo')
         if self.responseAsPdf:
             resp_nom=copy.deepcopy(ROOT.TH2D(self.response_nom))
             resp_alt=copy.deepcopy(ROOT.TH2D(self.response_alt))
@@ -349,7 +351,7 @@ class Unfolder(object):
         ROOT.gStyle.SetPadBottomMargin(0.1)
         ROOT.gStyle.SetPadLeftMargin(0.1)
         ROOT.gStyle.SetPadRightMargin(0.1)
-        ROOT.gStyle.SetOptStat('uo')
+        #ROOT.gStyle.SetOptStat('uo')
         c.Divide(3,1)
         c.cd(1)
         purity_nom.SetMarkerColor(ROOT.kRed)
