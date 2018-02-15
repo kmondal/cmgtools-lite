@@ -475,6 +475,16 @@ class Unfolder(object):
         # Bias term! It corresponds to the distribution I expect to see after unfolding (e.g. the true Zpt distribution)
         self.unfold.SetBias(self.dataTruth_nom)
 
+        # Alternative matrix:
+        if   key == 'nom':
+            self.unfold.AddSysError(self.response_alt, 'aMC response', self.histmap, ROOT.TUnfoldDensity.kSysErrModeMatrix)
+        elif key == 'alt':
+            self.unfold.AddSysError(self.response_nom, 'pow response', self.histmap, ROOT.TUnfoldDensity.kSysErrModeMatrix)
+        elif key == 'inc':
+            self.unfold.AddSysError(self.response_nom, 'pow response', self.histmap, ROOT.TUnfoldDensity.kSysErrModeMatrix)
+        else:
+            print('ERROR: the response matrix you asked for (%s) does not exist' % key)
+        
             
 
     def do_scan(self):
