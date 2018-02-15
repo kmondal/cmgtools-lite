@@ -9,7 +9,7 @@
 #declare -A pairs=( ['nJet30']='[-0.5,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5]' ['sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass)']='[0,10,20,30,40,50,60,80,100,130,160,200,300]' ['sump4(0, LepZ1_conePt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_conePt,LepZ2_eta,LepZ2_phi,LepZ2_mass)']='[0,20,40,60,80,100,130,160,200,300]' )
 
 #declare -A pairs=(  ['sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass)']='[0,10,20,30,40,50,60,80,100,130,160,200,300]'  )
-declare -A pairs=(  ['sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass)']='[0,5,10,15,20,25,30,40,50,60,70,80,90,100,110,120,130,140,160,180,200,250,300]'  )
+declare -A pairs=(  ['sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass)']='[0,5,10,15,20,25,30,40,50,60,70,80,90,100,110,120,130,140,160,180,200,250,300]' ["LeadJet_pt"]='[25,30,35,40,50,60,70,80,90,100,110,120,130,140,160,180,200,250,300]'  )
 
 count=0
 
@@ -33,9 +33,13 @@ for iShape in "${!pairs[@]}"; do
     ###if    [ "$count" == "0" ]; then
     ###    echo "rm -r /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/incl_fitWZonly_nJet30/"
     ###    echo "mv /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/incl_fitWZonly/ /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/incl_fitWZonly_nJet30/"
-    ###elif [ "$count" == "1" ]; then
+    if    [ "$count" == "0" ]; then
         echo "rm -r /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/incl_fitWZonly_Zpt/"
         echo "mv /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/incl_fitWZonly/ /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/incl_fitWZonly_Zpt/"
+    elif [ "$count" == "1" ]; then
+        echo "rm -r /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/incl_fitWZonly_LeadJetPt/"
+        echo "mv /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/incl_fitWZonly/ /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/incl_fitWZonly_LeadJetPt/"
+    fi
     ###elif [ "$count" == "2" ]; then
     ###    echo "rm -r /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/incl_fitWZonly_ZconePt/"
     ###    echo "mv /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/incl_fitWZonly/ /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/incl_fitWZonly_ZconePt/"
