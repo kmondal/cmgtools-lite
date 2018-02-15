@@ -177,7 +177,8 @@ elif(action=='response'):
         weights=' puw_nInt_Moriond(nTrueInt)*bTagWeight ' if (mconly or pog) else ' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1,{wp})*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1,{wp})*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1,{wp})*bTagWeight '.format(wp=wp)
         #weights=' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1,{wp})*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1,{wp})*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1,{wp})*bTagWeight '.format(wp=wp) if not mconly else ' puw_nInt_Moriond(nTrueInt)*bTagWeight ' 
         functions=' --load-macro wzsm/functionsPUW.cc --load-macro wzsm/functionsSF.cc --load-macro wzsm/functionsWZ.cc '
-        toplot='--sP nJet30_response,Zpt_response,ZconePt_response ' 
+        #toplot='--sP nJet30_response,Zpt_response,ZconePt_response ' 
+        toplot='--sP Zpt_response ' 
         # This is not up to the generic user
         #if(subaction!=''):
         #        toplot='--sP \'{toplot}\''.format(toplot=subaction)

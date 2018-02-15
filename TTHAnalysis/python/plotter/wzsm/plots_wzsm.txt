@@ -170,10 +170,11 @@ METflavour_logblind : met_pt\:(abs(LepSel1_pdgId)==13)+(abs(LepSel2_pdgId)==13)+
 # Note: fix content
 nJet30_response : met_pt\:nJet30 : [-0.5,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5]*[0,10,20,30,40,50,60,70,80,90,100,110,120,130,140] ; XTitle="Number of jets p_{T}> 30", YTitle="Will be leading jet genPt but now dummy met", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ', IncludeOverflows=False
 # Note: fix lower range, and eventually higher range
+#Zpt_response : sump4(0, LepZ1_genpt,LepZ1_geneta,LepZ1_genphi,LepZ1_genmass,LepZ2_genpt,LepZ2_geneta,LepZ2_genphi,LepZ2_genmass)\:sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass) : [0,20,40,60,80,100,130,160,200,300]*[0,40,80,130,300] ; XTitle="Z reco p_{T}", YTitle="Z gen p_{T}", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ', IncludeOverflows=False
 Zpt_response : sump4(0, LepZ1_genpt,LepZ1_geneta,LepZ1_genphi,LepZ1_genmass,LepZ2_genpt,LepZ2_geneta,LepZ2_genphi,LepZ2_genmass)\:sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass) : [0,10,20,30,40,50,60,80,100,130,160,200,300]*[0,20,40,60,100,160,300] ; XTitle="Z reco p_{T}", YTitle="Z gen p_{T}", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ', IncludeOverflows=False
-ZconePt_response : sump4(0, LepZ1_genpt,LepZ1_geneta,LepZ1_genphi,LepZ1_genmass,LepZ2_genpt,LepZ2_geneta,LepZ2_genphi,LepZ2_genmass)\:sump4(0, LepZ1_conePt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_conePt,LepZ2_eta,LepZ2_phi,LepZ2_mass) : [0,10,20,30,40,50,60,80,100,130,160,200,300]*[0,20,40,60,100,160,300] ; XTitle="Z reco p_{T}^{cone}", YTitle="Z gen p_{T}", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ', IncludeOverflows=False
+ZconePt_response : sump4(0, LepZ1_genpt,LepZ1_geneta,LepZ1_genphi,LepZ1_genmass,LepZ2_genpt,LepZ2_geneta,LepZ2_genphi,LepZ2_genmass)\:sump4(0, LepZ1_conePt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_conePt,LepZ2_eta,LepZ2_phi,LepZ2_mass) : [0,20,40,60,80,100,130,160,200,300]*[0,40,80,130,300] ; XTitle="Z reco p_{T}^{cone}", YTitle="Z gen p_{T}", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ', IncludeOverflows=False
 
-Zpt : sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass) : [0,10,20,30,40,50,60,80,100,130,160,200,300] ; XTitle="Z reco p_{T}", Legend='TL', LegendCutoff=1e-5
+Zpt : sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass) : [0,20,40,60,80,100,130,160,200,300] ; XTitle="Z reco p_{T}", Legend='TR', LegendCutoff=1e-5
 
 mass_2(LepSel1_pt,LepSel1_eta,LepSel1_phi,LepSel1_mass, LepSel2_pt,LepSel2_eta,LepSel2_phi,LepSel2_mass): 50,0,200; XTitle="m(ll) [GeV]"
 
