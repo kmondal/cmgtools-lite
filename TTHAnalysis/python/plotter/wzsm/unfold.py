@@ -616,9 +616,9 @@ class Unfolder(object):
 
         # =====================================================================
         #  plot some histograms
-        output=ROOT.TCanvas('out', 'out', 4000, 2000)
-        output.Divide(4,2)
-
+        output=ROOT.TCanvas('out', 'out', 2000, 2000)
+        #output.Divide(4,2)
+        output.cd()
         # Show the matrix which connects input and output
         # There are overflow bins at the bottom, not shown in the plot
         # These contain the background shape.
@@ -627,8 +627,8 @@ class Unfolder(object):
         # normalisation
         #output.cd(1)
         ##histMdetGenMC.Draw("BOX")
-
-        output.cd(1)
+        
+        #output.cd(1)
         # Data, MC prediction, background
         self.data.SetMinimum(0.0)
         self.data.SetTitle('Inputs (folded space)')
@@ -655,12 +655,13 @@ class Unfolder(object):
         print(self.data.GetNbinsX())
         print(self.mc.GetNbinsX())
         print(histDetNormBgrTotal.GetNbinsX())
-        
+        output.SaveAs(os.path.join(self.outputDir, '2_p1_unfold_%s_%s_%s.png' % (label, key, self.var)))
+        output.Clear()
         # draw generator-level distribution:
         #   data (red) [for real data this is not available]
         #   MC input (black) [with completely wrong peak position and shape]
         #   unfolded data (blue)
-        output.cd(2)
+        #output.cd(2)
         # Data truth
         self.dataTruth_nom.SetLineColor(ROOT.kRed+1)
         self.dataTruth_nom.SetLineWidth(2)
@@ -689,12 +690,13 @@ class Unfolder(object):
         leg_2.AddEntry(histUnfoldTotal, 'Unfolded data', 'pel')
         leg_2.AddEntry(self.dataTruth_nom, 'Truth', 'la')
         leg_2.Draw()
-        
+        output.SaveAs(os.path.join(self.outputDir, '2_p2_unfold_%s_%s_%s.png' % (label, key, self.var)))
+        output.Clear()
         # show detector level distributions
         #    data (red)
         #    MC (black) [with completely wrong peak position and shape]
         #    unfolded data (blue)
-        output.cd(3)
+        #output.cd(3)
         # Data
         subdata=self.sub_bkg_by_hand()
         subdata.SetLineColor(ROOT.kBlack-3)
@@ -723,9 +725,9 @@ class Unfolder(object):
         leg_3.AddEntry(self.mc, 'Exp. signal', 'l')
         #leg_3.AddEntry(histInput, 'Input', 'la')
         leg_3.Draw()
-
-
-        output.cd(4) 
+        output.SaveAs(os.path.join(self.outputDir, '2_p3_unfold_%s_%s_%s.png' % (label, key, self.var)))
+        output.Clear()
+        #output.cd(4) 
         # show correlation coefficients
         # #histRhoi.Draw()
         # Data-bkg by hand
@@ -741,7 +743,8 @@ class Unfolder(object):
         leg_4.AddEntry(subdata, 'Data-bkg by hand', 'pe')
         #leg_4.AddEntry(histInput, 'Data-bkg by tool', 'la')
         leg_4.Draw()
-
+        output.SaveAs(os.path.join(self.outputDir, '2_p4_unfold_%s_%s_%s.png' % (label, key, self.var)))
+        output.Clear()
         if self.regmode is not ROOT.TUnfold.kRegModeNone:
 
             # from v610# # Show logTauCurvature (should be peaked similarly to a Gaussian)
@@ -749,14 +752,16 @@ class Unfolder(object):
             # from v610# self.logTauCurvature.SetLineWidth(3)
             # from v610# self.logTauCurvature.Draw()
             # show tau as a function of chi**2
-            output.cd(5)
+            #output.cd(5)
             self.logTauX.Draw()
             bestLogTauLogChi2.SetMarkerColor(ROOT.kRed)
             bestLogTauLogChi2.SetMarkerStyle(ROOT.kFullSquare)
             bestLogTauLogChi2.SetMarkerSize(2)
             bestLogTauLogChi2.Draw("P")
             # show the L curve
-            output.cd(6)
+            output.SaveAs(os.path.join(self.outputDir, '2_p5_unfold_%s_%s_%s.png' % (label, key, self.var)))
+            output.Clear()
+            #output.cd(6)
             self.lCurve.GetXaxis().SetTitle('log#chi_{A}^{2}')
             self.lCurve.GetYaxis().SetTitle('log#chi_{L}^{2}')
             self.lCurve.Draw("AL")
@@ -764,8 +769,10 @@ class Unfolder(object):
             bestLcurve.SetMarkerStyle(ROOT.kFullSquare)
             bestLcurve.SetMarkerSize(2)
             bestLcurve.Draw("P")
+            output.SaveAs(os.path.join(self.outputDir, '2_p6_unfold_%s_%s_%s.png' % (label, key, self.var)))
+            output.Clear()
        
-        output.cd(7)
+        #output.cd(7)
         if 'nom' in key:
             self.response_nom.SetTitle('Response Matrix (powheg)')
             self.response_nom.Draw('COLZ')
@@ -775,11 +782,13 @@ class Unfolder(object):
         elif 'inc' in key:
             self.response_inc.SetTitle('Response Matrix (pythia)')
             self.response_inc.Draw('COLZ')
-
-        output.cd(8)
+        output.SaveAs(os.path.join(self.outputDir, '2_p7_unfold_%s_%s_%s.png' % (label, key, self.var)))
+        output.Clear()
+        #output.cd(8)
         histCorr.SetTitle('Correlation matrix')
         histCorr.Draw('COLZ')
-        output.SaveAs(os.path.join(self.outputDir, '2_unfold_%s_%s_%s.png' % (label, key, self.var)))
+        output.SaveAs(os.path.join(self.outputDir, '2_p8_unfold_%s_%s_%s.png' % (label, key, self.var)))
+        #output.SaveAs(os.path.join(self.outputDir, '2_unfold_%s_%s_%s.png' % (label, key, self.var)))
  
         # =====================================================================
         #  money plot
