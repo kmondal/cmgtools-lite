@@ -25,7 +25,8 @@ parser.add_option("--mpfr"    ,dest="mpfr"    , type="string", default=None, hel
 parser.add_option("--poisson" ,dest="poisson" , action="store_true", default=False, help="Put poisson errors in the histogram (not recommended)")
 parser.add_option("--extraText" ,dest="extraText" , type="string", default=[], action="append", help="Add extra text lines at the end of the datacard") #A quick and dirty workaround for the rateParameters
 parser.add_option('--bb', '--autoMCStats', dest='autoMCStats', action='store_true', help='Use automatic MC stats with Barlow-Beeston approximation')
-
+parser.add_option('--sigAsim', '--notSusy', dest='notSusy', action='store_true', help='Add signal process to Asimov dataset. Useful to deal with in SM measurements with no BSM')
+parser.add_option('--notPrefix', dest='notPrefix', action='store_true', help='Do not add the x_ prefix to the histograms saved in the shapes rootfile')
 
 (options, args) = parser.parse_args()
 options.weight = True
@@ -181,9 +182,14 @@ if options.hardZero:
 
 if options.asimov:
     tomerge = []
-    for p in mca.listBackgrounds():
-        if p in report: tomerge.append(report[p])
-    report['data_obs'] = mergePlots("x_data_obs", tomerge) 
+    if options.notSusy:
+      for p in (mca.listBackgrounds() + mca.listSignals()):
+          if p in report: tomerge.append(report[p])
+      report['data_obs'] = mergePlots("x_data_obs", tomerge) 
+    else:
+      for p in (mca.listBackgrounds()):
+          if p in report: tomerge.append(report[p])
+      report['data_obs'] = mergePlots("x_data_obs", tomerge)     
 else:
     report['data_obs'] = report['data'].Clone("x_data_obs") 
 
@@ -424,7 +430,8 @@ for signal in mca.listSignals():
     datacard.write("## Event selection: \n")
     for cutline in str(cuts).split("\n"):  datacard.write("##   %s\n" % cutline)
     if signal not in signals: datacard.write("## NOTE: no signal contribution found with this event selection.\n")
-    datacard.write("shapes *        * ../common/%s.input.root x_$PROCESS x_$PROCESS_$SYSTEMATIC\n" % filename)
+    if options.noPrefix:  datacard.write("shapes *        * ../common/%s.input.root $PROCESS $PROCESS_$SYSTEMATIC\n" % filename)
+    else: datacard.write("shapes *        * ../common/%s.input.root x_$PROCESS x_$PROCESS_$SYSTEMATIC\n" % filename)
     datacard.write('##----------------------------------\n')
     datacard.write('bin         %s\n' % binname)
     datacard.write('observation %s\n' % myyields['data_obs'])
@@ -475,7 +482,10 @@ if not os.path.exists(myout): os.system("mkdir -p "+myout)
 workspace = ROOT.TFile.Open(myout+filename+".input.root", "RECREATE")
 for n,h in report.iteritems():
     if options.verbose > 0: print "\t%s (%8.3f events)" % (h.GetName(),h.Integral())
-    workspace.WriteTObject(h,h.GetName())
+    if options.noPrefix:
+      workspace.WriteTObject(h,h.GetName()[2:])
+    else:
+      workspace.WriteTObject(h,h.GetName())
 workspace.Close()
 
 if options.verbose > -1:

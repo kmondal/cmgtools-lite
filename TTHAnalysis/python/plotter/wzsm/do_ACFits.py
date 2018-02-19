@@ -107,9 +107,9 @@ for n in range(1,nBins+1):
 theFits0 = []
 theFits1 = []
 theFits2 = []
-funcTemplate = ROOT.TF2("ex","[0]+[1]*x+[2]*y+[3]*x*y+[4]*y*y+[5]*x*x")
+funcTemplate = ROOT.TF2("ex","[0] + [1]*x + [2]*y + [3]*x*y + [4]*x*x + [5] *y*y")
 test = ROOT.TH2F()
-outFile = ROOT.TFile("./signal_proc_flavor.root", "RECREATE")
+
 
 """
 for h in theChanneledHists0:
@@ -144,17 +144,21 @@ for h in theChanneledHists0:
   print h.GetYaxis().GetBinCenter(2),h.GetYaxis().GetBinCenter(3),h.GetYaxis().GetBinCenter(4), h.GetBinContent(3,2), h.GetBinContent(3,3), h.GetBinContent(3,4)
   ax,bx,dx = fit3(h.GetXaxis().GetBinCenter(2),h.GetXaxis().GetBinCenter(3),h.GetXaxis().GetBinCenter(4), h.GetBinContent(2,3), h.GetBinContent(3,3), h.GetBinContent(4,3))
   ay,by,dy = fit3(h.GetYaxis().GetBinCenter(2),h.GetYaxis().GetBinCenter(3),h.GetYaxis().GetBinCenter(4), h.GetBinContent(3,2), h.GetBinContent(3,3), h.GetBinContent(3,4))
-  theFits0.append(funcTemplate.Clone())
-  theFits0[-1].SetName("bin_content_par2_par3_" + str(len(theFits0)))
-  theFits0[-1].SetParameters((dx+dy)/2., bx, by, 0, ay,ax)
-  r = ROOT.TFitResultPtr(h.Fit(theFits0[-1],"S"))
-  h.Fit(theFits0[-1])
+  #theFits0.append(funcTemplate.Clone())
+  #theFits0[-1].SetName("bin_content_par2_par3_" + str(len(theFits0)))
+  #theFits0[-1].SetParameters((dx+dy)/2., bx, by, 0, ax,ay)
+  func = ROOT.TF2("bin_content_par2_par3_" + str(len(theFits0)),"[0] + [1]*x + [2]*y + [3]*x*y + [4]*x*x + [5] *y*y")
+  r = ROOT.TFitResultPtr(h.Fit(func,"S"))
+  h.Fit(func)
   print "Chi2:  ", h.GetFunction("bin_content_par2_par3_" + str(len(theFits0))).GetProb(), h.GetFunction("bin_content_par2_par3_" + str(len(theFits0))).GetChisquare()
-  print "Input: ", (dx+dy)/2., bx, by, 0, ay,ax
+  print "Input: ", (dx+dy)/2., bx, by, 0, ax,ay
   print "Output: ", h.GetFunction("bin_content_par2_par3_" + str(len(theFits0))).GetParameter(0), h.GetFunction("bin_content_par2_par3_" + str(len(theFits0))).GetParameter(1), h.GetFunction("bin_content_par2_par3_" + str(len(theFits0))).GetParameter(2),h.GetFunction("bin_content_par2_par3_" + str(len(theFits0))).GetParameter(3), h.GetFunction("bin_content_par2_par3_" + str(len(theFits0))).GetParameter(4), h.GetFunction("bin_content_par2_par3_" + str(len(theFits0))).GetParameter(5), "\n \n"
-  outFile.WriteTObject(h.GetFunction("bin_content_par2_par3_" + str(len(theFits0))))
+  outFile = ROOT.TFile("./signal_proc_flavor.root", "UPDATE")
+  outFile.WriteTObject(func)
+  outFile.Close()
+  if True: break
 
-
+"""
 for h in theChanneledHists1:
   print h.GetXaxis().GetBinCenter(2),h.GetXaxis().GetBinCenter(3),h.GetXaxis().GetBinCenter(4), h.GetBinContent(2,3), h.GetBinContent(3,3), h.GetBinContent(4,3)
   print h.GetYaxis().GetBinCenter(2),h.GetYaxis().GetBinCenter(3),h.GetYaxis().GetBinCenter(4), h.GetBinContent(3,2), h.GetBinContent(3,3), h.GetBinContent(3,4)
@@ -162,14 +166,15 @@ for h in theChanneledHists1:
   ay,by,dy = fit3(h.GetYaxis().GetBinCenter(2),h.GetYaxis().GetBinCenter(3),h.GetYaxis().GetBinCenter(4), h.GetBinContent(3,2), h.GetBinContent(3,3), h.GetBinContent(3,4))
   theFits1.append(funcTemplate.Clone())
   theFits1[-1].SetName("bin_content_par1_par3_" + str(len(theFits1)))
-  theFits1[-1].SetParameters((dx+dy)/2., bx, by, 0, ay,ax)
+  theFits1[-1].SetParameters((dx+dy)/2., bx, by, 0, ax,ay)
   r = ROOT.TFitResultPtr(h.Fit(theFits1[-1],"S"))
   h.Fit(theFits1[-1])
   print "Chi2:  ", h.GetFunction("bin_content_par1_par3_" + str(len(theFits1))).GetProb(), h.GetFunction("bin_content_par1_par3_" + str(len(theFits1))).GetChisquare()
-  print "Input: ", (dx+dy)/2., bx, by, 0, ay,ax
+  print "Input: ", (dx+dy)/2., bx, by, 0, ax,ay
   print "Output: ", h.GetFunction("bin_content_par1_par3_" + str(len(theFits1))).GetParameter(0), h.GetFunction("bin_content_par1_par3_" + str(len(theFits1))).GetParameter(1), h.GetFunction("bin_content_par1_par3_" + str(len(theFits1))).GetParameter(2),h.GetFunction("bin_content_par1_par3_" + str(len(theFits1))).GetParameter(3), h.GetFunction("bin_content_par1_par3_" + str(len(theFits1))).GetParameter(4), h.GetFunction("bin_content_par1_par3_" + str(len(theFits1))).GetParameter(5), "\n \n"
+  outFile = ROOT.TFile("./signal_proc_flavor.root", "UPDATE")
   outFile.WriteTObject(h.GetFunction("bin_content_par1_par3_" + str(len(theFits1))))
-
+  outFile.Close()
 
 
 for h in theChanneledHists2:
@@ -179,13 +184,15 @@ for h in theChanneledHists2:
   ay,by,dy = fit3(h.GetYaxis().GetBinCenter(2),h.GetYaxis().GetBinCenter(3),h.GetYaxis().GetBinCenter(4), h.GetBinContent(3,2), h.GetBinContent(3,3), h.GetBinContent(3,4))
   theFits2.append(funcTemplate.Clone())
   theFits2[-1].SetName("bin_content_par1_par2_" + str(len(theFits2)))
-  theFits2[-1].SetParameters((dx+dy)/2., bx, by, 0, ay,ax)
+  theFits2[-1].SetParameters((dx+dy)/2., bx, by, 0, ax,ay)
   h.Fit(theFits2[-1])
   print "Chi2:  ", h.GetFunction("bin_content_par1_par2_" + str(len(theFits2))).GetProb(), h.GetFunction("bin_content_par1_par2_" + str(len(theFits2))).GetChisquare()
-  print "Input: ", (dx+dy)/2., bx, by, 0, ay,ax
+  print "Input: ", (dx+dy)/2., bx, by, 0, ax,ay
   print "Output: ", h.GetFunction("bin_content_par1_par2_" + str(len(theFits2))).GetParameter(0), h.GetFunction("bin_content_par1_par2_" + str(len(theFits2))).GetParameter(1), h.GetFunction("bin_content_par1_par2_" + str(len(theFits2))).GetParameter(2),h.GetFunction("bin_content_par1_par2_" + str(len(theFits2))).GetParameter(3), h.GetFunction("bin_content_par1_par2_" + str(len(theFits2))).GetParameter(4), h.GetFunction("bin_content_par1_par2_" + str(len(theFits2))).GetParameter(5), "\n \n"
+  outFile = ROOT.TFile("./signal_proc_flavor.root", "UPDATE")
   outFile.WriteTObject(h.GetFunction("bin_content_par1_par2_" + str(len(theFits2))))
-
+  outFile.Close()
+"""
 """
 for h in theChanneledHists0:
   outFile.WriteTObject(h)
@@ -197,5 +204,5 @@ for h in theChanneledHists2:
   outFile.WriteTObject(h)
 """
 
-outFile.Close()
+
 

@@ -1,0 +1,12 @@
+WZ_pow                 : WZTo3LNu                        : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))            ; FillColor=ROOT.kOrange  , Label="WZ (POWHEG)"
+
+#Corrected by amcatnlo vs POWHEG gen x-sec
+WZ_amc                 : WZTo3LNu_amcatnlo               : xsec/1.12 : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))            ; FillColor=ROOT.kBlue  , Label="WZ (AMCATNLO)"
+
+#Corrected by amcatnlo vs POWHEG gen x-sec
+WZ_AC+               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC+               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC+               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+

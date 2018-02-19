@@ -6,20 +6,11 @@ trigeff_ML    : prompt_.*|rares_.*|convs   : .*                : 1.015
 fakes_ML      : fakes_.*                          : .*                : 1.3 #FIX ME
 convs_ML      : convs                             : .*                : 1.25
 
-normZZH_ML    : prompt_ZZH                        : .*                : 1.3
+normZZH_ML    : prompt_ZZH                        : .*                : 1.07
 normVVV_ML    : rares_VVV                         : .*                : 1.5
-normVH_ML     : rares_VH                          : .*                : 1.5
-normtZq_ML    : rares_tZq                         : .*                : 1.5
-normTTX_ML    : rares_ttX                         : .*                : 1.5
-theoTTV_ML    : rares_ttW|rares_ttZ               : .*                : 1.15
-
-#ZZ
-#normZZH_ML    : prompt_ZZH                        : .*                : 1.3 : lnN_in_shape_bins : 1
-#normZZH_ML    : prompt_ZZH                        : .*                : 1.2 : lnN_in_shape_bins : 2,3,4
-
-#ttX
-#normTTX_ML    : rares_ttX|rares_tZq                         : .*                : 1.5 : lnN_in_shape_bins : 1,2
-#normTTX_ML    : rares_ttX|rares_tZq                         : .*                : 1.3 : lnN_in_shape_bins : 3,4
+normVH_ML     : rares_VH                          : .*                : 1.25
+normtZq_ML    : rares_tZq                         : .*                : 1.3
+theoTTV_ML    : rares_ttX                         : .*                : 1.15
 
 
 #Templates#
@@ -37,6 +28,6 @@ stats_WZ   : prompt_WZ    : .* : 1.0 : stat_foreach_shape_bins : .*
 stats_ZZH  : prompt_ZZH   : .* : 1.0 : stat_foreach_shape_bins : .*
 stats_convs: convs        : .* : 1.0 : stat_foreach_shape_bins : .*
 stats_ttX  : rares_ttX    : .* : 1.0 : stat_foreach_shape_bins : .*
-stats_VVV  : rares_VVV    : .* : 1.0 : stat_foreach_shape_bins : .*
 stats_VH   : rares_VH     : .* : 1.0 : stat_foreach_shape_bins : .*
+stats_VVV  : rares_VVV    : .* : 1.0 : stat_foreach_shape_bins : .*
 stats_tZq  : rares_tZq    : .* : 1.0 : stat_foreach_shape_bins : .*
