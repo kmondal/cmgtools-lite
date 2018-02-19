@@ -189,7 +189,7 @@ class Unfolder(object):
             
     def get_responses(self):
         print('Acquiring response matrices.')
-        folder=os.path.join(self.inputDir, 'response%s/%s_response_WZ_' % (self.finalState, self.var) )
+        folder=os.path.join(self.inputDir, 'response_%s/%s_response_WZ_' % (self.finalState, self.var) )
         file_handle_nom = ROOT.TFile.Open('%s%s.root' % (folder, 'Pow'))
         file_handle_alt = ROOT.TFile.Open('%s%s.root' % (folder, 'aMC'))
         file_handle_inc = ROOT.TFile.Open('%s%s.root' % (folder, 'Inc'))
