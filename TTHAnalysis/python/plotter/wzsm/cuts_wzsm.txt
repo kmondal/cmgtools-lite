@@ -49,31 +49,7 @@ convCR: met_pt <= 30   && nBJetMedium30 == 0 && abs(91.1876-mll_3l)>15  && m3L <
 allAreGoodMatched: abs(LepW_mcMatchId)== 24 && abs(LepZ1_mcMatchId) == 23 && abs(LepZ2_mcMatchId) == 23 ; Disable=True
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+######################################################################################################################
 
 # Flavor
 eee: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==33; Disable=True

@@ -67,7 +67,17 @@ elif [ "$1" == "SR" ]; then
     #sh wzsm/doAnal.sh plot srwz M  ${2}
 
 elif [ "$1" == "response" ]; then
-    sh wzsm/doAnal.sh plot response VT ${2}
+    # Use temporarily name of plot to store channel
+    fs='incl'
+    sh wzsm/doAnal.sh plot response VT ${fs}
+    fs='eee'
+    sh wzsm/doAnal.sh plot response VT ${fs}
+    fs='eem'
+    sh wzsm/doAnal.sh plot response VT ${fs}
+    fs='mme'
+    sh wzsm/doAnal.sh plot response VT ${fs}
+    fs='mmm'
+    sh wzsm/doAnal.sh plot response VT ${fs}
 
 elif [ "$1" == "TT" ]; then
     sh wzsm/doAnal.sh plot ttcr VT ${2}

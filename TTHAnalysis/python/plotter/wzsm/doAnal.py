@@ -165,7 +165,7 @@ elif(action=='response'):
         if(wp=='1'):
                 #os.system('rm wzsm/fakeRate-2lss-frdata.txt')
                 #os.system('cp wzsm/fakeRate-2lss-frdata-wpVT.txt wzsm/fakeRate-2lss-frdata.txt')
-                enablecuts=' -E SR ' 
+                enablecuts=(' -E SR -E %s' % subaction) if subaction!='incl' else ' -E SR '
                 if pog: enablecuts=' -X MVAVT -E cutPOGT '
         else:
                 #os.system('rm wzsm/fakeRate-2lss-frdata.txt')
@@ -178,7 +178,7 @@ elif(action=='response'):
         #weights=' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1,{wp})*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1,{wp})*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1,{wp})*bTagWeight '.format(wp=wp) if not mconly else ' puw_nInt_Moriond(nTrueInt)*bTagWeight ' 
         functions=' --load-macro wzsm/functionsPUW.cc --load-macro wzsm/functionsSF.cc --load-macro wzsm/functionsWZ.cc '
         #toplot='--sP nJet30_response,Zpt_response,ZconePt_response ' 
-        toplot='--sP Zpt_response,LeadJetPt_response ' 
+        toplot='--sP Zpt_response,LeadJetPt_response,Zgenpt ' 
         # This is not up to the generic user
         #if(subaction!=''):
         #        toplot='--sP \'{toplot}\''.format(toplot=subaction)
@@ -187,9 +187,9 @@ elif(action=='response'):
         batch=' -q batch '
         batch=''
         direct=' --pretend '
-        direct=' '
+        direct='  '
         jei='6'
-        jei='60'
+        jei='60 '
         # https://hypernews.cern.ch/HyperNews/CMS/get/physics-announcements/4495.html
         lumi='35.867'
         pgroup=' '
@@ -202,11 +202,11 @@ elif(action=='response'):
         mca= 'wzsm/mca_unfolding.txt'
         out=''
         if(wp=='1'):
-                out=outputDir+'wz{mc}{pog}/lepmvaVT/response/'.format(mc='' if not mconly else 'MC', pog='' if not pog else 'pog')
+                out=outputDir+'wz{mc}{pog}/lepmvaVT/response_{fs}/'.format(fs=subaction, mc='' if not mconly else 'MC', pog='' if not pog else 'pog')
         elif(wp=='0'):
-                out=outputDir+'wz{mc}{pog}/lepmvaM/response/'.format(mc='' if not mconly else 'MC', pog='' if not pog else 'pog' )
+                out=outputDir+'wz{mc}{pog}/lepmvaM/response_{fs}/'.format(fs=subaction, mc='' if not mconly else 'MC', pog='' if not pog else 'pog' )
         else:
-                out=outputDir+'wz{mc}{pog}/lepmvaVT/response/'.format(mc='' if not mconly else 'MC', pog='' if not pog else 'pog')
+                out=outputDir+'wz{mc}{pog}/lepmvaVT/response_{fs}/'.format(fs=subaction, mc='' if not mconly else 'MC', pog='' if not pog else 'pog')
         runPlots(cuts, mca, out, plots, inputDir, outputDir, pgroup, jei, lumi, mcc, mccother, trigdef, toplot, weights, functions,enablecuts, header)
 
 elif(action=='ttcr'):

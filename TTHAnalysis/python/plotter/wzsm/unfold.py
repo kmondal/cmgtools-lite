@@ -55,6 +55,7 @@ class Unfolder(object):
         self.dataTruth_inc=None
         self.mc=None
         self.bkg=None
+        self.finalState=args.finalState
         self.verbose=args.verbose
         self.combineInput=args.combineInput
         self.nScan=20
@@ -87,8 +88,8 @@ class Unfolder(object):
         dataFile=None
         mcFile=None
         #genFile=None # Taken from a separate file  
-        print('Opening file %s.' % utils.get_file_from_glob(os.path.join(folder, 'incl_fitWZonly_%s/%s' % (self.var, self.combineInput) ) if folder else self.combineInput) )
-        file_handle = ROOT.TFile.Open(utils.get_file_from_glob(os.path.join(folder,  'incl_fitWZonly_%s/%s' % (self.var, self.combineInput)) if folder else self.combineInput))
+        print('Opening file %s.' % utils.get_file_from_glob(os.path.join(folder, '%s_fitWZonly_%s/%s' % (self.finalState, self.var, self.combineInput) ) if folder else self.combineInput) )
+        file_handle = ROOT.TFile.Open(utils.get_file_from_glob(os.path.join(folder,  '%s_fitWZonly_%s/%s' % (self.finalState, self.var, self.combineInput)) if folder else self.combineInput))
         # gdata=file_handle.Get('x_data')
         # gdata.Draw('AP')
         # hdata=self.get_graph_as_hist(gdata, ('recodata','recodata',4,0,4))
@@ -900,6 +901,7 @@ if __name__ == '__main__':
     parser.add_argument('-s', '--splitMode',    help='Split mode (input or random)', default='input')
     parser.add_argument('-v', '--verbose',      help='Verbose printing of the L-curve scan', action='store_true')
     parser.add_argument('-r', '--responseAsPdf', help='Print response matrix as pdf', action='store_true') 
+    parser.add_argument('-f', '--finalState',   help='Final state', default=None)
     args = parser.parse_args()
     # execute only if run as a script
     ROOT.gROOT.SetBatch()
