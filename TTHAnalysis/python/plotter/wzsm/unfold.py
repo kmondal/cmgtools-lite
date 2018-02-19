@@ -56,6 +56,8 @@ class Unfolder(object):
         self.mc=None
         self.bkg=None
         self.finalState=args.finalState
+        self.bias=args.bias
+        self.areaConstraint=args.areaConstraint
         self.verbose=args.verbose
         self.combineInput=args.combineInput
         self.nScan=20
@@ -426,7 +428,10 @@ class Unfolder(object):
         # kHistMapOutputHoriz (truth is in X axis), kHistMapOutputVert (truth is in Y axis)
         self.regmode=ROOT.TUnfold.kRegModeNone
         # kRegModeNone (no reg), kRegModeSize (reg amplitude of output), kRegModeDerivative (reg 1st derivative of output), kRegModeCurvature (reg 2nd derivative of output),  kRegModeMixed (mixed reg patterns)
-        self.constraint=ROOT.TUnfold.kEConstraintArea
+        if self.areaConstraint:
+            self.constraint=ROOT.TUnfold.kEConstraintArea
+        else:
+            self.constraint=ROOT.TUnfold.kEConstraintNone
         # kEConstraintNone (no extra constraint), kEConstraintArea (enforce preservation of area)
         self.densitymode= ROOT.TUnfoldDensity.kDensityModeBinWidth
         # kDensityModeNone (no scale factors, matrix L is similar to unity matrix), kDensityModeBinWidth (scale factors from multidimensional bin width), kDensityModeUser (scale factors from user function in TUnfoldBinning), kDensityModeBinWidthAndUser (scale factors from multidimensional bin width and user function)
@@ -462,8 +467,10 @@ class Unfolder(object):
             print('ERROR: the response matrix you asked for (%s) does not exist' % key)
         # Check if the input data points are enough to constrain the unfolding process
         # Set scale bias
-        scaleBias=1.11
-        check = self.unfold.SetInput(self.data, scaleBias)
+        if self.bias != 0:
+            check = self.unfold.SetInput(self.data, scaleBias)
+        else:
+            check = self.unfold.SetInput(self.data)
         if check>=10000:
             print('TUnfoldDensity error %d! Unfolding result may be wrong (not enough data to constrain the unfolding process)' % check)
         # Now I should do subtraction using the class. I assign a 10% error on each background. This will have to be set automatically
@@ -475,7 +482,8 @@ class Unfolder(object):
         # unfold.AddSysError(histUnfoldMatrixSys,"signalshape_SYS", TUnfold::kHistMapOutputHoriz, TUnfoldSys::kSysErrModeMatrix)
 
         # Bias term! It corresponds to the distribution I expect to see after unfolding (e.g. the true Zpt distribution)
-        self.unfold.SetBias(self.dataTruth_nom)
+        if self.bias != 0:
+            self.unfold.SetBias(self.dataTruth_nom)
 
         # Alternative matrix:
         if   key == 'nom':
@@ -889,19 +897,21 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-i', '--inputDir',     help='Input directory', default=None)
-    parser.add_argument('-o', '--outputDir',    help='Output directory', default='./')
-    parser.add_argument('-c', '--combineInput', help='Data and postfit from combine output', default=None)
-    parser.add_argument('--closure',            help='Use MC as data, for closure test', action='store_true')
-    parser.add_argument('-d', '--data',         help='File containing data histogram', default=None)
-    parser.add_argument('-m', '--mc',           help='File containing mc reco histogram', default=None)
-    parser.add_argument('-g', '--gen',          help='File containing gen info for matrix', default=None)
-    parser.add_argument('-l', '--lepCat',       help='Lepton multiplicity (1 or 2)', default=1, type=int)
-    parser.add_argument('-e', '--epochs',       help='Number of epochs', default=100, type=int)
-    parser.add_argument('-s', '--splitMode',    help='Split mode (input or random)', default='input')
-    parser.add_argument('-v', '--verbose',      help='Verbose printing of the L-curve scan', action='store_true')
-    parser.add_argument('-r', '--responseAsPdf', help='Print response matrix as pdf', action='store_true') 
-    parser.add_argument('-f', '--finalState',   help='Final state', default=None)
+    parser.add_argument('-i', '--inputDir',       help='Input directory', default=None)
+    parser.add_argument('-o', '--outputDir',      help='Output directory', default='./')
+    parser.add_argument('-c', '--combineInput',   help='Data and postfit from combine output', default=None)
+    parser.add_argument('--closure',              help='Use MC as data, for closure test', action='store_true')
+    parser.add_argument('-d', '--data',           help='File containing data histogram', default=None)
+    parser.add_argument('-m', '--mc',             help='File containing mc reco histogram', default=None)
+    parser.add_argument('-g', '--gen',            help='File containing gen info for matrix', default=None)
+    parser.add_argument('-l', '--lepCat',         help='Lepton multiplicity (1 or 2)', default=1, type=int)
+    parser.add_argument('-e', '--epochs',         help='Number of epochs', default=100, type=int)
+    parser.add_argument('-s', '--splitMode',      help='Split mode (input or random)', default='input')
+    parser.add_argument('-v', '--verbose',        help='Verbose printing of the L-curve scan', action='store_true')
+    parser.add_argument('-r', '--responseAsPdf',  help='Print response matrix as pdf', action='store_true') 
+    parser.add_argument('-f', '--finalState',     help='Final state', default=None)
+    parser.add_argument('-b', '--bias',           help='Scale bias (0 deactivates bias vector)', default=None)
+    parser.add_argument('-a', '--areaConstraint', help='Area constraint', action='store_true')
     args = parser.parse_args()
     # execute only if run as a script
     ROOT.gROOT.SetBatch()

@@ -1,17 +1,32 @@
-python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f incl -o unfold/incl/data -c common/WZSR.input.root -r
-python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f incl -o unfold/incl/mcclosure -c common/WZSR.input.root -r --closure
+#!/bin/bash
 
-python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f eee -o unfold/eee/data -c common/WZSR.input.root -r
-python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f eee -o unfold/eee/mcclosure -c common/WZSR.input.root -r --closure
+for fs in incl eee eem mme mmm; do
+    # No bias, area constraint
+    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 0 -a -o unfold_nobias/${fs}/data -c common/WZSR.input.root -r
+    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 0 -a -o unfold_nobias/${fs}/mcclosure -c common/WZSR.input.root -r --closure
 
-python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f eem -o unfold/eem/data -c common/WZSR.input.root -r
-python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f eem -o unfold/eem/mcclosure -c common/WZSR.input.root -r --closure
+    # No bias, no area constraint
+    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 0 -o unfold_nobias_noconstraintarea/${fs}/data -c common/WZSR.input.root -r
+    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 0 -o unfold_nobias_noconstraintarea/${fs}/mcclosure -c common/WZSR.input.root -r --closure
 
-python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f mme -o unfold/mme/data -c common/WZSR.input.root -r
-python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f mme -o unfold/mme/mcclosure -c common/WZSR.input.root -r --closure
+    # Bias 1, area constraint
+    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 1 -a -o unfold_1p0bias/${fs}/data -c common/WZSR.input.root -r
+    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 1 -a -o unfold_1p0bias/${fs}/mcclosure -c common/WZSR.input.root -r --closure
 
-python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f mmm -o unfold/mmm/data -c common/WZSR.input.root -r
-python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f mmm -o unfold/mmm/mcclosure -c common/WZSR.input.root -r --closure
+    # Bias 1, no area constraint
+    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 1 -o unfold_1p0bias_noconstraintarea/${fs}/data -c common/WZSR.input.root -r
+    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 1 -o unfold_1p0bias_noconstraintarea/${fs}/mcclosure -c common/WZSR.input.root -r --closure
+
+    # Bias 1.11, area constraint
+    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 1.11 -a -o unfold_1p11bias/${fs}/data -c common/WZSR.input.root -r
+    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 1.11 -a -o unfold_1p11bias/${fs}/mcclosure -c common/WZSR.input.root -r --closure
+
+    # Bias 1.11, no area constraint
+    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 1.11 -o unfold_1p11bias_noconstraintarea/${fs}/data -c common/WZSR.input.root -r
+    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 1.11 -o unfold_1p11bias_noconstraintarea/${fs}/mcclosure -c common/WZSR.input.root -r --closure
+
+done
+
 
 #    parser.add_argument('-i', '--inputDir',   help='Input directory', default=None)
 #    parser.add_argument('-o', '--outputDir',  help='Output directory', default='./')
