@@ -160,7 +160,6 @@ class Unfolder(object):
 
     def study_responses(self):
         self.compute_stability_and_purity()
-
         for matrix in [self.response_nom, self.response_alt, self.response_inc]:
             # Errors are the standard deviation of the Y values
             profX=matrix.ProfileX('%s_profX'%matrix.GetName(), 0, matrix.GetNbinsY(),'s')
@@ -186,6 +185,7 @@ class Unfolder(object):
             profY.SetTitle('Response (reco profiled)')
             profY.Draw("PE")
             utils.saveCanva(c, os.path.join(self.outputDir, '1_responseProfiled_%s_%s' % (matrix.GetName(), self.var)))            
+            c.IsA().Destructor(c)
             
     def get_responses(self):
         print('Acquiring response matrices.')
@@ -280,6 +280,7 @@ class Unfolder(object):
         c.Clear()
         self.response_inc.Draw('COLZ')
         utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Inc' % self.var))
+        c.IsA().Destructor(c)
 
     def compute_stability_and_purity(self):
 
@@ -349,6 +350,8 @@ class Unfolder(object):
         stability_inc.Divide(stabilitydenom_inc)
 
         # Paint them
+        print(purity_nom)
+        print(stability_nom)
         c = ROOT.TCanvas('matrix', 'Response Matrix', 3000, 1000)
         # Margin not being applied somehow. Must do it via gStyle?
         ROOT.gStyle.SetPadTopMargin(0.1)
@@ -358,6 +361,8 @@ class Unfolder(object):
         #ROOT.gStyle.SetOptStat('uo')
         c.Divide(3,1)
         c.cd(1)
+        print(purity_nom)
+        print(stability_nom)
         purity_nom.SetMarkerColor(ROOT.kRed)
         purity_nom.SetMarkerStyle(ROOT.kFullSquare)
         stability_nom.SetMarkerColor(ROOT.kBlue)
@@ -386,6 +391,7 @@ class Unfolder(object):
         stability_inc.Draw("PESAME")
         leg_1.Draw()
         utils.saveCanva(c, os.path.join(self.outputDir, '1_checkBinning_%s' % self.var))
+        c.IsA().Destructor(c)
 
     def get_total_bkg_as_hist(self, file_handle, action):
         totbkg = []
@@ -467,8 +473,8 @@ class Unfolder(object):
             print('ERROR: the response matrix you asked for (%s) does not exist' % key)
         # Check if the input data points are enough to constrain the unfolding process
         # Set scale bias
-        if self.bias != 0:
-            check = self.unfold.SetInput(self.data, scaleBias)
+        if self.bias != 0.0:
+            check = self.unfold.SetInput(self.data, self.bias)
         else:
             check = self.unfold.SetInput(self.data)
         if check>=10000:
@@ -910,7 +916,7 @@ if __name__ == '__main__':
     parser.add_argument('-v', '--verbose',        help='Verbose printing of the L-curve scan', action='store_true')
     parser.add_argument('-r', '--responseAsPdf',  help='Print response matrix as pdf', action='store_true') 
     parser.add_argument('-f', '--finalState',     help='Final state', default=None)
-    parser.add_argument('-b', '--bias',           help='Scale bias (0 deactivates bias vector)', default=None)
+    parser.add_argument('-b', '--bias',           help='Scale bias (0 deactivates bias vector)', default=None, type=float)
     parser.add_argument('-a', '--areaConstraint', help='Area constraint', action='store_true')
     args = parser.parse_args()
     # execute only if run as a script

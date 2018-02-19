@@ -10,12 +10,12 @@ for fs in incl eee eem mme mmm; do
     python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 0 -o unfold_nobias_noconstraintarea/${fs}/mcclosure -c common/WZSR.input.root -r --closure
 
     # Bias 1, area constraint
-    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 1 -a -o unfold_1p0bias/${fs}/data -c common/WZSR.input.root -r
-    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 1 -a -o unfold_1p0bias/${fs}/mcclosure -c common/WZSR.input.root -r --closure
+    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 1.0 -a -o unfold_1p0bias/${fs}/data -c common/WZSR.input.root -r
+    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 1.0 -a -o unfold_1p0bias/${fs}/mcclosure -c common/WZSR.input.root -r --closure
 
     # Bias 1, no area constraint
-    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 1 -o unfold_1p0bias_noconstraintarea/${fs}/data -c common/WZSR.input.root -r
-    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 1 -o unfold_1p0bias_noconstraintarea/${fs}/mcclosure -c common/WZSR.input.root -r --closure
+    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 1.0 -o unfold_1p0bias_noconstraintarea/${fs}/data -c common/WZSR.input.root -r
+    python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 1.0 -o unfold_1p0bias_noconstraintarea/${fs}/mcclosure -c common/WZSR.input.root -r --closure
 
     # Bias 1.11, area constraint
     python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f ${fs} -b 1.11 -a -o unfold_1p11bias/${fs}/data -c common/WZSR.input.root -r
