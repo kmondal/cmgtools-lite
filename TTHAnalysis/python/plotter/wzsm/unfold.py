@@ -439,7 +439,7 @@ class Unfolder(object):
         else:
             self.constraint=ROOT.TUnfold.kEConstraintNone
         # kEConstraintNone (no extra constraint), kEConstraintArea (enforce preservation of area)
-        self.densitymode= ROOT.TUnfoldDensity.kDensityModeBinWidth
+        self.densitymode= ROOT.TUnfoldDensity.kDensityModeeNone
         # kDensityModeNone (no scale factors, matrix L is similar to unity matrix), kDensityModeBinWidth (scale factors from multidimensional bin width), kDensityModeUser (scale factors from user function in TUnfoldBinning), kDensityModeBinWidthAndUser (scale factors from multidimensional bin width and user function)
 
 
@@ -454,7 +454,7 @@ class Unfolder(object):
         self.logTauY=ROOT.TSpline3() # TSpline*
         self.lCurve=ROOT.TGraph(0) # TGraph*
         self.logTauCurvature=ROOT.TSpline3() # TSpline*
-        self.regmode=ROOT.TUnfold.kRegModeSize
+        self.regmode=ROOT.TUnfold.kRegModeCurvature
         label='regamp'
         self.set_unfolding(key)
         self.do_scan()
@@ -483,6 +483,14 @@ class Unfolder(object):
         scale_bgr=1.0
         dscale_bgr=0.05
         for iBkg in self.bkg:
+            if 'convs' in iBkg.GetName():
+                dscale_bgr=0.25
+            elif 'rares' in iBkg.GetName():
+                dscale_bgr=0.5
+            elif 'fakes_appldata' in iBkg.GetName():
+                dscale_bgr=0.3
+            elif 'prompt_ZZH' in iBkg.GetName():
+                dscale_bgr=0.3
             self.unfold.SubtractBackground(iBkg,iBkg.GetName(),scale_bgr,dscale_bgr);
         # Add systematic error
         # unfold.AddSysError(histUnfoldMatrixSys,"signalshape_SYS", TUnfold::kHistMapOutputHoriz, TUnfoldSys::kSysErrModeMatrix)
@@ -691,6 +699,7 @@ class Unfolder(object):
         # Data truth
         self.dataTruth_nom.SetLineColor(ROOT.kRed+1)
         self.dataTruth_nom.SetLineWidth(2)
+        self.dataTruth_nom.SetMaximum(1.2*self.dataTruth_nom.GetMaximum())
         self.dataTruth_nom.DrawNormalized("E HIST")
         # Unfolded data with total error
         histUnfoldTotal.SetMarkerColor(ROOT.kBlue)
@@ -832,6 +841,7 @@ class Unfolder(object):
             dt.SetBinError(ibin,dt.GetBinError(ibin)/dt.GetBinWidth(ibin))
         dt.Scale(1/dt.Integral())
         dt.GetYaxis().SetTitle('d#sigma/dP_{T}^{Z}(pb/GeV)')
+        dt.SetMaximum(1.2*dt.GetMaximum())
         dt.Draw("E HIST")
         # Unfolded data with total error
         hut=copy.deepcopy(histUnfoldTotal)
