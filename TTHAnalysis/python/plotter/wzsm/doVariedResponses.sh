@@ -13,7 +13,10 @@
 
 # DA GUT ONE declare -A pairs=(  ['sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass)']='[0,5,10,15,20,25,30,40,50,60,70,80,90,100,110,120,130,140,160,180,200,250,300]' ["LeadJet_pt"]='[25,30,35,40,50,60,70,80,90,100,110,120,130,140,160,180,200,250,300]'  )
 
-declare -A pairs=(  ['sump4(0,genLepZ1_pt,genLepZ1_eta,genLepZ1_phi,genLepZ1_mass,genLepZ2_pt,genLepZ2_eta,genLepZ2_phi,genLepZ2_mass):sump4(0,LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass)']='[0,5,10,15,20,25,30,40,50,60,70,80,90,100,110,120,130,140,160,180,200,250,300]*[0,10,20,30,50,70,90,110,130,160,200,300]' ["LeadJet_mcPt:LeadJet_pt"]='[25,30,35,40,50,60,70,80,90,100,110,120,130,140,160,180,200,250,300]*[25,35,50,70,90,110,130,160,200,300]'  )
+#declare -A pairs=(  ['sump4(0,LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass)']='[0,5,10,15,20,25,30,40,50,60,70,80,90,100,110,120,130,140,160,180,200,250,300]' ["LeadJet_pt"]='[25,30,35,40,50,60,70,80,90,100,110,120,130,140,160,180,200,250,300]'  )
+
+# The space after "0," is needed for the looper to run on the Zpt first, otherwise it will run on LeadJetPt, because of weird behaviour of bash. LoL
+declare -A pairs=(  ['sump4(0, genLepZ1_pt,genLepZ1_eta,genLepZ1_phi,genLepZ1_mass,genLepZ2_pt,genLepZ2_eta,genLepZ2_phi,genLepZ2_mass):sump4(0,LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass)']='[0,5,10,15,20,25,30,40,50,60,70,80,90,100,110,120,130,140,160,180,200,250,300]*[0,10,20,30,50,70,90,110,130,160,200,300]' ["LeadJet_mcPt:LeadJet_pt"]='[25,30,35,40,50,60,70,80,90,100,110,120,130,140,160,180,200,250,300]*[25,35,50,70,90,110,130,160,200,300]'  )
 
 
 count=0
@@ -32,6 +35,7 @@ processes=" -p prompt_altWZ.* "
 for iShape in "${!pairs[@]}"; do
     iRange=${pairs[$iShape]}
 
+    echo "echo \"${iShape}, range ${iRange}, count ${count}\""
     echo "python makeShapeCardsSusy.py ${mca} ./wzsm/cuts_wzsm.txt '${iShape}' '${iRange}' ./wzsm/systs_wz.txt -P ${inputdir}  ${fts}  -j 64 -l 35.9 --s2v --s2v --tree treeProducerSusyMultilepton --mcc wzsm/mcc_varsub_wzsm.txt --mcc wzsm/mcc_triggerdefs.txt -f -W ' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1,1)*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1,1)*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1,1)*bTagWeight ' ${processes} --load-macro wzsm/functionsPUW.cc --load-macro wzsm/functionsSF.cc  --load-macro wzsm/functionsWZ.cc --od ${baseoutputdir}incl_fitWZonly/ -o WZSR -E SR  --neglist promptsub --autoMCStats --asimov"
 
     echo "python makeShapeCardsSusy.py ${mca} ./wzsm/cuts_wzsm.txt '${iShape}' '${iRange}' ./wzsm/systs_wz.txt -P ${inputdir}  ${fts}  -j 64 -l 35.9 --s2v --s2v --tree treeProducerSusyMultilepton --mcc wzsm/mcc_varsub_wzsm.txt --mcc wzsm/mcc_triggerdefs.txt -f -W ' puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1,1)*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1,1)*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1,1)*bTagWeight ' ${processes} --load-macro wzsm/functionsPUW.cc --load-macro wzsm/functionsSF.cc  --load-macro wzsm/functionsWZ.cc --od ${baseoutputdir}eee_fitWZonly/ -o WZSR -E SR -E eee --neglist promptsub --autoMCStats --asimov"
