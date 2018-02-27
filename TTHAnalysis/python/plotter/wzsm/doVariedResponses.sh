@@ -27,7 +27,7 @@ inputdir="/pool/ciencias/HeppyTrees/RA7/wz/wzUnskimmed/"
 baseoutputdir="tempo/"
 fts="--Fs {P}/lepgenVarsWZSM --Fs {P}/leptonJetReCleanerWZSM --Fs {P}/leptonBuilderWZSM --FMCs {P}/bTagEventWeightFullSimWZ30 "
 #processes="-p data -p prompt_.* -p convs.* -p rares.* -p fakes_appldata.* --plotgroup fakes_appldata+=promptsub "
-processes=" -p prompt_WZ.* "
+processes=" -p prompt_altWZ.* "
 
 for iShape in "${!pairs[@]}"; do
     iRange=${pairs[$iShape]}
