@@ -140,6 +140,7 @@ class Unfolder(object):
             e=hout.GetBinError(ibin)*c/hout.GetBinContent(ibin) if hout.GetBinContent(ibin)!=0 else 0
             hout.SetBinContent(ibin, c)
             hout.SetBinError(ibin, e)
+        print('Closure data bins: %d' % hout.GetNbinsX())
         return hout
     
         
@@ -189,18 +190,22 @@ class Unfolder(object):
             
     def get_responses(self):
         print('Acquiring response matrices.')
-        folder=os.path.join(self.inputDir, 'response_%s/%s_response_WZ_' % (self.finalState, self.var) )
-        file_handle_nom = ROOT.TFile.Open('%s%s.root' % (folder, 'Pow'))
-        file_handle_alt = ROOT.TFile.Open('%s%s.root' % (folder, 'aMC'))
-        file_handle_inc = ROOT.TFile.Open('%s%s.root' % (folder, 'Inc'))
+        folder=os.path.join(self.inputDir, 'responses/%s_fitWZonly_%s/common/' % (self.finalState, self.var) )        
 
-        self.response_nom = copy.deepcopy(ROOT.TH2D(file_handle_nom.Get('%s_response_canvas' % self.var).GetPrimitive('%s_response_WZ_%s' %(self.var, 'Pow'))))
-        self.response_alt = copy.deepcopy(ROOT.TH2D(file_handle_alt.Get('%s_response_canvas' % self.var).GetPrimitive('%s_response_WZ_%s' %(self.var, 'aMC'))))
-        self.response_inc = copy.deepcopy(ROOT.TH2D(file_handle_inc.Get('%s_response_canvas' % self.var).GetPrimitive('%s_response_WZ_%s' %(self.var, 'Inc'))))
+        file_handle = ROOT.TFile.Open('%sWZSR.input.root' % (folder))
+        print('Opening file: %s' % file_handle.GetName())
+        #file_handle_alt = ROOT.TFile.Open('%sWZSR.input.root' % (folder))
+        #file_handle_inc = ROOT.TFile.Open('%sWZSR.input.root' % (folder))
+        
+        self.response_nom = copy.deepcopy(ROOT.TH2D(file_handle.Get('x_prompt_altWZ_%s' % 'Pow')))
+        self.response_alt = copy.deepcopy(ROOT.TH2D(file_handle.Get('x_prompt_altWZ_%s' % 'aMC')))
+        self.response_inc = copy.deepcopy(ROOT.TH2D(file_handle.Get('x_prompt_altWZ_%s' % 'Inc')))
 
         self.dataTruth_nom = copy.deepcopy(ROOT.TH1D(self.response_nom.ProjectionY('dataTruth_nom', 0, self.response_nom.GetNbinsX())))
         self.dataTruth_alt = copy.deepcopy(ROOT.TH1D(self.response_alt.ProjectionY('dataTruth_alt', 0, self.response_alt.GetNbinsX())))
         self.dataTruth_inc = copy.deepcopy(ROOT.TH1D(self.response_inc.ProjectionY('dataTruth_inc', 0, self.response_inc.GetNbinsX())))
+        
+        print('Response binsX %d, binsY %d' % (self.response_nom.GetNbinsX(), self.response_nom.GetNbinsY()))
 
         for ibin in range(0, self.response_nom.GetNbinsX()+2):
             for jbin in range(0, self.response_nom.GetNbinsY()+2):
@@ -444,11 +449,13 @@ class Unfolder(object):
 
 
         # First do it with no regularization
+        print('NOW I AM DOING UNFOLDING WITHOUT REGULARIZATION')
         label='noreg'
         self.set_unfolding(key)
         self.do_scan()
         self.print_unfolding_results(key, label)
      
+        print('NOW I AM DOING UNFOLDING WITH REGULARIZATION')
         # Now add simple regularization on the amplitude
         self.logTauX=ROOT.TSpline3() # TSpline*
         self.logTauY=ROOT.TSpline3() # TSpline*
@@ -473,6 +480,9 @@ class Unfolder(object):
             print('ERROR: the response matrix you asked for (%s) does not exist' % key)
         # Check if the input data points are enough to constrain the unfolding process
         # Set scale bias
+        print('DATA BINNING: %d' % self.data.GetNbinsX() )
+        print('SIGNAL BINNING: %d' % self.mc.GetNbinsX() )
+        print('BKG[0] BINNING: %d' % self.bkg[0].GetNbinsX() )
         if self.bias != 0.0:
             check = self.unfold.SetInput(self.data, self.bias)
         else:
@@ -483,6 +493,7 @@ class Unfolder(object):
         scale_bgr=1.0
         dscale_bgr=0.05
         for iBkg in self.bkg:
+            print('Background %s has bins %d' % (iBkg.GetName(), iBkg.GetNbinsX()) )
             if 'convs' in iBkg.GetName():
                 dscale_bgr=0.25
             elif 'rares' in iBkg.GetName():
@@ -572,6 +583,14 @@ class Unfolder(object):
         #TH1 *histDetNormBgr1=unfold.GetBackground("bgr1 normalized",
         #                                          "background1");
         histDetNormBgrTotal=self.unfold.GetBackground("Total background (normalized)")
+
+        print('Bins of unfolded distribution: %d' % histMunfold.GetNbinsX() )
+        print('Bins of folded back distribution: %d' % histMdetFold.GetNbinsX() )
+        print('Bins of first stacked histo: %d' % histDetNormBgrTotal.GetNbinsX() )
+        print('Bins of second stacked histo: %d' % self.mc.GetNbinsX() )
+        print('ndet %d' % self.response_nom.GetNbinsX())
+        print('ngen %d' % self.response_nom.GetNbinsY())
+              
 
         nDet=self.response_nom.GetNbinsX()
         nGen=self.response_nom.GetNbinsY()
@@ -844,7 +863,7 @@ class Unfolder(object):
         # Normalize properly for differential xsec
         # Data truth
         dt=copy.deepcopy(self.dataTruth_nom)
-        for ibin in range(1, dt.GetNbinsX()+1):
+        for ibin in range(0, dt.GetNbinsX()+2):
             dt.SetBinContent(ibin,dt.GetBinContent(ibin)/dt.GetBinWidth(ibin))
             dt.SetBinError(ibin,dt.GetBinError(ibin)/dt.GetBinWidth(ibin))
         dt.Scale(1/dt.Integral())
