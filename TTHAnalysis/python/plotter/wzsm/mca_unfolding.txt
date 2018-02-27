@@ -1,7 +1,7 @@
 # Main WZ sample
-prompt_WZ_Pow : WZTo3LNu : xsec :  1          ; Label="WZ_Powheg"
-prompt_WZ_Inc : WZ : xsec :  1                ; Label="WZ_Inclusive"
-prompt_WZ_aMC : WZTo3LNu_amcatnlo : xsec :  1 ; Label="WZ_aMCAtNLO"
+prompt_altWZ_Pow : WZTo3LNu : xsec :  1          ; Label="WZ_Powheg"
+prompt_altWZ_Inc : WZ : xsec :  1                ; Label="WZ_Inclusive"
+prompt_altWZ_aMC : WZTo3LNu_amcatnlo : xsec :  1 ; Label="WZ_aMCAtNLO"
 
 
 
