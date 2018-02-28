@@ -6,9 +6,9 @@ from math import sqrt,fabs
 # Author: Pietro Vischia, pietro.vischia@cern.ch
 
 def saveCanva(c, fname):
-        c.Print(fname+'.png')
-        c.Print(fname+'.pdf')
-        c.Print(fname+'.C')
+        c.SaveAs(fname+'.png')
+        c.SaveAs(fname+'.pdf')
+        c.SaveAs(fname+'.C')
         #c.Print(fname+'.root')
                 
 """
