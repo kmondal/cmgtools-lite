@@ -49,6 +49,7 @@ class Unfolder(object):
         self.response_nom=None
         self.response_alt=None
         self.response_inc=None
+        self.varied_responses=None
         self.data=None
         self.dataTruth_nom=None
         self.dataTruth_alt=None
@@ -217,8 +218,69 @@ class Unfolder(object):
                     self.response_alt.SetBinError(ibin, jbin, 0)
                     self.response_inc.SetBinError(ibin, jbin, 0)
                     
+        # # Now acquire matrices for the shape systematic uncertainties
+        # # /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/responses/mme_fitWZonly//prompt_altWZ_Pow/WZSR.card.txt        
+        # tempList=[]
+        # tempList=[key.GetName() for key in file_handle.GetListOfKeys() ]
+        # systList=[]
+        # print(tempList)
+        # for element in tempList:
+        #     if 'Pow' in element and 'Up' in element:
+        #         element=element.replace('x_prompt_altWZ_Pow_', '')
+        #         element=element.replace('Up', '')
+        #         systList.append(element)
+        #     if 'Pow' in element and 'Up' not in element and 'Down' not in element:
+        #         element=element.replace('x_prompt_altWZ_Pow_', '')
+        #         systList.append(element)
+        # print(systList)
+        
 
 
+    def readDataCard(self):
+        """ Get Text info from the original datacard """
+        self.systs = [] #Systematics, ordered by appearance
+        self.systsLines = [] #The - - - number1 - - systematic lines
+        self.shapeFiles = [] #The input shape rootfiles
+        self.shapeBins  = [] #The input bins (in datacard line bins)
+        self.proctoFile = {} #To pass from process to the file with the shapes
+        processGet = False
+        tempFile = open(self.inCard,"r")
+        for line in tempFile.readlines():
+          if line[0] == "#": continue
+          tempLine = line.split()
+          if tempLine[0] in ["jmax","kmax","observation","rate"]: continue
+          if tempLine[0] == "bin":
+            if len(tempLine) == (len(self.shapeBins) + 1):
+              continue
+            else:
+              self.shapebinsforProcesses = tempLine[1:]
+              continue
+          if tempLine[0] == "imax":
+            self.imax = line
+            continue
+          if tempLine[0] == "shapes":
+            self.shapeBins.append(tempLine[2])
+            for word in tempLine:
+              if ".root" in word:
+                self.shapeFiles.append(word)
+            self.proctoFile[tempLine[2]] = self.shapeFiles[-1]
+            continue
+        
+          if tempLine[0]=="process":
+            if not processGet: 
+              self.processes = tempLine[1:]
+              processGet = True
+            else:
+              self.processesNums = tempLine[1:]
+              processGet = False
+            continue      
+          if "stat" in tempLine[0]: continue
+          self.systs.append(tempLine[0])
+          self.systsLines.append(line)
+        if self.nBins == -1: #This breaks if more than one shapes file is being used
+          temp = ROOT.TFile("/".join(self.inCard.split("/")[:-1]) + "/" + self.shapeFiles[0], "READ")
+          self.nBins = temp.Get("data_obs").GetNbinsX()
+          temp.Close()
 
     def print_responses(self):
         c = ROOT.TCanvas('matrix', 'Response Matrix', 2000, 2000)
@@ -503,7 +565,9 @@ class Unfolder(object):
             elif 'prompt_ZZH' in iBkg.GetName():
                 dscale_bgr=0.3
             self.unfold.SubtractBackground(iBkg,iBkg.GetName(),scale_bgr,dscale_bgr);
-        # Add systematic error
+
+        # Add systematic uncertainties
+        self.add_systematic_uncertainties()
         # unfold.AddSysError(histUnfoldMatrixSys,"signalshape_SYS", TUnfold::kHistMapOutputHoriz, TUnfoldSys::kSysErrModeMatrix)
 
         # Bias term! It corresponds to the distribution I expect to see after unfolding (e.g. the true Zpt distribution)
@@ -520,7 +584,11 @@ class Unfolder(object):
         else:
             print('ERROR: the response matrix you asked for (%s) does not exist' % key)
         
-            
+
+    def add_systematic_uncertainties(self):
+        print('ff')
+        # unfold.AddSysError(histUnfoldMatrixSys,"signalshape_SYS", TUnfold::kHistMapOutputHoriz, TUnfoldSys::kSysErrModeMatrix)
+        
 
     def do_scan(self):
         # Scan the L-curve and find the best point
