@@ -984,8 +984,16 @@ class Unfolder(object):
         moneyplot.SaveAs(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.png' % (label, key, self.var)))
         moneyplot.SaveAs(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.pdf' % (label, key, self.var)))
         moneyplot.SaveAs(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.C' % (label, key, self.var)))
-        
-
+        # Dump to txt
+        with open(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.txt' % (label, key, self.var)), 'w') as text_dumper:
+            for ibin in range(0, hut.GetNbinsX()+1):
+                statdown=hus.GetBinErrorLow(ibin)
+                statup=hus.GetBinErrorUp(ibin)
+                bgrdown=ROOT.TMath.Sqrt(hmu.GetBinErrorLow(ibin)*hmu.GetBinErrorLow(ibin) - statdown*statdown)
+                bgrup=ROOT.TMath.Sqrt(hmu.GetBinErrorUp(ibin)*hmu.GetBinErrorUp(ibin)     - statup*statup    )
+                systdown=ROOT.TMath.Sqrt(hut.GetBinErrorLow(ibin)*hut.GetBinErrorLow(ibin) - bgrdown*bgrdown - statdown*statdown)
+                systup=ROOT.TMath.Sqrt(hut.GetBinErrorUp(ibin)*hut.GetBinErrorUp(ibin) - bgrup*bgrup - statup*statup    )
+                text_dumper.write('Bin [%0.3f, %0.3f]: xsec = %0.3f +/- %0.3f (stat) +/- %0.3f (bgr) +/- %0.3f (other syst) (total: +/- %0.3f)\n ' % (hut.GetBinLowEdge(ibin), hut.GetBinLowEdge(ibin+1 if ibin is not hut.GetNbinsX()+1 else ibin), hut.GetBinContent(ibin), statdown, bgrdown, systdown, hut.GetBinErrorUp(ibin)))
 
         # # Individual saving.
         # self.print_histo(histMunfold, key, label)
