@@ -44,6 +44,9 @@ class DatacardReader:
     def getSysts(self):
         return self.systs
 
+    def getSystsAndLines(self):
+        return self.systs, self.systsLines
+
     def readDataCard(self):
         """ Get Text info from the original datacard """
         processGet = False
@@ -77,7 +80,8 @@ class DatacardReader:
               self.processesNums = tempLine[1:]
               processGet = False
             continue      
-          if "stat" in tempLine[0]: continue
+          if 'stat' in tempLine[0]: continue
+          if 'autoMCStats' in tempLine[1]: continue
           self.systs.append(tempLine[0])
           self.systsLines.append(line)
         #if self.nBins == -1: #This breaks if more than one shapes file is being used
@@ -295,6 +299,11 @@ class Unfolder(object):
         theSystList = datacardReader.getSysts()
         print('Syst list from datacard:')
         print(theSystList)
+        theOtherSystList, theOtherSystLines = datacardReader.getSystsAndLines()
+        print('Other syst list from datacard:')
+        print(theOtherSystList)
+        print('Other syst lines from datacard:')
+        print(theOtherSystLines)
         quit()
 
 
