@@ -11,6 +11,17 @@ import utils
 import ROOT
 from array import array
 
+import tdrstyle as tdr
+import CMS_lumi
+
+CMS_lumi.lumi_13TeV = "35.9 fb^{-1}"
+CMS_lumi.extraText = "Preliminary"
+CMS_lumi.lumi_sqrtS = "13 TeV"
+CMS_lumi.lumiTextSize     = 0.4
+CMS_lumi.lumiTextOffset   = 0.2
+CMS_lumi.cmsTextSize      = 0.55
+CMS_lumi.cmsTextOffset    = 0.1
+
 #from abc import ABCMeta, abstractmethod
 # 
 #class AbstractTSpline(object):
@@ -31,21 +42,44 @@ class ResponseComputation:
         
 class DatacardReader:
 
-    def __init__(self, inputCard):
+    def __init__(self, inputCard, signalString=None):
         print('Initialization for card %s' % inputCard)
         self.inputCard=inputCard
+        self.signalString=signalString
         self.systs = [] #Systematics, ordered by appearance
+        self.normSysts = [] # Normalization only uncertainties
+        self.shapeSysts = [] # Shape(+eventually norm) uncertainties
         self.systsLines = [] #The - - - number1 - - systematic lines
         self.shapeFiles = [] #The input shape rootfiles
         self.shapeBins  = [] #The input bins (in datacard line bins)
         self.proctoFile = {} #To pass from process to the file with the shapes
+        self.processes = [] # List of processes
         self.readDataCard()
+        if self.signalString:
+            self.filterSystsByProcess()
 
     def getSysts(self):
         return self.systs
 
+    def getNormAndShapeSysts(self):
+        return self.normSysts, self.shapeSysts
+
     def getSystsAndLines(self):
-        return self.systs, self.systsLines
+        return self.systs, self.systsLines, self.altSysts
+
+    def filterSystsByProcess(self):
+        sig_idx=self.processes.index(self.signalString)
+        tempSysts = []
+        for line in self.systsLines:
+            tempLine=line.split()
+            if '1' in tempLine[sig_idx+2]:
+                tempSysts.append(self.systs[self.systsLines.index(line)])
+                if 'lnN' in tempLine[1]:
+                    self.normSysts.append(self.systs[self.systsLines.index(line)])
+                if 'shape' in tempLine[1]:
+                    self.shapeSysts.append(self.systs[self.systsLines.index(line)])
+                    
+        self.systs = tempSysts
 
     def readDataCard(self):
         """ Get Text info from the original datacard """
@@ -84,6 +118,7 @@ class DatacardReader:
           if 'autoMCStats' in tempLine[1]: continue
           self.systs.append(tempLine[0])
           self.systsLines.append(line)
+
         #if self.nBins == -1: #This breaks if more than one shapes file is being used
         #  temp = ROOT.TFile("/".join(self.inputCard.split("/")[:-1]) + "/" + self.shapeFiles[0], "READ")
         #  self.nBins = temp.Get("data_obs").GetNbinsX()
@@ -245,6 +280,7 @@ class Unfolder(object):
             profY.SetMarkerStyle(ROOT.kFullSquare)
             profY.SetTitle('Response (reco profiled)')
             profY.Draw("PE")
+            CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
             utils.saveCanva(c, os.path.join(self.outputDir, '1_responseProfiled_%s_%s' % (matrix.GetName(), self.var)))            
             c.IsA().Destructor(c)
             
@@ -277,34 +313,29 @@ class Unfolder(object):
                     self.response_alt.SetBinError(ibin, jbin, 0)
                     self.response_inc.SetBinError(ibin, jbin, 0)
                     
-        # Now acquire matrices for the shape systematic uncertainties
-        # /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/responses/mme_fitWZonly//prompt_altWZ_Pow/WZSR.card.txt        
-        tempList=[]
-        tempList=[key.GetName() for key in file_handle.GetListOfKeys() ]
-        systList=[]
-        print(tempList)
-        for element in tempList:
-            if 'Pow' in element and 'Up' in element:
-                element=element.replace('x_prompt_altWZ_Pow_', '')
-                element=element.replace('Up', '')
-                systList.append(element)
-            if 'Pow' in element and 'Up' not in element and 'Down' not in element:
-                element=element.replace('x_prompt_altWZ_Pow_', '')
-                element=element.replace('x_prompt_altWZ_Pow', '')
-                if element:
-                    systList.append(element)
-        print('Syst list from rootfile:')
-        print(systList)
-        datacardReader = DatacardReader(os.path.join(self.inputDir, 'responses/%s_fitWZonly_%s/prompt_altWZ_Pow/WZSR.card.txt' % (self.finalState, self.var)))
-        theSystList = datacardReader.getSysts()
-        print('Syst list from datacard:')
-        print(theSystList)
-        theOtherSystList, theOtherSystLines = datacardReader.getSystsAndLines()
-        print('Other syst list from datacard:')
-        print(theOtherSystList)
-        print('Other syst lines from datacard:')
-        print(theOtherSystLines)
-        quit()
+        ## Now acquire matrices for the shape systematic uncertainties
+        ## /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/responses/mme_fitWZonly//prompt_altWZ_Pow/WZSR.card.txt        
+        #tempList=[]
+        #tempList=[key.GetName() for key in file_handle.GetListOfKeys() ]
+        #systList=[]
+        #print(tempList)
+        #for element in tempList:
+        #    if 'Pow' in element and 'Up' in element:
+        #        element=element.replace('x_prompt_altWZ_Pow_', '')
+        #        element=element.replace('Up', '')
+        #        systList.append(element)
+        #    if 'Pow' in element and 'Up' not in element and 'Down' not in element:
+        #        element=element.replace('x_prompt_altWZ_Pow_', '')
+        #        element=element.replace('x_prompt_altWZ_Pow', '')
+        #        if element:
+        #            systList.append(element)
+        #print('Syst list from rootfile:')
+        #print(systList)
+        datacardReader = DatacardReader(os.path.join(self.inputDir, 'responses/%s_fitWZonly_%s/prompt_altWZ_Pow/WZSR.card.txt' % (self.finalState, self.var)), 'prompt_altWZ_Pow')
+        normSystsList, shapeSystsList = datacardReader.getNormAndShapeSysts()
+        print(normSystsList)
+        print(shapeSystsList)
+        #quit()
 
 
 
@@ -366,12 +397,15 @@ class Unfolder(object):
             utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrixAsPdf_%s_Inc' % self.var))
 
         self.response_nom.Draw('COLZ')
+        CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
         utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Nom' % self.var))
         c.Clear()
         self.response_alt.Draw('COLZ')
+        CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
         utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Alt' % self.var))
         c.Clear()
         self.response_inc.Draw('COLZ')
+        CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
         utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Inc' % self.var))
         c.IsA().Destructor(c)
 
@@ -483,6 +517,7 @@ class Unfolder(object):
         purity_inc.Draw("PE")
         stability_inc.Draw("PESAME")
         leg_1.Draw()
+        CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
         utils.saveCanva(c, os.path.join(self.outputDir, '1_checkBinning_%s' % self.var))
         c.IsA().Destructor(c)
 
@@ -519,6 +554,7 @@ class Unfolder(object):
         c = ROOT.TCanvas(h.GetName(), h.GetTitle(), 2000, 2000)
         c.cd()
         h.Draw(opt)
+        CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
         utils.saveCanva(c, os.path.join(args.outputDir, '2_unfoldResults_%s_%s_%s_%s' % (label, key, self.var, h.GetName()) ))
 
     def do_unfolding(self, key):
@@ -802,6 +838,7 @@ class Unfolder(object):
         print(self.data.GetNbinsX())
         print(self.mc.GetNbinsX())
         print(histDetNormBgrTotal.GetNbinsX())
+        CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
         output.SaveAs(os.path.join(self.outputDir, '2_p1_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p1_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p1_unfold_%s_%s_%s.C' % (label, key, self.var)))
@@ -815,6 +852,7 @@ class Unfolder(object):
         self.dataTruth_nom.SetLineColor(ROOT.kRed+1)
         self.dataTruth_nom.SetLineWidth(2)
         self.dataTruth_nom.SetMaximum(1.2*self.dataTruth_nom.GetMaximum())
+        self.dataTruth_nom.SetTitle("")
         self.dataTruth_nom.DrawNormalized("E HIST")
         # Unfolded data with total error
         histUnfoldTotal.SetMarkerColor(ROOT.kBlue)
@@ -841,6 +879,7 @@ class Unfolder(object):
         leg_2.AddEntry(self.dataTruth_nom, 'Truth', 'la')
         leg_2.AddEntry(histUnfoldStat, '#frac{#chi^{2}}{NDOF}=%0.3f' % histUnfoldTotal.Chi2Test(self.dataTruth_nom, 'CHI2/NDF WW'), '')
         leg_2.Draw()
+        CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
         output.SaveAs(os.path.join(self.outputDir, '2_p2_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p2_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p2_unfold_%s_%s_%s.C' % (label, key, self.var)))
@@ -879,6 +918,7 @@ class Unfolder(object):
         leg_3.AddEntry(histUnfoldStat, '#frac{#chi^{2}}{NDOF}(D-b, MCf.b.)=%0.3f' % subdata.Chi2Test(histMdetFold, 'CHI2/NDF WW'), '')
         #leg_3.AddEntry(histInput, 'Input', 'la')
         leg_3.Draw()
+        CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
         output.SaveAs(os.path.join(self.outputDir, '2_p3_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p3_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p3_unfold_%s_%s_%s.C' % (label, key, self.var)))
@@ -899,6 +939,7 @@ class Unfolder(object):
         leg_4.AddEntry(subdata, 'Data-bkg by hand', 'pe')
         #leg_4.AddEntry(histInput, 'Data-bkg by tool', 'la')
         leg_4.Draw()
+        CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
         output.SaveAs(os.path.join(self.outputDir, '2_p4_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p4_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p4_unfold_%s_%s_%s.C' % (label, key, self.var)))
@@ -917,6 +958,7 @@ class Unfolder(object):
             bestLogTauLogChi2.SetMarkerSize(2)
             bestLogTauLogChi2.Draw("P")
             # show the L curve
+            CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
             output.SaveAs(os.path.join(self.outputDir, '2_p5_unfold_%s_%s_%s.png' % (label, key, self.var)))
             output.SaveAs(os.path.join(self.outputDir, '2_p5_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
             output.SaveAs(os.path.join(self.outputDir, '2_p5_unfold_%s_%s_%s.C' % (label, key, self.var)))
@@ -929,6 +971,7 @@ class Unfolder(object):
             bestLcurve.SetMarkerStyle(ROOT.kFullSquare)
             bestLcurve.SetMarkerSize(2)
             bestLcurve.Draw("P")
+            CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
             output.SaveAs(os.path.join(self.outputDir, '2_p6_unfold_%s_%s_%s.png' % (label, key, self.var)))
             output.SaveAs(os.path.join(self.outputDir, '2_p6_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
             output.SaveAs(os.path.join(self.outputDir, '2_p6_unfold_%s_%s_%s.C' % (label, key, self.var)))
@@ -944,6 +987,7 @@ class Unfolder(object):
         elif 'inc' in key:
             self.response_inc.SetTitle('Response Matrix (pythia)')
             self.response_inc.Draw('COLZ')
+        CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
         output.SaveAs(os.path.join(self.outputDir, '2_p7_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p7_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p7_unfold_%s_%s_%s.C' % (label, key, self.var)))
@@ -951,6 +995,7 @@ class Unfolder(object):
         #output.cd(8)
         histCorr.SetTitle('Correlation matrix')
         histCorr.Draw('COLZ')
+        CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
         output.SaveAs(os.path.join(self.outputDir, '2_p8_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p8_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p8_unfold_%s_%s_%s.C' % (label, key, self.var)))
@@ -1007,6 +1052,7 @@ class Unfolder(object):
         leg_money.AddEntry(self.dataTruth_nom, 'Truth', 'la')
         leg_money.AddEntry(histUnfoldTotal, '#frac{#chi^{2}}{NDOF}=%0.3f' % histUnfoldTotal.Chi2Test(self.dataTruth_nom, 'CHI2/NDF WW'), '')
         leg_money.Draw()
+        CMS_lumi.CMS_lumi(moneyplot, 4, 0, aLittleExtra=0.08)
         moneyplot.SaveAs(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.png' % (label, key, self.var)))
         moneyplot.SaveAs(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.pdf' % (label, key, self.var)))
         moneyplot.SaveAs(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.C' % (label, key, self.var)))
@@ -1038,6 +1084,7 @@ class Unfolder(object):
 
 ### End class Unfolder
 def main(args): 
+    tdr.setTDRStyle()
     print('start')
     print('Cleaning output dir %s/...' % args.outputDir)
     os.system('rm %s/*png' % args.outputDir)
