@@ -84,7 +84,6 @@ class lepgenVarsWZSM:
     ## __call__
     ## _______________________________________________________________
     def __call__(self, event):
-
         self.resetMemory()
         self.collectObjects(event)
         self.analyzeTopology()
@@ -103,6 +102,7 @@ class lepgenVarsWZSM:
         if len(self.genleps)>=5: self.ret["is_5l_gen"] = 1
 
         self.collectOSpairs(3, False)
+        self.dressLeptons(0.1)
         self.makeMass(3)
         self.makeMt2(3)
         self.findBestOSpair(3)
@@ -116,6 +116,7 @@ class lepgenVarsWZSM:
         #self.findBestOSpair(4)
         #self.findMtMin(4)
         #self.makeMassMET(4)
+
 
 
     ## collectObjects
@@ -139,9 +140,28 @@ class lepgenVarsWZSM:
         self.metgenphi[1]  = getattr(event, "met_jecUp_genPhi"  , event.met_genPhi if not event.isData else event.met_phi)
         self.metgenphi[-1] = getattr(event, "met_jecDown_genPhi", event.met_genPhi if not event.isData else event.met_phi)
 
+        # Gen photons
+        self.genphotons = [l for l in Collection(event, "GenPart", "nGenPart") ]
+        self.setAttributes(event, self.genphotons, event.isData, True)
+        # Not really needed
+        self.genphotons.sort(key = lambda x: x.pt, reverse=True)
+        
         self.OS = []
 
+    ## dressLeptons
+    def dressLeptons(self,delta_r=0.1):
+        usedPhoton = [ 0  ] * len(self.genphotons)
+        for i in range(min(max, len(self.genleps))):
+            for j in range(0,len(self.genphotons)):
+                if usedPhoton[j] == 0:
+                    if abs(self.genphotons[j].pdgId) == 22 and deltaR(self.genleps[i].p4().Eta(), self.genleps[i].p4().Phi(), self.genphotons[j].p4().Eta(), self.genphotons[j].p4().Phi()) < delta_r:
+                        tempLep = self.genleps[i].p4()
+                        tempPhot = self.genphotons[j].p4()
+                        tempLep += tempPhot
+                        self.genleps[i].p4().SetPtEtaPhiM(tempLep.Pt(), tempLep.Eta(), tempLep.Phi(), tempLep.M())
+                        usedPhoton[j] = 1
             
+
     ## collectOSpairs
     ## _______________________________________________________________
     def collectOSpairs(self, max, useBuffer = False):
@@ -371,9 +391,9 @@ class lepgenVarsWZSM:
             ("minmllSFOS_gen"       , "F")]
             
         biglist.append(("nOS_gen"   , "I"))
-        biglist.append(("mll_gen"   , "F", 20, "nOS"))
-        biglist.append(("mll_i1_gen", "I", 20, "nOS"))
-        biglist.append(("mll_i2_gen", "I", 20, "nOS"))
+        #biglist.append(("mll_gen"   , "F", 20, "nOS"))
+        #biglist.append(("mll_i1_gen", "I", 20, "nOS"))
+        #biglist.append(("mll_i2_gen", "I", 20, "nOS"))
         biglist.append(("deltaR_WZ_gen", "F"))
 
         biglist.append(("nLepGen_gen"   , "I"))
@@ -429,9 +449,9 @@ class lepgenVarsWZSM:
         self.ret["deltaR_WZ_gen"            ] = 0
 
         self.ret["nOS_gen"   ] = 0
-        self.ret["mll_gen"   ] = [0.]*20
-        self.ret["mll_i1_gen"] = [-1]*20
-        self.ret["mll_i2_gen"] = [-1]*20
+        #self.ret["mll_gen"   ] = [0.]*20
+        #self.ret["mll_i1_gen"] = [-1]*20
+        #self.ret["mll_i2_gen"] = [-1]*20
 
         self.ret["nLepGen_gen"] = 0
         for var in ["pt", "eta", "phi", "mass"]:
@@ -493,10 +513,10 @@ class lepgenVarsWZSM:
         if all:
             all.sort()
             self.ret["nOS_gen"] = len(all)
-            for i,os in enumerate(all):
-                self.ret["mll_gen"][i] = os[3].mll
-                self.ret["mll_i1_gen"][i] = self.genleps.index(os[3].l1)
-                self.ret["mll_i2_gen"][i] = self.genleps.index(os[3].l2)
+            #for i,os in enumerate(all):
+            #    self.ret["mll_gen"][i] = os[3].mll
+            #    self.ret["mll_i1_gen"][i] = self.genleps.index(os[3].l1)
+            #    self.ret["mll_i2_gen"][i] = self.genleps.index(os[3].l2)
 
 
 
