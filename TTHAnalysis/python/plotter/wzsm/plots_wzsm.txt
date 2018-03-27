@@ -29,7 +29,8 @@ m3lmetblind : m3Lmet : 27, 75, 400; XTitle="M_{WZ} [GeV]", LegendCutoff=1e-5
 
 mZ1W   : mass_2(LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass, LepW_pt,LepW_eta,LepW_phi,LepW_mass): 50,0,200; XTitle="m(Z1\,W) [GeV]"
 mZ2W   : mass_2(LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass, LepW_pt,LepW_eta,LepW_phi,LepW_mass): 50,0,200; XTitle="m(Z2\,W) [GeV]"
-mZ1Z2  : mass_2(LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass, LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass): 50,0,200; XTitle="m(Z1\,Z2) [GeV]"
+mZ1Z2  : mass_2(LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass, LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass): 11,1.6,221.6; XTitle="m(#it{l}_{Z1}\,#it{l}_{Z2}) [GeV]"
+mll_3l_nocut : mll_3l: 11,1.6,221.6; XTitle="m(#it{l}_{Z1}\,#it{l}_{Z2}) [GeV]", LegendCutoff=1e-5, YMin=10.0, YMax=8000, Logy
 
 mtMetW : mt_2(met_pt, met_phi, LepW_pt, LepW_phi) : 50, 0, 500; XTitle="m_T(MET\,W) [GeV]"
 mtMetW_log : mt_2(met_pt, met_phi, LepW_pt, LepW_phi) : 50, 0, 500; XTitle="m_T(MET\,W) [GeV]", YMin=0.01, YMax=1000, Logy 
