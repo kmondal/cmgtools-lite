@@ -75,9 +75,21 @@ class DatacardReader:
             if '1' in tempLine[sig_idx+2]:
                 tempSysts.append(self.systs[self.systsLines.index(line)])
                 if 'lnN' in tempLine[1]:
-                    self.normSysts.append(self.systs[self.systsLines.index(line)])
+                    self.normSysts.append([ self.systs[self.systsLines.index(line)] , tempLine[sig_idx+2] ])
                 if 'shape' in tempLine[1]:
-                    self.shapeSysts.append(self.systs[self.systsLines.index(line)])
+                    print('Line is %s' % tempLine)
+                    print('\t\t Accessing syst %s for process %s ' % (self.systs[self.systsLines.index(line)], self.signalString) )
+                    print(os.path.join(os.path.dirname(self.inputCard), self.shapeFiles[0]))
+                    print('x_%s_%sUp' %( self.signalString, self.systs[self.systsLines.index(line)]))
+                    print('x_%s_%sDown' %( self.signalString, self.systs[self.systsLines.index(line)] )) 
+                    handle_No=ROOT.TFile.Open(os.path.join(os.path.dirname(self.inputCard), self.shapeFiles[0]))
+                    handle_Up=ROOT.TFile.Open(os.path.join(os.path.dirname(self.inputCard), self.shapeFiles[0]))
+                    handle_Dn=ROOT.TFile.Open(os.path.join(os.path.dirname(self.inputCard), self.shapeFiles[0]))
+                    myshapeNo=copy.deepcopy(handle_No.Get('x_%s' %( self.signalString ) ))
+                    myshapeUp=copy.deepcopy(handle_Up.Get('x_%s_%sUp' %( self.signalString, self.systs[self.systsLines.index(line)] ) ))
+                    myshapeDn=copy.deepcopy(handle_Dn.Get('x_%s_%sDown' %( self.signalString, self.systs[self.systsLines.index(line)] ) ))
+                    unc= myshapeUp if (abs(myshapeUp.Integral()) > abs(myshapeDn.Integral())) else myshapeDn
+                    self.shapeSysts.append([ self.systs[self.systsLines.index(line)] , unc ] )
                     
         self.systs = tempSysts
 
@@ -150,6 +162,8 @@ class Unfolder(object):
         self.dataTruth_inc=None
         self.mc=None
         self.bkg=None
+        self.normSystsList=None
+        self.shapeSystsList=None
         self.finalState=args.finalState
         self.bias=args.bias
         self.areaConstraint=args.areaConstraint
@@ -332,11 +346,7 @@ class Unfolder(object):
         #print('Syst list from rootfile:')
         #print(systList)
         datacardReader = DatacardReader(os.path.join(self.inputDir, 'responses/%s_fitWZonly_%s/prompt_altWZ_Pow/WZSR.card.txt' % (self.finalState, self.var)), 'prompt_altWZ_Pow')
-        normSystsList, shapeSystsList = datacardReader.getNormAndShapeSysts()
-        print(normSystsList)
-        print(shapeSystsList)
-        #quit()
-
+        self.normSystsList, self.shapeSystsList = datacardReader.getNormAndShapeSysts()
 
 
     def print_responses(self):
@@ -593,6 +603,10 @@ class Unfolder(object):
 
      
     def set_unfolding(self, key):
+        #destruir = lambda x : x.IsA().Destructor(x)
+        #if self.unfold: destruir(self.unfold)
+        if self.unfold:
+            self.unfold.IsA().Destructor(self.unfold)
 
         if   key == 'nom':
             self.unfold = ROOT.TUnfoldDensity(self.response_nom, self.histmap, self.regmode, self.constraint, self.densitymode)
@@ -619,13 +633,17 @@ class Unfolder(object):
         for iBkg in self.bkg:
             print('Background %s has bins %d' % (iBkg.GetName(), iBkg.GetNbinsX()) )
             if 'convs' in iBkg.GetName():
-                dscale_bgr=0.25
-            elif 'rares' in iBkg.GetName():
+                dscale_bgr=0.20
+            elif 'rares_ttX' in iBkg.GetName():
+                dscale_bgr=0.15
+            elif 'rares_VVV' in iBkg.GetName():
                 dscale_bgr=0.5
+            elif 'rares_tZq' in iBkg.GetName():
+                dscale_bgr=0.35
             elif 'fakes_appldata' in iBkg.GetName():
                 dscale_bgr=0.3
             elif 'prompt_ZZH' in iBkg.GetName():
-                dscale_bgr=0.3
+                dscale_bgr=0.07
             self.unfold.SubtractBackground(iBkg,iBkg.GetName(),scale_bgr,dscale_bgr);
 
         # Add systematic uncertainties
@@ -648,9 +666,14 @@ class Unfolder(object):
         
 
     def add_systematic_uncertainties(self):
-        print('ff')
-        # unfold.AddSysError(histUnfoldMatrixSys,"signalshape_SYS", TUnfold::kHistMapOutputHoriz, TUnfoldSys::kSysErrModeMatrix)
-        
+        for [sysName, sysValue] in self.normSystsList:
+            shifted_response=copy.deepcopy(self.response_nom)
+            shifted_response.Scale(float(sysValue))
+            print(sysName, sysValue, shifted_response.Integral()/self.response_nom.Integral())
+            self.unfold.AddSysError(shifted_response, sysName, self.histmap, ROOT.TUnfoldDensity.kSysErrModeMatrix)
+        for [sysName, sysValue] in self.shapeSystsList:
+            self.unfold.AddSysError(sysValue, sysName, self.histmap, ROOT.TUnfoldDensity.kSysErrModeMatrix)
+            print(sysName, sysValue.Integral()/self.response_nom.Integral())
 
     def do_scan(self):
         # Scan the L-curve and find the best point
@@ -1086,6 +1109,8 @@ class Unfolder(object):
 def main(args): 
     tdr.setTDRStyle()
     print('start')
+    print('Creating output dir %s/...' % args.outputDir)
+    os.system('mkdir -p %s ' % args.outputDir)
     print('Cleaning output dir %s/...' % args.outputDir)
     os.system('rm %s/*png' % args.outputDir)
     os.system('rm %s/*pdf' % args.outputDir)
