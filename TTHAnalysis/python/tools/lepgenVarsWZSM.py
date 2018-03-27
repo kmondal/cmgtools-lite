@@ -125,7 +125,7 @@ class lepgenVarsWZSM:
 
         ## gen leptons
         self.genleps    = [l             for l  in Collection(event, "genLep", "ngenLep")  ]
-
+        
         ## Get Gen leptons
         self.setAttributes(event, self.genleps, event.isData, True)
         self.genleps.sort(key = lambda x: x.pt, reverse=True)
@@ -158,7 +158,10 @@ class lepgenVarsWZSM:
                         tempLep = self.genleps[i].p4()
                         tempPhot = self.genphotons[j].p4()
                         tempLep += tempPhot
-                        self.genleps[i].p4().SetPtEtaPhiM(tempLep.Pt(), tempLep.Eta(), tempLep.Phi(), tempLep.M())
+                        self.genleps[i].pt = tempLep.Pt()
+                        self.genleps[i].eta = tempLep.Eta()
+                        self.genleps[i].phi = tempLep.Phi()
+                        self.genleps[i].mass = tempLep.M()
                         usedPhoton[j] = 1
             
 
