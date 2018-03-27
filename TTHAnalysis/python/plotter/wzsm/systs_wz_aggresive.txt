@@ -1,7 +1,7 @@
 #Flat uncertainties
 
 lumi_ML       : prompt_.*|rares_.*|convs   : .*                : 1.026
-trigeff_ML    : prompt_.*|rares_.*|convs   : .*                : 1.015
+trigeff_ML    : prompt_.*|rares_.*|convs   : .*                : 0.982/1.014
 
 fakes_ML      : fakes_.*                          : .*                : 1.3 #FIX ME
 convs_ML      : convs                             : .*                : 1.25
