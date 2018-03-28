@@ -1,0 +1,665 @@
+WZ_id_1               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[0]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_2               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[1]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_3               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[2]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_4               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[3]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_5               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[4]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_6               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[5]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_7               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[6]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_8               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[7]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_9               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[8]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_10               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[9]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_11               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[10]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_12               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[11]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_13               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[12]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_14               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[13]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_15               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[14]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_16               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[15]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_17               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[16]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_18               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[17]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_19               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[18]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_20               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[19]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_21               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[20]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_22               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[21]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_23               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[22]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_24               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[23]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_25               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[24]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_26               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[25]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_27               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[26]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_28               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[27]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_29               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[28]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_30               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[29]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_31               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[30]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_32               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[31]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_33               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[32]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_34               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[33]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_35               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[34]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_36               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[35]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_37               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[36]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_38               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[37]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_39               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[38]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_40               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[39]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_41               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[40]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_42               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[41]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_43               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[42]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_44               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[43]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_45               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[44]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_46               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[45]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_47               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[46]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_48               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[47]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_49               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[48]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_50               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[49]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_51               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[50]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_52               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[51]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_53               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[52]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_54               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[53]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_55               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[54]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_56               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[55]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_57               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[56]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_58               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[57]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_59               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[58]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_60               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[59]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_61               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[60]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_62               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[61]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_63               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[62]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_64               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[63]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_65               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[64]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_66               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[65]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_67               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[66]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_68               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[67]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_69               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[68]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_70               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[69]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_71               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[70]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_72               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[71]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_73               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[72]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_74               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[73]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_75               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[74]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_76               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[75]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_77               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[76]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_78               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[77]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_79               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[78]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_80               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[79]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_81               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[80]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_82               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[81]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_83               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[82]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_84               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[83]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_85               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[84]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_86               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[85]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_87               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[86]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_88               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[87]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_89               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[88]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_90               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[89]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_91               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[90]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_92               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[91]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_93               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[92]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_94               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[93]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_95               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[94]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_96               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[95]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_97               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[96]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_98               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[97]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_99               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[98]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_100               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[99]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_101               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[100]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_102               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[101]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_103               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[102]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_104               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[103]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_105               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[104]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_106               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[105]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_107               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[106]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_108               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[107]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_109               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[108]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_110               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[109]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_111               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[110]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_112               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[111]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_113               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[112]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_114               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[113]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_115               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[114]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_116               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[115]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_117               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[116]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_118               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[117]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_119               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[118]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_120               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[119]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_121               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[120]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_122               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[121]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_123               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[122]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_124               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[123]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_125               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[124]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_126               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[125]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_127               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[126]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_128               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[127]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_129               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[128]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_130               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[129]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_131               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[130]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_132               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[131]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_133               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[132]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_134               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[133]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_135               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[134]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_136               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[135]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_137               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[136]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_138               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[137]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_139               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[138]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_140               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[139]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_141               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[140]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_142               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[141]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_143               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[142]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_144               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[143]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_145               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[144]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_146               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[145]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_147               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[146]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_148               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[147]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_149               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[148]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_150               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[149]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_151               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[150]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_152               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[151]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_153               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[152]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_154               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[153]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_155               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[154]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_156               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[155]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_157               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[156]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_158               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[157]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_159               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[158]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_160               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[159]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_161               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[160]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_162               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[161]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_163               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[162]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_164               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[163]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_165               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[164]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_166               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[165]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_167               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[166]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_168               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[167]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_169               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[168]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_170               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[169]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_171               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[170]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_172               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[171]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_173               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[172]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_174               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[173]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_175               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[174]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_176               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[175]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_177               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[176]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_178               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[177]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_179               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[178]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_180               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[179]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_181               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[180]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_182               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[181]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_183               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[182]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_184               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[183]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_185               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[184]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_186               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[185]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_187               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[186]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_188               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[187]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_189               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[188]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_190               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[189]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_191               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[190]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_192               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[191]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_193               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[192]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_194               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[193]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_195               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[194]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_196               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[195]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_197               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[196]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_198               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[197]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_199               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[198]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_200               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[199]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_201               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[200]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_202               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[201]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_203               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[202]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_204               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[203]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_205               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[204]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_206               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[205]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_207               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[206]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_208               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[207]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_209               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[208]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_210               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[209]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_211               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[210]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_212               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[211]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_213               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[212]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_214               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[213]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_215               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[214]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_216               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[215]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_217               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[216]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_218               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[217]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_219               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[218]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_220               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[219]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_221               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[220]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
+
+WZ_id_222               : WZTo3LNu                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[221]/LHEweight_wgt[0])          ; FillColor=ROOT.kRed  , Label="WZ"
+
