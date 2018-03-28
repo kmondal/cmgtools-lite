@@ -86,6 +86,7 @@ class lepgenVarsWZSM:
     def __call__(self, event):
         self.resetMemory()
         self.collectObjects(event)
+        self.dressLeptons(0.1)
         self.analyzeTopology()
         self.writeLepSel()
         return self.ret
@@ -102,7 +103,6 @@ class lepgenVarsWZSM:
         if len(self.genleps)>=5: self.ret["is_5l_gen"] = 1
 
         self.collectOSpairs(3, False)
-        self.dressLeptons(0.1)
         self.makeMass(3)
         self.makeMt2(3)
         self.findBestOSpair(3)
