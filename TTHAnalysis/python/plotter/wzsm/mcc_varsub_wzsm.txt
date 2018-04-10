@@ -2,6 +2,7 @@ LepSel1_(\w+)  : LepSel_\1[0]; AlsoData
 LepSel2_(\w+)  : LepSel_\1[1]; AlsoData
 LepSel3_(\w+)  : LepSel_\1[2]; AlsoData
 LepSel4_(\w+)  : LepSel_\1[3]; AlsoData
+LeadJet_(\w+)  : Jet_\1[0]; AlsoData
 nJet25\b: nJet25_Recl; AlsoData
 htJet25j\b: htJet25j_Recl; AlsoData
 mhtJet25\b: mhtJet25_Recl; AlsoData

@@ -1,17 +1,19 @@
 import os
 import subprocess
+import glob
 from math import sqrt,fabs
 
 # Author: Pietro Vischia, pietro.vischia@cern.ch
 
 def saveCanva(c, fname):
-        c.Print(fname+'.png')
-        c.Print(fname+'.pdf')
-        c.Print(fname+'.C')
+        c.SaveAs(fname+'.png')
+        c.SaveAs(fname+'.pdf')
+        c.SaveAs(fname+'.C')
         #c.Print(fname+'.root')
                 
 """
 """
+
 def get_file_from_glob(f):                                                    
         files = glob.glob(f)                                                      
         if len(files) != 1:                                                       
@@ -19,13 +21,13 @@ def get_file_from_glob(f):
 s -> %s' % (f, files))                                                        
         
         return files[0]                                                           
+"""
+"""
 
-"""
-"""
 def command(cmd, pretend):
 
         if pretend:
-                print 'Command is: ', cmd
+                print('Command is: %s ' % cmd )
         else:
                 os.system(cmd)
 
@@ -36,11 +38,11 @@ def command(cmd, pretend):
         
         newCmd = 'python {cmd}'.format(cmd=p.split('python')[1])
         if pretend:
-                print newCmd
+                print(newCmd)
         else:
                 os.system(newCmd)
                 
-        print "Done."
+        print('Done.')
 """
 """
 
@@ -49,7 +51,7 @@ def clean(outDir):
         os.system('rm {outDir}/*png'.format(outDir=outDir))
         os.system('rm {outDir}/*pdf'.format(outDir=outDir))
         os.system('rm {outDir}/*txt'.format(outDir=outDir))
-        print 'Old plots in {outDir} cleaned.'.format(outDir=outDir)
+        print('Old plots in {outDir} cleaned.'.format(outDir=outDir))
 
 
   
@@ -132,4 +134,42 @@ def writeYieldsToLatex(yields,sigLabel):
                      
         return ret
 
+"""
+"""
 
+#def chisquare_corr(npar, gin, f, u, flag):
+#        #  Minimization function for H1s using a Chisquare method
+#        #  only one-dimensional histograms are supported
+#        #  Corelated errors are taken from an external inverse covariance matrix
+#        #  stored in a 2-dimensional histogram
+#        x=0.0
+#        hfit = gFitter->GetObjectFit()
+#        f1   = gFitter->GetUserFunc()
+#
+#        f1.InitArgs(Double(x),u)
+#        npar = f1.GetNpar()
+#        f = 0
+#
+#        npfit = 0
+#        nPoints=hfit.GetNbinsX()
+#        df=new Double_t[nPoints];
+#  for (Int_t i=0;i<nPoints;i++) {
+#    x     = hfit->GetBinCenter(i+1);
+#    TF1::RejectPoint(kFALSE);
+#    df[i] = f1->EvalPar(&x,u)-hfit->GetBinContent(i+1);
+#    if (TF1::RejectedPoint()) df[i]=0.0;
+#    else npfit++;
+#  }
+#  for (Int_t i=0;i<nPoints;i++) {
+#    for (Int_t j=0;j<nPoints;j++) {
+#      f += df[i]*df[j]*gHistInvEMatrix->GetBinContent(i+1,j+1);
+#    }
+#  }
+#  delete[] df;
+#  f1->SetNumberFitPoints(npfit);
+#}
+#
+#Double_t bw_func(Double_t *x,Double_t *par) {
+#  Double_t dm=x[0]-par[1];
+#  return par[0]/(dm*dm+par[2]*par[2]);
+#}

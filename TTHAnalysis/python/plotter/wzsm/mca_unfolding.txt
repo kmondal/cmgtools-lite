@@ -1,0 +1,22 @@
+# Main WZ sample
+### prompt_altWZdummy+ : WZTo3LNu : xsec : 1 ; Label="Dummy WZ for datacard"
+
+prompt_altWZ_Pow+ : WZTo3LNu : xsec :  1          ; Label="WZ_Powheg"
+prompt_altWZ_Inc : WZ : xsec :  1                ; Label="WZ_Inclusive"
+prompt_altWZ_aMC : WZTo3LNu_amcatnlo : xsec :  1 ; Label="WZ_aMCAtNLO"
+
+
+
+## Systematics
+## -----------------------------------------------------------
+incl_sys_puw            : + ; IncludeMca="wzsm/includes/mca_sys_puw.txt"
+incl_sys_ewk            : + ; IncludeMca="wzsm/includes/mca_sys_ewk.txt"
+incl_sys_ewk_mc         : + ; IncludeMca="wzsm/includes/mca_sys_ewk_mc.txt"
+incl_sys_jec            : + ; IncludeMca="wzsm/includes/mca_sys_jec.txt"
+#incl_sys_lepSF          : + ; IncludeMca="wzsm/includes/mca_sys_lepSF.txt"
+incl_sys_lepSFMu          : + ; IncludeMca="wzsm/includes/mca_sys_lepSFMu.txt"
+incl_sys_lepSFEl          : + ; IncludeMca="wzsm/includes/mca_sys_lepSFEl.txt"
+
+
+incl_sys_bTagHF         : + ; IncludeMca="wzsm/includes/mca_sys_bTagHF.txt"
+incl_sys_bTagLF         : + ; IncludeMca="wzsm/includes/mca_sys_bTagLF.txt"

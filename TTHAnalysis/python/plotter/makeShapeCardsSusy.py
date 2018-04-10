@@ -22,11 +22,11 @@ parser.add_option("--ms",   dest="multiplesignals",  action="store_true", defaul
 parser.add_option("--frFile"  ,dest="frFile"  , type="string", action="append", default=[], help="Path to the FR file to extract most probable FR for postfix.")
 parser.add_option("--frMap"   ,dest="frMap"   , type="string", action="append", default=[], help="Format of the name of the FR map in the FR file, put FL for el/mu")
 parser.add_option("--mpfr"    ,dest="mpfr"    , type="string", default=None, help="Region in the mpfr file to extract most probable FR bin")
-parser.add_option("--poisson" ,dest="poisson" , action="store_true", default=False, help="Put poisson errors in the histogram (not recommended)")
+parser.add_option("--poisson" ,dest="poisson" , action="store_true", default=False, help="Put poisson errors in the histogram (recommended)")
 parser.add_option("--extraText" ,dest="extraText" , type="string", default=[], action="append", help="Add extra text lines at the end of the datacard") #A quick and dirty workaround for the rateParameters
 parser.add_option('--bb', '--autoMCStats', dest='autoMCStats', action='store_true', help='Use automatic MC stats with Barlow-Beeston approximation')
 parser.add_option('--sigAsim', '--notSusy', dest='notSusy', action='store_true', help='Add signal process to Asimov dataset. Useful to deal with in SM measurements with no BSM')
-parser.add_option('--notPrefix', dest='notPrefix', action='store_true', help='Do not add the x_ prefix to the histograms saved in the shapes rootfile')
+parser.add_option('--noPrefix', dest='noPrefix', action='store_true', help='Do not add the x_ prefix to the histograms saved in the shapes rootfile')
 
 (options, args) = parser.parse_args()
 options.weight = True

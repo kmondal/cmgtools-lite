@@ -1,60 +1,37 @@
 alwaystrue: 1
 filters: $DATA{(Flag_EcalDeadCellTriggerPrimitiveFilter && Flag_HBHENoiseIsoFilter && Flag_HBHENoiseFilter && Flag_eeBadScFilter && Flag_goodVertices && Flag_globalTightHalo2016Filter && Flag_badChargedHadronFilter)} $MC{1}
 triggers: $DATA{(Triggers_ee || Triggers_mm || Triggers_em)} $MC{(Triggers_ee || Triggers_mm || Triggers_em)}
-threelightlep: nLepSel>=3 && abs(LepSel1_pdgId)<14 && abs(LepSel2_pdgId)<14 && abs(LepSel3_pdgId)<14
-#pt101010: LepSel1_conePt>10 && LepSel2_conePt>10 && LepSel3_conePt>10 && LepSel1_pt>10 && LepSel2_pt>10 && LepSel3_pt>10 #Why?
-
-#vetoLooseLeptons: 
-MVAVT: LepSel1_isTight && LepSel2_isTight && LepSel3_isTight
-ptWZ: LepZ1_pt>25 && LepZ2_pt>10 && LepW_pt>25
+twolightlep: nLepSel>=2 && abs(LepSel1_pdgId)<14 && abs(LepSel2_pdgId)<14
+MVAVT: LepSel1_isTight && LepSel2_isTight
 lowMll: minMllAFAS > 4
 hasOSSF: nOSSF>0   
-
-#MET OPTIONS
-
-gMet30 : met_pt > 30 ; Disable=True
-lMet30 : met_pt <= 30; Disable=True
-
-#BJET OPTIONS
-
-bjetsveto : nBJetMedium30 == 0; Disable=True
-bjetsany  : nBJetMedium30 > 0 ; Disable=True
-
-#MLL OPTIONS
-
-mllOnZ15  : abs(91.1876-mll_3l)<15 ; Disable=True
-mllOffZ5  : abs(91.1876-mll_3l)>5  ; Disable=True 
-
-#NLEP OPTIONS
-fourleps         : nLepSel == 4; Disable=True
-lessthanfourleps : nLepSel <= 4; Disable=True
-
-#M3L OPTIONS
-gm3L100 : m3L  > 100; Disable=True
-lm3L100 : m3L <= 100; Disable=True
-
-#Regions
-SR        : met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel<4  && m3L > 100; Disable=True
-SRnobtag  : met_pt > 30    && abs(91.1876-mll_3l)<15  &&  nLepSel<4  && m3L > 100; Disable=True
-SRnomll   : met_pt > 30    && nBJetMedium30 == 0 &&  nLepSel<4  && m3L > 100; Disable=True
-SRnomet   : nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel<4  && m3L > 100; Disable=True
-SRnomll   : met_pt > 30    && nBJetMedium30 == 0 && nLepSel<4 && m3L >100; Disable=True
-DYCR      : met_pt <= 30   && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel<4  && m3L > 100; Disable=True
-TTCR      : met_pt > 30    && nBJetMedium30 > 0  && abs(91.1876-mll_3l)>5   &&  nLepSel<4  && m3L > 100; Disable=True
-ZZCR      : met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L > 100  && LepSel4_isTight && LepSel4_pt > 10   ; Disable=True
-ttXCR     : met_pt > 30    && nBJetMedium30 > 0  && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L > 100  && LepSel4_isTight && LepSel4_pt > 10   ; Disable=True
-convCR    : met_pt <= 30   && nBJetMedium30 == 0 && abs(91.1876-mll_3l)>15  && m3L <= 100  &&  nLepSel<4 ; Disable=True
-
-ZZCRnomet : nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L > 100  && LepSel4_isTight && LepSel4_pt > 10   ; Disable=True
-
-#auxHLTHT : HLT_HT ; Disable=True
-
-#isSomeCRSR: getWZRegion(met_pt, mll_3l, nBJetMedium30, nLepSel,LepSel_isTight[3],LepSel_pt[3]) >= 0; Disable=True
-
-allAreGoodMatched: abs(LepW_mcMatchId)== 24 && abs(LepZ1_mcMatchId) == 23 && abs(LepZ2_mcMatchId) == 23 ; Disable=True
+onebjet  : nBJetMedium30 > 0 
+zetaveto: abs(91-mll)>15
 
 
-######################################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Flavor
 eee: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==33; Disable=True
@@ -65,8 +42,8 @@ eel: (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==33) || (abs(LepS
 mml: (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==37) || (abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==39); Disable=True
 
 flaveeeORmme : abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==33 || abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==37; Disable=True
-pmp: (LepW_pdgId) < 0 ; Disable = True
-pmm: (LepW_pdgId) > 0 ; Disable = True
+
+
 
 pt252020: LepSel1_pt>25 && LepSel2_pt>20 && LepSel3_pt>20; Disable=True
 ptleptons: LepZ1_pt<100 && LepZ2_pt<100 && LepW_pt<100 && LepZ1_conePt<100 && LepZ2_conePt<100 && LepW_conePt<100 ; Disable=True

@@ -1,13 +1,17 @@
 #!/bin/bash
 
- 
-#INPUTDIR="/pool/ciencias/HeppyTrees/RA7/estructura/treesM17" #Use skimmed (3LepGood, minMllAFAS > 4) instead
+#Use skimmed (3LepGood, minMllAFAS > 4) instead
+#INPUTDIR="/pool/ciencias/HeppyTrees/RA7/estructura/treesM17"
 INPUTDIR="/pool/ciencias/userstorage/carlosec/wzSkimmed/"
+INPUTDIR="/pool/ciencias/HeppyTrees/RA7/estructura/wzSkimmed/"
+if [ "$1" == "response" ] || [ "$2" == "response" ]; then
+    INPUTDIR="/pool/ciencias/HeppyTrees/RA7/wz/wzUnskimmed/"
+fi
 TREESDIR=${INPUTDIR}                                                                                     
 OUTPUTDIR="/OBSOLETE"                                                                       
 
 WHOAMI=`whoami`
-WEBDIR="/nfs/fanae/user/${WHOAMI}/www/wz/"                                            
+WEBDIR="/nfs/fanae/user/${WHOAMI}/www/wz_paper/"
 
 #    mcPlots.py WZSM/mca_includes.txt WZSM/cuts_wzsm.txt WZSM/plots_wzsm.txt -P  --Fs {P}/leptonJetReCleanerWZSM --Fs {P}/leptonBuilderWZSM --FMCs {P}/bTagEventWeightFullSimWZ30 --pdir /nfs/fanae/user/nachos/www/WZ2016/mWZ_varbin -j 24 -l 35.867 --s2v --tree treeProducerSusyMultilepton --mcc WZSM/mcc_varsub_wzsm.txt --mcc WZSM/mcc_triggerdefs.txt --legendWidth 0.18 --legendFontSize 0.026 -f --sP m3l_l,m3lmet_l --perBin -p data -p prompt.* -p rares.* -p fakes_appldata --plotgroup fakes_appldata+=promptsub --neglist promptsub -W puw_nInt_Moriond(nTrueInt)*getLepSF(LepSel1_conePt,LepSel1_eta,LepSel1_pdgId,1)*getLepSF(LepSel2_conePt,LepSel2_eta,LepSel2_pdgId,1)*getLepSF(LepSel3_conePt,LepSel3_eta,LepSel3_pdgId,1)*bTagWeight --showMCError --load-macro WZSM/functionsPUW.cc --load-macro WZSM/functionsSF.cc --load-macro WZSM/functionsWZ.cc --print C,pdf,png,txt --showRatio --ratioOffset 0.03 --maxRatioRange 0.5 2.0 --fixRatioRange --env oviedo
 
@@ -54,11 +58,26 @@ if [ "$1" == "all" ]; then
 #    sh wzsm/doAnal.sh plot zzcr M  ${2} pogmc
 #    sh wzsm/doAnal.sh plot convcr M  ${2} pogmc
 
+
+elif [ "$1" == "test" ]; then
+    sh wzsm/doAnal.sh plot test VT
     
 elif [ "$1" == "SR" ]; then
     sh wzsm/doAnal.sh plot srwz VT ${2}
     #sh wzsm/doAnal.sh plot srwz M  ${2}
 
+elif [ "$1" == "response" ]; then
+    # Use temporarily name of plot to store channel
+    fs='incl'
+    sh wzsm/doAnal.sh plot response VT ${fs}
+    fs='eee'
+    sh wzsm/doAnal.sh plot response VT ${fs}
+    fs='eem'
+    sh wzsm/doAnal.sh plot response VT ${fs}
+    fs='mme'
+    sh wzsm/doAnal.sh plot response VT ${fs}
+    fs='mmm'
+    sh wzsm/doAnal.sh plot response VT ${fs}
 
 elif [ "$1" == "TT" ]; then
     sh wzsm/doAnal.sh plot ttcr VT ${2}
