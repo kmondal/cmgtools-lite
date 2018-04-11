@@ -97,6 +97,15 @@ float pt_3(float pt1, float phi1, float pt2, float phi2, float pt3, float phi3) 
     return hypot(pt1 + pt2 * std::cos(phi2) + pt3 * std::cos(phi3), pt2*std::sin(phi2) + pt3*std::sin(phi3));
 }
 
+float phi_3(float pt1, float phi1, float pt2, float phi2, float pt3, float phi3) {
+    float px1 = pt1 * std::cos(phi1);
+    float py1 = pt1 * std::sin(phi1);
+    float px2 = pt2 * std::cos(phi2);
+    float py2 = pt2 * std::sin(phi2);
+    float px3 = pt3 * std::cos(phi3);
+    float py3 = pt3 * std::sin(phi3);
+    return std::atan2(py1+py2+py3,px1+px2+px3);
+}
 
 float mass_3(float pt1, float eta1, float phi1, float m1, float pt2, float eta2, float phi2, float m2, float pt3, float eta3, float phi3, float m3) {
     typedef ROOT::Math::LorentzVector<ROOT::Math::PtEtaPhiM4D<double> > PtEtaPhiMVector;

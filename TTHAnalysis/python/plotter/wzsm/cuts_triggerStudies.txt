@@ -1,0 +1,19 @@
+alwaystrue: 1
+filters    : $DATA{(Flag_EcalDeadCellTriggerPrimitiveFilter && Flag_HBHENoiseIsoFilter && Flag_HBHENoiseFilter && Flag_eeBadScFilter && Flag_goodVertices && Flag_globalTightHalo2016Filter && Flag_badChargedHadronFilter)} $MC{1}
+refTrigger_MET : HLT_MET ; Disable =True
+refTrigger_HT  : HLT_HT  ; Disable =True
+
+oneTight: nLepSel>=1 && LepSel1_isTight ; Disable=True 
+twoTight: nLepSel==2 && LepSel1_isTight && LepSel2_isTight && nLepGood == 2; Disable=True
+
+onZ : nLepGood >= 3 && abs(mZ1- 91.1786) < 15 ; Disable=True
+
+firstEl: abs(LepGood_pdgId[0]) == 11 ; Disable=True
+firstMu: abs(LepGood_pdgId[0]) == 13 ; Disable=True
+
+secondEl: abs(LepGood_pdgId[1]) == 11 ; Disable=True
+secondMu: abs(LepGood_pdgId[1]) == 13 ; Disable=True
+
+ElMu: (abs(LepSel_pdgId[1]) + abs(LepSel_pdgId[0])) == 24 ; Disable=True
+
+

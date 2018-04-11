@@ -8,39 +8,9 @@ convs_ML      : convs                             : .*                : 1.2
 
 normZZH_ML    : prompt_ZZH                        : .*                : 1.07
 normVVV_ML    : rares_VVV                         : .*                : 1.5
-<<<<<<< HEAD
 normVH_ML     : rares_VH                          : .*                : 1.25
 normtZq_ML    : rares_tZq                         : .*                : 1.35
 normTTX_ML    : rares_ttX                         : .*                : 1.15
-=======
-normVH_ML     : rares_VH                          : .*                : 1.5
-normtZq_ML    : rares_tZq                         : .*                : 1.5
-normTTX_ML    : rares_ttX                         : .*                : 1.5
-theoTTV_ML    : rares_ttW|rares_ttZ               : .*                : 1.15
-
-# Scale and PDF uncertainties for the moment norm only (in a couple days derive them with full shape)
-# PDF uncs based on 100 NNPDF3.0 replicas
-pdfNorm_ML : prompt_WZTo3LNu.*  : .*incl.* : 1.01393
-pdfNorm_ML : prompt_WZTo3LNu.* : .*eee.* : 1.01402
-pdfNorm_ML : prompt_WZTo3LNu.* : .*eem.* : 1.01384
-pdfNorm_ML : prompt_WZTo3LNu.* : .*mme.* : 1.01395
-pdfNorm_ML : prompt_WZTo3LNu.* : .*mmm.* : 1.01393
-
-scaleNorm_ML : prompt_WZTo3LNu.* : .*incl.* : 0.96759/1.03900
-scaleNorm_ML : prompt_WZTo3LNu.* : .*eee.* :  0.96732/1.03937
-scaleNorm_ML : prompt_WZTo3LNu.* : .*eem.* :  0.96780/1.03864
-scaleNorm_ML : prompt_WZTo3LNu.* : .*mme.* :  0.96734/1.03922
-scaleNorm_ML : prompt_WZTo3LNu.* : .*mmm.* :  0.96777/1.03888
-
-#ZZ
-#normZZH_ML    : prompt_ZZH                        : .*                : 1.3 : lnN_in_shape_bins : 1
-#normZZH_ML    : prompt_ZZH                        : .*                : 1.2 : lnN_in_shape_bins : 2,3,4
-
-#ttX
-#normTTX_ML    : rares_ttX|rares_tZq                         : .*                : 1.5 : lnN_in_shape_bins : 1,2
-#normTTX_ML    : rares_ttX|rares_tZq                         : .*                : 1.3 : lnN_in_shape_bins : 3,4
-
->>>>>>> pietro/wz80x
 
 #Templates#
 ewkfakes_ML      : fakes_.*                          : .* : ewk        : templates
@@ -51,8 +21,6 @@ ElScale_ML       : prompt_.*|rares_.*|convs          : .* : elscale    : templat
 PUW_ML           : prompt_.*|rares_.*|convs          : .* : puw        : templates
 LepSFMu_ML       : prompt_.*|rares_.*|convs          : .* : lepSFMu    : templates
 LepSFEl_ML       : prompt_.*|rares_.*|convs          : .* : lepSFEl    : templates
-btag_HF_ML       : prompt_.*|rares_.*|convs          : .* : bTagHF     : templates
-btag_LF_ML       : prompt_.*|rares_.*|convs          : .* : bTagLF     : templates
 
 #Statistical uncertainties#
 stats_WZ   : prompt_WZ    : .* : 1.0 : stat_foreach_shape_bins : .*

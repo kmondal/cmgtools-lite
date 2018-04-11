@@ -1,0 +1,866 @@
+WZ_AC_0               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[112]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_0               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[112]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_0               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[112]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_1               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[113]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_1               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[113]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_1               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[113]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_2               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[114]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_2               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[114]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_2               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[114]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_3               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[115]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_3               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[115]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_3               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[115]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_4               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[116]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_4               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[116]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_4               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[116]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_5               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[117]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_5               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[117]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_5               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[117]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_6               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[118]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_6               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[118]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_6               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[118]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_7               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[119]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_7               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[119]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_7               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[119]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_8               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[120]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_8               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[120]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_8               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[120]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_9               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[121]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_9               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[121]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_9               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[121]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_10               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[122]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_10               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[122]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_10               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[122]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_11               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[123]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_11               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[123]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_11               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[123]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_12               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[124]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_12               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[124]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_12               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[124]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_13               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[125]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_13               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[125]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_13               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[125]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_14               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[126]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_14               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[126]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_14               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[126]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_15               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[127]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_15               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[127]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_15               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[127]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_16               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[128]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_16               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[128]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_16               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[128]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_17               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[129]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_17               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[129]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_17               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[129]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_18               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[130]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_18               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[130]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_18               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[130]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_19               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[131]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_19               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[131]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_19               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[131]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_20               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[132]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_20               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[132]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_20               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[132]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_21               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[133]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_21               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[133]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_21               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[133]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_22               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[134]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_22               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[134]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_22               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[134]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_23               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[135]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_23               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[135]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_23               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[135]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_24               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[136]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_24               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[136]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_24               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[136]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_25               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[137]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_25               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[137]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_25               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[137]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_26               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[138]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_26               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[138]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_26               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[138]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_27               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[139]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_27               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[139]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_27               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[139]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_28               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[140]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_28               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[140]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_28               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[140]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_29               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[141]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_29               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[141]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_29               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[141]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_30               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[142]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_30               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[142]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_30               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[142]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_31               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[143]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_31               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[143]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_31               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[143]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_32               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[144]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_32               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[144]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_32               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[144]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_33               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[145]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_33               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[145]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_33               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[145]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_34               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[146]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_34               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[146]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_34               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[146]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_35               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[147]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_35               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[147]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_35               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[147]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_36               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[148]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_36               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[148]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_36               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[148]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_37               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[149]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_37               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[149]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_37               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[149]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_38               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[150]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_38               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[150]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_38               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[150]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_39               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[151]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_39               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[151]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_39               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[151]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_40               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[152]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_40               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[152]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_40               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[152]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_41               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[153]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_41               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[153]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_41               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[153]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_42               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[154]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_42               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[154]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_42               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[154]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_43               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[155]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_43               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[155]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_43               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[155]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_44               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[156]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_44               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[156]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_44               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[156]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_45               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[157]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_45               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[157]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_45               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[157]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_46               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[158]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_46               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[158]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_46               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[158]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_47               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[159]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_47               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[159]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_47               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[159]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_48               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[160]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_48               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[160]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_48               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[160]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_49               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[161]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_49               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[161]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_49               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[161]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_50               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[162]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_50               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[162]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_50               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[162]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_51               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[163]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_51               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[163]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_51               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[163]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_52               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[164]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_52               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[164]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_52               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[164]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_53               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[165]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_53               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[165]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_53               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[165]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_54               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[166]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_54               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[166]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_54               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[166]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_55               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[167]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_55               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[167]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_55               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[167]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_56               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[168]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_56               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[168]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_56               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[168]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_57               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[169]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_57               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[169]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_57               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[169]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_58               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[170]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_58               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[170]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_58               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[170]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_59               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[171]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_59               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[171]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_59               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[171]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_60               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[172]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_60               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[172]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_60               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[172]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_61               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_61               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_61               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_62               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[174]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_62               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[174]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_62               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[174]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_63               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[175]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_63               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[175]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_63               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[175]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_64               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[176]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_64               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[176]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_64               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[176]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_65               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[177]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_65               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[177]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_65               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[177]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_66               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[178]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_66               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[178]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_66               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[178]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_67               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[179]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_67               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[179]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_67               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[179]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_68               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[180]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_68               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[180]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_68               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[180]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_69               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[181]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_69               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[181]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_69               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[181]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_70               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[182]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_70               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[182]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_70               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[182]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_71               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[183]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_71               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[183]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_71               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[183]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_72               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[184]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_72               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[184]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_72               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[184]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_73               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[185]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_73               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[185]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_73               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[185]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_74               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[186]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_74               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[186]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_74               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[186]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_75               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[187]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_75               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[187]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_75               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[187]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_76               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[188]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_76               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[188]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_76               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[188]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_77               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[189]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_77               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[189]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_77               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[189]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_78               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[190]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_78               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[190]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_78               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[190]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_79               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[191]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_79               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[191]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_79               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[191]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_80               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[192]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_80               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[192]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_80               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[192]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_81               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[193]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_81               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[193]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_81               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[193]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_82               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[194]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_82               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[194]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_82               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[194]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_83               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[195]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_83               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[195]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_83               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[195]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_84               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[196]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_84               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[196]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_84               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[196]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_85               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[197]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_85               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[197]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_85               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[197]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_86               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[198]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_86               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[198]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_86               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[198]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_87               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[199]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_87               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[199]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_87               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[199]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_88               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[200]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_88               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[200]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_88               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[200]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_89               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[201]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_89               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[201]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_89               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[201]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_90               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[202]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_90               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[202]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_90               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[202]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_91               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[203]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_91               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[203]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_91               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[203]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_92               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[204]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_92               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[204]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_92               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[204]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_93               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[205]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_93               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[205]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_93               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[205]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_94               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[206]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_94               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[206]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_94               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[206]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_95               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[207]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_95               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[207]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_95               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[207]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_96               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[208]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_96               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[208]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_96               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[208]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_97               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[209]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_97               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[209]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_97               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[209]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_98               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[210]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_98               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[210]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_98               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[210]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_99               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[211]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_99               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[211]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_99               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[211]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_100               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[212]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_100               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[212]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_100               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[212]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_101               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[213]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_101               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[213]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_101               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[213]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_102               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[214]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_102               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[214]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_102               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[214]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_103               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[215]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_103               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[215]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_103               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[215]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_104               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[216]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_104               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[216]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_104               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[216]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_105               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[217]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_105               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[217]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_105               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[217]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_106               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[218]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_106               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[218]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_106               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[218]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_107               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[219]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_107               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[219]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_107               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[219]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_108               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[220]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_108               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[220]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_108               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[220]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_109               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[221]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_109               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[221]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_109               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[221]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_110               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[222]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_110               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[222]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_110               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[222]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_111               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[223]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_111               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[223]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_111               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[223]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_112               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[224]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_112               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[224]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_112               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[224]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_113               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[225]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_113               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[225]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_113               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[225]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_114               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[226]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_114               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[226]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_114               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[226]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_115               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[227]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_115               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[227]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_115               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[227]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_116               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[228]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_116               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[228]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_116               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[228]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_117               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[229]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_117               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[229]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_117               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[229]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_118               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[230]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_118               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[230]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_118               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[230]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_119               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[231]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_119               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[231]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_119               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[231]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_120               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[232]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_120               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[232]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_120               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[232]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_121               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[233]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_121               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[233]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_121               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[233]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_122               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[234]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_122               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[234]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_122               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[234]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+
+WZ_AC_123               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[235]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))            ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_123               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[235]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"
+
+WZ_AC_123               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*(LHEweight_wgt[235]/LHEweight_wgt[0]*(m3Lmet < 500) + LHEweight_wgt[173]/LHEweight_wgt[0]*(m3Lmet > 500))             ; FillColor=ROOT.kRed  , Label="WZ (AC)"

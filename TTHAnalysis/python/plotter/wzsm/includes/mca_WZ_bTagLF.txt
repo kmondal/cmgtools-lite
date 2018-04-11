@@ -1,0 +1,6 @@
+prompt_WZ               : WZTo3LNu                        : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))            ; FillColor=ROOT.kOrange  , Label="WZ"
+
+prompt_WZ_Up+               : WZTo3LNu                        : xsec : bTagWeight_LF_Up/bTagWeight*(((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)))            ; FillColor=ROOT.kRed  , LineWidth=2, Label="WZ BTag Up"
+
+prompt_WZ_Dn+               : WZTo3LNu                        : xsec : bTagWeight_LF_Dn/bTagWeight*(((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1)))            ; FillColor=ROOT.kBlue  , LineWidth=2, Label="WZ BTag Dn"
+

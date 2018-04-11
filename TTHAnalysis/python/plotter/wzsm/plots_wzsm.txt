@@ -1,4 +1,5 @@
 #### Lepton--RELATED VARIABLES
+charge  : -1 + 2*(LepW_pdgId < 0) : [-1.5,0,1.5]
 pt1     : LepSel1_conePt          : 25,0,250     ; XTitle="p_{T}(leading reco lep) [GeV]", LegendCutoff=1e-5
 pt2     : LepSel2_conePt          : 20,0,200     ; XTitle="p_{T}(subleading reco lep) [GeV]", LegendCutoff=1e-5
 pt3     : LepSel3_conePt          : 30,0,150     ; XTitle="p_{T}(third reco lep) [GeV]", LegendCutoff=1e-5
@@ -20,9 +21,9 @@ PtRatio3: LepSel3_ptratio: 30,0,1.5; XTitle="Lep3 Jet p_{T} Ratiov2 ", Legend='T
 mll   : mass_2(LepSel1_pt,LepSel1_eta,LepSel1_phi,LepSel1_mass, LepSel2_pt,LepSel2_eta,LepSel2_phi,LepSel2_mass): 50,0,200; XTitle="m(ll) [GeV]"
 m3e:  mass_3_cheap(LepSel1_pt,LepSel1_eta,LepSel2_pt,LepSel2_eta,deltaPhi(LepSel1_phi,LepSel2_phi),LepSel3_pt,LepSel3_eta,deltaPhi(LepSel1_phi,LepSel3_phi)): 80, 60, 300; XTitle="m(eee) [GeV]"
 m3mu: mass_3_cheap(LepSel1_pt,LepSel1_eta,LepSel2_pt,LepSel2_eta,deltaPhi(LepSel1_phi,LepSel2_phi),LepSel3_pt,LepSel3_eta,deltaPhi(LepSel1_phi,LepSel3_phi)): 80, 60, 300; XTitle="m(#mu #mu #mu) [GeV]"
-m3l    : m3L    : 21, 80, 500; XTitle="M_{3L} [GeV]", LegendCutoff=1e-5
+
 m3linv    : m3L    : 20, 0, 100; XTitle="M_{3L} [GeV]", LegendCutoff=1e-5
-m3lmet : m3Lmet : 27, 75, 750; XTitle="M_{WZ} [GeV]", LegendCutoff=1e-5
+
 m3lmetlow : m3Lmet : 14, 75, 250; XTitle="M_{WZ} [GeV]", LegendCutoff=1e-5
 m3lblind    : m3L    : 21, 80, 300; XTitle="M_{3L} [GeV]", LegendCutoff=1e-5
 m3lmetblind : m3Lmet : 27, 75, 400; XTitle="M_{WZ} [GeV]", LegendCutoff=1e-5
@@ -157,13 +158,15 @@ nJB30_log :  nJB30  : 15,-0.5,14.5; XTitle="( N_{jet}  N_{b jet} )", LegendCutof
 
 #### MET-RELATED VARIABLES
 
-METscan    : met_pt               : 30,0,300     ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5
 MET        : met_pt               : 23,20,250    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5
 #MET_log    : met_pt               : 20,0,200    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5, Logy
 MET_logblind_20 : met_pt               : 20,0,140    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5, Logy
 MET_logblind : met_pt               : [0,10,20,30,40,50,60,70,80,90,100,110,120,130,140]    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5, Logy
 MET_blind : met_pt               : [0,10,20,30,40,50,60,70,80,90,100,110,120,130,140]    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5
-METflavour_logblind : met_pt\:(abs(LepSel1_pdgId)==13)+(abs(LepSel2_pdgId)==13)+(abs(LepSel3_pdgId)==13) : [-0.5,0.5,1.5,2.5,3.5]*[0,10,20,30,40,50,60,70,80,90,100,110,120,130,140] ; YTitle="Lepton flavour composition 3L", YNDiv =004, yBinLabels="eee\,ee#mu\,#mu#mue\,#mu#mu#mu", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ'
+#METflavour_logblind : met_pt\:(abs(LepSel1_pdgId)==13)+(abs(LepSel2_pdgId)==13)+(abs(LepSel3_pdgId)==13) : [-0.5,0.5,1.5,2.5,3.5]*[0,10,20,30,40,50,60,70,80,90,100,110,120,130,140] ; YTitle="Lepton flavour composition 3L", YNDiv =004, yBinLabels="eee\,ee#mu\,#mu#mue\,#mu#mu#mu", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ'
+
+MET_cut : met_pt               : [0,30,60]    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5
+#METflavour_logblind : met_pt\:(abs(LepSel1_pdgId)==13)+(abs(LepSel2_pdgId)==13)+(abs(LepSel3_pdgId)==13) : [-0.5,0.5,1.5,2.5,3.5]*[0,10,20,30,40,50,60,70,80,90,100,110,120,130,140] ; YTitle="Lepton flavour composition 3L", YNDiv =004, yBinLabels="eee\,ee#mu\,#mu#mue\,#mu#mu#mu", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ'
 
 #, YNDiv=004, yBinLabels="eee\,ee#mu\,#mu#mue\,#mu#mu#mu", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ'
 
@@ -196,22 +199,47 @@ METlowinv        : met_pt         : 10,0,30    ; XTitle="E_{T}^{miss} [GeV]", Le
 htJet40_WZ:   htJet40j: 4,0,200    ; XTitle="H_{T}(jet p_{T} > 30) [GeV]", LegendCutoff=1e-5, XNDiv=505
 mll_3long        : mll_3l: 30,26,156; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5
 mll_3l        : mll_3l: 30,76,106; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5
-mll_3linv     : mll_3l: 12,0,76; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5
+mll_3linv     : mll_3l: 12,0,76; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5, Legend='TL'
 mT_3l      : mT_3l: 20,0,200; XTitle="M_{T}^{W} [GeV]", LegendCutoff=1e-5, Legend='TR', XNDiv=510
-nJet30_WZ 	   : nJet30               : 4,-0.5,3.5  ; XTitle='N_{jet}', LegendCutoff=1e-5, XNDiv=004, Legend='TR'
+nJet30_WZ 	   : nJet30               : 4,-0.5,3.5  ; XTitle='N_{jet}', LegendCutoff=1e-5, XNDiv=004, Legend='TL'
 nBJet25_WZ    : nBJetMedium25        : 3,-0.5,2.5   ; XTitle='N(b-jet\, p_{T} > 25\, CSVM)', LegendCutoff=1e-5, XNDiv=003, Legend='TR', xBinLabels="0\,1\,#geq2"
+nBJet25_WZ_log    : nBJetMedium25        : 3,-0.5,2.5   ; XTitle='N(b-jet\, p_{T} > 25\, CSVM)', LegendCutoff=1e-5, XNDiv=003, Legend='TR', xBinLabels="0\,1\,#geq2", Logy, YMin=2., YMax = 5e3
 
-LongMET_WZ     : met_pt               : 20,0,200    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5, XNDiv=805
+LongMET_WZ     : met_pt               : 20,0,200    ; XTitle="p_{T}^{miss} [GeV]", LegendCutoff=1e-5, XNDiv=805
 LongmT_3l      : mT_3l: 20,0,200; XTitle="M_{T}^{W} [GeV]", LegendCutoff=1e-5, Legend='TR', XNDiv=805
 LongmT_3linv   : mT_3l: 20,0,100; XTitle="M_{T}^{W} [GeV]", LegendCutoff=1e-5, Legend='TR', XNDiv=805
 
-#Checking for AC
-met_high    : met_pt               : 19,30,600    ; XTitle="E_{T}^{miss} [GeV]",  YMin=0.001, Logy
-m3l_high    : m3L    : 30, 100, 3100; XTitle="M_{3L} [GeV]", Logy, YMin=0.001
-m3lmet_high : m3Lmet : 30, 100, 3100; XTitle="M_{WZ} [GeV]", Logy, YMin=0.001
+byRegion_log :  getWZRegion(met_pt, mll_3l,  m3L, nBJetMedium30, nLepSel, LepSel4_isTight, LepSel4_pt) : [-0.5,0.5,1.5,2.5,3.5,4.5]; xBinLabels="SR\,CRDY\,CRTT\,CRZZ\,CRconv", Logy, YMin=5., YMax = 1e4, IncludeOverflows=False,XTitle="Region"
+
+byRegion :  getWZRegion(met_pt, mll_3l,  m3L, nBJetMedium30, nLepSel, LepSel4_isTight, LepSel4_pt) : [-0.5,0.5,1.5,2.5,3.5,4.5]; xBinLabels="SR\,CRDY\,CRTT\,CRZZ\,CRconv", IncludeOverflows=False,XTitle="Region"
+
+byRegion_log_noSR :  getWZRegion(met_pt, mll_3l,  m3L, nBJetMedium30, nLepSel, LepSel4_isTight, LepSel4_pt) : [0.5,1.5,2.5,3.5,4.5]; xBinLabels="CRDY\,CRTT\,CRZZ\,CRconv", Logy, YMin=5., YMax = 1e4, IncludeOverflows=False,XTitle="Region"
+
+byRegion_noSR :  getWZRegion(met_pt, mll_3l,  m3L, nBJetMedium30, nLepSel, LepSel4_isTight, LepSel4_pt) : [1.5,2.5,3.5,4.5]; xBinLabels="CRTT\,CRZZ\,CRconv", IncludeOverflows=False,XTitle="Region"
+
+m3l : m3L : 44, 100, 1200; XTitle="M_{3L} [GeV]", LegendCutoff=1e-5
+m3l_log : m3L : 44, 100, 1200; XTitle="M_{3L} [GeV]", LegendCutoff=1e-5, Logy
+m3lmet : m3Lmet : 44, 100, 1200; XTitle="M_{WZ} [GeV]", LegendCutoff=1e-5
+m3lmet_log : m3Lmet : 44, 100, 1200; XTitle="M_{WZ} [GeV]", LegendCutoff=1e-5, Logy
+
+m3lnocut    : m3L    : 12, 60, 300; XTitle="M_{3L} [GeV]", LegendCutoff=1e-5, Legend='TL'
+
+mll_nocut        : mll_3l: 11,1.16,221.16; XTitle="M(l_{Z1}l_{Z2}) [GeV]", LegendCutoff=1e-5, Logy, Legend='TL', IncludeOverFlows=False
+
+nBJet30_nLep_nocut    : (nBJetMedium30>=1)*2 + (nLepSel>=4)*1        : 4,-0.5,3.5   ; XTitle='(N_{b-tag}|N_{lep})', LegendCutoff=1e-5, XNDiv=003, Legend='TR', xBinLabels="(0|3)\,(0|#geq4)\,(#geq1|3)\,(#geq1|4)", Logy, YMin = 10, YMax = 50000
+
+byRegion_good :  getWZRegion(met_pt, mll_3l,  m3L, nBJetMedium30, nLepSel, LepSel4_isTight, LepSel4_pt) : [0.5,1.5,2.5,3.5,4.5]; xBinLabels="SR\,CR-top\,CR-ZZ\,CR-Conv", Logy, YMin=5., YMax = 1e4, IncludeOverflows=False,XTitle="Region"
+
+byRegion_log_good :  getWZRegion(met_pt, mll_3l,  m3L, nBJetMedium30, nLepSel, LepSel4_isTight, LepSel4_pt) : [0.5,1.5,2.5,3.5,4.5]; xBinLabels="SR\,CR-top\,CR-ZZ\,CR-Conv", IncludeOverflows=False,XTitle="Region",Logy
+
+#ptZ1     : LepZ1_conePt          : 25,0,250     ; XTitle="p_{T}(leading Z lepton) [GeV]", LegendCutoff=1e-5
 
 
-met_high_scan    : met_pt : [30,60,90,120,150,180,210,240,270,300,350,400,450,500,600,700,800,1000]    ; XTitle="E_{T}^{miss} [GeV]",  YMin=0.001, Logy
-m3l_high_scan    : m3L    : [100,200,300,400,500,600,700,800,900,1000,1500,2000,3000] ; XTitle="M_{3L} [GeV]", Logy, YMin=0.001
-m3lmet_high_scan : m3Lmet : [100,200,300,400,500,600,700,800,900,1000,1250,1500,1750,2000,2500,3000] ; XTitle="M_{WZ} [GeV]", Logy, YMin=0.001
-m3lmet_Uni : m3Lmet : [0,500,1000,1500,2000,2500,3000] ; XTitle="M_{WZ} [GeV]", Logy, YMin=0.001
+
+
+
+
+
+
+
+

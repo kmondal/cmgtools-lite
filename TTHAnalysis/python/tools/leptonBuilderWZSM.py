@@ -291,6 +291,39 @@ class LeptonBuilderWZSM:
                 balance += self.lepSelFO[i].p4(self.lepSelFO[i].conePt)
                 balance += metmom
                 self.ret["wzBalance_conePt"] = balance.Pt()
+
+                #Now do the fit to the W mass, neglect lepton/neutrino masses
+                phil = getattr(self.lepSelFO[i], "phi", 0)
+                etal = getattr(self.lepSelFO[i], "eta", 0)
+                ptl = getattr(self.lepSelFO[i], "pt", 0)
+                phinu = self.metphi[0]
+                etanu = 0
+                ptnu  = self.met[0]
+                muVal = (80.385)**2/2. + ptl*ptnu*cos(phil-phinu)
+                disc  = (muVal**2*ptl**2*sinh(etal)**2/ptl**4 - ((ptl**2*cosh(etal)**2)*ptnu**2 - muVal**2)/ptl**2)
+
+                
+                metUp = ROOT.TLorentzVector()
+                metUp.SetPtEtaPhiM(self.met[0],0,self.metphi[0],0)
+                metDn = ROOT.TLorentzVector()
+                metDn.SetPtEtaPhiM(self.met[0],0,self.metphi[0],0)
+
+                if disc < 0:
+                     metUp.SetPz(muVal*ptl*sinh(etal)/ptl**2)
+                     metDn.SetPz(muVal*ptl*sinh(etal)/ptl**2)
+                else:
+                     metUp.SetPz(muVal*ptl*sinh(etal)/ptl**2 + sqrt(disc))
+                     metDn.SetPz(muVal*ptl*sinh(etal)/ptl**2 - sqrt(disc))
+
+                sumlep = self.lepSelFO[0].p4()
+                for i in range(1,min(max,len(self.lepSelFO))):
+                  sumlep += self.lepSelFO[i].p4(self.lepSelFO[i].conePt) 
+                for var in self.systsJEC:
+                  sumtotUp = sumlep + metUp
+                  sumtotDn = sumlep + metDn
+                  self.ret["m3LmetRecUp" + self.systsJEC[var]] = sumtotUp.M()
+                  self.ret["m3LmetRecDn" + self.systsJEC[var]] = sumtotDn.M()
+
             return
 
         self.ret["mll_" + str(max) + "l"] = -1
@@ -409,6 +442,8 @@ class LeptonBuilderWZSM:
             biglist.append(("mT2L_4l"     + self.systsJEC[var], "F"))
             biglist.append(("mT2T_4l"     + self.systsJEC[var], "F"))
             biglist.append(("m3Lmet"      + self.systsJEC[var], "F"))
+            biglist.append(("m3LmetRecUp" + self.systsJEC[var], "F"))
+            biglist.append(("m3LmetRecDn" + self.systsJEC[var], "F"))
             biglist.append(("mT_3l_gen"   + self.systsJEC[var], "F"))
             biglist.append(("mT2L_3l_gen" + self.systsJEC[var], "F"))
             biglist.append(("mT2T_3l_gen" + self.systsJEC[var], "F"))
@@ -443,6 +478,8 @@ class LeptonBuilderWZSM:
             metp4.SetPtEtaPhiM(self.met[var],0,self.metphi[var],0)
             sumtot = sumlep + metp4
             self.ret["m" + str(max) + "Lmet" + self.systsJEC[var]] = sumtot.M()
+
+
     ## Make gen to reco matching using dR < 0.4
     ## _______________________________________________________________ 
     def getGenMatch(self, dR = 0.4):
@@ -625,6 +662,8 @@ class LeptonBuilderWZSM:
             self.ret["mT2L_4l"     + self.systsJEC[var]] = 0.  
             self.ret["mT2T_4l"     + self.systsJEC[var]] = 0. 
             self.ret["m3Lmet"      + self.systsJEC[var]] = 0. 
+            self.ret["m3LmetRecUp" + self.systsJEC[var]] = 0. 
+            self.ret["m3LmetRecDn" + self.systsJEC[var]] = 0.
             self.ret["mT_3l_gen"   + self.systsJEC[var]] = 0.
             self.ret["mT2L_3l_gen" + self.systsJEC[var]] = 0.  
             self.ret["mT2T_3l_gen" + self.systsJEC[var]] = 0. 

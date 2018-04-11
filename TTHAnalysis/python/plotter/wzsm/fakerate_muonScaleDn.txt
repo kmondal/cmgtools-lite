@@ -1,0 +1,15 @@
+weight: 1.0
+
+change: m3L\b: mass_2(sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(1, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(2, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(3, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass),LepW_pt,LepW_eta,LepW_phi,LepW_mass)
+
+change: m3Lmet\b: mass_2(sump4(0, sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(1, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(2, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(3, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass),LepW_pt,LepW_eta,LepW_phi,LepW_mass),sump4(1, sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(1, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(2, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(3, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass),LepW_pt,LepW_eta,LepW_phi,LepW_mass), sump4(2, sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(1, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(2, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(3, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass),LepW_pt,LepW_eta,LepW_phi,LepW_mass), sump4(3, sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(1, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(2, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass), sump4(3, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass),LepW_pt,LepW_eta,LepW_phi,LepW_mass), met_pt, 0, met_phi, 0)
+
+change: mll_3l\b: mass_2(LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass, LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass)
+
+change: LepZ1_conePt\b: scaleLepton(LepZ1_conePt, abs(LepZ1_pdgId), 0.99, 13)
+change: LepZ2_conePt\b: scaleLepton(LepZ2_conePt, abs(LepZ2_pdgId), 0.99, 13)
+change: LepW_conePt\b:  scaleLepton(LepW_conePt, abs(LepW_pdgId), 0.99, 13)
+
+change: LepZ1_pt\b: scaleLepton(LepZ1_pt, abs(LepZ1_pdgId), 0.99, 13)
+change: LepZ2_pt\b: scaleLepton(LepZ2_pt, abs(LepZ2_pdgId), 0.99, 13)
+change: LepW_pt\b:  scaleLepton(LepW_pt, abs(LepW_pdgId), 0.99, 13)

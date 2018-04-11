@@ -103,13 +103,32 @@ Float_t WZdeltaR(Float_t zeta, Float_t zphi, Float_t weta, Float_t wphi)
   return res;
 }
 
-Int_t getWZRegion(Float_t met, Float_t mZ1, Int_t nBJets, Int_t nFOLep, Int_t l4_tight, Float_t l4_pt){
-  //Region index in the WZ analysis: SR->0; CRDY->1; CRTT->2; CRZZ->3;
-  if (met > 30 && TMath::Abs(91.1876-mZ1) < 15 && nBJets == 0 && nFOLep == 3)                        return 0;
-  else if (met <= 30 && TMath::Abs(91.1876-mZ1) < 15 && nBJets == 0 && nFOLep == 3)                  return 1;
-  else if (met > 30 && TMath::Abs(91.1876-mZ1) > 5 && nBJets > 0 && nFOLep == 3)                     return 2;
-  else if (met > 30 && TMath::Abs(91.1876-mZ1) < 15 && nBJets == 0 && nFOLep == 4 && l4_pt > 10)     return 3;
+Int_t getWZRegion(Float_t met_pt, Float_t mll_3l, Float_t m3L, Int_t nBJetMedium30, Int_t nLepSel, Int_t LepSel4_isTight, Float_t LepSel4_pt){
+  //Region index in the WZ analysis: SR->0; CRDY->1; CRTT->2; CRZZ->3; CRconv->4
+  if (met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel<4  && m3L > 100)                        return 1;
+  else if (met_pt <= 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel<4  && m3L > 100)                  return 0;
+  else if (met_pt > 30    && nBJetMedium30 > 0  && abs(91.1876-mll_3l)>5   &&  nLepSel<4  && m3L > 100)                   return 2;
+  else if (met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L > 100  && LepSel4_isTight && LepSel4_pt > 10)     return 3;
+  else if (met_pt <= 30   && nBJetMedium30 == 0 && abs(91.1876-mll_3l)>15  && m3L <= 100  &&  nLepSel<4)     return 4;
   else return -1;
+}
+
+
+/*Int_t getWWWRegion(Float_t met_pt, Float_t mllSFAS, Float_t mllSFOS, Int_t nOSSF, Float_t dPhi3lMet){
+  //Region index in the WZ analysis: SR->0; CRDY->1; CRTT->2; CRZZ->3; CRconv->4
+  if (met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel<4  && m3L > 100)                        return 0;
+  else if (met_pt <= 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel<4  && m3L > 100)                  return 1;
+  else if (met_pt > 30    && nBJetMedium30 > 0  && abs(91.1876-mll_3l)>5   &&  nLepSel<4  && m3L > 100)                   return 2;
+  else if (met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L > 100  && LepSel4_isTight && LepSel4_pt > 10)     return 3;
+  else if (met_pt <= 30   && nBJetMedium30 == 0 && abs(91.1876-mll_3l)>15  && m3L <= 100  &&  nLepSel<4)     return 4;
+  else return -1;
+}*/
+
+Float_t scaleLepton(Float_t pt, Int_t pdgId, Float_t var, Int_t refId){
+  if (not(pdgId == refId)) return pt;
+  else{
+    return var*pt;
+  }
 }
 
 void functionsWZ() {}
