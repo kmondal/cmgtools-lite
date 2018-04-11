@@ -3,6 +3,9 @@ from CMGTools.TTHAnalysis.tools.leptonJetReCleaner import passMllTLVeto, passTri
 from ROOT import TFile,TH1F
 import ROOT, copy, os
 import array, math
+#from PhysicsTools.Heppy.physicsutils.RochesterCorrections import rochcor
+# please look at TheRoch.py for compiling the rochester correction standalone module
+from CMGTools.TTHAnalysis.tools.TheRoch import rochcor
 
 #if "mt2_bisect_cc.so" not in ROOT.gSystem.GetLibraries():
 #    if os.path.isdir('/pool/ciencias/' ):
@@ -126,6 +129,21 @@ class LeptonBuilderWZSM:
 
         ## light leptons
         self.leps       = [l             for l  in Collection(event, "LepGood", "nLepGood")  ]
+        
+        ## Rochester Correction for muons
+        correctedLeps = []
+        muonScaleCorrector = rochcor
+        #RochesterCorrections()
+        for l in self.leps:
+            print("======================")
+            if abs(l.pdgId) == 13:
+                #muonScaleCorrector.correct(l, event.run)
+                muonScaleCorrector.correct(l, 1)
+                print("I have corrected it")
+            correctedLeps.append(l)
+        
+        self.leps = correctedLeps
+
         self.lepsFO     = [self.leps[il] for il in list(getattr   (event, "iF" + self.inputlabel))[0:int(getattr(event,"nLepFO"+self.inputlabel))]]
         self.lepsT      = [self.leps[il] for il in list(getattr   (event, "iT" + self.inputlabel))[0:int(getattr(event,"nLepTight"+self.inputlabel))]]
 
