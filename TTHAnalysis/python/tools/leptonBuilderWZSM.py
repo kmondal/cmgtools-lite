@@ -126,9 +126,17 @@ class LeptonBuilderWZSM:
 
         ## light leptons
         self.leps       = [l             for l  in Collection(event, "LepGood", "nLepGood")  ]
+        ##Do Lepton energy scale corrections
+
+        for l in self.leps:
+            if abs(l.pdgId) == 11:
+                l.pt = self.correctElecEnergy(l)
+            elif abs(l.pdgId) == 13:
+                l.pt = self.correctMuonEnergy(l)
+
         self.lepsFO     = [self.leps[il] for il in list(getattr   (event, "iF" + self.inputlabel))[0:int(getattr(event,"nLepFO"+self.inputlabel))]]
         self.lepsT      = [self.leps[il] for il in list(getattr   (event, "iT" + self.inputlabel))[0:int(getattr(event,"nLepTight"+self.inputlabel))]]
-
+       
         ## gen leptons
         self.genleps    = [l             for l  in Collection(event, "genLep", "ngenLep")  ]
 
@@ -767,8 +775,22 @@ class LeptonBuilderWZSM:
                 self.ret["mll_i1"][i] = self.lepSelFO.index(os[3].l1)
                 self.ret["mll_i2"][i] = self.lepSelFO.index(os[3].l2)
 
+    def correctElecEnergy(self, lep):
+        aeta = abs(lep.eta)
+        pt   = lep.pt
+        r9   = lep.r9
+        
+        #Inline categorization with nested ifs
+        r9Cat  = 0 + 1*(r9 >= 0.94) 
+        etaCat = 1 + 1*(eta > 1) + 1*(eta > 1.4442) + 1*(eta > 1.566) + 1*(eta > 2.)       
+        ptCat  = 0 if etaCat >= 3 else ( 1 + (pt > 20) + (pt > 33) + (pt > 39) + (pt > 45) + (pt > 50) + (pt > 58) + (pt > 100) if r9Cat == 0 else ( 1 + (pt > 20) + (pt > 35) + (pt > 43) + (pt > 50) + (pt > 55) + (pt > 100) if (r9Cat == 1 and etaCat == 1) else ( 1 + (pt > 20) + (pt > 40) + (pt > 50) + (pt > 100)))
+        totalCat = 100*etaCat + 10*ptCat + r9Cat
+
+        return lep.pt
 
 
+    def correctMuonEnergy(self, lep):
+        return lep.pt
 
 
 ## deltaPhi
