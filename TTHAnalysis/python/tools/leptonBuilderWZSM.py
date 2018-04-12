@@ -80,7 +80,7 @@ class LeptonBuilderWZSM:
 
         self.mt2maker = None
         self.inputlabel = '_' + inputlabel
-
+        self.muonScaleCorrector = rochcor
         self.systsJEC = {0: "", 1: "_jecUp"   , -1: "_jecDown"  }
 
 
@@ -132,14 +132,12 @@ class LeptonBuilderWZSM:
         
         ## Rochester Correction for muons
         correctedLeps = []
-        muonScaleCorrector = rochcor
         #RochesterCorrections()
         for l in self.leps:
             print("======================")
             if abs(l.pdgId) == 13:
                 #muonScaleCorrector.correct(l, event.run)
-                muonScaleCorrector.correct(l, 1)
-                print("I have corrected it")
+                self.muonScaleCorrector.correct(l, 1)
             correctedLeps.append(l)
         
         self.leps = correctedLeps
