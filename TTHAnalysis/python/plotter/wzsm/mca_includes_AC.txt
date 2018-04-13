@@ -6,11 +6,11 @@ incl_data : + ; IncludeMca="wzsm/includes/mca_data.txt"
 
 ## MC WZ and backgrounds
 ## -----------------------------------------------------------
-diboson+               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kBlack  , Label="WZ (AC at SM)"
+diboson               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kOrange  , Label="WZ SM", NormSystematic=0.15
 
-diboson+               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kBlack  , Label="WZ (AC at SM)"
+diboson               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kOrange  , Label="WZ SM", NormSystematic=0.15
 
-diboson+               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kBlack  , Label="WZ (AC at SM)"
+diboson               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kOrange  , Label="WZ SM", NormSystematic=0.15
 
 
 
@@ -19,6 +19,7 @@ incl_fakes_appldata     : + ; IncludeMca="wzsm/includes/mca_fakesappl.txt"
 incl_prompts            : + ; IncludeMca="wzsm/includes/mca_prompts.txt"
 incl_promptsub          : + ; IncludeMca="wzsm/includes/mca_promptsub.txt"
 
+#incl_sig            : + ; IncludeMca="wzsm/includes/mca_ACSig_500.txt"
 
 
 
@@ -33,7 +34,74 @@ incl_sys_jec            : + ; IncludeMca="wzsm/includes/mca_sys_jec_AC.txt"
 #incl_sys_lepSF          : + ; IncludeMca="wzsm/includes/mca_sys_lepSF_AC.txt"
 incl_sys_lepSFMu          : + ; IncludeMca="wzsm/includes/mca_sys_lepSFMu_AC.txt"
 incl_sys_lepSFEl          : + ; IncludeMca="wzsm/includes/mca_sys_lepSFEl_AC.txt"
+incl_sys_Muscales          : + ; IncludeMca="wzsm/includes/mca_sys_lepscaleMu_AC.txt"
+incl_sys_Elscales          : + ; IncludeMca="wzsm/includes/mca_sys_lepscaleEl_AC.txt"
 
 
 incl_sys_bTagHF         : + ; IncludeMca="wzsm/includes/mca_sys_bTagHF_AC.txt"
 incl_sys_bTagLF         : + ; IncludeMca="wzsm/includes/mca_sys_bTagLF_AC.txt"
+
+
+#cwwwup
+WZ_AC_cwwwUp+               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[123]/LHEweight_wgt[0]            ; FillColor=ROOT.kRed  , Label="SM + AC c_{WWW} = 3", LineStyle=9
+
+WZ_AC_cwwwUp+               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[123]/LHEweight_wgt[0]            ; FillColor=ROOT.kRed  , Label="SM + AC c_{WWW} = 3", LineStyle=9
+
+WZ_AC_cwwwUp+               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[123]/LHEweight_wgt[0]            ; FillColor=ROOT.kRed  , Label="SM + AC c_{WWW} = 3", LineStyle=9
+
+
+#cwwwdown
+WZ_AC_cwwwDn+               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[223]/LHEweight_wgt[0]            ; FillColor=ROOT.kBlue  , Label="SM + AC c_{WWW} = -3", LineStyle=9
+
+WZ_AC_cwwwDn+               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[223]/LHEweight_wgt[0]            ; FillColor=ROOT.kBlue  , Label="SM + AC c_{WWW} = -3", LineStyle=9
+
+WZ_AC_cwwwDn+               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[223]/LHEweight_wgt[0]            ; FillColor=ROOT.kBlue  , Label="SM + AC c_{WWW} = -3", LineStyle=9
+
+
+#cwup
+#WZ_AC_cwUp+               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[168]/LHEweight_wgt[0]            ; FillColor=ROOT.kRed  , Label="SM + AC c_{W} = 2", LineStyle=9
+
+#WZ_AC_cwUp+               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[168]/LHEweight_wgt[0]            ; FillColor=ROOT.kRed  , Label="SM + AC c_{W} = 2", LineStyle=9
+
+#WZ_AC_cwUp+               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[168]/LHEweight_wgt[0]            ; FillColor=ROOT.kRed  , Label="SM + AC c_{W} = 2", LineStyle=9
+
+
+#cwdown
+#WZ_AC_cwDn+               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[178]/LHEweight_wgt[0]            ; FillColor=ROOT.kGreen  , Label="SM + AC c_{W} = -2", LineStyle=9
+
+#WZ_AC_cwDn+               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[178]/LHEweight_wgt[0]            ; FillColor=ROOT.kGreen  , Label="SM + AC c_{W} = -2", LineStyle=9
+
+#WZ_AC_cwDn+               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[178]/LHEweight_wgt[0]            ; FillColor=ROOT.kGreen   , Label="SM + AC c_{W} = -2", LineStyle=9
+
+
+#cwup
+WZ_AC_cwUpb+               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[163]/LHEweight_wgt[0]            ; FillColor=ROOT.kBlue  , Label="SM + AC c_{W} = 4", LineStyle=9
+
+WZ_AC_cwUpb+               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[163]/LHEweight_wgt[0]            ; FillColor=ROOT.kBlue  , Label="SM + AC c_{W} = 4", LineStyle=9
+
+WZ_AC_cwUpb+               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[163]/LHEweight_wgt[0]            ; FillColor=ROOT.kBlue  , Label="SM + AC c_{W} = 4", LineStyle=9
+
+
+#cwdown
+WZ_AC_cwDnb+               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[183]/LHEweight_wgt[0]            ; FillColor=ROOT.kViolet  , Label="SM + AC c_{W} = -4", LineStyle=9
+
+WZ_AC_cwDnb+               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[183]/LHEweight_wgt[0]            ; FillColor=ROOT.kViolet  , Label="SM + AC c_{W} = -4", LineStyle=9
+
+WZ_AC_cwDnb+               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[183]/LHEweight_wgt[0]            ; FillColor=ROOT.kViolet   , Label="SM + AC c_{W} = -4", LineStyle=9
+
+
+#cb up
+WZ_AC_cbUp+               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[171]/LHEweight_wgt[0]            ; FillColor=ROOT.kGreen  , Label="SM + AC c_{b} = 150", LineStyle=9
+
+WZ_AC_cbUp+               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[171]/LHEweight_wgt[0]            ; FillColor=ROOT.kGreen  , Label="SM + AC c_{b} = 150", LineStyle=9
+
+WZ_AC_cbUp+               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[171]/LHEweight_wgt[0]            ; FillColor=ROOT.kGreen  , Label="SM + AC c_{b} = 150", LineStyle=9
+
+
+#cbdown
+WZ_AC_cbDn+               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[175]/LHEweight_wgt[0]            ; FillColor=ROOT.kRed  , Label="SM + AC c_{b} = -150", LineStyle=9
+
+WZ_AC_cbDn+               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[175]/LHEweight_wgt[0]            ; FillColor=ROOT.kRed  , Label="SM + AC c_{b} = -150", LineStyle=9
+
+WZ_AC_cbDn+               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[175]/LHEweight_wgt[0]            ; FillColor=ROOT.kRed  , Label="SM + AC c_{b} = -150", LineStyle=9
+

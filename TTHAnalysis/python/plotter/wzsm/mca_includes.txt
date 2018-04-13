@@ -6,7 +6,7 @@ incl_data : + ; IncludeMca="wzsm/includes/mca_data.txt"
 
 ## MC WZ and backgrounds
 ## -----------------------------------------------------------
-prompt_WZ+               : WZTo3LNu                        : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))            ; FillColor=ROOT.kOrange  , Label="WZ", NormSystematic=0.1
+prompt_WZ+               : WZTo3LNu                        : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))            ; FillColor=ROOT.kOrange  , Label="WZ", NormSystematic=0.15
 
 incl_fakes_appldata     : + ; IncludeMca="wzsm/includes/mca_fakesappl.txt"
 incl_prompts            : + ; IncludeMca="wzsm/includes/mca_prompts.txt"
@@ -27,6 +27,9 @@ incl_sys_jec            : + ; IncludeMca="wzsm/includes/mca_sys_jec.txt"
 incl_sys_lepSFMu          : + ; IncludeMca="wzsm/includes/mca_sys_lepSFMu.txt"
 incl_sys_lepSFEl          : + ; IncludeMca="wzsm/includes/mca_sys_lepSFEl.txt"
 
+#incl_sys_scales          : + ; IncludeMca="wzsm/includes/mca_sys_lepscale.txt"
+incl_sys_Muscales          : + ; IncludeMca="wzsm/includes/mca_sys_lepscaleMu.txt"
+incl_sys_Elscales          : + ; IncludeMca="wzsm/includes/mca_sys_lepscaleEl.txt"
 
 incl_sys_bTagHF         : + ; IncludeMca="wzsm/includes/mca_sys_bTagHF.txt"
 incl_sys_bTagLF         : + ; IncludeMca="wzsm/includes/mca_sys_bTagLF.txt"
