@@ -5,7 +5,7 @@ import ROOT, copy, os
 import array, math
 #from PhysicsTools.Heppy.physicsutils.RochesterCorrections import rochcor
 # please look at TheRoch.py for compiling the rochester correction standalone module
-#from CMGTools.TTHAnalysis.tools.TheRoch        import rochcor
+from CMGTools.TTHAnalysis.tools.TheRoch        import rochcor
 from CMGTools.TTHAnalysis.tools.lepVarProducer import lepCalibratedEnergyProducer
 
 #if "mt2_bisect_cc.so" not in ROOT.gSystem.GetLibraries():
