@@ -5,7 +5,8 @@ import ROOT, copy, os
 import array, math
 #from PhysicsTools.Heppy.physicsutils.RochesterCorrections import rochcor
 # please look at TheRoch.py for compiling the rochester correction standalone module
-from CMGTools.TTHAnalysis.tools.TheRoch import rochcor
+#from CMGTools.TTHAnalysis.tools.TheRoch        import rochcor
+from CMGTools.TTHAnalysis.tools.lepVarProducer import lepCalibratedEnergyProducer
 
 #if "mt2_bisect_cc.so" not in ROOT.gSystem.GetLibraries():
 #    if os.path.isdir('/pool/ciencias/' ):
@@ -82,8 +83,8 @@ class LeptonBuilderWZSM:
         self.inputlabel = '_' + inputlabel
         self.muonScaleCorrector = rochcor
         self.systsJEC = {0: "", 1: "_jecUp"   , -1: "_jecDown"  }
-
-
+        self.muonScaleCorrector = rochcor
+        self.elecScaleCorrector = lepCalibratedEnergyProducer("%s/CMGTools/TTHAnalysis/data/elecScales/Legacy2016_07Aug2017_FineEtaR9_ele" % os.environ['CMSSW_BASE'])
     ## __call__
     ## _______________________________________________________________
     def __call__(self, event):
@@ -130,22 +131,27 @@ class LeptonBuilderWZSM:
         ## light leptons
         self.leps       = [l             for l  in Collection(event, "LepGood", "nLepGood")  ]
         
-        ## Rochester Correction for muons
         correctedLeps = []
+
         #RochesterCorrections()
         for l in self.leps:
             print("======================")
             if abs(l.pdgId) == 13:
                 self.muonScaleCorrector.correct(l, event.run)
-                print(event.run)
-                #self.muonScaleCorrector.correct(l, 1)
+            elif abs(l.pdgId) == 11:
+                print l.pt
+                pt, Unc = self.elecScaleCorrector.scaleLep(l, event)
+                l.pt = pt
+                print l.pt, Unc
+                print("I have corrected the electron")
+
             correctedLeps.append(l)
         
         self.leps = correctedLeps
 
         self.lepsFO     = [self.leps[il] for il in list(getattr   (event, "iF" + self.inputlabel))[0:int(getattr(event,"nLepFO"+self.inputlabel))]]
         self.lepsT      = [self.leps[il] for il in list(getattr   (event, "iT" + self.inputlabel))[0:int(getattr(event,"nLepTight"+self.inputlabel))]]
-
+       
         ## gen leptons
         self.genleps    = [l             for l  in Collection(event, "genLep", "ngenLep")  ]
 
@@ -783,9 +789,6 @@ class LeptonBuilderWZSM:
                 self.ret["mll"][i] = os[3].mll
                 self.ret["mll_i1"][i] = self.lepSelFO.index(os[3].l1)
                 self.ret["mll_i2"][i] = self.lepSelFO.index(os[3].l2)
-
-
-
 
 
 ## deltaPhi
