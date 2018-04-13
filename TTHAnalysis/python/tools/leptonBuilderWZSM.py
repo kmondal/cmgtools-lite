@@ -145,11 +145,10 @@ class LeptonBuilderWZSM:
                     l.unc = ptemp
                     l.pt = pt
                 else:
-                    l.unc = 0.
+                    l.unc = l.pt.
             correctedLeps.append(l)
         
         self.leps = correctedLeps
-        for l in self.leps: l.unc = 0
         self.lepsFO     = [self.leps[il] for il in list(getattr   (event, "iF" + self.inputlabel))[0:int(getattr(event,"nLepFO"+self.inputlabel))]]
         self.lepsT      = [self.leps[il] for il in list(getattr   (event, "iT" + self.inputlabel))[0:int(getattr(event,"nLepTight"+self.inputlabel))]]
        
