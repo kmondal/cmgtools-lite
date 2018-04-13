@@ -84,9 +84,7 @@ class LeptonBuilderWZSM:
         self.isData = False
         self.systsJEC = {0: "", 1: "_jecUp"   , -1: "_jecDown"  }
         #self.muonScaleCorrector = rochcor
-        print "DEFINE CORRECTOR"
         self.elecScaleCorrector = elecScalerCORRECTOR("%s/src/CMGTools/TTHAnalysis/data/elecScales/2016_pt_R9_ele"%os.environ['CMSSW_BASE'])
-        print "DEFINED CORRECTOR"
     ## __call__
     ## _______________________________________________________________
     def __call__(self, event):
