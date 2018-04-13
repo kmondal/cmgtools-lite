@@ -136,8 +136,9 @@ class LeptonBuilderWZSM:
         for l in self.leps:
             print("======================")
             if abs(l.pdgId) == 13:
-                #muonScaleCorrector.correct(l, event.run)
-                self.muonScaleCorrector.correct(l, 1)
+                self.muonScaleCorrector.correct(l, event.run)
+                print(event.run)
+                #self.muonScaleCorrector.correct(l, 1)
             correctedLeps.append(l)
         
         self.leps = correctedLeps
