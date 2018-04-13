@@ -6,7 +6,7 @@ import array, math
 #from PhysicsTools.Heppy.physicsutils.RochesterCorrections import rochcor
 # please look at TheRoch.py for compiling the rochester correction standalone module
 #from CMGTools.TTHAnalysis.tools.TheRoch        import rochcor
-from CMGTools.TTHAnalysis.tools.lepVarProducer import lepCalibratedEnergyProducer
+from CMGTools.TTHAnalysis.tools.elecScaler import *
 
 #if "mt2_bisect_cc.so" not in ROOT.gSystem.GetLibraries():
 #    if os.path.isdir('/pool/ciencias/' ):
@@ -31,6 +31,7 @@ class OSpair:
     ## __init__
     ## _______________________________________________________________
     def __init__(self, l1, l2):
+
         self.l1   = l1
         self.l2   = l2
         self.load()
@@ -78,17 +79,18 @@ class LeptonBuilderWZSM:
     ## __init__
     ## _______________________________________________________________
     def __init__(self, inputlabel):
-
         self.mt2maker = None
         self.inputlabel = '_' + inputlabel
-
+        self.isData = False
         self.systsJEC = {0: "", 1: "_jecUp"   , -1: "_jecDown"  }
-        self.muonScaleCorrector = rochcor
-        self.elecScaleCorrector = lepCalibratedEnergyProducer("%s/CMGTools/TTHAnalysis/data/elecScales/Legacy2016_07Aug2017_FineEtaR9_ele" % os.environ['CMSSW_BASE'])
+        #self.muonScaleCorrector = rochcor
+        print "DEFINE CORRECTOR"
+        self.elecScaleCorrector = elecScalerCORRECTOR("%s/src/CMGTools/TTHAnalysis/data/elecScales/2016_pt_R9_ele"%os.environ['CMSSW_BASE'])
+        print "DEFINED CORRECTOR"
     ## __call__
     ## _______________________________________________________________
     def __call__(self, event):
-
+        self.isData = event.isData
         self.resetMemory()
         self.collectObjects(event)
         self.analyzeTopology()
@@ -135,19 +137,23 @@ class LeptonBuilderWZSM:
 
         #RochesterCorrections()
         for l in self.leps:
-            print("======================")
+            #print("======================")
             if abs(l.pdgId) == 13:
-                muonScaleCorrector.correct(l, event.run)
-                print l.pt
+                ptemp = l.pt
+                #muonScaleCorrector.correct(l, event.run)
+                #print l.pt
                 #muonScaleCorrector.correct(l, 1)
-                print l.pt
-                print("I have corrected themuon")
+                l.unc = l.pt - ptemp
+                #l.pt = pt
+                #print("I have corrected themuon")
             if abs(l.pdgId) == 11:
-                print l.pt
-                pt, Unc = self.elecScaleCorrector.scaleLep(l, event)
-                l.pt = pt
-                print l.pt, Unc
-                print("I have corrected the electron")
+                if (abs(l.eta) < 1.4442) or (abs(l.eta) > 1.566): #No corrections in the middle area
+                    ptemp = l.pt
+                    pt, Unc = self.elecScaleCorrector.getCorrection(l, getattr(event, "run"), self.isData)
+                    l.unc = ptemp
+                    l.pt = pt
+                else:
+                    l.unc = 0
             correctedLeps.append(l)
         
         self.leps = correctedLeps
@@ -156,7 +162,8 @@ class LeptonBuilderWZSM:
         self.lepsT      = [self.leps[il] for il in list(getattr   (event, "iT" + self.inputlabel))[0:int(getattr(event,"nLepTight"+self.inputlabel))]]
        
         ## gen leptons
-        self.genleps    = [l             for l  in Collection(event, "genLep", "ngenLep")  ]
+        if not self.isData:
+            self.genleps    = [l             for l  in Collection(event, "genLep", "ngenLep")  ]
 
         ## taus
         self.goodtaus   = [t             for t  in Collection(event, "TauGood" , "nTauGood" )]
@@ -167,12 +174,13 @@ class LeptonBuilderWZSM:
 
         ## FO, both flavors
         self.lepSelFO   = self.lepsFO  #+ self.tausFO
-        self.setAttributes(event, self.lepSelFO, event.isData)
+        self.setAttributes(event, self.lepSelFO, self.isData)
         self.lepSelFO.sort(key = lambda x: x.pt, reverse=True)
 
         ## Get Gen leptons
-        self.setAttributes(event, self.genleps, event.isData, True)
-        self.genleps.sort(key = lambda x: x.pt, reverse=True)
+        if not self.isData:
+            self.setAttributes(event, self.genleps, self.isData, True)
+            self.genleps.sort(key = lambda x: x.pt, reverse=True)
 
         ## tight leptons, both flavors
         self.lepsTT = []
@@ -189,19 +197,19 @@ class LeptonBuilderWZSM:
         self.metphi[0]  = event.met_phi
         self.metphi[1]  = getattr(event, "met_jecUp_phi"  , event.met_phi)
         self.metphi[-1] = getattr(event, "met_jecDown_phi", event.met_phi)
-
-        self.metgen        = self.met
+        if not self.isData:
+            self.metgen        = self.met
         #self.metgen[0]     = event.met_genPt if not event.isData else event.met_pt
         #self.metgen[1]     = getattr(event, "met_jecUp_genPt"  , event.met_genPt if not event.isData else event.met_pt)
         #self.metgen[-1]    = getattr(event, "met_jecDown_genPt", event.met_genPt if not event.isData else event.met_pt)
 
-        self.metgenphi     = self.metphi
+            self.metgenphi     = self.metphi
         #self.metgenphi[0]  = event.met_genPhi if not event.isData else event.met_phi
         #self.metgenphi[1]  = getattr(event, "met_jecUp_genPhi"  , event.met_genPhi if not event.isData else event.met_phi)
         #self.metgenphi[-1] = getattr(event, "met_jecDown_genPhi", event.met_genPhi if not event.isData else event.met_phi)
 
         self.OS = []
-
+        #self.isData = event.isData
             
     ## collectOSpairs
     ## _______________________________________________________________
@@ -283,23 +291,29 @@ class LeptonBuilderWZSM:
             used = [self.bestOSPair.l1, self.bestOSPair.l2] if self.bestOSPair else []
             
             
-            for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva", "jetDR","genpt", "geneta", "genphi", "genmass"]:
+            for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva", "jetDR","genpt", "geneta", "genphi", "genmass", "unc"]:
+                if self.isData and ("gen" in var or "mc" in var or "Match" in var): continue
                 self.ret["LepZ1_" + var] = getattr(self.bestOSPair.l1, var, 0)
                 self.ret["LepZ2_" + var] = getattr(self.bestOSPair.l2, var, 0)
             for var in ["pdgId", "isTight", "mcMatchId", "mcMatchAny", "mcPromptGamma", "mcUCSX", "trIdx"]:
+                if self.isData and ("gen" in var or "mc" in var or "Match" in var): continue
                 self.ret["LepZ1_" + var] = int(getattr(self.bestOSPair.l1, var, 0))
                 self.ret["LepZ2_" + var] = int(getattr(self.bestOSPair.l2, var, 0))
             for var in ["iscutPOGM", "iscutPOGT", "ismvaPOGRA7", "ismvaPOG80", "ismvaPOG90", "isMVAVL", "isMVAL", "isMVAM", "isMVAT", "isMVAVT", "isMVAET", "isStopSel","isMatched", "isMatchingWZ"]:
+                if self.isData and ("gen" in var or "mc" in var or "Match" in var): continue
                 self.ret["LepZ1_" + var] = int(getattr(self.bestOSPair.l1, var, 0))
                 self.ret["LepZ2_" + var] = int(getattr(self.bestOSPair.l2, var, 0))
 
             for i in range(min(max,len(self.lepSelFO))):
                 if self.lepSelFO[i] in used: continue
-                for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva","jetDR","genpt", "geneta", "genphi", "genmass"]:
+                for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva","jetDR","genpt", "geneta", "genphi", "genmass","unc"]:
+                    if self.isData and ("gen" in var or "mc" in var or "Match" in var): continue
                     self.ret["LepW_" + var] = getattr(self.lepSelFO[i], var, 0)
                 for var in ["pdgId", "isTight", "mcMatchId", "mcMatchAny", "mcPromptGamma", "mcUCSX", "trIdx"]:
+                    if self.isData and ("gen" in var or "mc" in var or "Match" in var): continue
                     self.ret["LepW_" + var] = int(getattr(self.lepSelFO[i], var, 0))
                 for var in ["iscutPOGM", "iscutPOGT", "ismvaPOGRA7", "ismvaPOG80", "ismvaPOG90", "isMVAVL", "isMVAL", "isMVAM", "isMVAT", "isMVAVT", "isMVAET", "isStopSel","isMatched", "isMatchingWZ"]:
+                    if self.isData and ("gen" in var or "mc" in var or "Match" in var): continue
                     self.ret["LepW_" + var] = int(getattr(self.lepSelFO[i], var, 0))
                 #for var in ["pt", "conePt"]:
                 #    self.ret["wzBalance_" + var] = getattr(self.bestOSPair.l1.p4()+self.bestOSPair.l2.p4()-self.lepSelFO[i].p4(), var, 0)
@@ -368,23 +382,25 @@ class LeptonBuilderWZSM:
             leps.append(self.lepSelFO[i])
 
         for var in self.systsJEC:
-            bufferPF  = [] 
-            bufferGEN = [] 
+            bufferPF  = []
+            if not self.isData:              
+                bufferGEN = [] 
             for l in leps:
                 bufferPF .append(self.mtW(l, var      ))
-                bufferGEN.append(self.mtW(l, var, True))
+                if not self.isData:              
+                    bufferGEN.append(self.mtW(l, var, True))
 
             if len(bufferPF):
                 bufferPF.sort()
                 self.ret["mT_" + str(max) + "l" + self.systsJEC[var]] = bufferPF[0]
             else:
                 self.ret["mT_" + str(max) + "l" + self.systsJEC[var]] = -1
-
-            if len(bufferGEN):
-                bufferGEN.sort()
-                self.ret["mT_" + str(max) + "l_gen" + self.systsJEC[var]] = bufferGEN[0]
-            else:
-                self.ret["mT_" + str(max) + "l_gen" + self.systsJEC[var]] = -1
+            if not self.isData:              
+                if len(bufferGEN):
+                    bufferGEN.sort()
+                    self.ret["mT_" + str(max) + "l_gen" + self.systsJEC[var]] = bufferGEN[0]
+                else:
+                    self.ret["mT_" + str(max) + "l_gen" + self.systsJEC[var]] = -1
 
 
     ## findTau
@@ -442,17 +458,20 @@ class LeptonBuilderWZSM:
         biglist.append(("deltaR_WZ", "F"))
 
         biglist.append(("nLepSel"   , "I"))
-        for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva", "jetDR","genpt", "geneta", "genphi", "genmass"]:
+        for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva", "jetDR","genpt", "geneta", "genphi", "genmass","unc"]:
+            if self.isData and ("gen" in var or "mc" in var or "Match" in var): continue
             biglist.append(("LepSel_" + var, "F", 4))
             biglist.append(("LepZ1_"  + var, "F"))
             biglist.append(("LepZ2_"  + var, "F"))
             biglist.append(("LepW_"   + var, "F"))
         for var in ["pdgId", "isTight", "mcMatchId", "mcMatchAny", "mcPromptGamma", "mcUCSX", "trIdx"]:
+            if self.isData and ("gen" in var or "mc" in var or "Match" in var): continue
             biglist.append(("LepSel_" + var, "I", 4))
             biglist.append(("LepZ1_"  + var, "I"))
             biglist.append(("LepZ2_"  + var, "I"))
             biglist.append(("LepW_"   + var, "I"))
         for var in ["iscutPOGM", "iscutPOGT", "ismvaPOGRA7", "ismvaPOG80", "ismvaPOG90", "isMVAVL", "isMVAL", "isMVAM", "isMVAT", "isMVAVT", "isMVAET", "isStopSel", "isMatched", "isMatchingWZ"]:
+            if self.isData and ("gen" in var or "mc" in var or "Match" in var): continue
             biglist.append(("LepSel_" + var, "I", 4))
             biglist.append(("LepZ1_"  + var, "I"))
             biglist.append(("LepZ2_"  + var, "I"))
@@ -470,13 +489,14 @@ class LeptonBuilderWZSM:
             biglist.append(("m3Lmet"      + self.systsJEC[var], "F"))
             biglist.append(("m3LmetRecUp" + self.systsJEC[var], "F"))
             biglist.append(("m3LmetRecDn" + self.systsJEC[var], "F"))
-            biglist.append(("mT_3l_gen"   + self.systsJEC[var], "F"))
-            biglist.append(("mT2L_3l_gen" + self.systsJEC[var], "F"))
-            biglist.append(("mT2T_3l_gen" + self.systsJEC[var], "F"))
-            biglist.append(("mT_4l_gen"   + self.systsJEC[var], "F"))
-            biglist.append(("mT2L_4l_gen" + self.systsJEC[var], "F"))
-            biglist.append(("mT2T_4l_gen" + self.systsJEC[var], "F"))
-            biglist.append(("m4Lmet"      + self.systsJEC[var], "F"))
+            if not self.isData:
+                biglist.append(("mT_3l_gen"   + self.systsJEC[var], "F"))
+                biglist.append(("mT2L_3l_gen" + self.systsJEC[var], "F"))
+                biglist.append(("mT2T_3l_gen" + self.systsJEC[var], "F"))
+                biglist.append(("mT_4l_gen"   + self.systsJEC[var], "F"))
+                biglist.append(("mT2L_4l_gen" + self.systsJEC[var], "F"))
+                biglist.append(("mT2T_4l_gen" + self.systsJEC[var], "F"))
+                biglist.append(("m4Lmet"      + self.systsJEC[var], "F"))
 
         return biglist
 
@@ -509,22 +529,23 @@ class LeptonBuilderWZSM:
     ## Make gen to reco matching using dR < 0.4
     ## _______________________________________________________________ 
     def getGenMatch(self, dR = 0.4):
-      for i in range(len(self.lepSelFO)):
-        self.lepSelFO[i].isMatched      = False
-        self.lepSelFO[i].genpt          = 0
-        self.lepSelFO[i].geneta         = 0
-        self.lepSelFO[i].genphi         = 0
-        self.lepSelFO[i].genmass        = 0
-        self.lepSelFO[i].isMatchingWZ   = False
-        for j in range(len(self.genleps)):
-          deltaRTemp = deltaR(self.genleps[j].p4().Eta(), self.genleps[j].p4().Phi(), self.lepSelFO[i].p4().Eta(), self.lepSelFO[i].p4().Phi())
-          if (deltaRTemp < dR and self.genleps[j].pdgId == self.lepSelFO[i].pdgId):
-            self.lepSelFO[i].isMatched      = True
-            self.lepSelFO[i].genpt          = self.genleps[j].p4().Pt()
-            self.lepSelFO[i].geneta         = self.genleps[j].p4().Eta()
-            self.lepSelFO[i].genphi         = self.genleps[j].p4().Phi()
-            self.lepSelFO[i].genmass        = self.genleps[j].p4().M()
-            self.lepSelFO[i].isMatchingWZ   = (abs(self.genleps[j].motherId) in [23,24]) or (abs(self.genleps[j].motherId)==15 and (abs(self.genleps[j].grandmotherId) in [23,24])) #Either from W/Z directly or through taus
+      if not self.isData:
+          for i in range(len(self.lepSelFO)):
+              self.lepSelFO[i].isMatched      = False
+              self.lepSelFO[i].genpt          = 0
+              self.lepSelFO[i].geneta         = 0
+              self.lepSelFO[i].genphi         = 0
+              self.lepSelFO[i].genmass        = 0
+              self.lepSelFO[i].isMatchingWZ   = False
+              for j in range(len(self.genleps)):
+                  deltaRTemp = deltaR(self.genleps[j].p4().Eta(), self.genleps[j].p4().Phi(), self.lepSelFO[i].p4().Eta(), self.lepSelFO[i].p4().Phi())
+                  if (deltaRTemp < dR and self.genleps[j].pdgId == self.lepSelFO[i].pdgId):
+                      self.lepSelFO[i].isMatched      = True
+                      self.lepSelFO[i].genpt          = self.genleps[j].p4().Pt()
+                      self.lepSelFO[i].geneta         = self.genleps[j].p4().Eta()
+                      self.lepSelFO[i].genphi         = self.genleps[j].p4().Phi()
+                      self.lepSelFO[i].genmass        = self.genleps[j].p4().M()
+                      self.lepSelFO[i].isMatchingWZ   = (abs(self.genleps[j].motherId) in [23,24]) or (abs(self.genleps[j].motherId)==15 and (abs(self.genleps[j].grandmotherId) in [23,24])) #Either from W/Z directly or through taus
       
     ## makeMt2
     ## _______________________________________________________________
@@ -554,10 +575,12 @@ class LeptonBuilderWZSM:
         for var in self.systsJEC:
             if len(mt2t)>0: 
                 self.ret["mT2T_" + str(max) + "l"     + self.systsJEC[var]] = self.mt2(mt2t[0][1].l1, mt2t[0][1].l2, var)
-                self.ret["mT2T_" + str(max) + "l_gen" + self.systsJEC[var]] = self.mt2(mt2t[0][1].l1, mt2t[0][1].l2, var, True)
+                if not self.isData:
+                    self.ret["mT2T_" + str(max) + "l_gen" + self.systsJEC[var]] = self.mt2(mt2t[0][1].l1, mt2t[0][1].l2, var, True)
             if len(mt2l)>0: 
                 self.ret["mT2L_" + str(max) + "l"     + self.systsJEC[var]] = self.mt2(mt2l[0][1].l1, mt2l[0][1].l2, var)
-                self.ret["mT2L_" + str(max) + "l_gen" + self.systsJEC[var]] = self.mt2(mt2l[0][1].l1, mt2l[0][1].l2, var, True)
+                if not self.isData:
+                    self.ret["mT2L_" + str(max) + "l_gen" + self.systsJEC[var]] = self.mt2(mt2l[0][1].l1, mt2l[0][1].l2, var, True)
         #if len(mt2l)>0: print self.ret["mT2L_" + str(max) + "l"]
 
     ## mt  
