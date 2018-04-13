@@ -43,9 +43,9 @@ class RochesterCorrections(object):
                 self.cor.momcor_mc( cortlp4, ptc.charge, 0.0, 0 )
         else: # data
             if is2012:
-                self.cor2012.momcor_data( cortlp4, ptc.charge(), 0.0, 0 )
+                self.cor2012.momcor_data( cortlp4, ptc.charge, 0.0, 0 )
             else:
-                self.cor.momcor_data( cortlp4, ptc.charge(), 0.0, int(run>173692) )
+                self.cor.momcor_data( cortlp4, ptc.charge, 0.0, int(run>173692) )
         corp4 = p4.__class__( cortlp4.Px(), cortlp4.Py(), cortlp4.Pz(), cortlp4.Energy() )
         return corp4
 
