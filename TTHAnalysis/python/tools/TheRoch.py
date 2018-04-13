@@ -38,22 +38,25 @@ class RochesterCorrections(object):
         cortlp4 = copy.copy(tlp4)
         if run<100:
             if is2012:
-                self.cor2012.momcor_mc( cortlp4, ptc.charge(), 0.0, 0 )
+                self.cor2012.momcor_mc( cortlp4, ptc.charge, 0.0, 0 )
             else:
-                self.cor.momcor_mc( cortlp4, ptc.charge(), 0.0, 0 )
+                self.cor.momcor_mc( cortlp4, ptc.charge, 0.0, 0 )
         else: # data
             if is2012:
-                self.cor2012.momcor_data( cortlp4, ptc.charge(), 0.0, 0 )
+                self.cor2012.momcor_data( cortlp4, ptc.charge, 0.0, 0 )
             else:
-                self.cor.momcor_data( cortlp4, ptc.charge(), 0.0, int(run>173692) )
-        corp4 = p4.__class__( cortlp4.Px(), cortlp4.Py(), cortlp4.Pz(), cortlp4.Energy() )        
+                self.cor.momcor_data( cortlp4, ptc.charge, 0.0, int(run>173692) )
+        corp4 = p4.__class__( cortlp4.Px(), cortlp4.Py(), cortlp4.Pz(), cortlp4.Energy() )
         return corp4
 
         
     def correct( self, particle, run ):
         '''Correct a particles.  '''
         corp4 = self.corrected_p4(particle, run) 
-        ptc.setP4( corp4 )
+        particle.pt  =corp4.Pt()
+        particle.eta =corp4.Eta()
+        particle.phi =corp4.Phi()
+        particle.mass=corp4.M()
 
     def correct_all( self, particles, run ):
         '''Correct a list of particles.

@@ -37,7 +37,7 @@ class correction(object):
                     self.r9max = 99999999999.
 
     def isIn(self, pt, eta, r9, run):
-        return (pt > self.ptMin) and (pt < self.ptMax) and (eta > self.etaMin) and (eta < self.etaMax) and (r9 > self.r9Min) and (r9 < self.r9Max) and (run > self.rMin) and (run < self.rMax)
+        return (pt >= self.ptMin) and (pt <= self.ptMax) and (eta >= self.etaMin) and (eta <= self.etaMax) and (r9 >= self.r9Min) and (r9 <= self.r9Max) and (run >= self.rMin) and (run <= self.rMax)
 
 class elecScaler_MODES(object):
     def __init__(self, corrFile, isData):
@@ -45,7 +45,6 @@ class elecScaler_MODES(object):
             self.cFile = open(corrFile + "_data.dat", "r")
         else:
             self.cFile = open(corrFile + "_MC.dat", "r")
-        print "LOADING"
         self.loadCorrections()
     def loadCorrections(self):
         self.corrections = [ correction(line) for line in self.cFile.readlines()]
@@ -62,9 +61,7 @@ class elecScaler_MODES(object):
 
 class elecScalerCORRECTOR(object):
     def __init__(self, corrFile):
-        print "DEFINE MC"
         self.corrMC = elecScaler_MODES(corrFile, False)
-        print "DEFINE Data"
         self.corrData = elecScaler_MODES(corrFile, True)
 
     def getCorrection(self, lep, run, isData):

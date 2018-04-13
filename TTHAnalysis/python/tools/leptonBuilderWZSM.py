@@ -5,7 +5,7 @@ import ROOT, copy, os
 import array, math
 #from PhysicsTools.Heppy.physicsutils.RochesterCorrections import rochcor
 # please look at TheRoch.py for compiling the rochester correction standalone module
-#from CMGTools.TTHAnalysis.tools.TheRoch        import rochcor
+from CMGTools.TTHAnalysis.tools.TheRoch        import rochcor
 from CMGTools.TTHAnalysis.tools.elecScaler import *
 
 #if "mt2_bisect_cc.so" not in ROOT.gSystem.GetLibraries():
@@ -82,8 +82,8 @@ class LeptonBuilderWZSM:
         self.mt2maker = None
         self.inputlabel = '_' + inputlabel
         self.isData = False
+        self.muonScaleCorrector = rochcor
         self.systsJEC = {0: "", 1: "_jecUp"   , -1: "_jecDown"  }
-        #self.muonScaleCorrector = rochcor
         self.elecScaleCorrector = elecScalerCORRECTOR("%s/src/CMGTools/TTHAnalysis/data/elecScales/2016_pt_R9_ele"%os.environ['CMSSW_BASE'])
     ## __call__
     ## _______________________________________________________________
@@ -133,29 +133,24 @@ class LeptonBuilderWZSM:
         
         correctedLeps = []
 
-        #RochesterCorrections()
+        #LeptonScaleCorrections()
         for l in self.leps:
-            #print("======================")
             if abs(l.pdgId) == 13:
                 ptemp = l.pt
-                #muonScaleCorrector.correct(l, event.run)
-                #print l.pt
-                #muonScaleCorrector.correct(l, 1)
-                l.unc = l.pt - ptemp
-                #l.pt = pt
-                #print("I have corrected themuon")
+                self.muonScaleCorrector.correct(l, event.run)
+                l.unc = ptemp
             if abs(l.pdgId) == 11:
-                if (abs(l.eta) < 1.4442) or (abs(l.eta) > 1.566): #No corrections in the middle area
+                if (abs(l.eta) < 1.4442) or (abs(l.eta) > 1.566): #No corrections in the middle
                     ptemp = l.pt
-                    pt, Unc = self.elecScaleCorrector.getCorrection(l, getattr(event, "run"), self.isData)
+                    pt, Unc = self.elecScaleCorrector.getCorrection(l, event.run, self.isData)
                     l.unc = ptemp
                     l.pt = pt
                 else:
-                    l.unc = 0
+                    l.unc = 0.
             correctedLeps.append(l)
         
         self.leps = correctedLeps
-
+        for l in self.leps: l.unc = 0
         self.lepsFO     = [self.leps[il] for il in list(getattr   (event, "iF" + self.inputlabel))[0:int(getattr(event,"nLepFO"+self.inputlabel))]]
         self.lepsT      = [self.leps[il] for il in list(getattr   (event, "iT" + self.inputlabel))[0:int(getattr(event,"nLepTight"+self.inputlabel))]]
        
@@ -796,7 +791,7 @@ class LeptonBuilderWZSM:
         self.ret["nLepSel"] = len(self.lepSelFO)
         for i, l in enumerate(self.lepSelFO):
             if i == 4: break # only keep the first 4 entries
-            for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva"]:
+            for var in ["pt", "eta", "phi", "mass", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva"]:
                 self.ret["LepSel_" + var][i] = getattr(l, var, 0)
             for var in ["pdgId", "isTight", "mcMatchId", "mcMatchAny", "mcPromptGamma", "mcUCSX", "trIdx"]:
                 self.ret["LepSel_" + var][i] = int(getattr(l, var, 0))
