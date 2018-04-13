@@ -145,7 +145,7 @@ class LeptonBuilderWZSM:
                     l.unc = ptemp
                     l.pt = pt
                 else:
-                    l.unc = l.pt.
+                    l.unc = l.pt
             correctedLeps.append(l)
         
         self.leps = correctedLeps
