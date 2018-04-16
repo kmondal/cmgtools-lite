@@ -32,6 +32,8 @@ incl_sys_jec            : + ; IncludeMca="wzsm/includes/mca_sys_jec.txt"
 #incl_sys_lepSF          : + ; IncludeMca="wzsm/includes/mca_sys_lepSF.txt"
 incl_sys_lepSFMu          : + ; IncludeMca="wzsm/includes/mca_sys_lepSFMu.txt"
 incl_sys_lepSFEl          : + ; IncludeMca="wzsm/includes/mca_sys_lepSFEl.txt"
+incl_sys_lepscaleMu       : + ; IncludeMca="wzsm/includes/mca_sys_lepscaleMu.txt"
+incl_sys_lepscaleEl       : + ; IncludeMca="wzsm/includes/mca_sys_lepscaleEl.txt"
 
 
 incl_sys_bTagHF         : + ; IncludeMca="wzsm/includes/mca_sys_bTagHF.txt"
