@@ -69,7 +69,8 @@ pmp: (LepW_pdgId) < 0 ; Disable = True
 pmm: (LepW_pdgId) > 0 ; Disable = True
 
 pt252020: LepSel1_pt>25 && LepSel2_pt>20 && LepSel3_pt>20; Disable=True
-ptleptons: LepZ1_pt<100 && LepZ2_pt<100 && LepW_pt<100 && LepZ1_conePt<100 && LepZ2_conePt<100 && LepW_conePt<100 ; Disable=True
+#ptleptons: LepZ1_pt<100 && LepZ2_pt<100 && LepW_pt<100 && LepZ1_conePt<100 && LepZ2_conePt<100 && LepW_conePt<100 ; Disable=True
+ptleptons: LepZ1_pt<100 && LepZ2_pt<100 && LepW_pt<100 ; Disable=True
 mass12: mass12 < 180; Disable=True
 mll180   : mass_2(LepSel1_pt,LepSel1_eta,LepSel1_phi,LepSel1_mass, LepSel2_pt,LepSel2_eta,LepSel2_phi,LepSel2_mass) < 180; Disable=True
 jetdr: LepZ1_jetDR < 0.1 ; Disable=True

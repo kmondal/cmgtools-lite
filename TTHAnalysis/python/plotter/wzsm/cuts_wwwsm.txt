@@ -2,7 +2,8 @@ alwaystrue: 1
 filters: $DATA{(Flag_EcalDeadCellTriggerPrimitiveFilter && Flag_HBHENoiseIsoFilter && Flag_HBHENoiseFilter && Flag_eeBadScFilter && Flag_goodVertices && Flag_globalTightHalo2016Filter && Flag_badChargedHadronFilter)} $MC{1}
 triggers: $DATA{(Triggers_ee || Triggers_mm || Triggers_em)} $MC{(Triggers_ee || Triggers_mm || Triggers_em)}
 threelightlep: nLepSel==3 && abs(LepSel1_pdgId)<14 && abs(LepSel2_pdgId)<14 && abs(LepSel3_pdgId)<14
-pt101010: LepSel1_conePt>10 && LepSel2_conePt>10 && LepSel3_conePt>10 && LepSel1_pt>10 && LepSel2_pt>10 && LepSel3_pt>10
+#pt101010: LepSel1_conePt>10 && LepSel2_conePt>10 && LepSel3_conePt>10 && LepSel1_pt>10 && LepSel2_pt>10 && LepSel3_pt>10
+pt101010: LepSel1_pt>10 && LepSel2_pt>10 && LepSel3_pt>10
 eee: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==33; Disable=True
 eem: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==35; Disable=True
 mme: abs(LepSel1_pdgId)+abs(LepSel2_pdgId)+abs(LepSel3_pdgId)==37; Disable=True
@@ -22,7 +23,7 @@ MVAL : LepSel1_isMVAL  && LepSel2_isMVAL  && LepSel3_isMVAL ; Disable=True
 MVAVL: LepSel1_isMVAVL && LepSel2_isMVAVL && LepSel3_isMVAVL; Disable=True
 MVAVT: LepSel1_isTight && LepSel2_isTight && LepSel3_isTight
 pt252020: LepSel1_pt>25 && LepSel2_pt>20 && LepSel3_pt>20; Disable=True
-ptWZ: LepZ1_conePt>25 && LepZ2_conePt>10 && LepW_conePt>25
+ptWZ: LepZ1_pt>25 && LepZ2_pt>10 && LepW_pt>25
 lowMll: minMllAFAS > 4
 DYCR: met_pt < 30; Disable=True
 TTCR: nBJetMedium30 > 0 && if3(nOSSF>0, abs(91.1876-mll_3l)>5, 1); Disable=True
