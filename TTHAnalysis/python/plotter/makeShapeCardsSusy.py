@@ -430,7 +430,7 @@ for signal in mca.listSignals():
     datacard.write("## Event selection: \n")
     for cutline in str(cuts).split("\n"):  datacard.write("##   %s\n" % cutline)
     if signal not in signals: datacard.write("## NOTE: no signal contribution found with this event selection.\n")
-    if options.notPrefix:  datacard.write("shapes *        * ../common/%s.input.root $PROCESS $PROCESS_$SYSTEMATIC\n" % filename)
+    if options.noPrefix:  datacard.write("shapes *        * ../common/%s.input.root $PROCESS $PROCESS_$SYSTEMATIC\n" % filename)
     else: datacard.write("shapes *        * ../common/%s.input.root x_$PROCESS x_$PROCESS_$SYSTEMATIC\n" % filename)
     datacard.write('##----------------------------------\n')
     datacard.write('bin         %s\n' % binname)
@@ -482,7 +482,7 @@ if not os.path.exists(myout): os.system("mkdir -p "+myout)
 workspace = ROOT.TFile.Open(myout+filename+".input.root", "RECREATE")
 for n,h in report.iteritems():
     if options.verbose > 0: print "\t%s (%8.3f events)" % (h.GetName(),h.Integral())
-    if options.notPrefix:
+    if options.noPrefix:
       workspace.WriteTObject(h,h.GetName()[2:])
     else:
       workspace.WriteTObject(h,h.GetName())

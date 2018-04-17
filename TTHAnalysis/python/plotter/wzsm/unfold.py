@@ -75,7 +75,13 @@ class DatacardReader:
             if '1' in tempLine[sig_idx+2]:
                 tempSysts.append(self.systs[self.systsLines.index(line)])
                 if 'lnN' in tempLine[1]:
-                    self.normSysts.append([ self.systs[self.systsLines.index(line)] , tempLine[sig_idx+2] ])
+                    tempForSym=tempLine[sig_idx+2].split('/')
+                    danum=0.0
+                    for iTempForSym in tempForSym:
+                        if abs(1-float(iTempForSym)) > danum:
+                            danum=abs(1-float(iTempForSym))
+                    self.normSysts.append([ self.systs[self.systsLines.index(line)] , '%f' % (1+abs(danum)) ])
+
                 if 'shape' in tempLine[1]:
                     print('Line is %s' % tempLine)
                     print('\t\t Accessing syst %s for process %s ' % (self.systs[self.systsLines.index(line)], self.signalString) )
@@ -1088,7 +1094,7 @@ class Unfolder(object):
                 bgrup=ROOT.TMath.Sqrt(hmu.GetBinErrorUp(ibin)*hmu.GetBinErrorUp(ibin)     - statup*statup    )
                 systdown=ROOT.TMath.Sqrt(hut.GetBinErrorLow(ibin)*hut.GetBinErrorLow(ibin) - bgrdown*bgrdown - statdown*statdown)
                 systup=ROOT.TMath.Sqrt(hut.GetBinErrorUp(ibin)*hut.GetBinErrorUp(ibin) - bgrup*bgrup - statup*statup    )
-                text_dumper.write('Bin [%0.3f, %0.3f]: xsec = %0.3f +/- %0.3f (stat) +/- %0.3f (bgr) +/- %0.3f (other syst) (total: +/- %0.3f)\n ' % (hut.GetBinLowEdge(ibin), hut.GetBinLowEdge(ibin+1 if ibin is not hut.GetNbinsX()+1 else ibin), hut.GetBinContent(ibin), statdown, bgrdown, systdown, hut.GetBinErrorUp(ibin)))
+                text_dumper.write('[%0.3f, %0.3f] & %0.3f $\\pm$ %0.3f (stat) $\\pm$ %0.3f (bgr) $\\pm$ %0.3f (other syst) (total: +/- %0.3f)\n ' % (hut.GetBinLowEdge(ibin), hut.GetBinLowEdge(ibin+1 if ibin is not hut.GetNbinsX()+1 else ibin), hut.GetBinContent(ibin), statdown, bgrdown, systdown, hut.GetBinErrorUp(ibin)))
 
         # # Individual saving.
         # self.print_histo(histMunfold, key, label)

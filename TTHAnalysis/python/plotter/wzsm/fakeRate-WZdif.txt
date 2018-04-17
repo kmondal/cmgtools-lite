@@ -1,9 +1,9 @@
 cut-change: LepZ1_isMVAM: 1
 cut-change: LepZ2_isMVAM: 1
 cut-change: LepW_isMVAVT: 1
-weight: fakeRateWeight_3l(fetchFRWZ_i(LepZ1_conePt,LepZ1_eta,LepZ1_pdgId,2,0), LepZ1_isMVAM, \
-                          fetchFRWZ_i(LepZ2_conePt,LepZ2_eta,LepZ2_pdgId,2,0), LepZ2_isMVAM, \
-                          fetchFRWZ_i(LepW_conePt, LepW_eta, LepW_pdgId ,2,1), LepW_isMVAVT )
+weight: fakeRateWeight_3l(fetchFRWZ_i(LepZ1_pt,LepZ1_eta,LepZ1_pdgId,2,0), LepZ1_isMVAM, \
+                          fetchFRWZ_i(LepZ2_pt,LepZ2_eta,LepZ2_pdgId,2,0), LepZ2_isMVAM, \
+                          fetchFRWZ_i(LepW_pt, LepW_eta, LepW_pdgId ,2,1), LepW_isMVAVT )
 #FOR 80X
 load-histo: FRW2_mu : $DATA/fakerate/fakerate_light_EWKino_Moriond2017_36p5fb.root : FR_susy_wpV_mu_data_comb
 load-histo: FRW2_el : $DATA/fakerate/fakerate_light_EWKino_Moriond2017_36p5fb.root : FR_susy_wpV_el_data_comb

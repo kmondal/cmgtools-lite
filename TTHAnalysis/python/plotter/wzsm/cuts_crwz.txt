@@ -3,11 +3,11 @@ blinding: !isData || run <= 276811 || (run>=278820 && run<=279931); Disable=True
 filters: $DATA{ METfilters } $MC{1} $FASTSIM{1}
 trigger: $DATA{(Triggers_ee || Triggers_mm || Triggers_em)} $MC{(Triggers_ee || Triggers_mm || Triggers_em)} $FASTSIM{1}
 cleanup: minMllAFAS > 12
-pt101010: LepGood1_conePt>10 && LepGood2_conePt>10 && LepGood3_conePt>10 && LepGood1_pt>10 && LepGood2_pt>10 && LepGood3_pt>10
+pt101010: LepGood1_pt>10 && LepGood2_pt>10 && LepGood3_pt>10
 3loose:  nLepFO == 3 && abs(LepGood1_charge+LepGood2_charge+LepGood3_charge) < 2
 3light:  abs(LepGood1_pdgId)<14 && abs(LepGood2_pdgId)<14 && abs(LepGood3_pdgId)<14
-pt2x1x10: LepGood1_conePt>20 && (abs(LepGood1_pdgId)!=11 || LepGood1_conePt>25) && LepGood2_conePt>10 && (abs(LepGood2_pdgId)!=11 || LepGood2_conePt>15) && LepGood3_conePt>10
-muee: !(abs(LepGood1_pdgId)==13 && abs(LepGood2_pdgId)==11 && abs(LepGood3_pdgId)==11 ) || LepGood1_conePt>25
+pt2x1x10: LepGood1_pt>20 && (abs(LepGood1_pdgId)!=11 || LepGood1_pt>25) && LepGood2_pt>10 && (abs(LepGood2_pdgId)!=11 || LepGood2_pt>15) && LepGood3_pt>10
+muee: !(abs(LepGood1_pdgId)==13 && abs(LepGood2_pdgId)==11 && abs(LepGood3_pdgId)==11 ) || LepGood1_pt>25
 tight:  LepGood1_isTight && LepGood2_isTight && LepGood3_isTight
 lowMll: minMllAFAS > 4
 onZ: nOSSF>0 && mll_3l>76 && mll_3l<106
