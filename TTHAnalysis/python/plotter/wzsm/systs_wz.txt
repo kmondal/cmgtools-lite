@@ -8,15 +8,9 @@ convs_ML      : convs                             : .*                : 1.2
 
 normZZH_ML    : prompt_ZZH                        : .*                : 1.07
 normVVV_ML    : rares_VVV                         : .*                : 1.5
-<<<<<<< HEAD
 normVH_ML     : rares_VH                          : .*                : 1.25
 normtZq_ML    : rares_tZq                         : .*                : 1.35
 normTTX_ML    : rares_ttX                         : .*                : 1.15
-=======
-normVH_ML     : rares_VH                          : .*                : 1.5
-normtZq_ML    : rares_tZq                         : .*                : 1.5
-normTTX_ML    : rares_ttX                         : .*                : 1.5
-theoTTV_ML    : rares_ttW|rares_ttZ               : .*                : 1.15
 
 # Scale and PDF uncertainties for the moment norm only (in a couple days derive them with full shape)
 # PDF uncs based on 100 NNPDF3.0 replicas
@@ -39,8 +33,6 @@ scaleNorm_ML : prompt_WZTo3LNu.* : .*mmm.* :  0.96777/1.03888
 #ttX
 #normTTX_ML    : rares_ttX|rares_tZq                         : .*                : 1.5 : lnN_in_shape_bins : 1,2
 #normTTX_ML    : rares_ttX|rares_tZq                         : .*                : 1.3 : lnN_in_shape_bins : 3,4
-
->>>>>>> pietro/wz80x
 
 #Templates#
 ewkfakes_ML      : fakes_.*                          : .* : ewk        : templates
