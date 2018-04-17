@@ -112,7 +112,7 @@ class LeptonBuilderWZSM:
         self.findBestOSpair(3)
         self.findMtMin(3)
         self.makeMassMET(3)
-
+        self.makeUncMassMET(3)
 
         # This in principle is not needed anymore
         #self.collectOSpairs(4, True)
@@ -123,17 +123,11 @@ class LeptonBuilderWZSM:
         #self.makeMassMET(4)
 
 
-    ## collectObjects
-    ## _______________________________________________________________
-    def collectObjects(self, event):
-
-        ## light leptons
-        self.leps       = [l             for l  in Collection(event, "LepGood", "nLepGood")  ]
-        
+    def correctTheLeptons(self, event, leps):
         correctedLeps = []
 
         #LeptonScaleCorrections()
-        for l in self.leps:
+        for l in leps:
             if abs(l.pdgId) == 13:
                 ptemp = l.pt
                 self.muonScaleCorrector.correct(l, event.run)
@@ -147,10 +141,25 @@ class LeptonBuilderWZSM:
                 else:
                     l.unc = l.pt
             correctedLeps.append(l)
+        return correctedLeps
+
+    ## collectObjects
+    ## _______________________________________________________________
+    def collectObjects(self, event):
+
+        ## light leptons
+        self.leps       = [l             for l  in Collection(event, "LepGood", "nLepGood")  ]
         
+        correctedLeps = self.correctTheLeptons(event, self.leps)
         self.leps = correctedLeps
+
         self.lepsFO     = [self.leps[il] for il in list(getattr   (event, "iF" + self.inputlabel))[0:int(getattr(event,"nLepFO"+self.inputlabel))]]
         self.lepsT      = [self.leps[il] for il in list(getattr   (event, "iT" + self.inputlabel))[0:int(getattr(event,"nLepTight"+self.inputlabel))]]
+
+        correctedLepsFO = self.correctTheLeptons(event, self.lepsFO)
+        self.lepsFO = correctedLepsFO
+        correctedLepsT = self.correctTheLeptons(event, self.lepsT)
+        self.lepsT = correctedLepsT
        
         ## gen leptons
         if not self.isData:
@@ -478,6 +487,8 @@ class LeptonBuilderWZSM:
             biglist.append(("mT2L_4l"     + self.systsJEC[var], "F"))
             biglist.append(("mT2T_4l"     + self.systsJEC[var], "F"))
             biglist.append(("m3Lmet"      + self.systsJEC[var], "F"))
+            # WARNING: I did not configure M3LmetUnc MET variations, as we will use it only as a quick comparison
+            biglist.append(("m3LmetUnc"   + self.systsJEC[var], "F"))
             biglist.append(("m3LmetRecUp" + self.systsJEC[var], "F"))
             biglist.append(("m3LmetRecDn" + self.systsJEC[var], "F"))
             if not self.isData:
@@ -505,16 +516,30 @@ class LeptonBuilderWZSM:
     ## makeMassMET (leptons and MET)
     ## _______________________________________________________________
     def makeMassMET(self, max):
-           
+        # Using pt gives corrected pt
         if len(self.lepSelFO) < 3: return 
         sumlep = self.lepSelFO[0].p4()
         metp4 = ROOT.TLorentzVector()
         for i in range(1,min(max,len(self.lepSelFO))):
-            sumlep += self.lepSelFO[i].p4(self.lepSelFO[i].conePt) 
+            sumlep += self.lepSelFO[i].p4() 
         for var in self.systsJEC:
             metp4.SetPtEtaPhiM(self.met[var],0,self.metphi[var],0)
             sumtot = sumlep + metp4
             self.ret["m" + str(max) + "Lmet" + self.systsJEC[var]] = sumtot.M()
+
+    ## makeUncMassMET (leptons and MET)
+    ## _______________________________________________________________
+    def makeUncMassMET(self, max):
+        # Approximating conePt with pt, 
+        if len(self.lepSelFO) < 3: return 
+        sumlep = self.lepSelFO[0].p4(self.lepSelFO[0].unc)
+        metp4 = ROOT.TLorentzVector()
+        for i in range(1,min(max,len(self.lepSelFO))):
+            sumlep += self.lepSelFO[i].p4(self.lepSelFO[i].unc) 
+        for var in self.systsJEC:
+            metp4.SetPtEtaPhiM(self.met[var],0,self.metphi[var],0)
+            sumtot = sumlep + metp4
+            self.ret["m" + str(max) + "LmetUnc" + self.systsJEC[var]] = sumtot.M()
 
 
     ## Make gen to reco matching using dR < 0.4
@@ -702,6 +727,7 @@ class LeptonBuilderWZSM:
             self.ret["mT2L_4l"     + self.systsJEC[var]] = 0.  
             self.ret["mT2T_4l"     + self.systsJEC[var]] = 0. 
             self.ret["m3Lmet"      + self.systsJEC[var]] = 0. 
+            self.ret["m3LmetUnc"   + self.systsJEC[var]] = 0. 
             self.ret["m3LmetRecUp" + self.systsJEC[var]] = 0. 
             self.ret["m3LmetRecDn" + self.systsJEC[var]] = 0.
             self.ret["mT_3l_gen"   + self.systsJEC[var]] = 0.
