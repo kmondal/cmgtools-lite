@@ -26,7 +26,7 @@ parser.add_option("--poisson" ,dest="poisson" , action="store_true", default=Fal
 parser.add_option("--extraText" ,dest="extraText" , type="string", default=[], action="append", help="Add extra text lines at the end of the datacard") #A quick and dirty workaround for the rateParameters
 parser.add_option('--bb', '--autoMCStats', dest='autoMCStats', action='store_true', help='Use automatic MC stats with Barlow-Beeston approximation')
 parser.add_option('--sigAsim', '--notSusy', dest='notSusy', action='store_true', help='Add signal process to Asimov dataset. Useful to deal with in SM measurements with no BSM')
-parser.add_option('--noPrefix', dest='noPrefix', action='store_true', help='Do not add the x_ prefix to the histograms saved in the shapes rootfile')
+parser.add_option('--notPrefix', dest='notPrefix', action='store_true', help='Do not add the x_ prefix to the histograms saved in the shapes rootfile')
 
 (options, args) = parser.parse_args()
 options.weight = True
