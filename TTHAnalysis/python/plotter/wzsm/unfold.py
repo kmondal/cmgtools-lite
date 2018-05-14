@@ -322,7 +322,7 @@ class Unfolder(object):
         self.dataTruth_inc = copy.deepcopy(ROOT.TH1D(self.response_inc.ProjectionY('dataTruth_inc', 0, self.response_inc.GetNbinsX())))
         
         print('Response binsX %d, binsY %d' % (self.response_nom.GetNbinsX(), self.response_nom.GetNbinsY()))
-
+        
         for ibin in range(0, self.response_nom.GetNbinsX()+2):
             for jbin in range(0, self.response_nom.GetNbinsY()+2):
                 if ibin==0 or jbin==0 or ibin>self.response_nom.GetNbinsX() or jbin>self.response_nom.GetNbinsY():
@@ -333,24 +333,6 @@ class Unfolder(object):
                     self.response_alt.SetBinError(ibin, jbin, 0)
                     self.response_inc.SetBinError(ibin, jbin, 0)
                     
-        ## Now acquire matrices for the shape systematic uncertainties
-        ## /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/responses/mme_fitWZonly//prompt_altWZ_Pow/WZSR.card.txt        
-        #tempList=[]
-        #tempList=[key.GetName() for key in file_handle.GetListOfKeys() ]
-        #systList=[]
-        #print(tempList)
-        #for element in tempList:
-        #    if 'Pow' in element and 'Up' in element:
-        #        element=element.replace('x_prompt_altWZ_Pow_', '')
-        #        element=element.replace('Up', '')
-        #        systList.append(element)
-        #    if 'Pow' in element and 'Up' not in element and 'Down' not in element:
-        #        element=element.replace('x_prompt_altWZ_Pow_', '')
-        #        element=element.replace('x_prompt_altWZ_Pow', '')
-        #        if element:
-        #            systList.append(element)
-        #print('Syst list from rootfile:')
-        #print(systList)
         datacardReader = DatacardReader(os.path.join(self.inputDir, 'responses/%s_fitWZonly_%s/prompt_altWZ_Pow/WZSR.card.txt' % (self.finalState, self.var)), 'prompt_altWZ_Pow')
         self.normSystsList, self.shapeSystsList = datacardReader.getNormAndShapeSysts()
 
