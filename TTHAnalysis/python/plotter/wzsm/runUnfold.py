@@ -54,12 +54,16 @@ if __name__ == '__main__':
     # execute only if run as a script
     parser = argparse.ArgumentParser()
     parser.add_argument('-n', '--nthreads',       help='Number of parallel threads', default=8, type=int)
-    parser.add_argument('-b', '--base',              help='Run only on base parameter set', action='store_true')
+    parser.add_argument('-b', '--base',           help='Run only on base parameter set', action='store_true')
+    parser.add_argument('-d', '--dryrun',         help='Only print commands and exit', action='store_true')
     args = parser.parse_args()
     print('You have requested to run with a %d-threads pool. Good luck!' % args.nthreads)
     # Get jobs
     jobs = get_list_of_jobs(args.base)
     
+    if args.dryrun:
+        print jobs
+        quit()
     pool=Pool(args.nthreads)
     pool.map(runner, jobs)
     pool.close()
