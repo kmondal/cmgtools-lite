@@ -27,6 +27,8 @@ parser.add_option("--extraText" ,dest="extraText" , type="string", default=[], a
 parser.add_option('--bb', '--autoMCStats', dest='autoMCStats', action='store_true', help='Use automatic MC stats with Barlow-Beeston approximation')
 parser.add_option('--sigAsim', '--notSusy', dest='notSusy', action='store_true', help='Add signal process to Asimov dataset. Useful to deal with in SM measurements with no BSM')
 parser.add_option('--noPrefix', dest='noPrefix', action='store_true', help='Do not add the x_ prefix to the histograms saved in the shapes rootfile')
+parser.add_option('--XTitle', dest='XTitle', type='string', default='', help='X axis title for the histograms')
+parser.add_option('--YTitle', dest='YTitle', type='string', default='', help='Y axis title for the histograms')
 
 (options, args) = parser.parse_args()
 options.weight = True
@@ -481,6 +483,8 @@ myout = outdir+"/common/";
 if not os.path.exists(myout): os.system("mkdir -p "+myout)
 workspace = ROOT.TFile.Open(myout+filename+".input.root", "RECREATE")
 for n,h in report.iteritems():
+    if options.XTitle: h.GetXaxis().SetTitle(options.XTitle)
+    if options.YTitle: h.GetYaxis().SetTitle(options.YTitle)
     if options.verbose > 0: print "\t%s (%8.3f events)" % (h.GetName(),h.Integral())
     if options.noPrefix:
       workspace.WriteTObject(h,h.GetName()[2:])
