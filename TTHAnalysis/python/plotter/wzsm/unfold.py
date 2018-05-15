@@ -1104,7 +1104,7 @@ def main(args):
     os.system('rm %s/*pdf' % args.outputDir)
     print('...done!')
     #for var in ['Zpt', 'ZconePt', 'nJet30']: # Must build correct gen matrix for nJet30 (need friend trees). Also, don't study conePt for now
-    for var in ['Zpt', 'LeadJetPt']:
+    for var in ['Zpt', 'LeadJetPt', 'MWZ']:
         u = Unfolder(args,var)
         u.print_responses()
         u.study_responses()
