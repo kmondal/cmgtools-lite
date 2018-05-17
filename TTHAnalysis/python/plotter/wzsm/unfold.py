@@ -607,6 +607,10 @@ class Unfolder(object):
         if self.unfold:
             self.unfold.IsA().Destructor(self.unfold)
 
+        print('DATA BINNING: %d' % self.data.GetNbinsX() )
+        print('SIGNAL BINNING: %d' % self.mc.GetNbinsX() )
+        print('BKG[0] BINNING: %d' % self.bkg[0].GetNbinsX() )
+        print('Matrix binning: reco = %d, gen = %d' %( self.response_nom.GetNbinsX(), self.response_nom.GetNbinsY()) )
         if   key == 'nom':
             self.unfold = ROOT.TUnfoldDensity(self.response_nom, self.histmap, self.regmode, self.constraint, self.densitymode)
         elif key == 'alt':
@@ -617,9 +621,6 @@ class Unfolder(object):
             print('ERROR: the response matrix you asked for (%s) does not exist' % key)
         # Check if the input data points are enough to constrain the unfolding process
         # Set scale bias
-        print('DATA BINNING: %d' % self.data.GetNbinsX() )
-        print('SIGNAL BINNING: %d' % self.mc.GetNbinsX() )
-        print('BKG[0] BINNING: %d' % self.bkg[0].GetNbinsX() )
         if self.bias != 0.0:
             check = self.unfold.SetInput(self.data, self.bias)
         else:
