@@ -12,12 +12,19 @@
 
 declare -A pairs=(  ['sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass)']='[0,5,10,15,20,25,30,40,50,60,70,80,90,100,110,120,130,140,160,180,200,250,300]' ["LeadJet_pt"]='[25,30,35,40,50,60,70,80,90,100,110,120,130,140,160,180,200,250,300]' ["m3Lmet"]='[50,60,70,80,90,100,120,140,160,180,200,240,280,320,360,400,450,500,550,600,650,700,800,1000,1500,2000,3000]' )
 
-count=0
-
 #mca=".wzsm/mca_includes.txt"
 mca="./wzsm/mca_unfoldingInputs.txt"
 inputdir="/pool/ciencias/HeppyTrees/RA7/estructura/wzSkimmed/"
 
+
+# Preliminary cleanup
+echo "rm -r /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/incl_fitWZonly/"
+echo "rm -r /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/eee_fitWZonly/ "
+echo "rm -r /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/eem_fitWZonly/ "
+echo "rm -r /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/mme_fitWZonly/ "
+echo "rm -r /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/mmm_fitWZonly/ "
+
+count=0
 for iShape in "${!pairs[@]}"; do
     iRange=${pairs[$iShape]}
 
@@ -101,7 +108,6 @@ for iShape in "${!pairs[@]}"; do
 
         echo "rm -r /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/mmm_fitWZonly_MWZ/"
         echo "mv /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/mmm_fitWZonly/ /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/mmm_fitWZonly_MWZ/"
-
 
     fi
     ###elif [ "$count" == "2" ]; then

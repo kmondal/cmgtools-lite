@@ -154,9 +154,10 @@ class AcceptanceComputer:
 
 class Unfolder(object):
 
-    def __init__(self, args, var):
+    def __init__(self, args, var, fancyvar):
         print('Initialization')
         self.var=var
+        self.fancyvar=fancyvar
         self.unfold=None
         self.response_nom=None
         self.response_alt=None
@@ -294,11 +295,15 @@ class Unfolder(object):
             ROOT.gPad.SetGrid()
             profX.SetMarkerStyle(ROOT.kFullSquare)
             profX.SetTitle('Response (gen profiled)')
+            profX.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+            profX.GetYaxis().SetTitle('Mean Gen %s' % self.fancyvar)
             profX.Draw("PE")
             c.cd(2)
             ROOT.gPad.SetGrid()
             profY.SetMarkerStyle(ROOT.kFullSquare)
             profY.SetTitle('Response (reco profiled)')
+            profY.GetXaxis().SetTitle('Gen %s' % self.fancyvar)
+            profY.GetXaxis().SetTitle('Mean Reco %s' % self.fancyvar)
             profY.Draw("PE")
             CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
             utils.saveCanva(c, os.path.join(self.outputDir, '1_responseProfiled_%s_%s' % (matrix.GetName(), self.var)))            
@@ -381,6 +386,12 @@ class Unfolder(object):
             odbFraction_nom = odbN_nom/(resp_nom.GetNbinsX()*resp_nom.GetNbinsY())
             odbFraction_alt = odbN_alt/(resp_alt.GetNbinsX()*resp_alt.GetNbinsY())
             odbFraction_inc = odbN_inc/(resp_inc.GetNbinsX()*resp_inc.GetNbinsY())
+            resp_nom.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+            resp_alt.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+            resp_inc.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+            resp_nom.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
+            resp_alt.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
+            resp_inc.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
             print('Overall fraction of out-of-diagonal events | Fraction of out-of-diagonal filled bins:')
             print('\t nom: %0.3f | %0.3f = %d/%d' % (oodFraction_nom, odbFraction_nom, odbN_nom, (resp_nom.GetNbinsX()*resp_nom.GetNbinsY())))
             print('\t alt: %0.3f | %0.3f = %d/%d' % (oodFraction_alt, odbFraction_alt, odbN_alt, (resp_alt.GetNbinsX()*resp_alt.GetNbinsY())))
@@ -826,6 +837,8 @@ class Unfolder(object):
         # Data, MC prediction, background
         self.data.SetMinimum(0.0)
         self.data.SetTitle('Inputs (folded space)')
+        self.data.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+        self.data.GetYaxis().SetTitle('Events')
         self.data.DrawCopy("E")
         self.mc.SetMinimum(0.0)
         self.mc.SetLineColor(ROOT.kBlue)
@@ -864,6 +877,8 @@ class Unfolder(object):
         self.dataTruth_nom.SetLineWidth(2)
         self.dataTruth_nom.SetMaximum(1.2*self.dataTruth_nom.GetMaximum())
         self.dataTruth_nom.SetTitle("")
+        self.dataTruth_nom.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+        self.dataTruth_nom.GetYaxis().SetTitle('Events')
         self.dataTruth_nom.DrawNormalized("E HIST")
         # Unfolded data with total error
         histUnfoldTotal.SetMarkerColor(ROOT.kBlue)
@@ -907,6 +922,8 @@ class Unfolder(object):
         subdata.SetTitle('Folded space')
         #self.data.SetTitle('Folded space')
         #self.data.Draw('PE')
+        subdata.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+        subdata.GetYaxis().SetTitle('Events')
         subdata.Draw('PE')
         # MC folded back
         histMdetFold.SetLineColor(ROOT.kRed+1)
@@ -1025,6 +1042,7 @@ class Unfolder(object):
             dt.SetBinContent(ibin,dt.GetBinContent(ibin)/dt.GetBinWidth(ibin))
             dt.SetBinError(ibin,dt.GetBinError(ibin)/dt.GetBinWidth(ibin))
         dt.Scale(1/dt.Integral())
+        dt.GetXaxis().SetTitle('Gen %s' % self.fancyvar)
         dt.GetYaxis().SetTitle('d#sigma/dP_{T}^{Z}(pb/GeV)')
         dt.SetMaximum(1.2*dt.GetMaximum())
         dt.Draw("E HIST")
@@ -1104,8 +1122,15 @@ def main(args):
     os.system('rm %s/*pdf' % args.outputDir)
     print('...done!')
     #for var in ['Zpt', 'ZconePt', 'nJet30']: # Must build correct gen matrix for nJet30 (need friend trees). Also, don't study conePt for now
-    for var in ['Zpt', 'LeadJetPt', 'MWZ']:
-        u = Unfolder(args,var)
+
+    vardict = {
+        'Zpt' : 'p_{T}(Z) [GeV]',
+        'LeadJetPt' : 'p_{T}(leading jet) [GeV]',
+        'MWZ' : 'M(WZ) [GeV]'
+        }
+    
+    for var, fancyvar in vardict.items():
+        u = Unfolder(args,var,fancyvar)
         u.print_responses()
         u.study_responses()
         u.do_unfolding('nom')
