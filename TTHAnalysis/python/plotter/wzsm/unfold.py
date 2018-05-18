@@ -284,11 +284,11 @@ class Unfolder(object):
             print(profX)
             print(profY)
             c = ROOT.TCanvas('matrix', 'Response Matrix', 2000, 1000)
-            # Margin not being applied somehow. Must do it via gStyle?
-            ROOT.gStyle.SetPadTopMargin(0.1)
-            ROOT.gStyle.SetPadBottomMargin(0.1)
-            ROOT.gStyle.SetPadLeftMargin(0.1)
-            ROOT.gStyle.SetPadRightMargin(0.1)
+            # Margin not being applied somehow. Must do it via gStyle? Current suspicion: now that I have the TStyle, they are screwing the tdr style up
+            #ROOT.gStyle.SetPadTopMargin(0.1)
+            #ROOT.gStyle.SetPadBottomMargin(0.1)
+            #ROOT.gStyle.SetPadLeftMargin(0.1)
+            #ROOT.gStyle.SetPadRightMargin(0.1)
             #ROOT.gStyle.SetOptStat('uo')
             c.Divide(2,1)
             c.cd(1)
@@ -864,8 +864,8 @@ class Unfolder(object):
         print(self.mc.GetNbinsX())
         print(histDetNormBgrTotal.GetNbinsX())
         CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
-        output.SaveAs(os.path.join(self.outputDir, '2_p1_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p1_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
+        #output.SaveAs(os.path.join(self.outputDir, '2_p1_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p1_unfold_%s_%s_%s.C' % (label, key, self.var)))
         output.Clear()
         # draw generator-level distribution:
@@ -908,7 +908,7 @@ class Unfolder(object):
         leg_2.Draw()
         CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
         output.SaveAs(os.path.join(self.outputDir, '2_p2_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
-        output.SaveAs(os.path.join(self.outputDir, '2_p2_unfold_%s_%s_%s.png' % (label, key, self.var)))
+        #output.SaveAs(os.path.join(self.outputDir, '2_p2_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p2_unfold_%s_%s_%s.C' % (label, key, self.var)))
         output.Clear()
         # show detector level distributions
@@ -949,7 +949,7 @@ class Unfolder(object):
         leg_3.Draw()
         CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
         output.SaveAs(os.path.join(self.outputDir, '2_p3_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
-        output.SaveAs(os.path.join(self.outputDir, '2_p3_unfold_%s_%s_%s.png' % (label, key, self.var)))
+        #output.SaveAs(os.path.join(self.outputDir, '2_p3_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p3_unfold_%s_%s_%s.C' % (label, key, self.var)))
         output.Clear()
         #output.cd(4) 
@@ -970,7 +970,7 @@ class Unfolder(object):
         leg_4.Draw()
         CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
         output.SaveAs(os.path.join(self.outputDir, '2_p4_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
-        output.SaveAs(os.path.join(self.outputDir, '2_p4_unfold_%s_%s_%s.png' % (label, key, self.var)))
+        #output.SaveAs(os.path.join(self.outputDir, '2_p4_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p4_unfold_%s_%s_%s.C' % (label, key, self.var)))
         output.Clear()
         if self.regmode is not ROOT.TUnfold.kRegModeNone:
@@ -989,7 +989,7 @@ class Unfolder(object):
             # show the L curve
             CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
             output.SaveAs(os.path.join(self.outputDir, '2_p5_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
-            output.SaveAs(os.path.join(self.outputDir, '2_p5_unfold_%s_%s_%s.png' % (label, key, self.var)))
+            #output.SaveAs(os.path.join(self.outputDir, '2_p5_unfold_%s_%s_%s.png' % (label, key, self.var)))
             output.SaveAs(os.path.join(self.outputDir, '2_p5_unfold_%s_%s_%s.C' % (label, key, self.var)))
             output.Clear()
             #output.cd(6)
@@ -1002,7 +1002,7 @@ class Unfolder(object):
             bestLcurve.Draw("P")
             CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
             output.SaveAs(os.path.join(self.outputDir, '2_p6_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
-            output.SaveAs(os.path.join(self.outputDir, '2_p6_unfold_%s_%s_%s.png' % (label, key, self.var)))
+            #output.SaveAs(os.path.join(self.outputDir, '2_p6_unfold_%s_%s_%s.png' % (label, key, self.var)))
             output.SaveAs(os.path.join(self.outputDir, '2_p6_unfold_%s_%s_%s.C' % (label, key, self.var)))
             output.Clear()
        
@@ -1018,7 +1018,7 @@ class Unfolder(object):
             self.response_inc.Draw('COLZ')
         CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
         output.SaveAs(os.path.join(self.outputDir, '2_p7_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
-        output.SaveAs(os.path.join(self.outputDir, '2_p7_unfold_%s_%s_%s.png' % (label, key, self.var)))
+        #output.SaveAs(os.path.join(self.outputDir, '2_p7_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p7_unfold_%s_%s_%s.C' % (label, key, self.var)))
         output.Clear()
         #output.cd(8)
@@ -1026,7 +1026,7 @@ class Unfolder(object):
         histCorr.Draw('COLZ')
         CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
         output.SaveAs(os.path.join(self.outputDir, '2_p8_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
-        output.SaveAs(os.path.join(self.outputDir, '2_p8_unfold_%s_%s_%s.png' % (label, key, self.var)))
+        #output.SaveAs(os.path.join(self.outputDir, '2_p8_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p8_unfold_%s_%s_%s.C' % (label, key, self.var)))
         #output.SaveAs(os.path.join(self.outputDir, '2_unfold_%s_%s_%s.png' % (label, key, self.var)))
  
@@ -1082,9 +1082,10 @@ class Unfolder(object):
         leg_money.AddEntry(self.dataTruth_nom, 'Truth', 'la')
         leg_money.AddEntry(histUnfoldTotal, '#frac{#chi^{2}}{NDOF}=%0.3f' % histUnfoldTotal.Chi2Test(self.dataTruth_nom, 'CHI2/NDF WW'), '')
         leg_money.Draw()
+        tdr.setTDRStyle()
         CMS_lumi.CMS_lumi(moneyplot, 4, 0, aLittleExtra=0.08)
         moneyplot.SaveAs(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.pdf' % (label, key, self.var)))
-        moneyplot.SaveAs(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.png' % (label, key, self.var)))
+        #moneyplot.SaveAs(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.png' % (label, key, self.var)))
         moneyplot.SaveAs(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.C' % (label, key, self.var)))
         # Dump to txt
         with open(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.txt' % (label, key, self.var)), 'w') as text_dumper:
@@ -1125,9 +1126,9 @@ def main(args):
     #for var in ['Zpt', 'ZconePt', 'nJet30']: # Must build correct gen matrix for nJet30 (need friend trees). Also, don't study conePt for now
 
     vardict = {
-        'Zpt' : 'p_{T}(Z) [GeV]',
+        #'Zpt' : 'p_{T}(Z) [GeV]',
         'LeadJetPt' : 'p_{T}(leading jet) [GeV]',
-        'MWZ' : 'M(WZ) [GeV]'
+        #'MWZ' : 'M(WZ) [GeV]'
         }
     
     for var, fancyvar in vardict.items():
