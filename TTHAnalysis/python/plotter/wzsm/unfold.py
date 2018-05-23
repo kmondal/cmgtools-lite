@@ -158,6 +158,7 @@ class Unfolder(object):
         print('Initialization')
         self.var=var
         self.fancyvar=fancyvar
+        self.logx = False if self.var is not 'MWZ' else True
         self.unfold=None
         self.response_nom=None
         self.response_alt=None
@@ -284,6 +285,7 @@ class Unfolder(object):
             print(profX)
             print(profY)
             c = ROOT.TCanvas('matrix', 'Response Matrix', 2000, 1000)
+            tdr.setTDRStyle()
             # Margin not being applied somehow. Must do it via gStyle? Current suspicion: now that I have the TStyle, they are screwing the tdr style up
             #ROOT.gStyle.SetPadTopMargin(0.1)
             #ROOT.gStyle.SetPadBottomMargin(0.1)
@@ -346,11 +348,36 @@ class Unfolder(object):
         c = ROOT.TCanvas('matrix', 'Response Matrix', 2000, 2000)
         c.cd()
         # Margin not being applied somehow. Must do it via gStyle?
-        ROOT.gStyle.SetPadTopMargin(0.1)
-        ROOT.gStyle.SetPadBottomMargin(0.1)
-        ROOT.gStyle.SetPadLeftMargin(0.1)
-        ROOT.gStyle.SetPadRightMargin(0.1)
+        #ROOT.gStyle.SetPadTopMargin(0.1)
+        #ROOT.gStyle.SetPadBottomMargin(0.1)
+        #ROOT.gStyle.SetPadLeftMargin(0.1)
+        #ROOT.gStyle.SetPadRightMargin(0.1)
         #ROOT.gStyle.SetOptStat('uo')
+        self.response_nom.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+        self.response_alt.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+        self.response_inc.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+        self.response_nom.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
+        self.response_alt.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
+        self.response_inc.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
+        self.response_nom.GetYaxis().SetTitleOffset(1.7)
+        self.response_alt.GetYaxis().SetTitleOffset(1.7)
+        self.response_inc.GetYaxis().SetTitleOffset(1.7)
+
+        tdr.setTDRStyle()
+        self.response_nom.Draw('COLZ')
+        CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
+        utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Nom' % self.var))
+        c.Clear()
+        tdr.setTDRStyle()
+        self.response_alt.Draw('COLZ')
+        CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
+        utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Alt' % self.var))
+        c.Clear()
+        tdr.setTDRStyle()
+        self.response_inc.Draw('COLZ')
+        CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
+        utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Inc' % self.var))
+
         if self.responseAsPdf:
             resp_nom=copy.deepcopy(ROOT.TH2D(self.response_nom))
             resp_alt=copy.deepcopy(ROOT.TH2D(self.response_alt))
@@ -359,6 +386,12 @@ class Unfolder(object):
             resp_nom.Scale(1./resp_nom.Integral())
             resp_alt.Scale(1./resp_alt.Integral())
             resp_inc.Scale(1./resp_inc.Integral())
+            resp_nom.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+            resp_alt.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+            resp_inc.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+            resp_nom.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
+            resp_alt.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
+            resp_inc.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
 
             # Compute stability
             diagonalSum_nom=0
@@ -386,12 +419,6 @@ class Unfolder(object):
             odbFraction_nom = odbN_nom/(resp_nom.GetNbinsX()*resp_nom.GetNbinsY())
             odbFraction_alt = odbN_alt/(resp_alt.GetNbinsX()*resp_alt.GetNbinsY())
             odbFraction_inc = odbN_inc/(resp_inc.GetNbinsX()*resp_inc.GetNbinsY())
-            resp_nom.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
-            resp_alt.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
-            resp_inc.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
-            resp_nom.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
-            resp_alt.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
-            resp_inc.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
             print('Overall fraction of out-of-diagonal events | Fraction of out-of-diagonal filled bins:')
             print('\t nom: %0.3f | %0.3f = %d/%d' % (oodFraction_nom, odbFraction_nom, odbN_nom, (resp_nom.GetNbinsX()*resp_nom.GetNbinsY())))
             print('\t alt: %0.3f | %0.3f = %d/%d' % (oodFraction_alt, odbFraction_alt, odbN_alt, (resp_alt.GetNbinsX()*resp_alt.GetNbinsY())))
@@ -405,17 +432,7 @@ class Unfolder(object):
             resp_inc.Draw('COLZ')
             utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrixAsPdf_%s_Inc' % self.var))
 
-        self.response_nom.Draw('COLZ')
-        CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
-        utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Nom' % self.var))
-        c.Clear()
-        self.response_alt.Draw('COLZ')
-        CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
-        utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Alt' % self.var))
-        c.Clear()
-        self.response_inc.Draw('COLZ')
-        CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
-        utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Inc' % self.var))
+
         c.IsA().Destructor(c)
 
     def compute_stability_and_purity(self):
@@ -490,10 +507,10 @@ class Unfolder(object):
         print(stability_nom)
         c = ROOT.TCanvas('matrix', 'Response Matrix', 3000, 1000)
         # Margin not being applied somehow. Must do it via gStyle?
-        ROOT.gStyle.SetPadTopMargin(0.1)
-        ROOT.gStyle.SetPadBottomMargin(0.1)
-        ROOT.gStyle.SetPadLeftMargin(0.1)
-        ROOT.gStyle.SetPadRightMargin(0.1)
+        #ROOT.gStyle.SetPadTopMargin(0.1)
+        #ROOT.gStyle.SetPadBottomMargin(0.1)
+        #ROOT.gStyle.SetPadLeftMargin(0.1)
+        #ROOT.gStyle.SetPadRightMargin(0.1)
         #ROOT.gStyle.SetOptStat('uo')
         c.Divide(3,1)
         c.cd(1)
@@ -840,6 +857,7 @@ class Unfolder(object):
         self.data.SetTitle('Inputs (folded space)')
         self.data.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
         self.data.GetYaxis().SetTitle('Events')
+        self.data.GetYaxis().SetTitleOffset(1.6)
         self.data.DrawCopy("E")
         self.mc.SetMinimum(0.0)
         self.mc.SetLineColor(ROOT.kBlue)
@@ -880,6 +898,8 @@ class Unfolder(object):
         self.dataTruth_nom.SetTitle("")
         self.dataTruth_nom.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
         self.dataTruth_nom.GetYaxis().SetTitle('Events')
+        self.dataTruth_nom.GetYaxis().SetTitleSize(0.035)
+        self.dataTruth_nom.GetYaxis().SetLabelSize(0.035)
         self.dataTruth_nom.DrawNormalized("E HIST")
         # Unfolded data with total error
         histUnfoldTotal.SetMarkerColor(ROOT.kBlue)
@@ -981,11 +1001,12 @@ class Unfolder(object):
             # from v610# self.logTauCurvature.Draw()
             # show tau as a function of chi**2
             #output.cd(5)
-            self.logTauX.Draw()
+            tdr.setTDRStyle()
+            self.logTauX.Draw('L')
             bestLogTauLogChi2.SetMarkerColor(ROOT.kRed)
             bestLogTauLogChi2.SetMarkerStyle(ROOT.kFullSquare)
             bestLogTauLogChi2.SetMarkerSize(2)
-            bestLogTauLogChi2.Draw("P")
+            bestLogTauLogChi2.Draw('P')
             # show the L curve
             CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
             output.SaveAs(os.path.join(self.outputDir, '2_p5_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
@@ -993,6 +1014,7 @@ class Unfolder(object):
             output.SaveAs(os.path.join(self.outputDir, '2_p5_unfold_%s_%s_%s.C' % (label, key, self.var)))
             output.Clear()
             #output.cd(6)
+            tdr.setTDRStyle()
             self.lCurve.GetXaxis().SetTitle('log#chi_{A}^{2}')
             self.lCurve.GetYaxis().SetTitle('log#chi_{L}^{2}')
             self.lCurve.Draw("AL")
@@ -1046,6 +1068,8 @@ class Unfolder(object):
         dt.GetXaxis().SetTitle('Gen %s' % self.fancyvar)
         dt.GetYaxis().SetTitle('d#sigma/dP_{T}^{Z}(pb/GeV)')
         dt.SetMaximum(1.2*dt.GetMaximum())
+        if self.logx:
+            ROOT.gPad.SetLogx()
         dt.Draw("E HIST")
         # Unfolded data with total error
         hut=copy.deepcopy(histUnfoldTotal)
@@ -1126,9 +1150,9 @@ def main(args):
     #for var in ['Zpt', 'ZconePt', 'nJet30']: # Must build correct gen matrix for nJet30 (need friend trees). Also, don't study conePt for now
 
     vardict = {
-        #'Zpt' : 'p_{T}(Z) [GeV]',
+        'Zpt' : 'p_{T}(Z) [GeV]',
         'LeadJetPt' : 'p_{T}(leading jet) [GeV]',
-        #'MWZ' : 'M(WZ) [GeV]'
+        'MWZ' : 'M(WZ) [GeV]'
         }
     
     for var, fancyvar in vardict.items():
