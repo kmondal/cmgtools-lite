@@ -1085,6 +1085,9 @@ class Unfolder(object):
         dt.SetMaximum(1.2*dt.GetMaximum())
         if self.logx:
             ROOT.gPad.SetLogx()
+        if 'MWZ' in self.var:
+            ROOT.gPad.SetLogy()
+            dt.SetMaximum(100*dt.GetMaximum())
         dt.GetYaxis().SetTitleOffset(1.6)
         dt.Draw('E HIST')
         # Unfolded data with total error
