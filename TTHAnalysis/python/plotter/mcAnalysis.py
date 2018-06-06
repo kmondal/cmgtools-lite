@@ -52,9 +52,7 @@ class MCAnalysis:
 
     def readMca(self,samples,options):
         for line in open(samples,'r'):
-            #print line
             if re.match("\s*#.*", line): continue
-            #print line
             line = re.sub(r"(?<!\\)#.*","",line)  ## regexp black magic: match a # only if not preceded by a \!
             line = line.replace(r"\#","#")        ## and now we just unescape the remaining #'s
             extra = {}
