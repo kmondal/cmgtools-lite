@@ -1,3 +1,4 @@
+
 ## Data
 ## -----------------------------------------------------------
 incl_data : + ; IncludeMca="wzsm/includes/mca_data.txt"
@@ -6,11 +7,18 @@ incl_data : + ; IncludeMca="wzsm/includes/mca_data.txt"
 
 ## MC WZ and backgrounds
 ## -----------------------------------------------------------
-prompt_WZ+               : WZTo3LNu                        : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))            ; FillColor=ROOT.kOrange  , Label="WZ", NormSystematic=0.15
+prompt_WZ+               : WZTo3LNu                        : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))  ;  FillColor=ROOT.kOrange  , Label="WZ (light)", NormSystematic=0.06
 
-incl_fakes_appldata     : + ; IncludeMca="wzsm/includes/mca_fakesappl.txt"
+#prompt_WZ_tauW               : WZTo3LNu                        : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))    && (LepGood_mcPromptTau[iW*(iW> -1)]!= 0)       ; FillColor=ROOT.kOrange + 5  , Label="WZ (W to tau)", NormSystematic=0.06
+
+#prompt_WZ_tauZ               : WZTo3LNu                        : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))    && (LepGood_mcPromptTau[iZ1*(iZ1 > -1)]!= 0  && LepGood_mcPromptTau[iZ2*(iZ2 > -1)]!= 0)       ; FillColor=ROOT.kOrange + 3  , Label="WZ (Z to taus)", NormSystematic=0.06
+
+#prompt_WZ_tauZTL               : WZTo3LNu                        : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))    && ((LepGood_mcPromptTau[iZ1*(iZ1 > -1)]!= 0  && LepGood_mcPromptTau[iZ2*(iZ2 > -1)]== 0) || (LepGood_mcPromptTau[iZ1*(iZ1 > -1)]== 0  && LepGood_mcPromptTau[iZ2*(iZ2 > -1)]!= 0))       ; FillColor=ROOT.kOrange + 2  , Label="WZ (Z to tau light)", NormSystematic=0.06
+
+
 incl_prompts            : + ; IncludeMca="wzsm/includes/mca_prompts.txt"
 incl_promptsub          : + ; IncludeMca="wzsm/includes/mca_promptsub.txt"
+incl_fakes_appldata     : + ; IncludeMca="wzsm/includes/mca_fakesappl.txt"
 
 
 
@@ -26,8 +34,8 @@ incl_sys_jec            : + ; IncludeMca="wzsm/includes/mca_sys_jec.txt"
 #incl_sys_lepSF          : + ; IncludeMca="wzsm/includes/mca_sys_lepSF.txt"
 incl_sys_lepSFMu          : + ; IncludeMca="wzsm/includes/mca_sys_lepSFMu.txt"
 incl_sys_lepSFEl          : + ; IncludeMca="wzsm/includes/mca_sys_lepSFEl.txt"
-incl_sys_lepscaleMu       : + ; IncludeMca="wzsm/includes/mca_sys_lepscaleMu.txt"
-incl_sys_lepscaleEl       : + ; IncludeMca="wzsm/includes/mca_sys_lepscaleEl.txt"
+#incl_sys_lepscaleMu       : + ; IncludeMca="wzsm/includes/mca_sys_lepscaleMu.txt"
+#incl_sys_lepscaleEl       : + ; IncludeMca="wzsm/includes/mca_sys_lepscaleEl.txt"
 
 #incl_sys_scales          : + ; IncludeMca="wzsm/includes/mca_sys_lepscale.txt"
 incl_sys_Muscales          : + ; IncludeMca="wzsm/includes/mca_sys_lepscaleMu.txt"
