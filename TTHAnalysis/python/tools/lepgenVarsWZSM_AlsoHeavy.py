@@ -68,7 +68,7 @@ class OSpair:
 
 ## lepgenVarsWZSM
 ## ___________________________________________________________________
-class lepgenVarsWZSM:
+class lepgenVarsWZSM_AlsoHeavy:
 
 
     ## __init__
@@ -125,8 +125,13 @@ class lepgenVarsWZSM:
 
         ## gen leptons
         self.genleps    = [l             for l  in Collection(event, "genLep", "ngenLep")  ]
-        self.genleps    += [l             for l  in Collection(event, "genLepFromTau", "ngenLepFromTau")  ]
-        
+        genPars = [l             for l  in Collection(event, "GenPart", "nGenPart")  ]
+        self.genlepsfromTau    = [l             for l  in Collection(event, "genLepFromTau", "ngenLepFromTau")  ]
+        for l in self.genlepsfromTau:
+            if l.motherIndex >= 0:
+                self.genleps.append(genPars[l.motherIndex])
+        self.genleps.sort(key = lambda x : x.pt, reverse=True)
+
         ## Get Gen leptons
         self.setAttributes(event, self.genleps, event.isData, True)
         self.genleps.sort(key = lambda x: x.pt, reverse=True)

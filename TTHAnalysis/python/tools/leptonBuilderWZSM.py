@@ -153,8 +153,13 @@ class LeptonBuilderWZSM:
         correctedLeps = self.correctTheLeptons(event, self.leps)
         self.leps = correctedLeps
 
+
         self.lepsFO     = [self.leps[il] for il in list(getattr   (event, "iF" + self.inputlabel))[0:int(getattr(event,"nLepFO"+self.inputlabel))]]
         self.lepsT      = [self.leps[il] for il in list(getattr   (event, "iT" + self.inputlabel))[0:int(getattr(event,"nLepTight"+self.inputlabel))]]
+        for i in range(len(self.lepsT)):
+            self.lepsT[i].idx = i
+        for i in range(len(self.lepsFO)):
+            self.lepsFO[i].idx = i
 
         correctedLepsFO = self.correctTheLeptons(event, self.lepsFO)
         self.lepsFO = correctedLepsFO
@@ -167,7 +172,7 @@ class LeptonBuilderWZSM:
 
         ## taus
         self.goodtaus   = [t             for t  in Collection(event, "TauGood" , "nTauGood" )]
-        self.disctaus   = [t             for t  in Collection(event, "TauOther", "nTauOther")]
+        self.disctaus   = [] #[t             for t  in Collection(event, "TauOther", "nTauOther")]
         self.taus       = [t             for t  in Collection(event, "TauSel" + self.inputlabel , "nTauSel" + self.inputlabel )]
         for t in self.taus: t.conePt = t.pt
         self.tausFO     = self.taus
@@ -289,7 +294,8 @@ class LeptonBuilderWZSM:
             self.bestOSPair = all[0][2]
             self.ret["mll_" + str(max) + "l"] = self.bestOSPair.mll
             used = [self.bestOSPair.l1, self.bestOSPair.l2] if self.bestOSPair else []
-            
+            self.ret["iZ1"] = self.bestOSPair.l1.idx
+            self.ret["iZ2"] = self.bestOSPair.l2.idx
             
             for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva", "jetDR","genpt", "geneta", "genphi", "genmass", "unc"]:
                 if self.isData and ("gen" in var or "mc" in var or "Match" in var): continue
@@ -306,6 +312,7 @@ class LeptonBuilderWZSM:
 
             for i in range(min(max,len(self.lepSelFO))):
                 if self.lepSelFO[i] in used: continue
+                self.ret["iW"] = self.lepSelFO[i].idx
                 for var in ["pt", "eta", "phi", "mass", "conePt", "dxy", "dz", "sip3d", "miniRelIso", "relIso", "ptratio", "ptrel", "mva","jetDR","genpt", "geneta", "genphi", "genmass","unc"]:
                     if self.isData and ("gen" in var or "mc" in var or "Match" in var): continue
                     self.ret["LepW_" + var] = getattr(self.lepSelFO[i], var, 0)
@@ -433,6 +440,9 @@ class LeptonBuilderWZSM:
     def listBranches(self):
 
         biglist = [
+            ("iZ1"            , "I"),
+            ("iZ2"            , "I"),
+            ("iW"             , "I"),
             ("is_3l"            , "I"),
             ("is_4l"            , "I"),
             ("is_5l"            , "I"),
@@ -676,6 +686,9 @@ class LeptonBuilderWZSM:
 
         self.ret = {};
 
+        self.ret["iZ1"                ]   = -1
+        self.ret["iZ2"                ]   = -1
+        self.ret["iW"                 ]   = -1
         self.ret["is_3l"                ] = 0
         self.ret["is_4l"                ] = 0
         self.ret["is_5l"                ] = 0
@@ -752,7 +765,7 @@ class LeptonBuilderWZSM:
                 setattr(l, "mcMatchId"    , 1                                     )
                 setattr(l, "mcMatchAny"   , 0                                     )
                 setattr(l, "mcPromptGamma", 0                                     )
-                setattr(l, "mcUCSX"       , tau.mcUCSXMatchId if not isData else 0)
+                setattr(l, "mcUCSX"       , tau.mcUCSXMatchId if ((not isData) and hasattr(tau, "mcUCSXMatchId")) else 0)
                 setattr(l, "trIdx"        , self.taus.index(l)                    )
                 setattr(l, "dxy"          , tau.dxy if not tau is None else 0   )
                 setattr(l, "dz"           , tau.dz  if not tau is None else 0   )
@@ -780,7 +793,7 @@ class LeptonBuilderWZSM:
                 setattr(l, "mcMatchId"    , l.mcMatchId     if not isData else 1)
                 setattr(l, "mcMatchAny"   , l.mcMatchAny    if not isData else 0)
                 setattr(l, "mcPromptGamma", l.mcPromptGamma if not isData else 0)
-                setattr(l, "mcUCSX"       , l.mcUCSXMatchId if not isData else 0)
+                setattr(l, "mcUCSX"       , l.mcUCSXMatchId if ((not isData) and hasattr(l, "mcUCSXMatchId")) else 0)
                 setattr(l, "trIdx"        , self.leps.index(l)                  )
                 setattr(l, "dxy"          , l.dxy                               )
                 setattr(l, "dz"           , l.dz                                )

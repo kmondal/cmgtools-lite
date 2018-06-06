@@ -158,32 +158,54 @@ class MCAnalysis:
                     self._backgrounds.append(tty)
                 if pname in self._allData: self._allData[pname].append(tty)
                 else                     : self._allData[pname] =     [tty]
-                if "data" not in pname:
-                    pckobj  = pickle.load(open(pckfile,'r'))
-                    counters = dict(pckobj)
-                    if ('Sum Weights' in counters) and options.weight:
-                        if (is_w==0): raise RuntimeError, "Can't put together a weighted and an unweighted component (%s)" % cnames
-                        is_w = 1; 
-                        total_w += counters['Sum Weights']
-                        scale = "genWeight*(%s)" % field[2]
-                    else:
-                        if (is_w==1): raise RuntimeError, "Can't put together a weighted and an unweighted component (%s)" % cnames
-                        is_w = 0;
-                        total_w += counters['All Events']
-                        scale = "(%s)" % field[2]
-                    if len(field) == 4: scale += "*("+field[3]+")"
-                    for p0,s in options.processesToScale:
-                        for p in p0.split(","):
-                            if re.match(p+"$", pname): scale += "*("+s+")"
-                    to_norm = True
-                elif len(field) == 3:
-                    tty.setScaleFactor(field[2])
-                else:
-                    try:
+                if "doUnpickled" in extra and extra['doUnpickled']:
+                    rFile = ROOT.TFile.Open(rootfile)
+                    if "data" not in pname:
+                        if options.weight:
+                            hWeights = rFile.Get("SumGenWeights")
+                            is_w = 1
+                            total_w += hWeights.Integral()
+                            scale = "genWeight*(%s)" % field[2]
+                        else:
+                            if (is_w==1): raise RuntimeError, "Can't put together a weighted and an unweighted component (%s)" % cnames
+                            is_w = 0;
+                            hCounters = rFile.Get("Count")
+                            total_w += hCounters.Integral()
+                            scale = "(%s)" % field[2]
+                        if len(field) == 4: scale += "*("+field[3]+")"
+                        for p0,s in options.processesToScale:
+                            for p in p0.split(","):
+                                if re.match(p+"$", pname): scale += "*("+s+")"
+                        to_norm = True
+                    elif len(field) == 3:
+                        tty.setScaleFactor(field[2])
+                else:  
+                    if "data" not in pname:
                         pckobj  = pickle.load(open(pckfile,'r'))
                         counters = dict(pckobj)
-                    except:
-                        pass
+                        if ('Sum Weights' in counters) and options.weight:
+                            if (is_w==0): raise RuntimeError, "Can't put together a weighted and an unweighted component (%s)" % cnames
+                            is_w = 1; 
+                            total_w += counters['Sum Weights']
+                            scale = "genWeight*(%s)" % field[2]
+                        else:
+                            if (is_w==1): raise RuntimeError, "Can't put together a weighted and an unweighted component (%s)" % cnames
+                            is_w = 0;
+                            total_w += counters['All Events']
+                            scale = "(%s)" % field[2]
+                        if len(field) == 4: scale += "*("+field[3]+")"
+                        for p0,s in options.processesToScale:
+                            for p in p0.split(","):
+                                if re.match(p+"$", pname): scale += "*("+s+")"
+                        to_norm = True
+                    elif len(field) == 3:
+                        tty.setScaleFactor(field[2])
+                    else:
+                        try:
+                            pckobj  = pickle.load(open(pckfile,'r'))
+                            counters = dict(pckobj)
+                        except:
+                            pass
                 # Adjust free-float and fixed from command line
                 for p0 in options.processesToFloat:
                     for p in p0.split(","):
