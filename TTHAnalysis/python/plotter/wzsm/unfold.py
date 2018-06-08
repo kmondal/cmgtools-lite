@@ -1202,7 +1202,8 @@ def main(args):
     vardict = {
         'Zpt' : 'p_{T}(Z) [GeV]',
         'LeadJetPt' : 'p_{T}(leading jet) [GeV]',
-        'MWZ' : 'M(WZ) [GeV]'
+        'MWZ' : 'M(WZ) [GeV]',
+        'Wpt' : 'p_{T}(W) [GeV]'
         }
     
     for var, fancyvar in vardict.items():
