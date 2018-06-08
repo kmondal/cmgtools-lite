@@ -173,6 +173,7 @@ class Unfolder(object):
         self.normSystsList=None
         self.shapeSystsList=None
         self.finalState=args.finalState
+        self.charge=args.charge
         self.bias=args.bias
         self.areaConstraint=args.areaConstraint
         self.verbose=args.verbose
@@ -207,8 +208,8 @@ class Unfolder(object):
         dataFile=None
         mcFile=None
         #genFile=None # Taken from a separate file  
-        print('Opening file %s.' % utils.get_file_from_glob(os.path.join(folder, '%s_fitWZonly_%s/%s' % (self.finalState, self.var, self.combineInput) ) if folder else self.combineInput) )
-        file_handle = ROOT.TFile.Open(utils.get_file_from_glob(os.path.join(folder,  '%s_fitWZonly_%s/%s' % (self.finalState, self.var, self.combineInput)) if folder else self.combineInput))
+        print('Opening file %s.' % utils.get_file_from_glob(os.path.join(folder, '%s_fitWZonly_%s%s/%s' % (self.finalState, self.var, self.charge, self.combineInput) ) if folder else self.combineInput) )
+        file_handle = ROOT.TFile.Open(utils.get_file_from_glob(os.path.join(folder,  '%s_fitWZonly_%s%s/%s' % (self.finalState, self.var, self.charge, self.combineInput)) if folder else self.combineInput))
         # gdata=file_handle.Get('x_data')
         # gdata.Draw('AP')
         # hdata=self.get_graph_as_hist(gdata, ('recodata','recodata',4,0,4))
@@ -313,7 +314,7 @@ class Unfolder(object):
             
     def get_responses(self):
         print('Acquiring response matrices.')
-        folder=os.path.join(self.inputDir, 'responses/%s_fitWZonly_%s/common/' % (self.finalState, self.var) )        
+        folder=os.path.join(self.inputDir, 'responses/%s_fitWZonly_%s%s/common/' % (self.finalState, self.var, self.charge) )        
 
         file_handle = ROOT.TFile.Open('%sWZSR.input.root' % (folder))
         print('Opening file: %s' % file_handle.GetName())
@@ -340,7 +341,7 @@ class Unfolder(object):
                     self.response_alt.SetBinError(ibin, jbin, 0)
                     self.response_inc.SetBinError(ibin, jbin, 0)
                     
-        datacardReader = DatacardReader(os.path.join(self.inputDir, 'responses/%s_fitWZonly_%s/prompt_altWZ_Pow/WZSR.card.txt' % (self.finalState, self.var)), 'prompt_altWZ_Pow')
+        datacardReader = DatacardReader(os.path.join(self.inputDir, 'responses/%s_fitWZonly_%s%s/prompt_altWZ_Pow/WZSR.card.txt' % (self.finalState, self.var,self.charge)), 'prompt_altWZ_Pow')
         self.normSystsList, self.shapeSystsList = datacardReader.getNormAndShapeSysts()
 
 
@@ -1229,6 +1230,7 @@ if __name__ == '__main__':
     parser.add_argument('-v', '--verbose',        help='Verbose printing of the L-curve scan', action='store_true')
     parser.add_argument('-r', '--responseAsPdf',  help='Print response matrix as pdf', action='store_true') 
     parser.add_argument('-f', '--finalState',     help='Final state', default=None)
+    parser.add_argument('--charge',               help='Charge of the W', default='')
     parser.add_argument('-b', '--bias',           help='Scale bias (0 deactivates bias vector)', default=None, type=float)
     parser.add_argument('-a', '--areaConstraint', help='Area constraint', action='store_true')
     args = parser.parse_args()

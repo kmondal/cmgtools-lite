@@ -17,31 +17,34 @@ def get_list_of_jobs(base):
     
     ret=[]
 
-    for fs in [ 'incl', 'eee', 'eem', 'mme', 'mmm']:
-        if not base:
-            # No bias, area constraint     
-            ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} -b 0 -a -o unfold_nobias/{fs}/data -c common/WZSR.input.root -r >& logs/nobias_data_{fs}.log'.format(fs=fs))
-            ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} -b 0 -a -o unfold_nobias/{fs}/mcclosure -c common/WZSR.input.root -r --closure >& logs/nobias_mcclosure_{fs}.log'.format(fs=fs))
-            
-            # No bias, no area constraint
-            ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} -b 0 -o unfold_nobias_noconstraintarea/{fs}/data -c common/WZSR.input.root -r >& logs/nobias_noconstraintarea_data_{fs}.log'.format(fs=fs))
-            ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} -b 0 -o unfold_nobias_noconstraintarea/{fs}/mcclosure -c common/WZSR.input.root -r --closure >& logs/nobias_noconstraintarea_mcclosure_{fs}.log'.format(fs=fs))
-            
-            # Bias 1, area constraint
-            ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} -b 1.0 -a -o unfold_1p0bias/{fs}/data -c common/WZSR.input.root -r >& logs/1p0bias_data_{fs}.log'.format(fs=fs))
-            ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} -b 1.0 -a -o unfold_1p0bias/{fs}/mcclosure -c common/WZSR.input.root -r --closure >& logs/1p0bias_mcclosure_{fs}.log'.format(fs=fs))
-        
-            # Bias 1, no area constraint
-            ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} -b 1.0 -o unfold_1p0bias_noconstraintarea/{fs}/data -c common/WZSR.input.root -r >& logs/1p0bias_noconstraintarea_data_{fs}.log'.format(fs=fs))
-            ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} -b 1.0 -o unfold_1p0bias_noconstraintarea/{fs}/mcclosure -c common/WZSR.input.root -r --closure >& logs/1p0bias_noconstraintarea_mcclosure_{fs}.log'.format(fs=fs))
-        
-            # Bias 1.13, no area constraint
-            ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} -b 1.13 -o unfold_nnlobias_noconstraintarea/{fs}/data -c common/WZSR.input.root -r >& logs/nnlobias_noconstraintarea_data_{fs}.log'.format(fs=fs))
-            ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} -b 1.13 -o unfold_nnlobias_noconstraintarea/{fs}/mcclosure -c common/WZSR.input.root -r --closure >& logs/nnlobias_noconstraintarea_mcclosure_{fs}.log'.format(fs=fs))
+    #for charge in [ '', '_plus', '_minus' ]:
+    for charge in [ '_plus', '_minus' ]:
 
-        # Bias 1.13, area constraint
-        ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} -b 1.13 -a -o unfold_nnlobias/{fs}/data -c common/WZSR.input.root -r >& logs/nnlobias_data_{fs}.log'.format(fs=fs))
-        ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} -b 1.13 -a -o unfold_nnlobias/{fs}/mcclosure -c common/WZSR.input.root -r --closure >& logs/nnlobias_mcclosure_{fs}.log'.format(fs=fs))
+        for fs in [ 'incl', 'eee', 'eem', 'mme', 'mmm']:
+            if not base:
+                # No bias, area constraint     
+                ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} --charge {charge}  -b 0 -a -o unfold_nobias/{fs}{charge}/data -c common/WZSR.input.root -r >& logs/nobias_data_{fs}.log'.format(fs=fs,charge=charge))
+                ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} --charge {charge}  -b 0 -a -o unfold_nobias/{fs}{charge}/mcclosure -c common/WZSR.input.root -r --closure >& logs/nobias_mcclosure_{fs}.log'.format(fs=fs,charge=charge))
+
+                # No bias, no area constraint
+                ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} --charge {charge}  -b 0 -o unfold_nobias_noconstraintarea/{fs}{charge}/data -c common/WZSR.input.root -r >& logs/nobias_noconstraintarea_data_{fs}.log'.format(fs=fs,charge=charge))
+                ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} --charge {charge}  -b 0 -o unfold_nobias_noconstraintarea/{fs}{charge}/mcclosure -c common/WZSR.input.root -r --closure >& logs/nobias_noconstraintarea_mcclosure_{fs}.log'.format(fs=fs,charge=charge))
+            
+                # Bias 1, area constraint
+                ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} --charge {charge}  -b 1.0 -a -o unfold_1p0bias/{fs}{charge}/data -c common/WZSR.input.root -r >& logs/1p0bias_data_{fs}.log'.format(fs=fs,charge=charge))
+                ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} --charge {charge}  -b 1.0 -a -o unfold_1p0bias/{fs}{charge}/mcclosure -c common/WZSR.input.root -r --closure >& logs/1p0bias_mcclosure_{fs}.log'.format(fs=fs,charge=charge))
+                
+                # Bias 1, no area constraint
+                ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} --charge {charge}  -b 1.0 -o unfold_1p0bias_noconstraintarea/{fs}{charge}/data -c common/WZSR.input.root -r >& logs/1p0bias_noconstraintarea_data_{fs}.log'.format(fs=fs,charge=charge))
+                ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} --charge {charge}  -b 1.0 -o unfold_1p0bias_noconstraintarea/{fs}{charge}/mcclosure -c common/WZSR.input.root -r --closure >& logs/1p0bias_noconstraintarea_mcclosure_{fs}.log'.format(fs=fs,charge=charge))
+        
+                # Bias 1.13, no area constraint
+                ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} --charge {charge}  -b 1.13 -o unfold_nnlobias_noconstraintarea/{fs}{charge}/data -c common/WZSR.input.root -r >& logs/nnlobias_noconstraintarea_data_{fs}.log'.format(fs=fs,charge=charge))
+                ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} --charge {charge}  -b 1.13 -o unfold_nnlobias_noconstraintarea/{fs}{charge}/mcclosure -c common/WZSR.input.root -r --closure >& logs/nnlobias_noconstraintarea_mcclosure_{fs}.log'.format(fs=fs,charge=charge))
+
+                # Bias 1.13, area constraint
+                ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} --charge {charge}  -b 1.13 -a -o unfold_nnlobias/{fs}{charge}/data -c common/WZSR.input.root -r >& logs/nnlobias_data_{fs}.log'.format(fs=fs,charge=charge))
+                ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} --charge {charge}  -b 1.13 -a -o unfold_nnlobias/{fs}{charge}/mcclosure -c common/WZSR.input.root -r --closure >& logs/nnlobias_mcclosure_{fs}.log'.format(fs=fs,charge=charge))
             
 
     return ret
