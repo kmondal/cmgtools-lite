@@ -1,40 +1,34 @@
 #Flat uncertainties
 
-lumi_ML       : prompt_.*|rares_.*|convs|diboson   : .*                : 1.026
-trigeff_ML    : prompt_.*|rares_.*|convs|diboson   : .*                : 1.015
+lumi_ML       : prompt_.*|rares_.*|convs|diboson.*   : .*                : 1.026
+trigeff_ML    : prompt_.*|rares_.*|convs|diboson.*   : .*                : 0.982/1.014
 
-fakes_ML      : fakes_.*                          : .*                : 1.3 #FIX ME
-convs_ML      : convs                             : .*                : 1.25
+fakes_ML      : fakes_.*                          : .*                : 1.3 
+convs_ML      : convs                             : .*                : 1.2
 
-normZZH_ML    : prompt_ZZH                        : .*                : 1.3
+normZZH_ML    : prompt_ZZH                        : .*                : 1.07
 normVVV_ML    : rares_VVV                         : .*                : 1.5
-normtZq_ML    : rares_tZq                         : .*                : 1.5
-normTTX_ML    : rares_ttX                         : .*                : 1.5
-theoTTV_ML    : rares_ttW|rares_ttZ               : .*                : 1.15
-
-#ZZ
-#normZZH_ML    : prompt_ZZH                        : .*                : 1.3 : lnN_in_shape_bins : 1
-#normZZH_ML    : prompt_ZZH                        : .*                : 1.2 : lnN_in_shape_bins : 2,3,4
-
-#ttX
-#normTTX_ML    : rares_ttX|rares_tZq                         : .*                : 1.5 : lnN_in_shape_bins : 1,2
-#normTTX_ML    : rares_ttX|rares_tZq                         : .*                : 1.3 : lnN_in_shape_bins : 3,4
-
+normVH_ML     : rares_VH                          : .*                : 1.25
+normtZq_ML    : rares_tZq                         : .*                : 1.35
+normTTX_ML    : rares_ttX                         : .*                : 1.15
 
 #Templates#
 ewkfakes_ML      : fakes_.*                          : .* : ewk        : templates
 ewksub_ML        : promptsub_.*                      : .* : ewk        : templates
-JES_ML           : prompt_.*|rares_.*|convs|diboson          : .* : jec        : templates
-PUW_ML           : prompt_.*|rares_.*|convs|diboson          : .* : puw        : templates
-LepSFMu_ML         : prompt_.*|rares_.*|convs|diboson          : .* : lepSFMu      : templates
-LepSFEl_ML         : prompt_.*|rares_.*|convs|diboson          : .* : lepSFEl      : templates
-btag_HF_ML       : prompt_.*|rares_.*|convs|diboson          : .* : bTagHF     : templates
-btag_LF_ML       : prompt_.*|rares_.*|convs|diboson          : .* : bTagLF     : templates
+JES_ML           : prompt_.*|rares_.*|convs|diboson.*          : .* : jec        : templates
+MuScale_ML       : prompt_.*|rares_.*|convs|diboson.*          : .* : muscale    : templates
+ElScale_ML       : prompt_.*|rares_.*|convs|diboson.*          : .* : elscale    : templates
+PUW_ML           : prompt_.*|rares_.*|convs|diboson.*          : .* : puw        : templates
+LepSFMu_ML       : prompt_.*|rares_.*|convs|diboson.*          : .* : lepSFMu    : templates
+LepSFEl_ML       : prompt_.*|rares_.*|convs|diboson.*          : .* : lepSFEl    : templates
+btag_HF_ML       : prompt_.*|rares_.*|convs|diboson.*          : .* : bTagHF     : templates
+btag_LF_ML       : prompt_.*|rares_.*|convs|diboson.*          : .* : bTagLF     : templates
 
 #Statistical uncertainties#
-stats_diboson   : diboson    : .* : 1.0 : stat_foreach_shape_bins : .*
+stats_WZ   : diboson.*    : .* : 1.0 : stat_foreach_shape_bins : .*
 stats_ZZH  : prompt_ZZH   : .* : 1.0 : stat_foreach_shape_bins : .*
 stats_convs: convs        : .* : 1.0 : stat_foreach_shape_bins : .*
 stats_ttX  : rares_ttX    : .* : 1.0 : stat_foreach_shape_bins : .*
 stats_VVV  : rares_VVV    : .* : 1.0 : stat_foreach_shape_bins : .*
+stats_VH   : rares_VH     : .* : 1.0 : stat_foreach_shape_bins : .*
 stats_tZq  : rares_tZq    : .* : 1.0 : stat_foreach_shape_bins : .*

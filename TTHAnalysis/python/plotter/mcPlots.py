@@ -208,6 +208,9 @@ def doStackSignalNorm(pspec,pmap,individuals,extrascale=1.0,norm=True):
         sigs = []
         for sig in [pmap[x] for x in mca.listSignals() if pmap.has_key(x) and pmap[x].Integral() > 0]:
             sig = sig.Clone(sig.GetName()+"_norm")
+            if options.addBkgToSig:
+                for bkg in [pmap[x] for x in mca.listBackgrounds() if pmap.has_key(x) and pmap[x].Integral() > 0 and not(x in options.addBkgExc)]:
+                    sig = sig + bkg    
             sig.SetFillStyle(0)
             sig.SetLineColor(sig.GetFillColor())
             sig.SetLineWidth(4)
@@ -589,7 +592,7 @@ def doStatTests(total,data,test,legendCorner):
 
 
 legend_ = None;
-def doLegend(pmap,mca,corner="TR",textSize=0.035,cutoff=1e-2,cutoffSignals=True,mcStyle="F",legWidth=0.18,legBorder=True,signalPlotScale=None,totalError=None,header="",doWide=False,options=None):
+def doLegend(pmap,mca,corner="TR",textSize=0.035,cutoff=1e-3,cutoffSignals=True,mcStyle="F",legWidth=0.18,legBorder=True,signalPlotScale=None,totalError=None,header="",doWide=False,options=None):
         if (corner == None): return
         total = sum([x.Integral() for x in pmap.itervalues()])
         sigEntries = []; bgEntries = []
@@ -698,8 +701,6 @@ class PlotMaker:
                         for proc in pmap.keys():
                             theDir = theFile[1]+"/" if len(theFile)>0 and theFile[1] else ""
                             toAdd  = tf.Get(theDir+pspec.name+"_"+proc)
-                            print theDir+pspec.name+"_"+proc
-                            print toAdd
                             if toAdd: pmap[proc].Add(toAdd)
                             if not toAdd and proc=="fakes_appldata":
                                 toAdd = tf.Get(pspec.name+"_fakes_data")
@@ -1033,9 +1034,14 @@ class PlotMaker:
                     p2.cd();
                     rn = options.numerator if plotmode in ["closure"] else options.ratioNums 
                     rd = "total" if plotmode in ["closure"] else options.ratioDen
-                    rdata,rnorm,rnorm2,rline = doRatioHists(pspec,pmap,total,totalSyst, maxRange=options.maxRatioRange, fixRange=options.fixRatioRange,
+                    if options.errorBandOnRatio:
+                        rdata,rnorm,rnorm2,rline = doRatioHists(pspec,pmap,total,totalSyst, maxRange=options.maxRatioRange, fixRange=options.fixRatioRange,
                                                             fitRatio=options.fitRatio, errorsOnRef=options.errorBandOnRatio, 
                                                             ratioNums=rn, ratioDen=rd, ylabel=options.ratioYLabel, doWide=doWide, showStatTotLegend=True)
+                    else:
+                        rdata,rnorm,rnorm2,rline = doRatioHists(pspec,pmap,total,totalSyst, maxRange=options.maxRatioRange, fixRange=options.fixRatioRange,
+                                                            fitRatio=options.fitRatio, errorsOnRef=options.errorBandOnRatio, 
+                                                            ratioNums=rn, ratioDen=rd, ylabel=options.ratioYLabel, doWide=doWide, showStatTotLegend=False)
                 if makeCanvas and outputDir: outputDir.WriteTObject(c1) # should be here to include ratio pad in saved canvas
                 if self._options.printPlots:
                     for ext in self._options.printPlots.split(","):
@@ -1213,6 +1219,9 @@ def addPlotMakerOptions(parser, addAlsoMCAnalysis=True):
     parser.add_option("--printBin", dest="printBinning", type="string", default=None, help="Write 'Events/xx' instead of 'Events' on the y axis")
     parser.add_option('--env',      dest='env'         , type='string', default="", help='Set environment (currently supported: "oviedo")')
     parser.add_option('--add-histos', dest='addHistos' , type='string', action="append", nargs=2, default=[], help='File path to load and add histograms from to the ones that are newly made.')
+    parser.add_option("--addBkgToSig", dest="addBkgToSig", action="store_true", default=False, help="Add background contributions to the signal, i.e., when signal is a modified SM process.");
+    parser.add_option("--addBkgExc", dest="addBkgExc", type="string", action="append", default=None, help="Do not add this backgrounds to the signal");
+
 
 if __name__ == "__main__":
     from optparse import OptionParser
