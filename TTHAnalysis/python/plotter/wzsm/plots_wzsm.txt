@@ -1,3 +1,7 @@
+ptCorr_noCorrZ1 : (LepZ1_pt - LepZ1_unc)/LepZ1_unc : 21, -0.105,0.105 ; XTitle="(p_{T}^{Z1\,corr} - p_{T}^{Z1\,uncorr})/p_{T}^{Z1\,uncorr}"
+ptCorr_noCorrZ2 : (LepZ2_pt - LepZ2_unc)/LepZ2_unc : 21, -0.105,0.105 ; XTitle="(p_{T}^{Z2\,corr} - p_{T}^{Z2\,uncorr})/p_{T}^{Z2\,uncorr}"
+ptCorr_noCorrW  : (LepW_pt - LepW_unc)/LepW_unc : 21, -0.105,0.105 ; XTitle="(p_{T}^{W\,corr} - p_{T}^{W\,uncorr})/p_{T}^{W\,uncorr}"
+
 #### Lepton--RELATED VARIABLES
 charge  : -1 + 2*(LepW_pdgId < 0) : [-1.5,0,1.5]
 pt1     : LepSel1_conePt          : 25,0,250     ; XTitle="p_{T}(leading reco lep) [GeV]", LegendCutoff=1e-5
@@ -25,7 +29,7 @@ m3mu: mass_3_cheap(LepSel1_pt,LepSel1_eta,LepSel2_pt,LepSel2_eta,deltaPhi(LepSel
 m3linv    : m3L    : 20, 0, 100; XTitle="M_{3L} [GeV]", LegendCutoff=1e-5
 
 m3lmetlow : m3Lmet : 14, 75, 250; XTitle="M_{WZ} [GeV]", LegendCutoff=1e-5
-m3lblind    : m3L    : 21, 80, 300; XTitle="M_{3L} [GeV]", LegendCutoff=1e-5
+m3lblind    : m3L    : 18, 60, 300; XTitle="M_{3L} [GeV]", LegendCutoff=1e-5
 m3lmetblind : m3Lmet : 27, 75, 400; XTitle="M_{WZ} [GeV]", LegendCutoff=1e-5
 
 mZ1W   : mass_2(LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass, LepW_pt,LepW_eta,LepW_phi,LepW_mass): 50,0,200; XTitle="m(Z1\,W) [GeV]"
@@ -95,7 +99,7 @@ eta1     : LepSel1_eta          : 10,-2.5,2.5     ; XTitle="#eta (leading reco l
 eta2     : LepSel2_eta          : 10,-2.5,2.5     ; XTitle="#eta (subleading reco lep)", LegendCutoff=1e-5
 eta3     : LepSel3_eta          : 10,-2.5,2.5     ; XTitle="#eta (third reco lep)", LegendCutoff=1e-5
 
-flavor:	 (abs(LepSel1_pdgId)==13)+(abs(LepSel2_pdgId)==13)+(abs(LepSel3_pdgId)==13) : [-0.5,0.5,1.5,2.5,3.5]; XTitle="Lepton flavour composition 3L", XNDiv=004, xBinLabels="eee\,ee#mu\,#mu#mue\,#mu#mu#mu", Legend='TL', LegendCutoff=1e-5 
+flavor:	 (abs(LepSel1_pdgId)==13)+(abs(LepSel2_pdgId)==13)+(abs(LepSel3_pdgId)==13) : [-0.5,0.5,1.5,2.5,3.5]; XTitle="Lepton flavour composition 3L", XNDiv=004, xBinLabels="eee\,ee#mu\,#mu#mue\,#mu#mu#mu", Legend='TL', LegendCutoff=1e-5
 
 pdgId1:	 LepSel1_pdgId : 29,-14.5,14.5; XTitle="Lep1 pdgId", LegendCutoff=1e-5 
 pdgId2:	 LepSel2_pdgId : 29,-14.5,14.5; XTitle="Lep2 pdgId", LegendCutoff=1e-5 
@@ -139,8 +143,8 @@ nJet30_log 	   : nJet30               : 11,-0.5,10.5  ; XTitle='N_{jet}', Legend
 nBJet25    : nBJetMedium25        : 6,-0.5,5.5   ; XTitle='N(b-jet\, p_{T} > 25\, CSVM)', LegendCutoff=1e-5, XNDiv=006
 nBJet25_log    : nBJetMedium25        : 6,-0.5,5.5   ; XTitle='N(b-jet\, p_{T} > 25\, CSVM)', LegendCutoff=1e-5, Logy, XNDiv=006
 
-nBJet30    : nBJetMedium30        : 6,-0.5,5.5   ; XTitle='N(b-jet\, p_{T} > 30\, CSVM)', LegendCutoff=1e-5, XNDiv=006
-nBJet30_log    : nBJetMedium30        : 6,-0.5,5.5   ; XTitle='N(b-jet\, p_{T} > 30\, CSVM)', LegendCutoff=1e-5, Logy, XNDiv=006
+nBJet30    : nBJetMedium30        : 2,-0.5,1.5   ; XTitle='N(b-jet\, p_{T} > 30\, CSVM)', LegendCutoff=1e-5, XNDiv=006
+nBJet30_log    : nBJetMedium30        : 2,-0.5,1.5   ; XTitle='N(b-jet\, p_{T} > 30\, CSVM)', LegendCutoff=1e-5, Logy, XNDiv=006
 
 htJet40j:   htJet40j: 40,0,400    ; XTitle="H_{T}(jet p_{T} > 40)  [GeV]"
 htJet40j_log:   htJet40j: 40,0,400    ; XTitle="H_{T}(jet p_{T} > 40)  [GeV]", Logy
@@ -198,7 +202,7 @@ METlowinv        : met_pt         : 10,0,30    ; XTitle="E_{T}^{miss} [GeV]", Le
 ##### WZ control region
 htJet40_WZ:   htJet40j: 4,0,200    ; XTitle="H_{T}(jet p_{T} > 30) [GeV]", LegendCutoff=1e-5, XNDiv=505
 mll_3long        : mll_3l: 30,26,156; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5
-mll_3l        : mll_3l: 30,76,106; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5
+mll_3l        : mll_3l: 3,76,106; XTitle"best m_{Z} [GeV]", LegendCutoff=1e-5
 mll_3linv     : mll_3l: 12,0,76; XTitle="best m_{Z} [GeV]", LegendCutoff=1e-5, Legend='TL'
 mT_3l      : mT_3l: 20,0,200; XTitle="M_{T}^{W} [GeV]", LegendCutoff=1e-5, Legend='TR', XNDiv=510
 nJet30_WZ 	   : nJet30               : 4,-0.5,3.5  ; XTitle='N_{jet}', LegendCutoff=1e-5, XNDiv=004, Legend='TL'
@@ -234,12 +238,10 @@ byRegion_log_good :  getWZRegion(met_pt, mll_3l,  m3L, nBJetMedium30, nLepSel, L
 
 #ptZ1     : LepZ1_conePt          : 25,0,250     ; XTitle="p_{T}(leading Z lepton) [GeV]", LegendCutoff=1e-5
 
+mll_3l_new        : mll_3l : 19,43.6,138.6 ; XTitle"best m_{Z} [GeV]", LegendCut, Logy
 
+LHC_nJet30 	   : nJet30               : 5,-0.5,4.5  ; XTitle='Number of jets (p_{T} > 30 GeV)', xBinLabels="0\,1\,2\,3\,#geq 4", YMin = 0, YMax = 2258, LegendCutoff=1e-8
+LHC_mtMetW : mt_2(met_pt, met_phi, LepW_pt, LepW_phi) : 20, 0, 200; XTitle="m_T(l+E_{T}^{miss}) (GeV)"
 
-
-
-
-
-
-
-
+metnoBlind : met_pt : 40,0,400 ; XTitle="p_{T}^{miss} [GeV]", LegendCutoff=1e-10, Logy
+m3lnoBlind : m3L : 40,0,800; XTitle="M_{3L} [GeV]", LegendCutoff=1e-10
