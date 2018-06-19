@@ -1,6 +1,6 @@
 #Flat uncertainties
 
-lumi_ML       : prompt_.*|rares_.*|convs|diboson.*   : .*                : 1.026
+lumi_ML       : prompt_.*|rares_.*|convs|diboson.*   : .*                : 1.025
 trigeff_ML    : prompt_.*|rares_.*|convs|diboson.*   : .*                : 0.982/1.014
 
 fakes_ML      : fakes_.*                          : .*                : 1.3 
