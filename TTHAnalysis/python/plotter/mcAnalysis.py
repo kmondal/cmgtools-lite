@@ -13,10 +13,10 @@ def _runYields(args):
     return (key, tty.getYields(cuts,noEntryLine=noEntryLine,fsplit=fsplit))
 
 def _runPlot(args):
-    key,tty,plotspec,cut,fsplit,closeTree = args
+    key,tty,plotspec,cut,fsplit,closeTree,doDummy = args
     timer = ROOT.TStopwatch()
     #print "Starting plot %s for %s, %s" % (plotspec.name,key,tty._cname)
-    ret = (key,tty.getPlot(plotspec,cut,fsplit=fsplit,closeTreeAfter=closeTree))
+    ret = (key,tty.getPlot(plotspec,cut,fsplit=fsplit,closeTreeAfter=closeTree,doDummy=doDummy))
     #print "Done plot %s for %s, %s, fsplit %s in %s s, at %.2f; entries = %d, time/entry = %.3f ms" % (plotspec.name,key,tty._cname,fsplit,timer.RealTime(), 0.001*(long(ROOT.gSystem.Now()) - _T0), ret[1].GetEntries(), (long(ROOT.gSystem.Now()) - _T0)/float(ret[1].GetEntries()))
     return ret
 
@@ -310,7 +310,7 @@ class MCAnalysis:
         return ret
     def getPlotsRaw(self,name,expr,bins,cut,process=None,nodata=False,makeSummary=False,closeTreeAfter=False):
         return self.getPlots(PlotSpec(name,expr,bins,{}),cut,process,nodata,makeSummary,closeTreeAfter)
-    def getPlots(self,plotspec,cut,process=None,nodata=False,makeSummary=False,closeTreeAfter=False):
+    def getPlots(self,plotspec,cut,process=None,nodata=False,makeSummary=False,closeTreeAfter=False,doDummy=False):
         ret = { }
         allSig = []; allBg = []
         tasks = []
@@ -318,7 +318,7 @@ class MCAnalysis:
             if key == 'data' and nodata: continue
             if process != None and key != process: continue
             for tty in ttys:
-                tasks.append((key,tty,plotspec,cut,None,closeTreeAfter))
+                tasks.append((key,tty,plotspec,cut,None,closeTreeAfter,doDummy))
         if self._options.splitFactor > 1 or  self._options.splitFactor == -1:
             tasks = self._splitTasks(tasks)
         retlist = self._processTasks(_runPlot, tasks, name="plot "+plotspec.name)

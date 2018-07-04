@@ -377,8 +377,8 @@ class TreeToYield:
             return [ npass, sqrt(npass), npass ]
     def _stylePlot(self,plot,spec):
         return stylePlot(plot,spec,self.getOption)
-    def getPlot(self,plotspec,cut,fsplit=None,closeTreeAfter=False):
-        ret = self.getPlotRaw(plotspec.name, plotspec.expr, plotspec.bins, cut, plotspec, fsplit=fsplit, closeTreeAfter=closeTreeAfter)
+    def getPlot(self,plotspec,cut,fsplit=None,closeTreeAfter=False,doDummy=False):
+        ret = self.getPlotRaw(plotspec.name, plotspec.expr, plotspec.bins, cut, plotspec, fsplit=fsplit, closeTreeAfter=closeTreeAfter,doDummy=doDummy)
         # fold overflow
         if ret.ClassName() in [ "TH1F", "TH1D" ] :
             n = ret.GetNbinsX()
@@ -412,7 +412,7 @@ class TreeToYield:
         self._stylePlot(ret,plotspec)
         ret._cname = self._cname
         return ret
-    def getPlotRaw(self,name,expr,bins,cut,plotspec,fsplit=None,closeTreeAfter=False):
+    def getPlotRaw(self,name,expr,bins,cut,plotspec,fsplit=None,closeTreeAfter=False,doDummy=False):
         unbinnedData2D = plotspec.getOption('UnbinnedData2D',False) if plotspec != None else False
         if not self._isInit: self._init()
         if self._appliedCut != None:
@@ -433,6 +433,10 @@ class TreeToYield:
         if self._options.doS2V:
             cut  = scalarToVector(cut)
             expr = scalarToVector(expr)
+        if doDummy:
+            histo = makeHistFromBinsAndSpec("dummy",expr,bins,plotspec)            
+            histo.SetDirectory(0)
+            return histo.Clone(name)
 #        print cut 
 #        print expr
         (firstEntry, maxEntries) = self._rangeToProcess(fsplit)
