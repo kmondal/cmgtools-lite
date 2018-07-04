@@ -8,7 +8,7 @@ pt1     : LepSel1_conePt          : 25,0,250     ; XTitle="p_{T}(leading reco le
 pt2     : LepSel2_conePt          : 20,0,200     ; XTitle="p_{T}(subleading reco lep) [GeV]", LegendCutoff=1e-5
 pt3     : LepSel3_conePt          : 30,0,150     ; XTitle="p_{T}(third reco lep) [GeV]", LegendCutoff=1e-5
 
-ptZ1     : LepZ1_conePt          : 25,0,250     ; XTitle="p_{T}(leading Z lepton) [GeV]", LegendCutoff=1e-5
+ptZ1     : LepZ1_conePt          : 40,0,400     ; XTitle="p_{T}(leading Z lepton) [GeV]", LegendCutoff=1e-5, YTitle='Events/10GeV'
 ptZ2     : LepZ2_conePt          : 30,0,150     ; XTitle="p_{T}(subleading Z lepton) [GeV]", LegendCutoff=1e-5
 ptW      : LepW_conePt           : 25,0,250     ; XTitle="p_{T}(W lepton) [GeV]", LegendCutoff=1e-5
 
@@ -34,7 +34,7 @@ m3lmetblind : m3Lmet : 27, 75, 400; XTitle="M_{WZ} [GeV]", LegendCutoff=1e-5
 
 mZ1W   : mass_2(LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass, LepW_pt,LepW_eta,LepW_phi,LepW_mass): 50,0,200; XTitle="m(Z1\,W) [GeV]"
 mZ2W   : mass_2(LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass, LepW_pt,LepW_eta,LepW_phi,LepW_mass): 50,0,200; XTitle="m(Z2\,W) [GeV]"
-mZ1Z2  : mass_2(LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass, LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass): 11,1.6,221.6; XTitle="m(#it{l}_{Z1}\,#it{l}_{Z2}) [GeV]"
+mZ1Z2  : mass_2(LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass, LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass): 44,1.6,221.6; XTitle="m(#it{l}_{Z1}\,#it{l}_{Z2}) [GeV]", YTitle='Events/5 GeV', Logy, LegendCutoff=1e-5
 mll_3l_nocut : mll_3l: 11,1.6,221.6; XTitle="m(#it{l}_{Z1}\,#it{l}_{Z2}) [GeV]", LegendCutoff=1e-5, YMin=10.0, YMax=8000, Logy
 
 mtMetW : mt_2(met_pt, met_phi, LepW_pt, LepW_phi) : 50, 0, 500; XTitle="m_T(MET\,W) [GeV]"
@@ -99,7 +99,7 @@ eta1     : LepSel1_eta          : 10,-2.5,2.5     ; XTitle="#eta (leading reco l
 eta2     : LepSel2_eta          : 10,-2.5,2.5     ; XTitle="#eta (subleading reco lep)", LegendCutoff=1e-5
 eta3     : LepSel3_eta          : 10,-2.5,2.5     ; XTitle="#eta (third reco lep)", LegendCutoff=1e-5
 
-flavor:	 (abs(LepSel1_pdgId)==13)+(abs(LepSel2_pdgId)==13)+(abs(LepSel3_pdgId)==13) : [-0.5,0.5,1.5,2.5,3.5]; XTitle="Lepton flavour composition 3L", XNDiv=004, xBinLabels="eee\,ee#mu\,#mu#mue\,#mu#mu#mu", Legend='TL', LegendCutoff=1e-5
+flavor:	 (abs(LepSel1_pdgId)==13)+(abs(LepSel2_pdgId)==13)+(abs(LepSel3_pdgId)==13) : [-0.5,0.5,1.5,2.5,3.5]; XTitle="Lepton flavour composition 3L", XNDiv=004, xBinLabels="eee\,ee#mu\,#mu#mue\,#mu#mu#mu", Legend='TL', LegendCutoff=1e-5, YTitle='Events/bin'
 
 pdgId1:	 LepSel1_pdgId : 29,-14.5,14.5; XTitle="Lep1 pdgId", LegendCutoff=1e-5 
 pdgId2:	 LepSel2_pdgId : 29,-14.5,14.5; XTitle="Lep2 pdgId", LegendCutoff=1e-5 
@@ -184,8 +184,8 @@ Zpt_response : sump4(0, genLepZ1_pt,genLepZ1_eta,genLepZ1_phi,genLepZ1_mass,genL
 LeadJetPt_response : LeadJet_mcPt\:LeadJet_pt : [25,30,35,40,50,60,70,80,90,100,110,120,130,140,160,180,200,250,300]*[25,35,50,70,90,110,130,160,200,300] ; XTitle="Leading jet reco p_{T}", YTitle="Leading jet gen p_{T}", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ', IncludeOverflows=False
 ZconePt_response : sump4(0, LepZ1_genpt,LepZ1_geneta,LepZ1_genphi,LepZ1_genmass,LepZ2_genpt,LepZ2_geneta,LepZ2_genphi,LepZ2_genmass)\:sump4(0, LepZ1_conePt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_conePt,LepZ2_eta,LepZ2_phi,LepZ2_mass) : [0,20,40,60,80,100,130,160,200,300]*[0,40,80,130,300] ; XTitle="Z reco p_{T}^{cone}", YTitle="Z gen p_{T}", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ', IncludeOverflows=False
 
-Zpt : sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass) : [0,20,40,60,80,100,130,160,200,300] ; XTitle="Z reco p_{T}", Legend='TR', LegendCutoff=1e-5
-LeadJetPt : LeadJet_pt : [25,30,35,40,50,60,70,80,90,100,110,120,130,140,160,180,200,250,300]; XTitle="Leading jet reco p_{T}", Legend='TR', LegendCutoff=1e-5, PlotMode='COLZ'
+Zpt : sump4(0, LepZ1_pt,LepZ1_eta,LepZ1_phi,LepZ1_mass,LepZ2_pt,LepZ2_eta,LepZ2_phi,LepZ2_mass) : [0,20,40,60,80,100,130,160,200,300] ; XTitle="Z reco p_{T} [GeV]", Legend='TR', LegendCutoff=1e-5,YTitle='Events/bin'
+LeadJetPt : LeadJet_pt : [25,30,35,40,50,60,70,80,90,100,110,120,130,140,160,180,200,250,300]; XTitle="Leading jet reco p_{T} [GeV]", Legend='TR', LegendCutoff=1e-5, PlotMode='COLZ',YTitle='Events/bin'
 Zgenpt_old : sump4(0, LepZ1_genpt,LepZ1_geneta,LepZ1_genphi,LepZ1_genmass,LepZ2_genpt,LepZ2_geneta,LepZ2_genphi,LepZ2_genmass) : [0,20,40,60,80,100,130,160,200,300] ; XTitle="Z gen p_{T}", Legend='TR', LegendCutoff=1e-5
 Zgenpt : sump4(0, genLepZ1_pt,genLepZ1_eta,genLepZ1_phi,genLepZ1_mass,genLepZ2_pt,genLepZ2_eta,genLepZ2_phi,genLepZ2_mass) : [0,20,40,60,80,100,130,160,200,300] ; XTitle="Z gen p_{T}", Legend='TR', LegendCutoff=1e-5
 
@@ -197,6 +197,7 @@ mass_2(LepSel1_pt,LepSel1_eta,LepSel1_phi,LepSel1_mass, LepSel2_pt,LepSel2_eta,L
 MET_JetRatio:      met_pt/Jet1_pt : 20,0,10; XTitle="E_{T}^{miss} / jet p_{T}  [GeV]"
 MET_JetRatio_log:  met_pt/Jet1_pt : 20,0,10; XTitle="E_{T}^{miss} / jet p_{T}  [GeV]", Logy
 METlow        : met_pt            : 20,0,100    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5
+METphi        : met_phi            : 40,-3.1415,3.1415    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5
 METlowinv        : met_pt         : 10,0,30    ; XTitle="E_{T}^{miss} [GeV]", LegendCutoff=1e-5
 
 ##### WZ control region
@@ -243,5 +244,8 @@ mll_3l_new        : mll_3l : 19,43.6,138.6 ; XTitle"best m_{Z} [GeV]", LegendCut
 LHC_nJet30 	   : nJet30               : 5,-0.5,4.5  ; XTitle='Number of jets (p_{T} > 30 GeV)', xBinLabels="0\,1\,2\,3\,#geq 4", YMin = 0, YMax = 2258, LegendCutoff=1e-8
 LHC_mtMetW : mt_2(met_pt, met_phi, LepW_pt, LepW_phi) : 20, 0, 200; XTitle="m_T(l+E_{T}^{miss}) (GeV)"
 
-metnoBlind : met_pt : 40,0,400 ; XTitle="p_{T}^{miss} [GeV]", LegendCutoff=1e-10, Logy
-m3lnoBlind : m3L : 40,0,800; XTitle="M_{3L} [GeV]", LegendCutoff=1e-10
+metnoBlind : met_pt : 40,0,400 ; XTitle="p_{T}^{miss} [GeV]", LegendCutoff=1e-10, Logy, YTitle='Events/10 GeV'
+
+m3lnoBlind : m3L : 48,0,1200; XTitle="M_{3L} [GeV]", LegendCutoff=1e-10, YTitle='Events/25 GeV'
+
+MWZ_unfold: m3Lmet : [100,140,160,180,200,250,300,400,600,1000,3000] ; XTitle="M(WZ) [GeV]", LegendCutoff=1e-5, YMin=1., YMax=1.5e3, Logx ,YTitle='Events/bin'
