@@ -154,9 +154,11 @@ class AcceptanceComputer:
 
 class Unfolder(object):
 
-    def __init__(self, args, var):
+    def __init__(self, args, var, fancyvar):
         print('Initialization')
         self.var=var
+        self.fancyvar=fancyvar
+        self.logx = False if self.var is not 'MWZ' else True
         self.unfold=None
         self.response_nom=None
         self.response_alt=None
@@ -171,6 +173,7 @@ class Unfolder(object):
         self.normSystsList=None
         self.shapeSystsList=None
         self.finalState=args.finalState
+        self.charge=args.charge
         self.bias=args.bias
         self.areaConstraint=args.areaConstraint
         self.verbose=args.verbose
@@ -205,8 +208,8 @@ class Unfolder(object):
         dataFile=None
         mcFile=None
         #genFile=None # Taken from a separate file  
-        print('Opening file %s.' % utils.get_file_from_glob(os.path.join(folder, '%s_fitWZonly_%s/%s' % (self.finalState, self.var, self.combineInput) ) if folder else self.combineInput) )
-        file_handle = ROOT.TFile.Open(utils.get_file_from_glob(os.path.join(folder,  '%s_fitWZonly_%s/%s' % (self.finalState, self.var, self.combineInput)) if folder else self.combineInput))
+        print('Opening file %s.' % utils.get_file_from_glob(os.path.join(folder, '%s_fitWZonly_%s%s/%s' % (self.finalState, self.var, self.charge, self.combineInput) ) if folder else self.combineInput) )
+        file_handle = ROOT.TFile.Open(utils.get_file_from_glob(os.path.join(folder,  '%s_fitWZonly_%s%s/%s' % (self.finalState, self.var, self.charge, self.combineInput)) if folder else self.combineInput))
         # gdata=file_handle.Get('x_data')
         # gdata.Draw('AP')
         # hdata=self.get_graph_as_hist(gdata, ('recodata','recodata',4,0,4))
@@ -283,22 +286,27 @@ class Unfolder(object):
             print(profX)
             print(profY)
             c = ROOT.TCanvas('matrix', 'Response Matrix', 2000, 1000)
-            # Margin not being applied somehow. Must do it via gStyle?
-            ROOT.gStyle.SetPadTopMargin(0.1)
-            ROOT.gStyle.SetPadBottomMargin(0.1)
-            ROOT.gStyle.SetPadLeftMargin(0.1)
-            ROOT.gStyle.SetPadRightMargin(0.1)
+            tdr.setTDRStyle()
+            # Margin not being applied somehow. Must do it via gStyle? Current suspicion: now that I have the TStyle, they are screwing the tdr style up
+            #ROOT.gStyle.SetPadTopMargin(0.1)
+            #ROOT.gStyle.SetPadBottomMargin(0.1)
+            #ROOT.gStyle.SetPadLeftMargin(0.1)
+            #ROOT.gStyle.SetPadRightMargin(0.1)
             #ROOT.gStyle.SetOptStat('uo')
             c.Divide(2,1)
             c.cd(1)
             ROOT.gPad.SetGrid()
             profX.SetMarkerStyle(ROOT.kFullSquare)
             profX.SetTitle('Response (gen profiled)')
+            profX.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+            profX.GetYaxis().SetTitle('Mean Gen %s' % self.fancyvar)
             profX.Draw("PE")
             c.cd(2)
             ROOT.gPad.SetGrid()
             profY.SetMarkerStyle(ROOT.kFullSquare)
             profY.SetTitle('Response (reco profiled)')
+            profY.GetXaxis().SetTitle('Gen %s' % self.fancyvar)
+            profY.GetXaxis().SetTitle('Mean Reco %s' % self.fancyvar)
             profY.Draw("PE")
             CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
             utils.saveCanva(c, os.path.join(self.outputDir, '1_responseProfiled_%s_%s' % (matrix.GetName(), self.var)))            
@@ -306,7 +314,7 @@ class Unfolder(object):
             
     def get_responses(self):
         print('Acquiring response matrices.')
-        folder=os.path.join(self.inputDir, 'responses/%s_fitWZonly_%s/common/' % (self.finalState, self.var) )        
+        folder=os.path.join(self.inputDir, 'responses/%s_fitWZonly_%s%s/common/' % (self.finalState, self.var, self.charge) )        
 
         file_handle = ROOT.TFile.Open('%sWZSR.input.root' % (folder))
         print('Opening file: %s' % file_handle.GetName())
@@ -322,7 +330,7 @@ class Unfolder(object):
         self.dataTruth_inc = copy.deepcopy(ROOT.TH1D(self.response_inc.ProjectionY('dataTruth_inc', 0, self.response_inc.GetNbinsX())))
         
         print('Response binsX %d, binsY %d' % (self.response_nom.GetNbinsX(), self.response_nom.GetNbinsY()))
-
+        
         for ibin in range(0, self.response_nom.GetNbinsX()+2):
             for jbin in range(0, self.response_nom.GetNbinsY()+2):
                 if ibin==0 or jbin==0 or ibin>self.response_nom.GetNbinsX() or jbin>self.response_nom.GetNbinsY():
@@ -333,25 +341,7 @@ class Unfolder(object):
                     self.response_alt.SetBinError(ibin, jbin, 0)
                     self.response_inc.SetBinError(ibin, jbin, 0)
                     
-        ## Now acquire matrices for the shape systematic uncertainties
-        ## /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding/responses/mme_fitWZonly//prompt_altWZ_Pow/WZSR.card.txt        
-        #tempList=[]
-        #tempList=[key.GetName() for key in file_handle.GetListOfKeys() ]
-        #systList=[]
-        #print(tempList)
-        #for element in tempList:
-        #    if 'Pow' in element and 'Up' in element:
-        #        element=element.replace('x_prompt_altWZ_Pow_', '')
-        #        element=element.replace('Up', '')
-        #        systList.append(element)
-        #    if 'Pow' in element and 'Up' not in element and 'Down' not in element:
-        #        element=element.replace('x_prompt_altWZ_Pow_', '')
-        #        element=element.replace('x_prompt_altWZ_Pow', '')
-        #        if element:
-        #            systList.append(element)
-        #print('Syst list from rootfile:')
-        #print(systList)
-        datacardReader = DatacardReader(os.path.join(self.inputDir, 'responses/%s_fitWZonly_%s/prompt_altWZ_Pow/WZSR.card.txt' % (self.finalState, self.var)), 'prompt_altWZ_Pow')
+        datacardReader = DatacardReader(os.path.join(self.inputDir, 'responses/%s_fitWZonly_%s%s/prompt_altWZ_Pow/WZSR.card.txt' % (self.finalState, self.var,self.charge)), 'prompt_altWZ_Pow')
         self.normSystsList, self.shapeSystsList = datacardReader.getNormAndShapeSysts()
 
 
@@ -359,11 +349,36 @@ class Unfolder(object):
         c = ROOT.TCanvas('matrix', 'Response Matrix', 2000, 2000)
         c.cd()
         # Margin not being applied somehow. Must do it via gStyle?
-        ROOT.gStyle.SetPadTopMargin(0.1)
-        ROOT.gStyle.SetPadBottomMargin(0.1)
-        ROOT.gStyle.SetPadLeftMargin(0.1)
-        ROOT.gStyle.SetPadRightMargin(0.1)
+        #ROOT.gStyle.SetPadTopMargin(0.1)
+        #ROOT.gStyle.SetPadBottomMargin(0.1)
+        #ROOT.gStyle.SetPadLeftMargin(0.1)
+        #ROOT.gStyle.SetPadRightMargin(0.1)
         #ROOT.gStyle.SetOptStat('uo')
+        self.response_nom.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+        self.response_alt.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+        self.response_inc.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+        self.response_nom.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
+        self.response_alt.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
+        self.response_inc.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
+        self.response_nom.GetYaxis().SetTitleOffset(1.7)
+        self.response_alt.GetYaxis().SetTitleOffset(1.7)
+        self.response_inc.GetYaxis().SetTitleOffset(1.7)
+
+        tdr.setTDRStyle()
+        self.response_nom.Draw('COLZ')
+        CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
+        utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Nom' % self.var))
+        c.Clear()
+        tdr.setTDRStyle()
+        self.response_alt.Draw('COLZ')
+        CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
+        utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Alt' % self.var))
+        c.Clear()
+        tdr.setTDRStyle()
+        self.response_inc.Draw('COLZ')
+        CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
+        utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Inc' % self.var))
+
         if self.responseAsPdf:
             resp_nom=copy.deepcopy(ROOT.TH2D(self.response_nom))
             resp_alt=copy.deepcopy(ROOT.TH2D(self.response_alt))
@@ -372,6 +387,12 @@ class Unfolder(object):
             resp_nom.Scale(1./resp_nom.Integral())
             resp_alt.Scale(1./resp_alt.Integral())
             resp_inc.Scale(1./resp_inc.Integral())
+            resp_nom.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+            resp_alt.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+            resp_inc.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+            resp_nom.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
+            resp_alt.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
+            resp_inc.GetYaxis().SetTitle('Gen %s' % self.fancyvar)
 
             # Compute stability
             diagonalSum_nom=0
@@ -412,17 +433,7 @@ class Unfolder(object):
             resp_inc.Draw('COLZ')
             utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrixAsPdf_%s_Inc' % self.var))
 
-        self.response_nom.Draw('COLZ')
-        CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
-        utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Nom' % self.var))
-        c.Clear()
-        self.response_alt.Draw('COLZ')
-        CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
-        utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Alt' % self.var))
-        c.Clear()
-        self.response_inc.Draw('COLZ')
-        CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
-        utils.saveCanva(c, os.path.join(self.outputDir, '1_responseMatrix_%s_Inc' % self.var))
+
         c.IsA().Destructor(c)
 
     def compute_stability_and_purity(self):
@@ -497,10 +508,10 @@ class Unfolder(object):
         print(stability_nom)
         c = ROOT.TCanvas('matrix', 'Response Matrix', 3000, 1000)
         # Margin not being applied somehow. Must do it via gStyle?
-        ROOT.gStyle.SetPadTopMargin(0.1)
-        ROOT.gStyle.SetPadBottomMargin(0.1)
-        ROOT.gStyle.SetPadLeftMargin(0.1)
-        ROOT.gStyle.SetPadRightMargin(0.1)
+        #ROOT.gStyle.SetPadTopMargin(0.1)
+        #ROOT.gStyle.SetPadBottomMargin(0.1)
+        #ROOT.gStyle.SetPadLeftMargin(0.1)
+        #ROOT.gStyle.SetPadRightMargin(0.1)
         #ROOT.gStyle.SetOptStat('uo')
         c.Divide(3,1)
         c.cd(1)
@@ -514,6 +525,7 @@ class Unfolder(object):
         stability_nom.Draw("PESAME")
         leg_1 = ROOT.TLegend(0.4,0.5,0.9,0.9)
         leg_1.SetTextSize(0.04)
+        leg_1.SetBorderSize(0)
         leg_1.AddEntry(purity_nom, 'Purity', 'p')
         leg_1.AddEntry(stability_nom, 'Stability', 'p')
         leg_1.Draw()
@@ -614,6 +626,10 @@ class Unfolder(object):
         if self.unfold:
             self.unfold.IsA().Destructor(self.unfold)
 
+        print('DATA BINNING: %d' % self.data.GetNbinsX() )
+        print('SIGNAL BINNING: %d' % self.mc.GetNbinsX() )
+        print('BKG[0] BINNING: %d' % self.bkg[0].GetNbinsX() )
+        print('Matrix binning: reco = %d, gen = %d' %( self.response_nom.GetNbinsX(), self.response_nom.GetNbinsY()) )
         if   key == 'nom':
             self.unfold = ROOT.TUnfoldDensity(self.response_nom, self.histmap, self.regmode, self.constraint, self.densitymode)
         elif key == 'alt':
@@ -624,9 +640,6 @@ class Unfolder(object):
             print('ERROR: the response matrix you asked for (%s) does not exist' % key)
         # Check if the input data points are enough to constrain the unfolding process
         # Set scale bias
-        print('DATA BINNING: %d' % self.data.GetNbinsX() )
-        print('SIGNAL BINNING: %d' % self.mc.GetNbinsX() )
-        print('BKG[0] BINNING: %d' % self.bkg[0].GetNbinsX() )
         if self.bias != 0.0:
             check = self.unfold.SetInput(self.data, self.bias)
         else:
@@ -844,6 +857,9 @@ class Unfolder(object):
         # Data, MC prediction, background
         self.data.SetMinimum(0.0)
         self.data.SetTitle('Inputs (folded space)')
+        self.data.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+        self.data.GetYaxis().SetTitle('Events')
+        self.data.GetYaxis().SetTitleOffset(1.6)
         self.data.DrawCopy("E")
         self.mc.SetMinimum(0.0)
         self.mc.SetLineColor(ROOT.kBlue)
@@ -859,6 +875,7 @@ class Unfolder(object):
 
         leg_1 = ROOT.TLegend(0.4,0.7,0.9,0.9)
         leg_1.SetTextSize(0.04)
+        leg_1.SetBorderSize(0)
         leg_1.AddEntry(self.data, 'Data', 'p')
         leg_1.AddEntry(self.mc, 'Exp. signal', 'lf')
         leg_1.AddEntry(bkgStacked, 'Exp. signal+background', 'l')
@@ -868,8 +885,8 @@ class Unfolder(object):
         print(self.mc.GetNbinsX())
         print(histDetNormBgrTotal.GetNbinsX())
         CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
-        output.SaveAs(os.path.join(self.outputDir, '2_p1_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p1_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
+        #output.SaveAs(os.path.join(self.outputDir, '2_p1_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p1_unfold_%s_%s_%s.C' % (label, key, self.var)))
         output.Clear()
         # draw generator-level distribution:
@@ -882,6 +899,10 @@ class Unfolder(object):
         self.dataTruth_nom.SetLineWidth(2)
         self.dataTruth_nom.SetMaximum(1.2*self.dataTruth_nom.GetMaximum())
         self.dataTruth_nom.SetTitle("")
+        self.dataTruth_nom.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+        self.dataTruth_nom.GetYaxis().SetTitle('Events')
+        self.dataTruth_nom.GetYaxis().SetTitleSize(0.035)
+        self.dataTruth_nom.GetYaxis().SetLabelSize(0.035)
         self.dataTruth_nom.DrawNormalized("E HIST")
         # Unfolded data with total error
         histUnfoldTotal.SetMarkerColor(ROOT.kBlue)
@@ -904,13 +925,14 @@ class Unfolder(object):
         ##histDensityGenMC.Draw("SAME HIST")
         leg_2 = ROOT.TLegend(0.4,0.7,0.9,0.9)
         leg_2.SetTextSize(0.04)
+        leg_2.SetBorderSize(0)
         leg_2.AddEntry(histUnfoldTotal, 'Unfolded data', 'pel')
-        leg_2.AddEntry(self.dataTruth_nom, 'Truth', 'la')
+        leg_2.AddEntry(self.dataTruth_nom, 'POWHEG prediction', 'la')
         leg_2.AddEntry(histUnfoldStat, '#frac{#chi^{2}}{NDOF}=%0.3f' % histUnfoldTotal.Chi2Test(self.dataTruth_nom, 'CHI2/NDF WW'), '')
         leg_2.Draw()
         CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
-        output.SaveAs(os.path.join(self.outputDir, '2_p2_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p2_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
+        #output.SaveAs(os.path.join(self.outputDir, '2_p2_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p2_unfold_%s_%s_%s.C' % (label, key, self.var)))
         output.Clear()
         # show detector level distributions
@@ -925,6 +947,8 @@ class Unfolder(object):
         subdata.SetTitle('Folded space')
         #self.data.SetTitle('Folded space')
         #self.data.Draw('PE')
+        subdata.GetXaxis().SetTitle('Reco %s' % self.fancyvar)
+        subdata.GetYaxis().SetTitle('Events')
         subdata.Draw('PE')
         # MC folded back
         histMdetFold.SetLineColor(ROOT.kRed+1)
@@ -939,6 +963,7 @@ class Unfolder(object):
         #histInput.Draw("SAME")
         leg_3 = ROOT.TLegend(0.4,0.7,0.9,0.9)
         leg_3.SetTextSize(0.04)
+        leg_3.SetBorderSize(0)
         #leg_3.AddEntry(self.data, 'Data', 'pe')
         leg_3.AddEntry(subdata, 'Data-bkg', 'pe')
         leg_3.AddEntry(histMdetFold, 'MC folded back', 'l')
@@ -948,8 +973,8 @@ class Unfolder(object):
         #leg_3.AddEntry(histInput, 'Input', 'la')
         leg_3.Draw()
         CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
-        output.SaveAs(os.path.join(self.outputDir, '2_p3_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p3_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
+        #output.SaveAs(os.path.join(self.outputDir, '2_p3_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p3_unfold_%s_%s_%s.C' % (label, key, self.var)))
         output.Clear()
         #output.cd(4) 
@@ -964,13 +989,14 @@ class Unfolder(object):
         #histInput.Draw("SAME")
         leg_4 = ROOT.TLegend(0.4,0.7,0.9,0.9)
         leg_4.SetTextSize(0.04)
+        leg_4.SetBorderSize(0)
         leg_4.AddEntry(self.mc, 'Exp. signal', 'lf')
         leg_4.AddEntry(subdata, 'Data-bkg by hand', 'pe')
         #leg_4.AddEntry(histInput, 'Data-bkg by tool', 'la')
         leg_4.Draw()
         CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
-        output.SaveAs(os.path.join(self.outputDir, '2_p4_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p4_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
+        #output.SaveAs(os.path.join(self.outputDir, '2_p4_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p4_unfold_%s_%s_%s.C' % (label, key, self.var)))
         output.Clear()
         if self.regmode is not ROOT.TUnfold.kRegModeNone:
@@ -981,18 +1007,20 @@ class Unfolder(object):
             # from v610# self.logTauCurvature.Draw()
             # show tau as a function of chi**2
             #output.cd(5)
-            self.logTauX.Draw()
+            tdr.setTDRStyle()
+            self.logTauX.Draw('L')
             bestLogTauLogChi2.SetMarkerColor(ROOT.kRed)
             bestLogTauLogChi2.SetMarkerStyle(ROOT.kFullSquare)
             bestLogTauLogChi2.SetMarkerSize(2)
-            bestLogTauLogChi2.Draw("P")
+            bestLogTauLogChi2.Draw('P')
             # show the L curve
             CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
-            output.SaveAs(os.path.join(self.outputDir, '2_p5_unfold_%s_%s_%s.png' % (label, key, self.var)))
             output.SaveAs(os.path.join(self.outputDir, '2_p5_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
+            #output.SaveAs(os.path.join(self.outputDir, '2_p5_unfold_%s_%s_%s.png' % (label, key, self.var)))
             output.SaveAs(os.path.join(self.outputDir, '2_p5_unfold_%s_%s_%s.C' % (label, key, self.var)))
             output.Clear()
             #output.cd(6)
+            tdr.setTDRStyle()
             self.lCurve.GetXaxis().SetTitle('log#chi_{A}^{2}')
             self.lCurve.GetYaxis().SetTitle('log#chi_{L}^{2}')
             self.lCurve.Draw("AL")
@@ -1001,8 +1029,8 @@ class Unfolder(object):
             bestLcurve.SetMarkerSize(2)
             bestLcurve.Draw("P")
             CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
-            output.SaveAs(os.path.join(self.outputDir, '2_p6_unfold_%s_%s_%s.png' % (label, key, self.var)))
             output.SaveAs(os.path.join(self.outputDir, '2_p6_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
+            #output.SaveAs(os.path.join(self.outputDir, '2_p6_unfold_%s_%s_%s.png' % (label, key, self.var)))
             output.SaveAs(os.path.join(self.outputDir, '2_p6_unfold_%s_%s_%s.C' % (label, key, self.var)))
             output.Clear()
        
@@ -1017,16 +1045,16 @@ class Unfolder(object):
             self.response_inc.SetTitle('Response Matrix (pythia)')
             self.response_inc.Draw('COLZ')
         CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
-        output.SaveAs(os.path.join(self.outputDir, '2_p7_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p7_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
+        #output.SaveAs(os.path.join(self.outputDir, '2_p7_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p7_unfold_%s_%s_%s.C' % (label, key, self.var)))
         output.Clear()
         #output.cd(8)
         histCorr.SetTitle('Correlation matrix')
         histCorr.Draw('COLZ')
         CMS_lumi.CMS_lumi(output, 4, 0, aLittleExtra=0.08)
-        output.SaveAs(os.path.join(self.outputDir, '2_p8_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p8_unfold_%s_%s_%s.pdf' % (label, key, self.var)))
+        #output.SaveAs(os.path.join(self.outputDir, '2_p8_unfold_%s_%s_%s.png' % (label, key, self.var)))
         output.SaveAs(os.path.join(self.outputDir, '2_p8_unfold_%s_%s_%s.C' % (label, key, self.var)))
         #output.SaveAs(os.path.join(self.outputDir, '2_unfold_%s_%s_%s.png' % (label, key, self.var)))
  
@@ -1039,13 +1067,30 @@ class Unfolder(object):
         # Normalize properly for differential xsec
         # Data truth
         dt=copy.deepcopy(self.dataTruth_nom)
+        dt_alt=copy.deepcopy(self.dataTruth_alt)
+        dt_inc=copy.deepcopy(self.dataTruth_inc)
         for ibin in range(0, dt.GetNbinsX()+2):
             dt.SetBinContent(ibin,dt.GetBinContent(ibin)/dt.GetBinWidth(ibin))
             dt.SetBinError(ibin,dt.GetBinError(ibin)/dt.GetBinWidth(ibin))
-        dt.Scale(1/dt.Integral())
+            dt_alt.SetBinContent(ibin,dt_alt.GetBinContent(ibin)/dt_alt.GetBinWidth(ibin))
+            dt_alt.SetBinError(  ibin,dt_alt.GetBinError(ibin)  /dt_alt.GetBinWidth(ibin))
+            dt_inc.SetBinContent(ibin,dt_inc.GetBinContent(ibin)/dt_inc.GetBinWidth(ibin))
+            dt_inc.SetBinError(  ibin,dt_inc.GetBinError(ibin)  /dt_inc.GetBinWidth(ibin))
+
+
+        dt.Scale(1./dt.Integral())
+        dt_alt.Scale(1./dt_alt.Integral())
+        dt_inc.Scale(1./dt_inc.Integral())
+        dt.GetXaxis().SetTitle('Gen %s' % self.fancyvar)
         dt.GetYaxis().SetTitle('d#sigma/dP_{T}^{Z}(pb/GeV)')
         dt.SetMaximum(1.2*dt.GetMaximum())
-        dt.Draw("E HIST")
+        if self.logx:
+            ROOT.gPad.SetLogx()
+        if 'MWZ' in self.var:
+            ROOT.gPad.SetLogy()
+            dt.SetMaximum(100*dt.GetMaximum())
+        dt.GetYaxis().SetTitleOffset(1.6)
+        dt.Draw('E HIST')
         # Unfolded data with total error
         hut=copy.deepcopy(histUnfoldTotal)
         for ibin in range(1, hut.GetNbinsX()+1):
@@ -1056,34 +1101,65 @@ class Unfolder(object):
         print('hut integral before: %f' % hut.Integral())
         hut.Scale(1/hut.Integral())
         print('hut integral after: %f' % hut.Integral())
+        theunf=copy.deepcopy(hut)
         # Outer error: total error
-        hut.Draw('PESAME')
+        hut.SetFillStyle(2001)
+        hut.SetFillColor(29)
+        hut.SetLineWidth(0)
+        hut.Draw('E2 SAME')
         # Middle error: stat+bgr
         hmu=copy.deepcopy(histMunfold)
         for ibin in range(1, hmu.GetNbinsX()+1):
             hmu.SetBinContent(ibin,hmu.GetBinContent(ibin)/hmu.GetBinWidth(ibin))
             hmu.SetBinError(ibin,hmu.GetBinError(ibin)/hmu.GetBinWidth(ibin))
         hmu.Scale(1/hmu.Integral())
-        hmu.Draw('SAME E1')
+        hmu.SetFillStyle(2001)
+        hmu.SetFillColor(ROOT.kAzure-9)
+        hmu.SetLineWidth(0)
+        hmu.Draw('SAME E2')
         # Inner error: stat only
         hus=copy.deepcopy(histUnfoldStat)
         for ibin in range(1, hus.GetNbinsX()+1):
             hus.SetBinContent(ibin,hus.GetBinContent(ibin)/hus.GetBinWidth(ibin))
             hus.SetBinError(ibin,hus.GetBinError(ibin)/hus.GetBinWidth(ibin))
         hus.Scale(1/hus.Integral())
-        hus.Draw('SAME E1')
+        #hus.SetFillStyle(2001)
+        #hus.SetFillColor(ROOT.kAzure-4)
+        hus.SetLineColor(ROOT.kBlack)
+        hus.SetMarkerColor(ROOT.kBlack)
+        hus.SetLineWidth(2)
+        hus.SetMarkerSize(3)
+        #hus.SetLineWidth(0)
+        # Rewrite points in order to not have them partially covered
+        dt.Draw('SAME E HIST')
+        dt_alt.SetLineWidth(2)
+        dt_alt.SetLineColor(ROOT.kBlue)
+        dt_alt.Draw('SAME E HIST')
+        dt_inc.SetLineWidth(2)
+        dt_inc.SetLineColor(ROOT.kMagenta)
+        dt_inc.Draw('SAME E HIST')
+        hus.Draw('SAME PE')
+        #theunf.Draw('SAME PE')
         ###histDensityGenData.SetLineColor(kRed)
         ##histDensityGenData.Draw("SAME")
         ##histDensityGenMC.Draw("SAME HIST")
         leg_money = ROOT.TLegend(0.4,0.7,0.9,0.9)
-        leg_money.SetTextSize(0.04)
-        leg_money.AddEntry(histUnfoldTotal, 'Unfolded data', 'pel')
-        leg_money.AddEntry(self.dataTruth_nom, 'Truth', 'la')
-        leg_money.AddEntry(histUnfoldTotal, '#frac{#chi^{2}}{NDOF}=%0.3f' % histUnfoldTotal.Chi2Test(self.dataTruth_nom, 'CHI2/NDF WW'), '')
+        leg_money.SetTextSize(0.02)
+        leg_money.SetBorderSize(0)
+        leg_money.SetEntrySeparation(0.25)
+        leg_money.AddEntry(hus, 'Unfolded data (stat.unc.)', 'pel')
+        leg_money.AddEntry(dt, 'POWHEG prediction: #chi^{2}/NDOF=%0.3f'% dt.Chi2Test(hus, 'CHI2/NDF WW'), 'la')
+        leg_money.AddEntry(dt_alt, 'aMC@NLO prediction: #chi^{2}/NDOF=%0.3f'% dt_alt.Chi2Test(hus, 'CHI2/NDF WW'), 'la')
+        leg_money.AddEntry(dt_inc, 'PYTHIA #chi^{2}/NDOF=%0.3f'% dt_inc.Chi2Test(hus, 'CHI2/NDF WW'), 'la')
+        #leg_money.AddEntry(hus, 'Stat. unc.', 'f')
+        leg_money.AddEntry(hmu, 'Stat.+bgr. unc.', 'f')
+        leg_money.AddEntry(hut, 'Total unc.', 'f')
+        #leg_money.AddEntry(histUnfoldTotal, '#frac{#chi^{2}}{NDOF}=%0.3f' % histUnfoldTotal.Chi2Test(self.dataTruth_nom, 'CHI2/NDF WW'), '')
         leg_money.Draw()
+        tdr.setTDRStyle()
         CMS_lumi.CMS_lumi(moneyplot, 4, 0, aLittleExtra=0.08)
-        moneyplot.SaveAs(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.png' % (label, key, self.var)))
         moneyplot.SaveAs(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.pdf' % (label, key, self.var)))
+        #moneyplot.SaveAs(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.png' % (label, key, self.var)))
         moneyplot.SaveAs(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.C' % (label, key, self.var)))
         # Dump to txt
         with open(os.path.join(self.outputDir, '3_differentialXsec_%s_%s_%s.txt' % (label, key, self.var)), 'w') as text_dumper:
@@ -1094,7 +1170,7 @@ class Unfolder(object):
                 bgrup=ROOT.TMath.Sqrt(hmu.GetBinErrorUp(ibin)*hmu.GetBinErrorUp(ibin)     - statup*statup    )
                 systdown=ROOT.TMath.Sqrt(hut.GetBinErrorLow(ibin)*hut.GetBinErrorLow(ibin) - bgrdown*bgrdown - statdown*statdown)
                 systup=ROOT.TMath.Sqrt(hut.GetBinErrorUp(ibin)*hut.GetBinErrorUp(ibin) - bgrup*bgrup - statup*statup    )
-                text_dumper.write('[%0.3f, %0.3f] & %0.3f $\\pm$ %0.3f (stat) $\\pm$ %0.3f (bgr) $\\pm$ %0.3f (other syst) (total: +/- %0.3f)\n ' % (hut.GetBinLowEdge(ibin), hut.GetBinLowEdge(ibin+1 if ibin is not hut.GetNbinsX()+1 else ibin), hut.GetBinContent(ibin), statdown, bgrdown, systdown, hut.GetBinErrorUp(ibin)))
+                text_dumper.write('$[%0.3f, %0.3f]$ & %0.3f $\\pm$ %0.3f (stat) $\\pm$ %0.3f (bgr) $\\pm$ %0.3f (other syst) (total: $\\pm$ %0.3f)\\\\ \n ' % (hut.GetBinLowEdge(ibin), hut.GetBinLowEdge(ibin+1 if ibin is not hut.GetNbinsX()+1 else ibin), hut.GetBinContent(ibin), statdown, bgrdown, systdown, hut.GetBinErrorUp(ibin)))
 
         # # Individual saving.
         # self.print_histo(histMunfold, key, label)
@@ -1121,9 +1197,17 @@ def main(args):
     os.system('rm %s/*png' % args.outputDir)
     os.system('rm %s/*pdf' % args.outputDir)
     print('...done!')
-    #for var in ['Zpt', 'ZconePt', 'nJet30']: # Must build correct gen matrix for nJet30 (need friend trees). Also, don't study conePt for now
-    for var in ['Zpt', 'LeadJetPt']:
-        u = Unfolder(args,var)
+
+    # Should move it to be specifiable from command line, probably
+    vardict = {
+        'Zpt' : 'p_{T}(Z) [GeV]',
+        'LeadJetPt' : 'p_{T}(leading jet) [GeV]',
+        'MWZ' : 'M(WZ) [GeV]',
+        'Wpt' : 'p_{T}(W) [GeV]'
+        }
+    
+    for var, fancyvar in vardict.items():
+        u = Unfolder(args,var,fancyvar)
         u.print_responses()
         u.study_responses()
         u.do_unfolding('nom')
@@ -1147,6 +1231,7 @@ if __name__ == '__main__':
     parser.add_argument('-v', '--verbose',        help='Verbose printing of the L-curve scan', action='store_true')
     parser.add_argument('-r', '--responseAsPdf',  help='Print response matrix as pdf', action='store_true') 
     parser.add_argument('-f', '--finalState',     help='Final state', default=None)
+    parser.add_argument('--charge',               help='Charge of the W', default='')
     parser.add_argument('-b', '--bias',           help='Scale bias (0 deactivates bias vector)', default=None, type=float)
     parser.add_argument('-a', '--areaConstraint', help='Area constraint', action='store_true')
     args = parser.parse_args()
