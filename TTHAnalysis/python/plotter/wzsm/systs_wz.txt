@@ -26,6 +26,20 @@ scaleNorm_ML : prompt_WZTo3LNu.* : .*eem.* :  0.96780/1.03864
 scaleNorm_ML : prompt_WZTo3LNu.* : .*mme.* :  0.96734/1.03922
 scaleNorm_ML : prompt_WZTo3LNu.* : .*mmm.* :  0.96777/1.03888
 
+# Activate them also for the varied samples
+pdfNorm_ML : prompt_altWZ_.*  : .*incl.* : 1.01393
+pdfNorm_ML : prompt_altWZ_.* : .*eee.* : 1.01402
+pdfNorm_ML : prompt_altWZ_.* : .*eem.* : 1.01384
+pdfNorm_ML : prompt_altWZ_.* : .*mme.* : 1.01395
+pdfNorm_ML : prompt_altWZ_.* : .*mmm.* : 1.01393
+
+scaleNorm_ML : prompt_altWZ_.* : .*incl.* : 0.96759/1.03900
+scaleNorm_ML : prompt_altWZ_.* : .*eee.* :  0.96732/1.03937
+scaleNorm_ML : prompt_altWZ_.* : .*eem.* :  0.96780/1.03864
+scaleNorm_ML : prompt_altWZ_.* : .*mme.* :  0.96734/1.03922
+scaleNorm_ML : prompt_altWZ_.* : .*mmm.* :  0.96777/1.03888
+
+
 #ZZ
 #normZZH_ML    : prompt_ZZH                        : .*                : 1.3 : lnN_in_shape_bins : 1
 #normZZH_ML    : prompt_ZZH                        : .*                : 1.2 : lnN_in_shape_bins : 2,3,4

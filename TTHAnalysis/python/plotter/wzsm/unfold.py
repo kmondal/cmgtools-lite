@@ -15,11 +15,13 @@ import tdrstyle as tdr
 import CMS_lumi
 
 CMS_lumi.lumi_13TeV = "35.9 fb^{-1}"
-CMS_lumi.extraText = "Preliminary"
+# PAS: CMS_lumi.extraText = "Preliminary"
+CMS_lumi.extraText = ""
 CMS_lumi.lumi_sqrtS = "13 TeV"
-CMS_lumi.lumiTextSize     = 0.4
+CMS_lumi.lumiTextSize     = 0.70
 CMS_lumi.lumiTextOffset   = 0.2
-CMS_lumi.cmsTextSize      = 0.55
+#CMS_lumi.cmsTextSize      = 0.55
+CMS_lumi.cmsTextSize      = 0.70
 CMS_lumi.cmsTextOffset    = 0.1
 
 #from abc import ABCMeta, abstractmethod
@@ -47,7 +49,9 @@ class DatacardReader:
         self.inputCard=inputCard
         self.signalString=signalString
         self.systs = [] #Systematics, ordered by appearance
-        self.normSysts = [] # Normalization only uncertainties
+        self.normSysts = [] # Normalization-only uncertainties
+        self.unsymNormSystsUp = [] # Normalization-only uncertainties, non symmetrized
+        self.unsymNormSystsDn = [] # Normalization-only uncertainties, non symmetrized
         self.shapeSysts = [] # Shape(+eventually norm) uncertainties
         self.systsLines = [] #The - - - number1 - - systematic lines
         self.shapeFiles = [] #The input shape rootfiles
@@ -63,6 +67,9 @@ class DatacardReader:
 
     def getNormAndShapeSysts(self):
         return self.normSysts, self.shapeSysts
+
+    def getUnsymNormSysts(self):
+        return self.unsymNormSystsUp, self.unsymNormSystsDn
 
     def getSystsAndLines(self):
         return self.systs, self.systsLines, self.altSysts
@@ -81,6 +88,9 @@ class DatacardReader:
                         if abs(1-float(iTempForSym)) > danum:
                             danum=abs(1-float(iTempForSym))
                     self.normSysts.append([ self.systs[self.systsLines.index(line)] , '%f' % (1+abs(danum)) ])
+                    if len(tempForSym) > 1:
+                        self.unsymNormSystsUp.append([ self.systs[self.systsLines.index(line)] , '%f' % (float(tempForSym[0])) ])
+                        self.unsymNormSystsDn.append([ self.systs[self.systsLines.index(line)] , '%f' % (float(tempForSym[1])) ])
 
                 if 'shape' in tempLine[1]:
                     print('Line is %s' % tempLine)
@@ -142,6 +152,7 @@ class DatacardReader:
         #  self.nBins = temp.Get("data_obs").GetNbinsX()
         #  temp.Close()
 
+
 ### End class DatacardReader
         
 class AcceptanceComputer:
@@ -166,14 +177,19 @@ class Unfolder(object):
         self.varied_responses=None
         self.data=None
         self.dataTruth_nom=None
+        self.dataTruth_nom_up=None
+        self.dataTruth_nom_dn=None
         self.dataTruth_alt=None
         self.dataTruth_inc=None
         self.mc=None
         self.bkg=None
         self.normSystsList=None
+        self.unsymSystsList=None
         self.shapeSystsList=None
         self.finalState=args.finalState
         self.charge=args.charge
+        if 'none' in self.charge:
+            self.charge = ''
         self.bias=args.bias
         self.areaConstraint=args.areaConstraint
         self.verbose=args.verbose
@@ -208,6 +224,7 @@ class Unfolder(object):
         dataFile=None
         mcFile=None
         #genFile=None # Taken from a separate file  
+        print('diocane is', self.charge)
         print('Opening file %s.' % utils.get_file_from_glob(os.path.join(folder, '%s_fitWZonly_%s%s/%s' % (self.finalState, self.var, self.charge, self.combineInput) ) if folder else self.combineInput) )
         file_handle = ROOT.TFile.Open(utils.get_file_from_glob(os.path.join(folder,  '%s_fitWZonly_%s%s/%s' % (self.finalState, self.var, self.charge, self.combineInput)) if folder else self.combineInput))
         # gdata=file_handle.Get('x_data')
@@ -311,7 +328,37 @@ class Unfolder(object):
             CMS_lumi.CMS_lumi(c, 4, 0, aLittleExtra=0.08)
             utils.saveCanva(c, os.path.join(self.outputDir, '1_responseProfiled_%s_%s' % (matrix.GetName(), self.var)))            
             c.IsA().Destructor(c)
-            
+
+
+    def get_truth_theory_variations(self, datacardReader):
+
+        # For the moment, add only the overall normalization uncertainty, without bothering with the shape component 
+        #self.dataTruth_nom_up, self.dataTruth_nom_dn = ... datacardReader.getTheoUncsOnNom()
+        
+        self.unsymNormSystsDn, self.unsymNormSystsUp = datacardReader.getUnsymNormSysts()
+        
+        self.dataTruth_nom_up = copy.deepcopy(ROOT.TH1D(self.dataTruth_nom))
+        self.dataTruth_nom_dn = copy.deepcopy(ROOT.TH1D(self.dataTruth_nom))
+        factorUp=0.0
+        factorDn=0.0
+        for [sysName, sysValue] in self.unsymNormSystsUp:
+            sysValue=float(sysValue)
+            if ('scaleNorm' in sysName) or ('pdfNorm' in sysName):
+                factorUp += sysValue*sysValue
+        for [sysName, sysValue] in self.unsymNormSystsDn:
+            sysValue=float(sysValue)
+            if ('scaleNorm' in sysName) or ('pdfNorm' in sysName):
+                factorDn += sysValue*sysValue
+
+        factorUp=ROOT.TMath.Sqrt(factorUp)
+        factorDn=ROOT.TMath.Sqrt(factorDn)
+        print("PORCHODIO")
+        print(factorUp, factorDn)
+        print(self.dataTruth_nom_up.Integral(), self.dataTruth_nom_dn.Integral())
+        self.dataTruth_nom_up.Scale(factorUp)
+        self.dataTruth_nom_dn.Scale(factorDn)
+        print(self.dataTruth_nom_up.Integral(), self.dataTruth_nom_dn.Integral())
+
     def get_responses(self):
         print('Acquiring response matrices.')
         folder=os.path.join(self.inputDir, 'responses/%s_fitWZonly_%s%s/common/' % (self.finalState, self.var, self.charge) )        
@@ -328,7 +375,7 @@ class Unfolder(object):
         self.dataTruth_nom = copy.deepcopy(ROOT.TH1D(self.response_nom.ProjectionY('dataTruth_nom', 0, self.response_nom.GetNbinsX())))
         self.dataTruth_alt = copy.deepcopy(ROOT.TH1D(self.response_alt.ProjectionY('dataTruth_alt', 0, self.response_alt.GetNbinsX())))
         self.dataTruth_inc = copy.deepcopy(ROOT.TH1D(self.response_inc.ProjectionY('dataTruth_inc', 0, self.response_inc.GetNbinsX())))
-        
+
         print('Response binsX %d, binsY %d' % (self.response_nom.GetNbinsX(), self.response_nom.GetNbinsY()))
         
         for ibin in range(0, self.response_nom.GetNbinsX()+2):
@@ -343,6 +390,10 @@ class Unfolder(object):
                     
         datacardReader = DatacardReader(os.path.join(self.inputDir, 'responses/%s_fitWZonly_%s%s/prompt_altWZ_Pow/WZSR.card.txt' % (self.finalState, self.var,self.charge)), 'prompt_altWZ_Pow')
         self.normSystsList, self.shapeSystsList = datacardReader.getNormAndShapeSysts()
+        # Get theory variations
+        self.get_truth_theory_variations(datacardReader)
+        
+
 
 
     def print_responses(self):
@@ -1069,16 +1120,37 @@ class Unfolder(object):
         dt=copy.deepcopy(self.dataTruth_nom)
         dt_alt=copy.deepcopy(self.dataTruth_alt)
         dt_inc=copy.deepcopy(self.dataTruth_inc)
+        # # Rewrite the nom_up and dn
+        # self.dataTruth_nom_up=copy.deepcopy(dt)
+        # self.dataTruth_nom_dn=copy.deepcopy(dt)
+        # self.dataTruth_nom_up.Scale(1.06)
+        # self.dataTruth_nom_dn.Scale(0.94)
+        dt_nom_up=copy.deepcopy(self.dataTruth_nom_up)
+        dt_nom_dn=copy.deepcopy(self.dataTruth_nom_dn)
+        print('YADDA ', dt.Integral(), dt_nom_dn.Integral(), dt_nom_up.Integral()) 
+        factorUp=dt_nom_up.Integral()/dt.Integral()
+        factorDn=dt_nom_dn.Integral()/dt.Integral()
         for ibin in range(0, dt.GetNbinsX()+2):
             dt.SetBinContent(ibin,dt.GetBinContent(ibin)/dt.GetBinWidth(ibin))
             dt.SetBinError(ibin,dt.GetBinError(ibin)/dt.GetBinWidth(ibin))
+            dt_nom_up.SetBinContent(ibin,dt_nom_up.GetBinContent(ibin)/dt.GetBinWidth(ibin))
+            dt_nom_up.SetBinError(ibin,dt_nom_up.GetBinError(ibin)/dt.GetBinWidth(ibin))
+            dt_nom_dn.SetBinContent(ibin,dt_nom_dn.GetBinContent(ibin)/dt.GetBinWidth(ibin))
+            dt_nom_dn.SetBinError(ibin,dt_nom_dn.GetBinError(ibin)/dt.GetBinWidth(ibin))
+            #self.dataTruth_nom_up.SetBinContent(ibin,dt.GetBinContent(ibin)/dt.GetBinWidth(ibin))
+            #self.dataTruth_nom_dn.SetBinContent(ibin,dt.GetBinContent(ibin)/dt.GetBinWidth(ibin))
             dt_alt.SetBinContent(ibin,dt_alt.GetBinContent(ibin)/dt_alt.GetBinWidth(ibin))
             dt_alt.SetBinError(  ibin,dt_alt.GetBinError(ibin)  /dt_alt.GetBinWidth(ibin))
             dt_inc.SetBinContent(ibin,dt_inc.GetBinContent(ibin)/dt_inc.GetBinWidth(ibin))
             dt_inc.SetBinError(  ibin,dt_inc.GetBinError(ibin)  /dt_inc.GetBinWidth(ibin))
 
 
+
         dt.Scale(1./dt.Integral())
+        dt_nom_up.Scale(factorUp/dt_nom_up.Integral())
+        dt_nom_dn.Scale(factorDn/dt_nom_dn.Integral())
+
+        print('YADDA2 ', dt.Integral(), dt_nom_dn.Integral(), dt_nom_up.Integral()) 
         dt_alt.Scale(1./dt_alt.Integral())
         dt_inc.Scale(1./dt_inc.Integral())
         dt.GetXaxis().SetTitle('Gen %s' % self.fancyvar)
@@ -1089,6 +1161,9 @@ class Unfolder(object):
         if 'MWZ' in self.var:
             ROOT.gPad.SetLogy()
             dt.SetMaximum(100*dt.GetMaximum())
+        dt.GetXaxis().SetTitleSize(0.045)
+        dt.GetYaxis().SetTitleSize(0.045)
+        dt.GetXaxis().SetTitleOffset(1.35)
         dt.GetYaxis().SetTitleOffset(1.6)
         dt.Draw('E HIST')
         # Unfolded data with total error
@@ -1137,8 +1212,31 @@ class Unfolder(object):
         dt_alt.Draw('SAME E HIST')
         dt_inc.SetLineWidth(2)
         dt_inc.SetLineColor(ROOT.kMagenta)
-        dt_inc.Draw('SAME E HIST')
+        ###dt_inc.Draw('SAME E HIST')
+        # Add theoretical uncertainties on the nominal prediction
+        # HERE HERE HERE
+        dterr=ROOT.TGraphAsymmErrors(dt)
+        print("CAZZO")
+        for ipoint in range(0, dterr.GetN()+1):
+            print(dt.GetBinCenter(ipoint), dt.GetBinLowEdge(ipoint), dt.GetBinLowEdge(ipoint+1))
+            dterr.SetPoint(ipoint, dt.GetBinCenter(ipoint), dt.GetBinContent(ipoint)) 
+            dterr.SetPointEYhigh(ipoint, dt_nom_up.GetBinContent(ipoint)-dt.GetBinContent(ipoint))
+            dterr.SetPointEYlow (ipoint, dt.GetBinContent(ipoint)-dt_nom_dn.GetBinContent(ipoint))
+            dterr.SetPointEXhigh(ipoint, dt.GetBinLowEdge(ipoint+1)-dt.GetBinCenter(ipoint))
+            dterr.SetPointEXlow(ipoint,  dt.GetBinCenter(ipoint)-dt.GetBinLowEdge(ipoint))
+            #dterr.SetPointEYhigh(ipoint, 1.06*dt.GetBinContent(ipoint))
+            #dterr.SetPointEYlow (ipoint, 0.94*dt.GetBinContent(ipoint))
+            #print(dt.GetBinContent(ipoint), 0.94*dt.GetBinContent(ipoint), 1.06*dt.GetBinContent(ipoint))
+            print(dt.GetBinContent(ipoint), dt_nom_up.GetBinContent(ipoint), dt_nom_dn.GetBinContent(ipoint))
+
+        for ipoint in range(0, dterr.GetN()):
+            print(ipoint, dt.GetBinContent(ipoint), dterr.GetY()[ipoint], dterr.GetErrorYlow(ipoint), dterr.GetErrorYhigh(ipoint))
+
+        dterr.SetLineColor(dt.GetLineColor())
+        dterr.SetFillColor(dt.GetLineColor())
+        dterr.SetFillStyle(3001)
         hus.Draw('SAME PE')
+        dterr.Draw('2 SAME')
         #theunf.Draw('SAME PE')
         ###histDensityGenData.SetLineColor(kRed)
         ##histDensityGenData.Draw("SAME")
@@ -1150,10 +1248,11 @@ class Unfolder(object):
         leg_money.AddEntry(hus, 'Unfolded data (stat.unc.)', 'pel')
         leg_money.AddEntry(dt, 'POWHEG prediction: #chi^{2}/NDOF=%0.3f'% dt.Chi2Test(hus, 'CHI2/NDF WW'), 'la')
         leg_money.AddEntry(dt_alt, 'aMC@NLO prediction: #chi^{2}/NDOF=%0.3f'% dt_alt.Chi2Test(hus, 'CHI2/NDF WW'), 'la')
-        leg_money.AddEntry(dt_inc, 'PYTHIA #chi^{2}/NDOF=%0.3f'% dt_inc.Chi2Test(hus, 'CHI2/NDF WW'), 'la')
+        ###leg_money.AddEntry(dt_inc, 'PYTHIA #chi^{2}/NDOF=%0.3f'% dt_inc.Chi2Test(hus, 'CHI2/NDF WW'), 'la')
         #leg_money.AddEntry(hus, 'Stat. unc.', 'f')
         leg_money.AddEntry(hmu, 'Stat.+bgr. unc.', 'f')
         leg_money.AddEntry(hut, 'Total unc.', 'f')
+        #leg_money.AddEntry(dterr, 'Theory unc. on POWHEG prediction', 'f')
         #leg_money.AddEntry(histUnfoldTotal, '#frac{#chi^{2}}{NDOF}=%0.3f' % histUnfoldTotal.Chi2Test(self.dataTruth_nom, 'CHI2/NDF WW'), '')
         leg_money.Draw()
         tdr.setTDRStyle()
@@ -1200,10 +1299,10 @@ def main(args):
 
     # Should move it to be specifiable from command line, probably
     vardict = {
-        'Zpt' : 'p_{T}(Z) [GeV]',
+        #'Zpt' : 'p_{T}(Z) [GeV]',
         'LeadJetPt' : 'p_{T}(leading jet) [GeV]',
-        'MWZ' : 'M(WZ) [GeV]',
-        'Wpt' : 'p_{T}(W) [GeV]'
+        #'MWZ' : 'M(WZ) [GeV]',
+        #'Wpt' : 'p_{T}(W) [GeV]'
         }
     
     for var, fancyvar in vardict.items():

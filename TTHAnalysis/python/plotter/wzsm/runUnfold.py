@@ -19,7 +19,7 @@ def get_list_of_jobs(base):
 
     #for charge in [ '', '_plus', '_minus' ]:
     for charge in [ '_plus', '_minus' ]:
-
+    #for charge in [ '_none', '_plus', '_minus' ]:
         for fs in [ 'incl', 'eee', 'eem', 'mme', 'mmm']:
             if not base:
                 # No bias, area constraint     
@@ -42,6 +42,7 @@ def get_list_of_jobs(base):
                 ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} --charge {charge}  -b 1.13 -o unfold_nnlobias_noconstraintarea/{fs}{charge}/data -c common/WZSR.input.root -r >& logs/nnlobias_noconstraintarea_data_{fs}.log'.format(fs=fs,charge=charge))
                 ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} --charge {charge}  -b 1.13 -o unfold_nnlobias_noconstraintarea/{fs}{charge}/mcclosure -c common/WZSR.input.root -r --closure >& logs/nnlobias_noconstraintarea_mcclosure_{fs}.log'.format(fs=fs,charge=charge))
 
+            else:
                 # Bias 1.13, area constraint
                 ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} --charge {charge}  -b 1.13 -a -o unfold_nnlobias/{fs}{charge}/data -c common/WZSR.input.root -r >& logs/nnlobias_data_{fs}.log'.format(fs=fs,charge=charge))
                 ret.append('python wzsm/unfold.py -i /nfs/fanae/user/vischia/workarea/cmssw/combine/CMSSW_8_1_0/src/wz_unfolding -f {fs} --charge {charge}  -b 1.13 -a -o unfold_nnlobias/{fs}{charge}/mcclosure -c common/WZSR.input.root -r --closure >& logs/nnlobias_mcclosure_{fs}.log'.format(fs=fs,charge=charge))
