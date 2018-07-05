@@ -542,7 +542,7 @@ def doRatioHists(pspec,pmap,total,totalSyst,maxRange,fixRange=False,fitRatio=Non
     leg0.SetLineColor(0)
     leg0.SetTextFont(42)
     leg0.SetTextSize(0.035*0.7/0.3)
-    #leg0.AddEntry(unity0, "stat. bkg. unc.", "F") if not options.posfitlike else leg0.AddEntry(unity0, "total MC unc.", "F") 
+    leg0.AddEntry(unity0, "stat. bkg. unc.", "F") if not options.posfitlike else leg0.AddEntry(unity0, "total unc.", "F") 
     if showStatTotLegend and not options.posfitlike: leg0.Draw()
     leg1 = ROOT.TLegend(0.25 if doWide else 0.45, 0.8, 0.38 if doWide else 0.7, 0.9)
     leg1.SetFillColor(0)
@@ -694,11 +694,9 @@ class PlotMaker:
             for pspec in pspecs:
                 print "    plot: ",pspec.name
                 pmap = mca.getPlots(pspec,cut,makeSummary=True,closeTreeAfter=False, doDummy=options.doDummy)
-                print pmap
                 if len(options.addHistos)>0:
                     for theFile in options.addHistos:
                         if not os.path.exists(theFile[0]): continue
-                        print theFile[0]
                         tf = ROOT.TFile.Open(theFile[0], "read")
                         for proc in pmap.keys():
                             if not (proc =="data" and options.posfitlike):
@@ -711,7 +709,7 @@ class PlotMaker:
                                 
                                 else: toAdd  = tf.Get(theDir+pspec.name+"_"+proc)
                                 print proc
-                                print toAdd, toAdd.GetName()
+                                #print toAdd, toAdd.GetName()
                                 if toAdd and not options.posfitlike: 
                                     pmap[proc].Add(toAdd)
                                 elif toAdd and options.posfitlike: #Bin by bin matching as histos likely have different binning
@@ -849,7 +847,6 @@ class PlotMaker:
                             continue 
                         if plotmode == "stack" or (plotmode=="closure" and not p in [options.numerator]):
                             stack.Add(plot)
-                            f = ROOT.Double(3.)
                             total.Add(plot)
                             totalSyst.Add(plot)
                             if mca.getProcessOption(p,'NormSystematic',0.0) > 0 and not options.posfitlike:
