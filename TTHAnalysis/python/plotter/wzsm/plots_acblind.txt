@@ -26,8 +26,16 @@ deltaR_z1z2_mtWZ_600_Inf : WZdeltaR( LepZ1_eta,LepZ1_phi,LepZ2_eta,LepZ2_phi) + 
 
 
 
-m3lmet_Meas : m3Lmet : [100,200,300,400,500,1000,1500,3000] ; XTitle="M_{WZ} [GeV]", YMin=0.5, YMax = 2000
-m3lmet_Meas_log : m3Lmet : [100,200,300,400,500,1000,1500,3000] ; XTitle="M_{WZ} [GeV]", YMin=0.5, YMax = 7000, Logy
+m3lmet_Meas : m3Lmet : [100,200,300,400,500,1000,1500,3000] ; XTitle="M_{WZ} [GeV]", YMin=0.5, YMax = 2000, IncludeOverflows=True
+m3lmet_Meas_log : m3Lmet : [100,200,300,400,500,1000,1500,3000] ; XTitle="M_{WZ} [GeV]", YMin=0.5, YMax = 7000, Logy, IncludeOverflows=True
 
 mtWZ_high_scan_Meas : mt_2(met_pt, met_phi, pt_3(LepSel_pt[0], LepSel_phi[0], LepSel_pt[1], LepSel_phi[1], LepSel_pt[2], LepSel_phi[2]), phi_3(LepSel_pt[0], LepSel_phi[0], LepSel_pt[1], LepSel_phi[1], LepSel_pt[2], LepSel_phi[2])) : [0,100,200,300,400,600,800,1500] ; XTitle="M_{T WZ} [GeV]", IncludeOverflows=True, YMin=0.5, YMax = 2000
 mtWZ_high_scan_Meas_log : mt_2(met_pt, met_phi, pt_3(LepSel_pt[0], LepSel_phi[0], LepSel_pt[1], LepSel_phi[1], LepSel_pt[2], LepSel_phi[2]), phi_3(LepSel_pt[0], LepSel_phi[0], LepSel_pt[1], LepSel_phi[1], LepSel_pt[2], LepSel_phi[2])) : [0,100,200,300,400,600,800,1500] ; XTitle="M_{T WZ} [GeV]", YMin=0.5, YMax = 7000, Logy
+
+
+m3lmetAnalyticUp_Meas : m3LmetRecUp : [100,200,300,400,500,1000,1500,3000] ; XTitle="M_{WZ} [GeV]", YMin=0.5, YMax = 2000, IncludeOverflows=True
+m3lmetAnalyticUp_Meas_log : m3LmetRecUp : [100,200,300,400,500,1000,1500,3000] ; XTitle="M_{WZ} [GeV]", YMin=0.5, YMax = 7000, Logy, IncludeOverflows=True
+
+m3lmetAnalyticDown_Meas : m3LmetRecDn : [100,200,300,400,500,1000,1500,3000] ; XTitle="M_{WZ} [GeV]", YMin=0.5, YMax = 2000, IncludeOverflows=True
+m3lmetAnalyticDown_Meas_log : m3LmetRecDn : [100,200,300,400,500,1000,1500,3000] ; XTitle="M_{WZ} [GeV]", YMin=0.5, YMax = 7000, Logy, IncludeOverflows=True
+

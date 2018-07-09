@@ -4,11 +4,15 @@ triggers: $DATA{(Triggers_ee || Triggers_mm || Triggers_em)} $MC{(Triggers_ee ||
 threelightlep: nLepSel>=3 && abs(LepSel1_pdgId)<14 && abs(LepSel2_pdgId)<14 && abs(LepSel3_pdgId)<14
 #pt101010: LepSel1_conePt>10 && LepSel2_conePt>10 && LepSel3_conePt>10 && LepSel1_pt>10 && LepSel2_pt>10 && LepSel3_pt>10 #Why?
 
-#vetoLooseLeptons: 
+#vetoLooseLepto25               
 MVAVT: LepSel1_isTight && LepSel2_isTight && LepSel3_isTight
 ptWZ: LepZ1_pt>25 && LepZ2_pt>10 && LepW_pt>25
 lowMll: minMllAFAS > 4
 hasOSSF: nOSSF>0   
+
+#AC Signal like
+AC_like : m3Lmet > 1500; Disable = True
+AC_unlike : m3Lmet < 1500; Disable = True
 
 #MET OPTIONS
 
@@ -38,14 +42,18 @@ SR        : met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  
 SRnobtag  : met_pt > 30    && abs(91.1876-mll_3l)<15  &&  nLepSel<4  && m3L > 100; Disable=True
 SRnomll   : met_pt > 30    && nBJetMedium30 == 0 &&  nLepSel<4  && m3L > 100; Disable=True
 SRnomet   : nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel<4  && m3L > 100; Disable=True
-SRnomll   : met_pt > 30    && nBJetMedium30 == 0 && nLepSel<4 && m3L >100; Disable=True
+SRnom3L   : met_pt > 30    && nBJetMedium30 == 0 && nLepSel<4 && abs(91.1876-mll_3l); Disable=True
 DYCR      : met_pt <= 30   && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel<4  && m3L > 100; Disable=True
 TTCR      : met_pt > 30    && nBJetMedium30 > 0  && abs(91.1876-mll_3l)>5   &&  nLepSel<4  && m3L > 100; Disable=True
 ZZCR      : met_pt > 30    && nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L > 100  && LepSel4_isTight && LepSel4_pt > 10   ; Disable=True
 ttXCR     : met_pt > 30    && nBJetMedium30 > 0  && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L > 100  && LepSel4_isTight && LepSel4_pt > 10   ; Disable=True
 convCR    : met_pt <= 30   && nBJetMedium30 == 0 && abs(91.1876-mll_3l)>15  && m3L <= 100  &&  nLepSel<4 ; Disable=True
 
-ZZCRnomet : nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L > 100  && LepSel4_isTight && LepSel4_pt > 10   ; Disable=True
+
+ZZCRnomet      : nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L > 100  && LepSel4_isTight && LepSel4_pt > 10   ; Disable=True
+TTCRnomet      : nBJetMedium30 > 0  && abs(91.1876-mll_3l)>5   &&  nLepSel<4  && m3L > 100; Disable=True
+ttXCRnomet     : nBJetMedium30 > 0  && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L > 100  && LepSel4_isTight && LepSel4_pt > 10   ; Disable=True
+convCRnomet    : nBJetMedium30 == 0 && abs(91.1876-mll_3l)>15  && m3L <= 100  &&  nLepSel<4 ; Disable=True
 
 #auxHLTHT : HLT_HT ; Disable=True
 
@@ -53,7 +61,7 @@ ZZCRnomet : nBJetMedium30 == 0 && abs(91.1876-mll_3l)<15  &&  nLepSel==4 && m3L 
 
 allAreGoodMatched: abs(LepW_mcMatchId)== 24 && abs(LepZ1_mcMatchId) == 23 && abs(LepZ2_mcMatchId) == 23 ; Disable=True
 
-
+VBF_like: nJet30 >= 2 ; Disable=True 
 ######################################################################################################################
 
 # Flavor

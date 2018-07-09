@@ -1,0 +1,19 @@
+diboson               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kOrange  , Label="WZ SM", NormSystematic=0.15, FakeRate="wzsm/fakeRate_elecScaleCentral.txt"
+
+diboson               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kOrange  , Label="WZ SM", NormSystematic=0.15, FakeRate="wzsm/fakeRate_elecScaleCentral.txt"
+
+diboson               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kOrange  , Label="WZ SM", NormSystematic=0.15, FakeRate="wzsm/fakeRate_elecScaleCentral.txt"
+
+
+diboson_Up               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kRed , Label="WZ SM Up", NormSystematic=0.15, FakeRate="wzsm/fakerate_lepScaleUp.txt"
+
+diboson_Up               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kRed  , Label="WZ SM Up", NormSystematic=0.15, FakeRate="wzsm/fakerate_lepScaleUp.txt"
+
+diboson_Up               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kRed  , Label="WZ SM Up", NormSystematic=0.15, FakeRate="wzsm/fakerate_lepScaleUp.txt"
+
+
+diboson_Dn               : WZTo3LNu_Ptz_0_200_aTGC + WZTo3LNu_Ptz_0_200_aTGC_show                       : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kBlue  , Label="WZ SM Dn", NormSystematic=0.15, FakeRate="wzsm/fakerate_lepScaleDn.txt"
+
+diboson_Dn               : WZTo3LNu_Ptz_200_300_aTGC + WZTo3LNu_Ptz_200_300_aTGC_show                    : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kBlue  , Label="WZ SM Dn", NormSystematic=0.15, FakeRate="wzsm/fakerate_lepScaleDn.txt"
+
+diboson_Dn               : WZTo3LNu_Ptz_300_aTGC + WZTo3LNu_Ptz_300_aTGC_show                         : xsec : ((LepSel_mcUCSX[0]==0 || LepSel_mcUCSX[0]==1) && (LepSel_mcUCSX[1]==0 || LepSel_mcUCSX[1]==1) && (LepSel_mcUCSX[2]==0 || LepSel_mcUCSX[2]==1))*LHEweight_wgt[173]/LHEweight_wgt[0]            ; FillColor=ROOT.kBlue  , Label="WZ SM Dn", NormSystematic=0.15, FakeRate="wzsm/fakerate_lepScaleDn.txt"
