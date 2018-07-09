@@ -8,7 +8,7 @@ Only samples in WZ_AC_LHE have LHE weights, thus to apply the scale/pdf variatio
 
 """
 #Input file (as output from mcPlots.py)
-inFile = ROOT.TFile("/nfs/fanae/user/carlosec/www/wz/wz/lepmvaVT/srwzSCALEALPHA//plots_wzsm.root", "OPEN")
+inFile = ROOT.TFile("/nfs/fanae/user/carlosec/www/wz/wz/lepmvaVT/srwzSCALEALPHA_fidu//plots_wzsm.root", "OPEN")
 #Name of the histograms in the file. Usually: VarName_WZ_id_{bin} bin is the LHEweight id. In the WZ_AC_LHE files they are ordered, so it is the lhe weight vector entry i-1 for id i
 baseName1 = "flavor_WZ_id_{bin}"
 
@@ -57,7 +57,7 @@ for i in range(1,223):
 
 print "Getting ME Unc...."
 
-indexesME = [2,3,4,5,7,9]
+indexesME = [2,3,4,5,7,9] #6 and 8 are unphysical
 meVARUp   = [0.,0.,0.,0., 0.]
 meVARDn   = [0.,0.,0.,0., 0.]
 
