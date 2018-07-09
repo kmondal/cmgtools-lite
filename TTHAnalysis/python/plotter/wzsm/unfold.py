@@ -18,10 +18,10 @@ CMS_lumi.lumi_13TeV = "35.9 fb^{-1}"
 # PAS: CMS_lumi.extraText = "Preliminary"
 CMS_lumi.extraText = ""
 CMS_lumi.lumi_sqrtS = "13 TeV"
-CMS_lumi.lumiTextSize     = 0.70
+CMS_lumi.lumiTextSize     = 0.75
 CMS_lumi.lumiTextOffset   = 0.2
 #CMS_lumi.cmsTextSize      = 0.55
-CMS_lumi.cmsTextSize      = 0.70
+CMS_lumi.cmsTextSize      = 0.75
 CMS_lumi.cmsTextOffset    = 0.1
 
 #from abc import ABCMeta, abstractmethod
@@ -165,10 +165,11 @@ class AcceptanceComputer:
 
 class Unfolder(object):
 
-    def __init__(self, args, var, fancyvar):
+    def __init__(self, args, var, fancyvar, diffvar):
         print('Initialization')
         self.var=var
         self.fancyvar=fancyvar
+        self.diffvar=diffvar
         self.logx = False if self.var is not 'MWZ' else True
         self.unfold=None
         self.response_nom=None
@@ -1154,7 +1155,7 @@ class Unfolder(object):
         dt_alt.Scale(1./dt_alt.Integral())
         dt_inc.Scale(1./dt_inc.Integral())
         dt.GetXaxis().SetTitle('Gen %s' % self.fancyvar)
-        dt.GetYaxis().SetTitle('d#sigma/dP_{T}^{Z}(pb/GeV)')
+        dt.GetYaxis().SetTitle('d#sigma/d%s [pb/GeV]' % self.diffvar)
         dt.SetMaximum(1.2*dt.GetMaximum())
         if self.logx:
             ROOT.gPad.SetLogx()
@@ -1216,7 +1217,6 @@ class Unfolder(object):
         # Add theoretical uncertainties on the nominal prediction
         # HERE HERE HERE
         dterr=ROOT.TGraphAsymmErrors(dt)
-        print("CAZZO")
         for ipoint in range(0, dterr.GetN()+1):
             print(dt.GetBinCenter(ipoint), dt.GetBinLowEdge(ipoint), dt.GetBinLowEdge(ipoint+1))
             dterr.SetPoint(ipoint, dt.GetBinCenter(ipoint), dt.GetBinContent(ipoint)) 
@@ -1299,14 +1299,16 @@ def main(args):
 
     # Should move it to be specifiable from command line, probably
     vardict = {
-        #'Zpt' : 'p_{T}(Z) [GeV]',
-        'LeadJetPt' : 'p_{T}(leading jet) [GeV]',
-        #'MWZ' : 'M(WZ) [GeV]',
-        #'Wpt' : 'p_{T}(W) [GeV]'
+        'Zpt'       : ['p_{T}(Z) [GeV]'          , 'p_{T}^{Z}'          ],
+        'LeadJetPt' : ['p_{T}(leading jet) [GeV]', 'p_{T}^{jet}'        ],
+        'MWZ'       : ['M(WZ) [GeV]'             , 'M_{WZ}'             ],
+        'Wpt'       : ['p_{T}(W) [GeV]'          , 'p_{T}^{W}'          ] 
         }
     
-    for var, fancyvar in vardict.items():
-        u = Unfolder(args,var,fancyvar)
+    for var, fancy in vardict.items():
+        fancyvar=fancy[0]
+        diffvar=fancy[1]
+        u = Unfolder(args,var,fancyvar, diffvar)
         u.print_responses()
         u.study_responses()
         u.do_unfolding('nom')
