@@ -18,10 +18,10 @@ CMS_lumi.lumi_13TeV = "35.9 fb^{-1}"
 # PAS: CMS_lumi.extraText = "Preliminary"
 CMS_lumi.extraText = ""
 CMS_lumi.lumi_sqrtS = "13 TeV"
-CMS_lumi.lumiTextSize     = 0.75
+CMS_lumi.lumiTextSize     = 0.80
 CMS_lumi.lumiTextOffset   = 0.2
 #CMS_lumi.cmsTextSize      = 0.55
-CMS_lumi.cmsTextSize      = 0.75
+CMS_lumi.cmsTextSize      = 0.80
 CMS_lumi.cmsTextOffset    = 0.1
 
 #from abc import ABCMeta, abstractmethod
@@ -1154,7 +1154,7 @@ class Unfolder(object):
         print('YADDA2 ', dt.Integral(), dt_nom_dn.Integral(), dt_nom_up.Integral()) 
         dt_alt.Scale(1./dt_alt.Integral())
         dt_inc.Scale(1./dt_inc.Integral())
-        dt.GetXaxis().SetTitle('Gen %s' % self.fancyvar)
+        dt.GetXaxis().SetTitle('%s' % self.fancyvar)
         dt.GetYaxis().SetTitle('d#sigma/d%s [pb/GeV]' % self.diffvar)
         dt.SetMaximum(1.2*dt.GetMaximum())
         if self.logx:
@@ -1299,10 +1299,10 @@ def main(args):
 
     # Should move it to be specifiable from command line, probably
     vardict = {
-        'Zpt'       : ['p_{T}(Z) [GeV]'          , 'p_{T}^{Z}'          ],
-        'LeadJetPt' : ['p_{T}(leading jet) [GeV]', 'p_{T}^{jet}'        ],
+        'Zpt'       : ['p_{T}^{Z} [GeV]'          , 'p_{T}^{Z}'          ],
+        'LeadJetPt' : ['Leading jet p_{T} [GeV]', 'p_{T}^{jet}'        ],
         'MWZ'       : ['M(WZ) [GeV]'             , 'M_{WZ}'             ],
-        'Wpt'       : ['p_{T}(W) [GeV]'          , 'p_{T}^{W}'          ] 
+        'Wpt'       : ['p_{T}^{W} [GeV]'          , 'p_{T}^{W}'          ] 
         }
     
     for var, fancy in vardict.items():

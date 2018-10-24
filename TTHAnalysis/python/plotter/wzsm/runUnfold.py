@@ -18,8 +18,8 @@ def get_list_of_jobs(base):
     ret=[]
 
     #for charge in [ '', '_plus', '_minus' ]:
-    for charge in [ '_plus', '_minus' ]:
-    #for charge in [ '_none', '_plus', '_minus' ]:
+    #for charge in [ '_plus', '_minus' ]:
+    for charge in [ '_none', '_plus', '_minus' ]:
         for fs in [ 'incl', 'eee', 'eem', 'mme', 'mmm']:
             if not base:
                 # No bias, area constraint     
