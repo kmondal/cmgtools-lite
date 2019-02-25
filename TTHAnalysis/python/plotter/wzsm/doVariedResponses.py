@@ -22,7 +22,7 @@ processes=' -p prompt_altWZ.* '
 #echo "rm -r ${baseoutputdir}mme_fitWZonly/ "
 #echo "rm -r ${baseoutputdir}mmm_fitWZonly/ "
 
-doSignSplit=False
+doSignSplit=True
 
 if not doSignSplit:
     for iShape, iPack in pairs.items():
