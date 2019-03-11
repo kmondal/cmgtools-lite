@@ -1166,7 +1166,7 @@ class Unfolder(object):
         dt_alt.Scale(1./dt_alt.Integral())
         dt_inc.Scale(1./dt_inc.Integral())
         dt.GetXaxis().SetTitle('%s' % self.fancyvar)
-        dt.GetYaxis().SetTitle('d#sigma/d%s [pb/GeV]' % self.diffvar)
+        dt.GetYaxis().SetTitle('(d#sigma/d%s)/#sigma' % self.diffvar)
         dt.SetMaximum(1.2*dt.GetMaximum())
         if self.logx:
             ROOT.gPad.SetLogx()
