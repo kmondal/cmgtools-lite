@@ -31,12 +31,12 @@ class HiggsDiffRegressionTTH(Module):
             for suffix in ["_pt", "_eta", "_phi", "_mass"]:
                 for iLep in range(2):
                     self.out.branch('%sLep%s%s%s'%(self.label,iLep,jesLabel,suffix)   , 'F') 
-                for iJet in range(6):
+                for iJet in range(7):
                     self.out.branch('%sJet%s%s%s'%(self.label,iJet,jesLabel,suffix)   , 'F')
                 self.out.branch('%sHadTop%s%s'%(self.label,jesLabel,suffix), 'F')
                 
             
-            for iJet in range(6):
+            for iJet in range(7):
                 self.out.branch('%sJet%s%s_btagdiscr'%(self.label,iJet,jesLabel), 'F')
 
             self.out.branch('%sTopScore%s'%(self.label,jesLabel)      , 'F')      
@@ -55,15 +55,16 @@ class HiggsDiffRegressionTTH(Module):
 
             for var in ['DeltaRl0l1',
                         
-                        'DeltaRl0j0', 'DeltaRl0j1', 'DeltaRl0j2', 'DeltaRl0j3', 'DeltaRl0j4', 'DeltaRl0j5', 
-                        'DeltaRl1j0', 'DeltaRl1j1', 'DeltaRl1j2', 'DeltaRl1j3', 'DeltaRl1j4', 'DeltaRl1j5', 
+                        'DeltaRl0j0', 'DeltaRl0j1', 'DeltaRl0j2', 'DeltaRl0j3', 'DeltaRl0j4', 'DeltaRl0j5', 'DeltaRl0j6', 
+                        'DeltaRl1j0', 'DeltaRl1j1', 'DeltaRl1j2', 'DeltaRl1j3', 'DeltaRl1j4', 'DeltaRl1j5', 'DeltaRl1j6', 
                         
-                        'DeltaRj0j0', 'DeltaRj0j1', 'DeltaRj0j2', 'DeltaRj0j3', 'DeltaRj0j4', 'DeltaRj0j5', 
-                        'DeltaRj1j0', 'DeltaRj1j1', 'DeltaRj1j2', 'DeltaRj1j3', 'DeltaRj1j4', 'DeltaRj1j5', 
-                        'DeltaRj2j0', 'DeltaRj2j1', 'DeltaRj2j2', 'DeltaRj2j3', 'DeltaRj2j4', 'DeltaRj2j5', 
-                        'DeltaRj3j0', 'DeltaRj3j1', 'DeltaRj3j2', 'DeltaRj3j3', 'DeltaRj3j4', 'DeltaRj3j5', 
-                        'DeltaRj4j0', 'DeltaRj4j1', 'DeltaRj4j2', 'DeltaRj4j3', 'DeltaRj4j4', 'DeltaRj4j5', 
-                        'DeltaRj5j0', 'DeltaRj5j1', 'DeltaRj5j2', 'DeltaRj5j3', 'DeltaRj5j4', 'DeltaRj5j5', 
+                        'DeltaRj0j0', 'DeltaRj0j1', 'DeltaRj0j2', 'DeltaRj0j3', 'DeltaRj0j4', 'DeltaRj0j5', 'DeltaRj0j6', 
+                        'DeltaRj1j0', 'DeltaRj1j1', 'DeltaRj1j2', 'DeltaRj1j3', 'DeltaRj1j4', 'DeltaRj1j5', 'DeltaRj1j6', 
+                        'DeltaRj2j0', 'DeltaRj2j1', 'DeltaRj2j2', 'DeltaRj2j3', 'DeltaRj2j4', 'DeltaRj2j5', 'DeltaRj2j6', 
+                        'DeltaRj3j0', 'DeltaRj3j1', 'DeltaRj3j2', 'DeltaRj3j3', 'DeltaRj3j4', 'DeltaRj3j5', 'DeltaRj3j6', 
+                        'DeltaRj4j0', 'DeltaRj4j1', 'DeltaRj4j2', 'DeltaRj4j3', 'DeltaRj4j4', 'DeltaRj4j5', 'DeltaRj4j6', 
+                        'DeltaRj5j0', 'DeltaRj5j1', 'DeltaRj5j2', 'DeltaRj5j3', 'DeltaRj5j4', 'DeltaRj5j5', 'DeltaRj5j6', 
+                        'DeltaRj6j0', 'DeltaRj6j1', 'DeltaRj6j2', 'DeltaRj6j3', 'DeltaRj6j4', 'DeltaRj6j5', 'DeltaRj6j6', 
                     ]:
                 self.out.branch('%s%s%s'%(self.label,var,jesLabel), 'F')
 
@@ -80,6 +81,8 @@ class HiggsDiffRegressionTTH(Module):
         leps = Collection(event,"LepGood","nLepGood")
         lepsFO = [leps[ileps[i]] for i in xrange(nFO)]
         jets = [x for x in Collection(event,"JetSel_Recl","nJetSel_Recl")]
+        jets = [j for j in jets if j.p4().Pt()>25.] # Pick only jets with our regular pt cut
+
         (met, met_phi)  = event.MET_pt, event.MET_phi
 
         for jesLabel in self.systsJEC.values():
@@ -138,7 +141,7 @@ class HiggsDiffRegressionTTH(Module):
             drs = []
             dpts = []
             for l,lp4 in [(ix,x.p4()) for ix,x in enumerate(lepsFO)]:
-                if len(lepsFO)<3:
+                if len(lepsFO)<3:  # This should be always OK because we are running this on 2lss events. If we start running on other events, it won't be fine anymore.
                     selleps.append(lp4)
                     evt_tag *= lepsFO[l].pdgId
                 
@@ -170,13 +173,13 @@ class HiggsDiffRegressionTTH(Module):
             jdrs = []
             for j, jp4 in [(ix,x.p4()) for ix,x in enumerate(jets)]:
                 #jp4.SetPtEtaPhiM(getattr(jets[jets.index(j)],'pt%s'%self.systsJEC[var]),jp4.Eta(), jp4.Phi(), jp4.M())
-                if len(jets) <7: # fix this
+                if j <7: # fix this
                     seljets.append(jp4)
                     seljetsbtag.append(jets[j].btagDeepB)
 
                     tjdrs=[]
                     for jo, jpo4 in [(ixo,xo.p4()) for ixo,xo in enumerate(jets)]:
-                        if len(jets) <7: # fix this
+                        if jo <7: # fix this
                           tjdrs.append(jp4.DeltaR(jpo4))
                     jdrs.append(tjdrs)
             
