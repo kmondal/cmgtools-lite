@@ -173,6 +173,8 @@ class HiggsDiffRegressionTTH(Module):
             seljets=[]
             seljetsbtag=[]
             jdrs = []
+            if len(jets) <4:
+                print("We have", len(jets), "jets.")
             for j, jp4 in [(ix,x.p4()) for ix,x in enumerate(jets)]:
                 #jp4.SetPtEtaPhiM(getattr(jets[jets.index(j)],'pt%s'%self.systsJEC[var]),jp4.Eta(), jp4.Phi(), jp4.M())
                 if j <7: # fix this
@@ -187,17 +189,17 @@ class HiggsDiffRegressionTTH(Module):
             
             for j1 in range(len(jdrs)):
                 for j2 in range(len(jdrs)):
-                    self.out.fillBranch('%sDeltaRj%sj%s%s'%(self.label,j1,j2,jesLabel), jdrs[j1][j2])
+                    self.out.fillBranch('%sDeltaRj%sj%s%s'%(self.label,j1,j2,jesLabel), jdrs[j1][j2] if (j1<len(seljets) and j2<len(seljets)) else -99. )
 
             self.out.fillBranch('%snJets%s' %(self.label,jesLabel), len(seljets))
-            for iJet in range(len(seljets)):
-                part = seljets[iJet]
-                self.out.fillBranch('%sJet%s%s_pt'  %(self.label,iJet,jesLabel), part.Pt() )
-                self.out.fillBranch('%sJet%s%s_eta' %(self.label,iJet,jesLabel), part.Eta())
-                self.out.fillBranch('%sJet%s%s_phi' %(self.label,iJet,jesLabel), part.Phi())
-                self.out.fillBranch('%sJet%s%s_mass'%(self.label,iJet,jesLabel), part.M())
-                self.out.fillBranch('%sJet%s%s_btagdiscr'%(self.label,iJet,jesLabel), seljetsbtag[iJet] )
 
+            for iJet in range(7):
+                    part = seljets[iJet] if iJet<len(seljets) else None
+                    self.out.fillBranch('%sJet%s%s_pt'  %(self.label,iJet,jesLabel), part.Pt() if iJet<len(seljets) else -99.)
+                    self.out.fillBranch('%sJet%s%s_eta' %(self.label,iJet,jesLabel), part.Eta()if iJet<len(seljets) else -99.)
+                    self.out.fillBranch('%sJet%s%s_phi' %(self.label,iJet,jesLabel), part.Phi()if iJet<len(seljets) else -99.)
+                    self.out.fillBranch('%sJet%s%s_mass'%(self.label,iJet,jesLabel), part.M()  if iJet<len(seljets) else -99.)
+                    self.out.fillBranch('%sJet%s%s_btagdiscr'%(self.label,iJet,jesLabel), seljetsbtag[iJet] if iJet<len(seljets) else -99.)
                 
             if len(drs)==2:
                 for iLep in range(2):
