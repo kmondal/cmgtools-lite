@@ -80,9 +80,9 @@ class HiggsDiffRegressionTTH(Module):
         ileps = getattr(event,"iLepFO_Recl")
         leps = Collection(event,"LepGood","nLepGood")
         lepsFO = [leps[ileps[i]] for i in xrange(nFO)]
-        jets = [x for x in Collection(event,"JetSel_Recl","nJetSel_Recl")]
-        jets = [j for j in jets if j.p4().Pt()>25.] # Pick only jets with our regular pt cut
-
+        alljets = [x for x in Collection(event,"JetSel_Recl","nJetSel_Recl")]
+        jets = [j for j in alljets if j.p4().Pt()>25.] # Pick only jets with our regular pt cut --- not used
+        
         (met, met_phi)  = event.MET_pt, event.MET_phi
 
         for jesLabel in self.systsJEC.values():
@@ -104,12 +104,14 @@ class HiggsDiffRegressionTTH(Module):
                 #top2 = ROOT.TLorentzVector(); top2.SetPtEtaPhiM(getattr(jets[jets.index(j2top)],'pt%s'%self.systsJEC[var]),jets[jets.index(j2top)].Eta(), jets[jets.index(j2top)].Phi(), jets[jets.index(j2top)].M())
                 #top3 = ROOT.TLorentzVector(); top3.SetPtEtaPhiM(getattr(jets[jets.index(j3top)],'pt%s'%self.systsJEC[var]),jets[jets.index(j3top)].Eta(), jets[jets.index(j3top)].Phi(), jets[jets.index(j3top)].M())
                 
-                top1 = ROOT.TLorentzVector(); top1.SetPtEtaPhiM(jets[j1top].p4().Pt(),jets[j1top].p4().Eta(), jets[j1top].p4().Phi(), jets[j1top].p4().M())
-                top2 = ROOT.TLorentzVector(); top2.SetPtEtaPhiM(jets[j2top].p4().Pt(),jets[j2top].p4().Eta(), jets[j2top].p4().Phi(), jets[j2top].p4().M())
-                top3 = ROOT.TLorentzVector(); top3.SetPtEtaPhiM(jets[j3top].p4().Pt(),jets[j3top].p4().Eta(), jets[j3top].p4().Phi(), jets[j3top].p4().M())
+                top1 = ROOT.TLorentzVector(); top1.SetPtEtaPhiM(alljets[j1top].p4().Pt(),alljets[j1top].p4().Eta(), alljets[j1top].p4().Phi(), alljets[j1top].p4().M())
+                top2 = ROOT.TLorentzVector(); top2.SetPtEtaPhiM(alljets[j2top].p4().Pt(),alljets[j2top].p4().Eta(), alljets[j2top].p4().Phi(), alljets[j2top].p4().M())
+                top3 = ROOT.TLorentzVector(); top3.SetPtEtaPhiM(alljets[j3top].p4().Pt(),alljets[j3top].p4().Eta(), alljets[j3top].p4().Phi(), alljets[j3top].p4().M())
                 HadTop = top1+top2+top3
                 
-                jetsNoTopNoB = [j for i,j in enumerate(jets) if i not in [j1top,j2top,j3top] and j.btagDeepB<btagvetoval]
+                # Unused
+                #jetsNoTopNoB = [j for i,j in enumerate(jets) if i not in [j1top,j2top,j3top] and j.btagDeepB<btagvetoval]
+                #jetsNoTopNoB = [j for j in jetsNoTopNoB if j.p4().Pt()>25.] # exclude low-pt jets---must do it here otherwise I mess up the jNtop indices a
 
                 # Later fill only j1 j2 j3, but for now let's use all jets
                 #for _lep,lep in [(ix,x.p4()) for ix,x in enumerate(lepsFO)]:
