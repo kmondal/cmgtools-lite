@@ -156,12 +156,12 @@ class HiggsDiffRegressionTTH(Module):
                     dpts.append(tdpts)
 
             self.out.fillBranch('%snLeps%s' %(self.label,jesLabel), len(selleps))
-            for iLep in range(len(selleps)):
+            for iLep in range(2):
                 part = selleps[iLep]
-                self.out.fillBranch('%sLep%s%s_pt'  %(self.label,iLep,jesLabel), part.Pt() )
-                self.out.fillBranch('%sLep%s%s_eta' %(self.label,iLep,jesLabel), part.Eta())
-                self.out.fillBranch('%sLep%s%s_phi' %(self.label,iLep,jesLabel), part.Phi())
-                self.out.fillBranch('%sLep%s%s_mass'%(self.label,iLep,jesLabel), part.M())
+                self.out.fillBranch('%sLep%s%s_pt'  %(self.label,iLep,jesLabel), part.Pt()  if iLep < len(selleps) else -99.)
+                self.out.fillBranch('%sLep%s%s_eta' %(self.label,iLep,jesLabel), part.Eta() if iLep < len(selleps) else -99.)
+                self.out.fillBranch('%sLep%s%s_phi' %(self.label,iLep,jesLabel), part.Phi() if iLep < len(selleps) else -99.)
+                self.out.fillBranch('%sLep%s%s_mass'%(self.label,iLep,jesLabel), part.M()   if iLep < len(selleps) else -99.)
 
             for l in range(len(drs)):
                 for j in range(len(drs[l])):
