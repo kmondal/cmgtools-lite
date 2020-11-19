@@ -157,7 +157,7 @@ class HiggsDiffRegressionTTH(Module):
 
             self.out.fillBranch('%snLeps%s' %(self.label,jesLabel), len(selleps))
             for iLep in range(2):
-                part = selleps[iLep]
+                part = selleps[iLep] if iLep<len(selleps) else None
                 self.out.fillBranch('%sLep%s%s_pt'  %(self.label,iLep,jesLabel), part.Pt()  if iLep < len(selleps) else -99.)
                 self.out.fillBranch('%sLep%s%s_eta' %(self.label,iLep,jesLabel), part.Eta() if iLep < len(selleps) else -99.)
                 self.out.fillBranch('%sLep%s%s_phi' %(self.label,iLep,jesLabel), part.Phi() if iLep < len(selleps) else -99.)
@@ -216,7 +216,15 @@ class HiggsDiffRegressionTTH(Module):
                     self.out.fillBranch('%sDeltaRClosestJetToLep%s%s'%(self.label,iLep,jesLabel) ,  -99.)
                     self.out.fillBranch('%sDeltaPtClosestJetToLep%s%s'%(self.label,iLep,jesLabel) , -99.)
                     
- 
+            # some debugging # print("CHIPPI")
+            # some debugging # for iJet in range(7):
+            # some debugging #         part = seljets[iJet] if iJet<len(seljets) else None
+            # some debugging #         print("pt ", part.Pt() if iJet<len(seljets) else -99.)
+            # some debugging #         print("eta ", part.Eta()if iJet<len(seljets) else -99.)
+            # some debugging #         print("phi ", part.Phi()if iJet<len(seljets) else -99.)
+            # some debugging #         print("m ", part.M()  if iJet<len(seljets) else -99.)
+
+
             self.out.fillBranch('%smet%s'     %(self.label,jesLabel), met                                ) 
             self.out.fillBranch('%smet_phi%s' %(self.label,jesLabel), met_phi                            )
             self.out.fillBranch('%sHTXS_Higgs_pt%s'%(self.label,jesLabel), getattr(event,"HTXS_Higgs_pt"))
