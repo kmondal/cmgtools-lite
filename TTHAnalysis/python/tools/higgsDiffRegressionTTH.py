@@ -68,6 +68,18 @@ class HiggsDiffRegressionTTH(Module):
                     ]:
                 self.out.branch('%s%s%s'%(self.label,var,jesLabel), 'F')
 
+    def buildHadronicTop(self, event, score, jesLabel):
+        HadTop=None
+        if score>self.cut_BDT_rTT_score:
+            j1top = int(getattr(event,"BDThttTT_eventReco_iJetSel1%s"%jesLabel))
+            j2top = int(getattr(event,"BDThttTT_eventReco_iJetSel2%s"%jesLabel))
+            j3top = int(getattr(event,"BDThttTT_eventReco_iJetSel3%s"%jesLabel))
+            # Build hadronic top
+            top1 = ROOT.TLorentzVector(); top1.SetPtEtaPhiM(alljets[j1top].p4().Pt(),alljets[j1top].p4().Eta(), alljets[j1top].p4().Phi(), alljets[j1top].p4().M())
+            top2 = ROOT.TLorentzVector(); top2.SetPtEtaPhiM(alljets[j2top].p4().Pt(),alljets[j2top].p4().Eta(), alljets[j2top].p4().Phi(), alljets[j2top].p4().M())
+            top3 = ROOT.TLorentzVector(); top3.SetPtEtaPhiM(alljets[j3top].p4().Pt(),alljets[j3top].p4().Eta(), alljets[j3top].p4().Phi(), alljets[j3top].p4().M())
+            HadTop = top1+top2+top3
+        return HadTop
 
     def analyze(self, event):
 
@@ -75,13 +87,31 @@ class HiggsDiffRegressionTTH(Module):
         year=getattr(event,'year')
         btagvetoval=HiggsRecoTTHbtagwps['DeepFlav_%d_%s'%(year,self.btagDeepCSVveto)][1]
 
-        nleps = getattr(event,"nLepGood")
-        nFO = getattr(event,"nLepFO_Recl")
-        ileps = getattr(event,"iLepFO_Recl")
-        leps = Collection(event,"LepGood","nLepGood")
-        lepsFO = [leps[ileps[i]] for i in xrange(nFO)]
+        nAllLeps = event.nLepGood
+        nRecleanedLeps = event.nLepFO_Recl
+        recleanedLepsIdxs = event.iLepFO_Recl
+        allLeps = Collection(event,"LepGood","nLepGood")
+        leps = [allLeps[recleanedLepsIdxs[i]] for i in xrange(nRecleanedLeps)]
         alljets = [x for x in Collection(event,"JetSel_Recl","nJetSel_Recl")]
         jets = [j for j in alljets if j.p4().Pt()>25.] # Pick only jets with our regular pt cut --- not used
+
+
+        # Enforce selection
+        if len(leps) < 2                      : return False
+        if leps[0].pt < 25 or leps[1].pt < 15 : return False # pt2515
+        if event.nLepTight_Recl > 2           : return False # exclusive
+        if leps[0].pdgId*leps[1].pdgId < 0    : return False # same-sign
+        if abs(event.mZ1_Recl-91.2)<10        : return False # Z_veto
+        
+        # Make sure we have prompt leptons
+        if leps[0].genPartFlav != 1 and leps[0].genPartFlav != 15 : return False
+        if leps[1].genPartFlav != 1 and leps[1].genPartFlav != 15 : return False
+
+        # No final states with taus, for the moment
+        if event.nTauSel_Recl_Tight > 0                           : return False
+
+        # Jets (make sure we skim)
+        if not ((event.nJet25_Recl>=3 and (event.nBJetLoose25_Recl >= 2 or event.nBJetMedium25_Recl >= 1)) or (event.nBJetMedium25_Recl >= 1 and (event.nJet25_Recl+event.nFwdJet_Recl-event.nBJetLoose25_Recl) > 0)) : return False
         
         (met, met_phi)  = event.MET_pt, event.MET_phi
 
@@ -92,48 +122,13 @@ class HiggsDiffRegressionTTH(Module):
             top1 = None
             top2 = None
             top3 = None
-            HadTop = None
+            HadTop = buildHadronicTop(event, score, jesLabel)
 
-            if score>self.cut_BDT_rTT_score:
-
-                j1top = int(getattr(event,"BDThttTT_eventReco_iJetSel1%s"%jesLabel))
-                j2top = int(getattr(event,"BDThttTT_eventReco_iJetSel2%s"%jesLabel))
-                j3top = int(getattr(event,"BDThttTT_eventReco_iJetSel3%s"%jesLabel))
-                # make had top and fill
-                #top1 = ROOT.TLorentzVector(); top1.SetPtEtaPhiM(getattr(jets[jets.index(j1top)],'pt%s'%self.systsJEC[var]),jets[jets.index(j1top)].Eta(), jets[jets.index(j1top)].Phi(), jets[jets.index(j1top)].M())
-                #top2 = ROOT.TLorentzVector(); top2.SetPtEtaPhiM(getattr(jets[jets.index(j2top)],'pt%s'%self.systsJEC[var]),jets[jets.index(j2top)].Eta(), jets[jets.index(j2top)].Phi(), jets[jets.index(j2top)].M())
-                #top3 = ROOT.TLorentzVector(); top3.SetPtEtaPhiM(getattr(jets[jets.index(j3top)],'pt%s'%self.systsJEC[var]),jets[jets.index(j3top)].Eta(), jets[jets.index(j3top)].Phi(), jets[jets.index(j3top)].M())
-                
-                top1 = ROOT.TLorentzVector(); top1.SetPtEtaPhiM(alljets[j1top].p4().Pt(),alljets[j1top].p4().Eta(), alljets[j1top].p4().Phi(), alljets[j1top].p4().M())
-                top2 = ROOT.TLorentzVector(); top2.SetPtEtaPhiM(alljets[j2top].p4().Pt(),alljets[j2top].p4().Eta(), alljets[j2top].p4().Phi(), alljets[j2top].p4().M())
-                top3 = ROOT.TLorentzVector(); top3.SetPtEtaPhiM(alljets[j3top].p4().Pt(),alljets[j3top].p4().Eta(), alljets[j3top].p4().Phi(), alljets[j3top].p4().M())
-                HadTop = top1+top2+top3
-                
-                # Unused
-                #jetsNoTopNoB = [j for i,j in enumerate(jets) if i not in [j1top,j2top,j3top] and j.btagDeepB<btagvetoval]
-                #jetsNoTopNoB = [j for j in jetsNoTopNoB if j.p4().Pt()>25.] # exclude low-pt jets---must do it here otherwise I mess up the jNtop indices a
-
-                # Later fill only j1 j2 j3, but for now let's use all jets
-                #for _lep,lep in [(ix,x.p4()) for ix,x in enumerate(lepsFO)]:
-                #    for _j1,_j2,j1,j2 in [(jets.index(x1),jets.index(x2),x1.p4(),x2.p4()) for x1,x2 in itertools.combinations(jetsNoTopNoB,2)]:
-                #        j1.SetPtEtaPhiM(getattr(jets[jets.index(x1)],'pt%s'%self.systsJEC[var]),j1.Eta(), j1.Phi(), j1.M())
-                #        j2.SetPtEtaPhiM(getattr(jets[jets.index(x2)],'pt%s'%self.systsJEC[var]),j2.Eta(), j2.Phi(), j2.M())
-                #        W = j1+j2
-                #        mW = W.M()
-                #        if mW<self.cuts_mW_had[0] or mW>self.cuts_mW_had[1]: continue
-                #        Wconstr = ROOT.TLorentzVector()
-                #        Wconstr.SetPtEtaPhiM(W.Pt(),W.Eta(),W.Phi(),80.4)
-                #        Hvisconstr = lep+Wconstr
-                #        mHvisconstr = Hvisconstr.M()
-                #        if mHvisconstr<self.cuts_mH_vis[0] or mHvisconstr>self.cuts_mH_vis[1]: continue
-                #        mindR = min(lep.DeltaR(j1),lep.DeltaR(j2))
-                #        candidates.append((mindR,mHvisconstr,mW,_lep,_j1,_j2))
-                        
             self.out.fillBranch('%sHadTop%s_pt'  %(self.label,jesLabel), HadTop.Pt()  if HadTop else -99.)
             self.out.fillBranch('%sHadTop%s_eta' %(self.label,jesLabel), HadTop.Eta() if HadTop else -99.)
             self.out.fillBranch('%sHadTop%s_phi' %(self.label,jesLabel), HadTop.Phi() if HadTop else -99.)
             self.out.fillBranch('%sHadTop%s_mass'%(self.label,jesLabel), HadTop.M()   if HadTop else -99.)
-            self.out.fillBranch('%sTopScore%s'   %(self.label,jesLabel), score                          ) # else -99? Or not?
+            self.out.fillBranch('%sTopScore%s'   %(self.label,jesLabel), score                          ) # by not filling it with -99, a network should be able to learn self.cut_BDT_rTT_score
 
             evt_tag = 1
             self.out.fillBranch('%sDeltaRl0l1%s' %(self.label,jesLabel), lepsFO[0].p4().DeltaR(lepsFO[1].p4()) if len(lepsFO)>=2 else -99.)
