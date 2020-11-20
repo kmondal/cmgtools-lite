@@ -36,7 +36,7 @@ class HiggsDiffRegressionTTH(Module):
 
             # Jets
             for suffix in ["_pt", "_eta", "_phi", "_mass", "_isbtagged", "_ishadtop"]:
-                self.out.branch('%sJet%s%s'%(self.label,jesLabel,suffix), 'F' , 24, '%snLeps%s'%(self.label,jesLabel))
+                self.out.branch('%sJet%s%s'%(self.label,jesLabel,suffix), 'F' , 24, '%snJets%s'%(self.label,jesLabel))
 
             self.out.branch('%sTopScore%s'%(self.label,jesLabel)      , 'F')      
             self.out.branch('%smet%s'%(self.label,jesLabel)           , 'F')       
@@ -132,7 +132,7 @@ class HiggsDiffRegressionTTH(Module):
                 jet_masses.append(j.mass)
                 jet_isbtaggeds.append( j.btagDeepFlavB > btagvetoval) 
                 jet_ishadtops.append(j.fromHadTop)
-                
+
             self.out.fillBranch('%snJets%s'%(self.label,jesLabel)        , len(jets))  
             self.out.fillBranch('%sJet%s_pt'%(self.label,jesLabel)       , jet_pts)
             self.out.fillBranch('%sJet%s_eta'%(self.label,jesLabel)      , jet_etas)
@@ -140,6 +140,8 @@ class HiggsDiffRegressionTTH(Module):
             self.out.fillBranch('%sJet%s_mass'%(self.label,jesLabel)     , jet_masses)
             self.out.fillBranch('%sJet%s_isbtagged'%(self.label,jesLabel), jet_isbtaggeds)
             self.out.fillBranch('%sJet%s_ishadtop'%(self.label,jesLabel) , jet_ishadtops)            
+
+
 
             score = getattr(event,"BDThttTT_eventReco_mvaValue%s"%jesLabel)
             
