@@ -38,3 +38,10 @@ def plot_weights(wgt, true, label):
     ax2.hist(wgt[true==0])
     ax2.set_title('Background (%s dataset)'%label)
     ax2.set_yscale('log')
+
+def plot_score(true, score, label):
+    plt.hist(score[true==0], label='CP even')
+    plt.hist(score[true==1], label='CP odd', )
+    plt.title('Score (%s dataset)'%label)
+    plt.legend(log='best')
+    plt.show()
