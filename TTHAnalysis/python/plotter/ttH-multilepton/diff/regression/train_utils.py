@@ -28,7 +28,13 @@ def plot_rel_pred(true, pred, label):
     plt.ylabel('Pred label - true label (%s dataset)'%label)
     plt.show()
     
-
+def plot_pred(true, pred, label):
+    plt.hist2d(true,pred)
+    plt.xlabel('True label')
+    plt.ylabel('Pred label')
+    plt.title('%s dataset'%label)
+    plt.show()
+    
 def plot_weights(wgt, true, label):
     f, (ax1, ax2) = plt.subplots(1, 2, sharey=True)
     ax1.hist(wgt[true==1])
