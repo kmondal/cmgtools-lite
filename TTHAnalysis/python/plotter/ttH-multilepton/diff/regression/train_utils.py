@@ -5,6 +5,10 @@ from sklearn.metrics import roc_curve, auc
 def plot_roc(true, pred, sample_weight=None, label='', debug=False):
     fpr, tpr, thresholds = roc_curve(true, pred) if sample_weight is None else roc_curve(true, pred, sample_weight=sample_weight)
     roc_auc = auc(fpr, tpr)
+    if roc_auc < 0.5:
+        roc_auc = 1-roc_auc
+        fpr=1-fpr
+        tpr=1-tpr
     if debug:
         print('FPR range:', min(fpr),max(fpr))
         print('TPR range:', min(tpr),max(tpr))
