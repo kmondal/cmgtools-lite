@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc
 
 
-def plot_roc(true, pred, sample_weight=None, label='', debug=False):
+def plot_roc(true, pred, sample_weight=None, label='', plot=True, debug=False):
     fpr, tpr, thresholds = roc_curve(true, pred) if sample_weight is None else roc_curve(true, pred, sample_weight=sample_weight)
     roc_auc = auc(fpr, tpr)
     if roc_auc < 0.5:
@@ -13,19 +13,21 @@ def plot_roc(true, pred, sample_weight=None, label='', debug=False):
         print('FPR range:', min(fpr),max(fpr))
         print('TPR range:', min(tpr),max(tpr))
 
-    plt.figure()
-    lw = 2
-    plt.plot(fpr, tpr, color='darkorange',
-             lw=lw, label='ROC curve (area = %0.2f)' % roc_auc)
-    plt.plot([0, 1], [0, 1], color='navy', lw=lw, linestyle='--')
-    plt.xlim([0.0, 1.0])
-    plt.ylim([0.0, 1.05])
-    plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
-    plt.title('ROC curve for the %s dataset'%label)
-    plt.legend(loc="lower right")
-    plt.show()
-    
+    if plot:
+        plt.figure()
+        lw = 2
+        plt.plot(fpr, tpr, color='darkorange',
+                 lw=lw, label='ROC curve (area = %0.2f)' % roc_auc)
+        plt.plot([0, 1], [0, 1], color='navy', lw=lw, linestyle='--')
+        plt.xlim([0.0, 1.0])
+        plt.ylim([0.0, 1.05])
+        plt.xlabel('False Positive Rate')
+        plt.ylabel('True Positive Rate')
+        plt.title('ROC curve for the %s dataset'%label)
+        plt.legend(loc="lower right")
+        plt.show()
+    return roc_auc
+
 def plot_rel_pred(true, pred, label):
     plt.hist2d(true,pred-true)
     plt.xlabel('True label')
