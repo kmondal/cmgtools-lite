@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc
 
 
-def plot_roc(true, pred, label, debug=False):
-    fpr, tpr, thresholds = roc_curve(true, pred)
+def plot_roc(true, pred, sample_weight=None, label='', debug=False):
+    fpr, tpr, thresholds = roc_curve(true, pred) if sample_weight is None else roc_curve(true, pred, sample_weight=sample_weight)
     roc_auc = auc(fpr, tpr)
     if debug:
         print('FPR range:', min(fpr),max(fpr))
