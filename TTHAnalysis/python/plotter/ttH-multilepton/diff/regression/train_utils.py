@@ -55,5 +55,16 @@ def plot_score(true, score, label):
     plt.hist(score[true==0], label='CP even')
     plt.hist(score[true==1], label='CP odd', )
     plt.title('Score (%s dataset)'%label)
-    plt.legend(log='best')
+    plt.legend(loc='best')
+    plt.show()
+    
+
+def plot_scores(true_train, score_train, true_test, score_test):
+    
+    plt.hist(score_train[true_train==0], histtype="bar", label='CP even')
+    plt.hist(score_train[true_train==1], histtype="bar", label='CP odd', )
+    plt.hist(score_test[true_test==0], histtype="step", label='CP even')
+    plt.hist(score_test[true_test==1], histtype="step", label='CP odd', )
+    plt.title('Score')
+    plt.legend(loc='best')
     plt.show()
