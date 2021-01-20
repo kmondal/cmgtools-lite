@@ -138,11 +138,20 @@ recleaner_step2_data = lambda : fastCombinedObjectRecleaner(label="Recl", inlabe
 
 )
 
+tauFOs = lambda t : t.decayMode != 5 and t.decayMode != 6 and t.idDeepTau2017v2p1VSe & 1 and t.idDeepTau2017v2p1VSmu & 1
+tauVeto_2lss_1tau  = lambda t : t.idDeepTau2017v2p1VSjet & 16
+tauTight_2lss_1tau = lambda t : tauFOs(t) and t.idDeepTau2017v2p1VSjet & 4
+countTaus_veto             = lambda : ObjTagger('Tight'            ,'TauSel_Recl', [lambda t : t.idDeepTau2017v2p1VSjet&4]) # to veto in tauless categories
+countTaus_FO               = lambda : ObjTagger('FO'               ,'TauSel_Recl', [tauFOs]                               ) # actual FO (the FO above is used for jet cleaning, and corresponds to the loose)
+countTaus_2lss1tau_Veto    = lambda : ObjTagger('2lss1tau_Veto'    ,'TauSel_Recl', [tauVeto_2lss_1tau]                    ) # veto ID for 2lss1tau category 
+countTaus_2lss1tau_Tight   = lambda : ObjTagger('2lss1tau_Tight'   ,'TauSel_Recl', [tauTight_2lss_1tau]                   ) # tight ID for 2lss1tau category 
+countTaus = [countTaus_veto,countTaus_FO,countTaus_2lss1tau_Veto,countTaus_2lss1tau_Tight]
+
 
 
 from CMGTools.TTHAnalysis.tools.eventVars_2lss import EventVars2LSS
-eventVars = lambda : EventVars2LSS('','Recl')
-eventVars_allvariations = lambda : EventVars2LSS('','Recl',variations = [ 'jes%s'%v for v in jecGroups] + ['jer%s'%x for x in ['barrel','endcap1','endcap2highpt','endcap2lowpt' ,'forwardhighpt','forwardlowpt']  ]  + ['HEM'])
+eventVars               = lambda : EventVars2LSS('','Recl', tauTight_2lss_1tau=tauTight_2lss_1tau)
+eventVars_allvariations = lambda : EventVars2LSS('','Recl',variations = [ 'jes%s'%v for v in jecGroups] + ['jer%s'%x for x in ['barrel','endcap1','endcap2highpt','endcap2lowpt' ,'forwardhighpt','forwardlowpt']  ]  + ['HEM'], tauTight_2lss_1tau=tauTight_2lss_1tau)
 
 from CMGTools.TTHAnalysis.tools.hjDummCalc import HjDummyCalc
 hjDummy = lambda : HjDummyCalc(variations  = [ 'jes%s'%v for v in jecGroups] + ['jer%s'%x for x in ['barrel','endcap1','endcap2highpt','endcap2lowpt' ,'forwardhighpt','forwardlowpt']  ]  + ['HEM'])
@@ -153,12 +162,6 @@ mcMatchId     = lambda : ObjTagger('mcMatchId','LepGood', [lambda l : (l.genPart
 mcPromptGamma = lambda : ObjTagger('mcPromptGamma','LepGood', [lambda l : (l.genPartFlav==22)])
 mcMatch_seq   = [ isMatchRightCharge, mcMatchId ,mcPromptGamma]
 
-tauFOs = lambda t : t.decayMode != 5 and t.decayMode != 6 and t.idDeepTau2017v2p1VSe & 1 and t.idDeepTau2017v2p1VSmu & 1
-tauVeto_2lss_1tau = lambda t : tauFOs(t) and t.idDeepTau2017v2p1VSjet & 16
-countTaus_veto             = lambda : ObjTagger('Tight'            ,'TauSel_Recl', [lambda t : t.idDeepTau2017v2p1VSjet&4]) # to veto in tauless categories
-countTaus_FO               = lambda : ObjTagger('FO'               ,'TauSel_Recl', [tauFOs]                               ) # actual FO (the FO above is used for jet cleaning, and corresponds to the loose)
-countTaus_2lss1tau_Tight   = lambda : ObjTagger('2lss1tau_Veto'    ,'TauSel_Recl', [tauTight_2lss_1tau]                   ) # veto ID for 2lss1tau category 
-
 
 from CMGTools.TTHAnalysis.tools.nanoAOD.jetmetGrouper import jetMetCorrelate2016,jetMetCorrelate2017,jetMetCorrelate2018
 from PhysicsTools.NanoAODTools.postprocessing.modules.jme.jetmetHelperRun2 import createJMECorrector
@@ -166,7 +169,7 @@ from PhysicsTools.NanoAODTools.postprocessing.modules.jme.jetmetHelperRun2 impor
 
 jetmetUncertainties2016All = createJMECorrector(dataYear=2016, jesUncert="All")
 jetmetUncertainties2017All = createJMECorrector(dataYear=2017, jesUncert="All", metBranchName="METFixEE2017")
-jetmetUncertainties2018All = createJMECorrector(dataYear=2016, jesUncert="All")
+jetmetUncertainties2018All = createJMECorrector(dataYear=2018, jesUncert="All")
 
 jme2016_allvariations = [jetmetUncertainties2016All,jetMetCorrelate2016] 
 jme2017_allvariations = [jetmetUncertainties2017All,jetMetCorrelate2017]
@@ -314,14 +317,13 @@ Trigger_2lss = lambda : EvtTagger('Trigger_2lss',[ lambda ev : triggerGroups['Tr
 Trigger_3l   = lambda : EvtTagger('Trigger_3l',[ lambda ev : triggerGroups['Trigger_3l'][ev.year](ev) ])
 Trigger_MET  = lambda : EvtTagger('Trigger_MET',[ lambda ev : triggerGroups['Trigger_MET'][ev.year](ev) ])
 
-triggerSequence = [Trigger_1e,Trigger_1m,Trigger_2e,Trigger_2m,Trigger_em,Trigger_3e,Trigger_3m,Trigger_mee,Trigger_mme,Trigger_2lss,Trigger_3l ,Trigger_MET]
+triggerSequence = [Trigger_1e,Trigger_1m,Trigger_2e,Trigger_2m,Trigger_em,Trigger_3e,Trigger_3m,Trigger_mee,Trigger_mme,Trigger_2lss,Trigger_3l]
 
 
 from CMGTools.TTHAnalysis.tools.BDT_eventReco_cpp import BDT_eventReco
 
 BDThttTT_Hj = lambda : BDT_eventReco(os.environ["CMSSW_BASE"]+'/src/CMGTools/TTHAnalysis/data/kinMVA/tth/TMVAClassification_bloose_BDTG.weights.xml',
                                      os.environ["CMSSW_BASE"]+'/src/CMGTools/TTHAnalysis/data/kinMVA/tth/TMVAClassification_btight_BDTG.weights.xml',
-#                                    os.environ["CMSSW_BASE"]+'/src/CMGTools/TTHAnalysis/data/kinMVA/tth/Hj_2017_configA_dcsv_BDTG.weights.xml',
                                      os.environ["CMSSW_BASE"]+'/src/CMGTools/TTHAnalysis/data/kinMVA/tth/Hjtagger_legacy_xgboost_v1.weights.xml',
                                      os.environ["CMSSW_BASE"]+'/src/CMGTools/TTHAnalysis/data/kinMVA/tth/Hjj_csv_BDTG.weights.xml',
                                      os.environ["CMSSW_BASE"]+'/src/CMGTools/TTHAnalysis/data/kinMVA/tth/resTop_xgb_csv_order_deepCTag.xml.gz',
@@ -439,5 +441,56 @@ from CMGTools.TTHAnalysis.tools.higgsDiffGenTTH import higgsDiffGenTTH
 from CMGTools.TTHAnalysis.tools.higgsDiffRecoTTH import higgsDiffRecoTTH, higgsDiffRecoTTH_noWmassConstraint
 from CMGTools.TTHAnalysis.tools.higgsDiffCompTTH import higgsDiffCompTTH, higgsDiffCompTTH_noWmassConstraint
 from CMGTools.TTHAnalysis.tools.higgsDiffRegressionTTH import higgsDiffRegressionTTH
+from CMGTools.TTHAnalysis.tools.higgsDiffRegressionTTH_new import higgsDiffRegressionTTH_new
 
 from CMGTools.TTHAnalysis.tools.nanoAOD.ttH_CP import ttH_CP
+from CMGTools.TTHAnalysis.tools.nanoAOD.ttH_genericTreeVarForSR import ttH_genericTreeVarForSR
+
+ttH_2lss_tree = lambda  : ttH_genericTreeVarForSR(2, 
+                                               ['len(leps) < 2                                          ',
+                                                'leps[0].pt < 25 or leps[1].pt < 15                     ',
+                                                'event.nLepTight_Recl > 2                               ',
+                                                'leps[0].pdgId*leps[1].pdgId < 0                        ',
+                                                'abs(event.mZ1_Recl-91.2)<10                            ',
+                                                'leps[0].genPartFlav != 1 and leps[0].genPartFlav != 15 ',
+                                                'leps[1].genPartFlav != 1 and leps[1].genPartFlav != 15 ',
+                                                'event.nTauSel_Recl_Tight > 0                           ',
+                                                'not ((event.nJet25_Recl>=3 and (event.nBJetLoose25_Recl >= 2 or event.nBJetMedium25_Recl >= 1)) or (event.nBJetMedium25_Recl >= 1 and (event.nJet25_Recl+event.nFwdJet_Recl-event.nBJetLoose25_Recl) > 0)) ',
+])
+
+ttH_2lss1tau_tree = lambda : ttH_genericTreeVarForSR(2, 
+                                                   ['len(leps) < 2                                          ',
+                                                    'leps[0].pt < 25 or leps[1].pt < 15                     ',
+                                                    'leps[1].conePt < (15 if abs(leps[1].pdgId)==11 else 10)',
+                                                    'leps[1].pdgId*leps[0].pdgId < 0',
+                                                    'abs(event.mZ1_Recl-91.2)<10',
+                                                    'event.nLepTight_Recl > 2 ',
+                                                    'event.nTauSel_Recl_2lss1tau_Tight < 1', 
+                                                    'leps[0].genPartFlav != 1 and leps[0].genPartFlav != 15 ',
+                                                    'leps[1].genPartFlav != 1 and leps[1].genPartFlav != 15 ',
+                                                    'not ((event.nJet25_Recl>=3 and (event.nBJetLoose25_Recl >= 2 or event.nBJetMedium25_Recl >= 1)) or (event.nBJetMedium25_Recl >= 1 and (event.nJet25_Recl+event.nFwdJet_Recl-event.nBJetLoose25_Recl) > 0)) ',
+                                                    '''thetau.charge*leps[0].pdgId<0'''
+                                                ],
+                                                     execute=['''taus = [ t for t in Collection(event,'TauSel_Recl')]''',
+                                                              '''thetau=taus[int(event.Tau_tight2lss1tau_idx)] if event.Tau_tight2lss1tau_idx > -1 else None;'''],
+                                                     extraVars=[('Tau_pt','thetau.pt'), ('Tau_eta','thetau.eta'), ('Tau_phi','thetau.phi')])
+
+ttH_3l_tree = lambda : ttH_genericTreeVarForSR(3, 
+                                             ['len(leps) < 3                                          ',
+                                              'leps[0].pt < 25 or leps[1].pt < 15 or leps[2].pt<10    ',
+                                              'event.nLepTight_Recl > 3                               ',
+                                              'abs(event.mZ1_Recl-91.2)<10                            ',
+                                              'leps[0].genPartFlav != 1 and leps[0].genPartFlav != 15 ',
+                                              'leps[1].genPartFlav != 1 and leps[1].genPartFlav != 15 ',
+                                              'leps[2].genPartFlav != 1 and leps[2].genPartFlav != 15 ',
+                                              'event.nTauSel_Recl_Tight > 0                           ',
+                                              'not  (event.nJet25_Recl>=2 and (event.nBJetLoose25_Recl >= 2 or event.nBJetMedium25_Recl >= 1) and (event.nJet25_Recl >= 4 or event.MET_pt*0.6 + event.mhtJet25_Recl*0.4 > 30 + 15*(event.mZ1_Recl > 0)) or (event.nBJetMedium25_Recl >= 1 and (event.nJet25_Recl+event.nFwdJet_Recl-event.nBJetLoose25_Recl) > 0))'
+])
+
+
+from CMGTools.TTHAnalysis.tools.nanoAOD.CPmva2lss import CPmva2lss
+cpABCnet = lambda : CPmva2lss()
+
+#from CMGTools.TTHAnalysis.tools.nanoAOD.ttH_2lss1tau_higgsreco import ttH_2lss1tau_higgsreco
+#ttH_2lss1tau_reco = lambda : ttH_2lss1tau_higgsreco()
+
