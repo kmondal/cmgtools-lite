@@ -48,6 +48,7 @@ class HiggsDiffGenTTH(Module):
         self.out.branch('%snLFromTauFromWFromH'%self.label  , 'I')
         self.out.branch('%snNuFromTauFromWFromH'%self.label , 'I')
         self.out.branch('%snhFromTauFromWFromH'%self.label  , 'I')
+        self.out.branch('%snGenJet'%self.label          , 'I')
 
         # Although we expect a maximum of 2 objects per array, we allow for 4 of them to be stored, for safety and later checks
         for suffix in ["_pt", "_eta", "_phi", "_mass"]:
@@ -83,6 +84,8 @@ class HiggsDiffGenTTH(Module):
             self.out.branch('%sLFromTauFromWFromH%s'%(self.label,suffix)   , 'F', 4, '%snLFromTauFromWFromH'%self.label   )
             self.out.branch('%sNuFromTauFromWFromH%s'%(self.label,suffix)  , 'F', 4, '%snNuFromTauFromWFromH'%self.label  )
             self.out.branch('%shFromTauFromWFromH%s'%(self.label,suffix)   , 'F', 4, '%snhFromTauFromWFromH'%self.label   )
+            # For GenJets, we want to store up to eight
+            self.out.branch('%sGenJet%s'%(self.label,suffix)           , 'F', 8, '%snGenJet'%self.label          )
 
         # Some precomputed quantities of interest
 
@@ -106,6 +109,7 @@ class HiggsDiffGenTTH(Module):
     def analyze(self, event):
         # Input collections and maps
         genpar = Collection(event,"GenPart","nGenPart") 
+        genjet = Collection(event,"GenJet","nGenJet")
         
         Higgses          = []
         Tfromhardprocess = []
@@ -411,6 +415,7 @@ class HiggsDiffGenTTH(Module):
         self.out.fillBranch('%snLFromTauFromWFromH'%self.label  , len(LFromTauFromWFromH))
         self.out.fillBranch('%snNuFromTauFromWFromH'%self.label , len(NuFromTauFromWFromH))
         self.out.fillBranch('%snhFromTauFromWFromH'%self.label  , len(hFromTauFromWFromH))
+        self.out.fillBranch('%snGenJet'%self.label          , len(genjet))
 
         self.out.fillBranch('%sHiggses_pt'%self.label          , [ part.p4().Pt() for part in Higgses         ]) 
         self.out.fillBranch('%sTfromhardprocess_pt'%self.label , [ part.p4().Pt() for part in Tfromhardprocess]) 
@@ -443,6 +448,7 @@ class HiggsDiffGenTTH(Module):
         self.out.fillBranch('%sLFromTauFromWFromH_pt'%self.label    , [ part.p4().Pt() for part in LFromTauFromWFromH    ]) 
         self.out.fillBranch('%sNuFromTauFromWFromH_pt'%self.label   , [ part.p4().Pt() for part in NuFromTauFromWFromH   ]) 
         self.out.fillBranch('%shFromTauFromWFromH_pt'%self.label    , [ part.p4().Pt() for part in hFromTauFromWFromH    ]) 
+        self.out.fillBranch('%sGenJet_pt'%self.label           , [ part.p4().Pt() for part in genjet          ])
 
         self.out.fillBranch('%sHiggses_eta'%self.label          , [ part.p4().Eta() for part in Higgses         ]) 
         self.out.fillBranch('%sTfromhardprocess_eta'%self.label , [ part.p4().Eta() for part in Tfromhardprocess]) 
@@ -475,6 +481,7 @@ class HiggsDiffGenTTH(Module):
         self.out.fillBranch('%sLFromTauFromWFromH_eta'%self.label    , [ part.p4().Eta() for part in LFromTauFromWFromH    ]) 
         self.out.fillBranch('%sNuFromTauFromWFromH_eta'%self.label   , [ part.p4().Eta() for part in NuFromTauFromWFromH   ]) 
         self.out.fillBranch('%shFromTauFromWFromH_eta'%self.label    , [ part.p4().Eta() for part in hFromTauFromWFromH    ]) 
+        self.out.fillBranch('%sGenJet_eta'%self.label           , [ part.p4().Eta() for part in genjet          ])
 
         self.out.fillBranch('%sHiggses_phi'%self.label          , [ part.p4().Phi() for part in Higgses         ]) 
         self.out.fillBranch('%sTfromhardprocess_phi'%self.label , [ part.p4().Phi() for part in Tfromhardprocess]) 
@@ -507,6 +514,7 @@ class HiggsDiffGenTTH(Module):
         self.out.fillBranch('%sLFromTauFromWFromH_phi'%self.label   , [ part.p4().Phi() for part in LFromTauFromWFromH    ]) 
         self.out.fillBranch('%sNuFromTauFromWFromH_phi'%self.label  , [ part.p4().Phi() for part in NuFromTauFromWFromH   ]) 
         self.out.fillBranch('%shFromTauFromWFromH_phi'%self.label   , [ part.p4().Phi() for part in hFromTauFromWFromH    ]) 
+        self.out.fillBranch('%sGenJet_phi'%self.label           , [ part.p4().Phi() for part in genjet          ])
 
         self.out.fillBranch('%sHiggses_mass'%self.label          , [ part.p4().M() for part in Higgses         ]) 
         self.out.fillBranch('%sTfromhardprocess_mass'%self.label , [ part.p4().M() for part in Tfromhardprocess]) 
@@ -539,6 +547,7 @@ class HiggsDiffGenTTH(Module):
         self.out.fillBranch('%sLFromTauFromWFromH_mass'%self.label  , [ part.p4().M() for part in LFromTauFromWFromH    ]) 
         self.out.fillBranch('%sNuFromTauFromWFromH_mass'%self.label , [ part.p4().M() for part in NuFromTauFromWFromH   ]) 
         self.out.fillBranch('%shFromTauFromWFromH_mass'%self.label  , [ part.p4().M() for part in hFromTauFromWFromH    ]) 
+        self.out.fillBranch('%sGenJet_mass'%self.label           , [ part.p4().M() for part in genjet          ])
 
         # Fill branches for some precomputed variables
         self.out.fillBranch('%spTHgen'%self.label, Higgses[0].p4().Pt() if len(Higgses)==1 else -99)
