@@ -7,6 +7,24 @@ from PhysicsTools.Heppy.physicsobjects.Jet import _btagWPs as HiggsRecoTTHbtagwp
 import ROOT, itertools
 from ROOT import *
 import numpy as np
+import math
+
+#ximport dnn_tagger_new_dr
+import h5py
+#import keras as kr
+#from keras.models import Sequential
+#from keras.layers import InputLayer, Input
+#from keras.layers import Reshape, MaxPooling2D
+#from keras.layers import Conv2D, Dense, Flatten, Dropout
+#from keras import optimizers
+#from keras.layers import Dense, Activation
+#from keras.wrappers.scikit_learn import KerasRegressor
+#from keras.callbacks import EarlyStopping
+#from keras.layers.advanced_activations import PReLU
+#from tensorflow.keras.layers import BatchNormalization
+from keras import optimizers
+from keras.models import load_model
+#model_dnn = load_model('dnn_tagger_new_dr.h5')
 
 class HiggsDiffRegressionTTH_new(Module):
     def __init__(self,label="_Recl", cut_BDT_rTT_score = 0.0, btagDeepCSVveto = 'M', doSystJEC=False):
@@ -18,18 +36,25 @@ class HiggsDiffRegressionTTH_new(Module):
         self.nlep = 2
         self.njet = 5
         self.ngenjet = 8
-        
-    def beginFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
-        self.out = wrappedOutputTree
+        self.model_dnn = load_model('dnn_tagger_new_dr_real.h5')
 
+    def beginFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
+        #model_dnn = load_model('dnn_tagger_new_dr.h5') 
+        self.out = wrappedOutputTree
+        self.model_dnn.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
         # Independent on JES
         self.out.branch('%snLFromWFromH'%self.label,        'I')
+        self.out.branch('%snLFromWFromT'%self.label,        'I')
         self.out.branch('%snQFromWFromH'%self.label,        'I')
         self.out.branch('%snNuFromWFromH'%self.label,       'I')
         self.out.branch('%sLFromWFromH_pt'%self.label,      'F')
         self.out.branch('%sLFromWFromH_eta'%self.label,     'F')
         self.out.branch('%sLFromWFromH_phi'%self.label,     'F')
         self.out.branch('%sLFromWFromH_mass'%self.label,    'F')
+        self.out.branch('%sLFromWFromT_pt'%self.label,      'F')
+        self.out.branch('%sLFromWFromT_eta'%self.label,     'F')
+        self.out.branch('%sLFromWFromT_phi'%self.label,     'F')
+        self.out.branch('%sLFromWFromT_mass'%self.label,    'F')
         self.out.branch('%sQ1FromWFromH_pt'%self.label,     'F')
         self.out.branch('%sQ1FromWFromH_eta'%self.label,    'F')
         self.out.branch('%sQ1FromWFromH_phi'%self.label,    'F')
@@ -48,11 +73,15 @@ class HiggsDiffRegressionTTH_new(Module):
         self.out.branch('%sNuFromWFromT_eta'%self.label,    'F')
         self.out.branch('%sNuFromWFromT_phi'%self.label,    'F')
         self.out.branch('%sNuFromWFromT_mass'%self.label,   'F')
+        self.out.branch('%sJet_FromH_FromW'%self.label,   'I')
 
         for suffix in ["_pt", "_eta", "_phi", "_mass"]:
             for iGJet in range(self.ngenjet):
                 self.out.branch('%sGenJet%s%s'%(self.label,iGJet,suffix)   , 'F')
 
+            for gLep in range(self.nlep):
+                self.out.branch('%sGenLep%s%s'%(self.label,gLep,suffix)   , 'F')
+            
         # Somehow dependent on JES
 
         for jesLabel in self.systsJEC.values():
@@ -80,6 +109,75 @@ class HiggsDiffRegressionTTH_new(Module):
             self.out.branch('%sHgen_vis_pt%s'%(self.label,jesLabel)   , 'F')
             self.out.branch('%sHgen_tru_pt%s'%(self.label,jesLabel)   , 'F')
 
+            self.out.branch('%sJet_Higgs_score'%(self.label), 'F')
+            self.out.branch('%sreco_score_higgs'%(self.label), 'F')
+
+            self.out.branch('%sgen_q1_q2_pt'%(self.label), 'F'   )
+            self.out.branch('%sgen_q1_q2_eta'%(self.label), 'F'   )
+            self.out.branch('%sgen_q1_q2_phi'%(self.label), 'F'   )
+            self.out.branch('%sgen_q1_q2_mass'%(self.label), 'F'   )
+
+            self.out.branch('%sreco_q1_q2_pt'%(self.label) , 'F')
+            self.out.branch('%sreco_q1_q2_eta'%(self.label) , 'F')
+            self.out.branch('%sreco_q1_q2_phi'%(self.label) , 'F')
+            self.out.branch('%sreco_q1_q2_mass'%(self.label) , 'F')
+            #self.out.branch('%sreco_q1_q2_label_one'%(self.label) , 'F')
+
+            self.out.branch('%sreco_match_q1_q2_pt'%(self.label) , 'F')
+            self.out.branch('%sreco_match_q1_q2_eta'%(self.label) , 'F')
+            self.out.branch('%sreco_match_q1_q2_phi'%(self.label) , 'F')
+            self.out.branch('%sreco_match_q1_q2_mass'%(self.label) , 'F')
+            #self.out.branch('%sreco_match_q1_q2_label'%(self.label) , 'F')
+            #self.out.branch('%sreco_match_q1_q2_label_one'%(self.label) , 'F')
+
+            self.out.branch('%sreco_q1_score_higgs_pt'%(self.label), 'F')
+            self.out.branch('%sreco_q1_score_higgs_eta'%(self.label), 'F')
+            self.out.branch('%sreco_q1_score_higgs_phi'%(self.label), 'F')
+            self.out.branch('%sreco_q1_score_higgs_mass'%(self.label), 'F')
+
+            self.out.branch('%sreco_q2_score_higgs_pt'%(self.label), 'F')
+            self.out.branch('%sreco_q2_score_higgs_eta'%(self.label), 'F')
+            self.out.branch('%sreco_q2_score_higgs_phi'%(self.label), 'F')
+            self.out.branch('%sreco_q2_score_higgs_mass'%(self.label), 'F')
+
+            self.out.branch('%sreco_q1_q2_score_higgs_pt'%(self.label), 'F')
+            self.out.branch('%sreco_q1_q2_score_higgs_eta'%(self.label), 'F')
+            self.out.branch('%sreco_q1_q2_score_higgs_phi'%(self.label), 'F')
+            self.out.branch('%sreco_q1_q2_score_higgs_mass'%(self.label), 'F')
+
+            self.out.branch('%sreco_match_real_q1_pt'%(self.label), 'F')
+            self.out.branch('%sreco_match_real_q1_eta'%(self.label), 'F')
+            self.out.branch('%sreco_match_real_q1_phi'%(self.label), 'F')
+            self.out.branch('%sreco_match_real_q1_mass'%(self.label), 'F')
+
+            self.out.branch('%sreco_match_real_q2_pt'%(self.label), 'F')
+            self.out.branch('%sreco_match_real_q2_eta'%(self.label), 'F')
+            self.out.branch('%sreco_match_real_q2_phi'%(self.label), 'F')
+            self.out.branch('%sreco_match_real_q2_mass'%(self.label), 'F')
+
+            self.out.branch('%sreco_match_real_q1_q2_pt'%(self.label), 'F')
+            self.out.branch('%sreco_match_real_q1_q2_eta'%(self.label), 'F')
+            self.out.branch('%sreco_match_real_q1_q2_phi'%(self.label), 'F')
+            self.out.branch('%sreco_match_real_q1_q2_mass'%(self.label), 'F')
+
+
+
+
+            self.out.branch('%sJet_Label'%(self.label) , 'F')
+            self.out.branch('%sJet_Label_dr'%(self.label) , 'F')
+            self.out.branch('%sJet_Label_dr_real'%(self.label) , 'F')
+            self.out.branch('%sJet_Label_pt'%(self.label) , 'F')
+            self.out.branch('%sJet_Label_eta'%(self.label) , 'F')
+            self.out.branch('%sJet_Label_phi'%(self.label) , 'F')
+            self.out.branch('%sJet_Label_mass'%(self.label) , 'F')
+            self.out.branch('%sJet_Label_bdisc'%(self.label) , 'F')
+            self.out.branch('%sJet_Label_dr_lep0'%(self.label) , 'F')
+            self.out.branch('%sJet_Label_dr_lep1'%(self.label) , 'F')
+
+            self.out.branch('%sreco_w_q1_q2_pt'%(self.label) , 'F')
+            self.out.branch('%sreco_w_q1_q2_eta'%(self.label) , 'F')
+            self.out.branch('%sreco_w_q1_q2_phi'%(self.label) , 'F')
+            self.out.branch('%sreco_w_q1_q2_mass'%(self.label) , 'F')
 
             self.out.branch('%sMore5_Jets_pt'%(self.label), 'F'   )
             self.out.branch('%sMore5_Jets_eta'%(self.label), 'F'   )
@@ -153,12 +251,17 @@ class HiggsDiffRegressionTTH_new(Module):
         alljets = [x for x in Collection(event,"JetSel_Recl","nJetSel_Recl")]
 
         nLFromWFromH = getattr(event,"%snLFromWFromH"%self.label)
+        nLFromWFromT = getattr(event,"%snLFromWFromT"%self.label)
         nQFromWFromH = getattr(event,"%snQFromWFromH"%self.label)
         nNuFromWFromH = getattr(event,"%snNuFromWFromH"%self.label)
         LFromWFromH_pt = getattr(event,"%sLFromWFromH_pt"%self.label)
         LFromWFromH_eta = getattr(event,"%sLFromWFromH_eta"%self.label)
         LFromWFromH_phi = getattr(event,"%sLFromWFromH_phi"%self.label)
         LFromWFromH_mass = getattr(event,"%sLFromWFromH_mass"%self.label)
+        LFromWFromT_pt = getattr(event,"%sLFromWFromT_pt"%self.label)
+        LFromWFromT_eta = getattr(event,"%sLFromWFromT_eta"%self.label)
+        LFromWFromT_phi = getattr(event,"%sLFromWFromT_phi"%self.label)
+        LFromWFromT_mass = getattr(event,"%sLFromWFromT_mass"%self.label)
         QFromWFromH_pt = getattr(event,"%sQFromWFromH_pt"%self.label)
         QFromWFromH_eta = getattr(event,"%sQFromWFromH_eta"%self.label)
         QFromWFromH_phi = getattr(event,"%sQFromWFromH_phi"%self.label)
@@ -177,9 +280,17 @@ class HiggsDiffRegressionTTH_new(Module):
         GenJet_eta = getattr(event, "%sGenJet_eta"%self.label)
         GenJet_phi = getattr(event, "%sGenJet_phi"%self.label)
         GenJet_mass = getattr(event, "%sGenJet_mass"%self.label)
+        #GenLep
+        nGenLep = getattr(event, "%snGenLep"%self.label)
+        GenLep_pt = getattr(event, "%sGenLep_pt"%self.label)
+        GenLep_eta = getattr(event, "%sGenLep_eta"%self.label)
+        GenLep_phi = getattr(event, "%sGenLep_phi"%self.label)
+        GenLep_mass = getattr(event, "%sGenLep_mass"%self.label)
+        
         # Temporary fix for very strange bug
         if event._entry == 0 : return False # !!! FIXME !!!
         self.out.fillBranch('%snLFromWFromH'%self.label,      nLFromWFromH)
+        self.out.fillBranch('%snLFromWFromT'%self.label,      nLFromWFromT)
         self.out.fillBranch('%snQFromWFromH'%self.label,      nQFromWFromH)
         self.out.fillBranch('%snNuFromWFromH'%self.label,      nNuFromWFromH)
         self.out.fillBranch('%snNuFromWFromT_lenpt'%self.label, nNuFromWFromT_lenpt)
@@ -188,6 +299,10 @@ class HiggsDiffRegressionTTH_new(Module):
         self.out.fillBranch('%sLFromWFromH_eta'%self.label,   LFromWFromH_eta[0] if nLFromWFromH > 0 else -99)
         self.out.fillBranch('%sLFromWFromH_phi'%self.label,   LFromWFromH_phi[0] if nLFromWFromH > 0 else -99)
         self.out.fillBranch('%sLFromWFromH_mass'%self.label,  LFromWFromH_mass[0] if nLFromWFromH > 0 else -99)
+        self.out.fillBranch('%sLFromWFromT_pt'%self.label,    LFromWFromT_pt[0] if nLFromWFromT > 0 else -99)
+        self.out.fillBranch('%sLFromWFromT_eta'%self.label,   LFromWFromT_eta[0] if nLFromWFromT > 0 else -99)
+        self.out.fillBranch('%sLFromWFromT_phi'%self.label,   LFromWFromT_phi[0] if nLFromWFromT > 0 else -99)
+        self.out.fillBranch('%sLFromWFromT_mass'%self.label,  LFromWFromT_mass[0] if nLFromWFromT > 0 else -99)
         self.out.fillBranch('%sQ1FromWFromH_pt'%self.label,   QFromWFromH_pt[0] if nQFromWFromH > 0 else -99)
         self.out.fillBranch('%sQ1FromWFromH_eta'%self.label,  QFromWFromH_eta[0] if nQFromWFromH > 0 else -99)
         self.out.fillBranch('%sQ1FromWFromH_phi'%self.label,  QFromWFromH_phi[0] if nQFromWFromH > 0 else -99)
@@ -204,11 +319,51 @@ class HiggsDiffRegressionTTH_new(Module):
         self.out.fillBranch('%sNuFromWFromT_eta'%self.label,  NuFromWFromT_eta[0] if nNuFromWFromT > 0 else -99)
         self.out.fillBranch('%sNuFromWFromT_phi'%self.label,  NuFromWFromT_phi[0] if nNuFromWFromT > 0 else -99)
         self.out.fillBranch('%sNuFromWFromT_mass'%self.label, NuFromWFromT_mass[0] if nNuFromWFromT > 0 else -99)
+
+
+        gen_jets = []
+        
         for gj in range(self.ngenjet):
-            self.out.fillBranch('%sGenJet%s_pt'%(self.label,gj), GenJet_pt[gj] if gj < len(GenJet_pt) else -99)
-            self.out.fillBranch('%sGenJet%s_eta'%(self.label,gj), GenJet_eta[gj] if gj < len(GenJet_pt) else -99)
-            self.out.fillBranch('%sGenJet%s_phi'%(self.label,gj), GenJet_phi[gj] if gj < len(GenJet_pt) else -99)
-            self.out.fillBranch('%sGenJet%s_mass'%(self.label,gj), GenJet_mass[gj] if gj < len(GenJet_pt) else -99)
+            if GenJet_pt[gj] > 25:
+                gen_jets.append([GenJet_pt[gj], GenJet_eta[gj], GenJet_phi[gj], GenJet_mass[gj]])
+            #print "gen jet ", gj
+            #print "gen jet pt", GenJet_pt[gj]
+
+        sorted(gen_jets, reverse=True)
+        for i in range(len(gen_jets)):
+            #print "jet pt,  ", gen_jets[i][0]
+            #print "jet phi, ", gen_jets[i][2]
+            self.out.fillBranch('%sGenJet%s_pt'%(self.label,i), gen_jets[i][0] if i < len(gen_jets) else -99)
+            self.out.fillBranch('%sGenJet%s_eta'%(self.label,i), gen_jets[i][1] if i < len(gen_jets) else -99)
+            self.out.fillBranch('%sGenJet%s_phi'%(self.label,i), gen_jets[i][2] if i < len(gen_jets) else -99)
+            self.out.fillBranch('%sGenJet%s_mass'%(self.label,i), gen_jets[i][3] if i < len(gen_jets) else -99)
+
+        #sum gen jets
+        q1 = TLorentzVector()
+        q2 = TLorentzVector()
+        if(len(QFromWFromH_pt) > 1):
+            q1.SetPtEtaPhiM(QFromWFromH_pt[0], QFromWFromH_eta[0], QFromWFromH_phi[0], QFromWFromH_mass[0])
+            q2.SetPtEtaPhiM(QFromWFromH_pt[1], QFromWFromH_eta[1], QFromWFromH_phi[1], QFromWFromH_mass[1])
+            #print((q1+q2).Pt())
+            self.out.fillBranch('%sgen_q1_q2_pt'%(self.label), (q1+q2).Pt())
+            self.out.fillBranch('%sgen_q1_q2_eta'%(self.label), (q1+q2).Eta())
+            self.out.fillBranch('%sgen_q1_q2_phi'%(self.label), (q1+q2).Phi())
+            self.out.fillBranch('%sgen_q1_q2_mass'%(self.label), (q1+q2).M())
+
+        else:
+            self.out.fillBranch('%sgen_q1_q2_pt'%(self.label), -99)
+            self.out.fillBranch('%sgen_q1_q2_eta'%(self.label), -99)
+            self.out.fillBranch('%sgen_q1_q2_phi'%(self.label), -99)
+            self.out.fillBranch('%sgen_q1_q2_mass'%(self.label), -99)
+
+        if(nGenLep <= 2):
+            for i in range(nGenLep):
+                if(GenLep_pt[0] < 25 or GenLep_pt[1] < 15): continue
+                self.out.fillBranch('%sGenLep%s_pt'%(self.label,i), GenLep_pt[i])
+                self.out.fillBranch('%sGenLep%s_eta'%(self.label,i), GenLep_eta[i])
+                self.out.fillBranch('%sGenLep%s_phi'%(self.label,i), GenLep_phi[i])
+                self.out.fillBranch('%sGenLep%s_mass'%(self.label,i), GenLep_mass[i])
+
 
         # Enforce selection (non-jet part)
         if len(leps) < 2                      : return False
@@ -245,8 +400,9 @@ class HiggsDiffRegressionTTH_new(Module):
             # Store all jets
             jet_pts=[]; jet_etas=[]; jet_phis=[]; jet_masses=[]; jet_btagdiscrs=[]; jet_ishadtops=[]
             def my_sort(j):
-                return j.btagDeepFlavB
-            jets.sort(key=my_sort)
+                #return j.btagDeepFlavB
+                return j.pt
+            jets.sort(key=my_sort, reverse=True)
             #if(len(jets) > 5): continue
             for j in jets:
                 jet_pts.append(j.pt)
@@ -255,8 +411,242 @@ class HiggsDiffRegressionTTH_new(Module):
                 jet_masses.append(j.mass)
                 jet_btagdiscrs.append( j.btagDeepFlavB > btagvetoval) 
                 jet_ishadtops.append(j.fromHadTop)
+            if(len(jets) < 2): return False
+            if(len(jets) > 4):
+                #for j in jets:
+                self.out.fillBranch('%sJet_Higgs_score'%(self.label) , getattr(event, "BDThttTT_eventReco_Hj_score"))
+            else:
+                self.out.fillBranch('%sJet_Higgs_score'%(self.label) , -99)
 
-            
+            #closest to W
+            if(len(jets) > 1):
+                jet1_w = TLorentzVector()
+                jet2_w = TLorentzVector()
+                target_w = 999
+                for i in range(len(jets)):
+                    jet1_w.SetPtEtaPhiM(jets[i].p4().Pt(), jets[i].p4().Eta(), jets[i].p4().Phi(), jets[i].p4().M())
+                    for j in range(i+1, len(jets)):
+                        jet2_w.SetPtEtaPhiM(jets[j].p4().Pt(), jets[j].p4().Eta(), jets[j].p4().Phi(), jets[j].p4().M())
+                        sum_jets = jet1_w+jet2_w
+                        if(abs(sum_jets.M() - 80) < target_w):
+                            target_w = sum_jets.M()
+                            index1_w = i
+                            index2_w = j
+                self.out.fillBranch('%sreco_w_q1_q2_pt%s'%(self.label,jesLabel) , (jets[index1_w].p4()+jets[index2_w].p4()).Pt())
+                self.out.fillBranch('%sreco_w_q1_q2_eta%s'%(self.label,jesLabel) , (jets[index1_w].p4()+jets[index2_w].p4()).Eta())
+                self.out.fillBranch('%sreco_w_q1_q2_phi%s'%(self.label,jesLabel) , (jets[index1_w].p4()+jets[index2_w].p4()).Phi())
+                self.out.fillBranch('%sreco_w_q1_q2_mass%s'%(self.label,jesLabel) , (jets[index1_w].p4()+jets[index2_w].p4()).M())
+            else:
+                self.out.fillBranch('%sreco_w_q1_q2_pt%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_w_q1_q2_eta%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_w_q1_q2_phi%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_w_q1_q2_mass%s'%(self.label,jesLabel) , -99)
+            #match dr jet per jet
+            QFromWFromH_pt = getattr(event,"%sQFromWFromH_pt"%self.label)
+            if(len(QFromWFromH_pt) > 1 and len(jets) > 1):
+                jet1_dr = TLorentzVector()
+                jet2_dr = TLorentzVector()
+                target_dr2_real = 999.
+                target_dr1_real = 999.
+                index_dr_q1 = -1
+                index_dr_q2 = -1
+                for i in range(len(jets)):
+                    jet1_dr.SetPtEtaPhiM(jets[i].p4().Pt(), jets[i].p4().Eta(), jets[i].p4().Phi(), jets[i].p4().M())
+                    if(jet1_dr.DeltaR(q1) < target_dr1_real):
+                        target_dr1_real = jet1_dr.DeltaR(q1)
+                        index_dr_q1 = i
+
+                for i in range(len(jets)):
+                    if(i != index_dr_q1):
+                        jet2_dr.SetPtEtaPhiM(jets[i].p4().Pt(), jets[i].p4().Eta(), jets[i].p4().Phi(), jets[i].p4().M())
+                        if(jet2_dr.DeltaR(q2) < target_dr2_real):
+                            target_dr2_real = jet2_dr.DeltaR(q2)
+                            index_dr_q2 = i
+
+                for i in range(len(jets)):
+                    if(i == index_dr_q1 or i == index_dr_q2):
+                        self.out.fillBranch('%sJet_Label_dr_real%s'%(self.label,jesLabel), 1)
+                    else:
+                        self.out.fillBranch('%sJet_Label_dr_real%s'%(self.label,jesLabel), 0)
+
+                if(index_dr_q1 == -1): continue
+                if(index_dr_q2 == -1): continue
+                self.out.fillBranch('%sreco_match_real_q1_pt%s'%(self.label,jesLabel) , jets[index_dr_q1].p4().Pt())
+                self.out.fillBranch('%sreco_match_real_q1_eta%s'%(self.label,jesLabel) , jets[index_dr_q1].p4().Eta())
+                self.out.fillBranch('%sreco_match_real_q1_phi%s'%(self.label,jesLabel) , jets[index_dr_q1].p4().Phi())
+                self.out.fillBranch('%sreco_match_real_q1_mass%s'%(self.label,jesLabel) , jets[index_dr_q1].p4().M())
+
+
+                self.out.fillBranch('%sreco_match_real_q2_pt%s'%(self.label,jesLabel) , jets[index_dr_q2].p4().Pt())
+                self.out.fillBranch('%sreco_match_real_q2_eta%s'%(self.label,jesLabel) , jets[index_dr_q2].p4().Eta())
+                self.out.fillBranch('%sreco_match_real_q2_phi%s'%(self.label,jesLabel) , jets[index_dr_q2].p4().Phi())
+                self.out.fillBranch('%sreco_match_real_q2_mass%s'%(self.label,jesLabel) , jets[index_dr_q2].p4().M())
+
+
+                self.out.fillBranch('%sreco_match_real_q1_q2_pt%s'%(self.label,jesLabel) , (jets[index_dr_q1].p4()+jets[index_dr_q2].p4()).Pt())
+                self.out.fillBranch('%sreco_match_real_q1_q2_eta%s'%(self.label,jesLabel) , (jets[index_dr_q1].p4()+jets[index_dr_q2].p4()).Eta())
+                self.out.fillBranch('%sreco_match_real_q1_q2_phi%s'%(self.label,jesLabel) , (jets[index_dr_q1].p4()+jets[index_dr_q2].p4()).Phi())
+                self.out.fillBranch('%sreco_match_real_q1_q2_mass%s'%(self.label,jesLabel) , (jets[index_dr_q1].p4()+jets[index_dr_q2].p4()).M())
+            else:
+                self.out.fillBranch('%sreco_match_real_q1_pt%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_match_real_q1_eta%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_match_real_q1_phi%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_match_real_q1_mass%s'%(self.label,jesLabel) , -99)
+
+                self.out.fillBranch('%sreco_match_real_q2_pt%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_match_real_q2_eta%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_match_real_q2_phi%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_match_real_q2_mass%s'%(self.label,jesLabel) , -99)
+
+                self.out.fillBranch('%sreco_match_real_q1_q2_pt%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_match_real_q1_q2_eta%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_match_real_q1_q2_phi%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_match_real_q1_q2_mass%s'%(self.label,jesLabel) , -99)
+                
+                self.out.fillBranch('%sJet_Label_dr_real%s'%(self.label,jesLabel), -99)
+            #closest sum to gen
+            #QFromWFromH_pt = getattr(event,"%sQFromWFromH_pt"%self.label)
+            if(len(QFromWFromH_pt) > 1 and len(jets) > 1):
+                jet1 = TLorentzVector()
+                jet2 = TLorentzVector()
+                target = 999.
+                target_dr = 999.
+                index_1 = -1
+                index_2 = -1
+                index_dr_1 = -1
+                index_dr_2 = -1
+                for i in range(len(jets)):
+                    jet1.SetPtEtaPhiM(jets[i].p4().Pt(), jets[i].p4().Eta(), jets[i].p4().Phi(), jets[i].p4().M())
+                    for j in range(i+1,len(jets)):
+                        jet2.SetPtEtaPhiM(jets[j].p4().Pt(), jets[j].p4().Eta(), jets[j].p4().Phi(), jets[j].p4().M())
+                        sum_jets = jet1+jet2
+                        if(abs(sum_jets.Pt() - (q1+q2).Pt()) < target):
+                            target = abs(sum_jets.Pt() - (q1+q2).Pt())
+                            index_1 = i
+                            index_2 = j
+
+                        if(sum_jets.DeltaR((q1+q2)) < target_dr):
+                           target_dr = sum_jets.DeltaR((q1+q2))
+                           index_dr_1 = i
+                           index_dr_2 = j
+
+
+                #fill branch
+                if(index_1 == -1): continue
+                if(index_2 == -1): continue
+                if(index_dr_1 == -1): continue
+                if(index_dr_2 == -1): continue
+                #fill_pt = (jets[index_1]+jets[index_2]).p4().Pt()
+                self.out.fillBranch('%sreco_q1_q2_pt%s'%(self.label,jesLabel) , (jets[index_1].p4()+jets[index_2].p4()).Pt())
+                self.out.fillBranch('%sreco_q1_q2_eta%s'%(self.label,jesLabel) , (jets[index_1].p4()+jets[index_2].p4()).Eta())
+                self.out.fillBranch('%sreco_q1_q2_phi%s'%(self.label,jesLabel) , (jets[index_1].p4()+jets[index_2].p4()).Phi())
+                self.out.fillBranch('%sreco_q1_q2_mass%s'%(self.label,jesLabel) , (jets[index_1].p4()+jets[index_2].p4()).M())
+                #self.out.fillBranch('%sreco_q1_q2_label%s'%(self.label,jesLabel) , [1,0])
+                #self.out.fillBranch('%sreco_q1_q2_label_one%s'%(self.label,jesLabel) , 1)
+
+
+                self.out.fillBranch('%sreco_match_q1_q2_pt%s'%(self.label,jesLabel) , (jets[index_dr_1].p4()+jets[index_dr_2].p4()).Pt())
+                self.out.fillBranch('%sreco_match_q1_q2_eta%s'%(self.label,jesLabel) , (jets[index_dr_1].p4()+jets[index_dr_2].p4()).Eta())
+                self.out.fillBranch('%sreco_match_q1_q2_phi%s'%(self.label,jesLabel) , (jets[index_dr_1].p4()+jets[index_dr_2].p4()).Phi())
+                self.out.fillBranch('%sreco_match_q1_q2_mass%s'%(self.label,jesLabel) , (jets[index_dr_1].p4()+jets[index_dr_2].p4()).M())
+                #self.out.fillBranch('%sreco_match_q1_q2_label%s'%(self.label,jesLabel) , [1,0])
+                #self.out.fillBranch('%sreco_match_q1_q2_label_one%s'%(self.label,jesLabel) , 1)
+
+
+                
+                for i in range(len(jets)):
+                    if(i == index_1 or i == index_2):
+                        self.out.fillBranch('%sJet_Label%s'%(self.label,jesLabel), 1)
+                    else:
+                        self.out.fillBranch('%sJet_Label%s'%(self.label,jesLabel), 0)
+                    
+                    if(i == index_dr_1 or i == index_dr_2):
+                        self.out.fillBranch('%sJet_Label_dr%s'%(self.label,jesLabel), 1)
+                    else:
+                        self.out.fillBranch('%sJet_Label_dr%s'%(self.label,jesLabel), 0)
+                        
+                    self.out.fillBranch('%sJet_Label_pt%s'%(self.label,jesLabel), jets[i].p4().Pt())
+                    self.out.fillBranch('%sJet_Label_eta%s'%(self.label,jesLabel), jets[i].p4().Eta())
+                    self.out.fillBranch('%sJet_Label_phi%s'%(self.label,jesLabel), jets[i].p4().Phi())
+                    self.out.fillBranch('%sJet_Label_mass%s'%(self.label,jesLabel), jets[i].p4().M())
+                    self.out.fillBranch('%sJet_Label_bdisc%s'%(self.label,jesLabel), jet_btagdiscrs[i])
+                    self.out.fillBranch('%sJet_Label_dr_lep0%s'%(self.label,jesLabel), jets[i].p4().DeltaR(leps[0].p4()) if len(leps) > 0 else -99)
+                    self.out.fillBranch('%sJet_Label_dr_lep1%s'%(self.label,jesLabel), jets[i].p4().DeltaR(leps[1].p4()) if len(leps) > 1 else -99)
+                    
+
+            else:
+                self.out.fillBranch('%sreco_q1_q2_pt%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_q1_q2_eta%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_q1_q2_phi%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_q1_q2_mass%s'%(self.label,jesLabel) , -99)
+                #self.out.fillBranch('%sreco_q1_q2_label%s'%(self.label,jesLabel) , [0,1])
+                #self.out.fillBranch('%sreco_q1_q2_label_one%s'%(self.label,jesLabel) , 0)
+
+                self.out.fillBranch('%sreco_match_q1_q2_pt%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_match_q1_q2_eta%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_match_q1_q2_phi%s'%(self.label,jesLabel) , -99)
+                self.out.fillBranch('%sreco_match_q1_q2_mass%s'%(self.label,jesLabel) , -99)
+                #self.out.fillBranch('%sreco_match_q1_q2_label%s'%(self.label,jesLabel) , [0,1]) 
+                #self.out.fillBranch('%sreco_match_q1_q2_label_one%s'%(self.label,jesLabel) , 0)
+                self.out.fillBranch('%sJet_Label%s'%(self.label,jesLabel), -99)
+                self.out.fillBranch('%sJet_Label_dr%s'%(self.label,jesLabel), -99)
+
+            for i in range(len(jets)):
+                ###########MODEL###########
+                
+                score = float(self.model_dnn.predict(np.transpose(np.array([[jets[i].p4().Pt()], [jets[i].p4().Eta()], [jets[i].p4().Phi()], [jets[i].p4().M()], [met], [jets[i].p4().DeltaR(leps[0].p4())], [jets[i].p4().DeltaR(leps[1].p4())]]))))#[jets[i].p4().DeltaR(leps[0].p4())], [jets[i].p4().DeltaR(leps[1].p4())]]))))
+                self.out.fillBranch('%sreco_score_higgs%s'%(self.label,jesLabel), score)
+
+            def my_sort_score(j):
+            #return j.btagDeepFlavB
+                #print float(self.model_dnn.predict(np.transpose(np.array([j.pt], [j.eta], [j.phi], [j.mass], [met], [100.], [100.]]))))
+                return float(self.model_dnn.predict(np.transpose(np.array([[j.pt], [j.eta], [j.phi], [j.mass], [met], [j.DeltaR(leps[0].p4())], [j.DeltaR(leps[1].p4())]]))))
+
+            jets.sort(key=my_sort_score, reverse=True)
+            #print len(jets)
+            for i in range(len(jets)):
+                ###########MODEL###########
+
+                score = float(self.model_dnn.predict(np.transpose(np.array([[jets[i].p4().Pt()], [jets[i].p4().Eta()], [jets[i].p4().Phi()], [jets[i].p4().M()], [met], [jets[i].p4().DeltaR(leps[0].p4())], [jets[i].p4().DeltaR(leps[1].p4())]]))))
+                #print score
+                self.out.fillBranch('%sreco_score_higgs%s'%(self.label,jesLabel), score)
+
+
+            if(len(jets) >= 2):
+                self.out.fillBranch('%sreco_q1_score_higgs_pt%s'%(self.label,jesLabel), jets[0].p4().Pt())
+                self.out.fillBranch('%sreco_q1_score_higgs_eta%s'%(self.label,jesLabel), jets[0].p4().Eta())
+                self.out.fillBranch('%sreco_q1_score_higgs_phi%s'%(self.label,jesLabel), jets[0].p4().Phi())
+                self.out.fillBranch('%sreco_q1_score_higgs_mass%s'%(self.label,jesLabel), jets[0].p4().M())
+
+                self.out.fillBranch('%sreco_q2_score_higgs_pt%s'%(self.label,jesLabel), jets[1].p4().Pt())
+                self.out.fillBranch('%sreco_q2_score_higgs_eta%s'%(self.label,jesLabel), jets[1].p4().Eta())
+                self.out.fillBranch('%sreco_q2_score_higgs_phi%s'%(self.label,jesLabel), jets[1].p4().Phi())
+                self.out.fillBranch('%sreco_q2_score_higgs_mass%s'%(self.label,jesLabel), jets[1].p4().M())
+
+                self.out.fillBranch('%sreco_q1_q2_score_higgs_pt%s'%(self.label,jesLabel), (jets[0].p4()+jets[1].p4()).Pt())
+                self.out.fillBranch('%sreco_q1_q2_score_higgs_eta%s'%(self.label,jesLabel), (jets[0].p4()+jets[1].p4()).Eta())
+                self.out.fillBranch('%sreco_q1_q2_score_higgs_phi%s'%(self.label,jesLabel), (jets[0].p4()+jets[1].p4()).Phi())
+                self.out.fillBranch('%sreco_q1_q2_score_higgs_mass%s'%(self.label,jesLabel), (jets[0].p4()+jets[1].p4()).M())
+
+            else:
+                self.out.fillBranch('%sreco_q1_score_higgs_pt%s'%(self.label,jesLabel), -99)
+                self.out.fillBranch('%sreco_q1_score_higgs_eta%s'%(self.label,jesLabel), -99)
+                self.out.fillBranch('%sreco_q1_score_higgs_phi%s'%(self.label,jesLabel), -99)
+                self.out.fillBranch('%sreco_q1_score_higgs_mass%s'%(self.label,jesLabel), -99)
+                
+                self.out.fillBranch('%sreco_q2_score_higgs_pt%s'%(self.label,jesLabel),-99)
+                self.out.fillBranch('%sreco_q2_score_higgs_eta%s'%(self.label,jesLabel), -99)
+                self.out.fillBranch('%sreco_q2_score_higgs_phi%s'%(self.label,jesLabel), -99)
+                self.out.fillBranch('%sreco_q2_score_higgs_mass%s'%(self.label,jesLabel), -99)
+
+                self.out.fillBranch('%sreco_q1_q2_score_higgs_pt%s'%(self.label,jesLabel),-99)
+                self.out.fillBranch('%sreco_q1_q2_score_higgs_eta%s'%(self.label,jesLabel), -99)
+                self.out.fillBranch('%sreco_q1_q2_score_higgs_phi%s'%(self.label,jesLabel), -99)
+                self.out.fillBranch('%sreco_q1_q2_score_higgs_mass%s'%(self.label,jesLabel), -99)
+                #self.out.fillBranch('%sreco_score_higgs',%(self.label,jesLabel), self.model_dnn.predict(np.transpose(np.array([jets[i].p4().Pt(), jets[i].p4().Eta(), jets[i].p4().Phi(), jets[i].p4().M(), met, jets[i].p4().DeltaR(leps[0].p4()), jets[i].p4().DeltaR(leps[1].p4())]))))
+
+                
+                
             all5_jets = TLorentzVector()
             all5_jets.SetPtEtaPhiM(0,0,0,0)
 
@@ -304,7 +694,7 @@ class HiggsDiffRegressionTTH_new(Module):
                 self.out.fillBranch('%sLep%s%s_eta' %(self.label,iLep,jesLabel), part.Eta() )
                 self.out.fillBranch('%sLep%s%s_phi' %(self.label,iLep,jesLabel), part.Phi() )
                 self.out.fillBranch('%sLep%s%s_mass'%(self.label,iLep,jesLabel), part.M()   )
-
+            
             #Compute met from events
             all_jets = TLorentzVector()
             all_jets.SetPtEtaPhiM(0,0,0,0)
@@ -371,6 +761,7 @@ class HiggsDiffRegressionTTH_new(Module):
             self.out.fillBranch('%smet_phi%s' %(self.label,jesLabel), met_phi                            )
             self.out.fillBranch('%sHTXS_Higgs_pt%s'%(self.label,jesLabel), getattr(event,"HTXS_Higgs_pt"))
             self.out.fillBranch('%sHTXS_Higgs_y%s' %(self.label,jesLabel), getattr(event,"HTXS_Higgs_y") )
+
             # I must patch these two to fill only for TTH, otherwise the friend does not exist etc. Maybe produce friend also for background
             self.out.fillBranch('%sHgen_vis_pt%s'  %(self.label,jesLabel), getattr(event,'Hreco_pTTrueGen'))
             self.out.fillBranch('%sHgen_tru_pt%s'  %(self.label,jesLabel), getattr(event,'Hreco_pTTrueGenPlusNu')) # the same as HTXS_Higgs_pt
