@@ -36,7 +36,7 @@ class HiggsDiffRegressionTTH_new(Module):
         self.nlep = 2
         self.njet = 5
         self.ngenjet = 8
-        self.model_dnn = load_model('dnn_tagger_new_dr_real.h5')
+        self.model_dnn = load_model(os.path.join(os.environ["CMSSW_BASE"], "src/CMGTools/TTHAnalysis/data/regressionMVA/dnn_tagger_new_dr_real.h5"))
 
     def beginFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
         #model_dnn = load_model('dnn_tagger_new_dr.h5') 
