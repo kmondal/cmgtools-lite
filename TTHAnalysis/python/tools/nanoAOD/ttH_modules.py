@@ -446,6 +446,7 @@ from CMGTools.TTHAnalysis.tools.higgsDiffCompTTH import higgsDiffCompTTH, higgsD
 from CMGTools.TTHAnalysis.tools.higgsDiffRegressionTTH import higgsDiffRegressionTTH
 from CMGTools.TTHAnalysis.tools.higgsDiffRegressionTTH_new import higgsDiffRegressionTTH_new
 from CMGTools.TTHAnalysis.tools.higgsDiffRegressionTTH_3l import higgsDiffRegressionTTH_3l
+from CMGTools.TTHAnalysis.tools.higgsDiffRegressionTTH_reduced import higgsDiffRegressionTTH_reduced
 
 from CMGTools.TTHAnalysis.tools.nanoAOD.ttH_CP import ttH_CP
 from CMGTools.TTHAnalysis.tools.nanoAOD.ttH_genericTreeVarForSR import ttH_genericTreeVarForSR
@@ -499,4 +500,4 @@ cpABCnet = lambda : CPmva2lss()
 #ttH_2lss1tau_reco = lambda : ttH_2lss1tau_higgsreco()
 
 
-from CMGTools.TTHAnalysis.tools.nanoAOD.electronMatcher import matcher
+#from CMGTools.TTHAnalysis.tools.nanoAOD.electronMatcher import matcher
