@@ -9,12 +9,17 @@ from ROOT import *
 import numpy as np
 
 class HiggsDiffRegressionTTH_3l(Module):
-    def __init__(self,label="_Recl", cut_BDT_rTT_score = 0.0, btagDeepCSVveto = 'M', doSystJEC=False):
+    def __init__(self,label="_Recl", variations=[], cut_BDT_rTT_score = 0.0, btagDeepCSVveto = 'M', doSystJEC=True):
         self.label = label
         self.cut_BDT_rTT_score = cut_BDT_rTT_score
         self.btagDeepCSVveto = btagDeepCSVveto
         self.branches = []
         self.systsJEC = {0:"", 1:"_jesTotalCorrUp", -1:"_jesTotalCorrDown", 2:"_jesTotalUnCorrUp", -2:"_jesTotalUnCorrDown"} if doSystJEC else {0:""}
+        if len(variations):
+            self.systsJEC = {0:""}
+            for i,var in enumerate(variations):
+                self.systsJEC[i+1]   ="_%sUp"%var
+                self.systsJEC[-(i+1)]="_%sDown"%var
         self.nlep = 3
         self.njet = 5
         self.ngenjet = 8

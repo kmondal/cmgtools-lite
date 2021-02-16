@@ -450,10 +450,25 @@ from CMGTools.TTHAnalysis.tools.nanoAOD.ttH_gen_reco import ttH_gen_reco
 from CMGTools.TTHAnalysis.tools.higgsDiffGenTTH import higgsDiffGenTTH
 from CMGTools.TTHAnalysis.tools.higgsDiffRecoTTH import higgsDiffRecoTTH, higgsDiffRecoTTH_noWmassConstraint
 from CMGTools.TTHAnalysis.tools.higgsDiffCompTTH import higgsDiffCompTTH, higgsDiffCompTTH_noWmassConstraint
-from CMGTools.TTHAnalysis.tools.higgsDiffRegressionTTH import higgsDiffRegressionTTH
-from CMGTools.TTHAnalysis.tools.higgsDiffRegressionTTH_new import higgsDiffRegressionTTH_new
-from CMGTools.TTHAnalysis.tools.higgsDiffRegressionTTH_3l import higgsDiffRegressionTTH_3l
-from CMGTools.TTHAnalysis.tools.higgsDiffRegressionTTH_reduced import higgsDiffRegressionTTH_reduced
+from CMGTools.TTHAnalysis.tools.higgsDiffRegressionTTH import HiggsDiffRegressionTTH
+from CMGTools.TTHAnalysis.tools.higgsDiffRegressionTTH_new import HiggsDiffRegressionTTH_new
+from CMGTools.TTHAnalysis.tools.higgsDiffRegressionTTH_3l import HiggsDiffRegressionTTH_3l
+from CMGTools.TTHAnalysis.tools.higgsDiffRegressionTTH_reduced import HiggsDiffRegressionTTH_reduced
+
+higgsDiffRegressionTTH = lambda : HiggsDiffRegressionTTH(label='Hreco_',
+                                                         variations=[ 'jes%s'%v for v in jecGroups] + ['jer%s'%x for x in ['barrel','endcap1','endcap2highpt','endcap2lowpt' ,'forwardhighpt','forwardlowpt']  ]  + ['HEM'],
+                                                         btagDeepCSVveto = 'M')
+higgsDiffRegressionTTH_new = lambda : HiggsDiffRegressionTTH_new(label='Hreco_',
+                                                                 variations=[ 'jes%s'%v for v in jecGroups] + ['jer%s'%x for x in ['barrel','endcap1','endcap2highpt','endcap2lowpt' ,'forwardhighpt','forwardlowpt']  ]  + ['HEM'],
+                                                                 btagDeepCSVveto = 'M')
+higgsDiffRegressionTTH_3l = lambda : HiggsDiffRegressionTTH_3l(label='Hreco_',
+                                                               variations=[ 'jes%s'%v for v in jecGroups] + ['jer%s'%x for x in ['barrel','endcap1','endcap2highpt','endcap2lowpt' ,'forwardhighpt','forwardlowpt']  ]  + ['HEM'],
+                                                               btagDeepCSVveto = 'M')
+higgsDiffRegressionTTH_reduced = lambda : HiggsDiffRegressionTTH_reduced(label='Hreco_',
+                                                                         variations=[ 'jes%s'%v for v in jecGroups] + ['jer%s'%x for x in ['barrel','endcap1','endcap2highpt','endcap2lowpt' ,'forwardhighpt','forwardlowpt']  ]  + ['HEM'],
+                                                                         btagDeepCSVveto = 'M')
+
+
 
 from CMGTools.TTHAnalysis.tools.nanoAOD.ttH_genericTreeVarForSR import ttH_genericTreeVarForSR
 

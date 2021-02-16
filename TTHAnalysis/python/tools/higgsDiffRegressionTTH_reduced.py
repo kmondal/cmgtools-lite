@@ -28,12 +28,17 @@ from keras.models import load_model
 #model_dnn = load_model('dnn_tagger_new_dr.h5')
 
 class HiggsDiffRegressionTTH_reduced(Module):
-    def __init__(self,label="_Recl", cut_BDT_rTT_score = 0.0, btagDeepCSVveto = 'M', doSystJEC=False):
+    def __init__(self,label="_Recl", variations=[], cut_BDT_rTT_score = 0.0, btagDeepCSVveto = 'M', doSystJEC=True):
         self.label = label
         self.cut_BDT_rTT_score = cut_BDT_rTT_score
         self.btagDeepCSVveto = btagDeepCSVveto
         self.branches = []
         self.systsJEC = {0:"", 1:"_jesTotalCorrUp", -1:"_jesTotalCorrDown", 2:"_jesTotalUnCorrUp", -2:"_jesTotalUnCorrDown"} if doSystJEC else {0:""}
+        if len(variations):
+            self.systsJEC = {0:""}
+            for i,var in enumerate(variations):
+                self.systsJEC[i+1]   ="_%sUp"%var
+                self.systsJEC[-(i+1)]="_%sDown"%var
         self.nlep = 2
         self.njet = 5
         self.ngenjet = 8
@@ -66,48 +71,50 @@ class HiggsDiffRegressionTTH_reduced(Module):
             self.out.branch('%sTopScore%s'%(self.label,jesLabel)      , 'F')      
             self.out.branch('%smet%s'%(self.label,jesLabel)           , 'F')       
             self.out.branch('%smet_phi%s'%(self.label,jesLabel)       , 'F')
-            self.out.branch('%sHTXS_Higgs%s_pt'%(self.label,jesLabel) , 'F')
-            self.out.branch('%sHTXS_Higgs%s_y'%(self.label,jesLabel)  , 'F')
-            self.out.branch('%sHgen_vis_pt%s'%(self.label,jesLabel)   , 'F')
-            self.out.branch('%sHgen_tru_pt%s'%(self.label,jesLabel)   , 'F')
 
-            self.out.branch('%sJet_Higgs_score'%(self.label), 'F')
-            self.out.branch('%sreco_score_higgs'%(self.label), 'F')
+            self.out.branch('%sJet_Higgs_score%s'%(self.label,jesLabel), 'F')
+            self.out.branch('%sreco_score_higgs%s'%(self.label,jesLabel), 'F')
 
-            self.out.branch('%sreco_q1_score_higgs_pt'%(self.label), 'F')
-            self.out.branch('%sreco_q1_score_higgs_eta'%(self.label), 'F')
-            self.out.branch('%sreco_q1_score_higgs_phi'%(self.label), 'F')
-            self.out.branch('%sreco_q1_score_higgs_mass'%(self.label), 'F')
+            self.out.branch('%sreco_q1_score_higgs_pt%s'%(self.label,jesLabel), 'F')
+            self.out.branch('%sreco_q1_score_higgs_eta%s'%(self.label,jesLabel), 'F')
+            self.out.branch('%sreco_q1_score_higgs_phi%s'%(self.label,jesLabel), 'F')
+            self.out.branch('%sreco_q1_score_higgs_mass%s'%(self.label,jesLabel), 'F')
 
-            self.out.branch('%sreco_q2_score_higgs_pt'%(self.label), 'F')
-            self.out.branch('%sreco_q2_score_higgs_eta'%(self.label), 'F')
-            self.out.branch('%sreco_q2_score_higgs_phi'%(self.label), 'F')
-            self.out.branch('%sreco_q2_score_higgs_mass'%(self.label), 'F')
+            self.out.branch('%sreco_q2_score_higgs_pt%s'%(self.label,jesLabel), 'F')
+            self.out.branch('%sreco_q2_score_higgs_eta%s'%(self.label,jesLabel), 'F')
+            self.out.branch('%sreco_q2_score_higgs_phi%s'%(self.label,jesLabel), 'F')
+            self.out.branch('%sreco_q2_score_higgs_mass%s'%(self.label,jesLabel), 'F')
 
-            self.out.branch('%sreco_q1_q2_score_higgs_pt'%(self.label), 'F')
-            self.out.branch('%sreco_q1_q2_score_higgs_eta'%(self.label), 'F')
-            self.out.branch('%sreco_q1_q2_score_higgs_phi'%(self.label), 'F')
-            self.out.branch('%sreco_q1_q2_score_higgs_mass'%(self.label), 'F')
+            self.out.branch('%sreco_q1_q2_score_higgs_pt%s'%(self.label,jesLabel), 'F')
+            self.out.branch('%sreco_q1_q2_score_higgs_eta%s'%(self.label,jesLabel), 'F')
+            self.out.branch('%sreco_q1_q2_score_higgs_phi%s'%(self.label,jesLabel), 'F')
+            self.out.branch('%sreco_q1_q2_score_higgs_mass%s'%(self.label,jesLabel), 'F')
 
-            self.out.branch('%sMore5_Jets_pt'%(self.label), 'F'   )
-            self.out.branch('%sMore5_Jets_eta'%(self.label), 'F'   )
-            self.out.branch('%sMore5_Jets_phi'%(self.label), 'F'   )
-            self.out.branch('%sMore5_Jets_mass'%(self.label), 'F'   )
+            self.out.branch('%sMore5_Jets_pt%s'%(self.label,jesLabel), 'F'   )
+            self.out.branch('%sMore5_Jets_eta%s'%(self.label,jesLabel), 'F'   )
+            self.out.branch('%sMore5_Jets_phi%s'%(self.label,jesLabel), 'F'   )
+            self.out.branch('%sMore5_Jets_mass%s'%(self.label,jesLabel), 'F'   )
 
-            self.out.branch('%sAll5_Jets_pt'%(self.label), 'F'   )
-            self.out.branch('%sAll5_Jets_eta'%(self.label), 'F'   )
-            self.out.branch('%sAll5_Jets_phi'%(self.label), 'F'   )
-            self.out.branch('%sAll5_Jets_mass'%(self.label), 'F'   )
+            self.out.branch('%sAll5_Jets_pt%s'%(self.label,jesLabel), 'F'   )
+            self.out.branch('%sAll5_Jets_eta%s'%(self.label,jesLabel), 'F'   )
+            self.out.branch('%sAll5_Jets_phi%s'%(self.label,jesLabel), 'F'   )
+            self.out.branch('%sAll5_Jets_mass%s'%(self.label,jesLabel), 'F'   )
 
 
-            self.out.branch('%sJets_plus_Lep_pt'%(self.label), 'F'   )
-            self.out.branch('%sJets_plus_Lep_eta'%(self.label), 'F'   )
-            self.out.branch('%sJets_plus_Lep_phi'%(self.label), 'F'   )
-            self.out.branch('%sJets_plus_Lep_mass'%(self.label), 'F'   )
+            self.out.branch('%sJets_plus_Lep_pt%s'%(self.label,jesLabel), 'F'   )
+            self.out.branch('%sJets_plus_Lep_eta%s'%(self.label,jesLabel), 'F'   )
+            self.out.branch('%sJets_plus_Lep_phi%s'%(self.label,jesLabel), 'F'   )
+            self.out.branch('%sJets_plus_Lep_mass%s'%(self.label,jesLabel), 'F'   )
 
             self.out.branch('%sevt_tag%s'%(self.label,jesLabel)       , 'F')       
             
+            # Gen level, the labels
+            self.out.branch('%sHTXS_Higgs_pt'%(self.label) , 'F')
+            self.out.branch('%sHTXS_Higgs_y'%(self.label)  , 'F')
+            self.out.branch('%sHgen_vis_pt'%(self.label)   , 'F')
+            self.out.branch('%sHgen_tru_pt'%(self.label)   , 'F')
 
+            
     def buildHadronicTop(self, event, score, alljets, jesLabel):
         HadTop=None
         if score>self.cut_BDT_rTT_score:
@@ -187,9 +194,9 @@ class HiggsDiffRegressionTTH_reduced(Module):
             if(len(jets) < 2): return False
             if(len(jets) > 4):
                 #for j in jets:
-                self.out.fillBranch('%sJet_Higgs_score'%(self.label) , getattr(event, "BDThttTT_eventReco_Hj_score"))
+                self.out.fillBranch('%sJet_Higgs_score%s'%(self.label,jesLabel) , getattr(event, "BDThttTT_eventReco_Hj_score"))
             else:
-                self.out.fillBranch('%sJet_Higgs_score'%(self.label) , -99)
+                self.out.fillBranch('%sJet_Higgs_score%s'%(self.label,jesLabel) , -99)
 
 
             for i in range(len(jets)):
@@ -308,8 +315,8 @@ class HiggsDiffRegressionTTH_reduced(Module):
 
             self.out.fillBranch('%smet%s'     %(self.label,jesLabel), met                                ) 
             self.out.fillBranch('%smet_phi%s' %(self.label,jesLabel), met_phi                            )
-            self.out.fillBranch('%sHTXS_Higgs_pt%s'%(self.label,jesLabel), getattr(event,"HTXS_Higgs_pt"))
-            self.out.fillBranch('%sHTXS_Higgs_y%s' %(self.label,jesLabel), getattr(event,"HTXS_Higgs_y") )
+            self.out.fillBranch('%sHTXS_Higgs_pt'%(self.label), getattr(event,"HTXS_Higgs_pt"))
+            self.out.fillBranch('%sHTXS_Higgs_y' %(self.label), getattr(event,"HTXS_Higgs_y") )
 
             # I must patch these two to fill only for TTH, otherwise the friend does not exist etc. Maybe produce friend also for background
             #self.out.fillBranch('%sHgen_vis_pt%s'  %(self.label,jesLabel), getattr(event,'Hreco_pTTrueGen'))
