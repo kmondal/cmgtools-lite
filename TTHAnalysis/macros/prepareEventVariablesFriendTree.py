@@ -405,8 +405,6 @@ if options.queue:
         options.subfile="slurm_submitter_of_stuff_"
         if "def" in options.env:
             super = "sbatch --partition Def --qos=normal "
-        elif "fast" in options.env:
-            super = "sbatch --partition cp3-fast --qos=cp3 "
         else:
             super = "sbatch --partition cp3 --qos=cp3 "
     else: # Use lxbatch by default
