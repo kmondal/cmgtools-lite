@@ -2,7 +2,7 @@ from PhysicsTools.NanoAODTools.postprocessing.framework.eventloop import Module
 
 class yearTagger( Module ):
     def __init__(self):
-        pass
+        self._year = None
     def beginFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
         self.wrappedOutputTree = wrappedOutputTree
         self.wrappedOutputTree.branch('year','i')
