@@ -15,6 +15,7 @@ lumis = {
 
 submit = '{command}' 
 dowhat = "plots" 
+#dowhat= "cards"
 #dowhat = "dumps" 
 #dowhat = "yields" 
 #dowhat = "ntuple" # syntax: python ttH-multilepton/ttH_plots.py no 2lss_SR_extr outfile_{cname}.root --sP var1,var2,...
