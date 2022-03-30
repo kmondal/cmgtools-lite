@@ -50,6 +50,8 @@ thevars = [
     'Jet4_pt','Jet4_eta','Jet4_phi','Jet4_mass','Jet4_btagdiscr',#'Jet2_mass',
     'Jet5_pt','Jet5_eta','Jet5_phi','Jet5_mass','Jet5_btagdiscr',#'Jet2_mass',
     'Jet6_pt','Jet6_eta','Jet6_phi','Jet6_mass','Jet6_btagdiscr',#'Jet2_mass',
+    'DeltaRClosestJetToLep0','DeltaRClosestJetToLep1',
+    'DeltaPtClosestJetToLep0','DeltaPtClosestJetToLep1',
     'HadTop_pt','HadTop_eta','HadTop_phi','HadTop_mass',
     'TopScore',
     'met','met_phi',
